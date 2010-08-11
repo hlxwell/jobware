@@ -1,2 +1,42 @@
-Use this README file to introduce your application and point to useful places in the API for learning more.
-Run "rake doc:app" to generate API documentation for your models, controllers, helpers, and libraries.
+session: create, new
+account: password, email
+
+- Job seeker:
+dashboard: job_seeker
+companies: index, show
+jobs: index, show, star
+resumes: show, create, update, destroy, edit
+cvs: index, show, create, update, destroy, edit
+job_applications: index, show, create, (update, destroy)
+# wanted_jobs: CRUD
+
+- Company:
+dashboard: company
+company_jobs: index, show, create, edit, update, destroy
+company_job_applications: index, show, update
+settings: theme
+# starred_resumes: index
+
+
+- Partner:
+dashboard: partner
+job_boards: CRUD
+job_widgets: CRUD
+inline_widgets: CRUD
+float_widgets: CRUD
+
+- Admin:
+
+- page: company, partner
+
+
+home:
+lastest job list, featured company list?, highlight jobs
+Company:
+introduce our edge, company theme home page, partner list
+
+
+list all jobs, job search by keywords or location.
+apply jobs
+post job
+partner join application

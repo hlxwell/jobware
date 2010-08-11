@@ -442,18 +442,18 @@ img.alignright, img.right {margin: 0 0 1em 1.5em;}
 
 .main {margin-bottom: 18px;}
 
-.main#main-three-columns {background: url('/images/main-three-columns.gif') repeat-y right top;}
+.main#main-three-columns {background: url('/images/main-three-columns.gif') repeat-y left top;}
 .main#main-three-columns .sidebar {width: 193px;}
-.main#main-three-columns #main-left {width: 520px;}
+.main#main-three-columns #main-right {width: 520px;}
 
-.main#main-two-columns {background: url('/images/main-two-columns.gif') repeat-y right top;}
+.main#main-two-columns {background: url('/images/main-two-columns.gif') repeat-y left top;}
 .main#main-two-columns .sidebar {width: 260px;}
-.main#main-two-columns #main-left {width: 671px;}
+.main#main-two-columns #main-right {width: 671px;}
 
 .sidebar a {text-decoration: none;}
 .sidebar a:hover {text-decoration: underline;}
 
-#sidebar-1 {margin-left: 37px;}
+#sidebar-2 {margin-left: 37px;}
 
 /* Columns */
 .col3 {width: 32%;}
