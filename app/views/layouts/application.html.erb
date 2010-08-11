@@ -8,20 +8,29 @@
 	<%= csrf_meta_tag %>
   <%= stylesheet_link_tag :all %>
   <%= javascript_include_tag :defaults %>
-  <title>开发.工作 - 中国最大的开发者招聘网站</title>
+  <title>程序人生 - 中国最大的开发者招聘网站</title>
 </head>
 
 <body id="top">
-
   <div id="network">
   	<div class="center-wrapper">
-  		<div class="left">Sunday, August 2, 2009 <span class="text-separator">|</span> <span class="quiet">794 users online</span></div>
+  		<div class="left">
+  		  当前本站共有:
+  		  <span class="text-separator"></span>
+  		  <span class="quiet">794 个用户,</span>
+  		  <span class="quiet">350 个工作,</span>
+  		  <span class="quiet">120 个公司</span>
+
+  		  <span class="text-separator">|</span> <span class="quiet"><a href="#">登陆</a></span>
+  		  <span class="text-separator">|</span> <span class="quiet"><a href="#">注册</a></span>
+  		</div>
   		<div class="right">
-  			<ul class="tabbed" id="network-tabs">
-  				<li class="current-tab"><a href="#">求职</a></li>
-  				<li><a href="#">招聘</a></li>
-  				<li><a href="#">合作者</a></li>
-  			</ul>
+  		  <% semantic_navigation "network-tabs", :html => {:class => "tabbed"} do |n| %>
+          <%= n.item '首页', :link => "/home/a", :highlights_on => ('a'..'f').to_a.map { |w| "/home/#{w}" } %>
+          <%= n.item '我是求职者', :link => '/home/g' %>
+          <%= n.item '我是公司', :link => '/home/h' %>
+          <%= n.item '我是合作者', :link => '/home/i' %>
+        <% end %>
   			<div class="clearer">&nbsp;</div>
   		</div>
   		<div class="clearer">&nbsp;</div>

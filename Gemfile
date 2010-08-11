@@ -7,6 +7,8 @@ gem 'rails', '3.0.0.rc'
 
 gem 'mysql'
 
+gem 'navigasmic'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 
