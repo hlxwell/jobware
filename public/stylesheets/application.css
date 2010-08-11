@@ -1,4 +1,4 @@
-/*  
+/*
 Template name: Simple Magazine
 Template URI: http://templates.arcsin.se/simple-magazine-website-template/
 Release date: 2009-08-02
@@ -12,7 +12,7 @@ http://templates.arcsin.se/license/
 */
 
 
-/* 
+/*
    Reset
 ------------------------------------------------------------------- */
 
@@ -26,8 +26,8 @@ a img {border: none;}
 :focus {outline: 0;}
 
 
-/* 
-   General 
+/*
+   General
 ------------------------------------------------------------------- */
 
 html {
@@ -43,8 +43,8 @@ body {
 }
 
 
-/* 
-   Typography 
+/*
+   Typography
 ------------------------------------------------------------------- */
 
 /* Headings */
@@ -214,8 +214,8 @@ table.data-table tr.even td {background: #FCFCFC;}
 .success a {color: #264409;}
 
 
-/* 
-   Forms 
+/*
+   Forms
 ------------------------------------------------------------------- */
 
 label {font-weight: bold; cursor: pointer;}
@@ -240,8 +240,8 @@ input.button:active {border-style: inset;}
 .form-error {border-color: #F00;}
 
 
-/* 
-   Alignment 
+/*
+   Alignment
 ------------------------------------------------------------------- */
 
 /* General */
@@ -264,7 +264,7 @@ img.alignleft, img.left {margin: 0 1.5em 1em 0;}
 img.alignright, img.right {margin: 0 0 1em 1.5em;}
 
 
-/* Floats */   
+/* Floats */
 
 .left,.alignleft {float: left;}
 .right,.alignright {float: right;}
@@ -278,8 +278,8 @@ img.alignright, img.right {margin: 0 0 1em 1.5em;}
 }
 
 
-/* 
-   Separators 
+/*
+   Separators
 ------------------------------------------------------------------- */
 
 .content-separator, .archive-separator {
@@ -289,14 +289,14 @@ img.alignright, img.right {margin: 0 0 1em 1.5em;}
 	display: block;
 	font-size: 0;
 	line-height: 0;
-	height: 1px;	
+	height: 1px;
 }
 .content-separator {margin: 20px 0;}
 .archive-separator {margin: 10px 0;}
 
 
-/* 
-   Posts 
+/*
+   Posts
 ------------------------------------------------------------------- */
 
 .post a {text-decoration: none;}
@@ -346,8 +346,8 @@ img.alignright, img.right {margin: 0 0 1em 1.5em;}
 .archive-post-day {font: normal 1.6em Georgia,serif;}
 
 
-/* 
-   Layout 
+/*
+   Layout
 ------------------------------------------------------------------- */
 
 /* General */
@@ -443,9 +443,18 @@ img.alignright, img.right {margin: 0 0 1em 1.5em;}
 .main#main-three-columns .sidebar {width: 193px;}
 .main#main-three-columns #main-right {width: 520px;}
 
+.main#main-three-columns-right-sidebar {background: url('/images/main-three-columns-right-sidebar.gif') repeat-y right top;}
+.main#main-three-columns-right-sidebar .sidebar {width: 193px;}
+.main#main-three-columns-right-sidebar #main-left {width: 520px;}
+
 .main#main-two-columns {background: url('/images/main-two-columns.gif') repeat-y left top;}
 .main#main-two-columns .sidebar {width: 260px;}
 .main#main-two-columns #main-right {width: 671px;}
+
+.main#main-two-columns-right-sidebar {background: url('/images/main-two-columns-right-sidebar.gif') repeat-y right top;}
+.main#main-two-columns-right-sidebar #main-left {width: 671px;}
+.main#main-two-columns-right-sidebar .sidebar {width: 260px;}
+
 
 .sidebar a {text-decoration: none;}
 .sidebar a:hover {text-decoration: underline;}
@@ -517,7 +526,7 @@ img.alignright, img.right {margin: 0 0 1em 1.5em;}
 #footer a:hover {color: #000;}
 
 
-/* 
+/*
    Misc overriding classes
 ------------------------------------------------------------------- */
 
