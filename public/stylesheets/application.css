@@ -16,7 +16,16 @@ http://templates.arcsin.se/license/
    Reset
 ------------------------------------------------------------------- */
 
-html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, textarea, input, select {margin: 0; padding: 0; border: 0; font-weight: inherit; font-style: inherit; font-size: 100%; font-family: inherit; vertical-align: baseline;}
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, textarea, input, select {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  font-family: inherit;
+  vertical-align: baseline;
+}
 table {border-collapse: collapse; border-spacing: 0;}
 caption, th, td {text-align: left; font-weight: normal;}
 table, td, th {vertical-align: middle;}
@@ -306,7 +315,7 @@ img.alignright, img.right {margin: 0 0 1em 1.5em;}
 
 .post-date {
 	color: #777;
-	margin: 2px 0 10px;
+	margin: 2px 0 5px;
 }
 .post-date a {color: #444;}
 
@@ -342,9 +351,11 @@ img.alignright, img.right {margin: 0 0 1em 1.5em;}
 	width: 46px;
 }
 .archive-post-title .post-date {margin: 0;}
-.archive-post-title {padding-top: 4px;}
+.archive-post-title {padding-top: 4px; float: left;}
 .archive-post-day {font: normal 1.6em Georgia,serif;}
 
+.archive-post-address {margin: 0; float: right;}
+.archive-post-address h3 {padding-top: 4px; text-align: right;}
 
 /*
    Layout
@@ -553,3 +564,13 @@ img.alignright, img.right {margin: 0 0 1em 1.5em;}
 
 /* Single line IE fix */
 * html #sub-nav, * html .section-title, * html .main {height: 0.01%; min-height: 0.01%;}
+
+.search-box form#search_form input {
+  float: right;
+  margin: 10px 5px;
+  font-size: 14px;
+  padding: 3px 5px 3px 20px;
+  background: url(http://jobs.37signals.com/images/icon-search.png) 5px 6px no-repeat #fff;
+  cursor: auto;
+  width: 300px;
+}

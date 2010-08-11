@@ -1,7 +1,7 @@
 <div id="header">
 
 	<div class="right" id="toolbar">
-		字体大小 
+		字体大小
 		<a href="#" title="Larger text"><img src="/images/icon-plus.gif" width="20" height="20" alt="" /></a>
 		<a href="#" title="Smaller text"><img src="/images/icon-minus.gif" width="20" height="20" alt="" /></a>
 	</div>
@@ -22,8 +22,13 @@
           <%= n.item '招聘', :link => '/home/c', :highlights_on => ['/home/d'] %>
           <%= n.item '合作', :link => '/home/e', :highlights_on => ['/home/f'] %>
         <% end %>
-      <% end %>
 
+        <div class="search-box">
+          <form action="/jobs/search" id="search_form" method="get">
+            <input id="search_term" type="text" class="text" name="term" value="Search: ‘chicago’, ‘javascript’, ‘rails’…">
+          </form>
+        </div>
+      <% end %>
 			<div class="clearer">&nbsp;</div>
 		</div>
 
