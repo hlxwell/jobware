@@ -1,0 +1,35 @@
+body{font-family:arial,sans-serif;}
+
+a:active{outline: none;}
+
+a:focus{-moz-outline-style: none;}
+
+img{border:none;}
+
+a{color:black}
+
+ul.buttons{}
+
+ul.buttons li{display:inline; background-color:red; margin-right:5px;}
+
+ul.buttons li a{text-decoration:none; padding:15px 5px 15px 5px;}
+
+
+	
+	ul.buttons{float:left}
+
+	ul.buttons li{display:inline; background:url(/images/jquery.dropdown/button_background.png) repeat-x left; margin-right:5px; float:left; border:1px solid #BBBBBB; height:20px; list-style-type:none}
+	ul.buttons li:hover{background:url(/images/jquery.dropdown/button_over.png) repeat-x left;}
+	.selected{background:url(/images/jquery.dropdown/button_over.png) repeat-x left;}
+	
+	ul.buttons li a{text-decoration:none; font-size:12px; padding:0px 7px 8px 7px; height:20px;}
+	a:hover{ color:white}
+		
+	/* DROP DOWN ONLY STYLING */	
+		
+	.dropDownMenu{display:none; position:absolute; z-index:100; background:#F7F7F7; padding:5px; font-size:12px;
+		width:120px; border-top:1px solid #D9B497; border-bottom:1px solid #D9B497}
+	
+	.dropDownMenu .optionCheckbox{padding:2px;}
+	.dropDownMenu .optionCheckbox:hover{background:#22A0D3; color:white}
+	.dropDownMenu .optionCheckbox img{margin-right:3px;}
