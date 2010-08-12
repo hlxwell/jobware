@@ -10,16 +10,17 @@
 
     <!-- ### highlighted -->
 		<div class="post notice">
-		  <!-- date -->
-			<div class="archive-post-date">
-				<div class="archive-post-day">37</div>
-				<div class="archive-post-month">顶</div>
-			</div>
+		  <!-- logo -->
+      <div class="company_logo">
+        <a href="#"><img src="/images/logos/3yen_logo_en.jpg" width="200" alt="" class="aligncenter bordered" /></a>
+      </div>
+
 			<!-- title and company -->
 			<div class="archive-post-title">
-				<h3><a href="http://templates.arcsin.se/simple-magazine-website-template/">高级Rails程序员</a> </h3>
-				<div class="post-date"><a href="#">The Plant</a></div>
+				<h3><a href="http://templates.arcsin.se/simple-magazine-website-template/">阿里巴巴中国</a> </h3>
+				<div class="post-date"><a href="#">java, ecommerce, php, mysql</a></div>
 			</div>
+
 			<!-- address and date -->
 			<div class="archive-post-address">
 				<h3>杭州</h3>
@@ -30,21 +31,21 @@
 
 		<div class="archive-separator"></div>
 
-    <% 7.times do %>
-		<div class="post">
-		  <!-- date -->
-			<div class="archive-post-date">
-				<div class="archive-post-day">37</div>
-				<div class="archive-post-month">顶</div>
-			</div>
+		<div class="post notice">
+		  <!-- logo -->
+      <div class="company_logo">
+        <a href="#"><img src="/images/logos/pingmag_logo_ja.jpg" width="200" alt="" class="aligncenter bordered" /></a>
+      </div>
+
 			<!-- title and company -->
 			<div class="archive-post-title">
-				<h3><a href="http://templates.arcsin.se/simple-magazine-website-template/">高级Rails程序员</a> </h3>
-				<div class="post-date"><a href="#">The Plant</a></div>
+				<h3><a href="http://templates.arcsin.se/simple-magazine-website-template/">The Plant</a> </h3>
+				<div class="post-date"><a href="#">Rails, CMS, PHP, Wordpress</a></div>
 			</div>
+
 			<!-- address and date -->
 			<div class="archive-post-address">
-				<h3>杭州</h3>
+				<h3>日本</h3>
 				<div class="post-date">2001年10月13日</div>
 			</div>
 			<div class="clearer">&nbsp;</div>
@@ -52,20 +53,24 @@
 
 		<div class="archive-separator"></div>
 
+    <% ["pingmag_logo_ja.jpg", "amn_logo.png", "thepinkcow_logo_en.jpg", "japaneconomynews_logo_en.jpg",
+      "hiraganatimes_logo_ja.jpg", "japanprobe_logo_en.jpg", "pingmag_logo_ja.jpg", "powered_by_atomjobs_logo.png",
+      "rubyjobs_logo_ja.jpg", "bccjapan_logo_ja.jpg", "amn_logo.png"].each do |logo| %>
 		<div class="post">
-      <!-- date -->
-			<div class="archive-post-date">
-				<div class="archive-post-day">13</div>
-				<div class="archive-post-month">顶</div>
-			</div>
-      <!-- title and company -->
+		  <!-- logo -->
+      <div class="company_logo">
+        <a href="#"><img src="/images/logos/<%= logo %>" width="200" alt="" class="aligncenter bordered" /></a>
+      </div>
+
+			<!-- title and company -->
 			<div class="archive-post-title">
-				<h3><a href="http://templates.arcsin.se/winterplain-website-template/">数据中心 - 数据库管理员 - mysql DBA</a></h3>
-				<div class="post-company"><a href="#">阿里巴巴</a></div>
+				<h3><a href="http://templates.arcsin.se/simple-magazine-website-template/">The Plant</a> </h3>
+				<div class="post-date"><a href="#">Rails, CMS, PHP, Wordpress</a></div>
 			</div>
-      <!-- address and date -->
+
+			<!-- address and date -->
 			<div class="archive-post-address">
-				<h3>上海</h3>
+				<h3>杭州</h3>
 				<div class="post-date">2001年10月13日</div>
 			</div>
 			<div class="clearer">&nbsp;</div>
@@ -85,7 +90,7 @@
 
   <!-- ### right side part -->
 	<div class="right sidebar" id="sidebar">
-	  <div class="success text-center largest"><a href="#">发布工作</a></div>
+	  <div class="success text-center largest"><a href="#">发布公司</a></div>
 
 	  <div class="section network-section">
 			<div class="section-title">猎头工作</div>
@@ -119,7 +124,6 @@
 			</div>
 		</div>
 	</div>
-
 
 	<div class="clearer">&nbsp;</div>
 </div>

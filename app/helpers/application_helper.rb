@@ -3,8 +3,7 @@ module ApplicationHelper
   def in_section?(name)
     case name
     when "jobseeker"
-      current_page?('/home/a') or
-      current_page?('/home/b')
+      ['a','ab','ac','ad'].map {|w| current_page?("/home/#{w}") }.include?(true)
     when "company"
       current_page?('/home/c') or
       current_page?('/home/d')

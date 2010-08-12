@@ -308,6 +308,9 @@ img.alignright, img.right {margin: 0 0 1em 1.5em;}
    Posts
 ------------------------------------------------------------------- */
 
+.post .company_logo { float: left; padding-right: 10px; }
+.post .company_logo img { width: 150px; }
+
 .post a {text-decoration: none;}
 .post a:hover {text-decoration: underline;}
 
@@ -346,7 +349,7 @@ img.alignright, img.right {margin: 0 0 1em 1.5em;}
 	border-right: 1px solid #CFCFCF;
 	float: left;
 	margin-right: 12px;
-	padding: 2px 0 5px;
+	padding: 2px 0 6px;
 	text-align: center;
 	width: 46px;
 }
@@ -390,6 +393,9 @@ img.alignright, img.right {margin: 0 0 1em 1.5em;}
 }
 #network .text-separator, #network span {color: #999;}
 
+div.highlighted {
+  background: #FFF6BF;
+}
 
 /* Toolbar */
 #toolbar {
@@ -567,10 +573,10 @@ img.alignright, img.right {margin: 0 0 1em 1.5em;}
 
 .search-box form#search_form input {
   float: right;
-  margin: 10px 5px;
-  font-size: 14px;
+  margin: 7px 5px 0px 0px;
+  font-size: 1.5em;
   padding: 3px 5px 3px 20px;
-  background: url(http://jobs.37signals.com/images/icon-search.png) 5px 6px no-repeat #fff;
+  background: url(http://jobs.37signals.com/images/icon-search.png) 5px 8px no-repeat #fff;
   cursor: auto;
-  width: 300px;
+  width: 400px;
 }
