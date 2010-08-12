@@ -229,8 +229,11 @@ table.data-table tr.even td {background: #FCFCFC;}
 
 label {font-weight: bold; cursor: pointer;}
 fieldset {padding: 1.4em; margin: 0 0 1.5em 0; border: 1px solid #ccc;}
-legend {font-weight: bold; font-size: 1.2em;}
+legend {font-size: 1.2em; padding: 0px 10px 0px 10px;}
+legend.bold {font-weight: bold; font-size: 1.2em; padding: 0px 10px 0px 10px;}
+
 textarea {overflow: auto;}
+
 input.text, textarea, select {
 	background: #FCFCFC;
 	border: 1px inset #AAA;
@@ -248,6 +251,10 @@ input.button:active {border-style: inset;}
 
 .form-error {border-color: #F00;}
 
+span.helper {
+  color: #999;
+  font-size: 0.9em;
+}
 
 /*
    Alignment
@@ -571,6 +578,7 @@ div.highlighted {
 /* Single line IE fix */
 * html #sub-nav, * html .section-title, * html .main {height: 0.01%; min-height: 0.01%;}
 
+/* search box */
 .search-box form#search_form input {
   float: right;
   margin: 7px 5px 0px 0px;
@@ -579,4 +587,9 @@ div.highlighted {
   background: url(http://jobs.37signals.com/images/icon-search.png) 5px 8px no-repeat #fff;
   cursor: auto;
   width: 400px;
+}
+
+/* width define */
+.w600 {
+  width: 600px;
 }
