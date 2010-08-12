@@ -1,10 +1,16 @@
-<div id="header">
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#toolbar').jfontsizer({
+			applyTo: '.main',
+			changesmall: '1',
+			changelarge: '20',
+			expire: 30
+		});
+	});
+</script>
 
-	<div class="right" id="toolbar">
-		字体大小
-		<a href="#" title="Larger text"><img src="/images/icon-plus.gif" width="20" height="20" alt="" /></a>
-		<a href="#" title="Smaller text"><img src="/images/icon-minus.gif" width="20" height="20" alt="" /></a>
-	</div>
+<div id="header">
+	<div class="right" id="toolbar"></div>
 	<div class="clearer">&nbsp;</div>
 
   <!-- #### site logo and title -->
