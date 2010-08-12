@@ -5,8 +5,8 @@ set :repository,  "git@github.com:ysorigin/jobware.git"
 set :branch, ENV["BRANCH"] || "master"
 set :deploy_to, "/home/hlx/www/jobware/"
 set :user, "hlx"
+set :use_sudo, false
 set :rails_env, "production"
-
 set :scm, "git"
 
 role :web, "bbs.hzva.org"                          # Your HTTP server, Apache/etc
@@ -17,10 +17,10 @@ role :db,  "bbs.hzva.org", :primary => true        # This is where Rails migrati
 # if you're still using the script/reapear helper you will need
 # these http://github.com/rails/irs_process_scripts
 
-# namespace :deploy do
-#   task :start do ; end
-#   task :stop do ; end
-#   task :restart, :roles => :app, :except => { :no_release => true } do
-#     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
-#   end
-# end
+namespace :deploy do
+  task :start do ; end
+  task :stop do ; end
+  task :restart, :roles => :app, :except => { :no_release => true } do
+    run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
+  end
+end

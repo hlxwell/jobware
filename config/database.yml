@@ -41,7 +41,7 @@ production:
   adapter: mysql
   encoding: utf8
   reconnect: false
-  database: jobware_production
+  database: jobware
   pool: 5
   username: root
   password: hzva@china
