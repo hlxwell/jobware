@@ -44,5 +44,5 @@ production:
   database: jobware_production
   pool: 5
   username: root
-  password:
-  socket: /tmp/mysql.sock
+  password: hzva@china
+  socket: /var/run/mysqld/mysqld.sock

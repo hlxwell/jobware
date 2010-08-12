@@ -1,7 +1,7 @@
 # require 'capistrano/ext/multistage'
 
 set :application, "jobware"
-set :repository,  "https://hlxwell@github.com/ysorigin/jobware.git"
+set :repository,  "git@github.com:ysorigin/jobware.git"
 set :branch, ENV["BRANCH"] || "master"
 set :deploy_to, "/home/hlx/www/jobware/"
 set :user, "hlx"
