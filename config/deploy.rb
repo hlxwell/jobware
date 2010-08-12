@@ -18,9 +18,15 @@ role :db,  "bbs.hzva.org", :primary => true        # This is where Rails migrati
 # these http://github.com/rails/irs_process_scripts
 
 namespace :deploy do
+  task :init_project do
+    run "cd #{release_path}; /home/hlx/.rvm/gems/ree-1.8.7-2010.01/bin/bundle install"
+  end
+
   task :start do ; end
   task :stop do ; end
   task :restart, :roles => :app, :except => { :no_release => true } do
     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
   end
 end
+
+before "deploy:symlink", "deploy:init_project"
