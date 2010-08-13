@@ -1,5 +1,19 @@
-session: create, new
-account: password, email
+===== TO DO LIST
+job show page.
+company show page.
+
+design job form
+design company form
+design resume form
+design db model
+
+
+===== Controllers and pages
+- session:
+create, new
+
+- account:
+password, email
 
 - Job seeker:
 dashboard: job_seeker
@@ -17,7 +31,6 @@ company_job_applications: index, show, update
 settings: theme
 # starred_resumes: index
 
-
 - Partner:
 dashboard: partner
 job_boards: CRUD
@@ -25,25 +38,13 @@ job_widgets: CRUD
 inline_widgets: CRUD
 float_widgets: CRUD
 
+- page:
+company, partner
+
 - Admin:
 
-- page: company, partner
 
-
-home:
-lastest job list, featured company list?, highlight jobs
-Company:
-introduce our edge, company theme home page, partner list
-
-
-list all jobs, job search by keywords or location.
-apply jobs
-post job
-partner join application
-
-
-
-####
+===== Internal test domain
 set host first:
 211.138.113.63  idevjob.com
 http://idevjob.com:88/
