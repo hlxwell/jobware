@@ -195,6 +195,7 @@ table.data-table tr.even td {background: #FCFCFC;}
 .large {font-size: 1.15em;}
 .larger {font-size: 1.25em;}
 .largest {font-size: 1.35em;}
+.huge {font-size: 2.0em;}
 
 .hidden {display: none;}
 
@@ -410,6 +411,17 @@ img.alignright, img.right {margin: 0 0 1em 1.5em;}
 #network .text-separator, #network span {color: #999;}
 
 /* tabs */
+.tabs .base-line {
+  background: #eee;
+  clear: both;
+  color: #FFE;
+  display: block;
+  font-size: 0;
+  line-height: 0;
+  height: 1px;
+  margin: 10px 0;
+}
+
 .tabs .tabbed a {
 	display: block;
 	padding: 6px 10px 7px;
