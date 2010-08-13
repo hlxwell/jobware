@@ -148,7 +148,7 @@ ul.nice-list {margin-left: 0;}
 ul.nice-list li {
 	list-style: none;
 	border-top: 1px solid #EEE;
-	padding: 4px 8px 4px 8px;
+	padding: 6px 8px 6px 8px;
 }
 ul.nice-list li:first-child {border-top: none;}
 ul.nice-list li .right {color: #999;}
@@ -199,7 +199,7 @@ table.data-table tr.even td {background: #FCFCFC;}
 .hidden {display: none;}
 
 .quiet {color: #999;}
-.loud {color: #000;}
+.loud {color: #666;}
 .highlight {background:#ff0;}
 
 .text-left {text-align: left;}
@@ -310,6 +310,16 @@ img.alignright, img.right {margin: 0 0 1em 1.5em;}
 .content-separator {margin: 20px 0;}
 .archive-separator {margin: 10px 0;}
 
+.content-separator-quite {
+  background: #eee;
+	clear: both;
+	color: #FFE;
+	display: block;
+	font-size: 0;
+	line-height: 0;
+	height: 1px;
+	margin: 10px 0;
+}
 
 /*
    Posts
@@ -378,7 +388,6 @@ img.alignright, img.right {margin: 0 0 1em 1.5em;}
 }
 
 /* Network */
-
 #network {background: #EEE;}
 #network .left {
 	color: #333;
@@ -400,8 +409,21 @@ img.alignright, img.right {margin: 0 0 1em 1.5em;}
 }
 #network .text-separator, #network span {color: #999;}
 
-div.highlighted {
-  background: #FFF6BF;
+/* tabs */
+.tabs .tabbed a {
+	display: block;
+	padding: 6px 10px 7px;
+	text-decoration: none;
+	color: #666;
+}
+.tabs .tabbed li a:hover {
+	background: #F6F6F6;
+	color: #000;
+}
+.tabs .tabbed li.current-tab a,
+.tabs .tabbed li.highlighted a {
+	background: #eee;
+	font-weight: bold;
 }
 
 /* Toolbar */
@@ -589,6 +611,16 @@ div.highlighted {
   width: 400px;
 }
 
+.search-box form#small_search_form input {
+  float: right;
+  margin: 0px 5px 5px 0px;
+  font-size: 1.2em;
+  padding: 3px 5px 3px 20px;
+  background: url(/images/icon-search.png) 5px 5px no-repeat #fff;
+  cursor: auto;
+  width: 200px;
+}
+
 /* width define */
 .w600 {
   width: 600px;
@@ -609,3 +641,6 @@ div.highlighted {
 .fsizer a#fs_med { font-size: 13px; height: 17px; padding-top: 3px; }
 .fsizer a#fs_lrg { font-size: 16px; height: 18px; padding-top: 2px; }
 
+div.highlighted {
+  background: #FFF6BF;
+}
