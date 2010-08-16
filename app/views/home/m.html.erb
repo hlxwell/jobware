@@ -1,0 +1,156 @@
+<div class="main" id="main-two-columns">
+
+  <!-- ### main content -->
+  <div class="right" id="main-right">
+    <div class="post">
+      <div class="post-title"><h2><a href="#">发布工作</a></h2></div>
+    </div>
+    <div class="content-separator-quite"></div>
+
+    <div class="post">
+      <form>
+        <fieldset>
+          <legend>工作信息</legend>
+
+          <div class="error form-error">错误信息</div>
+
+          <p>
+            <label for="input-1">名称</label><br/>
+            <input type="text" name="input-1" id="input-1" class="text w600" />
+          </p>
+
+          <p>
+            <label for="input-1">地点</label><br/>
+            <input type="text" name="input-1" id="input-1" class="text w600" />
+          </p>
+
+          <p>
+            <label for="input-1">性质</label><br/>
+            <select name="input-2" id="input-2">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </select>
+          </p>
+
+          <p>
+            <label for="input-1">类别</label><br/>
+            <select name="input-2" id="input-2">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </select>
+          </p>
+
+          <p>
+            <label for="input-1">薪资范围</label><br/>
+            <select name="input-2" id="input-2">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </select>
+            -
+            <select name="input-2" id="input-2">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </select>
+          </p>
+
+          <p>
+            <label for="input-1">人数</label><br/>
+            <input type="text" name="input-1" id="input-1" class="text w600" />
+          </p>
+
+          <p>
+            <label for="input-3">工作内容</label><br/>
+            <textarea name="input-3" id="input-3" rows="10" cols="90" class="w600"></textarea>
+          </p>
+
+          <p>
+            <label for="input-3">岗位要求</label><br/>
+            <textarea name="input-3" id="input-3" rows="10" cols="90" class="w600"></textarea>
+          </p>
+          
+          <p>
+            <label for="input-3">福利</label><br/>
+            <textarea name="input-3" id="input-3" rows="10" cols="90" class="w600"></textarea>
+          </p>
+          
+          <p>
+            <label for="input-3">其他描述</label><br/>
+            <textarea name="input-3" id="input-3" rows="10" cols="90" class="w600"></textarea>
+          </p>
+
+          <p>
+            <input type="checkbox" name="input-7" id="input-7" />
+            <label for="input-7" class="checkbox">同意协议</label>
+          </p>
+
+          <p><input type="submit" class="button right" value="提交" /></p>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+
+
+
+  <!-- ### left side menu part -->
+  <div class="left sidebar" id="sidebar">
+    <div class="section">
+      <div class="section-title">
+        <div class="left">我的</div>
+        <div class="right"><img src="/images/icon-time.gif" width="14" height="14" alt="" /></div>
+        <div class="clearer">&nbsp;</div>
+      </div>
+
+      <div class="section-content">
+        <ul class="nice-list">
+          <li>
+            <div class="left"><a href="#">工作</a></div>
+            <div class="right"><%= link_to "发布", "/home/m" %></div>
+            <div class="clearer">&nbsp;</div>
+          </li>
+          <li>
+            <div class="left"><a href="#">收到的应聘</a></div>
+            <div class="right">新 <strong class="loud">(6)</strong> | 收藏</div>
+            <div class="clearer">&nbsp;</div>
+          </li>
+          <!-- <li>
+            <div class="left"><a href="#">简历库</a></div>
+            <div class="right">搜索 | 收藏</div>
+            <div class="clearer">&nbsp;</div>
+          </li> -->
+          <li>
+            <div class="left"><a href="#">推广服务</a></div>
+            <div class="right">购买</div>
+            <div class="clearer">&nbsp;</div>
+          </li>
+          <li>
+            <div class="left"><a href="#">消费管理</a></div>
+            <div class="right">充值</div>
+            <div class="clearer">&nbsp;</div>
+          </li>
+          <!-- <li>
+            <div class="left"><a href="#">公司主页</a></div>
+            <div class="right">开通</div>
+            <div class="clearer">&nbsp;</div>
+          </li> -->
+        </ul>
+      </div>
+    </div>
+
+    <div class="section network-section">
+      <div class="section-title">帐号管理</div>
+      <div class="section-content">
+        <ul class="nice-list">
+          <li><a href="#">个人信息</a></li>
+          <li><a href="#">更改邮件</a></li>
+          <li><a href="#">更改密码</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="clearer">&nbsp;</div>
+</div>
