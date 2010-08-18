@@ -16,7 +16,7 @@
 
   <!-- #### site logo and title -->
 	<div id="site-title">
-		<h1><a href="#">最佳CTO</a> <span> 专注于程序员招聘求职</span></h1>
+		<h1><a href="/">最佳CTO</a> <span> 专注于程序员招聘求职</span></h1>
 	</div>
 
 
@@ -25,9 +25,9 @@
 		<div id="main-nav">
 		  <% if in_section?("frontend") %>
   		  <% semantic_navigation :main, :html => {:class => "tabbed"} do |n| %>
-          <%= n.item '求职', :link => "/home/a", :highlights_on => ['/home/ab', '/home/ac', '/home/ad'] %>
-          <%= n.item '招聘', :link => '/home/c', :highlights_on => ['/home/d'] %>
-          <%= n.item '合作', :link => '/home/e', :highlights_on => ['/home/f'] %>
+          <%= n.item '我要求职', :link => "/home/a", :highlights_on => ['/home/ab', '/home/ac', '/home/ad'] %>
+          <%= n.item '我要招聘', :link => '/home/c', :highlights_on => ['/home/d'] %>
+          <%#= n.item '我要合作', :link => '/home/e', :highlights_on => ['/home/f'] %>
         <% end %>
 
         <div class="search-box">
@@ -44,8 +44,6 @@
 		  <% if in_section?("jobseeker") %>
   		  <% semantic_navigation :main, :html => {:class => "tabbed"} do |n| %>
           <%= n.item '所有工作', :link => "/home/a" %>
-          <%#= n.item '全职工作', :link => "/home/ab" %>
-          <%#= n.item '兼职工作', :link => '/home/ac' %>
           <%= n.item '所有公司', :link => '/home/ad' %>
         <% end %>
       <% elsif in_section?("company") %>
@@ -59,7 +57,6 @@
           <%= n.item '加入', :link => '/home/f' %>
         <% end %>
       <% end %>
-
 			<div class="clearer">&nbsp;</div>
 		</div>
 	</div>

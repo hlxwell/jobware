@@ -431,15 +431,17 @@ img.alignright, img.right {margin: 0 0 1em 1.5em;}
 	display: block;
 	padding: 6px 10px 7px;
 	text-decoration: none;
-	color: #666;
+	color: #000;
+	background: #eee;
 }
 .tabs .tabbed li a:hover {
-	background: #eee;
-	color: #000;
+	background: #ccc;
+	color: #fff;
 }
 .tabs .tabbed li.current-tab a,
 .tabs .tabbed li.highlighted a {
-	background: #eee;
+  color: #fff;
+	background: #999;
 	font-weight: bold;
 }
 
@@ -653,6 +655,10 @@ img.alignright, img.right {margin: 0 0 1em 1.5em;}
 
 .h450 {
   height: 450px;
+}
+
+.h250 {
+  height: 250px;
 }
 
 /* Font-Sizer Specific Styling */

@@ -3,7 +3,7 @@
   <!-- ### left main side -->
 	<div class="left" id="main-left">
     <div class="tabs">
-			<% semantic_navigation "network-tabs", :html => {:class => "tabbed"} do |n| %>
+			<% semantic_navigation "network-tabs", :html => {:class => "tabbed larger"} do |n| %>
         <%= n.item '工作信息', :link => "/home/ae" %>
         <%= n.item '公司信息', :link => '/home/af' %>
         <%= n.item '该公司所有工作', :link => '/home/ag' %>
@@ -12,7 +12,32 @@
 
     <div class="content-separator"></div>
 
-    <% 8.times do %>
+    <div class="post">
+			<img src="/images/logos/amn_logo.png" alt="" class="company_logo bordered" />
+
+			<div class="company_info">
+  			<h3>Senior Rails Develper</h3>
+  			<h5>The Plant</h5>
+  			<table class="data-table" style="width:460px">
+  				<tr>
+  					<th width="20%">公司地点</th>
+  					<td width="30%">杭州</td>
+  					<th width="20%">规模</th>
+  					<td width="30%">10-100人</td>
+  				</tr>
+  				<tr>
+  					<th>性质</th>
+  					<td>外资</td>
+  					<th>点击数</th>
+  					<td>368</td>
+  				</tr>
+  			</table>
+			</div>
+		</div>
+
+		<div class="content-separator"></div>
+
+    <% 3.times do %>
 		<div class="post">
 		  <!-- date -->
 			<div class="archive-post-date">
