@@ -1,3 +1,7 @@
+===== TO DO LIST
+- design top page.
+- design all controllers.
+
 ===== Controllers and pages
 - session:
 create, new
@@ -32,10 +36,6 @@ float_widgets: CRUD
 company, partner
 
 - Admin:
-
-
-
-
 
 ===== Internal test domain
 http://job.tui8.com:88/

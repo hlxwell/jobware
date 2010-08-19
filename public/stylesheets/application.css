@@ -488,7 +488,7 @@ img.alignright, img.right {margin: 0 0 1em 1.5em;}
 #main-nav li {background: url('/images/navigation-separator.gif') no-repeat left center;}
 #main-nav li:first-child {background: none;}
 #main-nav li.highlighted a, #main-nav li.current-tab a, #main-nav a:hover {color: #002;}
-#main-nav li.highlighted a, #main-nav li.current-tab a {background: url('/images/navigation-arrow.gif') no-repeat center bottom;}
+#main-nav li.highlighted a, #main-nav li.current-tab a {/*background: url('/images/navigation-arrow.gif') no-repeat center bottom;*/}
 
 
 /* Subnav */
@@ -685,4 +685,34 @@ div.highlighted {
 
 .company_info {
   float: right;
+}
+
+/* home page ads block */
+.ads-block {
+  width: 320px;
+  padding: 5px;
+  margin-bottom: 8px;
+  border: 1px solid #ccc;
+}
+
+.ads-block .logo {
+  width: 310px;
+  height: 70px;
+}
+
+.ads-block .content {
+  padding: 5px 0 0 0;
+}
+
+.ads-block .title {
+}
+
+.ads-block .city {
+  font-size: 1.3em;
+  margin-right: 5px;
+  color: #999;
+}
+
+.ads-block .desc {
+  font-size: 1.0em;
 }

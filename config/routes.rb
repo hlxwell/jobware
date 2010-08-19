@@ -50,7 +50,7 @@ Jobware::Application.routes.draw do
   # just remember to delete public/index.html.
   # root :to => redirect("home#a")
 
-  match "/" => redirect("/home/a")
+  match "/" => redirect("/home/aaa")
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
