@@ -1,14 +1,3 @@
-===== TO DO LIST
-job show page.
-company show page.
-
-design job form
-design company form
-design resume form
-design db model
-
-needs more Ads position.
-
 ===== Controllers and pages
 - session:
 create, new
@@ -45,7 +34,8 @@ company, partner
 - Admin:
 
 
+
+
+
 ===== Internal test domain
-set host first:
-211.138.113.63  idevjob.com
-http://idevjob.com:88/
+http://job.tui8.com:88/
