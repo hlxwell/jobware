@@ -1,0 +1,98 @@
+<mockup version="1.0" skin="sketch" measuredW="997" measuredH="975" mockupW="966" mockupH="945">
+  <controls>
+    <control controlID="4" controlTypeID="com.balsamiq.mockups::BreadCrumbs" x="342" y="207" w="-1" h="-1" measuredW="194" measuredH="23" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Company%2C%20My%20Jobs%2C%20Manage</text>
+      </controlProperties>
+    </control>
+    <control controlID="19" controlTypeID="com.balsamiq.mockups::Link" x="602" y="206" w="-1" h="-1" measuredW="270" measuredH="23" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>You%20are%20B1%20type%20member%2C%20dateline%3A%202010-9-8</text>
+      </controlProperties>
+    </control>
+    <control controlID="48" controlTypeID="__group__" x="21" y="20" w="966" h="945" measuredW="966" measuredH="945" zOrder="0" locked="false" isInGroup="-1">
+      <groupChildrenDescriptors>
+        <control controlID="0" controlTypeID="__group__" x="0" y="0" w="966" h="945" measuredW="966" measuredH="945" zOrder="0" locked="false" isInGroup="48">
+          <groupChildrenDescriptors>
+            <control controlID="0" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="0" y="0" w="966" h="945" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="0">
+              <controlProperties>
+                <text>A%20Web%20Page%0Ahttp%3A//gooditjob.com</text>
+              </controlProperties>
+            </control>
+            <control controlID="1" controlTypeID="com.balsamiq.mockups::LinkBar" x="387" y="876" w="-1" h="-1" measuredW="464" measuredH="23" zOrder="1" locked="false" isInGroup="0">
+              <controlProperties>
+                <text>Help%2C%20Contact%2C%20Terms%2C%20Pricing%2C%20%A92007-2010%20Powered%20by%20The%20Plant</text>
+              </controlProperties>
+            </control>
+          </groupChildrenDescriptors>
+        </control>
+        <control controlID="1" controlTypeID="com.balsamiq.mockups::SubTitle" x="149" y="102" w="139" h="-1" measuredW="139" measuredH="37" zOrder="1" locked="false" isInGroup="48">
+          <controlProperties>
+            <text>Good%20IT%20Job</text>
+          </controlProperties>
+        </control>
+        <control controlID="2" controlTypeID="com.balsamiq.mockups::ButtonBar" x="459" y="111" w="382" h="32" measuredW="384" measuredH="29" zOrder="2" locked="false" isInGroup="48">
+          <controlProperties>
+            <selectedIndex>2</selectedIndex>
+            <text>Home%2C%20Job%20Seeker%2C%20Company%2C%20Partner%2C%20Logout</text>
+          </controlProperties>
+        </control>
+      </groupChildrenDescriptors>
+    </control>
+    <control controlID="49" controlTypeID="com.balsamiq.mockups::List" x="171" y="207" w="149" h="610" measuredW="100" measuredH="588" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>true</bold>
+        <borderStyle>square</borderStyle>
+        <hasHeader>false</hasHeader>
+        <hrefs>%2C%2C%2C%2C%2C%2C%2C%2C%2C%2C%2C%2C%2C%2C%2C</hrefs>
+        <selectedIndex>4</selectedIndex>
+        <text>Dashboard%0A%20%0AMy%20Jobs%0A-%20Add%0A-%20Manage%0A%20%0AMy%20Applications%0A-%20Unviewd%0A-%20Stared%0A-%20All%0A%20%0AResume%20Database%0A-%20Search%0A-%20Stared%0A-%20Auto%20Matching%0A%20%0APromotion%0A-%20Buy%20Ads%0A-%20Upgrade%20Account%0A%20%0AAccounting%0A%20%0AMy%20Details%0A-%20Account%0A-%20Company%20Info%0A-%20Password%0A-%20Page%20Theme%0A-%20Mail%20Theme</text>
+        <verticalScrollbar>false</verticalScrollbar>
+      </controlProperties>
+    </control>
+    <control controlID="52" controlTypeID="__group__" x="665" y="100" w="-1" h="-1" measuredW="207" measuredH="26" zOrder="4" locked="false" isInGroup="-1">
+      <groupChildrenDescriptors>
+        <control controlID="0" controlTypeID="com.balsamiq.mockups::SearchBox" x="57" y="1" w="101" h="-1" measuredW="91" measuredH="25" zOrder="0" locked="false" isInGroup="52">
+          <controlProperties>
+            <text>Job%20Search</text>
+          </controlProperties>
+        </control>
+        <control controlID="1" controlTypeID="com.balsamiq.mockups::ComboBox" x="0" y="1" w="-1" h="-1" measuredW="56" measuredH="23" zOrder="1" locked="false" isInGroup="52">
+          <controlProperties>
+            <text>City</text>
+          </controlProperties>
+        </control>
+        <control controlID="2" controlTypeID="com.balsamiq.mockups::Button" x="160" y="0" w="47" h="26" measuredW="55" measuredH="28" zOrder="2" locked="false" isInGroup="52">
+          <controlProperties>
+            <icon>SearchIcon%7Cxsmall</icon>
+            <size>11</size>
+            <text>Go</text>
+          </controlProperties>
+        </control>
+      </groupChildrenDescriptors>
+    </control>
+    <control controlID="53" controlTypeID="com.balsamiq.mockups::DataGrid" x="335" y="239" w="537" h="516" measuredW="559" measuredH="473" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>11</size>
+        <text>%5B%5D%2CJob%20Name%2C%20Clicks%2C%20Dateline%2C%20Status%2C%20Applicants%2C%20Actions%0A%5B%5D%2C%5BSenior%20Rails%20Developer%5D%2C%20152%2C%202010-10-15%2C%20Open%2C%20103%20_%2835%20new%29_%2C%20Edit%20%7C%20Stats%20%7C%20Delete%20%7C%20Close%0A%5B%5D%2C%5BSenior%20Rails%20Developer%5D%2C%2054%2C%202010-10-15%2C%20Open%2C%204%20_%281%20new%29_%2C%20Edit%20%7C%20Stats%20%7C%20Delete%20%7C%20Close%0A%5B%5D%2C%5BSenior%20Rails%20Developer%5D%2C%2088%2C%202010-10-15%2C%20Open%2C%2033%20_%281%20new%29_%2C%20Edit%20%7C%20Stats%20%7C%20Delete%20%7C%20Close%0A%5B%5D%2C%5BSenior%20Rails%20Developer%5D%2C%202%2C%202010-10-15%2C%20Open%2C%203%2C%20Edit%20%7C%20Stats%20%7C%20Delete%20%7C%20Close%0A%5B%5D%2C%5BSenior%20Rails%20Developer%5D%2C%20152%2C%202010-10-15%2C%20Open%2C%208%20_%2835%20new%29_%2C%20Edit%20%7C%20Stats%20%7C%20Delete%20%7C%20Close%0A%5B%5D%2C%5BSenior%20Rails%20Developer%5D%2C%201%2C%202010-10-15%2C%20Open%2C%205%20_%2835%20new%29_%2C%20Edit%20%7C%20Stats%20%7C%20Delete%20%7C%20Close%0A%5B%5D%2C%5BSenior%20Rails%20Developer%5D%2C%20152%2C%202010-10-15%2C%20Open%2C%206%20_%2835%20new%29_%2C%20Edit%20%7C%20Stats%20%7C%20Delete%20%7C%20Close%0A%5B%5D%2C%5BSenior%20Rails%20Developer%5D%2C%203%2C%202010-10-15%2C%20Open%2C%209%2C%20Edit%20%7C%20Stats%20%7C%20Delete%20%7C%20Close%0A%5B%5D%2C%5BSenior%20Rails%20Developer%5D%2C%20152%2C%202010-10-15%2C%20Open%2C%2012%20_%281%20new%29_%2C%20Edit%20%7C%20Stats%20%7C%20Delete%20%7C%20Close%0A%5B%5D%2C%5BSenior%20Rails%20Developer%5D%2C%202%2C%202010-10-15%2C%20Open%2C%201%20_%283%20new%29_%2C%20Edit%20%7C%20Stats%20%7C%20Delete%20%7C%20Close%0A%5B%5D%2C%5BSenior%20Rails%20Developer%5D%2C%2011%2C%202010-10-15%2C%20Open%2C%200%2C%20Edit%20%7C%20Stats%20%7C%20Delete%20%7C%20Close%0A%5B%5D%2C%5BSenior%20Rails%20Developer%5D%2C%20152%2C%202010-10-15%2C%20Open%2C%20103%20_%283%20new%29_%2C%20Edit%20%7C%20Stats%20%7C%20Delete%20%7C%20Close%0A%5B%5D%2C%5BSenior%20Rails%20Developer%5D%2C%2032%2C%202010-10-15%2C%20Open%2C%2010%20_%283%20new%29_%2C%20Edit%20%7C%20Stats%20%7C%20Delete%20%7C%20Close%0A%5B%5D%2C%5BSenior%20Rails%20Developer%5D%2C%2043%2C%202010-10-15%2C%20Open%2C%2010%20_%283%20new%29_%2C%20Edit%20%7C%20Stats%20%7C%20Delete%20%7C%20Close%0A%5B%5D%2C%5BSenior%20Rails%20Developer%5D%2C%208%2C%202010-10-15%2C%20Open%2C%20103%20_%2835%20new%29_%2C%20Edit%20%7C%20Stats%20%7C%20Delete%20%7C%20Close</text>
+      </controlProperties>
+    </control>
+    <control controlID="54" controlTypeID="com.balsamiq.mockups::ButtonBar" x="671" y="763" w="-1" h="-1" measuredW="193" measuredH="25" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>true</bold>
+        <size>10</size>
+        <text>1%2C2%2C3%2C4%2C5%2CNext</text>
+      </controlProperties>
+    </control>
+    <control controlID="55" controlTypeID="com.balsamiq.mockups::ComboBox" x="712" y="794" w="-1" h="-1" measuredW="112" measuredH="23" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Batch%20Actions</text>
+      </controlProperties>
+    </control>
+    <control controlID="56" controlTypeID="com.balsamiq.mockups::Button" x="833" y="791" w="-1" h="-1" measuredW="39" measuredH="28" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Go</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>

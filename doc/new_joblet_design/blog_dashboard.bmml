@@ -1,0 +1,134 @@
+<mockup version="1.0" skin="sketch" measuredW="1090" measuredH="909" mockupW="1059" mockupH="879">
+  <controls>
+    <control controlID="4" controlTypeID="com.balsamiq.mockups::BreadCrumbs" x="329" y="185" w="-1" h="-1" measuredW="135" measuredH="23" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Partner%2C%20Dashboard</text>
+      </controlProperties>
+    </control>
+    <control controlID="22" controlTypeID="com.balsamiq.mockups::List" x="170" y="185" w="149" h="527" measuredW="100" measuredH="315" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>true</bold>
+        <borderStyle>square</borderStyle>
+        <hasHeader>false</hasHeader>
+        <hrefs>%2C%2C%2C%2C%2C%2C%2C%2C%2C%2C%2C%2C%2C%2C</hrefs>
+        <selectedIndex>0</selectedIndex>
+        <text>Dashboard%0A%20%0APromotion%20Tools%0A-%20Job%20Board%0A-%20Widget%0A-%20Inline%20Ads%0A-%20Picture%20Ads%0A%20%0AAccounting%0A%20%0AMy%20Details%0A-%20Account%0A-%20Contact%0A-%20Password%0A-%20Paypal</text>
+        <verticalScrollbar>false</verticalScrollbar>
+      </controlProperties>
+    </control>
+    <control controlID="25" controlTypeID="com.balsamiq.mockups::DataGrid" x="334" y="419" w="538" h="185" measuredW="519" measuredH="176" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Date%20%5E%2C%20Click%20through%2C%20PV%2C%20New%20Resumes%2C%20New%20Companies%2C%20Total%20Income%0A2009-9-12%2C%2034%2C%201332%2C%203%2C%200%2C%203%20RMB%0A2009-9-13%2C%204%2C%20343%2C%205%2C%201%2C%2015%20RMB%0A2009-9-14%2C%2031%2C%20533%2C%2010%2C%201%2C%2020%20RMB%0A2009-9-15%2C%2035%2C%201023%2C%202%2C%202%2C%2022%20RMB%0ATotal%2C122%2C3223%2C23%2C3%2C100%20RMB</text>
+        <underline>true</underline>
+      </controlProperties>
+    </control>
+    <control controlID="26" controlTypeID="__group__" x="334" y="265" w="-1" h="-1" measuredW="538" measuredH="121" zOrder="3" locked="false" isInGroup="-1">
+      <groupChildrenDescriptors>
+        <control controlID="0" controlTypeID="__group__" x="0" y="1" w="257" h="119" measuredW="257" measuredH="119" zOrder="0" locked="false" isInGroup="26">
+          <groupChildrenDescriptors>
+            <control controlID="0" controlTypeID="com.balsamiq.mockups::FieldSet" x="0" y="0" w="257" h="119" measuredW="200" measuredH="170" zOrder="0" locked="false" isInGroup="0">
+              <controlProperties>
+                <text>Income%20Stats</text>
+              </controlProperties>
+            </control>
+            <control controlID="1" controlTypeID="com.balsamiq.mockups::LineChart" x="8" y="15" w="239" h="100" measuredW="187" measuredH="175" zOrder="1" locked="false" isInGroup="0"/>
+          </groupChildrenDescriptors>
+        </control>
+        <control controlID="1" controlTypeID="__group__" x="262" y="0" w="276" h="121" measuredW="276" measuredH="121" zOrder="1" locked="false" isInGroup="26">
+          <groupChildrenDescriptors>
+            <control controlID="0" controlTypeID="com.balsamiq.mockups::FieldSet" x="0" y="0" w="276" h="121" measuredW="200" measuredH="170" zOrder="0" locked="false" isInGroup="1">
+              <controlProperties>
+                <text>Visit%20Stats</text>
+              </controlProperties>
+            </control>
+            <control controlID="1" controlTypeID="com.balsamiq.mockups::LineChart" x="8" y="16" w="256" h="101" measuredW="187" measuredH="175" zOrder="1" locked="false" isInGroup="1"/>
+          </groupChildrenDescriptors>
+        </control>
+      </groupChildrenDescriptors>
+    </control>
+    <control controlID="27" controlTypeID="com.balsamiq.mockups::StickyNote" x="847" y="276" w="233" h="97" measuredW="109" measuredH="123" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>true</bold>
+        <text>Why%20not%20put%20all%20chart%20together%2C%20because%20the%20Y-axis%27s%20value%20is%20differnt.</text>
+      </controlProperties>
+    </control>
+    <control controlID="28" controlTypeID="com.balsamiq.mockups::Title" x="677" y="205" w="-1" h="-1" measuredW="195" measuredH="56" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>1%2C390%20RMB%20</text>
+      </controlProperties>
+    </control>
+    <control controlID="29" controlTypeID="com.balsamiq.mockups::SubTitle" x="329" y="215" w="-1" h="-1" measuredW="176" measuredH="37" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Current%20Income</text>
+      </controlProperties>
+    </control>
+    <control controlID="31" controlTypeID="com.balsamiq.mockups::SubTitle" x="336" y="392" w="-1" h="-1" measuredW="94" measuredH="27" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>16</size>
+        <text>Daily%20Report</text>
+      </controlProperties>
+    </control>
+    <control controlID="33" controlTypeID="__group__" x="21" y="20" w="966" h="879" measuredW="966" measuredH="879" zOrder="0" locked="false" isInGroup="-1">
+      <groupChildrenDescriptors>
+        <control controlID="0" controlTypeID="__group__" x="0" y="0" w="-1" h="-1" measuredW="966" measuredH="879" zOrder="0" locked="false" isInGroup="33">
+          <groupChildrenDescriptors>
+            <control controlID="0" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="0" y="0" w="966" h="879" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="0">
+              <controlProperties>
+                <text>A%20Web%20Page%0Ahttp%3A//gooditjob.com</text>
+              </controlProperties>
+            </control>
+            <control controlID="1" controlTypeID="com.balsamiq.mockups::LinkBar" x="387" y="815" w="-1" h="-1" measuredW="464" measuredH="23" zOrder="1" locked="false" isInGroup="0">
+              <controlProperties>
+                <text>Help%2C%20Contact%2C%20Terms%2C%20Pricing%2C%20%A92007-2010%20Powered%20by%20The%20Plant</text>
+              </controlProperties>
+            </control>
+          </groupChildrenDescriptors>
+        </control>
+        <control controlID="1" controlTypeID="com.balsamiq.mockups::SubTitle" x="149" y="105" w="-1" h="-1" measuredW="139" measuredH="37" zOrder="1" locked="false" isInGroup="33">
+          <controlProperties>
+            <text>Good%20IT%20Job</text>
+          </controlProperties>
+        </control>
+        <control controlID="2" controlTypeID="com.balsamiq.mockups::ButtonBar" x="459" y="111" w="382" h="29" measuredW="384" measuredH="29" zOrder="2" locked="false" isInGroup="33">
+          <controlProperties>
+            <selectedIndex>3</selectedIndex>
+            <text>Home%2C%20Job%20Seeker%2C%20Company%2C%20Partner%2C%20Logout</text>
+          </controlProperties>
+        </control>
+      </groupChildrenDescriptors>
+    </control>
+    <control controlID="34" controlTypeID="com.balsamiq.mockups::DataGrid" x="336" y="640" w="538" h="129" measuredW="480" measuredH="116" zOrder="9" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Name%2C%20Joined%20On%2C%20Commission%20rate%2C%20Total%20Commission%2C%20Unpaid%20Commission%0Aaaa%2C%202009-9-9%2C%2010%25%2C%201%5C%2C200%20RMB%2C%20300%20RMB%0Aaaa%2C%202009-9-9%2C%2010%25%2C%201%5C%2C200%20RMB%2C%20300%20RMB%0Aaaa%2C%202009-9-9%2C%2010%25%2C%201%5C%2C200%20RMB%2C%20300%20RMB</text>
+        <underline>true</underline>
+      </controlProperties>
+    </control>
+    <control controlID="35" controlTypeID="com.balsamiq.mockups::SubTitle" x="336" y="613" w="-1" h="-1" measuredW="145" measuredH="27" zOrder="10" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>16</size>
+        <text>Companies%20Referred</text>
+      </controlProperties>
+    </control>
+    <control controlID="36" controlTypeID="__group__" x="664" y="101" w="-1" h="-1" measuredW="207" measuredH="26" zOrder="11" locked="false" isInGroup="-1">
+      <groupChildrenDescriptors>
+        <control controlID="0" controlTypeID="com.balsamiq.mockups::SearchBox" x="57" y="1" w="101" h="-1" measuredW="91" measuredH="25" zOrder="0" locked="false" isInGroup="36">
+          <controlProperties>
+            <text>Job%20Search</text>
+          </controlProperties>
+        </control>
+        <control controlID="1" controlTypeID="com.balsamiq.mockups::ComboBox" x="0" y="1" w="-1" h="-1" measuredW="56" measuredH="23" zOrder="1" locked="false" isInGroup="36">
+          <controlProperties>
+            <text>City</text>
+          </controlProperties>
+        </control>
+        <control controlID="2" controlTypeID="com.balsamiq.mockups::Button" x="160" y="0" w="47" h="26" measuredW="55" measuredH="28" zOrder="2" locked="false" isInGroup="36">
+          <controlProperties>
+            <icon>SearchIcon%7Cxsmall</icon>
+            <size>11</size>
+            <text>Go</text>
+          </controlProperties>
+        </control>
+      </groupChildrenDescriptors>
+    </control>
+  </controls>
+</mockup>

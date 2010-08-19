@@ -701,7 +701,7 @@ div.highlighted {
 }
 
 .ads-block .content {
-  padding: 5px 0 0 0;
+  padding: 10px 5px 0px 5px;
 }
 
 .ads-block .title {
@@ -715,4 +715,5 @@ div.highlighted {
 
 .ads-block .desc {
   font-size: 1.0em;
+  color: #999;
 }
