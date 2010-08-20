@@ -1,4 +1,6 @@
 ===== TO DO LIST
+- Consider Archtecture.
+
 - write tests
 - write all models
 - implement auth features
@@ -9,6 +11,11 @@
 - implement ads features
 
 ===== Controllers and pages
+/login      === sessions#new
+/logout     === sessions#destroy
+/signup     === users#new
+/forgot_password === sessions#forgot_password
+
 /page/home
 /page/aboutus
 /page/
@@ -20,6 +27,9 @@
 /companies/:id
 /companies/:id/jobs/:id
 
+- User Account:
+/users/transactions/:id
+/users/credit_transactions/:id
 
 - Company:
 /company/       === dashboard company#show
@@ -28,7 +38,9 @@
 /company/jobs/:id
 /company/job_applications/:id
 /company/starred_resumes/:id
-
+/company/presentations/:id
+/company/products/:id
+/company/ads/:id
 
 - Job seeker:
 /job_seeker/     === dashboard  job_seeker#show
