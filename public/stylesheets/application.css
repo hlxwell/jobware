@@ -470,8 +470,8 @@ img.alignright, img.right {margin: 0 0 1em 1.5em;}
 #site-title {
 	font: normal 1.0em serif;
 	font-weight: bold;
-	border-bottom: 1px solid #CCC;
-	padding-bottom: 10px;
+	/*border-bottom: 1px solid #CCC;*/
+	padding-top: 8px;
 }
 #site-title span {color: #999; font-size: 0.5em;}
 #site-title a {
@@ -481,7 +481,11 @@ img.alignright, img.right {margin: 0 0 1em 1.5em;}
 
 
 /* Navigation */
-#navigation {margin-bottom: 24px;}
+#navigation {
+  border-top: 1px solid #CCC;
+  border-bottom: 1px solid #CCC;
+  margin-bottom: 24px;
+}
 #navigation a {
 	display: block;
 	text-decoration: none;

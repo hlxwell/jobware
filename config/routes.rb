@@ -1,19 +1,110 @@
 Jobware::Application.routes.draw do
-  # resource :sessions do
-  #   get :forgot_password
-  #   post :send_reset_password_mail
-  # end
+
+  # ### auth stuff
   # match "/login" => "sessions/new", :as => :login
   # match "/logout" => "sessions/destroy", :as => :logout
   # match "/forgot_password" => "sessions/forgot_password", :as => :forgot_password
-  # 
-  # resources :users do
-  # end
   # match "/signup" => "users/new", :as => :signup
+  #
+  # resource :session do
+  #   member do
+  #     get :forgot_password
+  #     post :send_reset_password_mail
+  #   end
+  # end
+  #
+  # resources :users do
+  #   resources :transactions
+  #   resources :credit_transactions
+  # end
+  #
+  # ### basic frontend
+  # resources :ads do
+  #   member do
+  #     get :job_board
+  #   end
+  # end
+  #
+  # resources :companies do
+  #   resources :jobs do
+  #     post :star
+  #   end
+  # end
+  #
+  # ### dashboard rewrite
+  # match "/job_seeker" => "job_seeker/resume#dashboard"
+  # match "/company" => "company#dashboard"
+  # match "/partner" => "partner#dashboard"
+  #
+  # ### company section
+  # resource :company
+  # namespace :company do
+  #   resources :jobs
+  #   resources :job_applications
+  #   resources :starred_resumes
+  #   resources :presentations
+  #   resources :products
+  #   resources :ads
+  #   resources :services do
+  #     member do
+  #       post => :buy
+  #     end
+  #   end
+  # end
+  #
+  # ### job seeker section
+  # resource :job_seeker, :controller => "job_seeker/resume"
+  # namespace :job_seeker do
+  #   resources :job_applications
+  #   resources :starred_jobs
+  #   resource :subscription
+  #
+  #   resource :resume do
+  #     resources :previous_jobs
+  #     resources :schools
+  #     resources :projects
+  #     resources :skills
+  #     resources :certifications
+  #     resources :languages
+  #     resources :cover_letters
+  #   end
+  #
+  #   resources :services do
+  #     member do
+  #       post :buy
+  #     end
+  #   end
+  # end
+  #
+  # ### partner section
+  # resource :partner
+  # namespace :partner do
+  #   resources :ad_positions
+  #   resources :revenues
+  #   revenuess :counters
+  # end
+  #
+  # ### admin section
+  # namespace :admin do
+  #   resources :jobs
+  #   resources :companies
+  #   resources :resumes
+  #   resources :job_applications
+  #   resources :subscriptions
+  #   resources :partners
+  #   resources :users
+  #   resources :services
+  #   resources :ad_positions
+  #   resources :transactions
+  #   resources :credit_transactions
+  # end
+  #
+  # ### SEO
+  # match "/sitemap.xml" => "sitemap#index"
+  # match "/sitemap.xml.gz" => "sitemap#zip"
 
-
-
-  root :to => redirect("/home/aaa")
+  ### root
+  match "/" => "home#aaa", :as => :root
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -64,7 +155,7 @@ Jobware::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => redirect("home#a")
+  # root :to => redirect("home#index")
 
   # See how all your routes lay out with "rake routes"
 

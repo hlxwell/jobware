@@ -62,7 +62,7 @@
 /partner/edit
 /partner/ad_positions/:id/edit
 /partner/revenues
-/partner/statistics    === list all counter
+/partner/counters
 
 - Admin:
 /admin/jobs
