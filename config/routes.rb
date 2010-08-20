@@ -1,4 +1,20 @@
 Jobware::Application.routes.draw do
+  # resource :sessions do
+  #   get :forgot_password
+  #   post :send_reset_password_mail
+  # end
+  # match "/login" => "sessions/new", :as => :login
+  # match "/logout" => "sessions/destroy", :as => :logout
+  # match "/forgot_password" => "sessions/forgot_password", :as => :forgot_password
+  # 
+  # resources :users do
+  # end
+  # match "/signup" => "users/new", :as => :signup
+
+
+
+  root :to => redirect("/home/aaa")
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -50,7 +66,6 @@ Jobware::Application.routes.draw do
   # just remember to delete public/index.html.
   # root :to => redirect("home#a")
 
-  match "/" => redirect("/home/aaa")
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.

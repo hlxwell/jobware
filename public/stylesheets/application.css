@@ -134,7 +134,7 @@ dd {margin-left: 1.5em;}
 
 /* Special lists */
 
-ul.plain-list li, ul.nice-list li, ul.tabbed li {list-style: none;}
+ul.plain-list li, ul.nice-list li, ul.tabbed li, ul.ads-list li {list-style: none;}
 
 ul.tabbed {
 	display: inline;
@@ -143,6 +143,14 @@ ul.tabbed {
 ul.tabbed li {float: left;}
 
 ul.plain-list {margin: 0;}
+
+ul.ads-list {margin-left: 0;}
+ul.ads-list img {width: 95%; height: 60px;}
+ul.ads-list li {
+	list-style: none;
+/*  border-top: 1px solid #EEE;*/
+	padding: 6px 0px 0px 0px;
+}
 
 ul.nice-list {margin-left: 0;}
 ul.nice-list li {

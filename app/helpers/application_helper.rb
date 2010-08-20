@@ -1,4 +1,3 @@
-require 'pp'
 module ApplicationHelper
   def in_section?(name)
     case name
