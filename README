@@ -1,6 +1,5 @@
 ===== TO DO LIST
 - Consider Archtecture.
-
 - write tests
 - write all models
 - implement auth features
@@ -41,6 +40,7 @@
 /company/presentations/:id
 /company/products/:id
 /company/ads/:id
+/company/services/:id/buy
 
 - Job seeker:
 /job_seeker/     === dashboard  job_seeker#show
@@ -55,7 +55,7 @@
 /job_seeker/job_applications/:id/edit
 /job_seeker/starred_jobs
 /job_seeker/subscription/new
-
+/job_seeker/services/:id/buy
 
 - Partner:
 /partner/
