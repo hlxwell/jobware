@@ -1,19 +1,19 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.0.0.rc'
-
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
 gem 'mysql'
-
+gem 'nifty-generators'
+gem 'authlogic', :git => 'http://github.com/binarylogic/authlogic.git'
+gem 'tabletastic'
+gem 'ckeditor', :git => 'http://github.com/galetahub/rails-ckeditor.git', :branch => 'rails3'
+gem 'will_paginate', '~> 3.0.pre2'
 gem 'navigasmic'
+gem 'cancan'
+gem 'capistrano'
 
 # Use unicorn as the web server
 # gem 'unicorn'
 
-# Deploy with Capistrano
-gem 'capistrano'
 
 # To use debugger
 # gem 'ruby-debug'

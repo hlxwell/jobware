@@ -7,8 +7,8 @@
 	<meta name="author" content="" />
 	<%= csrf_meta_tag %>
   <%= stylesheet_link_tag "application" %>
-  <%= javascript_include_tag "jquery", "rails", "jquery.tools.min" %>  
-  <title>中国程序员招聘网 - 中国最大的开发者招聘网站</title>
+  <%= javascript_include_tag "jquery", "rails", "jquery.tools.min" %>
+  <title><%= h(yield(:title) || "Untitled") %> - 中国程序员招聘网 - 中国最大的开发者招聘网站</title>
 </head>
 
 <body id="top">
@@ -21,8 +21,7 @@
   		  <span class="quiet">350 个工作,</span>
   		  <span class="quiet">120 个公司</span>
 
-  		  <span class="text-separator">|</span> <span class="quiet"><a href="#">登陆</a></span>
-  		  <span class="text-separator">|</span> <span class="quiet"><a href="#">注册</a></span>
+        <%= render "shared/login_status" %>
   		</div>
   		<div class="right">
   		  <% semantic_navigation "network-tabs", :html => {:class => "tabbed"} do |n| %>
@@ -39,9 +38,10 @@
 
   <div id="site">
   	<div class="center-wrapper">
-      <%= render :partial => "shared/header" %>
+      <%= raw render_message %>
+      <%= render "shared/header" %>
       <%= yield %>
-      <%= render :partial => "shared/footer" %>
+      <%= render "shared/footer" %>
 	  </div>
   </div>
 

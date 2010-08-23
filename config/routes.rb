@@ -1,23 +1,22 @@
 Jobware::Application.routes.draw do
+  ### auth stuff
+  match "/login" => "sessions#new", :as => :login
+  match "/logout" => "sessions#destroy", :as => :logout
+  match "/signup" => "users#new", :as => :signup
+  match "/forgot_password" => "sessions#forgot_password", :as => :forgot_password
 
-  # ### auth stuff
-  # match "/login" => "sessions/new", :as => :login
-  # match "/logout" => "sessions/destroy", :as => :logout
-  # match "/forgot_password" => "sessions/forgot_password", :as => :forgot_password
-  # match "/signup" => "users/new", :as => :signup
-  #
-  # resource :session do
-  #   member do
-  #     get :forgot_password
-  #     post :send_reset_password_mail
-  #   end
-  # end
-  #
-  # resources :users do
-  #   resources :transactions
-  #   resources :credit_transactions
-  # end
-  #
+  resource :sessions do
+    member do
+      get :forgot_password
+      post :send_reset_password_mail
+    end
+  end
+
+  resources :users do
+    # resources :transactions
+    # resources :credit_transactions
+  end
+
   # ### basic frontend
   # resources :ads do
   #   member do
