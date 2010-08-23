@@ -12,7 +12,8 @@ gem 'capistrano'
 gem 'capistrano-ext'
 gem 'will_paginate', '~> 3.0.pre2'
 gem 'awesome_print', :require => "ap"
-
+gem 'paperclip'
+gem 'acts-as-taggable-on'
 
 # Use unicorn as the web server
 # gem 'unicorn'

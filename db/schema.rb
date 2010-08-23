@@ -30,6 +30,22 @@ ActiveRecord::Schema.define(:version => 20100823113806) do
   add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], :name => "idx_assetable_type"
   add_index "ckeditor_assets", ["user_id"], :name => "fk_user"
 
+  create_table "companies", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.string   "type"
+    t.integer  "size"
+    t.string   "province"
+    t.string   "city"
+    t.string   "address"
+    t.string   "homepage"
+    t.string   "contact_name"
+    t.string   "phone_number"
+    t.text     "desc"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", :force => true do |t|
     t.string   "login",                              :null => false
     t.string   "email",                              :null => false

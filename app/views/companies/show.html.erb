@@ -1,0 +1,52 @@
+<% title "Company" %>
+
+<p>
+  <strong>User:</strong>
+  <%= @company.user_id %>
+</p>
+<p>
+  <strong>Name:</strong>
+  <%= @company.name %>
+</p>
+<p>
+  <strong>Type:</strong>
+  <%= @company.type %>
+</p>
+<p>
+  <strong>Size:</strong>
+  <%= @company.size %>
+</p>
+<p>
+  <strong>Province:</strong>
+  <%= @company.province %>
+</p>
+<p>
+  <strong>City:</strong>
+  <%= @company.city %>
+</p>
+<p>
+  <strong>Address:</strong>
+  <%= @company.address %>
+</p>
+<p>
+  <strong>Homepage:</strong>
+  <%= @company.homepage %>
+</p>
+<p>
+  <strong>Contact Name:</strong>
+  <%= @company.contact_name %>
+</p>
+<p>
+  <strong>Phone Number:</strong>
+  <%= @company.phone_number %>
+</p>
+<p>
+  <strong>Desc:</strong>
+  <%= @company.desc %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_company_path(@company) %> |
+  <%= link_to "Destroy", @company, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", companies_path %>
+</p>

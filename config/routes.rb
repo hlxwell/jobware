@@ -23,13 +23,13 @@ Jobware::Application.routes.draw do
   #     get :job_board
   #   end
   # end
-  #
-  # resources :companies do
-  #   resources :jobs do
-  #     post :star
-  #   end
-  # end
-  #
+
+  resources :companies do
+    # resources :jobs do
+    #   post :star
+    # end
+  end
+
   # ### dashboard rewrite
   # match "/job_seeker" => "job_seeker/resume#dashboard"
   # match "/company" => "company#dashboard"
