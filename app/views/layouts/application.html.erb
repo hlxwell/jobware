@@ -8,7 +8,7 @@
 	<%= csrf_meta_tag %>
   <%= stylesheet_link_tag "application" %>
   <%= javascript_include_tag "jquery", "rails", "jquery.tools.min" %>
-  <title><%= h(yield(:title) || "Untitled") %> - 中国程序员招聘网 - 中国最大的开发者招聘网站</title>
+  <title><%= "#{@content_for_title} - " if @content_for_title %> 中国程序员招聘网 - 中国最大的开发者招聘网站</title>
 </head>
 
 <body id="top">
