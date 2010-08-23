@@ -20,7 +20,7 @@ role :db,  "bbs.hzva.org", :primary => true        # This is where Rails migrati
 namespace :deploy do
   task :init_project do
     run "cd #{release_path}; /home/hlx/.rvm/gems/ree-1.8.7-2010.01/bin/bundle install"
-    run "cd #{release_path}; /home/hlx/.rvm/gems/ree-1.8.7-2010.01/bin/rake db:migrate RAILS_ENV=production"
+    # run "cd #{release_path}; /home/hlx/.rvm/gems/ree-1.8.7-2010.01/bin/rake db:migrate RAILS_ENV=production"
   end
 
   task :start do ; end
