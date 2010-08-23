@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     @user = current_user
 
     if @user.update_attributes(params[:user])
-      redirect_to("/", :notice => 'User was successfully updated.')
+      redirect_to("/", :notice => '用户信息修改成功！')
     else
       render :action => "edit"
     end
@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       # UserSession.create(params[:user])
-      redirect_to("/", :notice => 'User was successfully created.')
+      redirect_to("/", :notice => '用户注册成功！')
     else
       render :action => :new
     end
