@@ -1,44 +1,21 @@
-<script>
-  $(function(){
-    $.each($(".city_selector"), function(i, n){ $(n).CitySelector(); });
-  })
-</script>
-<div class="main" id="main-two-columns-right-sidebar">
+<%= field_set_tag "公司信息", :class => 'big' do %>
+  <%= f.error_messages :class => "error" %>
+  <%= f.text_field :name, :label => "公司名", :class => "text w600" %>
+  <%= f.select :type, CompanyType.to_a, {:include_blank => true}, {:label => "性质"} %>
+  <%= f.select :size, CompanySize.to_a, {:include_blank => true}, {:label => "规模"} %>
+  <span class="city_selector">
+    <%= f.select :province, [], {}, {:label => "省", :class => "province"} %>
+    <%= f.select :city, [], {}, {:label => "市", :class => "city"} %>
+  </span>
+  <%= f.text_field :address, :label => "地址", :class => "text w600" %>
+  <%= f.text_field :homepage, :label => "网址", :class => "text w600" %>
+  <%= f.text_field :contact_name, :label => "联系人", :class => "text w600" %>
+  <%= f.text_field :phone_number, :label => "联系电话", :class => "text w600" %>
+  <%= f.text_area :desc, :label => "公司简介", :class => "text w600", :rows => 10 %>
+<% end %>
 
-  <div class="right sidebar" id="sidebar-1">
-    注意事项
-    <div id="test"></div>
-  </div>
-  <div class="left" id="main-left">
-    <%= jobware_form_for @company, :use_fieldset => false do |f| %>
-      <%= field_set_tag "公司信息", :class => 'big' do %>
-        <%= f.error_messages :class => "error" %>
-        <%= f.text_field :name, :label => "公司名", :class => "text w600" %>
-        <%= f.text_field :type, :label => "性质", :class => "text w600" %>
-        <%= f.text_field :size, :label => "规模", :class => "text w600" %>
-        <%= f.text_field :province, :label => "省市", :class => "text w600" %>
-        <%= f.text_field :city, :label => "省市", :class => "text w600" %>
-        <%= f.text_field :address, :label => "地址", :class => "text w600" %>
-        <%= f.text_field :homepage, :label => "网址", :class => "text w600" %>
-        <%= f.text_field :contact_name, :label => "联系人", :class => "text w600" %>
-        <%= f.text_field :phone_number, :label => "联系电话", :class => "text w600" %>
-        <%= f.text_area :desc, :label => "公司简介", :class => "text w600", :rows => 10 %>
-      <% end %>
-
-      <%= field_set_tag "公司信息", :class => 'big' do %>
-        <%= f.fields_for :user do |user_form| %>
-          <%= render :partial => "users/form", :locals => {:f => user_form} %>
-        <% end %>
-      <% end %>
-
-      <p>
-        <div class="right">
-          <%= f.check_box :accept_terms, :label => "同意条款", :hint => raw("<a href='#'>查看条款</a>"), :required => true %>
-          <%= f.submit "提交", :class => "right button" %>
-        </div>
-      </p>
-    <% end %>
-  </div>
-
-  <div class="clearer">&nbsp;</div>
-</div>
+<%= field_set_tag "公司信息", :class => 'big' do %>
+  <%= f.fields_for :user do |user_form| %>
+    <%= render :partial => "users/form", :locals => {:f => user_form} %>
+  <% end %>
+<% end %>

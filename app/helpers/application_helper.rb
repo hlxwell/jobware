@@ -17,11 +17,11 @@ module ApplicationHelper
 
   def render_message
     if flash[:notice].present?
-      "<br><div class='notice largest'>#{flash[:notice]}</div>"
+      "<div class='notice largest'>#{flash[:notice]}</div>"
     elsif flash[:error].present?
-	    "<br><div class='error largest'>#{flash[:error]}</div>"
+	    "<div class='error largest'>#{flash[:error]}</div>"
     elsif flash[:success].present?
-      "<br><div class='success largest'>#{flash[:success]}</div>"
+      "<div class='success largest'>#{flash[:success]}</div>"
     end
   end
 

@@ -1,7 +1,5 @@
 Jobware::Application.routes.draw do
-  resources :resumes
-
-  resources :partners
+  get "company/dashboard"
 
   ### auth stuff
   match "/login" => "sessions#new", :as => :login
@@ -34,30 +32,30 @@ Jobware::Application.routes.draw do
     # end
   end
 
-  # ### dashboard rewrite
-  # match "/job_seeker" => "job_seeker/resume#dashboard"
-  # match "/company" => "company#dashboard"
-  # match "/partner" => "partner#dashboard"
-  #
-  # ### company section
-  # resource :company
-  # namespace :company do
-  #   resources :jobs
-  #   resources :job_applications
-  #   resources :starred_resumes
-  #   resources :presentations
-  #   resources :products
-  #   resources :ads
-  #   resources :services do
-  #     member do
-  #       post => :buy
-  #     end
-  #   end
-  # end
-  #
-  # ### job seeker section
-  # resource :job_seeker, :controller => "job_seeker/resume"
-  # namespace :job_seeker do
+  ### dashboard rewrite
+  match "/jobseeker" => "jobseeker/resume#dashboard", :as => :jobseeker_dashboard
+  match "/company" => "company#dashboard", :as => :company_dashboard
+  match "/partner" => "partner#dashboard", :as => :partner_dashboard
+
+  ### company section
+  resource :company
+  namespace :company do
+    resources :jobs
+    # resources :job_applications
+    # resources :starred_resumes
+    # resources :presentations
+    # resources :products
+    # resources :ads
+    # resources :services do
+    #   member do
+    #     post => :buy
+    #   end
+    # end
+  end
+
+  ### job seeker section
+  resource :jobseeker, :controller => "jobseeker/resume"
+  namespace :jobseeker do
   #   resources :job_applications
   #   resources :starred_jobs
   #   resource :subscription
@@ -77,16 +75,16 @@ Jobware::Application.routes.draw do
   #       post :buy
   #     end
   #   end
-  # end
-  #
-  # ### partner section
-  # resource :partner
-  # namespace :partner do
-  #   resources :ad_positions
-  #   resources :revenues
-  #   revenuess :counters
-  # end
-  #
+  end
+
+  ### partner section
+  resource :partner
+  namespace :partner do
+    # resources :ad_positions
+    # resources :revenues
+    # revenuess :counters
+  end
+
   # ### admin section
   # namespace :admin do
   #   resources :jobs

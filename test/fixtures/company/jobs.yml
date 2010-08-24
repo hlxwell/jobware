@@ -1,0 +1,27 @@
+one:
+  name: MyString
+  location_province: MyString
+  location_city: MyString
+  vacancy: 1
+  content: MyText
+  requirement: MyText
+  welfare: MyText
+  salary_range: MyString
+  highlight_start_at: 2010-08-24 17:24:16
+  highlight_end_at: 2010-08-24 17:24:16
+  start_at: 2010-08-24 17:24:16
+  end_at: 2010-08-24 17:24:16
+
+two:
+  name: MyString
+  location_province: MyString
+  location_city: MyString
+  vacancy: 1
+  content: MyText
+  requirement: MyText
+  welfare: MyText
+  salary_range: MyString
+  highlight_start_at: 2010-08-24 17:24:16
+  highlight_end_at: 2010-08-24 17:24:16
+  start_at: 2010-08-24 17:24:16
+  end_at: 2010-08-24 17:24:16

@@ -33,6 +33,10 @@ module Authentication
   def logged_in?
     current_user
   end
+  
+  def not_logged_in?
+    !logged_in?
+  end
 
   def no_login_required
     if logged_in?

@@ -27,7 +27,7 @@
   		  <% semantic_navigation "network-tabs", :html => {:class => "tabbed"} do |n| %>
           <%= n.item '首页', :link => "/home/a", :highlights_on => ('a'..'f').to_a.push("ad").map { |w| "/home/#{w}" } %>
           <%= n.item '我是求职者', :link => '/home/g' if jobseeker_user? %>
-          <%= n.item '我是公司', :link => '/home/h' if company_user? %>
+          <%= n.item '我是公司', :link => company_dashboard_path if company_user? %>
           <%= n.item '我是合作者', :link => '/home/i' if partner_user? %>
         <% end %>
   			<div class="clearer">&nbsp;</div>
@@ -38,9 +38,9 @@
 
   <div id="site">
   	<div class="center-wrapper">
-      <%= raw render_message %>
       <%= render "shared/header" %>
-      <%= yield %>
+      <%= raw render_message %>
+      <%= content_for?(:content) ? yield(:content) : yield %>
       <%= render "shared/footer" %>
 	  </div>
   </div>

@@ -1,4 +1,8 @@
 class CompaniesController < ApplicationController
+
+  def dashboard
+  end
+
   def index
     @companies = Company.all
   end

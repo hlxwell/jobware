@@ -5,6 +5,6 @@ class Company < ActiveRecord::Base
   belongs_to :user
   accepts_nested_attributes_for :user
 
-  validates_presence_of :name, :address, :contact_name, :phone_number, :province, :city
+  validates_presence_of :name, :type, :size, :address, :contact_name, :phone_number, :province, :city, :desc
   validates_acceptance_of :accept_terms, :accept => "1", :message => "你必需接受服务条款"
 end

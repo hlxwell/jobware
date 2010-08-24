@@ -1,0 +1,56 @@
+<% title "Job" %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @job.name %>
+</p>
+<p>
+  <strong>Location Province:</strong>
+  <%= @job.location_province %>
+</p>
+<p>
+  <strong>Location City:</strong>
+  <%= @job.location_city %>
+</p>
+<p>
+  <strong>Vacancy:</strong>
+  <%= @job.vacancy %>
+</p>
+<p>
+  <strong>Content:</strong>
+  <%= @job.content %>
+</p>
+<p>
+  <strong>Requirement:</strong>
+  <%= @job.requirement %>
+</p>
+<p>
+  <strong>Welfare:</strong>
+  <%= @job.welfare %>
+</p>
+<p>
+  <strong>Salary Range:</strong>
+  <%= @job.salary_range %>
+</p>
+<p>
+  <strong>Highlight Start At:</strong>
+  <%= @job.highlight_start_at %>
+</p>
+<p>
+  <strong>Highlight End At:</strong>
+  <%= @job.highlight_end_at %>
+</p>
+<p>
+  <strong>Start At:</strong>
+  <%= @job.start_at %>
+</p>
+<p>
+  <strong>End At:</strong>
+  <%= @job.end_at %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_job_path(@job) %> |
+  <%= link_to "Destroy", @job, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", jobs_path %>
+</p>

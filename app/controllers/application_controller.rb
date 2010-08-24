@@ -10,13 +10,9 @@ class ApplicationController < ActionController::Base
   end
 
   %w[jobseeker partner company].each do |method_name|
+    helper_method "#{method_name}_user?"
     define_method("#{method_name}_user?") do |*args|
       logged_in? and current_user.send(method_name).present?
     end
   end
-
-  def jobseeker_user?
-    logged_in? and current_user.resume.present?
-  end
-
 end

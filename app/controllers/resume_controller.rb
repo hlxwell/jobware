@@ -1,4 +1,4 @@
-class ResumesController < ApplicationController
+class ResumeController < ApplicationController
   def index
     @resumes = Resume.all
   end

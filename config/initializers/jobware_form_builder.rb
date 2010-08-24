@@ -8,13 +8,28 @@ class JobwareFormBuilder < ActionView::Helpers::FormBuilder
          (@template.content_tag(tag_mark, label(field_name, options[:label]), :class => "form-property")) +
 
          (@template.content_tag(tag_mark, :class => "form-value") {
-           (super(field_name, options)) +
+           super(field_name, options) +
            (options[:required] == true ? @template.content_tag(:span, "（必填）", :class => "helper") : "") +
            (options[:hint].present? ? @template.content_tag(tag_mark, options[:hint], :class => "helper") : "")
          }) +
 
-         (@template.content_tag(:div, "&nbsp;", :class => 'clearer'))
+         (@template.content_tag(:div, "", :class => 'clearer'))
       end
+    end
+  end
+  
+  def select(field_name, choices, *args)
+    options = args.last
+    @template.content_tag(:p, :class => "form-row") do
+       (@template.content_tag(:div, label(field_name, options[:label]), :class => "form-property")) +
+
+       (@template.content_tag(:div, :class => "form-value") {
+         super(field_name, choices, *args) +
+         (options[:required] == true ? @template.content_tag(:span, "（必填）", :class => "helper") : "") +
+         (options[:hint].present? ? @template.content_tag(:div, options[:hint], :class => "helper") : "")
+       }) +
+
+       (@template.content_tag(:div, "", :class => 'clearer'))
     end
   end
 
@@ -28,7 +43,7 @@ class JobwareFormBuilder < ActionView::Helpers::FormBuilder
 
     @template.content_tag(:div, :class => "form-row form-row-submit") do
       super(text, options) +
-      @template.content_tag(:div, "&nbsp;", :class => 'clearer')
+      @template.content_tag(:div, "", :class => 'clearer')
     end
   end
 

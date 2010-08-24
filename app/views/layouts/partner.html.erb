@@ -1,0 +1,13 @@
+<% content_for :content do %>
+<div class="main" id="main-two-columns">
+  <!-- ### main content -->
+  <div class="right" id="main-right">
+    <%= yield %>
+  </div>
+
+  <!-- ### left side menu part -->
+  <%= render "shared/partner_menu" %>
+</div>
+<% end %>
+
+<%= render :file => 'layouts/application' %>
