@@ -279,6 +279,18 @@ div.helper {
   font-size: 1.2em;
 }
 
+.form-row {
+  margin-bottom: 1em;
+}
+
+.form-property {
+
+}
+
+.form-value {
+
+}
+
 /*
    Alignment
 ------------------------------------------------------------------- */

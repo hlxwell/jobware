@@ -4,7 +4,7 @@ class JobwareFormBuilder < ActionView::Helpers::FormBuilder
       options = merge_to_options args.last, :class => "text"
       tag_mark = method_name == "check_box" ? :span : :div
 
-      @template.content_tag(:p, :class => "form-row") do
+      @template.content_tag(:div, :class => "form-row") do
          (@template.content_tag(tag_mark, label(field_name, options[:label]), :class => "form-property")) +
 
          (@template.content_tag(tag_mark, :class => "form-value") {
@@ -20,7 +20,7 @@ class JobwareFormBuilder < ActionView::Helpers::FormBuilder
   
   def select(field_name, choices, *args)
     options = args.last
-    @template.content_tag(:p, :class => "form-row") do
+    @template.content_tag(:div, :class => "form-row") do
        (@template.content_tag(:div, label(field_name, options[:label]), :class => "form-property")) +
 
        (@template.content_tag(:div, :class => "form-value") {
