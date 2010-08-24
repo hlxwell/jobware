@@ -1,0 +1,92 @@
+<% title "Resume" %>
+
+<p>
+  <strong>User:</strong>
+  <%= @resume.user_id %>
+</p>
+<p>
+  <strong>Name:</strong>
+  <%= @resume.name %>
+</p>
+<p>
+  <strong>Gender:</strong>
+  <%= @resume.gender %>
+</p>
+<p>
+  <strong>Working Years:</strong>
+  <%= @resume.working_years %>
+</p>
+<p>
+  <strong>Degree:</strong>
+  <%= @resume.degree %>
+</p>
+<p>
+  <strong>Major:</strong>
+  <%= @resume.major %>
+</p>
+<p>
+  <strong>Birthday:</strong>
+  <%= @resume.birthday %>
+</p>
+<p>
+  <strong>Hometown Province:</strong>
+  <%= @resume.hometown_province %>
+</p>
+<p>
+  <strong>Hometown City:</strong>
+  <%= @resume.hometown_city %>
+</p>
+<p>
+  <strong>Current Residence Province:</strong>
+  <%= @resume.current_residence_province %>
+</p>
+<p>
+  <strong>Current Residence City:</strong>
+  <%= @resume.current_residence_city %>
+</p>
+<p>
+  <strong>Email:</strong>
+  <%= @resume.email %>
+</p>
+<p>
+  <strong>Phone Number:</strong>
+  <%= @resume.phone_number %>
+</p>
+<p>
+  <strong>Expected Salary:</strong>
+  <%= @resume.expected_salary %>
+</p>
+<p>
+  <strong>Expected Positions:</strong>
+  <%= @resume.expected_positions %>
+</p>
+<p>
+  <strong>Expected Job Location:</strong>
+  <%= @resume.expected_job_location %>
+</p>
+<p>
+  <strong>Current Working State:</strong>
+  <%= @resume.current_working_state %>
+</p>
+<p>
+  <strong>Highlight Start At:</strong>
+  <%= @resume.highlight_start_at %>
+</p>
+<p>
+  <strong>Highlight End At:</strong>
+  <%= @resume.highlight_end_at %>
+</p>
+<p>
+  <strong>Is Sending Sms:</strong>
+  <%= @resume.is_sending_sms %>
+</p>
+<p>
+  <strong>Icon Type:</strong>
+  <%= @resume.icon_type %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_resume_path(@resume) %> |
+  <%= link_to "Destroy", @resume, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", resumes_path %>
+</p>

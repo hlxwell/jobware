@@ -240,7 +240,7 @@ table.data-table tr.even td {background: #FCFCFC;}
 label {font-weight: bold; cursor: pointer;}
 fieldset {padding: 1.4em; margin: 0 0 1.5em 0; border: 1px solid #ccc;}
 legend {font-size: 1.2em; padding: 0px 10px 0px 10px;}
-legend.big {font-size: 2.0em; padding: 0px 10px 0px 10px;}
+fieldset.big legend, legend.big {font-size: 2.0em; padding: 0px 10px 0px 10px;}
 
 textarea {overflow: auto;}
 
@@ -265,9 +265,18 @@ input.button:active {border-style: inset;}
 
 .form-error {border-color: #F00;}
 
-span.helper {
+.helper {
   color: #999;
   font-size: 0.9em;
+}
+div.helper {
+  margin-bottom: 5px;
+}
+
+.field_with_errors {
+  display: inline;
+  color: red;
+  font-size: 1.2em;
 }
 
 /*

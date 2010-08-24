@@ -1,0 +1,57 @@
+<% title "Resumes" %>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Name</th>
+    <th>Gender</th>
+    <th>Working Years</th>
+    <th>Degree</th>
+    <th>Major</th>
+    <th>Birthday</th>
+    <th>Hometown Province</th>
+    <th>Hometown City</th>
+    <th>Current Residence Province</th>
+    <th>Current Residence City</th>
+    <th>Email</th>
+    <th>Phone Number</th>
+    <th>Expected Salary</th>
+    <th>Expected Positions</th>
+    <th>Expected Job Location</th>
+    <th>Current Working State</th>
+    <th>Highlight Start At</th>
+    <th>Highlight End At</th>
+    <th>Is Sending Sms</th>
+    <th>Icon Type</th>
+  </tr>
+  <% for resume in @resumes %>
+    <tr>
+      <td><%= resume.user_id %></td>
+      <td><%= resume.name %></td>
+      <td><%= resume.gender %></td>
+      <td><%= resume.working_years %></td>
+      <td><%= resume.degree %></td>
+      <td><%= resume.major %></td>
+      <td><%= resume.birthday %></td>
+      <td><%= resume.hometown_province %></td>
+      <td><%= resume.hometown_city %></td>
+      <td><%= resume.current_residence_province %></td>
+      <td><%= resume.current_residence_city %></td>
+      <td><%= resume.email %></td>
+      <td><%= resume.phone_number %></td>
+      <td><%= resume.expected_salary %></td>
+      <td><%= resume.expected_positions %></td>
+      <td><%= resume.expected_job_location %></td>
+      <td><%= resume.current_working_state %></td>
+      <td><%= resume.highlight_start_at %></td>
+      <td><%= resume.highlight_end_at %></td>
+      <td><%= resume.is_sending_sms %></td>
+      <td><%= resume.icon_type %></td>
+      <td><%= link_to "Show", resume %></td>
+      <td><%= link_to "Edit", edit_resume_path(resume) %></td>
+      <td><%= link_to "Destroy", resume, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Resume", new_resume_path %></p>

@@ -1,0 +1,45 @@
+one:
+  user_id: 1
+  name: MyString
+  gender: MyString
+  working_years: 1
+  degree: MyString
+  major: MyString
+  birthday: 2010-08-24
+  hometown_province: MyString
+  hometown_city: MyString
+  current_residence_province: MyString
+  current_residence_city: MyString
+  email: MyString
+  phone_number: MyString
+  expected_salary: MyString
+  expected_positions: MyString
+  expected_job_location: MyString
+  current_working_state: 1
+  highlight_start_at: 2010-08-24
+  highlight_end_at: 2010-08-24
+  is_sending_sms: false
+  icon_type: 1
+
+two:
+  user_id: 1
+  name: MyString
+  gender: MyString
+  working_years: 1
+  degree: MyString
+  major: MyString
+  birthday: 2010-08-24
+  hometown_province: MyString
+  hometown_city: MyString
+  current_residence_province: MyString
+  current_residence_city: MyString
+  email: MyString
+  phone_number: MyString
+  expected_salary: MyString
+  expected_positions: MyString
+  expected_job_location: MyString
+  current_working_state: 1
+  highlight_start_at: 2010-08-24
+  highlight_end_at: 2010-08-24
+  is_sending_sms: false
+  icon_type: 1

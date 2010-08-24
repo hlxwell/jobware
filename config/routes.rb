@@ -1,4 +1,8 @@
 Jobware::Application.routes.draw do
+  resources :resumes
+
+  resources :partners
+
   ### auth stuff
   match "/login" => "sessions#new", :as => :login
   match "/logout" => "sessions#destroy", :as => :logout

@@ -1,0 +1,88 @@
+<%= form_for @resume do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :user_id %><br />
+    <%= f.text_field :user_id %>
+  </p>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :gender %><br />
+    <%= f.text_field :gender %>
+  </p>
+  <p>
+    <%= f.label :working_years %><br />
+    <%= f.text_field :working_years %>
+  </p>
+  <p>
+    <%= f.label :degree %><br />
+    <%= f.text_field :degree %>
+  </p>
+  <p>
+    <%= f.label :major %><br />
+    <%= f.text_field :major %>
+  </p>
+  <p>
+    <%= f.label :birthday %><br />
+    <%= f.date_select :birthday %>
+  </p>
+  <p>
+    <%= f.label :hometown_province %><br />
+    <%= f.text_field :hometown_province %>
+  </p>
+  <p>
+    <%= f.label :hometown_city %><br />
+    <%= f.text_field :hometown_city %>
+  </p>
+  <p>
+    <%= f.label :current_residence_province %><br />
+    <%= f.text_field :current_residence_province %>
+  </p>
+  <p>
+    <%= f.label :current_residence_city %><br />
+    <%= f.text_field :current_residence_city %>
+  </p>
+  <p>
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </p>
+  <p>
+    <%= f.label :phone_number %><br />
+    <%= f.text_field :phone_number %>
+  </p>
+  <p>
+    <%= f.label :expected_salary %><br />
+    <%= f.text_field :expected_salary %>
+  </p>
+  <p>
+    <%= f.label :expected_positions %><br />
+    <%= f.text_field :expected_positions %>
+  </p>
+  <p>
+    <%= f.label :expected_job_location %><br />
+    <%= f.text_field :expected_job_location %>
+  </p>
+  <p>
+    <%= f.label :current_working_state %><br />
+    <%= f.text_field :current_working_state %>
+  </p>
+  <p>
+    <%= f.label :highlight_start_at %><br />
+    <%= f.date_select :highlight_start_at %>
+  </p>
+  <p>
+    <%= f.label :highlight_end_at %><br />
+    <%= f.date_select :highlight_end_at %>
+  </p>
+  <p>
+    <%= f.label :is_sending_sms %><br />
+    <%= f.check_box :is_sending_sms %>
+  </p>
+  <p>
+    <%= f.label :icon_type %><br />
+    <%= f.text_field :icon_type %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>

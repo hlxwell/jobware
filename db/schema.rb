@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100823113806) do
+ActiveRecord::Schema.define(:version => 20100824070447) do
 
   create_table "ckeditor_assets", :force => true do |t|
     t.string   "data_file_name",                                 :null => false
@@ -42,6 +42,44 @@ ActiveRecord::Schema.define(:version => 20100823113806) do
     t.string   "contact_name"
     t.string   "phone_number"
     t.text     "desc"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "partners", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.string   "url"
+    t.string   "contact_name"
+    t.string   "phone_number"
+    t.integer  "site_size"
+    t.text     "desc"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "resumes", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.string   "gender"
+    t.integer  "working_years"
+    t.string   "degree"
+    t.string   "major"
+    t.date     "birthday"
+    t.string   "hometown_province"
+    t.string   "hometown_city"
+    t.string   "current_residence_province"
+    t.string   "current_residence_city"
+    t.string   "email"
+    t.string   "phone_number"
+    t.string   "expected_salary"
+    t.string   "expected_positions"
+    t.string   "expected_job_location"
+    t.integer  "current_working_state"
+    t.date     "highlight_start_at"
+    t.date     "highlight_end_at"
+    t.boolean  "is_sending_sms"
+    t.integer  "icon_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

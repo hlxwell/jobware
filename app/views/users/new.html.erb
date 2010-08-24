@@ -3,4 +3,7 @@
 <p>已经有帐号? <%= link_to "立即登陆", login_path %>.</p>
 
 <h1>用户注册</h1>
-<%= render :partial => "users/form" %>
+<%= jobware_form_for @user||User.new do |f| %>
+  <%= render :partial => "users/form", :locals => { :f => f } %>
+  <%= f.submit "注册" %>
+<% end %>

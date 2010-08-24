@@ -1,32 +1,5 @@
-<%= form_for @user||User.new do |f| %>
-  <%= f.error_messages :class => "error" %>
-	<fieldset>
-		<div class="form-row">
-			<div class="form-property"><%= f.label :login, "用户名" %></div>
-			<div class="form-value"><%= f.text_field :login, :class => "text" %></div>
-			<div class="clearer">&nbsp;</div>
-		</div>
-
-		<div class="form-row">
-			<div class="form-property"><%= f.label :email, "邮箱" %></div>
-			<div class="form-value"><%= f.text_field :email, :class => "text" %></div>
-			<div class="clearer">&nbsp;</div>
-		</div>
-
-		<div class="form-row">
-			<div class="form-property"><%= f.label :password, "密码" %></div>
-			<div class="form-value"><%= f.password_field :password, :class => "text" %></div>
-			<div class="clearer">&nbsp;</div>
-		</div>
-
-		<div class="form-row">
-			<div class="form-property"><%= f.label :password_confirmation, "确认密码" %></div>
-			<div class="form-value"><%= f.password_field :password_confirmation, :class => "text" %></div>
-			<div class="clearer">&nbsp;</div>
-		</div>
-
-		<div class="form-row form-row-submit">
-		  <%= f.submit :class => "button" %>
-		</div>
-	</fieldset>
-<% end %>
+<%= f.error_messages :class => "error" %>
+<%= f.text_field :login, :label => "用户名", :hint => "长度请控制在10到20位。" %>
+<%= f.text_field :email, :label => "邮箱" %>
+<%= f.password_field :password, :label => "密码", :hint => "长度请控制在10到20位。" %>
+<%= f.password_field :password_confirmation, :label => "确认密码" %>

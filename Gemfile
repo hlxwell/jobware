@@ -6,6 +6,7 @@ gem 'nifty-generators'
 gem 'authlogic', :git => 'http://github.com/binarylogic/authlogic.git'
 gem 'tabletastic'
 gem 'ckeditor', :git => 'http://github.com/galetahub/rails-ckeditor.git', :branch => 'rails3'
+gem 'formtastic', :git => "http://github.com/justinfrench/formtastic.git", :branch => "rails3"
 gem 'navigasmic'
 gem 'cancan'
 gem 'capistrano'
@@ -14,6 +15,8 @@ gem 'will_paginate', '~> 3.0.pre2'
 gem 'awesome_print', :require => "ap"
 gem 'paperclip'
 gem 'acts-as-taggable-on'
+gem 'enumerate_it'
+gem 'state_machine'
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -27,11 +30,11 @@ gem 'acts-as-taggable-on'
 # gem 'aws-s3', :require => 'aws/s3'
 
 group :test do
-  # gem 'timecop'
-  # gem "mocha", '0.9.8', :require => "mocha"
-  # gem "fakeweb"
-  # gem "factory_girl", '1.3.0'
-  # gem 'shoulda', '2.10', :require => 'shoulda'
-  # gem 'test_benchmarker'
-  # gem "rack-test", :require => "rack/test"
+  gem 'timecop'
+  gem "mocha", :require => "mocha"
+  gem "fakeweb"
+  gem "factory_girl", :require => 'factory_girl'
+  gem "shoulda", :require => 'shoulda'
+  gem 'test_benchmarker'
+  gem "rack-test", :require => "rack/test"
 end

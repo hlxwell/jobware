@@ -3,7 +3,7 @@
 	<div class="clearer">&nbsp;</div>
 	<br>
 
-  <div class="right success text-center larger w200"><a href="#">发布工作</a></div>
+  <div class="right success text-center larger w200"><%= link_to "发布工作", new_company_path %></div>
 
   <!-- #### site logo and title -->
 	<div id="site-title">
@@ -17,7 +17,7 @@
 		  <% if in_section?("frontend") %>
   		  <% semantic_navigation :main, :html => {:class => "tabbed"} do |n| %>
   		    <%= n.item '首页', :link => "/home/aaa" %>
-          <%= n.item '我要求职', :link => "/home/a", :highlights_on => ['/home/ab', '/home/ac', '/home/ad'] %>
+          <%= n.item '我要求职', :link => "/home/a", :highlights_on => ['/home/ab', '/home/ac', '/companies'] %>
           <%= n.item '我要招聘', :link => '/home/c', :highlights_on => ['/home/d'] %>
           <%#= n.item '我要合作', :link => '/home/e', :highlights_on => ['/home/f'] %>
         <% end %>
@@ -36,12 +36,12 @@
 		  <% if in_section?("jobseeker") %>
   		  <% semantic_navigation :main, :html => {:class => "tabbed"} do |n| %>
           <%= n.item '所有工作', :link => "/home/a" %>
-          <%= n.item '所有公司', :link => '/home/ad' %>
+          <%= n.item '所有公司', :link => companies_path %>
         <% end %>
       <% elsif in_section?("company") %>
         <% semantic_navigation :main, :html => {:class => "tabbed"} do |n| %>
           <%= n.item '服务', :link => "/home/c" %>
-          <%= n.item '加入', :link => '/home/d' %>
+          <%= n.item '加入', :link => new_company_path %>
         <% end %>
       <% elsif in_section?("partner") %>
         <% semantic_navigation :main, :html => {:class => "tabbed"} do |n| %>

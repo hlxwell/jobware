@@ -1,12 +1,16 @@
 <% title "用户登陆" %>
 
 <div class='left w49p'>
-  <h1>登陆</h1>
-  <%= render :partial => "sessions/form" %>
+  <%= jobware_form_for @user_session, :as => :user_session, :url => sessions_path, :title => "登陆" do |f| %>
+      <%= render :partial => "sessions/form", :locals => { :f => f } %>
+      <%= f.submit "登陆" %>
+  <% end %>
 </div>
 
 <div class='right w49p'>
-  <h1>注册</h1>
-  <%= render :partial => "users/form" %>
+  <%= jobware_form_for @user||User.new, :title => "注册" do |f| %>
+    <%= render :partial => "users/form", :locals => { :f => f } %>
+    <%= f.submit "注册" %>
+  <% end %>
 </div>
 <div class="clearer">&nbsp;</div>
