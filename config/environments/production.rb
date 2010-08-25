@@ -46,4 +46,18 @@ Jobware::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+
+  # Send email config
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :sendmail
+  config.action_mailer.sendmail_settings = {
+    :location => '/usr/sbin/sendmail',
+    :arguments => '-i -t'
+  }
+
+  # exception notifier config
+  config.middleware.use "::ExceptionNotifier", :email_prefix => "[Jobware] ",
+                                               :sender_address => %{ "Jobware Exception" <notifier@itjob.fm> },
+                                               :exception_recipients => %w{ hlxwell@gmail.com }
 end

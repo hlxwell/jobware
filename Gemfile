@@ -17,6 +17,8 @@ gem 'paperclip'
 gem 'acts-as-taggable-on'
 gem 'enumerate_it'
 gem 'state_machine'
+gem 'annotate-models'
+gem "exception_notification", :git => "http://github.com/rails/exception_notification.git", :branch => "master"
 
 # Use unicorn as the web server
 # gem 'unicorn'

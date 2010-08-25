@@ -50,6 +50,6 @@ class JobwareFormBuilder < ActionView::Helpers::FormBuilder
   private
   # add default class for element
   def merge_to_options(merge_to_options, option)
-    (merge_to_options||{}).merge!(option) { |key, v1, v2| v1 }
+    (merge_to_options||{}).reverse_merge!(option)
   end
 end
