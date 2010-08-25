@@ -21,8 +21,11 @@
 
 class Company < ActiveRecord::Base
   attr_accessor :accept_terms
-  # attr_accessible :user_id, :name, :type, :size, :province, :city, :address, :homepage, :contact_name, :phone_number, :desc, :accept_terms
 
+  has_enumeration_for :category, :with => JobCategory
+  has_enumeration_for :contract_type, :with => ContractType
+
+  has_many :jobs
   belongs_to :user
   accepts_nested_attributes_for :user
 

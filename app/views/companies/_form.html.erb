@@ -1,3 +1,7 @@
+<script>
+  $(function(){ $.each($(".city_selector"), function(i, n){ $(n).CitySelector(); }); })
+</script>
+
 <%= field_set_tag "公司信息", :class => 'big' do %>
   <%= f.error_messages :class => "error" %>
   <%= f.text_field :name, :label => "公司名", :class => "text w600" %>
@@ -19,3 +23,5 @@
     <%= render :partial => "users/form", :locals => {:f => user_form} %>
   <% end %>
 <% end %>
+
+<%= f.check_box :accept_terms, :label => "同意条款", :hint => raw("<a href='#'>查看条款</a>"), :required => true, :type => 'agree_term' %>

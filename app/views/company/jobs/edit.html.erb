@@ -1,8 +1,6 @@
-<% title "Edit Company/Job" %>
+<% title "修改工作" %>
 
-<%= render 'form' %>
-
-<p>
-  <%= link_to "Show", @company/job %> |
-  <%= link_to "View All", company/jobs_path %>
-</p>
+<%= jobware_form_for @job, :url => company_job_path(@job), :method => :put, :title => "发布工作" do |f| %>
+  <%= render :partial => 'form', :locals => {:f => f} %>
+  <%= f.submit "提交", :class => "right button" %>
+<% end %>

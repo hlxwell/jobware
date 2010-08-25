@@ -193,6 +193,7 @@ table.data-table td {
 	border: 1px solid #DDD;
 }
 table.data-table tr.even td {background: #FCFCFC;}
+table.top-vlign th { vertical-align: top; }
 
 
 /* Misc classes */
@@ -675,7 +676,7 @@ img.alignright, img.right {margin: 0 0 1em 1.5em;}
 
 /* width define */
 .w600 {
-  width: 625px;
+  width: 620px;
 }
 
 .w200 {
@@ -754,3 +755,25 @@ div.highlighted {
   font-size: 1.0em;
   color: #999;
 }
+
+/* pagination 
+.pagination {
+  float: right;
+}
+
+.pagination span, .pagination a, .pagination em {
+  border: 1px solid #ccc;
+  padding: 5px;
+  background: #eee;
+}
+
+.pagination em {
+  font-weight: bold;
+  color: #fff;
+  background: #666;
+}
+
+.pagination .disabled {
+  color: #999;
+}
+*/

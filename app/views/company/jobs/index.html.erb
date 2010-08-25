@@ -1,39 +1,22 @@
-<% title "Company/Jobs" %>
+<% title "工作管理" %>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Location Province</th>
-    <th>Location City</th>
-    <th>Vacancy</th>
-    <th>Content</th>
-    <th>Requirement</th>
-    <th>Welfare</th>
-    <th>Salary Range</th>
-    <th>Highlight Start At</th>
-    <th>Highlight End At</th>
-    <th>Start At</th>
-    <th>End At</th>
-  </tr>
-  <% for company/job in @company/jobs %>
-    <tr>
-      <td><%= company/job.name %></td>
-      <td><%= company/job.location_province %></td>
-      <td><%= company/job.location_city %></td>
-      <td><%= company/job.vacancy %></td>
-      <td><%= company/job.content %></td>
-      <td><%= company/job.requirement %></td>
-      <td><%= company/job.welfare %></td>
-      <td><%= company/job.salary_range %></td>
-      <td><%= company/job.highlight_start_at %></td>
-      <td><%= company/job.highlight_end_at %></td>
-      <td><%= company/job.start_at %></td>
-      <td><%= company/job.end_at %></td>
-      <td><%= link_to "Show", company/job %></td>
-      <td><%= link_to "Edit", edit_company/job_path(company/job) %></td>
-      <td><%= link_to "Destroy", company/job, :confirm => 'Are you sure?', :method => :delete %></td>
-    </tr>
+<table class="data-table">
+	<tr>
+	  <th>工作名</th>
+		<th>所在省市</th>
+		<th>状态</th>
+		<th>更新时间</th>
+		<th>操作</th>
+	</tr>
+	<% @jobs.each do |job| %>
+	<tr class="even">
+	  <td><%= link_to job.name, company_job_path(job) %></td>
+		<td><%= job.location %></td>
+		<td><%= "waiting" %></td>
+		<td><%= job.updated_at.to_s_full_cn %></td>
+		<td><%= link_to "修改", edit_company_job_path(job) %></td>
+	</tr>
   <% end %>
 </table>
 
-<p><%= link_to "New Company/Job", new_company/job_path %></p>
+<%= will_paginate @jobs %>

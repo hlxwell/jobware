@@ -1,56 +1,44 @@
-<% title "Company/Job" %>
+<% title @job.name %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @company/job.name %>
-</p>
-<p>
-  <strong>Location Province:</strong>
-  <%= @company/job.location_province %>
-</p>
-<p>
-  <strong>Location City:</strong>
-  <%= @company/job.location_city %>
-</p>
-<p>
-  <strong>Vacancy:</strong>
-  <%= @company/job.vacancy %>
-</p>
-<p>
-  <strong>Content:</strong>
-  <%= @company/job.content %>
-</p>
-<p>
-  <strong>Requirement:</strong>
-  <%= @company/job.requirement %>
-</p>
-<p>
-  <strong>Welfare:</strong>
-  <%= @company/job.welfare %>
-</p>
-<p>
-  <strong>Salary Range:</strong>
-  <%= @company/job.salary_range %>
-</p>
-<p>
-  <strong>Highlight Start At:</strong>
-  <%= @company/job.highlight_start_at %>
-</p>
-<p>
-  <strong>Highlight End At:</strong>
-  <%= @company/job.highlight_end_at %>
-</p>
-<p>
-  <strong>Start At:</strong>
-  <%= @company/job.start_at %>
-</p>
-<p>
-  <strong>End At:</strong>
-  <%= @company/job.end_at %>
-</p>
-
-<p>
-  <%= link_to "Edit", edit_company/job_path(@company/job) %> |
-  <%= link_to "Destroy", @company/job, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", company/jobs_path %>
-</p>
+<table class="data-table top-vlign">
+	<tr>
+	  <th width="50px">工作名</th>
+		<td><%= @job.name %></td>
+	</tr>
+	<tr>
+	  <th>所在地</th>
+		<td><%= @job.location %></td>
+	</tr>
+	<tr>
+	  <th>岗位数</th>
+		<td><%= @job.vacancy %></td>
+	</tr>
+	<tr>
+	  <th>工作类型</th>
+		<td><%= @job.contract_type_humanize %></td>
+	</tr>
+	<tr>
+	  <th>类别</th>
+		<td><%= @job.category_humanize %></td>
+	</tr>
+	<tr>
+	  <th>薪资范围</th>
+		<td><%= @job.salary_range %></td>
+	</tr>
+	<tr>
+	  <th>工作内容</th>
+		<td><%= raw @job.content %></td>
+	</tr>
+	<tr>
+	  <th>岗位需求</th>
+		<td><%= raw @job.requirement %></td>
+	</tr>
+	<tr>
+	  <th>福利待遇</th>
+		<td><%= raw @job.welfare %></td>
+	</tr>
+	<tr>
+	  <th>其他描述</th>
+		<td><%= raw @job.desc %></td>
+	</tr>
+</table>

@@ -1,20 +1,19 @@
 class JobwareFormBuilder < ActionView::Helpers::FormBuilder
-  %w[text_field text_area password_field check_box].each do |method_name|
+  %w[text_field text_area password_field check_box cktext_area].each do |method_name|
     define_method(method_name) do |field_name, *args|
       options = merge_to_options args.last, :class => "text"
       tag_mark = method_name == "check_box" ? :span : :div
+      other_classes = options[:type] == "agree_term" ? "right" : ""
+      @template.content_tag(:div, :class => "form-row #{other_classes}") {
+         @template.content_tag(tag_mark, label(field_name, options[:label]), :class => "form-property") +
 
-      @template.content_tag(:div, :class => "form-row") do
-         (@template.content_tag(tag_mark, label(field_name, options[:label]), :class => "form-property")) +
-
-         (@template.content_tag(tag_mark, :class => "form-value") {
+         @template.content_tag(tag_mark, :class => "form-value") {
            super(field_name, options) +
            (options[:required] == true ? @template.content_tag(:span, "（必填）", :class => "helper") : "") +
            (options[:hint].present? ? @template.content_tag(tag_mark, options[:hint], :class => "helper") : "")
-         }) +
-
-         (@template.content_tag(:div, "", :class => 'clearer'))
-      end
+         }
+      } +
+      @template.content_tag(:div, "", :class => 'clearer')
     end
   end
   

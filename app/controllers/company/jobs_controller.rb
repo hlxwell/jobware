@@ -1,35 +1,35 @@
 class Company::JobsController < Company::BaseController
 
   def index
-    @jobs = Job.all
+    @jobs = current_user.company.jobs.paginate :page => params[:page], :per_page => 1
   end
 
   def show
-    @job = Job.find(params[:id])
+    @job = current_user.company.jobs.find(params[:id])
   end
 
   def new
-    @job = Job.new
+    @job = current_user.company.jobs.new
   end
 
   def create
-    @job = Job.new(params[:job])
+    @job = current_user.company.job.build(params[:job])
     if @job.save
-      flash[:notice] = "Successfully created job."
-      redirect_to @job
+      flash[:notice] = "发布工作成功。"
+      redirect_to company_job_path(@job)
     else
       render :action => 'new'
     end
   end
 
   def edit
-    @job = Job.find(params[:id])
+    @job = current_user.company.jobs.find(params[:id])
   end
 
   def update
-    @job = Job.find(params[:id])
+    @job = current_user.company.jobs.find(params[:id])
     if @job.update_attributes(params[:job])
-      flash[:notice] = "Successfully updated job."
+      flash[:notice] = "更新工作成功。"
       redirect_to company_job_path(@job)
     else
       render :action => 'edit'
@@ -37,7 +37,7 @@ class Company::JobsController < Company::BaseController
   end
 
   def destroy
-    @job = Job.find(params[:id])
+    @job = current_user.company.jobs.find(params[:id])
     @job.destroy
     flash[:notice] = "Successfully destroyed job."
     redirect_to company_jobs_path
