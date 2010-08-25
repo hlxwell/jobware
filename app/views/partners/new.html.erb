@@ -1,5 +1,27 @@
-<% title "New Partner" %>
+<% title "合作站加入" %>
 
-<%= render 'form' %>
+<div class="main" id="main-two-columns-right-sidebar">
+  <div class="right sidebar" id="sidebar-1">
+    注意事项
+  </div>
 
-<p><%= link_to "Back to List", partners_path %></p>
+  <div class="left" id="main-left">
+    <%= jobware_form_for @partner, :url => partner_path, :title => "合作站注册", :use_fieldset => false do |f| %>
+
+      <%= field_set_tag "合作站信息", :class => 'big' do %>
+        <%= render :partial => 'form', :locals => { :f => f } %>
+      <% end %>
+
+      <%= field_set_tag "登陆帐号", :class => 'big' do %>
+        <%= f.fields_for :user do |user_form| %>
+          <%= render :partial => "users/form", :locals => {:f => user_form} %>
+        <% end %>
+      <% end %>
+
+      <%= f.submit "提交", :class => "right button" %>
+    <% end %>
+
+  </div>
+
+  <div class="clearer">&nbsp;</div>
+</div>

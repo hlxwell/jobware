@@ -1,0 +1,15 @@
+<% title "新建简历" %>
+
+<div class="main" id="main-two-columns-right-sidebar">
+  <div class="right sidebar" id="sidebar-1">
+    注意事项
+  </div>
+
+  <div class="left" id="main-left">
+    <%= jobware_form_for @resume, :url => jobseeker_resume_path, :use_fieldset => false do |f| %>
+      <%= render "form", :locals => {:f => f} %>
+    <% end %>
+  </div>
+
+  <div class="clearer">&nbsp;</div>
+</div>

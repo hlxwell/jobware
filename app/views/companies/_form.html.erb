@@ -2,26 +2,17 @@
   $(function(){ $.each($(".city_selector"), function(i, n){ $(n).CitySelector(); }); })
 </script>
 
-<%= field_set_tag "公司信息", :class => 'big' do %>
-  <%= f.error_messages :class => "error" %>
-  <%= f.text_field :name, :label => "公司名", :class => "text w600" %>
-  <%= f.select :type, CompanyType.to_a, {:include_blank => true}, {:label => "性质"} %>
-  <%= f.select :size, CompanySize.to_a, {:include_blank => true}, {:label => "规模"} %>
-  <span class="city_selector">
-    <%= f.select :province, [], {}, {:label => "省", :class => "province"} %>
-    <%= f.select :city, [], {}, {:label => "市", :class => "city"} %>
-  </span>
-  <%= f.text_field :address, :label => "地址", :class => "text w600" %>
-  <%= f.text_field :homepage, :label => "网址", :class => "text w600" %>
-  <%= f.text_field :contact_name, :label => "联系人", :class => "text w600" %>
-  <%= f.text_field :phone_number, :label => "联系电话", :class => "text w600" %>
-  <%= f.text_area :desc, :label => "公司简介", :class => "text w600", :rows => 10 %>
-<% end %>
-
-<%= field_set_tag "公司信息", :class => 'big' do %>
-  <%= f.fields_for :user do |user_form| %>
-    <%= render :partial => "users/form", :locals => {:f => user_form} %>
-  <% end %>
-<% end %>
-
+<%= f.error_messages %>
+<%= f.text_field :name, :label => "公司名", :class => "text w600" %>
+<%= f.select :type, CompanyType.to_a, {:include_blank => true}, {:label => "性质"} %>
+<%= f.select :size, CompanySize.to_a, {:include_blank => true}, {:label => "规模"} %>
+<span class="city_selector">
+  <%= f.select :province, [], {}, {:label => "省", :class => "province"} %>
+  <%= f.select :city, [], {}, {:label => "市", :class => "city"} %>
+</span>
+<%= f.text_field :address, :label => "地址", :class => "text w600" %>
+<%= f.text_field :homepage, :label => "网址", :class => "text w600" %>
+<%= f.text_field :contact_name, :label => "联系人", :class => "text w600" %>
+<%= f.text_field :phone_number, :label => "联系电话", :class => "text w600" %>
+<%= f.text_area :desc, :label => "公司简介", :class => "text w600", :rows => 10 %>
 <%= f.check_box :accept_terms, :label => "同意条款", :hint => raw("<a href='#'>查看条款</a>"), :required => true, :type => 'agree_term' %>

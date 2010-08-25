@@ -1,32 +1,8 @@
-<%= form_for @partner do |f| %>
-  <%= f.error_messages %>
-  <p>
-    <%= f.label :user_id %><br />
-    <%= f.text_field :user_id %>
-  </p>
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :url %><br />
-    <%= f.text_field :url %>
-  </p>
-  <p>
-    <%= f.label :contact_name %><br />
-    <%= f.text_field :contact_name %>
-  </p>
-  <p>
-    <%= f.label :phone_number %><br />
-    <%= f.text_field :phone_number %>
-  </p>
-  <p>
-    <%= f.label :site_size %><br />
-    <%= f.text_field :site_size %>
-  </p>
-  <p>
-    <%= f.label :desc %><br />
-    <%= f.text_area :desc %>
-  </p>
-  <p><%= f.submit %></p>
-<% end %>
+<%= f.error_messages %>
+<%= f.text_field :name, :label => "网站名", :class => "text w600" %>
+<%= f.text_field :url, :label => "网站地址", :class => "text w600" %>
+<%= f.select :site_size, SiteSize.to_a, {:include_blank => true}, { :label => "网站流量" } %>
+<%= f.text_field :contact_name, :label => "联系人", :class => "text w600" %>
+<%= f.text_field :phone_number, :label => "联系电话", :class => "text w600" %>
+<%= f.cktext_area(:desc, :height => '200px', :toolbar=>'Basic', :skin => "v2", :label => "网站描述") %>
+<%= f.check_box :accept_terms, :label => "同意协议", :required => true, :type => 'agree_term', :hint => raw("<a href='#'>查看条款</a>") %>

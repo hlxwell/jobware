@@ -1,0 +1,16 @@
+<%= form_for @certification do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :resume_id %><br />
+    <%= f.text_field :resume_id %>
+  </p>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :get_at %><br />
+    <%= f.datetime_select :get_at %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>

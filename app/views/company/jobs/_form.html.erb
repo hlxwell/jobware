@@ -2,7 +2,7 @@
   $(function(){ $.each($(".city_selector"), function(i, n){ $(n).CitySelector(); }); })
 </script>
 
-<%= f.error_messages :class => "error" %>
+<%= f.error_messages %>
 <%= f.text_field :name, :label => "名称", :class => "text w600" %>
 <span class="city_selector">
   <%= f.select :location_province, [], {}, {:label => "所在省", :class => "province"} %>
@@ -16,4 +16,3 @@
 <%= f.cktext_area(:requirement, :height => '200px', :toolbar=>'Basic', :skin => "v2", :label => "岗位需求") %>
 <%= f.cktext_area(:welfare, :height => '200px', :toolbar=>'Basic', :skin => "v2", :label => "福利待遇") %>
 <%= f.cktext_area(:desc, :height => '200px', :toolbar=>'Basic', :skin => "v2", :label => "其他描述") %>
-<%= f.check_box :accept_terms, :label => "同意协议", :required => true, :type => 'agree_term', :hint => raw("<a href='#'>查看条款</a>") %>

@@ -10,7 +10,27 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100825034512) do
+ActiveRecord::Schema.define(:version => 20100825104754) do
+
+  create_table "ad_positions", :force => true do |t|
+    t.string   "name"
+    t.string   "job_list_tags"
+    t.integer  "width"
+    t.integer  "height"
+    t.integer  "type"
+    t.integer  "style"
+    t.integer  "partner_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "certifications", :force => true do |t|
+    t.integer  "resume_id"
+    t.string   "name"
+    t.datetime "get_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "ckeditor_assets", :force => true do |t|
     t.string   "data_file_name",                                 :null => false
@@ -46,6 +66,14 @@ ActiveRecord::Schema.define(:version => 20100825034512) do
     t.datetime "updated_at"
   end
 
+  create_table "cover_letters", :force => true do |t|
+    t.integer  "resume_id"
+    t.string   "name"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "jobs", :force => true do |t|
     t.string   "name"
     t.string   "location_province"
@@ -67,6 +95,14 @@ ActiveRecord::Schema.define(:version => 20100825034512) do
     t.integer  "company_id"
   end
 
+  create_table "languages", :force => true do |t|
+    t.integer  "resume_id"
+    t.string   "type"
+    t.string   "level"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "partners", :force => true do |t|
     t.integer  "user_id"
     t.string   "name"
@@ -75,6 +111,18 @@ ActiveRecord::Schema.define(:version => 20100825034512) do
     t.string   "phone_number"
     t.integer  "site_size"
     t.text     "desc"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "previous_jobs", :force => true do |t|
+    t.integer  "resume_id"
+    t.string   "company_name"
+    t.integer  "company_type"
+    t.integer  "company_size"
+    t.string   "job_title"
+    t.datetime "start_at"
+    t.datetime "end_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -103,6 +151,42 @@ ActiveRecord::Schema.define(:version => 20100825034512) do
     t.integer  "icon_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "portrait_file_name"
+    t.string   "portrait_content_type"
+    t.integer  "portrait_file_size"
+    t.datetime "portrait_updated_at"
+  end
+
+  create_table "schools", :force => true do |t|
+    t.integer  "resume_id"
+    t.string   "name"
+    t.string   "major"
+    t.datetime "start_at"
+    t.datetime "end_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "skills", :force => true do |t|
+    t.integer  "resume_id"
+    t.string   "name"
+    t.string   "level"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "titled_images", :force => true do |t|
+    t.string   "type"
+    t.integer  "parent_id"
+    t.string   "parent_type"
+    t.string   "name"
+    t.text     "desc"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
   end
 
   create_table "users", :force => true do |t|

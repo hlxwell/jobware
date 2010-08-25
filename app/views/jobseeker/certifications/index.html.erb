@@ -1,0 +1,21 @@
+<% title "Jobseeker/Certifications" %>
+
+<table>
+  <tr>
+    <th>Resume</th>
+    <th>Name</th>
+    <th>Get At</th>
+  </tr>
+  <% for certification in @certifications %>
+    <tr>
+      <td><%= certification.resume_id %></td>
+      <td><%= certification.name %></td>
+      <td><%= certification.get_at %></td>
+      <td><%= link_to "Show", certification %></td>
+      <td><%= link_to "Edit", edit_certification_path(certification) %></td>
+      <td><%= link_to "Destroy", certification, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Jobseeker/Certification", new_certification_path %></p>

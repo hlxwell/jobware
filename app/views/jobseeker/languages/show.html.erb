@@ -1,0 +1,20 @@
+<% title "Jobseeker/Language" %>
+
+<p>
+  <strong>Resume:</strong>
+  <%= @language.resume_id %>
+</p>
+<p>
+  <strong>Type:</strong>
+  <%= @language.type %>
+</p>
+<p>
+  <strong>Level:</strong>
+  <%= @language.level %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_language_path(@language) %> |
+  <%= link_to "Destroy", @language, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", languages_path %>
+</p>

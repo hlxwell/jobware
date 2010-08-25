@@ -41,7 +41,7 @@ module Authentication
   def no_login_required
     if logged_in?
       store_target_location
-      flash[:notice] = "You must be logged out to access this page"
+      flash[:notice] = "你必需退出才能访问该页面。"
       redirect_to root_path
     end
   end
@@ -49,7 +49,7 @@ module Authentication
   def login_required
     unless logged_in?
       store_target_location
-      flash[:error] = "You must first log in or sign up before accessing this page."
+      flash[:error] = "你必需登陆才能访问该页面."
       redirect_to login_path
     end
   end

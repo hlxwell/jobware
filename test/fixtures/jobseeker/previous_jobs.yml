@@ -1,0 +1,17 @@
+one:
+  resume_id: 1
+  company_name: MyString
+  company_type: 1
+  company_size: 1
+  job_title: MyString
+  start_at: 2010-08-25 17:49:35
+  end_at: 2010-08-25 17:49:35
+
+two:
+  resume_id: 1
+  company_name: MyString
+  company_type: 1
+  company_size: 1
+  job_title: MyString
+  start_at: 2010-08-25 17:49:35
+  end_at: 2010-08-25 17:49:35

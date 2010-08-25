@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20100824092136
+# Schema version: 20100825034512
 #
 # Table name: jobs
 #
@@ -21,18 +21,16 @@
 #  end_at             :datetime
 #  created_at         :datetime
 #  updated_at         :datetime
+#  company_id         :integer(4)
 #
 
 class Job < ActiveRecord::Base
-  attr_accessor :accept_terms
-
   has_enumeration_for :category, :with => JobCategory
   has_enumeration_for :contract_type, :with => ContractType
 
   belongs_to :company
 
   validates_presence_of :company_id, :name, :location_province, :location_city, :contract_type, :category, :vacancy, :content, :requirement
-  validates_acceptance_of :accept_terms, :accept => "1", :message => "你必需接受服务条款"
 
   def location
     self.location_province + self.location_city

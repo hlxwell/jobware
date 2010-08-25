@@ -1,5 +1,6 @@
 Jobware::Application.routes.draw do
-  get "company/dashboard"
+
+  resources :"projects"
 
   ### auth stuff
   match "/login" => "sessions#new", :as => :login
@@ -27,18 +28,17 @@ Jobware::Application.routes.draw do
   # end
 
   resources :companies do
-    # resources :jobs do
-    #   post :star
-    # end
+    resources :jobs do
+      post :star
+    end
   end
 
   ### dashboard rewrite
-  match "/jobseeker" => "jobseeker/resume#dashboard", :as => :jobseeker_dashboard
-  match "/company" => "company#dashboard", :as => :company_dashboard
-  match "/partner" => "partner#dashboard", :as => :partner_dashboard
+  match "/dashboard" => "dashboard#jobseeker", :as => :jobseeker_dashboard
+  match "/company/dashboard" => "dashboard#company", :as => :company_dashboard
+  match "/partner/dashboard" => "dashboard#partner", :as => :partner_dashboard
 
   ### company section
-  resource :company
   namespace :company do
     resources :jobs
     # resources :job_applications
@@ -54,21 +54,20 @@ Jobware::Application.routes.draw do
   end
 
   ### job seeker section
-  resource :jobseeker, :controller => "jobseeker/resume"
   namespace :jobseeker do
   #   resources :job_applications
   #   resources :starred_jobs
   #   resource :subscription
   #
-  #   resource :resume do
-  #     resources :previous_jobs
-  #     resources :schools
-  #     resources :projects
-  #     resources :skills
-  #     resources :certifications
-  #     resources :languages
-  #     resources :cover_letters
-  #   end
+    resource :resume do
+      resources :previous_jobs
+      resources :schools
+      resources :projects
+      resources :skills
+      resources :certifications
+      resources :languages
+      resources :cover_letters
+    end
   #
   #   resources :services do
   #     member do
@@ -80,7 +79,7 @@ Jobware::Application.routes.draw do
   ### partner section
   resource :partner
   namespace :partner do
-    # resources :ad_positions
+    resources :ad_positions
     # resources :revenues
     # revenuess :counters
   end

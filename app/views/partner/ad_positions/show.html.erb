@@ -1,0 +1,36 @@
+<% title "Partner/Ad Position" %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @partner/ad_position.name %>
+</p>
+<p>
+  <strong>Job List Tags:</strong>
+  <%= @partner/ad_position.job_list_tags %>
+</p>
+<p>
+  <strong>Width:</strong>
+  <%= @partner/ad_position.width %>
+</p>
+<p>
+  <strong>Height:</strong>
+  <%= @partner/ad_position.height %>
+</p>
+<p>
+  <strong>Type:</strong>
+  <%= @partner/ad_position.type %>
+</p>
+<p>
+  <strong>Style:</strong>
+  <%= @partner/ad_position.style %>
+</p>
+<p>
+  <strong>Partner:</strong>
+  <%= @partner/ad_position.partner_id %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_partner/ad_position_path(@partner/ad_position) %> |
+  <%= link_to "Destroy", @partner/ad_position, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", partner/ad_positions_path %>
+</p>

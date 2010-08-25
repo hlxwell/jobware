@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20100824092136
+# Schema version: 20100825034512
 #
 # Table name: jobs
 #
@@ -21,6 +21,7 @@
 #  end_at             :datetime
 #  created_at         :datetime
 #  updated_at         :datetime
+#  company_id         :integer(4)
 #
 
 one:

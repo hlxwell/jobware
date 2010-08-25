@@ -1,0 +1,29 @@
+<% title "Partner/Ad Positions" %>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Job List Tags</th>
+    <th>Width</th>
+    <th>Height</th>
+    <th>Type</th>
+    <th>Style</th>
+    <th>Partner</th>
+  </tr>
+  <% for partner/ad_position in @partner/ad_positions %>
+    <tr>
+      <td><%= partner/ad_position.name %></td>
+      <td><%= partner/ad_position.job_list_tags %></td>
+      <td><%= partner/ad_position.width %></td>
+      <td><%= partner/ad_position.height %></td>
+      <td><%= partner/ad_position.type %></td>
+      <td><%= partner/ad_position.style %></td>
+      <td><%= partner/ad_position.partner_id %></td>
+      <td><%= link_to "Show", partner/ad_position %></td>
+      <td><%= link_to "Edit", edit_partner/ad_position_path(partner/ad_position) %></td>
+      <td><%= link_to "Destroy", partner/ad_position, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Partner/Ad Position", new_partner/ad_position_path %></p>

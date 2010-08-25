@@ -1,0 +1,28 @@
+<% title "Jobseeker/School" %>
+
+<p>
+  <strong>Resume:</strong>
+  <%= @school.resume_id %>
+</p>
+<p>
+  <strong>Name:</strong>
+  <%= @school.name %>
+</p>
+<p>
+  <strong>Major:</strong>
+  <%= @school.major %>
+</p>
+<p>
+  <strong>Start At:</strong>
+  <%= @school.start_at %>
+</p>
+<p>
+  <strong>End At:</strong>
+  <%= @school.end_at %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_school_path(@school) %> |
+  <%= link_to "Destroy", @school, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", schools_path %>
+</p>

@@ -7,7 +7,15 @@
 
   <div class="left" id="main-left">
     <%= jobware_form_for @company, :use_fieldset => false do |f| %>
-      <%= render :partial => 'form', :locals => { :f => f } %>
+      <%= field_set_tag "公司信息", :class => 'big' do %>
+        <%= render :partial => 'form', :locals => { :f => f } %>
+      <% end %>
+
+      <%= field_set_tag "登陆帐号", :class => 'big' do %>
+        <%= f.fields_for :user do |user_form| %>
+          <%= render :partial => "users/form", :locals => {:f => user_form} %>
+        <% end %>
+      <% end %>
       <%= f.submit "提交", :class => "right button" %>
     <% end %>
   </div>

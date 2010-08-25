@@ -1,0 +1,32 @@
+<%= form_for @partner/ad_position do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :job_list_tags %><br />
+    <%= f.text_field :job_list_tags %>
+  </p>
+  <p>
+    <%= f.label :width %><br />
+    <%= f.text_field :width %>
+  </p>
+  <p>
+    <%= f.label :height %><br />
+    <%= f.text_field :height %>
+  </p>
+  <p>
+    <%= f.label :type %><br />
+    <%= f.text_field :type %>
+  </p>
+  <p>
+    <%= f.label :style %><br />
+    <%= f.text_field :style %>
+  </p>
+  <p>
+    <%= f.label :partner_id %><br />
+    <%= f.text_field :partner_id %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>

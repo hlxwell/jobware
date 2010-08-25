@@ -30,5 +30,21 @@
 #
 
 class Resume < ActiveRecord::Base
-  # attr_accessible :user_id, :name, :gender, :working_years, :degree, :major, :birthday, :hometown_province, :hometown_city, :current_residence_province, :current_residence_city, :email, :phone_number, :expected_salary, :expected_positions, :expected_job_location, :current_working_state, :highlight_start_at, :highlight_end_at, :is_sending_sms, :icon_type
+  belongs_to :user
+  # has_many :starred_resumes
+
+  has_many :projects, :as => :has_project
+  has_many :skills
+  has_many :schools
+  has_many :previous_jobs
+  has_many :languages
+  has_many :cover_letters
+  has_many :certifications
+
+  # has_many :job_applications
+  # has_many :subscriptions
+  # has_many :starred_jobs
+
+  has_attached_file :file, :styles => { :thumb => "100x100>" }
+  validates_attachment_content_type :file, :content_type => [%r{image/.*jpg}, %r{image/.*jpeg}, %r{image/.*gif}, %r{image/.*png}]
 end

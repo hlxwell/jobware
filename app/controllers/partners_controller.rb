@@ -1,30 +1,13 @@
 class PartnersController < ApplicationController
-  def index
-    @partners = Partner.all
-  end
-  
+
   def show
     @partner = Partner.find(params[:id])
   end
-  
-  def new
-    @partner = Partner.new
-  end
-  
-  def create
-    @partner = Partner.new(params[:partner])
-    if @partner.save
-      flash[:notice] = "Successfully created partner."
-      redirect_to @partner
-    else
-      render :action => 'new'
-    end
-  end
-  
+
   def edit
     @partner = Partner.find(params[:id])
   end
-  
+
   def update
     @partner = Partner.find(params[:id])
     if @partner.update_attributes(params[:partner])
@@ -34,11 +17,21 @@ class PartnersController < ApplicationController
       render :action => 'edit'
     end
   end
-  
-  def destroy
-    @partner = Partner.find(params[:id])
-    @partner.destroy
-    flash[:notice] = "Successfully destroyed partner."
-    redirect_to partners_url
+
+  def new
+    @partner = Partner.new
+    @partner.build_user
+  end
+
+  def create
+    @partner = Partner.new(params[:partner])
+    @partner.build_user(params[:partner][:user_attributes])
+
+    if @partner.save
+      flash[:notice] = "合作者创建成功。"
+      redirect_to partner_dashboard_path
+    else
+      render :action => 'new'
+    end
   end
 end

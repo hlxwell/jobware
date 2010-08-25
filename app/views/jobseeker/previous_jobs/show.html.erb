@@ -1,0 +1,36 @@
+<% title "Jobseeker/Previous Job" %>
+
+<p>
+  <strong>Resume:</strong>
+  <%= @previous_job.resume_id %>
+</p>
+<p>
+  <strong>Company Name:</strong>
+  <%= @previous_job.company_name %>
+</p>
+<p>
+  <strong>Company Type:</strong>
+  <%= @previous_job.company_type %>
+</p>
+<p>
+  <strong>Company Size:</strong>
+  <%= @previous_job.company_size %>
+</p>
+<p>
+  <strong>Job Title:</strong>
+  <%= @previous_job.job_title %>
+</p>
+<p>
+  <strong>Start At:</strong>
+  <%= @previous_job.start_at %>
+</p>
+<p>
+  <strong>End At:</strong>
+  <%= @previous_job.end_at %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_previous_job_path(@previous_job) %> |
+  <%= link_to "Destroy", @previous_job, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", previous_jobs_path %>
+</p>

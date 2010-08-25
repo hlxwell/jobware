@@ -16,5 +16,11 @@
 #
 
 class Partner < ActiveRecord::Base
-  # attr_accessible :user_id, :name, :url, :contact_name, :phone_number, :site_size, :desc
+  attr_accessor :accept_terms
+
+  belongs_to :user
+  accepts_nested_attributes_for :user
+
+  validates_presence_of :name, :url, :contact_name, :phone_number, :site_size, :desc
+  validates_acceptance_of :accept_terms, :accept => "1", :message => "你必需接受服务条款"
 end

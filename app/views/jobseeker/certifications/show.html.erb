@@ -1,0 +1,20 @@
+<% title "Jobseeker/Certification" %>
+
+<p>
+  <strong>Resume:</strong>
+  <%= @certification.resume_id %>
+</p>
+<p>
+  <strong>Name:</strong>
+  <%= @certification.name %>
+</p>
+<p>
+  <strong>Get At:</strong>
+  <%= @certification.get_at %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_certification_path(@certification) %> |
+  <%= link_to "Destroy", @certification, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", certifications_path %>
+</p>
