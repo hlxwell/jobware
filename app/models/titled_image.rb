@@ -18,8 +18,11 @@
 #
 
 class TitledImage < ActiveRecord::Base
-  belongs_to :imageable, :polymorphic => true
+  belongs_to :parent, :polymorphic => true
 
-  has_attached_file :file, :styles => { :thumb => "100x100>" }
-  validates_attachment_content_type :file, :content_type => [%r{image/.*jpg}, %r{image/.*jpeg}, %r{image/.*gif}, %r{image/.*png}]
+  validates_presence_of :name
+
+  has_attached_file :file, :styles => { :thumb => "150x150>" }, :default_style => :thumb
+  validates_attachment_content_type :file, :content_type => [%r{image/.*jpg}, %r{image/.*jpeg}, %r{image/.*gif}, %r{image/.*png}], :if => lambda {|obj| obj.file.size.present? }
+  validates_attachment_size :file, :less_than => 1.megabytes
 end

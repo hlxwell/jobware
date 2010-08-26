@@ -1,16 +1,6 @@
-<%= form_for @cover_letter do |f| %>
+<fieldset>
   <%= f.error_messages %>
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :content %><br />
-    <%= f.text_area :content %>
-  </p>
-  <p>
-    <%= f.label :resume_id %><br />
-    <%= f.text_field :resume_id %>
-  </p>
-  <p><%= f.submit %></p>
-<% end %>
+  <%= f.text_field :name, :label => "名字", :class => "text w580" %>
+  <%= f.cktext_area(:content, :height => '200px', :toolbar=>'Basic', :skin => "v2", :label => "内容") %>  
+  <%= f.link_to_remove_fields "删除" %>
+</fieldset>

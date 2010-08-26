@@ -1,19 +1,16 @@
 class Jobseeker::ResumesController < Jobseeker::BaseController
   before_filter :jobseeker_login_required, :except => [:new, :create]
+  before_filter :get_resume, :only => [:show, :edit, :update]
 
   def show
-    @resume = Resume.find(params[:id])
   end
 
   def edit
-    @resume = Resume.find(params[:id])
   end
 
   def update
-    @resume = Resume.find(params[:id])
     if @resume.update_attributes(params[:resume])
-      flash[:notice] = "Successfully updated resume."
-      redirect_to @resume
+      redirect_to jobseeker_resume_path, :notice => "简历更新成功。"
     else
       render :action => 'edit'
     end
@@ -22,16 +19,25 @@ class Jobseeker::ResumesController < Jobseeker::BaseController
   #### signup
   def new
     @resume = Resume.new
+    @resume.build_user
+    ["languages", "previous_jobs", "certifications", "cover_letters", "projects", "schools", "skills"].each do |association|
+      @resume.send("#{association}").build
+    end
     render :layout => "application"
   end
 
   def create
     @resume = Resume.new(params[:resume])
     if @resume.save
-      flash[:notice] = "Successfully created resume."
-      redirect_to @resume
+      redirect_to root_path, :notice => "简历创建成功。"
     else
-      render :action => 'new'
+      render :action => 'new', :layout => "application"
     end
+  end
+
+  private
+
+  def get_resume
+    @resume = current_user.jobseeker
   end
 end

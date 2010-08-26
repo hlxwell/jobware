@@ -14,7 +14,6 @@ class CompaniesController < ApplicationController
 
   def create
     @company = Company.new(params[:company])
-    @company.build_user(params[:company][:user_attributes])
 
     if @company.save
       flash[:notice] = "公司创建成功。"

@@ -1,0 +1,76 @@
+<div class="post">
+  <div class="post-title"><h2>我的简历</h2></div>
+</div>
+<div class="content-separator-quite"></div>
+
+<div class="post">
+  <table class="data-table top-vlign">
+		<tr>
+			<th width="20%">姓名</th>
+			<td width="30%"><%= @resume.name %></td>
+  		<th width="20%" rowspan="4">个人照片</th>
+  		<td width="30%" rowspan="4"><%= image_tag @resume.portrait_path %></td>
+		</tr>
+		<tr>
+			<th>性别</th>
+			<td><%= @resume.gender_humanize %></td>
+		</tr>
+		<tr>
+			<th>出生年月</th>
+			<td><%= @resume.birthday %></td>
+		</tr>
+		<tr>
+		  <th>最高学历</th>
+			<td><%= @resume.degree %></td>
+		</tr>
+		<tr>
+		  <th>工作年限</th>
+			<td><%= @resume.working_years %></td>
+			<th>专业</th>
+			<td><%= @resume.major %></td>
+		</tr>
+		<tr>
+			<th>户口所在地</th>
+			<td><%= @resume.hometown %></td>
+			<th>期待薪资</th>
+			<td><%= @resume.expected_salary %></td>
+		</tr>
+		<tr>
+			<th>现所在城市</th>
+			<td><%= @resume.current_residence %></td>
+			<th>希望工作的地点</th>
+			<td><%= @resume.expected_job_location %></td>
+		</tr>
+		<tr>
+			<th>邮箱</th>
+			<td><%= @resume.email %></td>
+			<th>希望应聘的岗位</th>
+			<td><%= @resume.expected_positions %></td>
+		</tr>
+		<tr>
+			<th>联系电话</th>
+			<td><%= @resume.phone_number %></td>
+			<th>求职状态</th>
+			<td><%= @resume.current_working_state_humanize %></td>
+		</tr>
+	</table>
+</div>
+
+<% {
+  :previous_jobs => "工作经历",
+  :schools => "教育经历",
+  :projects => "项目经验",
+  :skills => "技能",
+  :certifications => "证书",
+  :languages => "语言能力",
+  :cover_letters => "求职信"
+  }.each do |key, value|
+  next if @resume.send(key).blank? %>
+  <div class="post">
+    <div class="post-title"><h4><%= value %></h4></div>
+  </div>
+  <div class="content-separator-quite"></div>
+  <%= render :partial => "jobseeker/#{key}/item", :collection => @resume.send(key) %>
+  <div class="clearer">&nbsp;</div>
+  <br>
+<% end %>

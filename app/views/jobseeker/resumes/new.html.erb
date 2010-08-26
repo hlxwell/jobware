@@ -6,8 +6,15 @@
   </div>
 
   <div class="left" id="main-left">
-    <%= jobware_form_for @resume, :url => jobseeker_resume_path, :use_fieldset => false do |f| %>
-      <%= render "form", :locals => {:f => f} %>
+    <%= jobware_form_for @resume, :url => jobseeker_resume_path, :use_fieldset => false, :html => { :multipart => true } do |f| %>
+      <%= render :partial => "form", :locals => {:f => f} %>
+
+      <%= field_set_tag "登陆帐号", :class => 'big' do %>
+        <%= f.fields_for :user do |user_form| %>
+          <%= render :partial => "users/form", :locals => {:f => user_form} %>
+        <% end %>
+      <% end %>
+      <%= f.submit "创建简历", :class => "button right" %>
     <% end %>
   </div>
 

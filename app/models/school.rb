@@ -14,5 +14,6 @@
 #
 
 class School < ActiveRecord::Base
-  attr_accessible :resume_id, :name, :major, :start_at, :end_at
+  belongs_to :resume
+  validates_presence_of :name, :major, :start_at, :end_at
 end

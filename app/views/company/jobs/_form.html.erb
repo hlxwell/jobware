@@ -1,13 +1,6 @@
-<script>
-  $(function(){ $.each($(".city_selector"), function(i, n){ $(n).CitySelector(); }); })
-</script>
-
 <%= f.error_messages %>
 <%= f.text_field :name, :label => "名称", :class => "text w600" %>
-<span class="city_selector">
-  <%= f.select :location_province, [], {}, {:label => "所在省", :class => "province"} %>
-  <%= f.select :location_city, [], {}, {:label => "所在市", :class => "city"} %>
-</span>
+<%= f.city_select :location_province, :location_city, :label => "工作所在地" %>
 <%= f.text_field :vacancy, :label => "岗位数", :class => "text w600" %>
 <%= f.select :contract_type, ContractType.to_a, {:include_blank => true}, { :label => "工作类型" } %>
 <%= f.select :category, JobCategory.to_a, {:include_blank => true}, {:label => "类别"} %>

@@ -18,5 +18,5 @@
 #
 
 class Project < TitledImage
-  belongs_to :has_project, :polymorphic => true
+  # belongs_to :has_project, :polymorphic => true
 end

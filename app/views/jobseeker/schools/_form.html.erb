@@ -1,24 +1,8 @@
-<%= form_for @school do |f| %>
+<fieldset>
   <%= f.error_messages %>
-  <p>
-    <%= f.label :resume_id %><br />
-    <%= f.text_field :resume_id %>
-  </p>
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :major %><br />
-    <%= f.text_field :major %>
-  </p>
-  <p>
-    <%= f.label :start_at %><br />
-    <%= f.datetime_select :start_at %>
-  </p>
-  <p>
-    <%= f.label :end_at %><br />
-    <%= f.datetime_select :end_at %>
-  </p>
-  <p><%= f.submit %></p>
-<% end %>
+  <%= f.text_field :name, :label => "学校", :class => "text w580" %>
+  <%= f.text_field :start_at, :label => "入学时间", :class => "text w580" %>
+  <%= f.text_field :end_at, :label => "毕业时间", :class => "text w580" %>
+  <%= f.text_field :major, :label => "专业", :class => "text w580" %>
+  <%= f.link_to_remove_fields "删除" %>
+</fieldset>

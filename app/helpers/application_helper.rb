@@ -1,5 +1,12 @@
 module ApplicationHelper
 
+  #### set "title"
+  def title(page_title, show_title = true)
+    @content_for_title = page_title.to_s
+    @show_title = show_title
+  end
+
+  ### forcing use jobware form builder
   def jobware_form_for(*args, &block)
     options = args.extract_options!.merge(:builder => JobwareFormBuilder)
 
@@ -8,11 +15,6 @@ module ApplicationHelper
     else
       form_for(*(args + [options]), &block)
     end
-  end
-
-  def title(page_title, show_title = true)
-    @content_for_title = page_title.to_s
-    @show_title = show_title
   end
 
   def render_message
@@ -25,7 +27,7 @@ module ApplicationHelper
     end
   end
 
-
+  ### nav helper method
   def in_section?(name)
     case name
     when "jobseeker"

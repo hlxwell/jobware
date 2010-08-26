@@ -1,19 +1,6 @@
-<div class="main" id="main-two-columns">
+<% title "简历管理" %>
 
-  <!-- ### main content -->
-  <div class="right" id="main-right">
-    <div class="post">
-      <div class="post-title"><h2><a href="#">填写简历</a></h2></div>
-    </div>
-    <div class="content-separator-quite"></div>
-
-    <div class="post">
-      <%= jobware_form_for @resume, :url => jobseeker_resume_path(@resume) do |f| %>
-        <%= render "form", :locals => {:f => f} %>
-      <% end %>
-    </div>
-  </div>
-
-  <!-- ### left side menu part -->
-  <%= render "shared/jobseeker_menu" %>
-</div>
+<%= jobware_form_for @resume, :url => jobseeker_resume_path, :use_fieldset => false, :html => { :multipart => true } do |f| %>
+  <%= render :partial => "form", :locals => {:f => f} %>
+  <%= f.submit "更新简历", :class => "button right" %>
+<% end %>

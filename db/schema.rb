@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100825104754) do
+ActiveRecord::Schema.define(:version => 20100826084313) do
 
   create_table "ad_positions", :force => true do |t|
     t.string   "name"
@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(:version => 20100825104754) do
   create_table "companies", :force => true do |t|
     t.integer  "user_id"
     t.string   "name"
-    t.string   "type"
+    t.integer  "company_type"
     t.integer  "size"
     t.string   "province"
     t.string   "city"
@@ -97,7 +97,7 @@ ActiveRecord::Schema.define(:version => 20100825104754) do
 
   create_table "languages", :force => true do |t|
     t.integer  "resume_id"
-    t.string   "type"
+    t.string   "name"
     t.string   "level"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -130,7 +130,7 @@ ActiveRecord::Schema.define(:version => 20100825104754) do
   create_table "resumes", :force => true do |t|
     t.integer  "user_id"
     t.string   "name"
-    t.string   "gender"
+    t.integer  "gender"
     t.integer  "working_years"
     t.string   "degree"
     t.string   "major"

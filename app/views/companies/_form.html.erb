@@ -1,15 +1,8 @@
-<script>
-  $(function(){ $.each($(".city_selector"), function(i, n){ $(n).CitySelector(); }); })
-</script>
-
 <%= f.error_messages %>
 <%= f.text_field :name, :label => "公司名", :class => "text w600" %>
-<%= f.select :type, CompanyType.to_a, {:include_blank => true}, {:label => "性质"} %>
+<%= f.select :company_type, CompanyType.to_a, {:include_blank => true}, {:label => "性质"} %>
 <%= f.select :size, CompanySize.to_a, {:include_blank => true}, {:label => "规模"} %>
-<span class="city_selector">
-  <%= f.select :province, [], {}, {:label => "省", :class => "province"} %>
-  <%= f.select :city, [], {}, {:label => "市", :class => "city"} %>
-</span>
+<%= f.city_select :province, :city, :label => "所在地" %>
 <%= f.text_field :address, :label => "地址", :class => "text w600" %>
 <%= f.text_field :homepage, :label => "网址", :class => "text w600" %>
 <%= f.text_field :contact_name, :label => "联系人", :class => "text w600" %>

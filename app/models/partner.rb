@@ -16,6 +16,8 @@
 #
 
 class Partner < ActiveRecord::Base
+  has_enumeration_for :site_size, :with => SiteSize
+
   attr_accessor :accept_terms
 
   belongs_to :user

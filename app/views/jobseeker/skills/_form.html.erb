@@ -1,16 +1,10 @@
-<%= form_for @skill do |f| %>
+<fieldset>
   <%= f.error_messages %>
-  <p>
-    <%= f.label :resume_id %><br />
-    <%= f.text_field :resume_id %>
-  </p>
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :level %><br />
-    <%= f.text_field :level %>
-  </p>
-  <p><%= f.submit %></p>
-<% end %>
+  <div class="left" class="w280 h450">
+    <%= f.text_field :name, :label => "语言或者工具", :class => "text w280" %>
+  </div>
+  <div class="left" class="w280 h450" style="margin-left: 10px;">
+    <%= f.text_field :level, :label => "级别", :class => "text w280" %>
+  </div>
+  <%= f.link_to_remove_fields "删除" %>
+</fieldset>

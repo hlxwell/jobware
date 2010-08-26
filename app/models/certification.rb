@@ -12,5 +12,8 @@
 #
 
 class Certification < ActiveRecord::Base
+  belongs_to :resume
   has_one :image, :as => :imageable
+
+  validates_presence_of :name, :get_at
 end

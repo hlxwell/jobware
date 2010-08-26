@@ -30,21 +30,48 @@
 #
 
 class Resume < ActiveRecord::Base
+  has_enumeration_for :gender, :with => Gender
+  has_enumeration_for :current_working_state, :with => WorkingState
+
   belongs_to :user
   # has_many :starred_resumes
 
-  has_many :projects, :as => :has_project
-  has_many :skills
-  has_many :schools
-  has_many :previous_jobs
-  has_many :languages
-  has_many :cover_letters
-  has_many :certifications
+  has_many :projects, :as => :parent, :dependent => :destroy
+  has_many :skills, :dependent => :destroy
+  has_many :schools, :dependent => :destroy
+  has_many :previous_jobs, :dependent => :destroy
+  has_many :languages, :dependent => :destroy
+  has_many :cover_letters, :dependent => :destroy
+  has_many :certifications, :dependent => :destroy
 
   # has_many :job_applications
   # has_many :subscriptions
   # has_many :starred_jobs
 
-  has_attached_file :file, :styles => { :thumb => "100x100>" }
-  validates_attachment_content_type :file, :content_type => [%r{image/.*jpg}, %r{image/.*jpeg}, %r{image/.*gif}, %r{image/.*png}]
+  accepts_nested_attributes_for :user
+  accepts_nested_attributes_for :languages, :previous_jobs, :schools, :certifications, :cover_letters, :projects, :skills, :allow_destroy => true
+
+  has_attached_file :portrait, :styles => { :thumb => "150x150>" }, :default_style => :thumb
+  validates_attachment_content_type :portrait, :content_type => [%r{image/.*jpg}, %r{image/.*jpeg}, %r{image/.*gif}, %r{image/.*png}], :if => lambda {|obj| obj.portrait.size.present? }
+  validates_attachment_size :portrait, :less_than => 1.megabytes
+
+  validates_presence_of :name, :gender, :working_years, :degree, :major, :birthday, :hometown_province, :hometown_city, :current_residence_province, :current_residence_city, :email, :phone_number, :expected_positions, :expected_job_location, :expected_salary, :current_working_state
+
+  def hometown
+    "#{hometown_province} - #{hometown_city}"
+  end
+
+  def current_residence
+    "#{current_residence_province} - #{current_residence_city}"
+  end
+
+  def portrait_path
+    if portrait.size
+      portrait.url
+    elsif gender == Gender::MALE
+      "/images/generic_male.gif"
+    elsif gender == Gender::FEMALE
+      "/images/generic_female.gif"
+    end
+  end
 end

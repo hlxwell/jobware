@@ -1,5 +1,9 @@
 Jobware::Application.routes.draw do
 
+  get "page/home"
+
+  get "page/aboutus"
+
   resources :"projects"
 
   ### auth stuff
@@ -34,7 +38,7 @@ Jobware::Application.routes.draw do
   end
 
   ### dashboard rewrite
-  match "/dashboard" => "dashboard#jobseeker", :as => :jobseeker_dashboard
+  match "/jobseeker/dashboard" => "dashboard#jobseeker", :as => :jobseeker_dashboard
   match "/company/dashboard" => "dashboard#company", :as => :company_dashboard
   match "/partner/dashboard" => "dashboard#partner", :as => :partner_dashboard
 

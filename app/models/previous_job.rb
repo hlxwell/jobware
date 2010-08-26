@@ -16,5 +16,9 @@
 #
 
 class PreviousJob < ActiveRecord::Base
-  attr_accessible :resume_id, :company_name, :company_type, :company_size, :job_title, :start_at, :end_at
+  has_enumeration_for :company_type, :with => CompanyType
+  has_enumeration_for :company_size, :with => CompanySize
+
+  belongs_to :resume
+  validates_presence_of :company_name, :company_type, :company_size, :job_title, :start_at
 end

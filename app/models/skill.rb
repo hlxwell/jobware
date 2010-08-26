@@ -12,5 +12,6 @@
 #
 
 class Skill < ActiveRecord::Base
-  attr_accessible :resume_id, :name, :level
+  belongs_to :resume
+  validates_presence_of :name, :level
 end
