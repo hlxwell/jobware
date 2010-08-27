@@ -42,7 +42,7 @@
 
 <div id="job_application_form"></div>
 <div class="right">
-  <% if current_user.jobseeker.try(:applied_to_job?, job) %>
+  <% if current_user.try(:jobseeker).try(:applied_to_job?, job) %>
     <%= button_to '您已经应聘过了此岗位。', "#", :remote => true, :method => :get, :class => "button largest", :disabled => true %>
   <% else %>
     <%= button_to '应聘此岗位', new_job_job_application_path(job), :remote => true, :method => :get, :class => "button largest", :id => "apply_button" %>

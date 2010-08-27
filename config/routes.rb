@@ -83,9 +83,10 @@ Jobware::Application.routes.draw do
   ### partner section
   resource :partner
   namespace :partner do
-    resources :ad_positions
+    resources :ad_positions do
+      # revenuess :counters
+    end
     # resources :revenues
-    # revenuess :counters
   end
 
   # ### admin section

@@ -29,8 +29,11 @@ private
     define_method("#{key}_login_required") do |*args|
       if not_logged_in? or current_user.send(key).blank?
         store_target_location
-        flash[:error] = "你必须是#{value}才能访问#{value}后台！"
-        redirect_to login_path
+        flash[:error] = "你必须登陆#{value}才能访问继续访问！"
+        respond_to do |format|
+          format.html { redirect_to login_path }
+          format.js { render :text => "$(location).attr('href', '#{login_path}');" }
+        end
       end
     end
 
@@ -38,7 +41,10 @@ private
       if logged_in? and current_user.send(key).present?
         store_target_location
         flash[:error] = "你必须退出#{value}登陆才能够访问该页面！"
-        redirect_to login_path
+        respond_to do |format|
+          format.html { redirect_to login_path }
+          format.js { render :text => "$(location).attr('href', '#{login_path}');" }
+        end
       end
     end
   end
