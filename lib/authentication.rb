@@ -42,7 +42,7 @@ module Authentication
     if logged_in?
       store_target_location
       flash[:notice] = "你必需退出才能访问该页面。"
-      redirect_to root_path
+      redirect_to login_path
     end
   end
 

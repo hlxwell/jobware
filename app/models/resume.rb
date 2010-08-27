@@ -1,12 +1,12 @@
 # == Schema Information
-# Schema version: 20100824092136
+# Schema version: 20100826084313
 #
 # Table name: resumes
 #
 #  id                         :integer(4)      not null, primary key
 #  user_id                    :integer(4)
 #  name                       :string(255)
-#  gender                     :string(255)
+#  gender                     :integer(4)
 #  working_years              :integer(4)
 #  degree                     :string(255)
 #  major                      :string(255)
@@ -27,6 +27,10 @@
 #  icon_type                  :integer(4)
 #  created_at                 :datetime
 #  updated_at                 :datetime
+#  portrait_file_name         :string(255)
+#  portrait_content_type      :string(255)
+#  portrait_file_size         :integer(4)
+#  portrait_updated_at        :datetime
 #
 
 class Resume < ActiveRecord::Base

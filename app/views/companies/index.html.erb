@@ -1,39 +1,10 @@
 <% title "所有公司" %>
 
 <div class="main" id="main-two-columns-right-sidebar">
-
   <!-- ### left main side -->
 	<div class="left" id="main-left">
-	  <% for company in @companies %>
-    <!-- ### highlighted -->
-		<div class="post">
-		  <!-- logo -->
-      <div class="company_logo">
-        <a href="#"><img src="/images/logos/3yen_logo_en.jpg" width="200" alt="" class="aligncenter bordered" /></a>
-      </div>
-
-			<!-- title and company -->
-			<div class="archive-post-title">
-				<h3><%= link_to company.name, company %></h3> 
-				<div class="post-date"><a href="#">java, ecommerce, php, mysql</a></div>
-			</div>
-
-			<!-- address and date -->
-			<div class="archive-post-address">
-				<h3><%= company.province %> - <%= company.city %></h3>
-				<div class="post-date"><%= company.updated_at.to_s_full_cn %></div>
-			</div>
-			<div class="clearer">&nbsp;</div>
-		</div>
-
-		<div class="archive-separator"></div>
-    <% end %>
-
-		<div class="post-meta archive-pagination">
-			<div class="left"><a href="#">&#171; 上一页</a></div>
-			<div class="right"><a href="#">下一页 &#187;</a></div>
-			<div class="clearer">&nbsp;</div>
-		</div>
+	  <%= render :partial => "company", :collection => @companies %>
+		<%= will_paginate @companies %>
 	</div>
 
   <!-- ### right side part -->

@@ -29,10 +29,17 @@ class Job < ActiveRecord::Base
   has_enumeration_for :contract_type, :with => ContractType
 
   belongs_to :company
+  has_one :user, :through => :company
 
-  validates_presence_of :company_id, :name, :location_province, :location_city, :contract_type, :category, :vacancy, :content, :requirement
+  accepts_nested_attributes_for :company
+
+  validates_presence_of :name, :location_province, :location_city, :contract_type, :category, :vacancy, :content, :requirement
 
   def location
     self.location_province + self.location_city
+  end
+  
+  def salary_range
+    "面议" if read_attribute(:salary_range).blank?
   end
 end

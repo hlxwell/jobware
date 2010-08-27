@@ -682,6 +682,10 @@ img.alignright, img.right {margin: 0 0 1em 1.5em;}
   width: 580px;
 }
 
+.w100 {
+  width: 100px;
+}
+
 .w200 {
   width: 200px;
 }
@@ -725,7 +729,7 @@ div.highlighted {
 
 .company_logo {
   float: left;
-  width: 180px;
+  width: 160px;
 }
 
 .company_info {

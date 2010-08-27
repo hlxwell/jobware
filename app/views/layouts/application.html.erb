@@ -6,8 +6,8 @@
 	<meta name="keywords" content="" />
 	<meta name="author" content="" />
 	<%= csrf_meta_tag %>
-  <%= stylesheet_link_tag "application", "pagination" %>
-  <%= javascript_include_tag "jquery", "rails", "jquery.tools.min", "jquery.citySelector", :ckeditor, "application" %>
+  <%= stylesheet_link_tag "application", "pagination", "jquery-ui" %>
+  <%= javascript_include_tag "jquery", "jquery.tools.min", "jquery-ui", "jquery.cookies", "jquery.citySelector", "rails", "application", :ckeditor %>
   <title><%= "#{@content_for_title} - " if @content_for_title %> 中国程序员招聘网 - 中国最大的开发者招聘网站</title>
 </head>
 
@@ -23,15 +23,16 @@
 
         <%= render "shared/login_status" %>
   		</div>
+
   		<div class="right">
   		  <% semantic_navigation "network-tabs", :html => {:class => "tabbed"} do |n| %>
-          <%= n.item '首页', :link => "/home/a", :highlights_on => ('a'..'f').to_a.push("ad").map { |w| "/home/#{w}" } %>
+          <%= n.item '首页', :link => "/home/aaa", :highlights_on => frontend_paths %>
           <%= n.item '我是求职者', :link => jobseeker_dashboard_path if jobseeker_user? %>
           <%= n.item '我是公司', :link => company_dashboard_path if company_user? %>
           <%= n.item '我是合作者', :link => partner_dashboard_path if partner_user? %>
         <% end %>
-  			<div class="clearer">&nbsp;</div>
   		</div>
+
   		<div class="clearer">&nbsp;</div>
   	</div>
   </div>

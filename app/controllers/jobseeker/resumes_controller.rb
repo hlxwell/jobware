@@ -1,4 +1,5 @@
 class Jobseeker::ResumesController < Jobseeker::BaseController
+  before_filter :no_jobseeker_login_required, :only => [:new, :create]
   before_filter :jobseeker_login_required, :except => [:new, :create]
   before_filter :get_resume, :only => [:show, :edit, :update]
 
@@ -29,7 +30,7 @@ class Jobseeker::ResumesController < Jobseeker::BaseController
   def create
     @resume = Resume.new(params[:resume])
     if @resume.save
-      redirect_to root_path, :notice => "简历创建成功。"
+      redirect_to jobseeker_dashboard_path, :notice => "简历创建成功。"
     else
       render :action => 'new', :layout => "application"
     end

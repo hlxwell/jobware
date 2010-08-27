@@ -13,10 +13,9 @@ class Company::JobsController < Company::BaseController
   end
 
   def create
-    @job = current_user.company.job.build(params[:job])
+    @job = current_user.company.jobs.build(params[:job])
     if @job.save
-      flash[:notice] = "发布工作成功。"
-      redirect_to company_job_path(@job)
+      redirect_to company_job_path(@job), :notice => "岗位发布成功。"
     else
       render :action => 'new'
     end
@@ -29,8 +28,7 @@ class Company::JobsController < Company::BaseController
   def update
     @job = current_user.company.jobs.find(params[:id])
     if @job.update_attributes(params[:job])
-      flash[:notice] = "更新工作成功。"
-      redirect_to company_job_path(@job)
+      redirect_to company_job_path(@job), :notice => "岗位更新成功。"
     else
       render :action => 'edit'
     end

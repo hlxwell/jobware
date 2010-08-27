@@ -34,20 +34,31 @@ class JobwareFormBuilder < ActionView::Helpers::FormBuilder
   end
 
 
+  def submit(text = nil, *args)
+    options = merge_to_options args.last, :class => "button"
+
+    @template.content_tag(:div, :class => "form-row form-row-submit") do
+      super(text, options) +
+      @template.content_tag(:div, "", :class => 'clearer')
+    end
+  end
+
+
+  ###### province and city selector
   def city_select(province_field, city_field = nil, options = {})
-    object = @template.instance_variable_get("@#{@object_name}")
     @template.content_tag(:script) do
       "$(function(){
-        $('##{object.class.to_s.downcase}_#{province_field}').val('#{object.send(province_field.to_sym)}').change();
-        $('##{object.class.to_s.downcase}_#{city_field}').val('#{object.send(city_field.to_sym)}');
+        $('##{@object.class.to_s.downcase}_#{province_field}').val('#{@object.send(province_field.to_sym)}').change();
+        $('##{@object.class.to_s.downcase}_#{city_field}').val('#{@object.send(city_field.to_sym)}');
       })"
     end +
 
     @template.content_tag(:div, :class => "form-row city_selector") do
-      if object.present?
-        if object.errors[city_field.to_sym]
+      #### show label in error css when anyone of column has error.
+      if @object.present?
+        if @object.errors[city_field.to_sym]
           (@template.content_tag(:div, label(city_field, options[:label]), :class => "form-property"))
-        else object.errors[province_field.to_sym]
+        else @object.errors[province_field.to_sym]
           (@template.content_tag(:div, label(province_field, options[:label]), :class => "form-property"))
         end
       end +
@@ -61,14 +72,6 @@ class JobwareFormBuilder < ActionView::Helpers::FormBuilder
     (@template.content_tag(:div, "", :class => 'clearer'))
   end
 
-  def submit(text = nil, *args)
-    options = merge_to_options args.last, :class => "button"
-
-    @template.content_tag(:div, :class => "form-row form-row-submit") do
-      super(text, options) +
-      @template.content_tag(:div, "", :class => 'clearer')
-    end
-  end
 
   #### help add fields to resume builder form.
   def link_to_remove_fields(name, *args)
@@ -78,7 +81,7 @@ class JobwareFormBuilder < ActionView::Helpers::FormBuilder
 
   def button_to_add_fields(name, association, *args)
     options = merge_to_options args.last, :class => "button right"
-    new_object = @template.instance_variable_get("@#{@object_name}").class.reflect_on_association(association).klass.new
+    new_object = @object.class.reflect_on_association(association).klass.new
     fields = fields_for(association, new_object, :child_index => "new_#{association}") do |builder|
       @template.render("jobseeker/#{association}/form", :f => builder)
     end

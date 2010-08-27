@@ -5,6 +5,12 @@ class ApplicationController < ActionController::Base
 
   before_filter :set_locale
 
+  # go login page if access denied.
+  rescue_from CanCan::AccessDenied do |exception|
+    flash[:error] = exception.message
+    redirect_to login_url
+  end
+
   def set_locale
     I18n.locale = params[:lang] || 'zh-CN'
   end
@@ -16,30 +22,24 @@ class ApplicationController < ActionController::Base
     end
   end
 
+private
 
-  private
-
-  def company_login_required
-    if not_logged_in? or current_user.company.blank?
-      flash[:error] = "你必须是公司才能访问公司后台！"
-      store_target_location
-      redirect_to login_path
+  ### define - xxx_login_required and no_xxx_login_required
+  {:company => "公司", :jobseeker => "应聘者", :partner => "合作站"}.each do |key, value|
+    define_method("#{key}_login_required") do |*args|
+      if not_logged_in? or current_user.send(key).blank?
+        store_target_location
+        flash[:error] = "你必须是#{value}才能访问#{value}后台！"
+        redirect_to login_path
+      end
     end
-  end
 
-  def partner_login_required
-    if not_logged_in? or current_user.partner.blank?
-      flash[:error] = "你必须是合作者才能访问合作者后台！"
-      store_target_location
-      redirect_to login_path
-    end
-  end
-
-  def jobseeker_login_required
-    if not_logged_in? or current_user.jobseeker.blank?
-      flash[:error] = "你必须是应聘者才能访问应聘者后台！"
-      store_target_location
-      redirect_to login_path
+    define_method("no_#{key}_login_required") do |*args|
+      if logged_in? and current_user.send(key).present?
+        store_target_location
+        flash[:error] = "你必须退出#{value}登陆才能够访问该页面！"
+        redirect_to login_path
+      end
     end
   end
 end

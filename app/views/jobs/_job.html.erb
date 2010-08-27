@@ -1,0 +1,22 @@
+<div class="post">
+  <!-- date -->
+	<div class="archive-post-date">
+		<div class="archive-post-day">100</div>
+		<div class="archive-post-month">顶</div>
+	</div>
+
+	<!-- title and company -->
+	<div class="archive-post-title">
+		<h3><%= link_to job.name, job %></h3>
+		<div class="post-date"><%= link_to job.company.try(:name), job.company %></div>
+	</div>
+
+	<!-- address and date -->
+	<div class="archive-post-address">
+		<h3><%= job.location %></h3>
+		<div class="post-date"><%= job.updated_at.to_s_full_cn %></div>
+	</div>
+	<div class="clearer">&nbsp;</div>
+</div>
+
+<div class="archive-separator"></div>

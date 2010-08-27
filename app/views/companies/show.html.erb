@@ -1,52 +1,25 @@
-<% title "Company" %>
+<% title @company.name %>
 
-<p>
-  <strong>User:</strong>
-  <%= @company.user_id %>
-</p>
-<p>
-  <strong>Name:</strong>
-  <%= @company.name %>
-</p>
-<p>
-  <strong>Company Type:</strong>
-  <%= @company.company_type %>
-</p>
-<p>
-  <strong>Size:</strong>
-  <%= @company.size %>
-</p>
-<p>
-  <strong>Province:</strong>
-  <%= @company.province %>
-</p>
-<p>
-  <strong>City:</strong>
-  <%= @company.city %>
-</p>
-<p>
-  <strong>Address:</strong>
-  <%= @company.address %>
-</p>
-<p>
-  <strong>Homepage:</strong>
-  <%= @company.homepage %>
-</p>
-<p>
-  <strong>Contact Name:</strong>
-  <%= @company.contact_name %>
-</p>
-<p>
-  <strong>Phone Number:</strong>
-  <%= @company.phone_number %>
-</p>
-<p>
-  <strong>Desc:</strong>
-  <%= @company.desc %>
-</p>
+<script type="text/javascript">
+  $(function() {
+    $('#main-left').tabs({ cookie: { expires: 30 } });
+  });
+</script>
+<div class="main" id="main-two-columns-right-sidebar">
 
-<p>
-  <%= link_to "Edit", edit_company_path(@company) %> |
-  <%= link_to "Destroy", @company, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", companies_path %>
-</p>
+  <!-- ### left main side -->
+	<div class="left" id="main-left">
+    <ul class="larger">
+      <li><a href="#fragment-1"><span>公司信息</span></a></li>
+      <li><a href="#fragment-2"><span>该公司所有工作</span></a></li>
+    </ul>
+
+  	<div id="fragment-1"><%= render "jobs/tab_of_company", :company => @company %></div>
+    <div id="fragment-2"><%= render "jobs/tab_of_other_jobs", :jobs => @company.jobs, :company => @company %></div>
+  </div> <!-- end of left zone -->
+
+
+  <!-- ### right side part -->
+	<%= render "shared/right_side_column" %>
+	<div class="clearer">&nbsp;</div>
+</div>

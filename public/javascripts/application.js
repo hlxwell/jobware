@@ -2,6 +2,7 @@
 // This file is automatically included by javascript_include_tag :defaults
 $(function(){
   $.each($(".city_selector"), function(i, n){ $(n).CitySelector(); });
+  $(".datepicker").datepicker();
 });
 
 function remove_fields(link) {

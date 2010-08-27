@@ -2,6 +2,15 @@ class ActiveRecord::Base
   include EnumerateIt
 end
 
+class Degree < EnumerateIt::Base
+  associate_values(
+    :highschool => [1, '高中'],
+    :college    => [2, '大专'],
+    :bachelor   => [3, '本科'],
+    :master     => [4, '硕士'],
+    :doctor     => [5, '博士']
+  )
+end
 
 class Gender < EnumerateIt::Base
   associate_values(

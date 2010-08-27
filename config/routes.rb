@@ -31,10 +31,15 @@ Jobware::Application.routes.draw do
   #   end
   # end
 
-  resources :companies do
-    resources :jobs do
+  resources :jobs do
+    member do
       post :star
     end
+    resources :companies
+  end
+
+  resources :companies do
+    resources :jobs
   end
 
   ### dashboard rewrite

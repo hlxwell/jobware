@@ -1,39 +1,15 @@
-<% title "Jobs" %>
+<% title "所有工作" %>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Location Province</th>
-    <th>Location City</th>
-    <th>Vacancy</th>
-    <th>Content</th>
-    <th>Requirement</th>
-    <th>Welfare</th>
-    <th>Salary Range</th>
-    <th>Highlight Start At</th>
-    <th>Highlight End At</th>
-    <th>Start At</th>
-    <th>End At</th>
-  </tr>
-  <% for job in @jobs %>
-    <tr>
-      <td><%= job.name %></td>
-      <td><%= job.location_province %></td>
-      <td><%= job.location_city %></td>
-      <td><%= job.vacancy %></td>
-      <td><%= job.content %></td>
-      <td><%= job.requirement %></td>
-      <td><%= job.welfare %></td>
-      <td><%= job.salary_range %></td>
-      <td><%= job.highlight_start_at %></td>
-      <td><%= job.highlight_end_at %></td>
-      <td><%= job.start_at %></td>
-      <td><%= job.end_at %></td>
-      <td><%= link_to "Show", job %></td>
-      <td><%= link_to "Edit", edit_job_path(job) %></td>
-      <td><%= link_to "Destroy", job, :confirm => 'Are you sure?', :method => :delete %></td>
-    </tr>
-  <% end %>
-</table>
+<div class="main" id="main-two-columns-right-sidebar">
 
-<p><%= link_to "New Job", new_job_path %></p>
+  <!-- ### left main side -->
+	<div class="left" id="main-left">
+    <%= render :partial => "job", :collection => @jobs %>
+		<%= will_paginate @jobs %>
+	</div>
+
+  <!-- ### right side part -->
+	<%= render "shared/right_side_column" %>
+
+	<div class="clearer">&nbsp;</div>
+</div>

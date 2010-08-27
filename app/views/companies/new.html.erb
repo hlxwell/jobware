@@ -1,4 +1,4 @@
-<% title "加入我们" %>
+<% title "发布工作" %>
 
 <div class="main" id="main-two-columns-right-sidebar">
   <div class="right sidebar" id="sidebar-1">
@@ -7,16 +7,24 @@
 
   <div class="left" id="main-left">
     <%= jobware_form_for @company, :use_fieldset => false do |f| %>
+
+      <%= field_set_tag "工作信息", :class => 'big' do %>
+        <%= f.fields_for :jobs do |job_form| %>
+          <%= render 'company/jobs/form', :f => job_form %>
+        <% end %>
+      <% end %>
+
       <%= field_set_tag "公司信息", :class => 'big' do %>
-        <%= render :partial => 'form', :locals => { :f => f } %>
+        <%= render "companies/form", :f => f %>
       <% end %>
 
       <%= field_set_tag "登陆帐号", :class => 'big' do %>
         <%= f.fields_for :user do |user_form| %>
-          <%= render :partial => "users/form", :locals => {:f => user_form} %>
+          <%= render "users/form", :f => user_form %>
         <% end %>
       <% end %>
-      <%= f.submit "提交", :class => "right button" %>
+
+      <%= f.submit "发布", :class => "right button" %>
     <% end %>
   </div>
 

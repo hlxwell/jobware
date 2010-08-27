@@ -1,8 +1,8 @@
 <fieldset>
   <%= f.error_messages %>
   <%= f.text_field :name, :label => "学校", :class => "text w580" %>
-  <%= f.text_field :start_at, :label => "入学时间", :class => "text w580" %>
-  <%= f.text_field :end_at, :label => "毕业时间", :class => "text w580" %>
+  <%= f.text_field :start_at, :label => "入学时间", :class => "text w580 datepicker" %>
+  <%= f.text_field :end_at, :label => "毕业时间", :class => "text w580 datepicker" %>
   <%= f.text_field :major, :label => "专业", :class => "text w580" %>
   <%= f.link_to_remove_fields "删除" %>
 </fieldset>

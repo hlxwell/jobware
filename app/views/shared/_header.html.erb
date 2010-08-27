@@ -3,7 +3,8 @@
 	<div class="clearer">&nbsp;</div>
 	<br>
 
-  <div class="right success text-center larger w200"><%= link_to "发布工作", new_company_path %></div>
+  <div class="right success text-center larger w100"><%= link_to "应聘者注册", new_jobseeker_resume_path %></div>
+  <div class="right success text-center larger w100" style="margin-right: 10px"><%= link_to "发布工作", new_company_path %></div>
 
   <!-- #### site logo and title -->
 	<div id="site-title">
@@ -17,9 +18,9 @@
 		  <% if in_section?("frontend") %>
   		  <% semantic_navigation :main, :html => {:class => "tabbed"} do |n| %>
   		    <%= n.item '首页', :link => "/home/aaa" %>
-          <%= n.item '我要求职', :link => "/home/a", :highlights_on => ['/home/ab', '/home/ac', '/companies'] %>
-          <%= n.item '我要招聘', :link => '/home/c', :highlights_on => ['/home/d'] %>
-          <%#= n.item '我要合作', :link => '/home/e', :highlights_on => ['/home/f'] %>
+          <%= n.item '我要求职', :link => jobs_path, :highlights_on => [companies_path] %>
+          <%= n.item '我要招聘', :link => '/home/c', :highlights_on => [new_company_path] %>
+          <%= n.item '我要合作', :link => '/home/e', :highlights_on => [new_partner_path] %>
         <% end %>
 
         <div class="search-box">
@@ -35,18 +36,18 @@
 		<div id="sub-nav">
 		  <% if in_section?("jobseeker") %>
   		  <% semantic_navigation :main, :html => {:class => "tabbed"} do |n| %>
-          <%= n.item '所有工作', :link => "/home/a" %>
+          <%= n.item '所有工作', :link => jobs_path %>
           <%= n.item '所有公司', :link => companies_path %>
         <% end %>
       <% elsif in_section?("company") %>
         <% semantic_navigation :main, :html => {:class => "tabbed"} do |n| %>
           <%= n.item '服务', :link => "/home/c" %>
-          <%= n.item '加入', :link => new_company_path %>
+          <%= n.item '发布工作', :link => new_company_path %>
         <% end %>
       <% elsif in_section?("partner") %>
         <% semantic_navigation :main, :html => {:class => "tabbed"} do |n| %>
           <%= n.item '利益', :link => "/home/e" %>
-          <%= n.item '加入', :link => '/home/f' %>
+          <%= n.item '加入我们', :link => new_partner_path %>
         <% end %>
       <% end %>
 			<div class="clearer">&nbsp;</div>
