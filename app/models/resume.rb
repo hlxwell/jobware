@@ -47,8 +47,7 @@ class Resume < ActiveRecord::Base
   has_many :languages, :dependent => :destroy
   has_many :cover_letters, :dependent => :destroy
   has_many :certifications, :dependent => :destroy
-
-  # has_many :job_applications
+  has_many :job_applications
   # has_many :subscriptions
   # has_many :starred_jobs
 
@@ -77,5 +76,9 @@ class Resume < ActiveRecord::Base
     elsif gender == Gender::FEMALE
       "/images/generic_female.gif"
     end
+  end
+  
+  def applied_to_job?(job)
+    job_applications.where(:job_id => job).present?
   end
 end

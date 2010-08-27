@@ -1,10 +1,7 @@
 Jobware::Application.routes.draw do
 
   get "page/home"
-
   get "page/aboutus"
-
-  resources :"projects"
 
   ### auth stuff
   match "/login" => "sessions#new", :as => :login
@@ -35,12 +32,10 @@ Jobware::Application.routes.draw do
     member do
       post :star
     end
-    resources :companies
+    resources :job_applications
   end
 
-  resources :companies do
-    resources :jobs
-  end
+  resources :companies
 
   ### dashboard rewrite
   match "/jobseeker/dashboard" => "dashboard#jobseeker", :as => :jobseeker_dashboard
@@ -50,7 +45,7 @@ Jobware::Application.routes.draw do
   ### company section
   namespace :company do
     resources :jobs
-    # resources :job_applications
+    resources :job_applications
     # resources :starred_resumes
     # resources :presentations
     # resources :products
@@ -64,10 +59,10 @@ Jobware::Application.routes.draw do
 
   ### job seeker section
   namespace :jobseeker do
-  #   resources :job_applications
+    resources :job_applications
   #   resources :starred_jobs
   #   resource :subscription
-  #
+
     resource :resume do
       resources :previous_jobs
       resources :schools
@@ -77,7 +72,7 @@ Jobware::Application.routes.draw do
       resources :languages
       resources :cover_letters
     end
-  #
+
   #   resources :services do
   #     member do
   #       post :buy
@@ -113,7 +108,7 @@ Jobware::Application.routes.draw do
   # match "/sitemap.xml.gz" => "sitemap#zip"
 
   ### root
-  match "/" => "home#aaa", :as => :root
+  match "/" => "page#home", :as => :root
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

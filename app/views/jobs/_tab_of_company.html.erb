@@ -53,11 +53,7 @@
 <div class="post">
 	<div class="post-title"><h3>公司简介</h3></div>
 	<div class="post-body">
-	  <ul>
-	   	<li>This template is distributed under a <a href="http://templates.arcsin.se/license/">Creative Commons Attribution 2.5 License</a>, which allows you to use and modify it for any purpose (personal and commercial), under the condition that you keep the provided credit links in the footer.</li>
-			<li>The latest template version and CMS conversions for platforms such as WordPress and Blogger can be found at the official <a href="http://templates.arcsin.se/simple-magazine-website-template/">Simple Magazine website template</a> page.</li>
-			<li>For more templates, questions and comments please visit <a href="http://templates.arcsin.se/">Arcsin Web Templates</a>.</li>
-	  </ul>
+	  <%= raw company.desc %>
 	</div>
 </div>
 
@@ -94,15 +90,15 @@
 		<table class="data-table">
 			<tr>
 				<th width="20%">网址</th>
-				<td width="80%">http://theplant.jp</td>
+				<td width="80%"><%= company.homepage %></td>
 			</tr>
 			<tr>
 				<th>公司地址</th>
-				<td>xxxxxxxxx</td>
+				<td><%= company.address %></td>
 			</tr>
 			<tr>
 				<th>邮箱</th>
-				<td>hr@theplant.jp</td>
+				<td><%= company.user.email %></td>
 			</tr>
 		</table>
 	</div>

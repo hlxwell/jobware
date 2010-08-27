@@ -1,0 +1,13 @@
+one:
+  job_id: 1
+  resume_id: 1
+  cover_letter_id: 1
+  state: MyString
+  state: MyString
+
+two:
+  job_id: 1
+  resume_id: 1
+  cover_letter_id: 1
+  state: MyString
+  state: MyString

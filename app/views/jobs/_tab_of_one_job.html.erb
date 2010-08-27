@@ -1,32 +1,32 @@
 <div class="post">
-	<img src="/images/logos/amn_logo.png" alt="" class="company_logo bordered" />
+  <img src="/images/logos/amn_logo.png" alt="" class="company_logo bordered" />
 
-	<div class="company_info">
-	  <input type="submit" class="button largest right" value="收藏" />
+  <div class="company_info">
+    <input type="submit" class="button largest right" value="收藏" />
 
-		<h3><%= job.name %></h3>
-		<h5><%= job.company.name %></h5>
-		<table class="data-table" style="width:440px">
-			<tr>
-				<th width="20%">工作地点</th>
-				<td width="30%"><%= job.location %></td>
-				<th width="20%">工作年限</th>
-				<td width="30%">xxx</td>
-			</tr>
-			<tr>
-				<th>学历</th>
-				<td>xxx</td>
-				<th>招聘人数</th>
-				<td><%= job.vacancy %></td>
-			</tr>
-			<tr>
-				<th>发布日期</th>
-				<td><%= job.updated_at.to_s_full_cn %></td>
-				<th>点击数</th>
-				<td>xxx</td>
-			</tr>
-		</table>
-	</div>
+    <h3><%= job.name %></h3>
+    <h5><%= job.company.name %></h5>
+    <table class="data-table" style="width:440px">
+      <tr>
+        <th width="20%">工作地点</th>
+        <td width="30%"><%= job.location %></td>
+        <th width="20%">工作年限</th>
+        <td width="30%">xxx</td>
+      </tr>
+      <tr>
+        <th>学历</th>
+        <td>xxx</td>
+        <th>招聘人数</th>
+        <td><%= job.vacancy %></td>
+      </tr>
+      <tr>
+        <th>发布日期</th>
+        <td><%= job.updated_at.to_s_full_cn %></td>
+        <th>点击数</th>
+        <td>xxx</td>
+      </tr>
+    </table>
+  </div>
 </div>
 
 <div class="content-separator"></div>
@@ -34,12 +34,17 @@
 <% {:content => "工作内容", :requirement => "岗位要求", :welfare => "福利", :desc => "其他描述"}.each do |key, value| %>
   <% next if job.send(key).blank? %>
   <div class="post">
-  	<div class="post-title"><h3><%= value %></h3></div>
-  	<div class="post-body"><%= raw job.send(key) %></div>
+    <div class="post-title"><h3><%= value %></h3></div>
+    <div class="post-body"><%= raw job.send(key) %></div>
   </div>
   <div class="content-separator"></div>
 <% end %>
 
-<p class="right">
-  <input type="submit" class="button largest" value="应聘此岗位" />
-</p>
+<div id="job_application_form"></div>
+<div class="right">
+  <% if current_user.jobseeker.try(:applied_to_job?, job) %>
+    <%= button_to '您已经应聘过了此岗位。', "#", :remote => true, :method => :get, :class => "button largest", :disabled => true %>
+  <% else %>
+    <%= button_to '应聘此岗位', new_job_job_application_path(job), :remote => true, :method => :get, :class => "button largest", :id => "apply_button" %>
+  <% end %>
+</div>

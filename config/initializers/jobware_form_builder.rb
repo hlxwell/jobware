@@ -12,6 +12,7 @@ class JobwareFormBuilder < ActionView::Helpers::FormBuilder
          @template.content_tag(tag_mark, :class => "form-value") {
            super(field_name, options) +
            (options[:required] == true ? @template.content_tag(:span, "（必填）", :class => "helper") : "") +
+           @template.content_tag(:div, "", :class => 'clearer') +           
            (options[:hint].present? ? @template.content_tag(tag_mark, options[:hint], :class => "helper") : "")
          }
       } +
@@ -27,6 +28,7 @@ class JobwareFormBuilder < ActionView::Helpers::FormBuilder
        (@template.content_tag(:div, :class => "form-value") {
          super(field_name, choices, *args) +
          (options[:required] == true ? @template.content_tag(:span, "（必填）", :class => "helper") : "") +
+         @template.content_tag(:div, "", :class => 'clearer') +         
          (options[:hint].present? ? @template.content_tag(:div, options[:hint], :class => "helper") : "")
        })
     end +

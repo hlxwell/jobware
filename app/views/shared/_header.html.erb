@@ -17,7 +17,7 @@
 		<div id="main-nav">
 		  <% if in_section?("frontend") %>
   		  <% semantic_navigation :main, :html => {:class => "tabbed"} do |n| %>
-  		    <%= n.item '首页', :link => "/home/aaa" %>
+  		    <%= n.item '首页', :link => root_path %>
           <%= n.item '我要求职', :link => jobs_path, :highlights_on => [companies_path] %>
           <%= n.item '我要招聘', :link => '/home/c', :highlights_on => [new_company_path] %>
           <%= n.item '我要合作', :link => '/home/e', :highlights_on => [new_partner_path] %>
