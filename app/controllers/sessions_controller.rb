@@ -18,7 +18,6 @@ class SessionsController < ApplicationController
 
   def destroy
     current_user_session.destroy
-    flash[:notice] = "退出登陆成功！"
-    redirect_to login_path
+    redirect_to login_path, :notice => "退出登陆成功！"
   end
 end
