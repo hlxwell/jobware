@@ -21,6 +21,10 @@ gem 'annotate-models'
 gem "exception_notification", :git => "http://github.com/rails/exception_notification.git", :branch => "master"
 gem "cancan"
 
+group :development do
+  gem "rails3-generators"
+end
+
 # Use unicorn as the web server
 # gem 'unicorn'
 

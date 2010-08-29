@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100827102143) do
+ActiveRecord::Schema.define(:version => 20100829030945) do
 
   create_table "ad_positions", :force => true do |t|
     t.string   "name"
@@ -20,6 +20,18 @@ ActiveRecord::Schema.define(:version => 20100827102143) do
     t.integer  "type"
     t.integer  "style"
     t.integer  "partner_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "adclicks", :force => true do |t|
+    t.integer  "ad_position_id"
+    t.string   "remote_ip"
+    t.string   "source_page"
+    t.string   "dest_page"
+    t.string   "http_user_agent"
+    t.string   "remote_host"
+    t.string   "request_uri"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

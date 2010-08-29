@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  ad_position_id: 1
+  remote_ip: MyString
+  source_page: MyString
+  dest_page: MyString
+  headers: MyText
+
+two:
+  ad_position_id: 1
+  remote_ip: MyString
+  source_page: MyString
+  dest_page: MyString
+  headers: MyText

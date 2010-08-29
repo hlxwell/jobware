@@ -1,7 +1,6 @@
 Jobware::Application.routes.draw do
-
-  get "page/home"
-  get "page/aboutus"
+  
+  match "track" => Tracker.action(:track), :as => :tracker
 
   ### auth stuff
   match "/login" => "sessions#new", :as => :login

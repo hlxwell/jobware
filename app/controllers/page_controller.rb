@@ -4,5 +4,4 @@ class PageController < ApplicationController
 
   def aboutus
   end
-
 end
