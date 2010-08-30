@@ -4,6 +4,13 @@ $(function(){
   $.each($(".city_selector"), function(i, n){ $(n).CitySelector(); });
 
   $(".datepicker").datepicker();
+
+  $(".stars-wrapper").stars({
+      // captionEl: $(".stars-cap"),
+      callback: function(ui, type, value){
+        $(".stars-wrapper").closest("form").submit();
+      }
+  });
 });
 
 function remove_fields(link) {

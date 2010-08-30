@@ -14,8 +14,8 @@
           <div class="clearer">&nbsp;</div>
         </li>
         <li>
-          <div class="left"><a href="#">收到的应聘</a></div>
-          <div class="right">新 <strong class="loud">(6)</strong> | 收藏</div>
+          <div class="left"><%= link_to "收到的应聘", company_job_applications_path %></div>
+          <div class="right"><%= link_to "新", company_job_applications_path(:filter => :new) %> <strong class="loud">(6)</strong> | <%= link_to "收藏", company_job_applications_path(:filter => :starred) %></div>
           <div class="clearer">&nbsp;</div>
         </li>
         <!-- <li>

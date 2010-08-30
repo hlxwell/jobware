@@ -1,0 +1,23 @@
+<% title "应聘记录" %>
+
+<table class="data-table">
+	<tr>
+	  <th>工作名</th>
+		<th>所在省市</th>
+		<th>求职信</th>
+		<th>时间</th>
+		<th>状态</th>
+	</tr>
+	<% @applications.each do |app| %>
+	<% job = app.job %>
+	<tr class="even" id="job_<%= job.id %>">
+	  <td><%= link_to job.name, job_path(job) %></td>
+		<td><%= job.location %></td>
+		<td><%= app.cover_letter.name %></td>
+		<td><%= job.updated_at.to_s_full_cn %></td>
+		<td><%= app.state %></td>
+	</tr>
+  <% end %>
+</table>
+
+<%= will_paginate @applications %>

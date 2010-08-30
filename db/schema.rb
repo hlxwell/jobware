@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100829030945) do
+ActiveRecord::Schema.define(:version => 20100830092146) do
 
   create_table "ad_positions", :force => true do |t|
     t.string   "name"
@@ -93,6 +93,7 @@ ActiveRecord::Schema.define(:version => 20100829030945) do
     t.string   "state"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "rating"
   end
 
   create_table "jobs", :force => true do |t|
@@ -192,6 +193,14 @@ ActiveRecord::Schema.define(:version => 20100829030945) do
     t.integer  "resume_id"
     t.string   "name"
     t.string   "level"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "starred_jobs", :force => true do |t|
+    t.integer  "resume_id"
+    t.integer  "job_id"
+    t.integer  "rating"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

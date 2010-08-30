@@ -2,7 +2,32 @@
   <img src="/images/logos/amn_logo.png" alt="" class="company_logo bordered" />
 
   <div class="company_info">
-    <input type="submit" class="button largest right" value="收藏" />
+    <div id="rating" class="right">
+      <script>
+        $(function(){
+          $(".stars-wrapper").stars("select", <%= @starred_job.try(:rating) || 0 %>);
+        })
+      </script>
+
+      <%= form_for :starred_job, :url => star_job_path(job), :remote => true do |f| %>
+      <b>收藏等级:</b>
+    	<% if @starred_job %>
+    	  <small>我已收藏</small>
+  	  <% else %>
+    	  <small></small>
+    	<% end %>
+
+      <!-- <span id="stars-cap"></span> -->
+    	<div class="stars-wrapper">
+    	  <%= f.radio_button :rating, "1", :title => "很差" %>
+    	  <%= f.radio_button :rating, "2", :title => "差" %>
+    	  <%= f.radio_button :rating, "3", :title => "一般" %>
+    	  <%= f.radio_button :rating, "4", :title => "不错" %>
+    	  <%= f.radio_button :rating, "5", :title => "很好" %>
+    	</div>
+    	<% end %>
+  	</div>
+
 
     <h3><%= job.name %></h3>
     <h5><%= job.company.name %></h5>

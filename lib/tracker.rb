@@ -1,12 +1,13 @@
 class Tracker < ActionController::Metal
-  include Rails.application.routes.url_helpers
   # include ActionController::Rendering
   include ActionController::RequestForgeryProtection
+  include Rails.application.routes.url_helpers
   include ActionController::Redirecting
   protect_from_forgery
 
   def track
-    click = Adclick.new(
+    @adurl = params[:adurl] || "/"
+    Adclick.create(
       :ad_position_id => params[:adid],
       :remote_ip => request.ip,
       :source_page => request.headers["HTTP_REFERER"],
@@ -15,10 +16,9 @@ class Tracker < ActionController::Metal
       :remote_host => request.headers["REMOTE_HOST"],
       :request_uri => request.headers["REQUEST_URI"]
     )
-  
-    redirect_to params[:adurl] if click.save
-    return
+
+    redirect_to @adurl
   rescue ActionController::InvalidAuthenticityToken
-    return
+    redirect_to @adurl
   end
 end

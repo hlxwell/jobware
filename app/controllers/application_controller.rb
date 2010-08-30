@@ -14,6 +14,18 @@ class ApplicationController < ActionController::Base
     I18n.locale = params[:lang] || 'zh-CN'
   end
 
+  def dashboard_path_for(user)
+    if user.jobseeker
+      jobseeker_dashboard_path
+    elsif user.company
+      company_dashboard_path
+    elsif user.partner
+      partner_dashboard_path
+    else
+      '/'
+    end
+  end
+
   %w[jobseeker partner company].each do |method_name|
     helper_method "#{method_name}_user?"
     define_method("#{method_name}_user?") do |*args|

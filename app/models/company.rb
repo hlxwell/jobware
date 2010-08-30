@@ -27,6 +27,8 @@ class Company < ActiveRecord::Base
 
 
   has_many :jobs
+  has_many :job_applications, :through => :jobs
+  has_many :resumes, :through => :job_applications
   belongs_to :user
   accepts_nested_attributes_for :user, :jobs
 

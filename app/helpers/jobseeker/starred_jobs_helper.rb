@@ -1,0 +1,2 @@
+module Jobseeker::StarredJobsHelper
+end

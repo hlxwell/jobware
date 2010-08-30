@@ -49,7 +49,8 @@ class Resume < ActiveRecord::Base
   has_many :certifications, :dependent => :destroy
   has_many :job_applications
   # has_many :subscriptions
-  # has_many :starred_jobs
+  has_many :starred_jobs
+  has_many :jobs, :through => :starred_jobs
 
   accepts_nested_attributes_for :user
   accepts_nested_attributes_for :languages, :previous_jobs, :schools, :certifications, :cover_letters, :projects, :skills, :allow_destroy => true
@@ -77,8 +78,28 @@ class Resume < ActiveRecord::Base
       "/images/generic_female.gif"
     end
   end
-  
+
   def applied_to_job?(job)
     job_applications.where(:job_id => job).present?
+  end
+
+  def star_job(job, rating)
+    starred_job = self.starred_jobs.where(:job_id => job.id).first
+
+    if starred_job
+      if rating > 0
+        starred_job.update_attribute :rating, rating
+        return "更新成功"
+      else
+        starred_job.destroy
+        return "取消成功"
+      end
+    else
+      if current_user.jobseeker.starred_jobs.build(:job_id => job.id, :rating => rating).save
+        return "收藏成功"
+      else
+        return "收藏失败"
+      end
+    end
   end
 end

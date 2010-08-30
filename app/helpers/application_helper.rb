@@ -31,16 +31,13 @@ module ApplicationHelper
   def in_section?(name)
     case name
     when "jobseeker"
-      current_page?(companies_path) or current_page?(jobs_path) or request.path =~ /\/(jobs)|(companies)\/\d+/
+      current_page?(companies_path) or current_page?(jobs_path) or request.path =~ /^\/(jobs|companies)\/\d+/
     when "company"
-      current_page?('/home/c') or
-      current_page?(new_company_path)
+      current_page?('/home/c') or current_page?(new_company_path)
     when "partner"
-      current_page?('/home/e') or
-      current_page?(new_partner_path)
+      current_page?('/home/e') or current_page?(new_partner_path)
     when "frontend"
-      # frontend_paths.map {|path| current_page?(path)}.include?(true)
-      (request.path !~ /^\/(company)|(jobseeker)|(partner)/) or current_page?(new_partner_path)
+      request.path !~ /^\/(company)|(jobseeker)|(partner)(.*)?/ or current_page?(new_partner_path)
     else
       false
     end

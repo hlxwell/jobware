@@ -1,0 +1,14 @@
+<table class="data-table top-vlign">
+  <tr>
+    <th width="20%">项目名</th>
+    <td width="80%"><%= item.name %></td>
+  </tr>
+  <tr>
+    <th>描述</th>
+    <td><%= raw item.desc %></td>
+  </tr>
+  <tr>
+    <th>项目截图</th>
+    <td><%= link_to image_tag(item.file.url), item.file.url(:original), :target => "_blank" %></td>
+  </tr>
+</table>
