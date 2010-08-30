@@ -37,22 +37,22 @@ test:
   password:
   socket: /tmp/mysql.sock
 
-production:
-  adapter: mysql
-  encoding: utf8
-  reconnect: false
-  database: jobware_development
-  pool: 5
-  username: root
-  password:
-  socket: /tmp/mysql.sock
-
 # production:
 #   adapter: mysql
 #   encoding: utf8
 #   reconnect: false
-#   database: jobware
+#   database: jobware_development
 #   pool: 5
 #   username: root
-#   password: hzva@china
-#   socket: /var/run/mysqld/mysqld.sock
+#   password:
+#   socket: /tmp/mysql.sock
+
+production:
+  adapter: mysql
+  encoding: utf8
+  reconnect: false
+  database: jobware
+  pool: 5
+  username: root
+  password: hzva@china
+  socket: /var/run/mysqld/mysqld.sock
