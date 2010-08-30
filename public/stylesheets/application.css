@@ -194,6 +194,7 @@ table.data-table td {
 }
 table.data-table tr.even td {background: #FCFCFC;}
 table.top-vlign th { vertical-align: top; }
+table.top-vlign-td td { vertical-align: top; }
 
 
 /* Misc classes */
@@ -729,7 +730,8 @@ div.highlighted {
 
 .company_logo {
   float: left;
-  width: 160px;
+  width: 170px;
+/*  height: 80px;*/
 }
 
 .company_info {

@@ -25,15 +25,22 @@ class Company < ActiveRecord::Base
   has_enumeration_for :company_type, :with => CompanyType
   has_enumeration_for :size, :with => CompanySize
 
-
   has_many :jobs
   has_many :job_applications, :through => :jobs
   has_many :resumes, :through => :job_applications
+  has_many :products, :as => :parent, :dependent => :destroy
+  has_many :presentations, :as => :parent, :dependent => :destroy
   belongs_to :user
-  accepts_nested_attributes_for :user, :jobs
+
+  accepts_nested_attributes_for :user, :jobs, :products, :presentations
 
   validates_presence_of :name, :company_type, :size, :address, :contact_name, :phone_number, :province, :city, :desc
   validates_acceptance_of :accept_terms, :accept => "1", :message => "你必需接受服务条款"
+
+  has_attached_file :logo, :styles => { :thumb => "200>x80" }, :default_style => :thumb
+  validates_attachment_content_type :logo, :content_type => [%r{image/.*jpg}, %r{image/.*jpeg}, %r{image/.*gif}, %r{image/.*png}], :if => lambda {|obj| obj.logo.size.present? }
+  validates_attachment_size :logo, :less_than => 1.megabytes
+  validates_attachment_presence :logo
 
   def location
     self.province + self.city

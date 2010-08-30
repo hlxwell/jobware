@@ -42,6 +42,6 @@
       <%= render "jobseeker/#{key}/form", :f => new_form %>
     <% end %>
 
-    <%= f.button_to_add_fields '添加', key %>
+    <%= f.button_to_add_fields '添加', key, :namespace_dir => "jobseeker" %>
   <% end %>
 <% end %>

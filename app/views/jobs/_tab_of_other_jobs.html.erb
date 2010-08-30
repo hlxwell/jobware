@@ -1,5 +1,5 @@
 <div class="post">
-	<img src="/images/logos/amn_logo.png" alt="" class="company_logo bordered" />
+  <%= image_tag company.logo.url, :class => "company_logo bordered" %>
 
 	<div class="company_info">
 		<h3><%= company.name %></h3>
@@ -21,6 +21,7 @@
 	</div>
 </div>
 
+<div class="clearer">&nbsp;</div>
 <div class="content-separator"></div>
 
 <% if jobs.blank? %>

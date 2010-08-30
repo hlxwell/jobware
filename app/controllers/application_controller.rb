@@ -15,15 +15,10 @@ class ApplicationController < ActionController::Base
   end
 
   def dashboard_path_for(user)
-    if user.jobseeker
-      jobseeker_dashboard_path
-    elsif user.company
-      company_dashboard_path
-    elsif user.partner
-      partner_dashboard_path
-    else
-      '/'
+    ["jobseeker", "company", "partner"].each do |s|
+      eval "return #{s}_dashboard_path if user.#{s}"
     end
+    return "/"
   end
 
   %w[jobseeker partner company].each do |method_name|
@@ -34,6 +29,10 @@ class ApplicationController < ActionController::Base
   end
 
 private
+
+  def get_new_job_application_count
+    @new_job_application_count = current_user.company.job_applications.unread.count
+  end
 
   ### define - xxx_login_required and no_xxx_login_required
   {:company => "公司", :jobseeker => "应聘者", :partner => "合作站"}.each do |key, value|

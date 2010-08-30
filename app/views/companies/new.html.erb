@@ -11,6 +11,7 @@
       <%= field_set_tag "工作信息", :class => 'big' do %>
         <%= f.fields_for :jobs do |job_form| %>
           <%= render 'company/jobs/form', :f => job_form %>
+          <%= f.check_box :accept_terms, :label => "同意条款", :hint => raw("<a href='#'>查看条款</a>"), :required => true, :type => 'agree_term' %>
         <% end %>
       <% end %>
 

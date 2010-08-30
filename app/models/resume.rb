@@ -87,11 +87,9 @@ class Resume < ActiveRecord::Base
     starred_job = self.starred_jobs.where(:job_id => job.id).first
 
     if starred_job
-      if rating > 0
-        starred_job.update_attribute :rating, rating
+      if rating > 0 and starred_job.update_attribute :rating, rating
         return "更新成功"
-      else
-        starred_job.destroy
+      elsif starred_job.destroy.present?
         return "取消成功"
       end
     else

@@ -1,11 +1,4 @@
 Jobware::Application.routes.draw do
-
-  get "job_applications/index"
-
-  get "job_applications/show"
-
-  get "starred_jobs/index"
-
   match "track" => Tracker.action(:track), :as => :tracker
 
   ### auth stuff
@@ -51,6 +44,8 @@ Jobware::Application.routes.draw do
 
   ### company section
   namespace :company do
+    # resources :starred_resumes
+    resource :company
     resources :jobs
     resources :job_applications do
       member do
@@ -59,9 +54,8 @@ Jobware::Application.routes.draw do
         put :star
       end
     end
-    # resources :starred_resumes
-    # resources :presentations
-    # resources :products
+    resources :presentations
+    resources :products
     # resources :ads
     # resources :services do
     #   member do

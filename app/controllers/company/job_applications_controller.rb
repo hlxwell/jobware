@@ -1,10 +1,14 @@
 class Company::JobApplicationsController < Company::BaseController
   def index
-    @applications = current_user.company.job_applications.paginate :page => params[:page], :per_page => 20, :include => [:job, :resume]
+    scope_name = ["unread", "starred"].include?(params[:filter]) ? params[:filter] : "all"
+    @applications = current_user.company.job_applications.send(scope_name).paginate :page => params[:page], :per_page => 20, :include => [:job, :resume]
   end
 
   def show
     @application = current_user.company.job_applications.find(params[:id], :include => [:resume, :cover_letter, :job])
+    @application.read
+    get_new_job_application_count
+
     @resume = @application.resume
     @cover_letter = @application.cover_letter
     @job = @application.job

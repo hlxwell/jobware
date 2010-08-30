@@ -15,7 +15,13 @@
         </li>
         <li>
           <div class="left"><%= link_to "收到的应聘", company_job_applications_path %></div>
-          <div class="right"><%= link_to "新", company_job_applications_path(:filter => :new) %> <strong class="loud">(6)</strong> | <%= link_to "收藏", company_job_applications_path(:filter => :starred) %></div>
+          <div class="right">
+            <% if @new_job_application_count > 0 %>
+              <%= link_to "新", company_job_applications_path(:filter => :unread) %> 
+              <strong class="loud">(<%= @new_job_application_count %>)</strong> | 
+            <% end %>
+            <%= link_to "收藏", company_job_applications_path(:filter => :starred) %>
+          </div>
           <div class="clearer">&nbsp;</div>
         </li>
         <!-- <li>
@@ -23,6 +29,19 @@
           <div class="right">搜索 | 收藏</div>
           <div class="clearer">&nbsp;</div>
         </li> -->
+        <li>
+          <div class="left"><%= link_to "公司信息", company_company_path %></div>
+          <div class="right"><%= link_to "管理", edit_company_company_path %></div>
+          <div class="clearer">&nbsp;</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section network-section">
+    <div class="section-title">增值服务</div>
+    <div class="section-content">
+      <ul class="nice-list">
         <li>
           <div class="left"><a href="#">推广服务</a></div>
           <div class="right">购买</div>
@@ -33,22 +52,6 @@
           <div class="right">充值</div>
           <div class="clearer">&nbsp;</div>
         </li>
-        <!-- <li>
-          <div class="left"><a href="#">公司主页</a></div>
-          <div class="right">开通</div>
-          <div class="clearer">&nbsp;</div>
-        </li> -->
-      </ul>
-    </div>
-  </div>
-
-  <div class="section network-section">
-    <div class="section-title">帐号管理</div>
-    <div class="section-content">
-      <ul class="nice-list">
-        <li><a href="#">个人信息</a></li>
-        <li><a href="#">更改邮件</a></li>
-        <li><a href="#">更改密码</a></li>
       </ul>
     </div>
   </div>
