@@ -2,6 +2,14 @@ class ActiveRecord::Base
   include EnumerateIt
 end
 
+class PeriodType < EnumerateIt::Base
+  associate_values(
+    :daily   => [1, '每天'],
+    :weekly  => [7, '每周'],
+    :monthly => [30, '每月']
+  )
+end
+
 class AdType < EnumerateIt::Base
   associate_values(
     :inline    => [1, '文中嵌入'],

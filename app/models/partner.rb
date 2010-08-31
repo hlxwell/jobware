@@ -24,5 +24,5 @@ class Partner < ActiveRecord::Base
   accepts_nested_attributes_for :user
 
   validates_presence_of :name, :url, :contact_name, :phone_number, :site_size, :desc
-  validates_acceptance_of :accept_terms, :accept => "1", :message => "你必需接受服务条款"
+  validates_acceptance_of :accept_terms, :message => "你必需接受服务条款"
 end

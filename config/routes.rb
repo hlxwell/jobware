@@ -1,11 +1,4 @@
 Jobware::Application.routes.draw do
-  get "transactions/index"
-
-  get "transactions/show"
-
-  get "transactions/new"
-
-  get "starred_resumes/index"
 
   match "track" => Tracker.action(:track), :as => :tracker
 

@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.0.rc'
+gem 'rails', '3.0.0'
 gem 'mysql'
 gem 'nifty-generators'
 gem 'authlogic', :git => 'http://github.com/binarylogic/authlogic.git'

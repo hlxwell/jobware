@@ -1,2 +1,6 @@
-<h1>Jobseeker::Subscriptions#new</h1>
-<p>Find me in app/views/jobseeker/subscriptions/new.html.erb</p>
+<% title "订阅管理" %>
+
+<%= jobware_form_for @subscription, :url => jobseeker_subscription_path, :title => "订阅管理"  do |f| %>
+  <%= render :partial => "form", :locals => {:f => f} %>
+  <%= f.submit "添加订阅", :class => "button right" %>
+<% end %>

@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(:version => 20100831053852) do
     t.integer  "bank_account_id"
     t.integer  "related_object_id"
     t.string   "related_object_type"
-    t.string   "credit_type"
+    t.integer  "credit_type"
     t.string   "from"
     t.string   "to"
     t.integer  "amount"

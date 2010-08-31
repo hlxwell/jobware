@@ -14,4 +14,18 @@
 
 class Subscription < ActiveRecord::Base
   belongs_to :resume
+  has_one :user, :through => :resume
+
+  has_enumeration_for :period_type, :with => PeriodType
+
+  validates_presence_of :keywords, :period_type
+
+  def send_newsletter
+    return false if last_sent_at.present? and period_type.days.ago < last_sent_at
+
+    last_sent_at = 1.month.ago if last_sent_at.blank?
+    jobs = Job.search(keywords, :with => {:updated_at => last_sent_at..Time.now})
+    JobseekerMailer.newsletter(user, jobs).deliver
+    update_attribute :last_sent_at, Time.now
+  end
 end
