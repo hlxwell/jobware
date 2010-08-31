@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100831051621) do
+ActiveRecord::Schema.define(:version => 20100831053852) do
 
   create_table "ad_positions", :force => true do |t|
     t.string   "name"
@@ -314,6 +314,15 @@ ActiveRecord::Schema.define(:version => 20100831051621) do
     t.integer  "company_id"
     t.integer  "resume_id"
     t.integer  "rating"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "subscriptions", :force => true do |t|
+    t.integer  "resume_id"
+    t.string   "keywords"
+    t.integer  "period_type"
+    t.date     "last_sent_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
