@@ -19,13 +19,13 @@ class Voucher < ActiveRecord::Base
 
   state_machine :initial => :unactive do
     after_transition :on => :active, :do => :charge_to_bank_account
-    
+
     event :active do
       transition :unactive => :active
     end
   end
-  
+
   def charge_to_bank_account
-    
+
   end
 end

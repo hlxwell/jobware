@@ -3,7 +3,9 @@
 <div class="main" id="main-two-columns-right-sidebar">
   <!-- ### left main side -->
 	<div class="left" id="main-left">
-	  <%= render :partial => "company", :collection => @companies %>
+	  <%= show_no_record(@companies) do %>
+	    <% render :partial => "company", :collection => @companies %>
+    <% end %>
 		<%= will_paginate @companies %>
 	</div>
 

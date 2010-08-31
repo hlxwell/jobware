@@ -29,6 +29,8 @@ class Company < ActiveRecord::Base
   has_enumeration_for :company_type, :with => CompanyType
   has_enumeration_for :size, :with => CompanySize
 
+  has_many :starred_resumes
+  has_many :candidates, :class_name => "Resume", :through => :starred_resumes
   has_many :jobs
   has_many :job_applications, :through => :jobs
   has_many :resumes, :through => :job_applications

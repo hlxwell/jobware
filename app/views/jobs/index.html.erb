@@ -4,7 +4,10 @@
 
   <!-- ### left main side -->
 	<div class="left" id="main-left">
-    <%= render :partial => "job", :collection => @jobs %>
+    <%= show_no_record(@jobs) do %>
+      <% render :partial => "job", :collection => @jobs %>
+    <% end %>
+
 		<%= will_paginate @jobs %>
 	</div>
 

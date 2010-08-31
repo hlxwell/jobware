@@ -1,10 +1,10 @@
 # == Schema Information
-# Schema version: 20100831035618
+# Schema version: 20100831053852
 #
 # Table name: service_items
 #
 #  id             :integer(4)      not null, primary key
-#  type           :string(255)
+#  type           :integer(4)
 #  name           :string(255)
 #  desc           :text
 #  service_length :integer(4)

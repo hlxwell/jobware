@@ -25,6 +25,15 @@
 #
 
 class Job < ActiveRecord::Base
+  define_index do
+    indexes name, :sortable => true
+    indexes location
+    indexes content
+    indexes requirement
+    indexes company(:name), :as => :company_name, :sortable => true
+    has company_id, created_at, updated_at
+  end
+
   has_enumeration_for :category, :with => JobCategory
   has_enumeration_for :contract_type, :with => ContractType
 
@@ -39,7 +48,7 @@ class Job < ActiveRecord::Base
   def location
     self.location_province + self.location_city
   end
-  
+
   def salary_range
     "面议" if read_attribute(:salary_range).blank?
   end

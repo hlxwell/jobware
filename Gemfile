@@ -20,6 +20,7 @@ gem 'state_machine'
 gem 'annotate-models'
 gem "exception_notification", :git => "http://github.com/rails/exception_notification.git", :branch => "master"
 gem "cancan"
+gem 'thinking-sphinx', :git => 'http://github.com/freelancing-god/thinking-sphinx.git', :branch  => 'rails3', :require => 'thinking_sphinx'
 
 group :development do
   gem "rails3-generators"

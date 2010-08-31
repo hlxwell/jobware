@@ -48,4 +48,12 @@ module ApplicationHelper
       [request.path]
     end
   end
+
+  def show_no_record collection, &block
+    if collection.blank?
+      raw "<p class='notice largest'>没有记录。</p>"
+    else
+      block.call
+    end
+  end
 end

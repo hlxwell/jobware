@@ -2,6 +2,15 @@ class ActiveRecord::Base
   include EnumerateIt
 end
 
+class AdType < EnumerateIt::Base
+  associate_values(
+    :inline    => [1, '文中嵌入'],
+    :job_board => [2, '专栏'],
+    :widget    => [3, '列表部件'],
+    :banner    => [4, '图片']
+  )
+end
+
 class ServingTargetType < EnumerateIt::Base
   associate_values(
     :jobseeker => [1, '求职者'],

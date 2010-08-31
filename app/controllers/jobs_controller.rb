@@ -1,6 +1,6 @@
 class JobsController < ApplicationController
   before_filter :jobseeker_login_required, :only => :star
-  
+
   def index
     @jobs = Job.paginate :all, :page => params[:page], :per_page => 20
   end
@@ -19,5 +19,20 @@ class JobsController < ApplicationController
       format.html { redirect_to @job }
       format.js
     end
+  end
+
+  def search
+    @jobs = Job.search(params[:search][:keywords],
+    :page => params[:page],
+    :rank_mode  => :wordcount,
+    :sort_mode  => :extended,
+    :order => "@rank DESC, created_at DESC",
+    :per_page => 20,
+    :match_mode => :extended,
+    :field_weights => {
+      :name => 6, :location => 5, :content => 5, :requirement => 2, :company_name => 2
+    })
+    
+    render "index"
   end
 end

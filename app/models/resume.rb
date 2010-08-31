@@ -38,7 +38,9 @@ class Resume < ActiveRecord::Base
   has_enumeration_for :current_working_state, :with => WorkingState
 
   belongs_to :user
-  # has_many :starred_resumes
+  ### been starred by company
+  has_many :starred_resumes
+  has_many :attentive_companies, :class_name => "Company", :through => :starred_resumes
 
   has_many :projects, :as => :parent, :dependent => :destroy
   has_many :skills, :dependent => :destroy
@@ -48,7 +50,7 @@ class Resume < ActiveRecord::Base
   has_many :cover_letters, :dependent => :destroy
   has_many :certifications, :dependent => :destroy
   has_many :job_applications
-  # has_many :subscriptions
+  has_one :subscription
   has_many :starred_jobs
   has_many :jobs, :through => :starred_jobs
 
@@ -93,7 +95,7 @@ class Resume < ActiveRecord::Base
         return "取消成功"
       end
     else
-      if current_user.jobseeker.starred_jobs.build(:job_id => job.id, :rating => rating).save
+      if self.starred_jobs.build(:job_id => job.id, :rating => rating).save
         return "收藏成功"
       else
         return "收藏失败"

@@ -24,9 +24,9 @@
         <% end %>
 
         <div class="search-box">
-          <form action="/jobs/search" id="search_form" method="get">
-            <input id="search_term" type="text" class="text" name="term" value="Search: ‘chicago’, ‘javascript’, ‘rails’…">
-          </form>
+          <%= form_for :search, :url => search_jobs_path, :html => {:id => "search_form"} do |f| %>
+            <%= f.text_field :keywords, :value => "请输入关键字：如JAVA，北京，数据库", :class => "text", :id => "search_term" %>
+          <% end %>
         </div>
       <% end %>
 			<div class="clearer">&nbsp;</div>

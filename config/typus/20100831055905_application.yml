@@ -1,0 +1,104 @@
+# Typus Models Configuration File
+#
+# Use the README file as a reference to customize settings.
+
+Ad:
+  fields:
+    default: company_id, position, type, url, state, start_at, end_at, company
+    form: company_id, type, url, state, start_at, end_at, company
+  order_by: position
+  relationships: company, image
+  filters: 
+  search: 
+  application: jobware
+
+Counter:
+  fields:
+    default: click, happend_at, parent_id, type
+    form: click, happend_at, parent_id, type
+  order_by: 
+  relationships: 
+  filters: 
+  search: 
+  application: jobware
+
+Revenue:
+  fields:
+    default: partner_id, period_start_at, period_end_at, state
+    form: partner_id, period_start_at, period_end_at, state
+  order_by: 
+  relationships: 
+  filters: 
+  search: 
+  application: jobware
+
+Service:
+  fields:
+    default: name, price
+    form: name, desc, price
+  order_by: 
+  relationships: service_item_amounts, service_items
+  filters: 
+  search: name
+  application: jobware
+
+ServiceItem:
+  fields:
+    default: type, name, service_length
+    form: type, name, desc, service_length
+  order_by: 
+  relationships: service, service_item_amounts
+  filters: 
+  search: name
+  application: jobware
+
+ServiceItemAmount:
+  fields:
+    default: service_id, service_item_id, amount, service, service_item
+    form: service_id, service_item_id, amount, service, service_item
+  order_by: 
+  relationships: service, service_item
+  filters: 
+  search: 
+  application: jobware
+
+StarredResume:
+  fields:
+    default: company_id, resume_id, rating, resume, company
+    form: company_id, resume_id, rating, resume, company
+  order_by: 
+  relationships: company, resume
+  filters: 
+  search: 
+  application: jobware
+
+Subscription:
+  fields:
+    default: resume_id, keywords, last_sent_at
+    form: resume_id, keywords, last_sent_at
+  order_by: 
+  relationships: 
+  filters: 
+  search: 
+  application: jobware
+
+TitledImage:
+  fields:
+    default: type, parent_id, name, file_file_name
+    form: type, parent_id, name, desc, file_file_name
+  order_by: 
+  relationships: 
+  filters: 
+  search: name
+  application: jobware
+
+Voucher:
+  fields:
+    default: code, service_item_id, user_id, amount, state, user, service_item
+    form: code, service_item_id, user_id, amount, state, user, service_item
+  order_by: 
+  relationships: service_item, user
+  filters: 
+  search: 
+  application: jobware
+

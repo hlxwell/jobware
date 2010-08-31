@@ -33,6 +33,11 @@ Jobware::Application.routes.draw do
       get :star
       put :star
     end
+
+    collection do
+      post :search
+    end
+
     resources :job_applications
   end
 

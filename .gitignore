@@ -1,6 +1,9 @@
 .bundle
 db/*.sqlite3
+log
 log/*.log
 tmp/**/*
 public/system/**/*
 .DS_Store
+db/sphinx
+config/development.sphinx.conf
