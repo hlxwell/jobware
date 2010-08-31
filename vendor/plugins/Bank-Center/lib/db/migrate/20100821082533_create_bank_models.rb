@@ -4,7 +4,7 @@ class CreateBankModels < ActiveRecord::Migration
       t.string      "type"
       t.integer     "bank_account_id"
       t.references  "related_object",   :polymorphic => true
-      t.string      "credit_type"
+      t.integer     "credit_type"
       t.string      "from"
       t.string      "to"
       t.integer     "amount"

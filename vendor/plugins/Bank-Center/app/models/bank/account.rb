@@ -18,7 +18,7 @@ class Bank::Account < ActiveRecord::Base
     class_eval <<-EOF
       def #{operation}! amount, option = {}
         ensure_positive_number(amount)
-        operate_credit!(amount, "#{operation}", option)
+        operate_credit!(amount.to_i, "#{operation}", option)
       end
     EOF
   end
@@ -40,6 +40,6 @@ private
   end
 
   def ensure_positive_number amount
-    raise NegativeNumberError.new if amount <= 0
+    raise NegativeNumberError.new if amount.blank? or amount.to_i <= 0
   end
 end

@@ -3,6 +3,16 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def create
+    @user = User.new(params[:user])
+    if @user.save
+      # UserSession.create(params[:user])
+      redirect_to("/", :notice => '用户注册成功。')
+    else
+      render :action => :new
+    end
+  end
+
   def edit
     @user = current_user
   end
@@ -17,13 +27,4 @@ class UsersController < ApplicationController
     end
   end
 
-  def create
-    @user = User.new(params[:user])
-    if @user.save
-      # UserSession.create(params[:user])
-      redirect_to("/", :notice => '用户注册成功。')
-    else
-      render :action => :new
-    end
-  end
 end

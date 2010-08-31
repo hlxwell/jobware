@@ -27,7 +27,8 @@
 class Job < ActiveRecord::Base
   define_index do
     indexes name, :sortable => true
-    indexes location
+    indexes location_province
+    indexes location_city
     indexes content
     indexes requirement
     indexes company(:name), :as => :company_name, :sortable => true

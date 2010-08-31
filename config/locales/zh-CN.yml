@@ -99,8 +99,8 @@
       precision: 3
     currency:
       format:
-        format: "%u %n"
-        unit: "CN¥"
+        format: "%n %u"
+        unit: "元"
         separator: "."
         delimiter: ","
         precision: 2

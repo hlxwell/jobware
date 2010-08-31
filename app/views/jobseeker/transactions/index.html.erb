@@ -1,0 +1,70 @@
+<% title "消费记录" %>
+
+<script type="text/javascript">
+  $(function() {
+    $('#main-right').tabs(); // { cookie: { expires: 0 } }
+  });
+</script>
+
+<!-- ### left main side -->
+<div class="right" id="main-right">
+  <ul class="larger">
+    <li><a href="#fragment-1"><span>消费记录</span></a></li>
+    <li><a href="#fragment-2"><span>短信包月消费记录</span></a></li>
+    <li><a href="#fragment-3"><span>简历高亮消费记录</span></a></li>
+  </ul>
+
+  <div id="fragment-1">
+    <table class="data-table">
+    	<tr>
+    	  <th>类型</th>
+    	  <th>来源</th>
+    	  <th>去往</th>
+    	  <th>时间</th>
+    		<th>金额/数量</th>
+        <th>剩余</th>
+    	</tr>
+    	<% total_amount = 0 %>
+    	<% @money_transactions.each do |tx| %>
+    	<% total_amount += tx.amount %>
+    	<tr class="even">
+    		<td><%= tx.credit_type_humanize %></td>
+    		<td><%= tx.from %></td>
+    		<td><%= tx.to %></td>
+    		<td><%= tx.created_at.to_s_detail %></td>
+    		<td class="large"><%= format_price tx.amount, :with_plus => true %></td>
+    		<td class="large"><%= format_price total_amount %></td>
+    	</tr>
+      <% end %>
+    </table>
+
+    <%#= will_paginate @transactions %>
+  </div>
+	<div id="fragment-2">
+	  <table class="data-table">
+    	<tr>
+    	  <th>类型</th>
+    	  <th>来源</th>
+    	  <th>去往</th>
+    	  <th>时间</th>
+    		<th>金额/数量</th>
+        <th>剩余</th>
+    	</tr>
+    	<% total_amount = 0 %>
+    	<% @sms_transactions.each do |tx| %>
+    	<% total_amount += tx.amount %>
+    	<tr class="even">
+    		<td><%= tx.credit_type_humanize %></td>
+    		<td><%= tx.from %></td>
+    		<td><%= tx.to %></td>
+    		<td><%= tx.created_at.to_s_detail %></td>
+    		<td class="large"><%= format_price tx.amount, :with_plus => true %></td>
+    		<td class="large"><%= format_price total_amount %></td>
+    	</tr>
+      <% end %>
+    </table>
+	</div>
+  <div id="fragment-3">
+    
+  </div>
+</div>

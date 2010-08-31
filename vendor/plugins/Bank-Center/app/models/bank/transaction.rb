@@ -1,7 +1,6 @@
 class Bank::Transaction < ActiveRecord::Base
   set_table_name :bank_transactions
 
-  include EnumerateIt
   has_enumeration_for :credit_type, :with => CreditType, :create_helpers => true
 
   default_scope where(:deleted_at => nil)

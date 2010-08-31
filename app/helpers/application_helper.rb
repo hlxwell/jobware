@@ -56,4 +56,24 @@ module ApplicationHelper
       block.call
     end
   end
+
+  def format_price(number, options={})
+    # :currency_before => false puts the currency symbol after the number
+    # default format: $12,345,678.90
+    options = {:currency_symbol => "¥", :delimiter => ",", :decimal_symbol => ".", :currency_before => true, :with_plus => false}.merge(options)
+    # split integer and fractional parts
+    int, frac = ("%.1f" % number).split('.')
+
+    plus_mark = (options[:with_plus] and int.to_i > 0) ? "+" : ""
+
+    # insert the delimiters
+    int.gsub!(/(\d)(?=(\d\d\d\d)+(?!\d))/, "\\1#{options[:delimiter]}")
+
+    if options[:currency_before]
+      options[:currency_symbol] + " #{plus_mark}" + int + options[:decimal_symbol] + frac
+    else
+      plus_mark + int + options[:decimal_symbol] + frac + options[:currency_symbol]
+    end
+  end
+
 end

@@ -30,4 +30,8 @@ class User < ActiveRecord::Base
   has_one :bank_account, :class_name => "Bank::Account", :as => :parent, :dependent => :destroy
 
   accepts_nested_attributes_for :company
+  
+  def after_create
+    self.build_bank_account(:name => self.email)
+  end
 end

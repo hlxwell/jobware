@@ -1,4 +1,10 @@
 Jobware::Application.routes.draw do
+  get "transactions/index"
+
+  get "transactions/show"
+
+  get "transactions/new"
+
   get "starred_resumes/index"
 
   match "track" => Tracker.action(:track), :as => :tracker
@@ -16,9 +22,7 @@ Jobware::Application.routes.draw do
     end
   end
 
-  resources :users do
-    resources :transactions
-  end
+  resource :user
 
   ### basic frontend
   resources :ads do
@@ -50,6 +54,7 @@ Jobware::Application.routes.draw do
 
   ### company section
   namespace :company do
+    resources :transactions
     resources :starred_resumes
     resource :company
     resources :jobs
@@ -72,6 +77,7 @@ Jobware::Application.routes.draw do
 
   ### job seeker section
   namespace :jobseeker do
+    resources :transactions
     resources :job_applications
     resources :starred_jobs
     resource :subscription
@@ -100,6 +106,7 @@ Jobware::Application.routes.draw do
       resources :counters
     end
     resources :revenues
+    resources :transactions
   end
 
   # ### SEO

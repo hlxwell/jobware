@@ -8,7 +8,7 @@
 </div>
 
 <div class='right w49p'>
-  <%= jobware_form_for @user||User.new, :title => "注册" do |f| %>
+  <%= jobware_form_for @user||User.new, :url => user_path, :title => "注册" do |f| %>
     <%= render :partial => "users/form", :locals => { :f => f } %>
     <%= f.submit "注册" %>
   <% end %>
