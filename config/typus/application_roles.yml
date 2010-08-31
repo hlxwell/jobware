@@ -1,0 +1,23 @@
+# Typus Roles Configuration File
+#
+# Use the README file as a reference to customize settings.
+
+admin:
+  AdPosition: create, read, update, delete
+  Adclick: create, read, update, delete
+  Certification: create, read, update, delete
+  Company: create, read, update, delete
+  CoverLetter: create, read, update, delete
+  Job: create, read, update, delete
+  JobApplication: create, read, update, delete
+  Language: create, read, update, delete
+  Partner: create, read, update, delete
+  Presentation: create, read, update, delete
+  PreviousJob: create, read, update, delete
+  Product: create, read, update, delete
+  Project: create, read, update, delete
+  Resume: create, read, update, delete
+  School: create, read, update, delete
+  Skill: create, read, update, delete
+  StarredJob: create, read, update, delete
+  User: create, read, update, delete

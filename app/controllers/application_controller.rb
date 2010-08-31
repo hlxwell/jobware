@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
 
   def dashboard_path_for(user)
     ["jobseeker", "company", "partner"].each do |s|
-      eval "return #{s}_dashboard_path if user.#{s}"
+      eval "return #{s}_dashboard_path if user.try(:#{s})"
     end
     return "/"
   end

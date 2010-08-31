@@ -96,21 +96,6 @@ Jobware::Application.routes.draw do
     # resources :revenues
   end
 
-  # ### admin section
-  # namespace :admin do
-  #   resources :jobs
-  #   resources :companies
-  #   resources :resumes
-  #   resources :job_applications
-  #   resources :subscriptions
-  #   resources :partners
-  #   resources :users
-  #   resources :services
-  #   resources :ad_positions
-  #   resources :transactions
-  #   resources :credit_transactions
-  # end
-  #
   # ### SEO
   # match "/sitemap.xml" => "sitemap#index"
   # match "/sitemap.xml.gz" => "sitemap#zip"
@@ -118,5 +103,5 @@ Jobware::Application.routes.draw do
   ### root
   match "/" => "page#home", :as => :root
 
-  match ':controller(/:action(/:id(.:format)))'
+  # match ':controller(/:action(/:id(.:format)))'
 end

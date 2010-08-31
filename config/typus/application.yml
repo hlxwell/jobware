@@ -1,0 +1,183 @@
+# Typus Models Configuration File
+#
+# Use the README file as a reference to customize settings.
+
+AdPosition:
+  fields:
+    default: name, job_list_tags, width, height, type, style, partner_id
+    form: name, job_list_tags, width, height, type, style, partner_id
+  order_by:
+  relationships:
+  filters:
+  search: name
+  application: Partner
+
+Adclick:
+  fields:
+    default: ad_position_id, remote_ip, source_page, dest_page, http_user_agent, remote_host, request_uri, ad_position
+    form: remote_ip, source_page, dest_page, http_user_agent, remote_host, request_uri, ad_position
+  order_by:
+  relationships: ad_position
+  filters:
+  search:
+  application: Partner
+
+Certification:
+  fields:
+    default: resume_id, name, get_at, resume
+    form: resume_id, name, get_at, resume
+  order_by:
+  relationships: image, resume
+  filters:
+  search: name
+  application: Jobseeker
+
+Company:
+  fields:
+    default: user_id, name, size, province, city, address, homepage, contact_name, phone_number, logo_file_name, user
+    form: user_id, name, size, province, city, address, homepage, contact_name, phone_number, desc, logo_file_name, user
+  order_by:
+  relationships: job_applications, jobs, presentations, products, resumes, user
+  filters:
+  search: name
+  application: Company
+
+CoverLetter:
+  fields:
+    default: resume_id, name
+    form: resume_id, name, content
+  order_by:
+  relationships:
+  filters:
+  search: name
+  application: Jobseeker
+
+Job:
+  fields:
+    default: name, location_province, location_city, category, vacancy, salary_range, highlight_start_at, highlight_end_at, start_at, end_at, company_id, company
+    form: name, location_province, location_city, category, vacancy, content, requirement, welfare, desc, salary_range, highlight_start_at, highlight_end_at, start_at, end_at, company_id, company
+  order_by:
+  relationships: company, job_applications, user
+  filters:
+  search: name
+  application: Company
+
+JobApplication:
+  fields:
+    default: job_id, resume_id, cover_letter_id, state, rating, resume, cover_letter, job
+    form: job_id, resume_id, cover_letter_id, state, rating, resume, cover_letter, job
+  order_by:
+  relationships: company, cover_letter, job, resume
+  filters:
+  search:
+  application: Jobseeker
+
+Language:
+  fields:
+    default: resume_id, name, level, resume
+    form: resume_id, name, level, resume
+  order_by:
+  relationships: resume
+  filters:
+  search: name
+  application: Jobseeker
+
+Partner:
+  fields:
+    default: user_id, name, url, contact_name, phone_number, site_size, user
+    form: user_id, name, url, contact_name, phone_number, site_size, desc, user
+  order_by:
+  relationships: user
+  filters:
+  search: name
+  application: Partner
+
+Presentation:
+  fields:
+    default: type, parent_id, name, file_file_name
+    form: type, parent_id, name, desc, file_file_name
+  order_by:
+  relationships:
+  filters:
+  search: name
+  application: Company
+
+PreviousJob:
+  fields:
+    default: resume_id, company_name, company_size, job_title, start_at, end_at, resume
+    form: resume_id, company_name, company_size, job_title, start_at, end_at, resume
+  order_by:
+  relationships: resume
+  filters:
+  search:
+  application: Jobseeker
+
+Product:
+  fields:
+    default: type, parent_id, name, file_file_name
+    form: type, parent_id, name, desc, file_file_name
+  order_by:
+  relationships:
+  filters:
+  search: name
+  application: Company
+
+Project:
+  fields:
+    default: type, parent_id, name, file_file_name
+    form: type, parent_id, name, desc, file_file_name
+  order_by:
+  relationships:
+  filters:
+  search: name
+  application: Jobseeker
+
+Resume:
+  fields:
+    default: user_id, name, gender, working_years, degree, major, birthday, hometown_province, hometown_city, current_residence_province, current_residence_city, email, phone_number, expected_salary, expected_positions, expected_job_location, current_working_state, highlight_start_at, highlight_end_at, is_sending_sms, portrait_file_name, user
+    form: user_id, name, gender, working_years, degree, major, birthday, hometown_province, hometown_city, current_residence_province, current_residence_city, email, phone_number, expected_salary, expected_job_location, current_working_state, highlight_start_at, highlight_end_at, is_sending_sms, portrait_file_name, user
+  order_by:
+  relationships: certifications, cover_letters, job_applications, jobs, languages, previous_jobs, projects, schools, skills, starred_jobs, user
+  filters:
+  search: name
+  application: Jobseeker
+
+School:
+  fields:
+    default: resume_id, name, major, start_at, end_at, resume
+    form: resume_id, name, major, start_at, end_at, resume
+  order_by:
+  relationships: resume
+  filters:
+  search: name
+  application: Jobseeker
+
+Skill:
+  fields:
+    default: resume_id, name, level, resume
+    form: resume_id, name, level, resume
+  order_by:
+  relationships: resume
+  filters:
+  search: name
+  application: Jobseeker
+
+StarredJob:
+  fields:
+    default: resume_id, job_id, rating, resume, job
+    form: resume_id, job_id, rating, resume, job
+  order_by:
+  relationships: job, resume
+  filters:
+  search:
+  application: Jobseeker
+
+User:
+  fields:
+    default: login, email, login_count, failed_login_count, last_request_at, current_login_at, last_login_at, current_login_ip, last_login_ip
+    form: login, email, login_count, failed_login_count, last_request_at, current_login_at, last_login_at, current_login_ip, last_login_ip
+  order_by: last_request_at, current_login_at, last_login_at, current_login_ip, last_login_ip
+  relationships: company, jobseeker, partner
+  filters: last_request_at
+  search: email, login
+  application: Account

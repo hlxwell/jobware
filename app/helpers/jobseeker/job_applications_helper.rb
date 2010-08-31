@@ -1,2 +1,0 @@
-module Jobseeker::JobApplicationsHelper
-end
