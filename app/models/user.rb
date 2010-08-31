@@ -22,12 +22,12 @@
 #
 
 class User < ActiveRecord::Base
-  # attr_accessible :password_confirmation, :password, :login, :email
   acts_as_authentic
 
   has_one :company
   has_one :partner
   has_one :jobseeker, :class_name => "Resume"
+  has_one :bank_account, :class_name => "Bank::Account", :as => :parent, :dependent => :destroy
 
   accepts_nested_attributes_for :company
 end

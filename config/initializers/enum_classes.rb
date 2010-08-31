@@ -2,6 +2,13 @@ class ActiveRecord::Base
   include EnumerateIt
 end
 
+class ServingTargetType < EnumerateIt::Base
+  associate_values(
+    :jobseeker => [1, '求职者'],
+    :company    => [2, '公司']
+  )
+end
+
 class Degree < EnumerateIt::Base
   associate_values(
     :highschool => [1, '高中'],

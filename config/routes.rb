@@ -1,4 +1,6 @@
 Jobware::Application.routes.draw do
+  get "starred_resumes/index"
+
   match "track" => Tracker.action(:track), :as => :tracker
 
   ### auth stuff
@@ -15,16 +17,15 @@ Jobware::Application.routes.draw do
   end
 
   resources :users do
-    # resources :transactions
-    # resources :credit_transactions
+    resources :transactions
   end
 
-  # ### basic frontend
-  # resources :ads do
-  #   member do
-  #     get :job_board
-  #   end
-  # end
+  ### basic frontend
+  resources :ads do
+    member do
+      get :job_board
+    end
+  end
 
   resources :jobs do
     member do
@@ -44,7 +45,7 @@ Jobware::Application.routes.draw do
 
   ### company section
   namespace :company do
-    # resources :starred_resumes
+    resources :starred_resumes
     resource :company
     resources :jobs
     resources :job_applications do
@@ -56,19 +57,19 @@ Jobware::Application.routes.draw do
     end
     resources :presentations
     resources :products
-    # resources :ads
-    # resources :services do
-    #   member do
-    #     post => :buy
-    #   end
-    # end
+    resources :ads
+    resources :services do
+      member do
+        post :buy
+      end
+    end
   end
 
   ### job seeker section
   namespace :jobseeker do
     resources :job_applications
     resources :starred_jobs
-  #   resource :subscription
+    resource :subscription
 
     resource :resume do
       resources :previous_jobs
@@ -80,20 +81,20 @@ Jobware::Application.routes.draw do
       resources :cover_letters
     end
 
-  #   resources :services do
-  #     member do
-  #       post :buy
-  #     end
-  #   end
+    resources :services do
+      member do
+        post :buy
+      end
+    end
   end
 
   ### partner section
   resource :partner
   namespace :partner do
     resources :ad_positions do
-      # revenuess :counters
+      resources :counters
     end
-    # resources :revenues
+    resources :revenues
   end
 
   # ### SEO

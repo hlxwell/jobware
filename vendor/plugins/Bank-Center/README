@@ -1,0 +1,30 @@
+Bank Center
+==========
+This is a rails plugin which is about user credit account management solution.
+Like below is a user's money account:
+
+Action    credit from   credit to   amount  remains   credit type   paid at     state
+Charge    PayPal        UserA       +10     10        USD           9/9/2012    done
+Pay       UserA         ProductA    -1      9         USD           9/9/2012    done
+Refund    ProductA      UserA       +1      10        USD           9/9/2012    done
+Withdraw  UserA         PayPal      -10     0         USD           9/9/2012    done
+
+Requirements
+=========
+Add requirements to Gemfile
+gem 'enumerate_it'
+
+How-To
+=========
+rake db:migrate:bank_center
+
+account = Bank::Account.new(:name => "my account")
+account.charge!(100, :credit_type => CreditType::MONEY, :from => 'paypal')
+pay_transaction = account.pay!(20, :to => "productA")
+account.refund!(20, :from => "productA", :related_object => pay_transaction)
+account.withdraw!(100, :to => "paypal")
+
+Transaction can be cancelled, like 
+@transaction.cancel!('cancel reason')
+
+Copyright (c) 2010 Michael He, released under the MIT license

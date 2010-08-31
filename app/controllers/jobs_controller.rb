@@ -7,7 +7,7 @@ class JobsController < ApplicationController
 
   def show
     @job = Job.find(params[:id])
-    @starred_job = current_user.jobseeker.present? ? current_user.jobseeker.starred_jobs.where(:job_id => params[:id]).first : nil
+    @starred_job = current_user.try(:jobseeker).present? ? current_user.jobseeker.starred_jobs.where(:job_id => params[:id]).first : nil
   end
 
   def star

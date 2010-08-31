@@ -1,22 +1,26 @@
 # == Schema Information
-# Schema version: 20100826084313
+# Schema version: 20100831035618
 #
 # Table name: companies
 #
-#  id           :integer(4)      not null, primary key
-#  user_id      :integer(4)
-#  name         :string(255)
-#  company_type :integer(4)
-#  size         :integer(4)
-#  province     :string(255)
-#  city         :string(255)
-#  address      :string(255)
-#  homepage     :string(255)
-#  contact_name :string(255)
-#  phone_number :string(255)
-#  desc         :text
-#  created_at   :datetime
-#  updated_at   :datetime
+#  id                :integer(4)      not null, primary key
+#  user_id           :integer(4)
+#  name              :string(255)
+#  company_type      :integer(4)
+#  size              :integer(4)
+#  province          :string(255)
+#  city              :string(255)
+#  address           :string(255)
+#  homepage          :string(255)
+#  contact_name      :string(255)
+#  phone_number      :string(255)
+#  desc              :text
+#  created_at        :datetime
+#  updated_at        :datetime
+#  logo_file_name    :string(255)
+#  logo_content_type :string(255)
+#  logo_file_size    :integer(4)
+#  logo_updated_at   :datetime
 #
 
 class Company < ActiveRecord::Base

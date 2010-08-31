@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100831021534) do
+ActiveRecord::Schema.define(:version => 20100831051621) do
 
   create_table "ad_positions", :force => true do |t|
     t.string   "name"
@@ -49,6 +49,48 @@ ActiveRecord::Schema.define(:version => 20100831021534) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "ads", :force => true do |t|
+    t.integer  "company_id"
+    t.integer  "position"
+    t.integer  "type"
+    t.string   "url"
+    t.string   "state"
+    t.date     "start_at"
+    t.date     "end_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "bank_accounts", :force => true do |t|
+    t.integer  "parent_id"
+    t.string   "parent_type"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "bank_accounts", ["parent_type", "parent_id"], :name => "index_bank_accounts_on_parent_type_and_parent_id"
+
+  create_table "bank_transactions", :force => true do |t|
+    t.string   "type"
+    t.integer  "bank_account_id"
+    t.integer  "related_object_id"
+    t.string   "related_object_type"
+    t.string   "credit_type"
+    t.string   "from"
+    t.string   "to"
+    t.integer  "amount"
+    t.string   "note"
+    t.string   "cancel_reason"
+    t.datetime "cancelled_at"
+    t.datetime "deleted_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "bank_transactions", ["bank_account_id"], :name => "index_bank_transactions_on_bank_account_id"
+  add_index "bank_transactions", ["credit_type"], :name => "index_bank_transactions_on_credit_type"
 
   create_table "certifications", :force => true do |t|
     t.integer  "resume_id"
@@ -94,6 +136,16 @@ ActiveRecord::Schema.define(:version => 20100831021534) do
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
+  end
+
+  create_table "counters", :force => true do |t|
+    t.integer  "click"
+    t.date     "happend_at"
+    t.string   "parent_type"
+    t.integer  "parent_id"
+    t.string   "type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "cover_letters", :force => true do |t|
@@ -197,12 +249,47 @@ ActiveRecord::Schema.define(:version => 20100831021534) do
     t.datetime "portrait_updated_at"
   end
 
+  create_table "revenues", :force => true do |t|
+    t.integer  "partner_id"
+    t.date     "period_start_at"
+    t.date     "period_end_at"
+    t.string   "state"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "schools", :force => true do |t|
     t.integer  "resume_id"
     t.string   "name"
     t.string   "major"
     t.datetime "start_at"
     t.datetime "end_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "service_item_amounts", :force => true do |t|
+    t.integer  "service_id"
+    t.integer  "service_item_id"
+    t.integer  "amount"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "service_items", :force => true do |t|
+    t.integer  "type"
+    t.string   "name"
+    t.text     "desc"
+    t.integer  "service_length"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "services", :force => true do |t|
+    t.integer  "serving_target_type"
+    t.string   "name"
+    t.text     "desc"
+    t.integer  "price"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -218,6 +305,14 @@ ActiveRecord::Schema.define(:version => 20100831021534) do
   create_table "starred_jobs", :force => true do |t|
     t.integer  "resume_id"
     t.integer  "job_id"
+    t.integer  "rating"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "starred_resumes", :force => true do |t|
+    t.integer  "company_id"
+    t.integer  "resume_id"
     t.integer  "rating"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -251,6 +346,16 @@ ActiveRecord::Schema.define(:version => 20100831021534) do
     t.datetime "last_login_at"
     t.string   "current_login_ip"
     t.string   "last_login_ip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "vouchers", :force => true do |t|
+    t.string   "code"
+    t.integer  "service_item_id"
+    t.integer  "user_id"
+    t.integer  "amount"
+    t.string   "state"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
