@@ -13,7 +13,7 @@ class PartnersController < ApplicationController
   def update
     @partner = current_user.partner
     if @partner.update_attributes(params[:partner])
-      redirect_to @partner, :notice => "合作者更新成功。"
+      redirect_to edit_partner_path, :notice => "合作站信息更新成功。"
     else
       render :action => 'edit'
     end
@@ -29,7 +29,7 @@ class PartnersController < ApplicationController
     @partner.build_user(params[:partner][:user_attributes])
 
     if @partner.save
-      redirect_to partner_dashboard_path, :notice => "合作者创建成功。"
+      redirect_to partner_dashboard_path, :notice => "合作站创建成功。"
     else
       render :action => 'new'
     end

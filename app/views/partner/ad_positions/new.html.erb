@@ -1,5 +1,6 @@
-<% title "New Partner/Ad Position" %>
+<% title "新建广告位" %>
 
-<%= render 'form' %>
-
-<p><%= link_to "Back to List", partner/ad_positions_path %></p>
+<%= jobware_form_for @ad_position, :url => partner_ad_positions_path, :title => "新建广告位" do |f| %>
+  <%= render :partial => 'form', :locals => { :f => f } %>
+  <%= f.submit "提交", :class => "right button" %>
+<% end %>

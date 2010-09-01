@@ -36,6 +36,7 @@ class Company < ActiveRecord::Base
   has_many :resumes, :through => :job_applications
   has_many :products, :as => :parent, :dependent => :destroy
   has_many :presentations, :as => :parent, :dependent => :destroy
+  has_many :ads
   belongs_to :user
 
   accepts_nested_attributes_for :user, :jobs, :products, :presentations

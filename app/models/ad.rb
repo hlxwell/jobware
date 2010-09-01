@@ -17,6 +17,12 @@
 
 class Ad < ActiveRecord::Base
   has_enumeration_for :type, :with => AdType
+
+  validates_presence_of :url
+
   belongs_to :company
-  has_one :image, :as => :parent, :dependent => :destroy
+  has_one :image, :class_name => 'TitledImage', :as => :parent, :dependent => :destroy
+  accepts_nested_attributes_for :image
+
+  delegate :name, :name=, :desc, :desc=, :file, :file=, :to => :image
 end

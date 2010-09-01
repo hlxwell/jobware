@@ -16,5 +16,9 @@
 #
 
 class AdPosition < ActiveRecord::Base
-  attr_accessible :name, :job_list_tags, :width, :height, :type, :style, :partner_id
+  has_enumeration_for :ad_type, :with => AdType
+
+  belongs_to :partner
+  validates_presence_of :name, :job_list_tags, :width, :height, :ad_type, :style
+  validates_inclusion_of :ad_type, :in => AdType.list
 end

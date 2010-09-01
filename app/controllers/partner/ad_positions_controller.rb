@@ -1,18 +1,19 @@
 class Partner::AdPositionsController < Partner::BaseController
+  before_filter :get_ad_position_by_id, :only => [:show, :edit, :update, :destroy]
+
   def index
-    @ad_positions = Partner::adPosition.all
+    @ad_positions = current_user.partner.ad_positions.all
   end
 
   def show
-    @ad_position = Partner::adPosition.find(params[:id])
   end
 
   def new
-    @ad_position = Partner::adPosition.new
+    @ad_position = current_user.partner.ad_positions.build
   end
 
   def create
-    @ad_position = Partner::adPosition.new(params[:ad_position])
+    @ad_position = current_user.partner.ad_positions.build(params[:ad_position])
     if @ad_position.save
       flash[:notice] = "Successfully created ad position."
       redirect_to @ad_position
@@ -21,12 +22,11 @@ class Partner::AdPositionsController < Partner::BaseController
     end
   end
 
+
   def edit
-    @ad_position = Partner::adPosition.find(params[:id])
   end
 
   def update
-    @ad_position = Partner::adPosition.find(params[:id])
     if @ad_position.update_attributes(params[:ad_position])
       flash[:notice] = "Successfully updated ad position."
       redirect_to @ad_position
@@ -36,9 +36,13 @@ class Partner::AdPositionsController < Partner::BaseController
   end
 
   def destroy
-    @ad_position = Partner::adPosition.find(params[:id])
     @ad_position.destroy
     flash[:notice] = "Successfully destroyed ad position."
     redirect_to ad_positions_url
+  end
+
+  private
+  def get_ad_position_by_id
+    @ad_position = current_user.partner.ad_positions.find(params[:id])
   end
 end

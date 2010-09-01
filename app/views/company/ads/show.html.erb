@@ -1,2 +1,20 @@
-<h1>Company::Ads#show</h1>
-<p>Find me in app/views/company/ads/show.html.erb</p>
+<% title @ad.name %>
+
+<table class="data-table top-vlign">
+	<tr>
+	  <th width="50px">广告名</th>
+		<td><%= @ad.name %></td>
+	</tr>
+	<tr>
+	  <th>广告内容</th>
+		<td><%= raw @ad.desc %></td>
+	</tr>
+	<tr>
+	  <th>广告链接</th>
+		<td><%= @ad.url %></td>
+	</tr>
+	<tr>
+	  <th>广告图片</th>
+		<td><%= image_tag @ad.file.url %></td>
+	</tr>
+</table>

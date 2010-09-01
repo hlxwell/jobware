@@ -51,9 +51,10 @@ module ApplicationHelper
 
   def show_no_record collection, &block
     if collection.blank?
-      raw "<p class='notice largest'>没有记录。</p>"
+      return raw("<div class='notice largest'>没有记录。</div>")
     else
       block.call
+      return ""
     end
   end
 

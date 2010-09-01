@@ -10,14 +10,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100901080539) do
+ActiveRecord::Schema.define(:version => 20100901084428) do
 
   create_table "ad_positions", :force => true do |t|
     t.string   "name"
     t.string   "job_list_tags"
     t.integer  "width"
     t.integer  "height"
-    t.integer  "type"
+    t.integer  "ad_type"
     t.integer  "style"
     t.integer  "partner_id"
     t.datetime "created_at"

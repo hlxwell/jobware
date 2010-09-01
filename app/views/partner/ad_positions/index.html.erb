@@ -1,29 +1,26 @@
-<% title "Partner/Ad Positions" %>
+<% title "广告位" %>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Job List Tags</th>
-    <th>Width</th>
-    <th>Height</th>
-    <th>Type</th>
-    <th>Style</th>
-    <th>Partner</th>
-  </tr>
-  <% for partner/ad_position in @partner/ad_positions %>
+<table class="data-table">
+	<tr>
+	  <th>名称</th>
+	  <th>岗位关键字</th>
+	  <th>宽度</th>
+	  <th>高度</th>
+		<th>类型</th>
+    <th>样式</th>
+	</tr>
+  <% for ad_position in @ad_positions %>
     <tr>
-      <td><%= partner/ad_position.name %></td>
-      <td><%= partner/ad_position.job_list_tags %></td>
-      <td><%= partner/ad_position.width %></td>
-      <td><%= partner/ad_position.height %></td>
-      <td><%= partner/ad_position.type %></td>
-      <td><%= partner/ad_position.style %></td>
-      <td><%= partner/ad_position.partner_id %></td>
-      <td><%= link_to "Show", partner/ad_position %></td>
-      <td><%= link_to "Edit", edit_partner/ad_position_path(partner/ad_position) %></td>
-      <td><%= link_to "Destroy", partner/ad_position, :confirm => 'Are you sure?', :method => :delete %></td>
+      <td><%= ad_position.name %></td>
+      <td><%= ad_position.job_list_tags %></td>
+      <td><%= ad_position.width %></td>
+      <td><%= ad_position.height %></td>
+      <td><%= ad_position.type %></td>
+      <td><%= ad_position.style %></td>
+      <td><%= ad_position.partner_id %></td>
+      <td><%= link_to "Show", ad_position %></td>
+      <td><%= link_to "Edit", edit_ad_position_path(ad_position) %></td>
+      <td><%= link_to "Destroy", ad_position, :confirm => 'Are you sure?', :method => :delete %></td>
     </tr>
   <% end %>
 </table>
-
-<p><%= link_to "New Partner/Ad Position", new_partner/ad_position_path %></p>

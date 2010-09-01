@@ -1,11 +1,11 @@
 class Company::JobsController < Company::BaseController
+  before_filter :get_job_by_id, :only => [:show, :edit, :update, :destroy]
 
   def index
     @jobs = current_user.company.jobs.paginate :page => params[:page], :per_page => 1
   end
 
   def show
-    @job = current_user.company.jobs.find(params[:id])
   end
 
   def new
@@ -22,11 +22,9 @@ class Company::JobsController < Company::BaseController
   end
 
   def edit
-    @job = current_user.company.jobs.find(params[:id])
   end
 
   def update
-    @job = current_user.company.jobs.find(params[:id])
     if @job.update_attributes(params[:job])
       redirect_to company_job_path(@job), :notice => "岗位更新成功。"
     else
@@ -35,9 +33,14 @@ class Company::JobsController < Company::BaseController
   end
 
   def destroy
-    @job = current_user.company.jobs.find(params[:id])
     @job.destroy
-    flash[:notice] = "Successfully destroyed job."
+    flash[:success] = "删除岗位成功。"
     redirect_to company_jobs_path
+  end
+
+private
+
+  def get_job_by_id
+    @job = current_user.company.jobs.find(params[:id])
   end
 end

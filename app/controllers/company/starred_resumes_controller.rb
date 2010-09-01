@@ -1,4 +1,4 @@
-class Company::StarredResumesController < ApplicationController
+class Company::StarredResumesController < Company::BaseController
   def index
   end
 

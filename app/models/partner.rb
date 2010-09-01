@@ -20,6 +20,7 @@ class Partner < ActiveRecord::Base
 
   attr_accessor :accept_terms
 
+  has_many :ad_positions
   belongs_to :user
   accepts_nested_attributes_for :user
 

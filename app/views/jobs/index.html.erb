@@ -4,7 +4,7 @@
 
   <!-- ### left main side -->
 	<div class="left" id="main-left">
-    <%= show_no_record(@jobs) do %>
+    <% show_no_record(@jobs) do %>
       <% render :partial => "job", :collection => @jobs %>
     <% end %>
 
