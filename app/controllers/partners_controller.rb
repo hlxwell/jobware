@@ -1,15 +1,17 @@
 class PartnersController < ApplicationController
-
+  before_filter :partner_login_required
+  layout "partner", :only => :edit
+  
   def show
-    @partner = Partner.find(params[:id])
+    @partner = current_user.partner
   end
 
   def edit
-    @partner = Partner.find(params[:id])
+    @partner = current_user.partner
   end
 
   def update
-    @partner = Partner.find(params[:id])
+    @partner = current_user.partner
     if @partner.update_attributes(params[:partner])
       redirect_to @partner, :notice => "合作者更新成功。"
     else

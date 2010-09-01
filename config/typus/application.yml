@@ -176,8 +176,107 @@ User:
   fields:
     default: login, email, login_count, failed_login_count, last_request_at, current_login_at, last_login_at, current_login_ip, last_login_ip
     form: login, email, login_count, failed_login_count, last_request_at, current_login_at, last_login_at, current_login_ip, last_login_ip
+    cvs: email, login_count
+  export: csv, xml
   order_by: last_request_at, current_login_at, last_login_at, current_login_ip, last_login_ip
   relationships: company, jobseeker, partner
   filters: last_request_at
   search: email, login
   application: Account
+
+Ad:
+  fields:
+    default: company_id, position, type, url, state, start_at, end_at, company
+    form: company_id, type, url, state, start_at, end_at, company
+  order_by: position
+  relationships: company, image
+  filters:
+  search:
+  application: Company
+
+Counter:
+  fields:
+    default: click, happend_at, parent_id, type
+    form: click, happend_at, parent_id, type
+  order_by:
+  relationships:
+  filters:
+  search:
+  application: Partner
+
+Revenue:
+  fields:
+    default: partner_id, period_start_at, period_end_at, state
+    form: partner_id, period_start_at, period_end_at, state
+  order_by:
+  relationships:
+  filters:
+  search:
+  application: Partner
+
+StarredResume:
+  fields:
+    default: company_id, resume_id, rating, resume, company
+    form: company_id, resume_id, rating, resume, company
+  order_by:
+  relationships: company, resume
+  filters:
+  search:
+  application: Company
+
+Subscription:
+  fields:
+    default: resume_id, keywords, last_sent_at
+    form: resume_id, keywords, last_sent_at
+  order_by:
+  relationships:
+  filters:
+  search:
+  application: Jobseeker
+
+Service:
+  fields:
+    default: serving_target_type_humanize, name, price
+    form: serving_target_type, name, desc, price
+    options:
+      selectors: serving_target_type
+  order_by:
+  relationships: service_item_amounts, service_items
+  filters:
+  search: name
+  application: Service
+
+ServiceItem:
+  fields:
+    default: credit_type_humanize, name, service_length
+    form: credit_type, name, desc, service_length
+    options:
+      selectors: credit_type
+  order_by:
+  relationships: service, service_item_amounts
+  filters:
+  search: name
+  application: Service
+  description: 服务项
+
+ServiceItemAmount:
+  fields:
+    default: amount, service, service_item
+    form: amount, service, service_item
+  order_by:
+  relationships: service, service_item
+  filters:
+  search:
+  application: Service
+
+Voucher:
+  fields:
+    default: code, amount, state, user, service_item
+    form: amount, state, user, service_item
+    options:
+      selectors: state
+  order_by:
+  relationships: service_item, user
+  filters:
+  search:
+  application: Service

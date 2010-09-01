@@ -14,8 +14,13 @@
 #
 
 class Voucher < ActiveRecord::Base
+  STATE = ["active", "unactive"]
+
   belongs_to :service_item
   belongs_to :user
+
+  validates_presence_of :amount, :service_item_id
+  validates_inclusion_of :state, :in => STATE
 
   state_machine :initial => :unactive do
     after_transition :on => :active, :do => :charge_to_bank_account
@@ -23,6 +28,10 @@ class Voucher < ActiveRecord::Base
     event :active do
       transition :unactive => :active
     end
+  end
+
+  def Base.before_create
+    self.code = MD5.md5(Time.now.to_s)
   end
 
   def charge_to_bank_account

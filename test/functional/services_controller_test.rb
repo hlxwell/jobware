@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Company::ServicesControllerTest < ActionController::TestCase
+class Jobseeker::ServicesControllerTest < ActionController::TestCase
     
   context "index action" do
     should "render index template" do
@@ -11,7 +11,7 @@ class Company::ServicesControllerTest < ActionController::TestCase
       
   context "show action" do
     should "render show template" do
-      get :show, :id => Company::Services.first
+      get :show, :id => Jobseeker::Services.first
       assert_template 'show'
     end
   end    

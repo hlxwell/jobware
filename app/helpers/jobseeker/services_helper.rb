@@ -1,0 +1,2 @@
+module Jobseeker::ServicesHelper
+end

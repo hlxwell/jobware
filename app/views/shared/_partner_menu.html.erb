@@ -9,17 +9,17 @@
 		<div class="section-content">
 			<ul class="nice-list">
 				<li>
-					<div class="left"><a href="#">广告位</a></div>
-					<div class="right">添加</div>
+					<div class="left"><%= link_to "广告位", partner_ad_positions_path %></div>
+					<div class="right"><%= link_to "添加", new_partner_ad_position_path %></div>
 					<div class="clearer">&nbsp;</div>
 				</li>
 				<li>
-					<div class="left"><a href="#">收入情况</a></div>
-					<div class="right"></div>
+					<div class="left"><%= link_to "收入管理", partner_transactions_path %></div>
+					<div class="right"><%= link_to "取现", withdraw_partner_transactions_path %></div>
 					<div class="clearer">&nbsp;</div>
 				</li>
 				<li>
-					<div class="left"><a href="#">支付宝帐号</a></div>
+					<div class="left"><%= link_to "修改信息", edit_partner_path %></div>
 					<div class="right"></div>
 					<div class="clearer">&nbsp;</div>
 				</li>

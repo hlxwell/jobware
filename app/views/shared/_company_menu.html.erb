@@ -43,13 +43,13 @@
     <div class="section-content">
       <ul class="nice-list">
         <li>
-          <div class="left"><a href="#">推广服务</a></div>
-          <div class="right">购买</div>
+          <div class="left"><%= link_to "推广服务", company_services_path %></div>
+          <div class="right"><%= link_to "已购买", company_services_path %></div>
           <div class="clearer">&nbsp;</div>
         </li>
         <li>
-          <div class="left"><a href="#">消费管理</a></div>
-          <div class="right">充值</div>
+          <div class="left"><%= link_to "消费管理", company_transactions_path %></div>
+          <div class="right"><%= link_to "充值", new_company_transaction_path %></div>
           <div class="clearer">&nbsp;</div>
         </li>
       </ul>

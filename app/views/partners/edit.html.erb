@@ -1,8 +1,6 @@
-<% title "Edit Partner" %>
+<% title "修改合作站信息" %>
 
-<%= render 'form' %>
-
-<p>
-  <%= link_to "Show", @partner %> |
-  <%= link_to "View All", partners_path %>
-</p>
+<%= jobware_form_for @partner, :url => partner_path, :title => "合作站信息" do |f| %>
+  <%= render :partial => 'form', :locals => { :f => f } %>
+  <%= f.submit "更新", :class => "right button" %>
+<% end %>

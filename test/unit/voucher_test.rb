@@ -2,6 +2,6 @@ require 'test_helper'
 
 class VoucherTest < ActiveSupport::TestCase
   should "be valid" do
-    assert Voucher.new.valid?
+    assert Factory(:voucher).new.valid?
   end
 end

@@ -1,4 +1,4 @@
-<% title "推广服务" %>
+<% title "高级服务" %>
 
 <table class="data-table">
 	<tr>
@@ -13,7 +13,7 @@
 		<td><%= raw service.desc %></td>
 		<td><%= format_price service.price %></td>
 		<td>
-		  <%= link_to "购买", company_service_path(service) %>
+		  <%= link_to "购买", jobseeker_service_path(service) %>
 		</td>
 	</tr>
   <% end %>

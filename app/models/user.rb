@@ -22,6 +22,9 @@
 #
 
 class User < ActiveRecord::Base
+  ROLE = Typus::Configuration.roles.keys.sort
+  LANGUAGE = Typus.locales
+
   acts_as_authentic
 
   has_one :company
@@ -30,7 +33,7 @@ class User < ActiveRecord::Base
   has_one :bank_account, :class_name => "Bank::Account", :as => :parent, :dependent => :destroy
 
   accepts_nested_attributes_for :company
-  
+
   def Base.after_create
     self.build_bank_account(:name => self.email)
   end

@@ -1,6 +1,7 @@
 Jobware::Application.routes.draw do
 
   match "track" => Tracker.action(:track), :as => :tracker
+  match "slideshowpro(.:format)" => "page#slideshowpro"
 
   ### auth stuff
   match "/login" => "sessions#new", :as => :login
@@ -38,7 +39,11 @@ Jobware::Application.routes.draw do
     resources :job_applications
   end
 
-  resources :companies
+  resources :companies do
+    member do
+      get :presentations
+    end
+  end
 
   ### dashboard rewrite
   match "/jobseeker/dashboard" => "dashboard#jobseeker", :as => :jobseeker_dashboard
@@ -99,7 +104,11 @@ Jobware::Application.routes.draw do
       resources :counters
     end
     resources :revenues
-    resources :transactions
+    resources :transactions do
+      collection do
+        get :withdraw
+      end
+    end
   end
 
   # ### SEO

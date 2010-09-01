@@ -5,4 +5,4 @@
 <%= f.text_field :contact_name, :label => "联系人", :class => "text w600" %>
 <%= f.text_field :phone_number, :label => "联系电话", :class => "text w600" %>
 <%= f.cktext_area(:desc, :height => '200px', :toolbar=>'Basic', :skin => "v2", :label => "网站描述") %>
-<%= f.check_box :accept_terms, :label => "同意协议", :required => true, :type => 'agree_term', :hint => raw("<a href='#'>查看条款</a>") %>
+<%= f.cktext_area(:bank_info, :height => '200px', :toolbar=>'Basic', :skin => "v2", :label => "佣金支付方式") %>
