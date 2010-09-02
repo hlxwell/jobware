@@ -10,6 +10,16 @@ class PeriodType < EnumerateIt::Base
   )
 end
 
+class AdPositionType < EnumerateIt::Base
+  associate_values(
+    :slider_ad               => [1, '首页头条图片'],
+    :featured_job            => [2, '首页热门招聘'],
+    :urgent_job              => [3, '全局右侧顶部紧急招聘'],
+    :right_featured_company  => [4, '全局右侧推荐公司'] ,
+    :bottom_featured_company => [5, '全局底部推荐公司']
+  )
+end
+
 class AdType < EnumerateIt::Base
   associate_values(
     :inline    => [1, '文中嵌入'],

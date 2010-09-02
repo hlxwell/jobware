@@ -11,6 +11,14 @@ $(function(){
         $(".stars-wrapper").closest("form").submit();
       }
   });
+
+  $('#slider').coinslider({ 
+    width: 670,
+    height: 300,
+    navigation: true, 
+    delay: 5000,
+    effect: 'random'
+  });
 });
 
 function remove_fields(link) {

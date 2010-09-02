@@ -116,7 +116,7 @@ Jobware::Application.routes.draw do
   # match "/sitemap.xml.gz" => "sitemap#zip"
 
   ### root
-  match "/" => "page#home", :as => :root
+  match "/" => "ads#index", :as => :root
 
   # match ':controller(/:action(/:id(.:format)))'
 end

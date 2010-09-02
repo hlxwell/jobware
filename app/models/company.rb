@@ -52,4 +52,9 @@ class Company < ActiveRecord::Base
   def location
     self.province + self.city
   end
+
+  def increased_click_counter
+    increment!(:click_counter)
+    click_counter
+  end
 end

@@ -769,6 +769,10 @@ div.highlighted {
   color: #999;
 }
 
+.footer_ad_logo {
+  width: 175px;
+  height: 40px;
+}
 /* pagination 
 .pagination {
   float: right;

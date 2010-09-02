@@ -1,2 +1,16 @@
-<h1>Ads#index</h1>
-<p>Find me in app/views/ads/index.html.erb</p>
+<div class="main" id="main-two-columns-right-sidebar">
+
+  <!-- ### left main side -->
+	<div class="left" id="main-left">
+    <%= render "slider_ads" %>
+    <%= render "featured_jobs" %>
+	</div>
+
+  <!-- ### right side part -->
+	<div class="right sidebar" id="sidebar">
+    <%= render "shared/right_column_ads/urgent_jobs" %>
+    <%= render "shared/right_column_ads/featured_companies" %>
+	</div>
+
+	<div class="clearer">&nbsp;</div>
+</div>

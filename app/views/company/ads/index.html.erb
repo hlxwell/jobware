@@ -3,14 +3,18 @@
 <% show_no_record(@ads) do %>
 <table class="data-table">
 	<tr>
+	  <th>类型</th>
 	  <th>名称</th>
-		<th>创建时间</th>
+		<th>展示时间范围</th>
+		<th>状态</th>
 		<th>操作</th>
 	</tr>
 	<% @ads.each do |ad| %>
 	<tr class="even">
+	  <td><%= ad.display_type_humanize %></td>
 	  <td><%= link_to ad.image.name, company_ad_path(ad) %></td>
-		<td><%= ad.created_at.to_s_full_cn %></td>
+		<td><%= ad.period %> 周</td>
+		<td><%= ad.display_state %></td>
 		<td>
 		  <%= link_to "修改", edit_company_ad_path(ad) %>
 		  <%= link_to "删除", company_ad_path(ad), :method => :delete, :confirm => "是否确定删除？" %>

@@ -35,20 +35,14 @@
       <tr>
         <th width="20%">工作地点</th>
         <td width="30%"><%= job.location %></td>
-        <th width="20%">工作年限</th>
-        <td width="30%">xxx</td>
-      </tr>
-      <tr>
-        <th>学历</th>
-        <td>xxx</td>
-        <th>招聘人数</th>
-        <td><%= job.vacancy %></td>
+        <th width="20%">招聘人数</th>
+        <td width="30%"><%= job.vacancy %></td>
       </tr>
       <tr>
         <th>发布日期</th>
         <td><%= job.updated_at.to_s_full_cn %></td>
         <th>点击数</th>
-        <td>xxx</td>
+        <td><%= job.increased_click_counter %></td>
       </tr>
     </table>
   </div>

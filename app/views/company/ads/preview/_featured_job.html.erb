@@ -1,0 +1,12 @@
+<div class="ads-block">
+  <!-- logo -->
+  <%= link_to image_tag(ad.file.url(:original), :class => 'logo'), ad.url %>
+	<!-- title and company -->
+	<div class="content">
+		<h4>
+		  <span class="city"><%= ad.location %></span>
+		  <span class="title"><%= link_to ad.name, ad.url %></span>
+		</h4>
+		<div class="desc"><%= raw ad.desc %></div>
+	</div>
+</div>

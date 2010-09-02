@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20100824092136
+# Schema version: 20100902074625
 #
 # Table name: partners
 #
@@ -13,6 +13,7 @@
 #  desc         :text
 #  created_at   :datetime
 #  updated_at   :datetime
+#  bank_info    :text
 #
 
 one:

@@ -1,6 +1,20 @@
 <% title @ad.name %>
 
 <table class="data-table top-vlign">
+  <% if @ad.active? %>
+	<tr>
+	  <th>广告展示时间</th>
+		<td><%= @ad.start_at.to_s_full_cn %> - <%= @ad.end_at.to_s_full_cn %></td>
+	</tr>
+	<% end %>
+	<tr>
+	  <th width="50px">广告形式</th>
+		<td><%= @ad.display_type_humanize %></td>
+	</tr>
+	<tr>
+	  <th width="50px">所在省市</th>
+		<td><%= @ad.location %></td>
+	</tr>
 	<tr>
 	  <th width="50px">广告名</th>
 		<td><%= @ad.name %></td>
@@ -17,4 +31,18 @@
 	  <th>广告图片</th>
 		<td><%= image_tag @ad.file.url %></td>
 	</tr>
+	<tr>
+	  <th>展示周期</th>
+	  <td><%= @ad.period %></td>
+	</tr>
+	<tr>
+	  <th>状态</th>
+		<td><%= @ad.display_state %></td>
+	</tr>
 </table>
+
+
+<h2>效果预览</h2>
+<%= render "company/ads/preview/#{@ad.preview_partial_name}", :ad => @ad %>
+
+<%= button_to_function "修改", "$(location).attr('href','#{edit_company_ad_path(@ad)}')", :class => 'largest right button' %>

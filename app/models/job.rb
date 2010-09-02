@@ -53,4 +53,9 @@ class Job < ActiveRecord::Base
   def salary_range
     "面议" if read_attribute(:salary_range).blank?
   end
+  
+  def increased_click_counter
+    increment!(:click_counter)
+    click_counter
+  end
 end
