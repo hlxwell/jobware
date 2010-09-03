@@ -1,4 +1,11 @@
 class PageController < ApplicationController
+  
+  def company_benifit
+  end
+  
+  def partner_benifit
+  end
+  
   def aboutus
   end
   

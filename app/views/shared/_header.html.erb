@@ -19,8 +19,8 @@
   		  <% semantic_navigation :main, :html => {:class => "tabbed"} do |n| %>
   		    <%= n.item '首页', :link => root_path %>
           <%= n.item '我要求职', :link => jobs_path, :highlights_on => [companies_path, new_jobseeker_resume_path] %>
-          <%= n.item '我要招聘', :link => '/home/c', :highlights_on => [new_company_path] %>
-          <%= n.item '我要合作', :link => '/home/e', :highlights_on => [new_partner_path] %>
+          <%= n.item '我要招聘', :link => '/company_benifit', :highlights_on => [new_company_path] %>
+          <%= n.item '我要合作', :link => '/partner_benifit', :highlights_on => [new_partner_path] %>
         <% end %>
 
         <div class="search-box">
@@ -41,12 +41,12 @@
         <% end %>
       <% elsif in_section?("company") %>
         <% semantic_navigation :main, :html => {:class => "tabbed"} do |n| %>
-          <%= n.item '服务', :link => "/home/c" %>
+          <%= n.item '我们的优点', :link => "/company_benifit" %>
           <%= n.item '发布工作', :link => new_company_path %>
         <% end %>
       <% elsif in_section?("partner") %>
         <% semantic_navigation :main, :html => {:class => "tabbed"} do |n| %>
-          <%= n.item '利益', :link => "/home/e" %>
+          <%= n.item '利益', :link => "/partner_benifit" %>
           <%= n.item '加入我们', :link => new_partner_path %>
         <% end %>
       <% end %>

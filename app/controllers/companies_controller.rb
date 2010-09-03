@@ -23,6 +23,7 @@ class CompaniesController < ApplicationController
 
   def create
     @company = Company.new(params[:company])
+    @company.user = current_user if current_user
 
     if @company.save
       redirect_to company_job_path(@company.jobs.first), :notice => "岗位创建成功。"

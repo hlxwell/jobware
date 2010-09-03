@@ -1,6 +1,7 @@
 class PartnersController < ApplicationController
   before_filter :partner_login_required
   layout "partner", :only => :edit
+  layout "application", :except => :edit
   
   def show
     @partner = current_user.partner

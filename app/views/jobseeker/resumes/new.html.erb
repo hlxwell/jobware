@@ -8,12 +8,7 @@
   <div class="left" id="main-left">
     <%= jobware_form_for @resume, :url => jobseeker_resume_path, :use_fieldset => false, :html => { :multipart => true } do |f| %>
       <%= render "form", :f => f %>
-
-      <%= field_set_tag "登陆帐号", :class => 'big' do %>
-        <%= f.fields_for :user do |user_form| %>
-          <%= render :partial => "users/form", :locals => {:f => user_form} %>
-        <% end %>
-      <% end %>
+      <%= render "shared/new_user_form", :f => f %>
       <%= f.submit "创建简历", :class => "button right" %>
     <% end %>
   </div>

@@ -12,13 +12,7 @@
         <%= render :partial => 'form', :locals => { :f => f } %>
         <%= f.check_box :accept_terms, :label => "同意协议", :required => true, :type => 'agree_term', :hint => raw("<a href='#'>查看条款</a>") %>
       <% end %>
-
-      <%= field_set_tag "登陆帐号", :class => 'big' do %>
-        <%= f.fields_for :user do |user_form| %>
-          <%= render :partial => "users/form", :locals => {:f => user_form} %>
-        <% end %>
-      <% end %>
-
+      <%= render "shared/new_user_form", :f => f %>
       <%= f.submit "提交", :class => "right button" %>
     <% end %>
   </div>

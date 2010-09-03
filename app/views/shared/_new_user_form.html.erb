@@ -1,0 +1,7 @@
+<% if not_logged_in? %>
+  <%= field_set_tag "登陆帐号", :class => 'big' do %>
+    <%= f.fields_for :user do |user_form| %>
+      <%= render :partial => "users/form", :locals => {:f => user_form} %>
+    <% end %>
+  <% end %>
+<% end %>

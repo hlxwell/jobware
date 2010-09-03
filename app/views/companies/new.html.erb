@@ -7,7 +7,6 @@
 
   <div class="left" id="main-left">
     <%= jobware_form_for @company, :use_fieldset => false, :html => {:multipart => true} do |f| %>
-
       <%= field_set_tag "工作信息", :class => 'big' do %>
         <%= f.fields_for :jobs do |job_form| %>
           <%= render 'company/jobs/form', :f => job_form %>
@@ -19,12 +18,7 @@
         <%= f.check_box :accept_terms, :label => "同意条款", :hint => raw("<a href='#'>查看条款</a>"), :required => true, :type => 'agree_term' %>
       <% end %>
 
-      <%= field_set_tag "登陆帐号", :class => 'big' do %>
-        <%= f.fields_for :user do |user_form| %>
-          <%= render "users/form", :f => user_form %>
-        <% end %>
-      <% end %>
-
+      <%= render "shared/new_user_form", :f => f %>
       <%= f.submit "发布", :class => "right button" %>
     <% end %>
   </div>
