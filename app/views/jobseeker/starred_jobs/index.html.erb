@@ -12,7 +12,7 @@
 	<tr class="even" id="job_<%= job.id %>">
 	  <td><%= link_to job.name, job_path(job) %></td>
 		<td><%= job.location %></td>
-		<td><%= job.updated_at.to_s_full_cn %></td>
+		<td><%= job.updated_at.to_s_datetime %></td>
 		<td>
       <script>
         $(function(){

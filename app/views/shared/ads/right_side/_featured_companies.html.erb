@@ -1,0 +1,11 @@
+<div class="section network-section">
+	<div class="section-title">推荐公司</div>
+	<div class="section-content">
+		<ul class="ads-list">
+		  <% Ad.right_featured_companies.each do |ad| %>
+		  <li><%= link_to image_tag(ad.file.url(:bottom_ad), :class => "aligncenter bordered", :width => '95%'), ad.url %></li>
+      <% end %>
+			<li><a href="/companies" class="more">更多公司 &#187;</a></li>
+		</ul>
+	</div>
+</div>

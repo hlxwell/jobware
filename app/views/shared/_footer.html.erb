@@ -1,5 +1,10 @@
 <!-- foot dashboard -->
-<%= render "shared/bottom_featured_companies" %>
+<% if content_for?(:footer_ad_zone) %>
+  <%= yield(:footer_ad_zone) %>
+<% else %>
+  <%= render "shared/ads/bottom_ads" %>
+<% end %>
+<div class="content-separator-quite"></div>
 
 <!-- ### footer links -->
 <div id="footer">
@@ -10,6 +15,6 @@
 	  <a href="#">联系方式</a> <span class="text-separator">|</span>
 	  <a href="#">企业服务</a>
 	</div>
-	<div class="right">Powered by <a href="http://arcsin.se/">The Plant</a></div>
+	<div class="right">Powered by <a href="http://theplant.jp/">The Plant</a></div>
 	<div class="clearer">&nbsp;</div>
 </div>

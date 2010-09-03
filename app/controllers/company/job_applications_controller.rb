@@ -7,7 +7,7 @@ class Company::JobApplicationsController < Company::BaseController
   def show
     @application = current_user.company.job_applications.find(params[:id], :include => [:resume, :cover_letter, :job])
     @application.read
-    get_new_job_application_count
+    @new_job_application_count = current_user.company.job_applications.unread.count
 
     @resume = @application.resume
     @cover_letter = @application.cover_letter
@@ -29,4 +29,5 @@ class Company::JobApplicationsController < Company::BaseController
       format.js
     end
   end
+
 end

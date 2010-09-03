@@ -1,0 +1,13 @@
+<div class="section network-section">
+	<div class="section-title">推荐公司</div>
+	<div class="section-content">
+  	<table class="data-table">
+  		<tr>
+  		  <% Ad.bottom_featured_companies.each_with_index do |ad, i| %>
+  			  <td><%= link_to image_tag(ad.file.url(:bottom_ad), :class => "aligncenter bordered bottom_ad_logo"), ad.url %></td>
+  			  <%= raw "</tr><tr>" if (i+1)%5 == 0 and i != 1 %>
+  			<% end %>
+  		</tr>
+  	</table>
+	</div>
+</div>

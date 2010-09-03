@@ -1,0 +1,13 @@
+<div class="section network-section">
+	<div class="section-title">紧急招聘</div>
+	<div class="section-content">
+		<ul class="nice-list">
+		  <% Ad.urgent_jobs.each do |ad| %>
+			<li>
+			  <span style="font-weight: bold"><%= ad.location %></span>
+			  <%= link_to ad.name, ad.url, :title => ad.desc %>
+			</li>
+		  <% end %>
+		</ul>
+	</div>
+</div>

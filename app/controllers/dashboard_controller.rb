@@ -4,7 +4,6 @@ class DashboardController < ApplicationController
   before_filter :partner_login_required, :only => :partner
 
   def company
-    get_new_job_application_count
     render :layout => "company"
   end
 

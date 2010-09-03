@@ -17,23 +17,23 @@ class Company::AdsController < Company::BaseController
     @ad = current_user.company.ads.build(params[:ad])
 
     if @ad.save
-      redirect_to company_ads_path, :notice => "广告创建成功。"
+      redirect_to company_ad_path(@ad), :notice => "广告创建成功。"
     else
       render :action => 'new'
     end
   end
-  
+
   def edit
   end
-  
+
   def update
     if @ad.update_attributes(params[:ad])
-      redirect_to company_ads_path, :notice => "广告更新成功。"
+      redirect_to company_ad_path(@ad), :notice => "广告更新成功。"
     else
       render :action => 'edit'
     end
   end
-  
+
   def destroy
     @ad.destroy
     flash[:success] = "删除广告成功。"

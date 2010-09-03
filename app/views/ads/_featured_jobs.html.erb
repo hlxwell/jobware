@@ -1,16 +1,18 @@
-<% Ad.featured_jobs.each_with_index do |ad, i| %>
+<% (Ad.featured_jobs*20).each_with_index do |ad, i| %>
 
-<div class="ads-block <%= i%2 == 0 ? "left" : "right" %>">
-  <!-- logo -->
-  <%= image_tag ad.file.url(:original), :class => 'logo' %>
-	<!-- title and company -->
-	<div class="content">
-		<h4>
-		  <span class="city"><%= ad.location %></span>
-		  <span class="title"><%= ad.name %></span>
-		</h4>
-		<div class="desc"><%= raw ad.desc %></div>
-	</div>
-</div>
+<a href="<%= ad.url %>" target="_blank">
+  <div class="ads-block <%= i%2 == 0 ? "left" : "right" %>">
+    <!-- logo -->
+    <%= image_tag ad.file.url(:featured_job), :class => 'logo' %>
+  	<!-- title and company -->
+  	<div class="content">
+  		<h4>
+  		  <span class="city"><%= ad.location %></span>
+  		  <span class="title"><%= ad.name %></span>
+  		</h4>
+  		<div class="desc"><%= raw ad.desc %></div>
+  	</div>
+  </div>
+</a>
 
 <% end %>

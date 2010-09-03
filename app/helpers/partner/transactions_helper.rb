@@ -1,2 +1,0 @@
-module Partner::TransactionsHelper
-end

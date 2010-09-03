@@ -1,2 +1,0 @@
-module Partner::RevenuesHelper
-end

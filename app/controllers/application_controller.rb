@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   before_filter :set_locale
+  helper_method :current_user_type
 
   # go login page if access denied.
   rescue_from CanCan::AccessDenied do |exception|
@@ -28,11 +29,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
-private
-
-  def get_new_job_application_count
-    @new_job_application_count = current_user.company.job_applications.unread.count
+  def current_user_type
+    [:jobseeker, :partner, :company].each do |role|
+      return role.to_s if current_user.try(role).present?
+    end
   end
+
+private
 
   ### define - xxx_login_required and no_xxx_login_required
   {:company => "公司", :jobseeker => "应聘者", :partner => "合作站"}.each do |key, value|

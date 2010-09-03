@@ -14,9 +14,9 @@
     <td><%= item.job_title %></td>
 
     <th>入职时间</th>
-    <td><%= item.start_at.to_s_full_cn %></td>
+    <td><%= item.start_at.to_s_date %></td>
 
     <th>离职时间</th>
-    <td><%= item.end_at.to_s_full_cn if item.end_at %></td>
+    <td><%= item.end_at.to_s_date if item.end_at %></td>
   </tr>
 </table>

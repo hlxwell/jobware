@@ -6,8 +6,12 @@
   </div>
 
   <!-- ### left side menu part -->
-  <%= render "shared/company_menu" %>
+  <%= render "shared/menu/company" %>
 </div>
+<% end %>
+
+<% content_for :footer_ad_zone do %>
+  <div class="clearer">&nbsp;</div>
 <% end %>
 
 <%= render :file => 'layouts/application' %>

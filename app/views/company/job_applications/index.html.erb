@@ -16,7 +16,7 @@
 	<tr class="even">
 	  <td><%= link_to job.name, job_path(job) %></td>
 		<td><%= resume.current_residence %></td>
-		<td><%= app.updated_at.to_s_full_cn %></td>
+		<td><%= app.updated_at.to_s_datetime %></td>
 		<td>
 		  <%= link_to "查看简历", company_job_application_path(app) %>
 		</td>

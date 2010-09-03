@@ -1,0 +1,11 @@
+<% title "提现" %>
+
+<div class="post">
+  <div class="post-title"><h2>提现</h2></div>
+</div>
+<div class="content-separator-quite"></div>
+
+<%= jobware_form_for :transaction, :url => self.send("withdraw_#{current_user_type}_transactions_path"), :use_fieldset => false do |f| %>
+  <%= f.text_field :amount, :label => "提现金额", :hint => "请输入需要提现的金额。" %>
+  <%= f.submit "提现", :class => "button" %>
+<% end %>

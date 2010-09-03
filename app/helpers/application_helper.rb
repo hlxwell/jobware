@@ -68,12 +68,27 @@ module ApplicationHelper
     plus_mark = (options[:with_plus] and int.to_i > 0) ? "+" : ""
 
     # insert the delimiters
-    int.gsub!(/(\d)(?=(\d\d\d\d)+(?!\d))/, "\\1#{options[:delimiter]}")
+    int.gsub!(/(\d)(?=(\d\d\d)+(?!\d))/, "\\1#{options[:delimiter]}")
 
     if options[:currency_before]
       options[:currency_symbol] + " #{plus_mark}" + int + options[:decimal_symbol] + frac
     else
       plus_mark + int + options[:decimal_symbol] + frac + options[:currency_symbol]
+    end
+  end
+
+  def display_new_jobapplication_count
+    count = if @new_job_application_count.present?
+      @new_job_application_count
+    elsif current_user.try(:company).present?
+      current_user.company.job_applications.unread.count
+    else
+      0
+    end
+
+    if count > 0
+      link_to("新", company_job_applications_path(:filter => :unread)) +
+      "<strong class='loud'>(#{count})</strong> |"
     end
   end
 

@@ -212,18 +212,14 @@
 		};
 
 		$.appereance = function(el,sid){
-
 			$('.cs-'+el.id).attr('href',links[el.id][imagePos[el.id]]).attr('target',linksTarget[el.id][imagePos[el.id]]);
-
 			if (squarePos[el.id] == params[el.id].spw*params[el.id].sph) {
 				clearInterval(appInterval[el.id]);
 				return;
 			}
-
 			$('#cs-'+el.id+sid).css({ opacity: 0, 'background-image': 'url('+images[el.id][imagePos[el.id]]+')' });
 			$('#cs-'+el.id+sid).animate({ opacity: 1 }, 300);
 			squarePos[el.id]++;
-
 		};
 
 		// navigation

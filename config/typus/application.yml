@@ -186,12 +186,14 @@ User:
 
 Ad:
   fields:
-    default: company_id, position, type, url, state, start_at, end_at, company
-    form: company_id, type, url, state, start_at, end_at, company
+    default: position, name, company, display_type_humanize, state, start_at, end_at
+    form: position, display_type, url, state, start_at, end_at, company
+    options:
+      selectors: display_type, state
   order_by: position
-  relationships: company, image
-  filters:
-  search:
+  relationships: company
+  filters: display_type
+  search: name, company
   application: Company
 
 Counter:
@@ -257,7 +259,6 @@ ServiceItem:
   filters:
   search: name
   application: Service
-  description: 服务项
 
 ServiceItemAmount:
   fields:

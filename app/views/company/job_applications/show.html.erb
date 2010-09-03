@@ -6,7 +6,7 @@
 <div class="content-separator-quite"></div>
 <div class="post">
   <%= link_to @job.name, company_job_path(@job), :class => "largest" %>
-  <div class="right large">应聘于 <%= @application.created_at.to_s_full_cn %></div>
+  <div class="right large">应聘于 <%= @application.created_at.to_s_datetime %></div>
 </div><br>
 
 

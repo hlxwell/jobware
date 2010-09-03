@@ -16,10 +16,7 @@
         <li>
           <div class="left"><%= link_to "收到的应聘", company_job_applications_path %></div>
           <div class="right">
-            <% if @new_job_application_count > 0 %>
-              <%= link_to "新", company_job_applications_path(:filter => :unread) %> 
-              <strong class="loud">(<%= @new_job_application_count %>)</strong> | 
-            <% end %>
+            <%= display_new_jobapplication_count %>
             <%= link_to "收藏", company_job_applications_path(:filter => :starred) %>
           </div>
           <div class="clearer">&nbsp;</div>

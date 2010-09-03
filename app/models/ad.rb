@@ -16,6 +16,18 @@
 #
 
 class Ad < ActiveRecord::Base
+  DISPLAY_TYPE = AdPositionType.enumeration.values.insert(0, nil).inject do |result, array|
+    result ||= {}
+    result[array.first] = array.last
+    result
+  end
+  
+  STATE = {
+    'active' => "激活",
+    'expired' => "过期",
+    'unactive' => "未激活"
+  }
+  
   include TestExpirationMethods
 
   has_enumeration_for :display_type, :with => AdPositionType
@@ -29,12 +41,13 @@ class Ad < ActiveRecord::Base
 
   delegate :name, :name=, :desc, :desc=, :file, :file=, :to => :image
 
-  scope :slider_ads, where(:type => AdPositionType::SLIDER_AD)
-  scope :featured_jobs, where(:type => AdPositionType::FEATURED_JOB)
-  scope :urgent_jobs, where(:type => AdPositionType::URGENT_JOB)
-  scope :right_featured_companies, where(:type => AdPositionType::RIGHT_FEATURED_COMPANY)
-  scope :bottom_featured_companies, where(:type => AdPositionType::BOTTOM_FEATURED_COMPANY)
+  default_scope order("position desc")
 
+  scope :slider_ads, where(:display_type => AdPositionType::SLIDER_AD, :state => :active)
+  scope :featured_jobs, where(:display_type => AdPositionType::FEATURED_JOB, :state => :active)
+  scope :urgent_jobs, where(:display_type => AdPositionType::URGENT_JOB, :state => :active)
+  scope :right_featured_companies, where(:display_type => AdPositionType::RIGHT_FEATURED_COMPANY, :state => :active)
+  scope :bottom_featured_companies, where(:display_type => AdPositionType::BOTTOM_FEATURED_COMPANY, :state => :active)
 
   state_machine :initial => :unactive do
     event :active do
@@ -78,5 +91,13 @@ class Ad < ActiveRecord::Base
     else
       "不明"
     end
+  end
+
+  def move_lower
+    self.decrement!(:position)
+  end
+
+  def move_higher
+    self.increment!(:position)
   end
 end
