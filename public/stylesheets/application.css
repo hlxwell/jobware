@@ -277,7 +277,12 @@ div.helper {
 
 .field_with_errors {
   display: inline;
+}
+
+.field_error {
+  font-weight: bold;
   color: red;
+  margin-right: 5px;
 }
 
 .form-row {
