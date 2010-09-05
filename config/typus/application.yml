@@ -250,10 +250,8 @@ Service:
 
 ServiceItem:
   fields:
-    default: credit_type_humanize, name, service_length
-    form: credit_type, name, desc, service_length
-    options:
-      selectors: credit_type
+    default: name, service_length
+    form: name, desc, service_length
   order_by:
   relationships: service, service_item_amounts
   filters:

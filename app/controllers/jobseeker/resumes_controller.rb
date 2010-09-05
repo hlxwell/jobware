@@ -29,6 +29,8 @@ class Jobseeker::ResumesController < Jobseeker::BaseController
 
   def create
     @resume = Resume.new(params[:resume])
+    @resume.user = current_user if current_user
+
     if @resume.save
       redirect_to jobseeker_dashboard_path, :notice => "简历创建成功。"
     else

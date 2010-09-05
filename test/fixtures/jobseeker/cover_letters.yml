@@ -1,9 +1,0 @@
-one:
-  name: MyString
-  content: MyText
-  resume_id: 1
-
-two:
-  name: MyString
-  content: MyText
-  resume_id: 1

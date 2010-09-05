@@ -7,9 +7,11 @@
 
   <div class="left" id="main-left">
     <%= jobware_form_for @company, :use_fieldset => false, :html => {:multipart => true} do |f| %>
-      <%= field_set_tag "工作信息", :class => 'big' do %>
-        <%= f.fields_for :jobs do |job_form| %>
+
+      <%= f.fields_for :jobs do |job_form| %>
+        <%= field_set_tag "工作信息", :class => 'big' do %>
           <%= render 'company/jobs/form', :f => job_form %>
+          <%= f.link_to_remove_fields "删除", :without_destroy => true %>
         <% end %>
       <% end %>
 

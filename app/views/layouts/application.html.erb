@@ -27,9 +27,9 @@
   		<div class="right">
   		  <% semantic_navigation "network-tabs", :html => {:class => "tabbed"} do |n| %>
           <%= n.item '首页', :link => root_path, :highlights_on => frontend_paths %>
-          <%= n.item '我是求职者', :link => jobseeker_dashboard_path if jobseeker_user? %>
-          <%= n.item '我是公司', :link => company_dashboard_path if company_user? %>
-          <%= n.item '我是合作者', :link => partner_dashboard_path if partner_user? %>
+          <%= n.item '我是求职者', :link => jobseeker_dashboard_path, :highlights_on => jobseeker_section_paths if jobseeker_user? %>
+          <%= n.item '我是公司', :link => company_dashboard_path, :highlights_on => company_section_paths if company_user? %>
+          <%= n.item '我是合作者', :link => partner_dashboard_path, :highlights_on => partner_section_paths if partner_user? %>
         <% end %>
   		</div>
 

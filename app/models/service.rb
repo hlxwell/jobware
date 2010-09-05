@@ -24,4 +24,14 @@ class Service < ActiveRecord::Base
 
   scope :for_jobseeker, where(:serving_target_type => ServingTargetType::JOBSEEKER)
   scope :for_company, where(:serving_target_type => ServingTargetType::COMPANY)
+
+  def buy_from!(user)
+    ### substract money from user
+    user.bank_account.pay!(self.price, :service_item_id => ServiceItem.money_id, :related_object => self)
+
+    ### charge credits to user account
+    self.service_item_amounts.each do |item_amount|
+      user.bank_account.charge! item_amount.amount, :service_item_id => item_amount.service_item
+    end
+  end
 end

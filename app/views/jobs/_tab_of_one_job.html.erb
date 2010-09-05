@@ -31,7 +31,7 @@
 
     <h3><%= job.name %></h3>
     <h5><%= job.company.name %></h5>
-    <table class="data-table" style="width:440px">
+    <table class="data-table" style="width:440px; margin-top: 10px;">
       <tr>
         <th width="20%">工作地点</th>
         <td width="30%"><%= job.location %></td>
@@ -49,7 +49,7 @@
 </div>
 
 <div class="clearer">&nbsp;</div>
-<div class="content-separator"></div>
+<div class="content-separator w640"></div>
 
 <% {:content => "工作内容", :requirement => "岗位要求", :welfare => "福利", :desc => "其他描述"}.each do |key, value| %>
   <% next if job.send(key).blank? %>
@@ -57,7 +57,7 @@
     <div class="post-title"><h3><%= value %></h3></div>
     <div class="post-body"><%= raw job.send(key) %></div>
   </div>
-  <div class="content-separator"></div>
+  <div class="content-separator w640"></div>
 <% end %>
 
 <div id="job_application_form"></div>

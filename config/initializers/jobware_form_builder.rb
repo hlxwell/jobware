@@ -12,14 +12,13 @@ class JobwareFormBuilder < ActionView::Helpers::FormBuilder
          @template.content_tag(tag_mark, :class => "form-value") {
            super(field_name, options) +
            (options[:required] == true ? @template.content_tag(:span, "（必填）", :class => "helper") : "") +
-           @template.content_tag(:div, "", :class => 'clearer') +           
+           @template.content_tag(:div, "", :class => 'clearer') +
            (options[:hint].present? ? @template.content_tag(tag_mark, options[:hint], :class => "helper") : "")
          }
       } +
       @template.content_tag(:div, "", :class => 'clearer')
     end
   end
-
 
   def select(field_name, choices, *args)
     options = args.last
@@ -28,13 +27,12 @@ class JobwareFormBuilder < ActionView::Helpers::FormBuilder
        (@template.content_tag(:div, :class => "form-value") {
          super(field_name, choices, *args) +
          (options[:required] == true ? @template.content_tag(:span, "（必填）", :class => "helper") : "") +
-         @template.content_tag(:div, "", :class => 'clearer') +         
+         @template.content_tag(:div, "", :class => 'clearer') +
          (options[:hint].present? ? @template.content_tag(:div, options[:hint], :class => "helper") : "")
        })
     end +
     (@template.content_tag(:div, "", :class => 'clearer'))
   end
-
 
   def submit(text = nil, *args)
     options = merge_to_options args.last, :class => "button"
@@ -74,11 +72,16 @@ class JobwareFormBuilder < ActionView::Helpers::FormBuilder
     (@template.content_tag(:div, "", :class => 'clearer'))
   end
 
-
   #### help add fields to resume builder form.
   def link_to_remove_fields(name, *args)
     options = merge_to_options args.last, :class => "right large"
-    hidden_field(:_destroy) + link_to_function(name, "remove_fields(this)", options)
+    
+    if options[:without_destroy].present?
+      link_to_function(name, "remove_fields(this)", options)
+    else
+      link_to_function(name, "hide_fields(this)", options) +
+      hidden_field(:_destroy)
+    end
   end
 
   def button_to_add_fields(name, association, *args)

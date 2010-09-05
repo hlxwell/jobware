@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100902102856) do
+ActiveRecord::Schema.define(:version => 20100904140030) do
 
   create_table "ad_positions", :force => true do |t|
     t.string   "name"
@@ -66,14 +66,13 @@ ActiveRecord::Schema.define(:version => 20100902102856) do
   end
 
   create_table "bank_accounts", :force => true do |t|
-    t.integer  "parent_id"
-    t.string   "parent_type"
+    t.integer  "user_id"
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "bank_accounts", ["parent_type", "parent_id"], :name => "index_bank_accounts_on_parent_type_and_parent_id"
+  add_index "bank_accounts", ["user_id"], :name => "index_bank_accounts_on_user_id"
 
   create_table "bank_transactions", :force => true do |t|
     t.string   "type"
@@ -283,7 +282,6 @@ ActiveRecord::Schema.define(:version => 20100902102856) do
   end
 
   create_table "service_items", :force => true do |t|
-    t.integer  "credit_type"
     t.string   "name"
     t.text     "desc"
     t.integer  "service_length"
@@ -346,6 +344,27 @@ ActiveRecord::Schema.define(:version => 20100902102856) do
     t.integer  "file_file_size"
     t.datetime "file_updated_at"
   end
+
+  create_table "transactions", :force => true do |t|
+    t.string   "type"
+    t.integer  "bank_account_id"
+    t.integer  "service_item_id"
+    t.integer  "related_object_id"
+    t.string   "related_object_type"
+    t.string   "from"
+    t.string   "to"
+    t.integer  "amount"
+    t.string   "note"
+    t.string   "cancel_reason"
+    t.datetime "cancelled_at"
+    t.datetime "deleted_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "transactions", ["bank_account_id"], :name => "index_transactions_on_bank_account_id"
+  add_index "transactions", ["related_object_type", "related_object_id"], :name => "index_transactions_on_related_object_type_and_related_object_id"
+  add_index "transactions", ["service_item_id"], :name => "index_transactions_on_service_item_id"
 
   create_table "users", :force => true do |t|
     t.string   "login",                              :null => false

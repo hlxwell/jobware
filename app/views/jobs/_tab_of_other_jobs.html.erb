@@ -4,7 +4,7 @@
 	<div class="company_info">
 		<h3><%= company.name %></h3>
 		<h5><%= company.location %></h5>
-		<table class="data-table" style="width:440px">
+		<table class="data-table" style="width:440px; margin-top: 10px;">
 			<tr>
 				<th width="20%">公司地点</th>
 				<td width="30%"><%= company.location %></td>
@@ -22,7 +22,7 @@
 </div>
 
 <div class="clearer">&nbsp;</div>
-<div class="content-separator"></div>
+<div class="content-separator w640"></div>
 
 <% if jobs.blank? %>
   <div class="notice">该公司暂无岗位。</div>

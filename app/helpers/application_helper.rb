@@ -40,16 +40,26 @@ module ApplicationHelper
       request.path !~ /^\/(company)|(jobseeker)|(partner)(.*)?/ or
         current_page?(new_partner_path) or
         current_page?(new_jobseeker_resume_path) or
-        request.path =~ /(company)|(partner)_benifit/
+        request.path =~ /((company)|(partner))_benifit/
     else
       false
     end
   end
 
   def frontend_paths
-    if in_section?("frontend")
-      [request.path]
-    end
+    [request.path] if in_section?("frontend")
+  end
+
+  def jobseeker_section_paths
+    [request.path] if request.path =~ /^\/jobseeker\//
+  end
+
+  def partner_section_paths
+    [request.path] if request.path =~ /^\/partner\//
+  end
+
+  def company_section_paths
+    [request.path] if request.path =~ /^\/company\//
   end
 
   def show_no_record collection, &block
@@ -91,7 +101,7 @@ module ApplicationHelper
 
     if count > 0
       link_to("新", company_job_applications_path(:filter => :unread)) +
-      "<strong class='loud'>(#{count})</strong> |"
+      raw("<strong class='loud'>(#{count})</strong> |")
     end
   end
 

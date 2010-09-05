@@ -1,0 +1,26 @@
+<div>
+  <% show_no_record(@transactions) do %>
+  <table class="data-table">
+  	<tr>
+  	  <th>类型</th>
+  	  <th>来源</th>
+  	  <th>去往</th>
+  	  <th>时间</th>
+  		<th>金额/数量</th>
+      <th>剩余</th>
+  	</tr>
+  	<% total_amount = 0 %>
+  	<% @transactions.each do |tx| %>
+  	<% total_amount += tx.amount %>
+  	<tr class="even">
+  		<td><%= tx.service_item.name %></td>
+  		<td><%= tx.from %></td>
+  		<td><%= tx.to %></td>
+  		<td><%= tx.created_at.to_s_datetime %></td>
+  		<td class="large"><%= format_price tx.amount, :with_plus => true %></td>
+  		<td class="large"><%= format_price total_amount %></td>
+  	</tr>
+    <% end %>
+  </table>
+  <% end %>
+</div>

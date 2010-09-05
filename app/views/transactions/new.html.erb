@@ -5,7 +5,7 @@
 </div>
 <div class="content-separator-quite"></div>
 
-<%= jobware_form_for :transaction, :url => jobseeker_transactions_path, :use_fieldset => false do |f| %>
+<%= jobware_form_for :transaction, :url => send("#{current_user_section}_transactions_path"), :use_fieldset => false do |f| %>
   <%= f.text_field :amount, :label => "充值金额", :hint => "请输入需要充入的金额。" %>
   <%= f.submit "充值", :class => "button" %>
 <% end %>

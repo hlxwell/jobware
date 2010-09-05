@@ -54,7 +54,7 @@ Jobware::Application.routes.draw do
 
   ### company section
   namespace :company do
-    resources :transactions, :controller => :transactions
+    resources :transactions
     resources :starred_resumes
     resource :company
     resources :jobs
@@ -70,14 +70,19 @@ Jobware::Application.routes.draw do
     resources :ads
     resources :services do
       member do
-        post :buy
+        get :buy
+        get :bought
+      end
+      
+      collection do
+        get :bought
       end
     end
   end
 
   ### job seeker section
   namespace :jobseeker do
-    resources :transactions, :controller => :transactions
+    resources :transactions
     resources :job_applications
     resources :starred_jobs
     resource :subscription
@@ -94,7 +99,11 @@ Jobware::Application.routes.draw do
 
     resources :services do
       member do
-        post :buy
+        get :buy
+      end
+
+      collection do
+        get :bought
       end
     end
   end
@@ -106,7 +115,7 @@ Jobware::Application.routes.draw do
       resources :counters
     end
     resources :revenues
-    resources :transactions, :controller => :transactions do
+    resources :transactions do
       collection do
         get :withdraw
       end

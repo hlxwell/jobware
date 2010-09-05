@@ -1,0 +1,20 @@
+<% title "已购买的服务" %>
+
+<% show_no_record(@transactions) do %>
+<table class="data-table">
+	<tr>
+	  <th>服务名称</th>
+		<th>描述</th>
+		<th>购买价格</th>
+		<th>购买时间</th>
+	</tr>
+	<% @transactions.each do |tx| %>
+	<tr class="even">
+	  <td><%= tx.related_object.name %></td>
+		<td><%= raw tx.related_object.desc %></td>
+		<td><%= format_price tx.related_object.price %></td>
+		<td><%= tx.created_at.to_s_datetime %></td>
+	</tr>
+  <% end %>
+</table>
+<% end %>

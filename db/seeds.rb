@@ -5,3 +5,6 @@
 #
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
+
+
+ServiceItem.create(:name => "人民币", :desc => "帐户里的现金用于购买服务。", :service_length => 0)

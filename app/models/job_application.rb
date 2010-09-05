@@ -14,7 +14,7 @@
 #
 
 class JobApplication < ActiveRecord::Base
-  state_machine :initial => :new do
+  state_machine :state, :initial => :new do
     event :read do
       transition :new => :read
     end

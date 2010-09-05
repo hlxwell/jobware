@@ -1,14 +1,13 @@
 class PartnersController < ApplicationController
-  before_filter :partner_login_required
   layout "partner", :only => :edit
   layout "application", :except => :edit
-  
-  def show
-    @partner = current_user.partner
-  end
+
+  before_filter :partner_login_required, :except => [:new, :create]
+  before_filter :no_company_login_required, :only => [:new, :create]
 
   def edit
     @partner = current_user.partner
+    render :layout => "partner"
   end
 
   def update
@@ -16,7 +15,7 @@ class PartnersController < ApplicationController
     if @partner.update_attributes(params[:partner])
       redirect_to edit_partner_path, :notice => "合作站信息更新成功。"
     else
-      render :action => 'edit'
+      render :action => 'edit', :layout => "partner"
     end
   end
 
@@ -27,7 +26,7 @@ class PartnersController < ApplicationController
 
   def create
     @partner = Partner.new(params[:partner])
-    @partner.build_user(params[:partner][:user_attributes])
+    @partner.user = current_user if current_user
 
     if @partner.save
       redirect_to partner_dashboard_path, :notice => "合作站创建成功。"

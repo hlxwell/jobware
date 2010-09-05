@@ -1,6 +1,6 @@
 <%= field_set_tag "个人信息", :class => 'big' do %>
   <%= f.error_messages %>
-  <div class="left" class="w300 h450">
+  <div class="left w300 h450">
     <%= f.text_field :name, :label => "姓名", :class => "text w300", :hint => "请输入真实姓名。" %>
     <%= f.select :gender, Gender.to_a, {:include_blank => true}, {:label => "性别"} %>
     <%= f.text_field :birthday, :label => "出生年月", :class => "text w300 datepicker" %>
@@ -12,7 +12,7 @@
     <%= image_tag f.object.portrait_path unless f.object.new_record? %>
   </div>
 
-  <div class="left" class="w300 h450" style="margin-left: 10px;">
+  <div class="left w300 h450" style="margin-left: 10px;">
     <%= f.select :working_years, 0..30, {:include_blank => true}, {:label => "工作年限", :hint => "请输入数字。"} %>
     <%= f.select :degree, Degree.to_a, {:include_blank => true}, {:label => "最高学历"} %>
     <%= f.text_field :major, :label => "专业", :class => "text w300" %>
@@ -20,6 +20,10 @@
     <%= f.text_field :expected_positions, :label => "希望应聘的岗位", :class => "text w300" %>
     <%= f.text_field :expected_job_location, :label => "希望工作的地点", :class => "text w300" %>
     <%= f.select :current_working_state, WorkingState.to_a, {:include_blank => true}, {:label => "求职状态"} %>
+  </div>
+  
+  <div class="left">
+    <%= f.cktext_area :major %>
   </div>
 <% end %>
 

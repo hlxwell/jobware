@@ -679,6 +679,10 @@ img.alignright, img.right {margin: 0 0 1em 1.5em;}
   width: 620px;
 }
 
+.w640 {
+  width: 640px;
+}
+
 .w580 {
   width: 580px;
 }

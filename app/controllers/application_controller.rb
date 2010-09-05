@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   before_filter :set_locale
-  helper_method :current_user_type
+  helper_method :current_user_type, :current_user_section
 
   # go login page if access denied.
   rescue_from CanCan::AccessDenied do |exception|
@@ -30,11 +30,20 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user_type
-    [:jobseeker, :partner, :company].each do |role|
+    [:jobseeker, :company, :partner].each do |role|
       return role.to_s if current_user.try(role).present?
     end
   end
 
+  def current_user_section
+    if request.path =~ /^\/company(.*)?/
+      "company"
+    elsif request.path =~ /^\/jobseeker(.*)?/
+      "jobseeker"
+    elsif request.path =~ /^\/partner(.*)?/
+      "partner"
+    end
+  end
 private
 
   ### define - xxx_login_required and no_xxx_login_required

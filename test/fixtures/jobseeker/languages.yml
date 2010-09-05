@@ -1,9 +1,0 @@
-one:
-  resume_id: 1
-  type: MyString
-  level: MyString
-
-two:
-  resume_id: 1
-  type: MyString
-  level: MyString

@@ -39,7 +39,7 @@ class Company < ActiveRecord::Base
   has_many :ads
   belongs_to :user
 
-  accepts_nested_attributes_for :user, :jobs, :products, :presentations
+  accepts_nested_attributes_for :user, :jobs, :products, :presentations, :allow_destroy => true
 
   validates_presence_of :name, :company_type, :size, :address, :contact_name, :phone_number, :province, :city, :desc
   validates_acceptance_of :accept_terms, :accept => "1", :message => "你必需接受服务条款"

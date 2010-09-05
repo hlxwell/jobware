@@ -1,5 +1,6 @@
 class CompaniesController < ApplicationController
   respond_to :xml, :only => :presentations
+  before_filter :no_company_login_required, :only => [:new, :create]
 
   def index
     @companies = Company.paginate :all, :page => params[:page], :per_page => 20

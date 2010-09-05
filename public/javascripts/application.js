@@ -12,18 +12,22 @@ $(function(){
       }
   });
 
-  $('#slider').coinslider({ 
+  $('#slider').coinslider({
     width: 670,
     height: 300,
-    navigation: true, 
+    navigation: true,
     delay: 5000,
     effect: 'random'
   });
 });
 
-function remove_fields(link) {
+function hide_fields(link) {
   $(link).prev("input[type=hidden]").val("1");
   $(link).closest("fieldset").fadeOut("slow");
+}
+
+function remove_fields(link) {
+  $(link).closest("fieldset").fadeOut("slow", function(){ $(this).remove() });
 }
 
 function add_fields(link, association, content) {

@@ -1,4 +1,4 @@
-class Partner::CountersController < ApplicationController
+class Partner::CountersController < Partner::BaseController
   def index
   end
 
