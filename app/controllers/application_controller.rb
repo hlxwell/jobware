@@ -36,12 +36,8 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user_section
-    if request.path =~ /^\/company(.*)?/
-      "company"
-    elsif request.path =~ /^\/jobseeker(.*)?/
-      "jobseeker"
-    elsif request.path =~ /^\/partner(.*)?/
-      "partner"
+    ["company", "jobseeker", "partner"].each do |section|
+      return section if request.path =~ /^\/#{section}(.*)?/
     end
   end
   
