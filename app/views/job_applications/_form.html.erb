@@ -1,5 +1,5 @@
 <%= jobware_form_for @job_application, :url => job_job_applications_path(@job), :title => '发送应聘申请', :id => 'send_job_application_form', :remote => true do |f| %>
-  <%= f.error_messages %>
+  <%#= f.error_messages %>
   <%= f.select :cover_letter_id, current_user.jobseeker.cover_letters.map {|cv| [cv.name, cv.id] }, {:include_blank => false}, {:label => "求职书", :class => "left", :hint => "请选择求职书。"} %>
   <%= f.hidden_field :job_id, :value => @job.id %>
   <%= f.submit '发送', :class => 'right button' %>

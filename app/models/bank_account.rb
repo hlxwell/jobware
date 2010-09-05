@@ -1,3 +1,15 @@
+# == Schema Information
+# Schema version: 20100904140030
+#
+# Table name: bank_accounts
+#
+#  id         :integer(4)      not null, primary key
+#  user_id    :integer(4)
+#  name       :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 class BankAccount < ActiveRecord::Base
   validates_presence_of :name
   validates_uniqueness_of :name

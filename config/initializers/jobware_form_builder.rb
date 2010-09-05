@@ -1,6 +1,7 @@
 class JobwareFormBuilder < ActionView::Helpers::FormBuilder
   alias_method :origin_select, :select
 
+  # <%= f.text_field :contact_name, :label => "联系人", :class => "text w600" %>
   %w[text_field text_area password_field check_box cktext_area file_field].each do |method_name|
     define_method(method_name) do |field_name, *args|
       options = merge_to_options args.last, :class => "text"
@@ -8,7 +9,13 @@ class JobwareFormBuilder < ActionView::Helpers::FormBuilder
       other_classes = options[:type] == "agree_term" ? "right" : ""
 
       @template.content_tag(:div, :class => "form-row #{other_classes}") {
-         @template.content_tag(tag_mark, label(field_name, options[:label]), :class => "form-property") +
+         @template.content_tag(tag_mark, :class => "form-property") {
+           label(field_name, options[:label]) +
+           unless object.nil?
+             errors = object.errors[field_name.to_sym]
+             @template.content_tag(:span, errors.is_a?(Array) ? errors.first : errors, :class => "field_error") if errors
+           end
+         } +
          @template.content_tag(tag_mark, :class => "form-value") {
            super(field_name, options) +
            (options[:required] == true ? @template.content_tag(:span, "（必填）", :class => "helper") : "") +
@@ -23,7 +30,13 @@ class JobwareFormBuilder < ActionView::Helpers::FormBuilder
   def select(field_name, choices, *args)
     options = args.last
     @template.content_tag(:div, :class => "form-row") do
-       (@template.content_tag(:div, label(field_name, options[:label]), :class => "form-property")) +
+       @template.content_tag(:div, :class => "form-property") {
+          label(field_name, options[:label]) +
+          unless object.nil?
+            errors = object.errors[field_name.to_sym]
+            @template.content_tag(:span, errors.is_a?(Array) ? errors.first : errors, :class => "field_error") if errors
+          end
+       } +
        (@template.content_tag(:div, :class => "form-value") {
          super(field_name, choices, *args) +
          (options[:required] == true ? @template.content_tag(:span, "（必填）", :class => "helper") : "") +
@@ -57,9 +70,21 @@ class JobwareFormBuilder < ActionView::Helpers::FormBuilder
       #### show label in error css when anyone of column has error.
       if @object.present?
         if @object.errors[city_field.to_sym]
-          (@template.content_tag(:div, label(city_field, options[:label]), :class => "form-property"))
+          @template.content_tag(:div, :class => "form-property") {
+            label(city_field, options[:label]) +
+            unless object.nil?
+              errors = object.errors[city_field.to_sym]
+              @template.content_tag(:span, errors.is_a?(Array) ? errors.first : errors, :class => "field_error") if errors
+            end
+          }
         else @object.errors[province_field.to_sym]
-          (@template.content_tag(:div, label(province_field, options[:label]), :class => "form-property"))
+          @template.content_tag(:div, :class => "form-property") {
+            label(province_field, options[:label]) +
+            unless object.nil?
+              errors = object.errors[province_field.to_sym]
+              @template.content_tag(:span, errors.is_a?(Array) ? errors.first : errors, :class => "field_error") if errors
+            end
+          }
         end
       end +
       (@template.content_tag(:div, :class => "form-value") {
@@ -75,7 +100,7 @@ class JobwareFormBuilder < ActionView::Helpers::FormBuilder
   #### help add fields to resume builder form.
   def link_to_remove_fields(name, *args)
     options = merge_to_options args.last, :class => "right large"
-    
+
     if options[:without_destroy].present?
       link_to_function(name, "remove_fields(this)", options)
     else
@@ -98,5 +123,13 @@ class JobwareFormBuilder < ActionView::Helpers::FormBuilder
   # add default class for element
   def merge_to_options(merge_to_options, option)
     (merge_to_options||{}).reverse_merge!(option)
+  end
+
+  def get_error_message(method, text = "")
+    unless object.nil?
+      errors = object.errors[method.to_sym]
+      text += @template.content_tag(:span, errors.is_a?(Array) ? errors.first : errors) if errors
+    end
+    text
   end
 end

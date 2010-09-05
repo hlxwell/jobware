@@ -1,4 +1,4 @@
-<%= f.error_messages %>
+<%#= f.error_messages %>
 <%= f.text_field :name, :label => "公司名", :class => "text w600" %>
 <%= f.select :company_type, CompanyType.to_a, {:include_blank => true}, {:label => "性质"} %>
 <%= f.select :size, CompanySize.to_a, {:include_blank => true}, {:label => "规模"} %>
@@ -8,5 +8,5 @@
 <%= f.text_field :contact_name, :label => "联系人", :class => "text w600" %>
 <%= f.text_field :phone_number, :label => "联系电话", :class => "text w600" %>
 <%= f.cktext_area(:desc, :height => '200px', :toolbar=>'Basic', :skin => "v2", :label => "公司简介", :hint => "如公司主要业务，公司文化等。") %>
-<%= f.file_field :logo, :label => "公司LOGO", :class => "text w580" %>
+<%= f.file_field :logo, :label => "公司LOGO" %>
 <%= image_tag f.object.logo.url if f.object.logo.size %>

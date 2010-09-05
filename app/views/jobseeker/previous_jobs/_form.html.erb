@@ -1,5 +1,5 @@
 <fieldset id="new_previous_jobs">
-  <%= f.error_messages %>
+  <%#= f.error_messages %>
   <%= f.text_field :company_name, :label => "公司名", :class => "text w580" %>
   <%= f.select :company_type, CompanyType.to_a, {:include_blank => true}, {:label => "性质"} %>
   <%= f.select :company_size, CompanySize.to_a, {:include_blank => true}, {:label => "规模"} %>

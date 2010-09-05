@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100904140030) do
+ActiveRecord::Schema.define(:version => 20100905051157) do
 
   create_table "ad_positions", :force => true do |t|
     t.string   "name"
@@ -252,6 +252,7 @@ ActiveRecord::Schema.define(:version => 20100904140030) do
     t.string   "portrait_content_type"
     t.integer  "portrait_file_size"
     t.datetime "portrait_updated_at"
+    t.text     "self_intro"
   end
 
   create_table "revenues", :force => true do |t|

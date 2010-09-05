@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20100825034512
+# Schema version: 20100904140030
 #
 # Table name: jobs
 #
@@ -22,6 +22,7 @@
 #  created_at         :datetime
 #  updated_at         :datetime
 #  company_id         :integer(4)
+#  click_counter      :integer(4)      default(0)
 #
 
 class Job < ActiveRecord::Base

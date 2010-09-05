@@ -1,18 +1,21 @@
 # == Schema Information
-# Schema version: 20100831035618
+# Schema version: 20100904140030
 #
 # Table name: ads
 #
-#  id         :integer(4)      not null, primary key
-#  company_id :integer(4)
-#  position   :integer(4)
-#  type       :integer(4)
-#  url        :string(255)
-#  state      :string(255)
-#  start_at   :date
-#  end_at     :date
-#  created_at :datetime
-#  updated_at :datetime
+#  id           :integer(4)      not null, primary key
+#  company_id   :integer(4)
+#  position     :integer(4)
+#  display_type :integer(4)
+#  url          :string(255)
+#  state        :string(255)
+#  start_at     :date
+#  end_at       :date
+#  created_at   :datetime
+#  updated_at   :datetime
+#  province     :string(255)
+#  city         :string(255)
+#  period       :integer(4)
 #
 
 class Ad < ActiveRecord::Base
