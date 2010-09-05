@@ -1,5 +1,5 @@
 <fieldset id="new_languages">
-  <%#= f.error_messages %>
+  <% show_error_message_for(f.object) %>
   <div class="left" class="w280 h450">
     <%= f.text_field :name, :label => "语言", :class => "text w280", :hint => "请输入语言名称。" %>
   </div>

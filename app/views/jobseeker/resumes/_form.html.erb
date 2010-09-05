@@ -1,5 +1,5 @@
 <%= field_set_tag "个人信息", :class => 'big' do %>
-  <%#= f.error_messages %>
+  <% show_error_message_for(f.object) %>
   <div class="left" class="w300 h450">
     <%= f.text_field :name, :label => "姓名", :class => "text w300", :hint => "请输入真实姓名。" %>
     <%= f.select :gender, Gender.to_a, {:include_blank => true}, {:label => "性别"} %>

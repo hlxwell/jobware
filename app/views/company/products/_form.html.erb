@@ -1,5 +1,5 @@
 <fieldset>
-  <%#= f.error_messages %>
+  <% show_error_message_for(f.object) %>
   <%= f.text_field :name, :label => "产品名称", :class => "text w580" %>
   <%= f.cktext_area(:desc, :height => '200px', :toolbar=>'Basic', :skin => "v2", :label => "描述", :hint => "项目的内容，你所做的内容等。") %>
   <%= f.file_field :file, :label => "产品图片" %>

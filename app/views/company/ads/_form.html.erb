@@ -1,4 +1,4 @@
-<%#= f.error_messages %>
+<% show_error_message_for(f.object) %>
 <%= f.fields_for :image do |image_form| %>
   <%= f.select :display_type, AdPositionType.to_a, {:include_blank => true}, {:label => "广告类型"} %>
   <%= image_form.text_field :name, :label => "广告标题", :class => "text w600", :hint => "最大长度为20个中文字。" %>

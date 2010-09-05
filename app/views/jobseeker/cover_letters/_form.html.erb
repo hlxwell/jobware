@@ -1,5 +1,5 @@
 <fieldset id="new_cover_letters">
-  <%#= f.error_messages %>
+  <% show_error_message_for(f.object) %>
   <%= f.text_field :name, :label => "名字", :class => "text w580" %>
   <%= f.cktext_area(:content, :height => '200px', :toolbar=>'Basic', :skin => "v2", :label => "内容") %>  
   <%= f.link_to_remove_fields "删除" %>

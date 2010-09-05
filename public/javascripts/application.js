@@ -19,7 +19,16 @@ $(function(){
     delay: 5000,
     effect: 'random'
   });
+
+  $("form [title]:not(#search_term)").tipsy({fade: true, trigger: 'focus', gravity: 'e', title: 'title'});
+  
+  $("form input#search_term").formtips({ tippedClass: 'tipped' });
 });
+
+function show_tooltip() {
+  $('form [title]').tipsy({fade: true, trigger: 'manual', gravity: 'e'});
+  $("input, select, radio, textarea").each(function(){ $(this).tipsy("show") });
+}
 
 function hide_fields(link) {
   $(link).prev("input[type=hidden]").val("1");

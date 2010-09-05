@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   before_filter :set_locale
-  helper_method :current_user_type, :current_user_section
+  helper_method :current_user_type, :current_user_section, :show_error_message_for
 
   # go login page if access denied.
   rescue_from CanCan::AccessDenied do |exception|
@@ -43,6 +43,10 @@ class ApplicationController < ActionController::Base
     elsif request.path =~ /^\/partner(.*)?/
       "partner"
     end
+  end
+  
+  def show_error_message_for(obj)
+    flash[:error] = "请根据错误提示填写正确内容。" if obj.errors.size > 0
   end
 private
 

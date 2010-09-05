@@ -1,4 +1,4 @@
-<%#= f.error_messages %>
+<% show_error_message_for(f.object) %>
 <%= f.text_field :name, :label => "网站名", :class => "text w600" %>
 <%= f.text_field :url, :label => "网站地址", :class => "text w600" %>
 <%= f.select :site_size, SiteSize.to_a, {:include_blank => true}, { :label => "网站流量" } %>
