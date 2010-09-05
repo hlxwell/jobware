@@ -4,7 +4,7 @@ Jobware::Application.routes.draw do
   match "slideshowpro(.:format)" => "page#slideshowpro"
   match "/partner_benifit" => "page#partner_benifit"
   match "/company_benifit" => "page#company_benifit"
-
+  match "/aboutus" => "page#aboutus"
   ### auth stuff
   match "/login" => "sessions#new", :as => :login
   match "/logout" => "sessions#destroy", :as => :logout

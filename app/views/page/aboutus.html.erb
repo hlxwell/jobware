@@ -1,2 +1,100 @@
-<h1>Page#aboutus</h1>
-<p>Find me in app/views/page/aboutus.html.erb</p>
+<div class="main" id="main-three-columns-center">
+
+	<div class="left sidebar" id="sidebar-1">
+		<%= render "shared/ads/right_side/urgent_jobs" %>
+	</div>
+
+	<div class="left" id="main-center">
+    <div id="slider-center">  
+      <% Ad.slider_ads.each do |ad| %>
+        <a href="<%= ad.url %>" target="_blank">
+          <%= image_tag(ad.file.url(:slideshow), :alt => ad.name) %>
+          <span>
+            <b><%= ad.name %></b>
+            <p><%= raw ad.desc %></p>
+          </span>
+        </a>
+      <% end %>
+    </div>
+	</div>
+
+	<div class="right sidebar" id="sidebar-1">
+		<%= render "shared/ads/right_side/urgent_jobs" %>
+	</div>
+  <div class="clearer">&nbsp;</div>
+
+</div>
+
+<div class="content-separator"></div>
+
+<div id="main_ad_zone">
+  <img src="/images/logos/akihabaranews_logo_en.jpg" width="475" height="60" class="left bordered"/>
+  <img src="/images/logos/akihabaranews_logo_en.jpg" width="475" height="60" class="right bordered"/>
+  <img src="/images/logos/akihabaranews_logo_en.jpg" width="475" height="60" class="left  bordered"/>
+  <img src="/images/logos/akihabaranews_logo_en.jpg" width="475" height="60" class="right bordered"/>
+	<div class="clearer">&nbsp;</div>
+
+  <img src="/images/logos/akihabaranews_logo_en.jpg" width="310" class="left bordered"/>
+  <img src="/images/logos/akihabaranews_logo_en.jpg" width="310" class="left bordered"/>
+  <img src="/images/logos/akihabaranews_logo_en.jpg" width="310" class="right bordered"/>
+  <img src="/images/logos/akihabaranews_logo_en.jpg" width="310" class="left bordered"/>
+  <img src="/images/logos/akihabaranews_logo_en.jpg" width="310" class="left bordered"/>
+  <img src="/images/logos/akihabaranews_logo_en.jpg" width="310" class="right bordered"/>
+	<div class="clearer">&nbsp;</div>
+
+  <img src="/images/logos/akihabaranews_logo_en.jpg" width="228" class="left bordered"/>
+  <img src="/images/logos/akihabaranews_logo_en.jpg" width="228" class="left bordered"/>
+  <img src="/images/logos/akihabaranews_logo_en.jpg" width="228" class="left bordered"/>
+  <img src="/images/logos/akihabaranews_logo_en.jpg" width="228" class="right bordered"/>
+
+  <img src="/images/logos/akihabaranews_logo_en.jpg" width="228" class="left bordered"/>
+  <img src="/images/logos/akihabaranews_logo_en.jpg" width="228" class="left bordered"/>
+  <img src="/images/logos/akihabaranews_logo_en.jpg" width="228" class="left bordered"/>
+  <img src="/images/logos/akihabaranews_logo_en.jpg" width="228" class="right bordered"/>
+	<div class="clearer">&nbsp;</div>
+</div>
+
+<div id="new_job_list">
+  <div class="section network-section w318 left">
+  	<div class="section-title">热门岗位</div>
+  	<div class="section-content">
+  		<ul class="nice-list">
+  		  <% (Ad.urgent_jobs*10).each do |ad| %>
+  			<li>
+  			  <span style="font-weight: bold"><%= ad.location %></span>
+  			  <%= link_to ad.name, ad.url, :title => ad.desc %>
+  			</li>
+  		  <% end %>
+  		</ul>
+  	</div>
+  </div>
+
+  <div class="section network-section w318 left" style="margin: 0 1em 0 1em">
+  	<div class="section-title">最新岗位</div>
+  	<div class="section-content">
+  		<ul class="nice-list">
+  		  <% (Ad.urgent_jobs*10).each do |ad| %>
+  			<li>
+  			  <span style="font-weight: bold"><%= ad.location %></span>
+  			  <%= link_to ad.name, ad.url, :title => ad.desc %>
+  			</li>
+  		  <% end %>
+  		</ul>
+  	</div>
+  </div>
+
+  <div class="section network-section w318 right">
+  	<div class="section-title">最新企业</div>
+  	<div class="section-content">
+  		<ul class="nice-list">
+  		  <% (Ad.urgent_jobs*10).each do |ad| %>
+  			<li>
+  			  <span style="font-weight: bold"><%= ad.location %></span>
+  			  <%= link_to ad.name, ad.url, :title => ad.desc %>
+  			</li>
+  		  <% end %>
+  		</ul>
+  	</div>
+  </div>
+	<div class="clearer">&nbsp;</div>
+</div>

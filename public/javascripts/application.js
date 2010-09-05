@@ -12,9 +12,17 @@ $(function(){
       }
   });
 
+  $('#slider-center').coinslider({
+    width: 520,
+    height: 200,
+    navigation: true,
+    delay: 5000,
+    effect: 'random'
+  });
+  
   $('#slider').coinslider({
     width: 670,
-    height: 300,
+    height: 250,
     navigation: true,
     delay: 5000,
     effect: 'random'
