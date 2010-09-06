@@ -4,9 +4,9 @@
 	  <% show_no_record(@urgent_jobs = Ad.urgent_jobs) do %>
 		<ul class="nice-list">		  
 		  <% @urgent_jobs.each do |ad| %>
-			<li>
-			  <span style="font-weight: bold"><%= ad.location %></span>
+			<li>			  
 			  <%= link_to ad.name, ad.url, :title => ad.desc %>
+			  <span style="font-weight: bold; float: right;"><%= ad.location %></span>
 			</li>
 		  <% end %>
 		</ul>

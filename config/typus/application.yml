@@ -187,9 +187,11 @@ User:
 Ad:
   fields:
     default: position, name, company, display_type_humanize, state, start_at, end_at
-    form: position, display_type, url, state, start_at, end_at, company
+    form: position, name, desc, display_type, url, state, start_at, end_at, company
     options:
       selectors: display_type, state
+      templates:
+        desc: text
   order_by: position
   relationships: company
   filters: display_type

@@ -672,6 +672,7 @@ img.alignright, img.right {margin: 0 0 1em 0;}
   background: url(/images/icon-search.png) 5px 8px no-repeat #fff;
   cursor: auto;
   width: 400px;
+  color: gray;
 }
 
 .search-box form#small_search_form input {

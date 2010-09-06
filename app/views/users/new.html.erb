@@ -1,9 +1,19 @@
 <% title "用户注册" %>
 
-<p>已经有帐号? <%= link_to "立即登陆", login_path %>.</p>
+<div class="main" id="main-two-columns-right-sidebar">
+  <div class="right sidebar" id="sidebar-1">
+    注意事项
+  </div>
 
-<h1>用户注册</h1>
-<%= jobware_form_for @user||User.new do |f| %>
-  <%= render :partial => "users/form", :locals => { :f => f } %>
-  <%= f.submit "注册" %>
-<% end %>
+  <div class="left" id="main-left">
+    <h3 class="right">已经有帐号? <%= link_to "立即登陆", login_path %>.</h3>
+
+    <h1>用户注册</h1>
+    <%= jobware_form_for @user||User.new, :url => user_path do |f| %>
+      <%= render :partial => "users/form", :locals => { :f => f } %>
+      <%= f.submit "注册" %>
+    <% end %>
+  </div>
+
+  <div class="clearer">&nbsp;</div>
+</div>
