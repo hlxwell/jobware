@@ -2,7 +2,7 @@ class Company::JobsController < Company::BaseController
   before_filter :get_job_by_id, :only => [:show, :edit, :update, :destroy]
 
   def index
-    @jobs = current_user.company.jobs.paginate :page => params[:page], :per_page => 1
+    @jobs = current_user.company.jobs.paginate :page => params[:page], :per_page => 20
   end
 
   def show

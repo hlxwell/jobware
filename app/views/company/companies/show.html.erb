@@ -46,6 +46,7 @@
 <div class="post">
 	<div class="post-title"><h3>公司产品</h3></div>
 	<div class="post-body">
+	  <% show_no_record(@company.products) do %>
 		<table class="data-table top-vlign top-vlign-td">
 		  <% @company.products.each do |p| %>
 			<tr>
@@ -54,6 +55,7 @@
 			</tr>
       <% end %>
 		</table>
+		<% end %>
 	</div>
 </div>
 

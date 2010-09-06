@@ -17,6 +17,11 @@
 #  file_updated_at   :datetime
 #
 
+### to reprocess all image.
+# TitledImage.all.each do |img|
+#   img.file.reprocess!
+# end
+
 class TitledImage < ActiveRecord::Base
   belongs_to :parent, :polymorphic => true
 
@@ -24,7 +29,8 @@ class TitledImage < ActiveRecord::Base
     :thumb => "150x150>",
     :popup_preview => "100x100",
     :preview => "50x50",
-    :slideshow => "670x300#",
+    :slideshow => "670x250#",
+    :slideshow_small => "520x200#",
     :bottom_ad => "166x50#",
     :featured_job => "310x80#",
     :right_ad => "250x70#"

@@ -1,22 +1,23 @@
 <% title "工作管理" %>
 
-<table class="data-table">
-	<tr>
-	  <th>工作名</th>
-		<th>所在省市</th>
-		<th>状态</th>
-		<th>更新时间</th>
-		<th>操作</th>
-	</tr>
-	<% @jobs.each do |job| %>
-	<tr class="even">
-	  <td><%= link_to job.name, company_job_path(job) %></td>
-		<td><%= job.location %></td>
-		<td><%= "waiting" %></td>
-		<td><%= job.updated_at.to_s_datetime %></td>
-		<td><%= link_to "修改", edit_company_job_path(job) %></td>
-	</tr>
-  <% end %>
-</table>
-
-<%= will_paginate @jobs %>
+<% show_no_record(@jobs) do %>
+  <table class="data-table">
+  	<tr>
+  	  <th>工作名</th>
+  		<th>所在省市</th>
+  		<th>状态</th>
+  		<th>更新时间</th>
+  		<th>操作</th>
+  	</tr>
+  	<% @jobs.each do |job| %>
+  	<tr class="even">
+  	  <td><%= link_to job.name, company_job_path(job) %></td>
+  		<td><%= job.location %></td>
+  		<td><%= "waiting" %></td>
+  		<td><%= job.updated_at.to_s_datetime %></td>
+  		<td><%= link_to "修改", edit_company_job_path(job) %></td>
+  	</tr>
+    <% end %>
+  </table>
+  <%= will_paginate @jobs %>
+<% end %>

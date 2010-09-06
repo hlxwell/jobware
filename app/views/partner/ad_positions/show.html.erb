@@ -1,36 +1,22 @@
-<% title "Partner/Ad Position" %>
+<% title "广告位" %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @partner/ad_position.name %>
-</p>
-<p>
-  <strong>Job List Tags:</strong>
-  <%= @partner/ad_position.job_list_tags %>
-</p>
-<p>
-  <strong>Width:</strong>
-  <%= @partner/ad_position.width %>
-</p>
-<p>
-  <strong>Height:</strong>
-  <%= @partner/ad_position.height %>
-</p>
-<p>
-  <strong>Type:</strong>
-  <%= @partner/ad_position.type %>
-</p>
-<p>
-  <strong>Style:</strong>
-  <%= @partner/ad_position.style %>
-</p>
-<p>
-  <strong>Partner:</strong>
-  <%= @partner/ad_position.partner_id %>
-</p>
-
-<p>
-  <%= link_to "Edit", edit_partner/ad_position_path(@partner/ad_position) %> |
-  <%= link_to "Destroy", @partner/ad_position, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", partner/ad_positions_path %>
-</p>
+<table class="data-table">
+  <tr>
+	  <th>类型</th><td><%= @ad_position.type %></td>
+	</tr>
+	<tr>
+	  <th>名称</th><td><%= @ad_position.name %></td>
+	</tr>
+	<tr>
+	  <th>岗位关键字</th><td><%= @ad_position.job_list_tags %></td>
+	</tr>
+	<tr>
+	  <th>宽度</th><td><%= @ad_position.width %></td>
+	</tr>
+	<tr>
+	  <th>高度</th><td><%= @ad_position.height %></td>
+	</tr>
+	<tr>
+	  <th>样式</th><td><%= @ad_position.style %></td>
+	</tr>
+</table>

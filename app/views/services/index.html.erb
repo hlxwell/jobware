@@ -1,20 +1,22 @@
 <% title "推广服务" %>
 
-<table class="data-table">
-	<tr>
-	  <th>服务名称</th>
-		<th>描述</th>
-		<th>价格</th>
-		<th></th>
-	</tr>
-	<% @services.each do |service| %>
-	<tr class="even">
-	  <td><%= service.name %></td>
-		<td><%= raw service.desc %></td>
-		<td><%= format_price service.price %></td>
-		<td>
-		  <%= link_to "购买", send("buy_#{current_user_section}_service_path", service), :confirm => "确定购买？" %>
-		</td>
-	</tr>
-  <% end %>
-</table>
+<% show_no_record(@services) do %>
+  <table class="data-table">
+  	<tr>
+  	  <th>服务名称</th>
+  		<th>描述</th>
+  		<th>价格</th>
+  		<th></th>
+  	</tr>
+  	<% @services.each do |service| %>
+  	<tr class="even">
+  	  <td><%= service.name %></td>
+  		<td><%= raw service.desc %></td>
+  		<td><%= format_price service.price %></td>
+  		<td>
+  		  <%= link_to "购买", send("buy_#{current_user_section}_service_path", service), :confirm => "确定购买？" %>
+  		</td>
+  	</tr>
+    <% end %>
+  </table>
+<% end %>

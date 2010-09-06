@@ -16,7 +16,7 @@ class Partner::AdPositionsController < Partner::BaseController
     @ad_position = current_user.partner.ad_positions.build(params[:ad_position])
     if @ad_position.save
       flash[:notice] = "Successfully created ad position."
-      redirect_to @ad_position
+      redirect_to partner_ad_position_path(@ad_position)
     else
       render :action => 'new'
     end
@@ -29,7 +29,7 @@ class Partner::AdPositionsController < Partner::BaseController
   def update
     if @ad_position.update_attributes(params[:ad_position])
       flash[:notice] = "Successfully updated ad position."
-      redirect_to @ad_position
+      redirect_to partner_ad_position_path(@ad_position)
     else
       render :action => 'edit'
     end
@@ -38,7 +38,7 @@ class Partner::AdPositionsController < Partner::BaseController
   def destroy
     @ad_position.destroy
     flash[:notice] = "Successfully destroyed ad position."
-    redirect_to ad_positions_url
+    redirect_to partner_ad_positions_path
   end
 
   private

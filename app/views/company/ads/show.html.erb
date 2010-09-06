@@ -3,7 +3,7 @@
 <table class="data-table top-vlign">
   <% if @ad.active? and @ad.start_at and @ad.end_at %>
 	<tr>
-	  <th>广告展示时间</th>
+	  <th>展示时间</th>
 		<td><%= @ad.start_at.to_s_date %> - <%= @ad.end_at.to_s_date %></td>
 	</tr>
 	<% end %>

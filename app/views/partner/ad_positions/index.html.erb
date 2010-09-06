@@ -1,5 +1,6 @@
 <% title "广告位" %>
 
+<% show_no_record(@ad_positions) do %>
 <table class="data-table">
 	<tr>
 	  <th>名称</th>
@@ -8,6 +9,7 @@
 	  <th>高度</th>
 		<th>类型</th>
     <th>样式</th>
+    <th>操作</th>
 	</tr>
   <% for ad_position in @ad_positions %>
     <tr>
@@ -17,10 +19,12 @@
       <td><%= ad_position.height %></td>
       <td><%= ad_position.type %></td>
       <td><%= ad_position.style %></td>
-      <td><%= ad_position.partner_id %></td>
-      <td><%= link_to "Show", ad_position %></td>
-      <td><%= link_to "Edit", edit_ad_position_path(ad_position) %></td>
-      <td><%= link_to "Destroy", ad_position, :confirm => 'Are you sure?', :method => :delete %></td>
+      <td>
+        <%= link_to "详情", partner_ad_position_path(ad_position) %>
+        <%= link_to "修改", edit_partner_ad_position_path(ad_position) %>
+        <%= link_to "删除", partner_ad_position_path(ad_position), :confirm => '确定删除？', :method => :delete %>
+      </td>
     </tr>
   <% end %>
 </table>
+<% end %>
