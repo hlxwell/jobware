@@ -17,10 +17,9 @@
   		<div class="left">
   		  当前本站共有:
   		  <span class="text-separator"></span>
-  		  <span class="quiet">794 个用户,</span>
-  		  <span class="quiet">350 个工作,</span>
-  		  <span class="quiet">120 个公司</span>
-
+  		  <span class="quiet"><%= User.count %> 个用户,</span>
+  		  <span class="quiet"><%= Job.count %> 个工作,</span>
+  		  <span class="quiet"><%= Company.count %> 个公司</span>
         <%= render "shared/login_status" %>
   		</div>
 

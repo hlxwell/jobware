@@ -5,7 +5,7 @@
 	</div>
 
 	<div class="left" id="main-center">
-    <div id="slider-center">  
+    <div id="slider-center">
       <% Ad.slider_ads.each do |ad| %>
         <a href="<%= ad.url %>" target="_blank">
           <%= image_tag(ad.file.url(:slideshow), :alt => ad.name) %>
@@ -28,6 +28,9 @@
 <div class="content-separator"></div>
 
 <div id="main_ad_zone">
+  <img src="http://img03.taobaocdn.com/tps/i3/T1CI8KXndbXXXXXXXX-950-95.gif" class="left bordered" width="972" />
+  <div class="clearer">&nbsp;</div>
+
   <img src="/images/logos/akihabaranews_logo_en.jpg" width="475" height="60" class="left bordered"/>
   <img src="/images/logos/akihabaranews_logo_en.jpg" width="475" height="60" class="right bordered"/>
   <img src="/images/logos/akihabaranews_logo_en.jpg" width="475" height="60" class="left  bordered"/>
@@ -61,8 +64,8 @@
   		<ul class="nice-list">
   		  <% (Ad.urgent_jobs*10).each do |ad| %>
   			<li>
-  			  <span style="font-weight: bold"><%= ad.location %></span>
   			  <%= link_to ad.name, ad.url, :title => ad.desc %>
+  			  <span style="font-weight: bold" class="right"><%= ad.location %></span>
   			</li>
   		  <% end %>
   		</ul>
@@ -75,8 +78,8 @@
   		<ul class="nice-list">
   		  <% (Ad.urgent_jobs*10).each do |ad| %>
   			<li>
-  			  <span style="font-weight: bold"><%= ad.location %></span>
   			  <%= link_to ad.name, ad.url, :title => ad.desc %>
+  			  <span style="font-weight: bold" class="right"><%= ad.location %></span>
   			</li>
   		  <% end %>
   		</ul>
@@ -89,8 +92,8 @@
   		<ul class="nice-list">
   		  <% (Ad.urgent_jobs*10).each do |ad| %>
   			<li>
-  			  <span style="font-weight: bold"><%= ad.location %></span>
   			  <%= link_to ad.name, ad.url, :title => ad.desc %>
+  			  <span style="font-weight: bold" class="right"><%= ad.location %></span>
   			</li>
   		  <% end %>
   		</ul>
