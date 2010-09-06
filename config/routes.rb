@@ -5,6 +5,9 @@ Jobware::Application.routes.draw do
   match "/partner_benifit" => "page#partner_benifit"
   match "/company_benifit" => "page#company_benifit"
   match "/aboutus" => "page#aboutus"
+  match "/services" => "page#services"
+  match "/contactus" => "page#contactus"
+
   ### auth stuff
   match "/login" => "sessions#new", :as => :login
   match "/logout" => "sessions#destroy", :as => :logout
@@ -73,7 +76,7 @@ Jobware::Application.routes.draw do
         get :buy
         get :bought
       end
-      
+
       collection do
         get :bought
       end
