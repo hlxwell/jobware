@@ -4,5 +4,4 @@ class AdsController < ApplicationController
 
   def show
   end
-
 end

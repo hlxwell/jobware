@@ -22,6 +22,7 @@ gem "exception_notification", :git => "http://github.com/rails/exception_notific
 gem "cancan"
 gem 'thinking-sphinx', :git => 'http://github.com/freelancing-god/thinking-sphinx.git', :branch  => 'rails3', :require => 'thinking_sphinx'
 gem 'fastercsv'
+gem "aasm"
 
 group :development do
   gem "rails3-generators"

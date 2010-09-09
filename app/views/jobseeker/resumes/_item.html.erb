@@ -4,7 +4,7 @@
 			<th width="20%">姓名</th>
 			<td width="30%"><%= item.name %></td>
   		<th width="20%" rowspan="4">个人照片</th>
-  		<td width="30%" rowspan="4"><%= image_tag item.portrait_path %></td>
+  		<td width="30%" rowspan="4"><%= image_tag item.portrait_path if item.portrait.size %></td>
 		</tr>
 		<tr>
 			<th>性别</th>
@@ -51,6 +51,10 @@
 		<tr>
 		  <th>自我评价</th>
 		  <td colspan="3"><%= raw item.self_intro %></td>
+		</tr>
+		<tr>
+		  <th>文件简历</th>
+		  <td colspan="3"><%= link_to item.file_file_name, item.file.url if item.file.size %></td>
 		</tr>
 	</table>
 </div>

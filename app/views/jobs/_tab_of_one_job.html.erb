@@ -51,7 +51,7 @@
 <div class="clearer">&nbsp;</div>
 <div class="content-separator w640"></div>
 
-<% {:content => "工作内容", :requirement => "岗位要求", :welfare => "福利", :desc => "其他描述"}.each do |key, value| %>
+<% {:content => "工作内容", :requirement => "岗位要求", :welfare => "福利", :desc => "其他描述", :apply_method => "应聘方式"}.each do |key, value| %>
   <% next if job.send(key).blank? %>
   <div class="post">
     <div class="post-title"><h3><%= value %></h3></div>
@@ -64,7 +64,7 @@
 <div class="right">
   <% if current_user.try(:jobseeker).try(:applied_to_job?, job) %>
     <%= button_to '您已经应聘过了此岗位。', "#", :remote => true, :method => :get, :class => "button largest", :disabled => true %>
-  <% else %>
+  <% elsif !job.only_use_custom_apply_method? %>
     <%= button_to '应聘此岗位', new_job_job_application_path(job), :remote => true, :method => :get, :class => "button largest", :id => "apply_button" %>
   <% end %>
 </div>

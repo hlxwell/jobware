@@ -41,6 +41,7 @@ GIT
 GEM
   remote: http://rubygems.org/
   specs:
+    aasm (2.1.7)
     abstract (1.0.0)
     actionmailer (3.0.0)
       actionpack (= 3.0.0)
@@ -148,6 +149,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  aasm
   acts-as-taggable-on
   annotate-models
   authlogic!

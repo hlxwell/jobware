@@ -1,6 +1,6 @@
 class CompaniesController < ApplicationController
   respond_to :xml, :only => :presentations
-  before_filter :no_company_login_required, :only => [:new, :create]
+  before_filter :redirect_to_new_job_if_login, :only => [:new, :create]
 
   def index
     @companies = Company.paginate :all, :page => params[:page], :per_page => 20
@@ -31,5 +31,11 @@ class CompaniesController < ApplicationController
     else
       render :action => 'new'
     end
+  end
+
+private
+
+  def redirect_to_new_job_if_login
+    redirect_to new_company_job_path if company_user?
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100905051157) do
+ActiveRecord::Schema.define(:version => 20100909043104) do
 
   create_table "ad_positions", :force => true do |t|
     t.string   "name"
@@ -188,7 +188,9 @@ ActiveRecord::Schema.define(:version => 20100905051157) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "company_id"
-    t.integer  "click_counter",      :default => 0
+    t.integer  "click_counter",                :default => 0
+    t.text     "apply_method"
+    t.boolean  "only_use_custom_apply_method"
   end
 
   create_table "languages", :force => true do |t|
@@ -253,6 +255,10 @@ ActiveRecord::Schema.define(:version => 20100905051157) do
     t.integer  "portrait_file_size"
     t.datetime "portrait_updated_at"
     t.text     "self_intro"
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
   end
 
   create_table "revenues", :force => true do |t|
@@ -368,7 +374,6 @@ ActiveRecord::Schema.define(:version => 20100905051157) do
   add_index "transactions", ["service_item_id"], :name => "index_transactions_on_service_item_id"
 
   create_table "users", :force => true do |t|
-    t.string   "login",                              :null => false
     t.string   "email",                              :null => false
     t.string   "crypted_password",                   :null => false
     t.string   "password_salt",                      :null => false

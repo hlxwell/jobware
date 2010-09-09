@@ -5,7 +5,9 @@
 <%= f.select :contract_type, ContractType.to_a, {:include_blank => true}, { :label => "工作类型" } %>
 <%= f.select :category, JobCategory.to_a, {:include_blank => true}, {:label => "类别"} %>
 <%= f.text_field :salary_range, :label => "薪资范围", :class => "text w600", :hint => "留空表示（面议）" %>
-<%= f.cktext_area(:content, :height => '200px', :toolbar=>'Basic', :skin => "v2", :label => "工作内容") %>
-<%= f.cktext_area(:requirement, :height => '200px', :toolbar=>'Basic', :skin => "v2", :label => "岗位需求") %>
-<%= f.cktext_area(:welfare, :height => '200px', :toolbar=>'Basic', :skin => "v2", :label => "福利待遇") %>
-<%= f.cktext_area(:desc, :height => '200px', :toolbar=>'Basic', :skin => "v2", :label => "其他描述") %>
+<%= f.cktext_area(:content, :height => '200px', :toolbar=>'Basic', :skin => "office2003", :label => "工作内容") %>
+<%= f.cktext_area(:requirement, :height => '200px', :toolbar=>'Basic', :skin => "office2003", :label => "岗位需求") %>
+<%= f.cktext_area(:welfare, :height => '200px', :toolbar=>'Basic', :skin => "office2003", :label => "福利待遇") %>
+<%= f.cktext_area(:desc, :height => '200px', :toolbar=>'Basic', :skin => "office2003", :label => "其他描述") %>
+<%= f.cktext_area(:apply_method, :height => '200px', :toolbar=>'Basic', :skin => "office2003", :label => "应聘方式 (可选)", :hint => "如果你公司有自己的应聘系统，或者希望应聘者发送简历到公司邮箱，请填写在这里。") %>
+<%= f.check_box :only_use_custom_apply_method, :label => "只使用自定义应聘方式", :hint => "选中后系统自带的应聘系统将不会被使用。" %>

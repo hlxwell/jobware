@@ -34,6 +34,8 @@
 #
 
 class Resume < ActiveRecord::Base
+  attr_accessor :quick_resume
+
   has_enumeration_for :gender, :with => Gender
   has_enumeration_for :current_working_state, :with => WorkingState
 
@@ -50,7 +52,6 @@ class Resume < ActiveRecord::Base
   has_many :cover_letters, :dependent => :destroy
   has_many :certifications, :dependent => :destroy
   has_many :job_applications
-  has_one :subscription
   has_many :starred_jobs
   has_many :jobs, :through => :starred_jobs
 
@@ -59,9 +60,34 @@ class Resume < ActiveRecord::Base
 
   has_attached_file :portrait, :styles => { :thumb => "150x150>" }, :default_style => :thumb
   validates_attachment_content_type :portrait, :content_type => [%r{image/.*jpg}, %r{image/.*jpeg}, %r{image/.*gif}, %r{image/.*png}], :if => lambda {|obj| obj.portrait.size.present? }
-  validates_attachment_size :portrait, :less_than => 1.megabytes
+  validates_attachment_size :portrait, :less_than => 1.megabytes, :message => "文件必需小于1M", :if => lambda {|obj| obj.portrait.size.present? }
 
-  validates_presence_of :name, :gender, :working_years, :degree, :major, :birthday, :hometown_province, :hometown_city, :current_residence_province, :current_residence_city, :email, :phone_number, :expected_positions, :expected_job_location, :expected_salary, :current_working_state
+  has_attached_file :file
+  validates_attachment_size :file, :less_than => 10.megabytes, :message => "文件必需小于10M", :if => lambda {|obj| obj.file.size.present? }
+  validates_attachment_presence :file, :if => lambda {|obj| obj.quick_resume == 'true' }
+
+  validates_presence_of :name, :gender, :email, :working_years, :degree, :major, :birthday, :hometown_province, :hometown_city, :current_residence_province, :current_residence_city, :email, :phone_number, :expected_positions, :expected_job_location, :expected_salary, :current_working_state, :if => lambda {|obj| obj.quick_resume != 'true' and obj.file.size.nil? }
+  validate :check_file_type_when_creating, :on => :create, :if => lambda {|obj| obj.quick_resume == 'true' } 
+  validate :check_file_type_when_updating, :on => :update, :if => lambda {|obj| obj.quick_resume == 'true' }
+
+  def check_file_type_when_creating
+    errors.add(:file, "文件格式错误，请上传 doc 或者 docx 格式的简历。") if !doc?
+  end
+
+  def check_file_type_when_updating
+    errors.add(:file, "文件格式错误，请上传 doc 或者 docx 格式的简历。") if uploaded_an_illegal_file?
+  end
+
+  def uploaded_an_illegal_file?
+    return false if self.file_file_name_changed?            ### not upload anything return legal uploading
+    return true if !doc?(self.file_file_name_change.last)   ### if uploading something, it should be doc or pdf
+    return false
+  end
+
+  def doc?(filename=self.file_file_name)
+    filename and !!(File.extname(filename) =~ /docx?$/i)
+  end
+
 
   def hometown
     "#{hometown_province} - #{hometown_city}"

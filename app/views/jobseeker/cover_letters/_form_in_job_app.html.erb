@@ -2,5 +2,5 @@
   <% show_error_message_for(f.object) %>
   <%= f.text_field :name, :label => "名称", :class => "text", :style => "width: 98%;" %>
   <%= f.cktext_area(:content, :height => '200px', :toolbar=>'Basic', :skin => "office2003", :label => "内容") %>
-  <%= f.link_to_remove_fields "删除" %>
+  <%= f.hidden_field :resume_id, :value => current_user.jobseeker.id %>
 </fieldset>

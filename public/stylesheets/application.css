@@ -259,6 +259,14 @@ select {
 }
 input.text:focus, textarea:focus, select:focus {background: #FFFFF5;}
 
+button {
+  background: #DDD;
+	border: 1px outset #AAA;
+	padding: 4px 5px;
+}
+
+button:active {border-style: inset;}
+
 input.button {
 	background: #DDD;
 	border: 1px outset #AAA;
@@ -367,7 +375,7 @@ img.alignright, img.right {margin: 0 0 1em 0;}
    Posts
 ------------------------------------------------------------------- */
 
-.post .company_logo { float: left; padding-right: 10px; }
+.post .company_logo { float: left; margin-right: 10px; }
 .post .company_logo img { width: 150px; }
 
 .post a {text-decoration: none;}
@@ -499,7 +507,6 @@ img.alignright, img.right {margin: 0 0 1em 0;}
 	font: normal 1.0em serif;
 	font-weight: bold;
 	/*border-bottom: 1px solid #CCC;*/
-	padding-top: 8px;
 }
 #site-title span {color: #999; font-size: 0.5em;}
 #site-title a {
@@ -664,7 +671,7 @@ img.alignright, img.right {margin: 0 0 1em 0;}
 * html #sub-nav, * html .section-title, * html .main {height: 0.01%; min-height: 0.01%;}
 
 /* search box */
-.search-box form#search_form input {
+.search-box form#search_form input#search_term {
   float: right;
   margin: 7px 5px 0px 0px;
   font-size: 1.5em;
@@ -672,6 +679,15 @@ img.alignright, img.right {margin: 0 0 1em 0;}
   background: url(/images/icon-search.png) 5px 8px no-repeat #fff;
   cursor: auto;
   width: 400px;
+  color: gray;
+}
+
+.search-box form#search_form input.button {
+  float: right;
+  margin: 7px 5px 0px 0px;
+  font-size: 1.5em;
+  padding: 0 0.5em 0.2em 0.5em;
+  cursor: auto;
   color: gray;
 }
 
@@ -706,6 +722,10 @@ img.alignright, img.right {margin: 0 0 1em 0;}
   width: 200px;
 }
 
+.w250 {
+  width: 250px;
+}
+
 .w280 {
   width: 280px;
 }
@@ -730,6 +750,16 @@ img.alignright, img.right {margin: 0 0 1em 0;}
   width: 49%;
 }
 
+.w77p {
+  width: 77%;
+}
+.w69p {
+  width: 64%;
+}
+
+.small_margin {
+  margin: 0.3em;
+}
 /* Font-Sizer Specific Styling */
 
 .fsizer { } /* Container element */
@@ -792,7 +822,8 @@ div.highlighted {
   width: 166px;
   height: 50px;
 }
-/* pagination 
+
+/* pagination
 .pagination {
   float: right;
 }
@@ -816,4 +847,94 @@ div.highlighted {
 
 #stars-cap {
   margin-left: 5px;
+}
+
+/* top page job block */
+#top_job_list .top-page-job {
+  width: 294px;
+  height: 105px;
+  padding: 1em;
+  background-color: #FFF;
+	border-bottom: 1px solid #DDD;
+}
+
+#top_job_list .top-page-job .company-logo{
+  float: left;
+  background-color: #FFF;
+  padding: 0.3em;
+	border: 1px solid #DDD;
+}
+
+#top_job_list .top-page-job .company-jobs{
+  float: left;
+  margin-left: 1em;
+}
+
+#top_job_list .left {
+  float: left;
+  margin: 0 1em 1em 0;
+}
+
+#top_job_list .right {
+  float: right;
+  margin-bottom: 1em;
+}
+
+#top_job_list .top-page-job ul {
+  list-style: none;
+  margin: 5px 0;
+}
+
+#top_job_list .top-page-job li {
+  padding: 0px;
+}
+
+/* botton css */
+.btn {
+  font-size: 16px;
+  font-weight: bold;
+	float: left;
+	clear: both;
+	background: url(/images/bottons/btn_left.png) no-repeat;
+	padding: 0 0 0 10px;
+	margin: 5px 0;
+}
+.btn a{
+	float: left;
+	height: 40px;
+	background: url(/images/bottons/btn_stretch.png) repeat-x left top;
+	line-height: 40px;
+	padding: 0 10px;
+	color: #fff;
+	font-size: 1em;
+	text-decoration: none;
+}
+.btn .black {
+  color: black;
+}
+
+.btn span {
+	background: url(/images/bottons/btn_right.png) no-repeat;
+	float: left;
+	width: 10px;
+	height: 40px;
+}
+.btn_addtocart { background-color: green; }
+.btn_checkout { background-color: red; }
+.btn_learnmore { background-color: orange; }
+.btn_try { background-color: #002c85; }
+
+/* ajax loading bar */
+#loading {
+  z-index: 10000;
+  display: none;
+  color: white;
+  font-weight: bold;
+  font-size: 1.2em;
+  float: right;
+  padding: 5px 10px 5px 10px;
+  background-color: red;
+  position: fixed;
+  right:45%;
+  top:0px;
 }

@@ -40,10 +40,11 @@ class ApplicationController < ActionController::Base
       return section if request.path =~ /^\/#{section}(.*)?/
     end
   end
-  
+
   def show_error_message_for(obj)
-    flash[:error] = obj.errors.size > 0 ? "请根据错误提示填写正确内容。" : nil
+    flash[:error] = "请根据错误提示填写正确内容。" if obj.errors.size > 0
   end
+
 private
 
   ### define - xxx_login_required and no_xxx_login_required

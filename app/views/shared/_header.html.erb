@@ -3,9 +3,6 @@
 	<div class="clearer">&nbsp;</div>
 	<br>
 
-  <div class="right success text-center larger w100"><%= link_to "应聘者注册", new_jobseeker_resume_path %></div>
-  <div class="right success text-center larger w100" style="margin-right: 10px"><%= link_to "发布工作", new_company_path %></div>
-
   <!-- #### site logo and title -->
 	<div id="site-title">
 		<h1><a href="/">IT招聘之声</a> <span>ITJob.fm 专注于程序员招聘求职</span></h1>
@@ -18,37 +15,16 @@
 		  <% if in_section?("frontend") %>
   		  <% semantic_navigation :main, :html => {:class => "tabbed"} do |n| %>
   		    <%= n.item '首页', :link => root_path %>
-          <%= n.item '我要求职', :link => jobs_path, :highlights_on => [companies_path, new_jobseeker_resume_path] %>
-          <%= n.item '我要招聘', :link => '/company_benifit', :highlights_on => [new_company_path] %>
-          <%= n.item '我要合作', :link => '/partner_benifit', :highlights_on => [new_partner_path] %>
+          <%= n.item '找工作', :link => jobs_path %>
+          <%= n.item "发布工作", :link => new_company_path %>
         <% end %>
 
         <div class="search-box">
           <%= form_for :search, :url => search_jobs_path, :html => {:id => "search_form"} do |f| %>
-            <%= f.text_field :keywords, :title => "请输入关键字：如JAVA，北京，数据库", :class => "text tipped", :id => "search_term" %>
+            <%= f.submit "搜索", :class => "button right" %>
+            <%= f.text_field :keywords, :title => "请输入关键字：如JAVA，北京，微软", :class => "text tipped", :id => "search_term" %>
           <% end %>
         </div>
-      <% end %>
-			<div class="clearer">&nbsp;</div>
-		</div>
-
-    <!-- ### sub nav -->
-		<div id="sub-nav">
-		  <% if in_section?("jobseeker") %>
-  		  <% semantic_navigation :main, :html => {:class => "tabbed"} do |n| %>
-          <%= n.item '所有工作', :link => jobs_path %>
-          <%= n.item '所有公司', :link => companies_path %>
-        <% end %>
-      <% elsif in_section?("company") %>
-        <% semantic_navigation :main, :html => {:class => "tabbed"} do |n| %>
-          <%= n.item '我们的优点', :link => "/company_benifit" %>
-          <%= n.item '发布工作', :link => new_company_path %>
-        <% end %>
-      <% elsif in_section?("partner") %>
-        <% semantic_navigation :main, :html => {:class => "tabbed"} do |n| %>
-          <%= n.item '利益', :link => "/partner_benifit" %>
-          <%= n.item '加入我们', :link => new_partner_path %>
-        <% end %>
       <% end %>
 			<div class="clearer">&nbsp;</div>
 		</div>

@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :company
 
-  def Base.after_create
+  def Base.before_create
     self.build_bank_account(:name => self.email)
   end
 end

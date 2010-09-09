@@ -2,7 +2,6 @@ class SessionsController < ApplicationController
   before_filter :login_required, :only => :destroy
 
   def new
-    @user_session = UserSession.new
   end
 
   def create
@@ -11,7 +10,7 @@ class SessionsController < ApplicationController
       flash[:notice] = "登陆成功。"
       redirect_back_or_default(dashboard_path_for(current_user))
     else
-      # flash.now[:error] = "错误的用户名或者密码！"
+      flash[:error] = "错误的用户名或者密码！"
       render :action => :new
     end
   end

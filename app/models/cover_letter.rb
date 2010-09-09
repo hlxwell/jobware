@@ -12,5 +12,6 @@
 #
 
 class CoverLetter < ActiveRecord::Base
-  attr_accessible :name, :content, :resume_id
+  belongs_to :resume
+  validates_presence_of :name, :content #, :resume_id
 end

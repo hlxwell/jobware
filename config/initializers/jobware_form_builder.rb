@@ -11,8 +11,13 @@ class JobwareFormBuilder < ActionView::Helpers::FormBuilder
       @template.content_tag(:div, :class => "form-row #{other_classes}") {
          @template.content_tag(tag_mark, :class => "form-property") {
            label(field_name, options[:label]) +
+           # append errors
            unless object.nil?
              errors = object.errors[field_name.to_sym]
+             if method_name == "file_field"
+               errors = object.errors[field_name.to_sym]
+               errors += object.errors["#{field_name}_file_size".to_sym]
+             end
              @template.content_tag(:span, errors.is_a?(Array) ? errors.first : errors, :class => "field_error") if errors
            end
          } +
@@ -50,7 +55,7 @@ class JobwareFormBuilder < ActionView::Helpers::FormBuilder
   def submit(text = nil, *args)
     options = merge_to_options args.last, :class => "button"
 
-    @template.content_tag(:div, :class => "form-row form-row-submit") do
+    @template.content_tag(:div, :class => "form-row-submit") do
       super(text, options) +
       @template.content_tag(:div, "", :class => 'clearer')
     end
@@ -101,7 +106,7 @@ class JobwareFormBuilder < ActionView::Helpers::FormBuilder
   def link_to_remove_fields(name, *args)
     options = merge_to_options args.last, :class => "right large"
 
-    if options[:without_destroy].present?
+    if object.new_record?
       link_to_function(name, "remove_fields(this)", options)
     else
       link_to_function(name, "hide_fields(this)", options) +

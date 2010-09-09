@@ -4,7 +4,7 @@
   <%= image_form.text_field :name, :label => "广告标题", :class => "text w600", :hint => "最大长度为20个中文字。" %>
   <%= f.city_select :province, :city, :label => "工作所在地" %>
   <%= f.text_field :url, :label => "广告链接地址", :hint => "点击广告后跳转的地址。", :class => "text w600" %>
-  <%= image_form.cktext_area(:desc, :height => '200px', :toolbar=>'Basic', :skin => "v2", :label => "广告内容") %>
+  <%= image_form.cktext_area(:desc, :height => '200px', :toolbar=>'Basic', :skin => "office2003", :label => "广告内容") %>
   <%= f.text_field :period, :label => "展示周期", :class => "text w600", :hint => "单位：周" %>
   <%= image_form.file_field :file, :label => "广告图片" %>
   <%= image_tag image_form.object.file.url if image_form.object.file.size %>

@@ -12,6 +12,7 @@ $(function(){
       }
   });
 
+  // top page slider
   $('#slider-center').coinslider({
     width: 520,
     height: 200,
@@ -19,19 +20,25 @@ $(function(){
     delay: 5000,
     effect: 'random'
   });
-  
-  $('#slider').coinslider({
-    width: 670,
-    height: 250,
-    navigation: true,
-    delay: 5000,
-    effect: 'random'
+
+  // form tip for normal form
+  $("form [title]:not(#search_term)").tipsy({fade: true, trigger: 'focus', gravity: 'e', title: 'title'});
+
+  // form tip for search input
+  $("form input#search_term").formtips({ tippedClass: 'tipped' });
+
+  show_and_hide_ajax_loading_bar();
+});
+
+function show_and_hide_ajax_loading_bar() {
+  $("#loading").ajaxStart(function(){
+    $(this).slideDown("fast");
   });
 
-  $("form [title]:not(#search_term)").tipsy({fade: true, trigger: 'focus', gravity: 'e', title: 'title'});
-  
-  $("form input#search_term").formtips({ tippedClass: 'tipped' });
-});
+  $("#loading").ajaxStop(function(){
+    $(this).slideUp("fast");
+  });
+}
 
 function show_tooltip() {
   $('form [title]').tipsy({fade: true, trigger: 'manual', gravity: 'e'});
@@ -44,7 +51,13 @@ function hide_fields(link) {
 }
 
 function remove_fields(link) {
-  $(link).closest("fieldset").fadeOut("slow", function(){ $(this).remove() });
+  $(link).closest("fieldset").fadeOut("slow", function(){
+    // if it's the last one, then show notice message
+    if( $(link).parent().parent().children("fieldset").size() == 1 ) {
+      $(link).parent().parent().children("div.notice").fadeIn("slow");
+    }
+    $(this).remove();
+  });
 }
 
 function add_fields(link, association, content) {
@@ -52,4 +65,5 @@ function add_fields(link, association, content) {
   var regexp = new RegExp("new_" + association, "g")
   $(link).before(content.replace(regexp, new_id));
   $("#" + new_id).hide().fadeIn("slow");
+  $("#" + association + "_notice").fadeOut("show");
 }

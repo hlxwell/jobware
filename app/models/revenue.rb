@@ -13,4 +13,5 @@
 #
 
 class Revenue < ActiveRecord::Base
+  belongs_to :partner  
 end

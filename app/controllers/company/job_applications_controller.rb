@@ -5,17 +5,19 @@ class Company::JobApplicationsController < Company::BaseController
   end
 
   def show
-    @application = current_user.company.job_applications.find(params[:id], :include => [:resume, :cover_letter, :job])
-    @application.read
+    @application = current_user.company.job_applications.find(params[:id], :include => [:resume, :cover_letter, :job], :readonly => false)
+    @application.view
+
+    ### update the new_job_application_count
     @new_job_application_count = current_user.company.job_applications.unread.count
 
-    @resume = @application.resume
+    @resume       = @application.resume
     @cover_letter = @application.cover_letter
-    @job = @application.job
+    @job          = @application.job
   end
 
   def star
-    @app = current_user.company.job_applications.find(params[:id])
+    @app = current_user.company.job_applications.find(params[:id], :readonly => false)
     rating = params[:job_application].present? ? params[:job_application][:rating] : 0
 
     if @app.update_attribute :rating, rating

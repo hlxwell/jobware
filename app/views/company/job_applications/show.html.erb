@@ -9,15 +9,15 @@
   <div class="right large">应聘于 <%= @application.created_at.to_s_datetime %></div>
 </div><br>
 
-
+<% if @cover_letter %>
 <div class="post">
   <div class="post-title"><h2>求职信</h2></div>
 </div>
 <div class="content-separator-quite"></div>
 <div class="post">
-  <%= raw @cover_letter.content %>
+<%= raw @cover_letter.content %>
 </div><br>
-
+<% end %>
 
 <div class="post">
   <div class="post-title"><h2>简历</h2></div>

@@ -8,10 +8,17 @@
 	<%= csrf_meta_tag %>
   <%= stylesheet_link_tag "application", "pagination", "tipsy", "jquery-ui", "jquery.ui.stars", "coin-slider-styles" %>
   <%= javascript_include_tag "jquery", "jquery.tipsy", "jquery.tools.min", "jquery-ui", "jquery.ui.stars", "jquery.cookies", "jquery.formtips", "jquery.citySelector", "coin-slider", "rails", "application", :ckeditor %>
+  <!--[if lte IE 7]>
+  	<style type="text/css" media="all">
+  		@import url("/stylesheets/ieBrowserHacks.css");
+  	</style>
+  <![endif]-->
   <title><%= "#{@content_for_title} - " if @content_for_title %> 中国程序员招聘网 - 中国最大的开发者招聘网站</title>
 </head>
 
 <body id="top">
+  <div id="loading">正在加载, 请稍候...</div>
+
   <div id="network">
   	<div class="center-wrapper">
   		<div class="left">

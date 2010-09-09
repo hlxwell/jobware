@@ -1,0 +1,20 @@
+<%= jobware_form_for @resume, :url => jobseeker_resume_path, :title => "快速投简历", :html => {:multipart => true} do |f| %>
+  <img src="/images/icons/speed.png" class="left" />
+
+  <div class="right" style="width: 75%">
+    <% show_error_message_for(f.object) %>
+    <%= f.fields_for :user do |user_form| %>
+      <%= user_form.text_field :email, :label => "邮箱", :class => "text w280", :hint => "您将会收到登陆密码以及公司回复，请仔细填写。" %>
+    <% end %>
+
+    <%= f.fields_for :cover_letters do |cv_form| %>
+      <%= cv_form.hidden_field :name, :value => "默认求职信" %>
+      <%= cv_form.cktext_area :content, :label => "求职信", :class => "h25", :skin => "office2003", :toolbar => 'Basic', :hint => "请仔细填写求职信，可以让公司有个好的印象。" %>
+    <% end %>
+
+    <%= f.file_field :file, :label => "文件", :class => "text w280", :hint => "请上传 word 或者 pdf 文档。" %>
+
+    <%= f.hidden_field :quick_resume, :value => true %>
+    <%= f.submit "上传", :class => "button right largest" %>
+  </div>
+<% end %>

@@ -41,4 +41,12 @@
 	  <th>其他描述</th>
 		<td><%= raw @job.desc %></td>
 	</tr>
+	<tr>
+	  <th>应聘方式</th>
+		<td><%= raw @job.apply_method %></td>
+	</tr>
+	<tr>
+	 <th>是否使用应聘系统</th>
+	 <td><%= @job.only_use_custom_apply_method? ? "否" : "是" %></td>
+	</tr>
 </table>

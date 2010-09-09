@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
+
     if @user.save
       # UserSession.create(params[:user])
       redirect_to("/", :notice => '用户注册成功。')

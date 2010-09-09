@@ -13,11 +13,9 @@
 #
 
 class Subscription < ActiveRecord::Base
-  belongs_to :resume
-  has_one :user, :through => :resume
-
   has_enumeration_for :period_type, :with => PeriodType
 
+  belongs_to :resume
   validates_presence_of :keywords, :period_type
 
   def send_newsletter

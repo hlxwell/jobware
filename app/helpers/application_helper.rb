@@ -18,13 +18,14 @@ module ApplicationHelper
   end
 
   def render_message
-    if flash[:notice].present?
-      "<div class='notice largest'>#{flash[:notice]}</div>"
-    elsif flash[:error].present?
-	    "<div class='error largest'>#{flash[:error]}</div>"
-    elsif flash[:success].present?
-      "<div class='success largest'>#{flash[:success]}</div>"
+    [:notice, :error, :success].each do |key|
+      if flash[key].present?
+        result = "<div class='#{key} largest'>#{flash[key]}</div>"
+        flash.discard(key)
+        return result
+      end
     end
+    nil
   end
 
   ### nav helper method

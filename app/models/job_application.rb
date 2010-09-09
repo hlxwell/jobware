@@ -14,9 +14,17 @@
 #
 
 class JobApplication < ActiveRecord::Base
-  state_machine :state, :initial => :new do
-    event :read do
-      transition :new => :read
+  state_machine :state, :initial => :unread do
+    event :view do
+      transition :unread => :read
+    end
+
+    event :accept do
+      transition :read => :accepted
+    end
+
+    event :reject do
+      transition :read => :rejected
     end
   end
 
@@ -25,9 +33,25 @@ class JobApplication < ActiveRecord::Base
   belongs_to :resume
   belongs_to :cover_letter
 
-  validates_presence_of :cover_letter_id, :job_id, :resume_id
   validates_uniqueness_of :resume_id, :scope => :job_id, :message => "已经投过简历到该职位。"
+  validates_presence_of :job_id, :resume_id
+  validates_presence_of :cover_letter_id, :if => lambda {|obj| obj.cover_letter.blank? }
 
-  scope :unread, where(:state => "new")
+  accepts_nested_attributes_for :cover_letter, :allow_destroy => true
+
+  scope :unread, where(:state => "unread")
   scope :starred, where("rating > 0")
+
+  def state_humanize
+    case state
+    when "unread"
+      "未阅读"
+    when "read"
+      "已阅读"
+    when "accepted"
+      "接受"
+    when "rejected"
+      "拒绝"
+    end
+  end
 end

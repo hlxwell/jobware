@@ -1,4 +1,36 @@
-<%= field_set_tag "个人信息", :class => 'big' do %>
+<script>
+  $(function(){
+    var forms = {
+      "previous_jobs" : "工作经历",
+      "schools" : "教育经历",
+      "projects" : "项目经验",
+      "skills" : "技能",
+      "certifications" : "证书",
+      "languages" : "语言能力",
+      "cover_letters" : "求职信"
+    };
+
+    $.each(forms, function(k,v){
+      $("#appending-buttons").append("<button type='button' class='small_margin largest' id='button_" + k + "'>" + v + "</button>");
+
+      $("#button_" + k).click(function(){
+        $("#optional_items").append($("#" + k));
+        $("#" + k).slideToggle("fast");
+        $("#button_" + k).hide();
+      });
+
+      $("#cancel_" + k).click(function(){
+        $("#" + k).slideToggle("fast");
+        $("#button_" + k).show();
+      });
+
+      if( $("#" + k).css("display") != 'none' ) {
+        $("#button_" + k).hide();
+      }
+    });
+  });
+</script>
+<%= field_set_tag "个人信息", :class => 'big', :id => "basic_info" do %>
   <% show_error_message_for(f.object) %>
   <div class="left" class="w300 h450">
     <%= f.text_field :name, :label => "姓名", :class => "text w300", :hint => "请输入真实姓名。" %>
@@ -9,7 +41,7 @@
     <%= f.text_field :email, :label => "邮箱", :class => "text w300" %>
     <%= f.text_field :phone_number, :label => "联系电话", :class => "text w300" %>
     <%= f.file_field :portrait, :label => "个人照片" %>
-    <%= image_tag f.object.portrait_path unless f.object.new_record? %>
+    <%= image_tag f.object.portrait_path if !f.object.new_record? and f.object.portrait.size %>
   </div>
 
   <div class="left" class="w300 h450" style="margin-left: 10px;">
@@ -20,10 +52,12 @@
     <%= f.text_field :expected_positions, :label => "希望应聘的岗位", :class => "text w300" %>
     <%= f.text_field :expected_job_location, :label => "希望工作的地点", :class => "text w300" %>
     <%= f.select :current_working_state, WorkingState.to_a, {:include_blank => true}, {:label => "求职状态"} %>
+    <%= f.file_field :file, :label => "简历文件" %>
+    <%= link_to f.object.file_file_name if !f.object.new_record? and f.object.file.size %>
   </div>
-  
-  <div class="clearer">&nbsp;</div>  
-  <%= f.cktext_area :self_intro, :skin => "v2", :toolbar => 'Easy', :width => "640px", :label => "自我评价" %>
+
+  <div class="clearer">&nbsp;</div>
+  <%= f.cktext_area :self_intro, :skin => "office2003", :toolbar => 'Basic', :width => "640px", :label => "自我评价" %>
 <% end %>
 
 <!-- ################ one to many info ################ -->
@@ -36,15 +70,21 @@
   :languages => "语言能力",
   :cover_letters => "求职信"
   }.each do |key, value| %>
-  <%= field_set_tag value, :class => 'big' do %>
+  <% should_show_field = f.object.send(key).map(&:errors).size > 0 ? "" : "hidden" %>
+  <%= field_set_tag raw("#{value} <a id='cancel_#{key}' href='javascript:void(0)'>隐藏</a>"), :class => "big #{should_show_field}", :id => key do %>
     <% if f.object.send(key).blank? %>
-      <div class="notice">没有添加<%= value %>。</div>
+      <div id="<%= key %>_notice" class="notice">没有<%= value %>记录。</div>
     <% end %>
-
     <%= f.fields_for key do |new_form| %>
       <%= render "jobseeker/#{key}/form", :f => new_form %>
     <% end %>
-
     <%= f.button_to_add_fields '添加', key, :namespace_dir => "jobseeker" %>
   <% end %>
 <% end %>
+
+<div id="optional_items"></div>
+
+<a name="buttons"></a>
+<fieldset class="big text-center" id="appending-buttons">
+  <legend>添加</legend>
+</fieldset>
