@@ -57,6 +57,7 @@
   <div class="section network-section w318 left">
   	<div class="section-title">热门岗位</div>
   	<div class="section-content">
+  	  <% show_no_record(Job.all) do %>
   		<ul class="nice-list">
   		  <% (Job.all*3).each do |job| %>
   			<li>
@@ -66,12 +67,14 @@
   			</li>
   		  <% end %>
   		</ul>
+  		<% end %>
   	</div>
   </div>
 
   <div class="section network-section w318 left" style="margin: 0 1em 0 1.1em">
   	<div class="section-title">最新岗位</div>
   	<div class="section-content">
+  	  <% show_no_record(Job.all) do %>
   		<ul class="nice-list">
   		  <% (Job.all*3).each do |job| %>
   			<li>
@@ -81,12 +84,14 @@
   			</li>
   		  <% end %>
   		</ul>
+  		<% end %>
   	</div>
   </div>
 
   <div class="section network-section w318 right">
   	<div class="section-title">最新企业</div>
   	<div class="section-content">
+  	  <% show_no_record(Job.all) do %>
   		<ul class="nice-list">
   		  <% (Ad.urgent_jobs*9).each do |ad| %>
   			<li>
@@ -96,6 +101,7 @@
   			</li>
   		  <% end %>
   		</ul>
+  		<% end %>
   	</div>
   </div>
 	<div class="clearer">&nbsp;</div>
