@@ -3,7 +3,7 @@ module TransactionsControllerBase
   def index
     render "transactions/index", :layout => current_user_section and return if params[:service_item_id].blank? and !request.xhr?
 
-    @transactions = current_user.bank_account.transactions.where(:service_item_id => params[:service_item_id]).all
+    @transactions = current_user.transactions.where(:service_item_id => params[:service_item_id]).all
     render :partial => "transactions/list"
   end
 
@@ -15,7 +15,7 @@ module TransactionsControllerBase
   def create
     if params[:transaction] and params[:transaction][:amount]
       operation = params[:transaction][:operation] || 'charge!'
-      current_user.bank_account.send(operation, params[:transaction][:amount])
+      current_user.send(operation, params[:transaction][:amount])
       flash[:notice] = "操作成功。"
     else
       flash[:notice] = "操作失败。"

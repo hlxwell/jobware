@@ -1,10 +1,11 @@
 Jobware::Application.routes.draw do
-
   match "track" => Tracker.action(:track), :as => :tracker
   match "slideshowpro(.:format)" => "page#slideshowpro"
   match "/partner_benifit" => "page#partner_benifit"
   match "/company_benifit" => "page#company_benifit"
   match "/aboutus" => "page#aboutus"
+  match "/partner_site_header" => "page#partner_site_header"
+  match "/partner_site_footer" => "page#partner_site_footer"
   match "/services" => "page#services"
   match "/contactus" => "page#contactus"
 
@@ -114,6 +115,8 @@ Jobware::Application.routes.draw do
   ### partner section
   resource :partner
   namespace :partner do
+    resource :partner_site_style
+    resource :code
     resources :ad_positions do
       resources :counters
     end

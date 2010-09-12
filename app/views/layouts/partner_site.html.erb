@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+	<meta name="description" content=""/>
+	<meta name="keywords" content="" />
+	<meta name="author" content="" />
+	<%= csrf_meta_tag %>
+  <%= stylesheet_link_tag "application", "pagination", "tipsy", "jquery-ui", "jquery.ui.stars", "coin-slider-styles" %>
+  <%= javascript_include_tag "jquery", "jquery.tipsy", "jquery.autoheight", "jquery.tools.min", "jquery-ui", "jquery.ui.stars", "jquery.cookies", "jquery.formtips", "jquery.citySelector", "coin-slider", "rails", "application", :ckeditor %>
+  <title><%= "#{@content_for_title} - " if @content_for_title %> <%= current_partner_site.title %> - 中国最大的开发者招聘网站</title>
+</head>
+
+<body id="top">
+  <div id="loading">正在加载, 请稍候...</div>
+
+  <!-- 
+  <div id="network">
+      <div class="center-wrapper">
+        <div class="left">
+          当前本站共有:
+          <span class="text-separator"></span>
+          <span class="quiet"><%= User.count %> 个用户,</span>
+          <span class="quiet"><%= Job.count %> 个工作,</span>
+          <span class="quiet"><%= Company.count %> 个公司</span>
+          <%= render "shared/login_status" %>
+        </div>
+
+        <div class="right">
+          <% semantic_navigation "network-tabs", :html => {:class => "tabbed"} do |n| %>
+            <%= n.item '首页', :link => root_path, :highlights_on => frontend_paths %>
+            <%= n.item '我是求职者', :link => jobseeker_dashboard_path, :highlights_on => jobseeker_section_paths if jobseeker_user? %>
+            <%= n.item '我是公司', :link => company_dashboard_path, :highlights_on => company_section_paths if company_user? %>
+            <%= n.item '我是合作者', :link => partner_dashboard_path, :highlights_on => partner_section_paths if partner_user? %>
+          <% end %>
+        </div>
+
+        <div class="clearer">&nbsp;</div>
+      </div>
+    </div> 
+    -->
+
+  <div id="site">
+  	<div class="center-wrapper">
+      <%= render "shared/partner_site_header" %>
+      <%= raw render_message %>
+      <%= content_for?(:content) ? yield(:content) : yield %>
+      <%= render "shared/partner_site_footer" %>
+	  </div>
+  </div>
+
+</body>
+</html>

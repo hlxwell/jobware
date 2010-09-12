@@ -1,5 +1,13 @@
 class PageController < ApplicationController
-
+  
+  def partner_site_header
+    render :layout => false
+  end
+  
+  def partner_site_footer
+    render :layout => false
+  end
+  
   def company_benifit
   end
 

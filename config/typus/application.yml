@@ -174,14 +174,14 @@ StarredJob:
 
 User:
   fields:
-    default: login, email, login_count, failed_login_count, last_request_at, current_login_at, last_login_at, current_login_ip, last_login_ip
-    form: login, email, login_count, failed_login_count, last_request_at, current_login_at, last_login_at, current_login_ip, last_login_ip
+    default: email, login_count, failed_login_count, last_request_at, current_login_at, last_login_at, current_login_ip, last_login_ip
+    form: email, login_count, failed_login_count, last_request_at, current_login_at, last_login_at, current_login_ip, last_login_ip
     cvs: email, login_count
   export: csv, xml
   order_by: last_request_at, current_login_at, last_login_at, current_login_ip, last_login_ip
   relationships: company, jobseeker, partner
   filters: last_request_at
-  search: email, login
+  search: email
   application: Account
 
 Ad:

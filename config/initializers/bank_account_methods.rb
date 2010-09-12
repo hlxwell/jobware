@@ -10,14 +10,21 @@
 #  updated_at :datetime
 #
 
-class BankAccount < ActiveRecord::Base
-  validates_presence_of :name
-  validates_uniqueness_of :name
+module BankAccountMethods
+  def self.included mod
+    # mod.extend ClassMethods
+    mod.has_many :transactions, :order => "created_at ASC"
+    mod.has_many :positive_transactions
+    mod.has_many :negative_transactions
+  end
 
-  belongs_to :user
-  has_many :transactions, :order => "created_at ASC"
-  has_many :positive_transactions
-  has_many :negative_transactions
+  # module ClassMethods
+  #   def acts_as_bank_account
+  #     has_many :transactions, :order => "created_at ASC"
+  #     has_many :positive_transactions
+  #     has_many :negative_transactions
+  #   end
+  # end
 
   def remains(service_item_id = ServiceItem.money_id)
     transactions.without_cancelled.where(:service_item_id => service_item_id).sum(:amount)
@@ -39,7 +46,7 @@ class BankAccount < ActiveRecord::Base
     }.compact
   end
 
-private
+  private
 
   def operate_credit! amount, operation, option
     option[:service_item_id] ||= ServiceItem.money_id

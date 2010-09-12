@@ -5,7 +5,7 @@ module ServicesControllerBase
   end
   
   def bought
-    @transactions = current_user.bank_account.transactions_for_buying_service
+    @transactions = current_user.transactions_for_buying_service
     render "services/bought", :layout => current_user_type
   end
 

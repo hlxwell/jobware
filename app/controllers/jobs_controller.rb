@@ -2,16 +2,16 @@ class JobsController < ApplicationController
   before_filter :jobseeker_login_required, :only => :star
 
   def index
-    @jobs = Job.paginate :all, :page => params[:page], :per_page => 20
+    @jobs = Job.published.paginate :all, :page => params[:page], :per_page => 20
   end
 
   def show
-    @job = Job.find(params[:id])
+    @job = Job.published.find(params[:id])
     @starred_job = current_user.try(:jobseeker).present? ? current_user.jobseeker.starred_jobs.where(:job_id => params[:id]).first : nil
   end
 
   def star
-    @job = Job.find(params[:id])
+    @job = Job.published.find(params[:id])
     rating = params[:starred_job].present? ? params[:starred_job][:rating]||0 : 0
     @result = current_user.jobseeker.star_job(@job, rating.to_i)
 
@@ -22,7 +22,7 @@ class JobsController < ApplicationController
   end
 
   def search
-    @jobs = Job.search(params[:search][:keywords],
+    @jobs = Job.published.search(params[:search][:keywords],
     :page => params[:page],
     :rank_mode  => :wordcount,
     :sort_mode  => :extended,

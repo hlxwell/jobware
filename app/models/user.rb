@@ -1,10 +1,9 @@
 # == Schema Information
-# Schema version: 20100824092136
+# Schema version: 20100910083810
 #
 # Table name: users
 #
 #  id                  :integer(4)      not null, primary key
-#  login               :string(255)     not null
 #  email               :string(255)     not null
 #  crypted_password    :string(255)     not null
 #  password_salt       :string(255)     not null
@@ -25,6 +24,7 @@ class User < ActiveRecord::Base
   ROLE = Typus::Configuration.roles.keys.sort
   LANGUAGE = Typus.locales
 
+  include BankAccountMethods
   acts_as_authentic
 
   has_one :company

@@ -8,9 +8,14 @@
 
 		<div class="section-content">
 			<ul class="nice-list">
+			  <li>
+					<div class="left"><%= link_to "自定义招聘站", edit_partner_partner_site_style_path %></div>
+					<div class="right"><%= link_to "预览", root_url(:subdomain => current_user.partner.partner_site_style.subdomain), :target => :blank if current_user.partner.partner_site_style.try(:subdomain) %></div>
+					<div class="clearer">&nbsp;</div>
+				</li>
 				<li>
-					<div class="left"><%= link_to "广告位", partner_ad_positions_path %></div>
-					<div class="right"><%= link_to "添加", new_partner_ad_position_path %></div>
+					<div class="left"><%= link_to "获取招聘广告", partner_code_path %></div>
+					<div class="right"></div>
 					<div class="clearer">&nbsp;</div>
 				</li>
 				<li>

@@ -15,7 +15,7 @@
     </ul>
 
   	<div id="fragment-1"><%= render "jobs/tab_of_company", :company => @company %></div>
-    <div id="fragment-2"><%= render "jobs/tab_of_other_jobs", :jobs => @company.jobs, :company => @company %></div>
+    <div id="fragment-2"><%= render "jobs/tab_of_other_jobs", :jobs => @company.jobs.published, :company => @company %></div>
   </div> <!-- end of left zone -->
 
 

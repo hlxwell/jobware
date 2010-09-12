@@ -1,11 +1,11 @@
 # == Schema Information
-# Schema version: 20100904140030
+# Schema version: 20100910083810
 #
 # Table name: transactions
 #
 #  id                  :integer(4)      not null, primary key
 #  type                :string(255)
-#  bank_account_id     :integer(4)
+#  user_id             :integer(4)
 #  service_item_id     :integer(4)
 #  related_object_id   :integer(4)
 #  related_object_type :string(255)

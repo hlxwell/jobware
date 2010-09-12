@@ -1,0 +1,27 @@
+<div id="header">
+  <!-- #### site logo and title -->
+	<iframe id="header_iframe" name="header_iframe" class="autoHeight" width="100%" scrolling="auto" frameborder="0" src="/partner_site_header"></iframe>
+	<div class="clearer">&nbsp;</div>
+
+  <!-- ### main nav -->
+	<div id="navigation">
+		<div id="main-nav">
+		  <%# if in_section?("frontend") %>
+  		  <% semantic_navigation :main, :html => {:class => "tabbed"} do |n| %>
+  		    <%= n.item '首页', :link => root_path %>
+          <%= n.item '找工作', :link => jobs_path %>
+          <%= n.item "发布工作", :link => new_company_path %>
+        <% end %>
+
+        <div class="search-box">
+          <%= form_for :search, :url => search_jobs_path, :html => {:id => "search_form"} do |f| %>
+            <%= f.submit "搜索", :class => "button right" %>
+            <%= f.text_field :keywords, :title => "请输入关键字：如JAVA，北京，微软", :class => "text tipped", :id => "search_term" %>
+          <% end %>
+        </div>
+      <%# end %>
+			<div class="clearer">&nbsp;</div>
+		</div>
+	</div>
+
+</div>

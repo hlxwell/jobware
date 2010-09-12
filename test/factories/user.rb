@@ -24,7 +24,6 @@
 Factory.sequence(:email) {|n| "user#{n}@theplant.jp" }
 
 Factory.define :user do |u|
-  u.login
-  u.email               { Factory.next(:email) }
-  u.password            "123321"
+  u.email                 { Factory.next(:email) }
+  u.password              "123321"
 end

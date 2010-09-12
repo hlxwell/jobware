@@ -1,4 +1,5 @@
 module ApplicationHelper
+  include UrlHelper
 
   #### set "title"
   def title(page_title, show_title = true)

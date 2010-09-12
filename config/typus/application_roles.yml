@@ -8,7 +8,7 @@ admin:
   Certification: create, read, update, delete
   Company: create, read, update, delete
   CoverLetter: create, read, update, delete
-  Job: create, read, update, delete
+  Job: create, read, update, delete, approve
   JobApplication: create, read, update, delete
   Language: create, read, update, delete
   Partner: create, read, update, delete

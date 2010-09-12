@@ -194,6 +194,7 @@ table.data-table td {
 	border: 1px solid #DDD;
 }
 table.data-table tr.even td {background: #FCFCFC;}
+table.data-table tr.unread td {background: #FFF6BF;}
 table.top-vlign th { vertical-align: top; }
 table.top-vlign-td td { vertical-align: top; }
 
@@ -214,6 +215,7 @@ table.top-vlign-td td { vertical-align: top; }
 .quiet {color: #999;}
 .loud {color: #666;}
 .highlight {background:#ff0;}
+.shine { color: red; font-weight: bold;}
 
 .text-left {text-align: left;}
 .text-right {text-align: right;}

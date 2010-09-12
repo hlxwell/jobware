@@ -1,0 +1,6 @@
+<% show_error_message_for(f.object) %>
+<%= f.text_field :subdomain, :label => "自定义网站子域名", :class => "text w600" %>
+<%= f.text_field :title, :label => "自定义网站标题", :class => "text w600" %>
+<%= f.text_area :stylesheet, :label => "自定义样式", :class => "text w600 h250" %>
+<%= f.text_area :header, :label => "页头HTML代码", :class => "text w600 h250", :hint => "网站页头菜单HTML代码。" %>
+<%= f.text_area :footer, :label => "页脚HTML代码", :class => "text w600 h250", :hint => "网站页脚HTML代码。" %>

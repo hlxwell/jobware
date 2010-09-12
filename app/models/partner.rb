@@ -23,6 +23,7 @@ class Partner < ActiveRecord::Base
 
   has_many :ad_positions
   belongs_to :user
+  has_one :partner_site_style
   accepts_nested_attributes_for :user
 
   validates_presence_of :name, :url, :contact_name, :phone_number, :site_size, :desc

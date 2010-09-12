@@ -2,13 +2,31 @@ class ApplicationController < ActionController::Base
   include Authentication
   protect_from_forgery
 
-  before_filter :set_locale
-  helper_method :current_user_type, :current_user_section, :show_error_message_for
+  before_filter :set_locale, :current_partner_site
+  helper_method :current_user_type, :current_user_section, :show_error_message_for, :current_partner_site, :current_layout
+
+  layout :partner_site_or_main_site
 
   # go login page if access denied.
   rescue_from CanCan::AccessDenied do |exception|
     flash[:error] = exception.message
     redirect_to login_url
+  end
+
+  def current_layout
+    if current_partner_site.present?
+      "layouts/partner_site"
+    else
+      "layouts/application"
+    end
+  end
+
+  def current_partner_site
+    @current_partner_site = PartnerSiteStyle.find_by_subdomain(request.subdomain)
+  end
+
+  def partner_site_or_main_site
+    @current_partner_site.present? ? "partner_site" : "application"
   end
 
   def set_locale

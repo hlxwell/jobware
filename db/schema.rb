@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100909043104) do
+ActiveRecord::Schema.define(:version => 20100910083810) do
 
   create_table "ad_positions", :force => true do |t|
     t.string   "name"
@@ -191,12 +191,24 @@ ActiveRecord::Schema.define(:version => 20100909043104) do
     t.integer  "click_counter",                :default => 0
     t.text     "apply_method"
     t.boolean  "only_use_custom_apply_method"
+    t.string   "state"
   end
 
   create_table "languages", :force => true do |t|
     t.integer  "resume_id"
     t.string   "name"
     t.string   "level"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "partner_site_styles", :force => true do |t|
+    t.integer  "partner_id"
+    t.string   "subdomain"
+    t.string   "title"
+    t.text     "header"
+    t.text     "footer"
+    t.text     "stylesheet"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -354,7 +366,7 @@ ActiveRecord::Schema.define(:version => 20100909043104) do
 
   create_table "transactions", :force => true do |t|
     t.string   "type"
-    t.integer  "bank_account_id"
+    t.integer  "user_id"
     t.integer  "service_item_id"
     t.integer  "related_object_id"
     t.string   "related_object_type"
@@ -369,9 +381,9 @@ ActiveRecord::Schema.define(:version => 20100909043104) do
     t.datetime "updated_at"
   end
 
-  add_index "transactions", ["bank_account_id"], :name => "index_transactions_on_bank_account_id"
   add_index "transactions", ["related_object_type", "related_object_id"], :name => "index_transactions_on_related_object_type_and_related_object_id"
   add_index "transactions", ["service_item_id"], :name => "index_transactions_on_service_item_id"
+  add_index "transactions", ["user_id"], :name => "index_transactions_on_bank_account_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                              :null => false

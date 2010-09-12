@@ -14,8 +14,8 @@
   	  job = app.job
   	  resume = app.resume
   	%>
-  	<tr class="even">
-  	  <td><%= link_to job.name, job_path(job) %></td>
+  	<tr class="<%= app.unread? ? "unread" : "even" %>">
+  	  <td><%= raw "<span class='shine'>(新)</span>" if app.unread? %> <%= link_to job.name, company_job_path(job) %></td>
   		<td><%= resume.current_residence %></td>
   		<td><%= app.updated_at.to_s_datetime %></td>
   		<td>

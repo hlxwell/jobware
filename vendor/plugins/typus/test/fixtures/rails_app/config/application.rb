@@ -45,6 +45,12 @@ module RailsApp
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
+    
+    ### subdomain
+    config.mirrors = %w(www site we) # Defaults to %w(www)
+    config.preferred_mirror = "www"
+    # config.tld_size = 1 # sets for current environment
+    config.tld_sizes = {:development => 0, :test => 0, :production => 1} # set all at once (also the defaults)
   end
 end
 
