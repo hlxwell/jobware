@@ -5,6 +5,15 @@ class PartnersController < ApplicationController
   before_filter :partner_login_required, :except => [:new, :create]
   before_filter :no_company_login_required, :only => [:new, :create]
 
+
+  def partner_site_header
+    render :layout => "all_link_target_blank_page"
+  end
+
+  def partner_site_footer
+    render :layout => "all_link_target_blank_page"
+  end
+
   def edit
     @partner = current_user.partner
     render :layout => "partner"

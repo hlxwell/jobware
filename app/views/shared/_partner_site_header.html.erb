@@ -3,23 +3,45 @@
 	<iframe id="header_iframe" name="header_iframe" class="autoHeight" width="100%" scrolling="auto" frameborder="0" src="/partner_site_header"></iframe>
 	<div class="clearer">&nbsp;</div>
 
+  <div id="network" class="middle_bottom_margin">
+  	<div class="center-wrapper middle_left_padding">
+  		<div class="left">
+  		  当前本站共有:
+  		  <span class="text-separator"></span>
+  		  <span class="quiet"><%= User.count %> 个用户,</span>
+  		  <span class="quiet"><%= Job.count %> 个工作,</span>
+  		  <span class="quiet"><%= Company.count %> 个公司</span>
+        <%= render "shared/login_status" %>
+  		</div>
+
+  		<div class="right middle_right_padding">
+  		  <% semantic_navigation "network-tabs", :html => {:class => "tabbed"} do |n| %>
+          <%= n.item '首页', :link => root_path, :highlights_on => frontend_paths %>
+          <%= n.item '我是求职者', :link => jobseeker_dashboard_path, :highlights_on => jobseeker_section_paths if jobseeker_user? %>
+          <%= n.item '我是公司', :link => company_dashboard_path, :highlights_on => company_section_paths if company_user? %>
+          <%= n.item '我是合作者', :link => partner_dashboard_path, :highlights_on => partner_section_paths if partner_user? %>
+        <% end %>
+  		</div>
+
+  		<div class="clearer">&nbsp;</div>
+  	</div>
+  </div>
+
   <!-- ### main nav -->
 	<div id="navigation">
 		<div id="main-nav">
-		  <%# if in_section?("frontend") %>
-  		  <% semantic_navigation :main, :html => {:class => "tabbed"} do |n| %>
-  		    <%= n.item '首页', :link => root_path %>
-          <%= n.item '找工作', :link => jobs_path %>
-          <%= n.item "发布工作", :link => new_company_path %>
-        <% end %>
+		  <% semantic_navigation :main, :html => {:class => "tabbed"} do |n| %>
+		    <%= n.item '招聘首页', :link => root_path %>
+        <%= n.item '找工作', :link => jobs_path %>
+        <%= n.item "发布工作", :link => new_company_path %>
+      <% end %>
 
-        <div class="search-box">
-          <%= form_for :search, :url => search_jobs_path, :html => {:id => "search_form"} do |f| %>
-            <%= f.submit "搜索", :class => "button right" %>
-            <%= f.text_field :keywords, :title => "请输入关键字：如JAVA，北京，微软", :class => "text tipped", :id => "search_term" %>
-          <% end %>
-        </div>
-      <%# end %>
+      <div class="search-box">
+        <%= form_for :search, :url => search_jobs_path, :html => {:id => "search_form"} do |f| %>
+          <%= f.submit "搜索", :class => "button right" %>
+          <%= f.text_field :keywords, :title => "请输入关键字：如JAVA，北京，微软", :class => "text tipped", :id => "search_term" %>
+        <% end %>
+      </div>
 			<div class="clearer">&nbsp;</div>
 		</div>
 	</div>

@@ -4,8 +4,8 @@ Jobware::Application.routes.draw do
   match "/partner_benifit" => "page#partner_benifit"
   match "/company_benifit" => "page#company_benifit"
   match "/aboutus" => "page#aboutus"
-  match "/partner_site_header" => "page#partner_site_header"
-  match "/partner_site_footer" => "page#partner_site_footer"
+  match "/partner_site_header" => "partners#partner_site_header"
+  match "/partner_site_footer" => "partners#partner_site_footer"
   match "/services" => "page#services"
   match "/contactus" => "page#contactus"
 
