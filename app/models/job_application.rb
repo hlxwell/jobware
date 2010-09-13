@@ -42,6 +42,10 @@ class JobApplication < ActiveRecord::Base
   scope :unread, where(:state => "unread")
   scope :starred, where("rating > 0")
 
+  def created_at_to_s
+    created_at.to_s_date
+  end
+
   def state_humanize
     case state
     when "unread"

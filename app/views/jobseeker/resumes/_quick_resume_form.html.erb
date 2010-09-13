@@ -3,8 +3,12 @@
 
   <div class="right" style="width: 75%">
     <% show_error_message_for(f.object) %>
-    <%= f.fields_for :user do |user_form| %>
-      <%= user_form.text_field :email, :label => "邮箱", :class => "text w280", :hint => "您将会收到登陆密码以及公司回复，请仔细填写。" %>
+    
+    <!-- if current user logged in, should not send him/her password. -->
+    <% if not_logged_in? %>
+      <%= f.fields_for :user do |user_form| %>
+        <%= user_form.text_field :email, :label => "邮箱", :class => "text w280", :hint => "您将会收到登陆密码以及公司回复，请仔细填写。" %>
+      <% end %>
     <% end %>
 
     <%= f.fields_for :cover_letters do |cv_form| %>

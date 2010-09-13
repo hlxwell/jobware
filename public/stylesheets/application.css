@@ -178,7 +178,7 @@ caption {background: #EEE;}
 table.data-table {
 	border: 1px solid #CCB;
 /*  margin-top: 1em;*/
-	margin-bottom: 1em;
+/*  margin-bottom: 1em;*/
 	width: 100%;
 }
 table.data-table th {
@@ -237,6 +237,7 @@ table.top-vlign-td td { vertical-align: top; }
 .success {background: #E6EFC2; color: #264409; border-color: #C6D880;}
 .success a {color: #264409;}
 
+.no_record {background: #FFF6BF; color: #514721; border-color: #FFD324;border: 1px solid #DDD; padding: 0.6em 0.8em;}
 
 /*
    Forms
@@ -734,6 +735,10 @@ img.alignright, img.right {margin: 0 0 1em 0;}
 
 .w300 {
   width: 300px;
+}
+
+.w298 {
+  width: 296px;
 }
 
 .w318 {

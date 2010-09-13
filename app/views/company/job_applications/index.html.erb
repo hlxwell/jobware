@@ -10,10 +10,7 @@
   		<th width="200">收藏级别</th>
   	</tr>
   	<% @applications.each do |app| %>
-  	<%
-  	  job = app.job
-  	  resume = app.resume
-  	%>
+  	<% job = app.job; resume = app.resume	%>
   	<tr class="<%= app.unread? ? "unread" : "even" %>">
   	  <td><%= raw "<span class='shine'>(新)</span>" if app.unread? %> <%= link_to job.name, company_job_path(job) %></td>
   		<td><%= resume.current_residence %></td>

@@ -31,7 +31,7 @@ class Jobseeker::ResumesController < Jobseeker::BaseController
 
   def create
     # TODO send password to user and make a random password.
-    params[:resume][:user_attributes].update(:password => "123321", :password_confirmation => "123321") if params[:resume][:user_attributes].present?
+    params[:resume][:user_attributes].update(:password => "123321", :password_confirmation => "123321") if params[:resume][:quick_resume] == 'true' and params[:resume][:user_attributes].present?
 
     @resume = Resume.new(params[:resume])
     @resume.user = current_user if current_user

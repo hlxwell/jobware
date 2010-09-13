@@ -53,7 +53,9 @@
     <%= f.text_field :expected_job_location, :label => "希望工作的地点", :class => "text w300" %>
     <%= f.select :current_working_state, WorkingState.to_a, {:include_blank => true}, {:label => "求职状态"} %>
     <%= f.file_field :file, :label => "简历文件" %>
-    <%= link_to f.object.file_file_name if !f.object.new_record? and f.object.file.size %>
+    <% if !f.object.new_record? and f.object.file.size %>
+      当前简历文件：<%= link_to f.object.file_file_name %>
+    <% end %>
   </div>
 
   <div class="clearer">&nbsp;</div>

@@ -95,11 +95,11 @@ class Resume < ActiveRecord::Base
 
 
   def hometown
-    "#{hometown_province} - #{hometown_city}"
+    "#{hometown_province} #{hometown_city}"
   end
 
   def current_residence
-    "#{current_residence_province} - #{current_residence_city}"
+    "#{current_residence_province} #{current_residence_city}"
   end
 
   def portrait_path
@@ -131,6 +131,20 @@ class Resume < ActiveRecord::Base
       else
         return "收藏失败"
       end
+    end
+  end
+  
+  [:name, :cover_letters, :certifications, :schools, :previous_jobs, :languages, :skills, :projects].each do |method_name|
+    define_method("#{method_name}_present?") do |*args|
+      self.send(method_name).present? ? "填写" : "未填写"
+    end
+  end
+  
+  [:name, :gender_humanize, :birthday, :degree, :working_years, :major, :hometown, 
+   :expected_salary, :current_residence, :expected_job_location, :expected_positions, 
+   :email, :phone_number, :current_working_state_humanize, :self_intro].each do |method_name|
+    define_method("#{method_name}_if_present") do |*args|
+      self.send(method_name).present? ? self.send(method_name) : "未填写"
     end
   end
 end

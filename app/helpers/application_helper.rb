@@ -1,4 +1,5 @@
 module ApplicationHelper
+  include GoogleVisualization
   include UrlHelper
 
   #### set "title"
@@ -66,7 +67,7 @@ module ApplicationHelper
 
   def show_no_record collection, &block
     if collection.blank?
-      return raw("<div class='notice largest'>没有记录。</div>")
+      return raw("<div class='no_record largest'>没有记录。</div>")
     else
       block.call
       return ""

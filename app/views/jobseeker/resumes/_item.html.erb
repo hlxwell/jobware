@@ -2,60 +2,62 @@
   <table class="data-table top-vlign">
 		<tr>
 			<th width="20%">姓名</th>
-			<td width="30%"><%= item.name %></td>
+			<td width="30%"><%= item.name_if_present %></td>
   		<th width="20%" rowspan="4">个人照片</th>
   		<td width="30%" rowspan="4"><%= image_tag item.portrait_path if item.portrait.size %></td>
 		</tr>
 		<tr>
 			<th>性别</th>
-			<td><%= item.gender_humanize %></td>
+			<td><%= item.gender_humanize_if_present %></td>
 		</tr>
 		<tr>
 			<th>出生年月</th>
-			<td><%= item.birthday %></td>
+			<td><%= item.birthday_if_present %></td>
 		</tr>
 		<tr>
 		  <th>最高学历</th>
-			<td><%= item.degree %></td>
+			<td><%= item.degree_if_present %></td>
 		</tr>
 		<tr>
 		  <th>工作年限</th>
-			<td><%= item.working_years %></td>
+			<td><%= item.working_years_if_present %></td>
 			<th>专业</th>
-			<td><%= item.major %></td>
+			<td><%= item.major_if_present %></td>
 		</tr>
 		<tr>
 			<th>户口所在地</th>
-			<td><%= item.hometown %></td>
+			<td><%= item.hometown_if_present %></td>
 			<th>期待薪资</th>
-			<td><%= item.expected_salary %></td>
+			<td><%= item.expected_salary_if_present %></td>
 		</tr>
 		<tr>
 			<th>现所在城市</th>
-			<td><%= item.current_residence %></td>
+			<td><%= item.current_residence_if_present %></td>
 			<th>希望工作的地点</th>
-			<td><%= item.expected_job_location %></td>
+			<td><%= item.expected_job_location_if_present %></td>
 		</tr>
 		<tr>
 			<th>邮箱</th>
-			<td><%= item.email %></td>
+			<td><%= item.email_if_present %></td>
 			<th>希望应聘的岗位</th>
-			<td><%= item.expected_positions %></td>
+			<td><%= item.expected_positions_if_present %></td>
 		</tr>
 		<tr>
 			<th>联系电话</th>
-			<td><%= item.phone_number %></td>
+			<td><%= item.phone_number_if_present %></td>
 			<th>求职状态</th>
-			<td><%= item.current_working_state_humanize %></td>
+			<td><%= item.current_working_state_humanize_if_present %></td>
 		</tr>
 		<tr>
 		  <th>自我评价</th>
-		  <td colspan="3"><%= raw item.self_intro %></td>
+		  <td colspan="3"><%= raw item.self_intro_if_present %></td>
 		</tr>
+		<% if item.file.size %>
 		<tr>
 		  <th>文件简历</th>
-		  <td colspan="3"><%= link_to item.file_file_name, item.file.url if item.file.size %></td>
+		  <td colspan="3"><%= link_to item.file_file_name, item.file.url %></td>
 		</tr>
+		<% end %>
 	</table>
 </div>
 

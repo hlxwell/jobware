@@ -1,1 +1,109 @@
-dashboard
+<fieldset>
+  <legend>报表</legend>
+</fieldset>
+
+<fieldset>
+  <legend>统计</legend>
+  
+  <table class="data-table">
+    <tr>
+      <th width="20%">工作总数</th>
+      <td width="30%"></td>
+      <th width="20%">应聘总数</th>
+      <td width="30%"></td>
+    </tr>
+    <tr>
+      <th>公开</th>
+      <td></td>
+      <th>未阅读</th>
+      <td></td>
+    </tr>
+    <tr>
+      <th>关闭</th>
+      <td></td>
+      <th>接受</th>
+      <td></td>
+    </tr>
+    <tr>
+      <th>未审核</th>
+      <td></td>
+      <th>拒绝</th>
+      <td></td>
+    </tr>
+    <tr>
+      <th>高亮</th>
+      <td></td>
+      <th>未决定</th>
+      <td></td>
+    </tr>
+  </table>
+</fieldset>
+
+<fieldset>
+  <legend>剩余消费点</legend>
+  
+  <table class="data-table">
+    <tr>
+      <th width="20%">金额</th>
+      <td width="30%"></td>
+      <th width="20%">岗位发布</th>
+      <td width="30%"></td>
+    </tr>
+    <tr>
+      <th>广告A</th>
+      <td></td>
+      <th>广告B</th>
+      <td></td>
+    </tr>
+  </table>
+</fieldset>
+
+<fieldset>
+  <legend>未查看的简历</legend>
+
+  <% show_no_record(@applications) do %>
+    <table class="data-table">
+    	<tr>
+    	  <th>应聘岗位</th>
+    		<th>所在省市</th>
+    		<th>时间</th>
+    		<th>操作</th>
+    		<th width="100">收藏级别</th>
+    	</tr>
+    	<% @applications.each do |app| %>
+    	<% job = app.job; resume = app.resume	%>
+    	<tr class="<%= app.unread? ? "unread" : "even" %>">
+    	  <td><%= raw "<span class='shine'>(新)</span>" if app.unread? %> <%= link_to job.name, company_job_path(job) %></td>
+    		<td><%= resume.current_residence %></td>
+    		<td><%= app.updated_at.to_s_datetime %></td>
+    		<td>
+    		  <%= link_to "查看简历", company_job_application_path(app) %>
+    		</td>
+    		<td class="app_<%= app.id %>">
+          <script>
+            $(function(){
+              $(".app_<%= app.id %>_options").stars({
+                  callback: function(ui, type, value){
+                    $(".app_<%= app.id %>_options").closest("form").submit();
+                  }
+              });
+              $(".app_<%= app.id %>_options").stars("select", <%= app.rating || 0 %>);
+            });
+          </script>
+
+          <%= form_for app, :url => star_company_job_application_path(app), :remote => true do |f| %>
+          <div class="app_<%= app.id %>_options">
+        	  <%= f.radio_button :rating, "1", :title => "很差" %>
+        	  <%= f.radio_button :rating, "2", :title => "差" %>
+        	  <%= f.radio_button :rating, "3", :title => "一般" %>
+        	  <%= f.radio_button :rating, "4", :title => "不错" %>
+        	  <%= f.radio_button :rating, "5", :title => "很好" %>
+        	</div>
+        	<span style="margin-left: 5px; font-weight: bold;"></span>
+        	<% end %>
+    		</td>
+    	</tr>
+      <% end %>
+    </table>
+  <% end %>
+</fieldset>

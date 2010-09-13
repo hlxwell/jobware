@@ -1,1 +1,66 @@
-dashboard
+<fieldset>
+  <legend>应聘情况</legend>
+
+  <% visualization "my_chart", "LineChart", :width => 635, :height => 200, :html => {:class => "graph_chart"} do |chart| %>
+    <% chart.string "日期" %>
+    <% chart.number "应聘数" %>
+    <% chart.add_rows(
+        @resume.job_applications.group_by(&:created_at_to_s).map do |date, app|
+          [date, app.size]
+        end
+       ) %>
+  <% end %>
+
+</fieldset>
+
+<fieldset class="left w298">
+  <legend>最新应聘</legend>
+
+  <table class="data-table">
+    <% @job_applications.each do |app| %>
+    <tr>
+      <td width="160"><%= link_to app.job.name, job_path(app.job) %></td>
+      <td><%= app.created_at.to_s_date %></td>
+    </tr>
+    <% end %>
+  </table>
+</fieldset>
+
+<fieldset class="right w298">
+  <legend>简历填写情况</legend>
+
+  <table class="data-table">
+    <tr>
+      <td width="210">基本信息</td>
+      <td><%= @resume.name_present? %></td>
+    </tr>
+    <tr>
+      <td>求职信</td>
+      <td><%= @resume.cover_letters_present? %></td>
+    </tr>
+    <tr>
+      <td>证书</td>
+      <td><%= @resume.certifications_present? %></td>
+    </tr>
+    <tr>
+      <td>项目</td>
+      <td><%= @resume.projects_present? %></td>
+    </tr>
+    <tr>
+      <td>技能</td>
+      <td><%= @resume.skills_present? %></td>
+    </tr>
+    <tr>
+      <td>学校</td>
+      <td><%= @resume.schools_present? %></td>
+    </tr>
+    <tr>
+      <td>工作经历</td>
+      <td><%= @resume.previous_jobs_present? %></td>
+    </tr>
+    <tr>
+      <td>语言</td>
+      <td><%= @resume.languages_present? %></td>
+    </tr>
+  </table>
+</fieldset>
