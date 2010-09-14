@@ -29,7 +29,7 @@
 	</tr>
 	<tr>
 	  <th>广告图片</th>
-		<td><%= image_tag @ad.file.url %></td>
+		<td><%= image_tag @ad.image.url %></td>
 	</tr>
 	<tr>
 	  <th>展示周期</th>
@@ -41,8 +41,8 @@
 	</tr>
 </table>
 
-
+<br />
 <h2>效果预览</h2>
 <%= render "company/ads/preview/#{@ad.preview_partial_name}", :ad => @ad %>
 
-<%= button_to_function "修改", "$(location).attr('href','#{edit_company_ad_path(@ad)}')", :class => 'largest right button' %>
+<%= button_to_function "修改", "$(location).attr('href','#{edit_company_ad_path(@ad)}')", :class => 'largest right button' unless @ad.active? %>

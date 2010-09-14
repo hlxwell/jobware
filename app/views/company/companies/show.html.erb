@@ -6,7 +6,7 @@
 	<div class="company_info">
 		<h3><%= @company.name %></h3>
 		<h5><%= @company.location %></h5>
-		<table class="data-table" style="width:440px">
+		<table class="data-table" style="width:480px; margin-top: 10px">
 			<tr>
 				<th width="20%">公司地点</th>
 				<td width="30%"><%= @company.location %></td>
@@ -17,7 +17,7 @@
 				<th>性质</th>
 				<td><%= @company.company_type_humanize %></td>
 				<th>点击数</th>
-				<td>xxx</td>
+				<td><%= @company.views_count_s %></td>
 			</tr>
 		</table>
 	</div>

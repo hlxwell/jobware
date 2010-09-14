@@ -29,6 +29,9 @@
 #
 
 class Job < ActiveRecord::Base
+  chinese_permalink :name
+  acts_as_views_count :delay => 30
+
   has_enumeration_for :category, :with => JobCategory
   has_enumeration_for :contract_type, :with => ContractType
 
@@ -64,6 +67,10 @@ class Job < ActiveRecord::Base
     end
   end
 
+  def to_param
+    "#{id}-#{permalink}"
+  end
+
   def location
     self.location_province + self.location_city
   end
@@ -73,8 +80,8 @@ class Job < ActiveRecord::Base
     read_attribute(:salary_range)
   end
 
-  def increased_click_counter
-    increment!(:click_counter)
-    click_counter
+  def increased_views_count
+    update_views_count
+    views_count_s
   end
 end

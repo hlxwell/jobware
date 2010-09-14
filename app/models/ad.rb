@@ -19,38 +19,43 @@
 #
 
 class Ad < ActiveRecord::Base
+  include TestExpirationMethods
+
   DISPLAY_TYPE = AdPositionType.enumeration.values.insert(0, nil).inject do |result, array|
     result ||= {}
     result[array.first] = array.last
     result
   end
-  
+
   STATE = {
     'active' => "激活",
     'expired' => "过期",
     'unactive' => "未激活"
   }
-  
-  include TestExpirationMethods
 
   has_enumeration_for :display_type, :with => AdPositionType
 
-  validates_presence_of :url, :province, :city, :display_type, :period
-
   belongs_to :company
-  has_one :image, :class_name => 'TitledImage', :as => :parent, :dependent => :destroy
 
-  accepts_nested_attributes_for :image
+  has_attached_file :image, :styles => {
+    :slideshow => "670x250#",
+    :slideshow_small => "520x200#",
+    :bottom_ad => "166>x50",
+    :featured_job => "310>x80",
+    :right_ad => "250>x70"
+  }, :default_style => :bottom_ad
 
-  delegate :name, :name=, :desc, :desc=, :file, :file=, :to => :image
+  validates_attachment_content_type :image, :content_type => [%r{image/.*jpg}, %r{image/.*jpeg}, %r{image/.*gif}, %r{image/.*png}], :if => lambda {|obj| obj.image.size.present? }
+  validates_attachment_size :image, :less_than => 1.megabytes, :if => lambda {|obj| obj.image.size.present? }
+  validates_presence_of :name, :url, :province, :city, :display_type, :period
 
   default_scope order("position desc")
 
-  scope :slider_ads, where(:display_type => AdPositionType::SLIDER_AD, :state => :active)
-  scope :featured_jobs, where(:display_type => AdPositionType::FEATURED_JOB, :state => :active)
-  scope :urgent_jobs, where(:display_type => AdPositionType::URGENT_JOB, :state => :active)
-  scope :right_featured_companies, where(:display_type => AdPositionType::RIGHT_FEATURED_COMPANY, :state => :active)
-  scope :bottom_featured_companies, where(:display_type => AdPositionType::BOTTOM_FEATURED_COMPANY, :state => :active)
+  scope :slider_ads, where(:display_type => AdPositionType::SLIDER_AD).where("? between start_at and end_at", Time.now)
+  scope :featured_jobs, where(:display_type => AdPositionType::FEATURED_JOB).where("? between start_at and end_at", Time.now)
+  scope :urgent_jobs, where(:display_type => AdPositionType::URGENT_JOB).where("? between start_at and end_at", Time.now)
+  scope :right_featured_companies, where(:display_type => AdPositionType::RIGHT_FEATURED_COMPANY).where("? between start_at and end_at", Time.now)
+  scope :bottom_featured_companies, where(:display_type => AdPositionType::BOTTOM_FEATURED_COMPANY).where("? between start_at and end_at", Time.now)
 
   state_machine :initial => :unactive do
     event :active do

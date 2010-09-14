@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100910083810) do
+ActiveRecord::Schema.define(:version => 20100914035524) do
 
   create_table "ad_positions", :force => true do |t|
     t.string   "name"
@@ -63,6 +63,12 @@ ActiveRecord::Schema.define(:version => 20100910083810) do
     t.string   "province"
     t.string   "city"
     t.integer  "period"
+    t.string   "name"
+    t.string   "desc"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "bank_accounts", :force => true do |t|
@@ -138,7 +144,7 @@ ActiveRecord::Schema.define(:version => 20100910083810) do
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
-    t.integer  "click_counter",     :default => 0
+    t.integer  "views_count",       :default => 0
   end
 
   create_table "counters", :force => true do |t|
@@ -188,10 +194,11 @@ ActiveRecord::Schema.define(:version => 20100910083810) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "company_id"
-    t.integer  "click_counter",                :default => 0
+    t.integer  "views_count",                  :default => 0
     t.text     "apply_method"
     t.boolean  "only_use_custom_apply_method"
     t.string   "state"
+    t.string   "permalink"
   end
 
   create_table "languages", :force => true do |t|

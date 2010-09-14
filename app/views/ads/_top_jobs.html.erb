@@ -1,0 +1,20 @@
+<div class="section network-section w318 left">
+	<div class="section-title">热门岗位</div>
+	<div class="section-content">
+
+	  <% show_no_record(Job.published.all) do %>
+		<ul class="nice-list">
+		  <% Job.published.all.each do |job| %>
+			<li>
+			  <span style="font-weight: bold" class="right text-right">
+			    <%= job.location %> <br/> 查看：<%= job.views_count %> 次
+			  </span>
+			  <h4><%= link_to job.name, job %></h4>
+			  <%= link_to job.company.name, job.company %>
+			</li>
+		  <% end %>
+		</ul>
+		<% end %>
+
+	</div>
+</div>

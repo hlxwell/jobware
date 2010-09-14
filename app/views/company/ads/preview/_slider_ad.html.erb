@@ -1,6 +1,6 @@
 <div id="slider">
   <a href="<%= ad.url %>" target="_blank">
-    <%= image_tag(ad.file.url(:slideshow), :alt => ad.name) %>
+    <%= image_tag(ad.image.url(:slideshow), :alt => ad.name) %>
     <span>
       <b><%= ad.name %></b>
       <p><%= raw ad.desc %></p>

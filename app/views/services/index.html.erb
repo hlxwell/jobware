@@ -14,6 +14,7 @@
   		<td><%= raw service.desc %></td>
   		<td><%= format_price service.price %></td>
   		<td>
+  		  <%= link_to "查看详情", send("#{current_user_section}_service_path", service) %> - 
   		  <%= link_to "购买", send("buy_#{current_user_section}_service_path", service), :confirm => "确定购买？" %>
   		</td>
   	</tr>

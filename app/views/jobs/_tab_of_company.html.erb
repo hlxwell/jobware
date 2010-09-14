@@ -15,7 +15,7 @@
 				<th>性质</th>
 				<td><%= company.company_type_humanize %></td>
 				<th>点击数</th>
-				<td><%= company.increased_click_counter %></td>
+				<td><%= company.increased_views_count %></td>
 			</tr>
 		</table>
 	</div>
@@ -24,13 +24,14 @@
 <div class="clearer">&nbsp;</div>
 <div class="content-separator w640"></div>
 
+<% if company.presentations.count > 0 %>
 <div class="post">
-	<div class="post-body">
+	<div class="post-body w640">
     <%= render :partial => 'companies/presentation', :locals => {:company => company} %>
 	</div>
 </div>
-
 <div class="content-separator w640"></div>
+<% end %>
 
 <div class="post">
 	<div class="post-title"><h3>公司简介</h3></div>
@@ -41,6 +42,7 @@
 
 <div class="content-separator w640"></div>
 
+<% if company.products.count > 0 %>
 <div class="post">
 	<div class="post-title"><h3>公司产品</h3></div>
 	<div class="post-body">
@@ -54,12 +56,12 @@
 		</table>
 	</div>
 </div>
-
 <div class="content-separator w640"></div>
+<% end %>
 
 <div class="post">
 	<div class="post-title"><h3>联系方式</h3></div>
-	<div class="post-body">
+	<div class="post-body w640">
 		<table class="data-table">
 			<tr>
 				<th width="20%">网址</th>

@@ -23,6 +23,9 @@ gem "cancan"
 gem 'thinking-sphinx', :git => 'http://github.com/freelancing-god/thinking-sphinx.git', :branch  => 'rails3', :require => 'thinking_sphinx'
 gem 'fastercsv'
 gem "aasm"
+gem "chinese_permalink"
+gem "activemerchant", :require => "active_merchant"
+gem "activemerchant_patch_for_china"
 
 group :development do
   gem "rails3-generators"

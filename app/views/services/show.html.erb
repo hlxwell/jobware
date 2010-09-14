@@ -1,0 +1,24 @@
+<% title "推广服务" %>
+
+<h2><%= @service.name %></h2>
+<table class="data-table">
+	<tr>
+	  <th>服务名称</th>
+		<th>描述</th>
+		<th>周期</th>
+		<th>数量</th>
+	</tr>
+	<% @service.service_item_amounts.each do |item_amount| %>
+	<tr class="even">
+	  <td><%= item_amount.service_item.name %></td>
+		<td><%= raw item_amount.service_item.desc %></td>
+		<td><%= item_amount.service_item.service_length %> 天</td>
+		<td><%= item_amount.amount %> 次</td>
+	</tr>
+  <% end %>
+</table>
+
+<br />
+<h3 class="right">当前余额：<%= format_price current_user.remains %></h3>
+<div class="clearer">&nbsp;</div>
+<%= button_to_function "#{format_price @service.price} - 购买", "$(location).attr('href','#{send("buy_#{current_user_section}_service_path", @service)}')", :class => 'largest right button', :confirm => "确定购买？" %>

@@ -1,24 +1,25 @@
 module ServicesControllerBase
   def index
-    @services = current_user_type != 'partner' ? Service.send("for_#{current_user_type}") : []
-    render "services/index", :layout => current_user_type
+    @services = current_user_section != 'partner' ? Service.send("for_#{current_user_section}") : []
+    render "services/index", :layout => current_user_section
   end
-  
+
   def bought
     @transactions = current_user.transactions_for_buying_service
-    render "services/bought", :layout => current_user_type
+    render "services/bought", :layout => current_user_section
   end
 
   def show
-    render "services/show", :layout => current_user_type
+    @service = Service.find(params[:id])
+    render "services/show", :layout => current_user_section
   end
 
   def buy
-    service = Service.find(params[:id])
-    service.buy_from!(current_user)
-    redirect_to send("bought_#{current_user_type}_services_path")
+    @service = Service.find(params[:id])
+    @service.buy_from!(current_user)
+    redirect_to send("bought_#{current_user_section}_services_path")
   rescue CreditNotEnoughError
-    flash[:error] = "帐户里没有足够现金。"
-    redirect_to "/#{current_user_type}/services"
+    flash[:error] = "帐户里没有足够现金，请充值。"
+    redirect_to :back
   end
 end

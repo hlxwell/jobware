@@ -24,9 +24,12 @@ class Company::AdsController < Company::BaseController
   end
 
   def edit
+    flash[:notice] = "不能修改展示中的广告，如需修改请联系我们。" if @ad.active?
   end
 
   def update
+    redirect_to edit_company_ad_path(@ad) and return if @ad.active?
+
     if @ad.update_attributes(params[:ad])
       redirect_to company_ad_path(@ad), :notice => "广告更新成功。"
     else
@@ -35,8 +38,13 @@ class Company::AdsController < Company::BaseController
   end
 
   def destroy
-    @ad.destroy
-    flash[:success] = "删除广告成功。"
+    if @ad.active?
+      flash[:error] = "删除广告失败，不能删除展示中的广告。"
+    else
+      @ad.destroy
+      flash[:success] = "删除广告成功。"
+    end
+
     redirect_to company_ads_path
   end
 

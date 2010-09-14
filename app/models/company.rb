@@ -26,6 +26,7 @@
 
 class Company < ActiveRecord::Base
   attr_accessor :accept_terms
+  acts_as_views_count :delay => 30
 
   has_enumeration_for :company_type, :with => CompanyType
   has_enumeration_for :size, :with => CompanySize
@@ -58,8 +59,8 @@ class Company < ActiveRecord::Base
     self.province + self.city
   end
 
-  def increased_click_counter
-    increment!(:click_counter)
-    click_counter
+  def increased_views_count
+    update_views_count
+    views_count_s
   end
 end

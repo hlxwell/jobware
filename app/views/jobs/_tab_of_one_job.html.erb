@@ -42,7 +42,7 @@
         <th>发布日期</th>
         <td><%= job.updated_at.to_s_datetime %></td>
         <th>点击数</th>
-        <td><%= job.increased_click_counter %></td>
+        <td><%= job.increased_views_count %></td>
       </tr>
     </table>
   </div>
@@ -51,7 +51,7 @@
 <div class="clearer">&nbsp;</div>
 <div class="content-separator w640"></div>
 
-<% {:content => "工作内容", :requirement => "岗位要求", :welfare => "福利", :desc => "其他描述", :apply_method => "应聘方式"}.each do |key, value| %>
+<% [ [:content, "工作内容"], [:requirement, "岗位要求"], [:welfare, "福利"], [:desc, "其他描述"], [:apply_method, "应聘方式"] ].each do |key, value| %>
   <% next if job.send(key).blank? %>
   <div class="post">
     <div class="post-title"><h3><%= value %></h3></div>

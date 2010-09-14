@@ -1,0 +1,16 @@
+<div class="section network-section w318 left" style="margin: 0 1em 0 1.1em">
+	<div class="section-title">最新岗位</div>
+	<div class="section-content">
+	  <% show_no_record(Job.published.all) do %>
+		<ul class="nice-list">
+		  <% Job.published.all.each do |job| %>
+			<li>
+			  <span style="font-weight: bold" class="right"><%= job.location %></span>
+			  <h4><%= link_to job.name, job %></h4>
+			  <%= link_to job.company.name, job.company %>
+			</li>
+		  <% end %>
+		</ul>
+		<% end %>
+	</div>
+</div>

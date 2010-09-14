@@ -879,11 +879,11 @@ div.highlighted {
 
 /* top page job block */
 #top_job_list .top-page-job {
-  width: 294px;
+  width: 292px;
   height: 105px;
   padding: 1em;
   background-color: #FFF;
-	border-bottom: 1px solid #DDD;
+	border: 1px solid #DDD;
 }
 
 #top_job_list .top-page-job .company-logo{

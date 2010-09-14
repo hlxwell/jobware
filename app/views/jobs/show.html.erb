@@ -16,9 +16,10 @@
     </ul>
 
     <div id="fragment-1"><%= render "tab_of_one_job", :job => @job %></div>
-  	<div id="fragment-2"><%= render "tab_of_company", :company => @job.company %></div>
+	  <div id="fragment-2"><%= render "tab_of_company", :company => @job.company %></div>
     <div id="fragment-3"><%= render "tab_of_other_jobs", :jobs => @job.company.jobs.published, :company => @job.company %></div>
-  </div> <!-- end of left zone -->
+  </div>
+  <!-- end of left zone -->
 
 
   <!-- ### right side part -->

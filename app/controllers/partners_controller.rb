@@ -3,8 +3,7 @@ class PartnersController < ApplicationController
   layout "application", :except => :edit
 
   before_filter :partner_login_required, :except => [:new, :create]
-  before_filter :no_company_login_required, :only => [:new, :create]
-
+  before_filter :no_partner_login_required, :only => [:new, :create]
 
   def partner_site_header
     render :layout => "all_link_target_blank_page"

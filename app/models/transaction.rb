@@ -29,6 +29,10 @@ class Transaction < ActiveRecord::Base
   belongs_to :service_item
   belongs_to :related_object, :polymorphic => true
 
+  def is_money?
+    self.service_item_id == ServiceItem.money_id
+  end
+
   def cancel!(reason = nil)
     raise NoCancelReasonError.new if reason.blank?
     update_attributes :cancel_reason => reason, :cancelled_at => Time.now

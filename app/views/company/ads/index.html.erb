@@ -12,12 +12,19 @@
 	<% @ads.each do |ad| %>
 	<tr class="even">
 	  <td><%= ad.display_type_humanize %></td>
-	  <td><%= link_to ad.image.name, company_ad_path(ad) %></td>
+	  <td><%= link_to ad.name, company_ad_path(ad) %></td>
 		<td><%= ad.period %> 周</td>
 		<td><%= ad.display_state %></td>
 		<td>
-		  <%= link_to "修改", edit_company_ad_path(ad) %>
-		  <%= link_to "删除", company_ad_path(ad), :method => :delete, :confirm => "是否确定删除？" %>
+		  <% if ad.active? %>
+		    <%= link_to "修改", "#", :onclick => "alert('展示中的广告不能修改。')", :class => "quiet" %>
+		    -
+		    <%= link_to "删除", "#", :onclick => "alert('展示中的广告不能被删除。')", :class => "quiet" %>
+		  <% else %>
+		    <%= link_to "修改", edit_company_ad_path(ad) %>
+		    -
+		    <%= link_to "删除", company_ad_path(ad), :method => :delete, :confirm => "是否确定删除？" %>
+		  <% end %>
 		</td>
 	</tr>
   <% end %>
