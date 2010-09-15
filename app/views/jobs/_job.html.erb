@@ -15,11 +15,12 @@
 	<div class="archive-post-title">
 		<h3><%= link_to job.name, job %></h3>
 		<div class="post-date"><%= link_to job.company.try(:name), job.company %></div>
+		<div class="post-date">薪资：<%= job.salary_range %></div>
 	</div>
 
 	<!-- address and date -->
 	<div class="archive-post-address">
-		<h3><%= job.location %></h3>
+		<h3><%= job.location %></h3>		
 		<div class="post-date"><%= job.updated_at.to_s_datetime %></div>
 	</div>
 	<div class="clearer">&nbsp;</div>
