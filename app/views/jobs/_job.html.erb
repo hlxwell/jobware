@@ -1,15 +1,15 @@
 <div class="post">
-  <!-- date -->
-  <!-- 
-  <div class="company_logo">
-    <%= image_tag job.company.logo.url, :class => "aligncenter bordered company_logo" %>
-  </div> 
-  -->
-  
+  <!-- click -->
   <div class="archive-post-date">
-		<div class="archive-post-day">100</div>
-		<div class="archive-post-month">顶</div>
-	</div>
+    <div class="archive-post-day"><%= job.views_count %></div>
+    <div class="archive-post-month">点击</div>
+  </div>
+
+  <% if params[:id].blank? %>
+  <div class="company_logo">
+    <%= link_to image_tag(job.company.logo.url, :class => "aligncenter bordered company_logo"), job.company %>
+  </div>
+  <% end %>
 
 	<!-- title and company -->
 	<div class="archive-post-title">
@@ -26,3 +26,24 @@
 </div>
 
 <div class="archive-separator"></div>
+
+
+<!-- <table>
+  <tr>
+    <td>
+      <div class="company_logo" valign="top">
+        <%= image_tag job.company.logo.url, :class => "aligncenter bordered company_logo" %>
+      </div>
+    </td>
+
+    <td class="job-title">
+      <h3><%= link_to job.name, job %></h3>
+      <div class="post-date"><%= link_to job.company.try(:name), job.company %></div>
+    </td>
+
+    <td class="job-location">
+      <h3><%= job.location %></h3>
+      <div class="post-date"><%= job.updated_at.to_s_datetime %></div>
+    </td>
+  </tr>
+</table> -->

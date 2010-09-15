@@ -27,6 +27,17 @@ $(function(){
   // form tip for search input
   $("form input#search_term").formtips({ tippedClass: 'tipped' });
 
+  // adjust company logo size
+  // $(".post .company_logo").each(function() {
+  //   //Get the width of the image
+  //   var width = $(this).width();
+  // 
+  //   //Max-width substitution (works for all browsers)
+  //   if (width > 100) {
+  //     $(this).css("width", "100px");
+  //   }
+  // });
+
   show_and_hide_ajax_loading_bar();
 });
 

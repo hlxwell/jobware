@@ -10,7 +10,6 @@ class Company::AdsController < Company::BaseController
 
   def new
     @ad = current_user.company.ads.build
-    @ad.build_image
   end
 
   def create

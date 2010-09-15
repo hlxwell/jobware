@@ -2,8 +2,8 @@
   <% show_error_message_for(f.object) %>
   <%= f.text_field :name, :label => "展示图片标题", :class => "text w580" %>
   <%= f.cktext_area(:desc, :height => '200px', :toolbar=>'Basic', :skin => "office2003", :label => "描述", :hint => "项目的内容，你所做的内容等。") %>
-  <%= f.file_field :file, :label => "展示图片" %>
-  <%= image_tag f.object.file.url if f.object.file.size %>
+  <%= f.file_field :file, :label => "展示图片", :hint => "最佳尺寸是670x300，如果需要保证效果请上传此尺寸大小图片。" %>
+  <%= image_tag f.object.file.url(:slideshow_small) if f.object.file.size %>
 
   <%= f.link_to_remove_fields "删除" %>
 </fieldset>

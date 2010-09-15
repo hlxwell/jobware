@@ -1,7 +1,7 @@
 <div id="header">
   <!-- #### site logo and title -->
 	<div id="site-title">
-		<h1><a href="/">IT招聘之声</a> <span>ITJob.fm 专注于程序员招聘求职</span></h1>
+	  <%= link_to image_tag("/images/logo/logo_big.png", :alt => "专注于程序员招聘求职 - ITJob.fm"), "/" %>
 	</div>
 	<div class="clearer">&nbsp;</div>
 
@@ -11,6 +11,7 @@
 		  <% semantic_navigation :main, :html => {:class => "tabbed"} do |n| %>
 		    <%= n.item '首页', :link => root_path %>
         <%= n.item '找工作', :link => jobs_path %>
+        <%= n.item '找公司', :link => companies_path %>
         <%= n.item "发布工作", :link => new_company_path %>
       <% end %>
 

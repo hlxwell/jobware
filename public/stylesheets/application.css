@@ -61,7 +61,7 @@ body {
 h1,h2,h3,h4,h5,h6 {
 	color: #444;
 	font-weight: normal;
-	line-height: 1;
+	line-height: 1.2;
 	margin-top: 0.3em;
 	margin-bottom: 0.3em;
 }
@@ -378,8 +378,8 @@ img.alignright, img.right {margin: 0 0 1em 0;}
    Posts
 ------------------------------------------------------------------- */
 
-.post .company_logo { float: left; margin-right: 10px; }
-.post .company_logo img { width: 150px; }
+.post .company_logo { float: left; margin-right: 5px; }
+.post .company_logo img { max-width: 150px; }
 
 .post a {text-decoration: none;}
 .post a:hover {text-decoration: underline;}
@@ -424,7 +424,7 @@ img.alignright, img.right {margin: 0 0 1em 0;}
 	width: 46px;
 }
 .archive-post-title .post-date {margin: 0;}
-.archive-post-title {padding-top: 4px; float: left;}
+.archive-post-title {padding-top: 4px; float: left; width: 300px;}
 .archive-post-day {font: normal 1.6em Georgia,serif;}
 
 .archive-post-address {margin: 0; float: right;}
@@ -509,6 +509,8 @@ img.alignright, img.right {margin: 0 0 1em 0;}
 #site-title {
 	font: normal 1.0em serif;
 	font-weight: bold;
+	margin-top: 1em;
+	margin-bottom: 1em;
 	/*border-bottom: 1px solid #CCC;*/
 }
 #site-title span {color: #999; font-size: 0.5em;}
@@ -808,6 +810,7 @@ div.highlighted {
 .company_logo {
   float: left;
   width: 170px;
+
 /*  height: 80px;*/
 }
 
@@ -880,22 +883,32 @@ div.highlighted {
 /* top page job block */
 #top_job_list .top-page-job {
   width: 292px;
-  height: 105px;
+  height: 153px;
   padding: 1em;
   background-color: #FFF;
 	border: 1px solid #DDD;
 }
 
 #top_job_list .top-page-job .company-logo{
-  float: left;
+/*  float: left;*/
+/*  background-color: #FFF;
+  padding: 0.3em;
+  border: 1px solid #DDD;*/
+}
+
+
+#top_job_list .top-page-job .company-logo img{
+  height: 50px;
+/*  width: 283px;*/
+
   background-color: #FFF;
   padding: 0.3em;
 	border: 1px solid #DDD;
 }
 
 #top_job_list .top-page-job .company-jobs{
-  float: left;
-  margin-left: 1em;
+/*  float: left;*/
+  margin-top: 1em;
 }
 
 #top_job_list .left {
@@ -965,4 +978,16 @@ div.highlighted {
   position: fixed;
   right:45%;
   top:0px;
+}
+
+.job-location {
+  text-align: right;
+  vertical-align: top;
+  width: 160px;
+}
+
+.job-title {
+  text-align: left;
+  vertical-align: top;
+  width: 300px;
 }

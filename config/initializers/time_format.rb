@@ -4,11 +4,11 @@ module CnFormatter
   end
   
   def to_s_datetime
-    self.strftime("%Y年%m月%d日 %H:%M:%S")
+    self.strftime("%Y年%m月%d日 %H:%M")
   end
   
   def to_s_time
-    self.strftime("%H:%M:%S")
+    self.strftime("%H:%M")
   end
 end
 

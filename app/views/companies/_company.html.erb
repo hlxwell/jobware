@@ -2,7 +2,7 @@
 <div class="post">
   <!-- logo -->
   <div class="company_logo">
-    <%= image_tag company.logo.url, :class => "aligncenter bordered company_logo" %>
+    <%= link_to image_tag(company.logo.url, :class => "aligncenter bordered company_logo"), company %>
   </div>
 
 	<!-- title and company -->
