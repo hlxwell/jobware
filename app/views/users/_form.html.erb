@@ -2,3 +2,4 @@
 <%= f.text_field :email, :label => "邮箱" %>
 <%= f.password_field :password, :label => "密码", :hint => "长度请控制在10到20位。" %>
 <%= f.password_field :password_confirmation, :label => "确认密码" %>
+<%= f.hidden_field :partner_site_id, :value => current_partner_site.try(:id) %>

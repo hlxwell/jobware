@@ -15,51 +15,49 @@
 
 <fieldset class="left w298">
   <legend>最新应聘</legend>
-
+  
+  <% show_no_record(@job_applications) do %>
   <table class="data-table">
-    <% @job_applications.each do |app| %>
     <tr>
+      <th>工作名</th>
+      <th>应聘日期</th>
+    </tr>
+    <% @job_applications.each do |app| %>
+    <tr class="even">
       <td width="160"><%= link_to app.job.name, job_path(app.job) %></td>
       <td><%= app.created_at.to_s_date %></td>
     </tr>
     <% end %>
   </table>
+  <% end %>
 </fieldset>
 
 <fieldset class="right w298">
   <legend>简历填写情况</legend>
 
   <table class="data-table">
-    <tr>
-      <td width="210">基本信息</td>
-      <td><%= @resume.name_present? %></td>
+    <tr class="even">
+      <th width="40">基本信息</th>
+      <td width="40"><%= @resume.name_present? %></td>
+      <th width="40">求职信</th>
+      <td width="40"><%= @resume.cover_letters_present? %></td>
     </tr>
-    <tr>
-      <td>求职信</td>
-      <td><%= @resume.cover_letters_present? %></td>
-    </tr>
-    <tr>
-      <td>证书</td>
+    <tr class="even">
+      <th>证书</th>
       <td><%= @resume.certifications_present? %></td>
-    </tr>
-    <tr>
-      <td>项目</td>
+      <th>项目</th>
       <td><%= @resume.projects_present? %></td>
     </tr>
-    <tr>
-      <td>技能</td>
+    <tr class="even">
+      <th>技能</th>
       <td><%= @resume.skills_present? %></td>
-    </tr>
-    <tr>
-      <td>学校</td>
+      <th>学校</th>
       <td><%= @resume.schools_present? %></td>
     </tr>
-    <tr>
-      <td>工作经历</td>
+    <tr class="even">
+      <th>工作经历</th>
       <td><%= @resume.previous_jobs_present? %></td>
-    </tr>
-    <tr>
-      <td>语言</td>
+      <th>语言</th>
       <td><%= @resume.languages_present? %></td>
     </tr>
   </table>

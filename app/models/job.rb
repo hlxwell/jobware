@@ -40,6 +40,7 @@ class Job < ActiveRecord::Base
   belongs_to :company
   has_one :user, :through => :company
   has_many :job_applications
+  has_many :counters, :as => :parent, :dependent => :destroy
 
   accepts_nested_attributes_for :company
 

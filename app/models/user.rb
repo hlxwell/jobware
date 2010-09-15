@@ -30,11 +30,6 @@ class User < ActiveRecord::Base
   has_one :company
   has_one :partner
   has_one :jobseeker, :class_name => "Resume"
-  has_one :bank_account, :dependent => :destroy
 
   accepts_nested_attributes_for :company
-
-  def Base.before_create
-    self.build_bank_account(:name => self.email)
-  end
 end

@@ -39,6 +39,7 @@ class Company < ActiveRecord::Base
   has_many :products, :as => :parent, :dependent => :destroy
   has_many :presentations, :as => :parent, :dependent => :destroy
   has_many :ads
+  has_many :counters, :as => :parent, :dependent => :destroy
   belongs_to :user
 
   accepts_nested_attributes_for :user, :jobs, :products, :presentations, :allow_destroy => true
