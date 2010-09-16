@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20100910083810
+# Schema version: 20100916071749
 #
 # Table name: resumes
 #
@@ -36,6 +36,7 @@
 #  file_content_type          :string(255)
 #  file_file_size             :integer(4)
 #  file_updated_at            :datetime
+#  partner_id                 :integer(4)
 #
 
 class Resume < ActiveRecord::Base

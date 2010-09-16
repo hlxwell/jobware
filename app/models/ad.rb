@@ -1,21 +1,27 @@
 # == Schema Information
-# Schema version: 20100904140030
+# Schema version: 20100916071749
 #
 # Table name: ads
 #
-#  id           :integer(4)      not null, primary key
-#  company_id   :integer(4)
-#  position     :integer(4)
-#  display_type :integer(4)
-#  url          :string(255)
-#  state        :string(255)
-#  start_at     :date
-#  end_at       :date
-#  created_at   :datetime
-#  updated_at   :datetime
-#  province     :string(255)
-#  city         :string(255)
-#  period       :integer(4)
+#  id                 :integer(4)      not null, primary key
+#  company_id         :integer(4)
+#  position           :integer(4)
+#  display_type       :integer(4)
+#  url                :string(255)
+#  state              :string(255)
+#  start_at           :date
+#  end_at             :date
+#  created_at         :datetime
+#  updated_at         :datetime
+#  province           :string(255)
+#  city               :string(255)
+#  period             :integer(4)
+#  name               :string(255)
+#  desc               :string(255)
+#  image_file_name    :string(255)
+#  image_content_type :string(255)
+#  image_file_size    :integer(4)
+#  image_updated_at   :datetime
 #
 
 class Ad < ActiveRecord::Base

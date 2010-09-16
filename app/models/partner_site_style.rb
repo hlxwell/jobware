@@ -1,11 +1,12 @@
 # == Schema Information
-# Schema version: 20100910083810
+# Schema version: 20100916071749
 #
 # Table name: partner_site_styles
 #
 #  id         :integer(4)      not null, primary key
 #  partner_id :integer(4)
 #  subdomain  :string(255)
+#  title      :string(255)
 #  header     :text
 #  footer     :text
 #  stylesheet :text

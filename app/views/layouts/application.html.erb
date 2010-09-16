@@ -5,7 +5,9 @@
 	<meta name="description" content=""/>
 	<meta name="keywords" content="" />
 	<meta name="author" content="" />
-	<%= csrf_meta_tag %>
+
+  <%= auto_discovery_link_tag(:atom, "/jobs.atom") %>
+  <%= csrf_meta_tag %>
   <%= stylesheet_link_tag "application", "pagination", "tipsy", "jquery-ui", "jquery.ui.stars", "coin-slider-styles", "sprite" %>
   <%= javascript_include_tag "jquery", "jquery.tipsy", "jquery.autoheight", "jquery.tools.min", "jquery-ui", "jquery.ui.stars", "jquery.cookies", "jquery.formtips", "jquery.citySelector", "coin-slider", "rails", "application", :ckeditor %>
 

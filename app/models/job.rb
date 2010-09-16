@@ -1,6 +1,6 @@
 # == Schema Information
-# Schema version: 20100910083810
-#`
+# Schema version: 20100916071749
+#
 # Table name: jobs
 #
 #  id                           :integer(4)      not null, primary key
@@ -22,10 +22,12 @@
 #  created_at                   :datetime
 #  updated_at                   :datetime
 #  company_id                   :integer(4)
-#  click_counter                :integer(4)      default(0)
+#  views_count                  :integer(4)      default(0)
 #  apply_method                 :text
 #  only_use_custom_apply_method :boolean(1)
 #  state                        :string(255)
+#  permalink                    :string(255)
+#  partner_id                   :integer(4)
 #
 
 class Job < ActiveRecord::Base
@@ -93,4 +95,45 @@ class Job < ActiveRecord::Base
     update_views_count
     views_count_s
   end
+
+  def atom_summary
+    image = self.company.logo.size.nil? ? "" : "<a href='/companies/#{self.company.id}' target='_blank'><img src='#{self.company.logo.url}'/></a>"
+    "
+    #{image}
+    <br>
+      <h1><a href='/jobs/#{self.to_param}' target='_blank'>#{self.name}</a></h1>
+      公司：<a href='/companies/#{self.company.id}' target='_blank'>#{self.company.name}</a>，
+      薪酬：#{self.salary_range}，  岗位数：#{self.vacancy}，  类别：#{self.category_humanize}
+    <br>
+      <h3>工作内容：</h3>
+      #{self.content}
+    <br>
+      <h3>岗位需求：</h3>
+      #{self.requirement}
+    <br>
+      <h3>福利待遇：</h3>
+      #{self.welfare}
+    "
+  end
+
+  def atom_content
+    image = self.company.logo.size.nil? ? "" : "<a href='/companies/#{self.company.id}' target='_blank'><img src='#{self.company.logo.url}'/></a>"
+    "
+    #{image}
+    <br>
+      <h1><a href='/jobs/#{self.to_param}' target='_blank'>#{self.name}</a></h1>
+      公司：<a href='/companies/#{self.company.id}' target='_blank'>#{self.company.name}</a>，
+      薪酬：#{self.salary_range}，  岗位数：#{self.vacancy}，  类别：#{self.category_humanize}
+    <br>
+      <h3>工作内容：</h3>
+      #{self.content}
+    <br>
+      <h3>岗位需求：</h3>
+      #{self.requirement}
+    <br>
+      <h3>福利待遇：</h3>
+      #{self.welfare}
+    "
+  end
+
 end

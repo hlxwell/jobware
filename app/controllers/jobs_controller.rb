@@ -2,7 +2,12 @@ class JobsController < ApplicationController
   before_filter :jobseeker_login_required, :only => :star
 
   def index
-    @jobs = Job.opened.paginate :all, :page => params[:page], :per_page => 20
+    @jobs = Job.opened.order("updated_at desc").paginate :all, :page => params[:page], :per_page => 20
+
+    respond_to do |format|
+      format.atom
+      format.html
+    end
   end
 
   def show
@@ -32,7 +37,7 @@ class JobsController < ApplicationController
     :field_weights => {
       :name => 6, :location => 5, :content => 5, :requirement => 2, :company_name => 2
     })
-    
+
     render "index"
   end
 end
