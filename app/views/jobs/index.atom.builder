@@ -19,6 +19,8 @@ atom_feed(
       entry.summary truncate(strip_tags(job.atom_summary), :length => 300)
       entry.content job.atom_content, :type => 'html'
       entry.tag!('app:edited', job.updated_at)
+      entry.category job.category_humanize
+
       entry.author do |author|
         author.name(job.company.name)
       end

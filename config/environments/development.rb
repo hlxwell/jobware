@@ -21,8 +21,8 @@ Jobware::Application.configure do
   config.active_support.deprecation = :log
 
   # Send email config
-  # config.action_mailer.perform_deliveries = true
-  # config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
   # config.action_mailer.delivery_method = :sendmail
   # config.action_mailer.sendmail_settings = {
   #   :location => '/usr/sbin/sendmail',
@@ -34,9 +34,14 @@ Jobware::Application.configure do
     :address              => "smtp.gmail.com",
     :port                 => 587,
     :domain               => 'itjob.fm',
-    :user_name            => 'joblet.doc.convertor1',
-    :password             => 'whoafeedback',
+    :user_name            => 'hlxwell',
+    :password             => '13414902~!',
     :authentication       => 'plain',
     :enable_starttls_auto => true
   }
+
+  # exception notifier config
+  config.middleware.use "::ExceptionNotifier", :email_prefix => "[Jobware] ",
+                                               :sender_address => %{ "Jobware Exception" <notifier@itjob.fm> },
+                                               :exception_recipients => %w{ hlxwell@gmail.com }
 end
