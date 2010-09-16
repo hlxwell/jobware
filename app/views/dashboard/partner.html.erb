@@ -1,45 +1,50 @@
 <fieldset>
   <legend>报表</legend>
   <h3>发布岗位数</h3>
+  <% visualization "job_count_chart", "LineChart", :width => 635, :height => 200, :html => {:class => "graph_chart"} do |chart| %>
+    <% chart.string "日期" %>
+    <% chart.number "查看数" %>
+    <% chart.add_rows(
+        @partner.job_counters.map do |counter|
+          [counter.happened_at.to_s_date, counter.click]
+        end
+       ) %>
+  <% end %>
 
   <div class="content-separator"></div>
   <h3>注册公司数</h3>
+  <% visualization "company_count_chart", "LineChart", :width => 635, :height => 200, :html => {:class => "graph_chart"} do |chart| %>
+    <% chart.string "日期" %>
+    <% chart.number "查看数" %>
+    <% chart.add_rows(
+        @partner.company_counters.map do |counter|
+          [counter.happened_at.to_s_date, counter.click]
+        end
+       ) %>
+  <% end %>
 
   <div class="content-separator"></div>
   <h3>应聘数</h3>
+  <% visualization "job_app_count_chart", "LineChart", :width => 635, :height => 200, :html => {:class => "graph_chart"} do |chart| %>
+    <% chart.string "日期" %>
+    <% chart.number "查看数" %>
+    <% chart.add_rows(
+        @partner.job_application_counters.map do |counter|
+          [counter.happened_at.to_s_date, counter.click]
+        end
+       ) %>
+  <% end %>
 
   <div class="content-separator"></div>
   <h3>注册应聘者</h3>
+  <% visualization "jobseeker_count_chart", "LineChart", :width => 635, :height => 200, :html => {:class => "graph_chart"} do |chart| %>
+    <% chart.string "日期" %>
+    <% chart.number "查看数" %>
+    <% chart.add_rows(
+        @partner.jobseeker_counters.map do |counter|
+          [counter.happened_at.to_s_date, counter.click]
+        end
+       ) %>
+  <% end %>
 
-  <div class="content-separator"></div>
-  <h3>IP数</h3>
-
-  <div class="content-separator"></div>
-  <h3>PV数</h3>
-</fieldset>
-
-
-<fieldset>
-  <legend>本月统计</legend>
-
-  <table class="data-table">
-    <tr class="even">
-      <th width="20%">IP量</th>
-      <td width="30%"></td>
-      <th width="20%">PV量</th>
-      <td width="30%"></td>
-    </tr>
-    <tr class="even">
-      <th>注册应聘者</th>
-      <td></td>
-      <th>注册公司</th>
-      <td></td>
-    </tr>
-    <tr class="even">
-      <th>应聘数</th>
-      <td></td>
-      <th>发布岗位数</th>
-      <td></td>
-    </tr>
-  </table>
 </fieldset>

@@ -5,7 +5,7 @@ class DashboardController < ApplicationController
 
   def jobseeker
     @resume = current_user.jobseeker
-    @job_applications = @resume.job_applications.limit(3).includes('job')
+    @applications = @resume.job_applications.limit(3).includes('job')
     render :layout => "jobseeker"
   end
 
@@ -16,6 +16,7 @@ class DashboardController < ApplicationController
   end
 
   def partner
+    @partner = current_user.partner
     render :layout => "partner"
   end
 end

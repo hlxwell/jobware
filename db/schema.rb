@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100915134259) do
+ActiveRecord::Schema.define(:version => 20100916071749) do
 
   create_table "ad_positions", :force => true do |t|
     t.string   "name"
@@ -145,6 +145,7 @@ ActiveRecord::Schema.define(:version => 20100915134259) do
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
     t.integer  "views_count",       :default => 0
+    t.integer  "partner_id"
   end
 
   create_table "counters", :force => true do |t|
@@ -154,6 +155,7 @@ ActiveRecord::Schema.define(:version => 20100915134259) do
     t.integer  "parent_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "type"
   end
 
   create_table "cover_letters", :force => true do |t|
@@ -172,7 +174,7 @@ ActiveRecord::Schema.define(:version => 20100915134259) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "rating"
-    t.integer  "partner_site_id"
+    t.integer  "partner_id"
   end
 
   create_table "jobs", :force => true do |t|
@@ -199,6 +201,7 @@ ActiveRecord::Schema.define(:version => 20100915134259) do
     t.boolean  "only_use_custom_apply_method"
     t.string   "state"
     t.string   "permalink"
+    t.integer  "partner_id"
   end
 
   create_table "languages", :force => true do |t|
@@ -278,6 +281,7 @@ ActiveRecord::Schema.define(:version => 20100915134259) do
     t.string   "file_content_type"
     t.integer  "file_file_size"
     t.datetime "file_updated_at"
+    t.integer  "partner_id"
   end
 
   create_table "revenues", :force => true do |t|
@@ -407,7 +411,6 @@ ActiveRecord::Schema.define(:version => 20100915134259) do
     t.string   "last_login_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "partner_site_id"
   end
 
   create_table "vouchers", :force => true do |t|

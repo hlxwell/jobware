@@ -76,9 +76,9 @@
 
 
 
+
 <fieldset>
   <legend>剩余消费点</legend>
-
   <table class="data-table">
     <!-- [[ItemObj, 1],[ItemObj, 2]] -->
     <% current_user.all_remains.in_groups_of(3) do |group| %>
@@ -95,9 +95,9 @@
 
 
 
+
 <fieldset>
   <legend>未查看的简历</legend>
-
   <% show_no_record(@applications) do %>
     <table class="data-table">
     	<tr>

@@ -21,7 +21,7 @@ class Counter < ActiveRecord::Base
 
   validates_presence_of :click
   validates_uniqueness_of :happened_at, :scope => [:parent_type, :parent_id]
-  
+
   # class << self
   #   def record_for(obj, counter_name = :views_count)
   #     total_num = obj.send(counter_name)

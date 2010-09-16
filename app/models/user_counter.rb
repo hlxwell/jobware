@@ -1,0 +1,2 @@
+class UserCounter < Counter
+end

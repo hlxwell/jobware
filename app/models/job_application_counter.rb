@@ -1,0 +1,2 @@
+class JobApplicationCounter < Counter
+end

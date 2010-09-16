@@ -12,6 +12,8 @@ class JobApplicationsController < ApplicationController
 
   def create
     @job_application = current_user.jobseeker.job_applications.build(params[:job_application])
+    @job_application.partner = current_partner
+
     if @job_application.save
       respond_to do |format|
         format.html {redirect_to @job}

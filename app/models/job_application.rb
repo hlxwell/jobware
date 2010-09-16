@@ -32,6 +32,7 @@ class JobApplication < ActiveRecord::Base
   has_one :company, :through => :job
   belongs_to :resume
   belongs_to :cover_letter
+  belongs_to :partner
 
   validates_uniqueness_of :resume_id, :scope => :job_id, :message => "已经投过简历到该职位。"
   validates_presence_of :job_id, :resume_id

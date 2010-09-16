@@ -5,7 +5,7 @@
     <% chart.string "日期" %>
     <% chart.number "应聘数" %>
     <% chart.add_rows(
-        @resume.job_applications.group_by(&:created_at_to_s).map do |date, app|
+        @applications.group_by(&:created_at_to_s).map do |date, app|
           [date, app.size]
         end
        ) %>
@@ -16,13 +16,13 @@
 <fieldset class="left w298">
   <legend>最新应聘</legend>
   
-  <% show_no_record(@job_applications) do %>
+  <% show_no_record(@applications) do %>
   <table class="data-table">
     <tr>
       <th>工作名</th>
       <th>应聘日期</th>
     </tr>
-    <% @job_applications.each do |app| %>
+    <% @applications.each do |app| %>
     <tr class="even">
       <td width="160"><%= link_to app.job.name, job_path(app.job) %></td>
       <td><%= app.created_at.to_s_date %></td>

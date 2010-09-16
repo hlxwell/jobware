@@ -10,7 +10,7 @@ function doIframe(){
 
 function setHeight(e){
 	if(e.contentDocument){
-		e.height = e.contentDocument.body.offsetHeight - 30;
+		e.height = e.contentDocument.body.offsetHeight;
 	} else {
 		e.height = e.contentWindow.document.body.scrollHeight;
 	}

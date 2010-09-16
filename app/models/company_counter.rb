@@ -1,0 +1,2 @@
+class CompanyCounter < Counter
+end

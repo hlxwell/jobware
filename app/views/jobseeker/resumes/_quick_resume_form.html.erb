@@ -8,7 +8,6 @@
     <% if not_logged_in? %>
       <%= f.fields_for :user do |user_form| %>
         <%= user_form.text_field :email, :label => "邮箱", :class => "text w280", :hint => "您将会收到登陆密码以及公司回复，请仔细填写。" %>
-        <%= user_form.hidden_field :partner_site_id, :value => current_partner_site.try(:id) %>
       <% end %>
     <% end %>
 

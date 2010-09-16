@@ -1,0 +1,2 @@
+class JobCounter < Counter
+end

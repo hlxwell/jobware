@@ -42,6 +42,7 @@ class Job < ActiveRecord::Base
   scope :highlighted, where("? BETWEEN highlight_start_at AND highlight_end_at", Time.now)
 
   belongs_to :company
+  belongs_to :partner
   has_one :user, :through => :company
   has_many :job_applications
   has_many :counters, :as => :parent, :dependent => :destroy, :order => "happened_at ASC"

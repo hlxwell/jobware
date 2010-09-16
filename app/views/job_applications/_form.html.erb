@@ -13,6 +13,5 @@
   <% end %>
 
   <%= f.hidden_field :job_id, :value => @job.id %>
-  <%= f.hidden_field :partner_site_id, :value => current_partner_site.try(:id) %>
   <%= f.submit '发送', :class => 'right button' %>
 <% end %>

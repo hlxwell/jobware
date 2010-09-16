@@ -30,7 +30,7 @@ class Voucher < ActiveRecord::Base
     end
   end
 
-  def Base.before_create
+  before_create do
     self.code = MD5.md5(Time.now.to_s)
   end
 

@@ -24,6 +24,10 @@ class ApplicationController < ActionController::Base
   def current_partner_site
     @current_partner_site = PartnerSiteStyle.find_by_subdomain(request.subdomain)
   end
+  
+  def current_partner
+    current_partner_site.partner
+  end
 
   def partner_site_or_main_site
     @current_partner_site.present? ? "partner_site" : "application"

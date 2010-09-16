@@ -40,11 +40,13 @@ class Jobseeker::ResumesController < Jobseeker::BaseController
 
     @resume = Resume.new(params[:resume])
     @resume.user = current_user if current_user
+    @resume.partner = current_partner
 
     if @resume.save
       # if knows the job id, send one job application.
       if session[:continue_apply_job_id].present? and Job.find_by_id(session[:continue_apply_job_id])
-        @job_application = @resume.job_applications.build( :job_id => session[:continue_apply_job_id], :cover_letter_id => @resume.cover_letters.first, :partner_site_id => current_partner_site.try(:id) )
+        @job_application = @resume.job_applications.build( :job_id => session[:continue_apply_job_id], :cover_letter_id => @resume.cover_letters.first)
+        @job_application.partner = current_partner
 
         if @job_application.save
           redirect_to job_path(session[:continue_apply_job_id]), :notice => "您已应聘成功。"

@@ -14,6 +14,8 @@ class Company::JobsController < Company::BaseController
 
   def create
     @job = current_user.company.jobs.build(params[:job])
+    @job.partner = current_partner
+
     if @job.save
       redirect_to company_job_path(@job), :notice => "岗位发布成功。"
     else
