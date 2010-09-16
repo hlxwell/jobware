@@ -1,11 +1,15 @@
 atom_feed(
   :language => "zh-CN",
   :root_url => jobs_url,
-  :url => jobs_url(:format => :atom)
+  :url => jobs_url(:format => :atom),
+  'xmlns:app' => 'http://www.w3.org/2007/app',
+  'xmlns:openSearch' => 'http://a9.com/-/spec/opensearch/1.1/'
   ) do |feed|
   feed.title("ITJob.FM 最新工作情报 - 专注于程序员招聘")
   feed.link jobs_url
   feed.description "专注于程序员招聘"
+  feed.language "UTF-8"
+  feed.generator "ITJob.fm"
   feed.updated(@jobs.empty? ? Time.now : @jobs.first.updated_at)
 
   @jobs.each do |job|
