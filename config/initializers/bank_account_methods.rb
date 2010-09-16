@@ -30,6 +30,14 @@ module BankAccountMethods
     transactions.without_cancelled.where(:service_item_id => service_item_id).sum(:amount)
   end
 
+  # return all kind of remained points
+  def all_remains
+    ServiceItem.all.map { |item|
+      current_remains = remains(item)
+      [item, current_remains] if current_remains > 0
+    }.compact
+  end
+
   ### basic operations
   ["charge", "pay", "refund", "withdraw"].each do |operation|
     class_eval <<-EOF

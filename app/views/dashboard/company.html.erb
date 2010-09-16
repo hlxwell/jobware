@@ -1,68 +1,99 @@
 <fieldset>
   <legend>报表</legend>
-  
-  工作点击量
-  
-  公司查看数
-  
-  应聘数
+
+  <h4 class="text-center">公司查看数</h4>
+  <% visualization "company_views_count_chart", "LineChart", :width => 635, :height => 200, :html => {:class => "graph_chart"} do |chart| %>
+    <% chart.string "日期" %>
+    <% chart.number "查看数" %>
+    <% chart.add_rows(
+        @company.counters.map do |counter|
+          [counter.happened_at.to_s_date, counter.click]
+        end
+       ) %>
+  <% end %>
+
+  <div class="content-separator"></div>
+  <h4 class="text-center">所有工作查看数</h4>
+  <% visualization "all_jobs_views_count_chart", "LineChart", :width => 635, :height => 200, :html => {:class => "graph_chart"} do |chart| %>
+    <% chart.string "日期" %>
+    <% chart.number "查看数" %>
+    <% chart.add_rows(
+        @company.job_counters.group_by(&:happened_at).map do |date, counters|
+          ["#{date.to_s_date}", counters.sum(&:click)]
+        end
+       ) %>
+  <% end %>
+
+  <div class="content-separator"></div>
+  <h4 class="text-center">岗位应聘数</h4>
+  <% visualization "job_applications_count_chart", "LineChart", :width => 635, :height => 200, :html => {:class => "graph_chart"} do |chart| %>
+    <% chart.string "日期" %>
+    <% chart.number "应聘数" %>
+    <% chart.add_rows(
+        @company.job_applications.group_by(&:created_at_to_s).map do |date, apps|
+          [date, apps.size]
+        end
+       ) %>
+  <% end %>
 </fieldset>
 
 <fieldset>
   <legend>统计</legend>
-  
+
   <table class="data-table">
-    <tr>
+    <tr class="even">
       <th width="20%">工作总数</th>
-      <td width="30%"></td>
+      <td width="30%"><%= @company.jobs.count %></td>
       <th width="20%">应聘总数</th>
-      <td width="30%"></td>
+      <td width="30%"><%= @company.job_applications.count %></td>
     </tr>
-    <tr>
+    <tr class="even">
       <th>公开</th>
-      <td></td>
+      <td><%= @company.jobs.opened.count %></td>
       <th>未阅读</th>
-      <td></td>
+      <td><%= @company.job_applications.unread.count %></td>
     </tr>
-    <tr>
+    <tr class="even">
       <th>关闭</th>
-      <td></td>
+      <td><%= @company.jobs.closed.count %></td>
       <th>接受</th>
-      <td></td>
+      <td><%= @company.job_applications.accepted.count %></td>
     </tr>
-    <tr>
+    <tr class="even">
       <th>未审核</th>
-      <td></td>
+      <td><%= @company.jobs.unapproved.count %></td>
       <th>拒绝</th>
-      <td></td>
+      <td><%= @company.job_applications.rejected.count %></td>
     </tr>
-    <tr>
+    <tr class="even">
       <th>高亮</th>
-      <td></td>
-      <th>未决定</th>
-      <td></td>
+      <td><%= @company.jobs.highlighted.count %></td>
+      <th>加入收藏</th>
+      <td><%= @company.job_applications.starred.count %></td>
     </tr>
   </table>
 </fieldset>
 
+
+
 <fieldset>
   <legend>剩余消费点</legend>
-  
+
   <table class="data-table">
-    <tr>
-      <th width="20%">金额</th>
-      <td width="30%"></td>
-      <th width="20%">岗位发布</th>
-      <td width="30%"></td>
+    <!-- [[ItemObj, 1],[ItemObj, 2]] -->
+    <% current_user.all_remains.in_groups_of(3) do |group| %>
+    <tr class="even">
+      <% 3.times do |i| %>
+      <% next if group[i].blank? %>
+      <th width="20%"><%= group[i][0].name %></th>
+      <td width="10%"><%= group[i][0].is_money? ? format_price(group[i][1]) : group[i][1] %></td>
+      <% end %>
     </tr>
-    <tr>
-      <th>广告A</th>
-      <td></td>
-      <th>广告B</th>
-      <td></td>
-    </tr>
+    <% end %>
   </table>
 </fieldset>
+
+
 
 <fieldset>
   <legend>未查看的简历</legend>

@@ -1,1 +1,1 @@
-50 23 * * * sh -c "cd /home/hlx/www/jobware/current && /usr/local/rvm/gems/ree-1.8.7-2010.02/bin/rake daily RAILS_ENV=production"
+# 50 23 * * * sh -c "cd /home/hlx/www/jobware/current && /usr/local/rvm/gems/ree-1.8.7-2010.02/bin/rake daily RAILS_ENV=production"

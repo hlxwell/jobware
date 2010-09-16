@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100914035524) do
+ActiveRecord::Schema.define(:version => 20100915134259) do
 
   create_table "ad_positions", :force => true do |t|
     t.string   "name"
@@ -148,11 +148,10 @@ ActiveRecord::Schema.define(:version => 20100914035524) do
   end
 
   create_table "counters", :force => true do |t|
-    t.integer  "click"
-    t.date     "happend_at"
+    t.integer  "click",       :default => 0
+    t.date     "happened_at"
     t.string   "parent_type"
     t.integer  "parent_id"
-    t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -173,6 +172,7 @@ ActiveRecord::Schema.define(:version => 20100914035524) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "rating"
+    t.integer  "partner_site_id"
   end
 
   create_table "jobs", :force => true do |t|
@@ -407,6 +407,7 @@ ActiveRecord::Schema.define(:version => 20100914035524) do
     t.string   "last_login_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "partner_site_id"
   end
 
   create_table "vouchers", :force => true do |t|

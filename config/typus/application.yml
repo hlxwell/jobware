@@ -200,8 +200,8 @@ Ad:
 
 Counter:
   fields:
-    default: click, happend_at, parent_id, type
-    form: click, happend_at, parent_id, type
+    default: click, happened_at, parent_id, type
+    form: click, happened_at, parent_id, type
   order_by:
   relationships:
   filters:

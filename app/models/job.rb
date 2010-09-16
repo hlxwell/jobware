@@ -1,6 +1,6 @@
 # == Schema Information
 # Schema version: 20100910083810
-#
+#`
 # Table name: jobs
 #
 #  id                           :integer(4)      not null, primary key
@@ -35,12 +35,16 @@ class Job < ActiveRecord::Base
   has_enumeration_for :category, :with => JobCategory
   has_enumeration_for :contract_type, :with => ContractType
 
-  scope :published, where("start_at < ? AND end_at > ?", Time.now, Time.now)
+  scope :opened, where("? BETWEEN start_at AND end_at", Time.now)
+  scope :closed, where("? NOT BETWEEN start_at AND end_at", Time.now)
+  scope :unapproved, where("state = ?", :unapproved)
+  scope :approved, where("state = ?", :approved)
+  scope :highlighted, where("? BETWEEN highlight_start_at AND highlight_end_at", Time.now)
 
   belongs_to :company
   has_one :user, :through => :company
   has_many :job_applications
-  has_many :counters, :as => :parent, :dependent => :destroy
+  has_many :counters, :as => :parent, :dependent => :destroy, :order => "happened_at ASC"
 
   accepts_nested_attributes_for :company
 
@@ -82,6 +86,9 @@ class Job < ActiveRecord::Base
   end
 
   def increased_views_count
+    self.counters.create(:happened_at => Date.today) if self.counters.today.blank?
+    self.counters.today.last.increment!(:click)
+
     update_views_count
     views_count_s
   end

@@ -1,7 +1,7 @@
 class CreateCounters < ActiveRecord::Migration
   def self.up
     create_table :counters do |t|
-      t.integer :click
+      t.integer :click, :default => 0
       t.date :happend_at
       t.string :parent_type
       t.integer :parent_id

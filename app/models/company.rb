@@ -39,7 +39,8 @@ class Company < ActiveRecord::Base
   has_many :products, :as => :parent, :dependent => :destroy
   has_many :presentations, :as => :parent, :dependent => :destroy
   has_many :ads
-  has_many :counters, :as => :parent, :dependent => :destroy
+  has_many :counters, :as => :parent, :dependent => :destroy, :order => "happened_at ASC"
+  has_many :job_counters, :through => :jobs, :source => :counters
   belongs_to :user
 
   accepts_nested_attributes_for :user, :jobs, :products, :presentations, :allow_destroy => true
@@ -62,6 +63,9 @@ class Company < ActiveRecord::Base
   end
 
   def increased_views_count
+    self.counters.create(:happened_at => Date.today) if self.counters.today.blank?
+    self.counters.today.last.increment!(:click)
+
     update_views_count
     views_count_s
   end

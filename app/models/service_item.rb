@@ -22,6 +22,10 @@ class ServiceItem < ActiveRecord::Base
     ServiceItem.find_by_name("人民币").try(:id)
   end
   
+  def is_money?
+    ServiceItem.money_id == self.id
+  end
+  
   def self.get_id_by_name(name)
     ServiceItem.find_by_name(name).try(:id)
   end

@@ -41,6 +41,8 @@ class JobApplication < ActiveRecord::Base
 
   scope :unread, where(:state => "unread")
   scope :starred, where("rating > 0")
+  scope :accepted, where(:state => :accepted)
+  scope :rejected, where(:state => :rejected)
 
   def created_at_to_s
     created_at.to_s_date
