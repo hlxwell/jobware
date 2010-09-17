@@ -27,6 +27,8 @@
 class Ad < ActiveRecord::Base
   include TestExpirationMethods
 
+  default_scope order("position desc, created_at desc")
+
   DISPLAY_TYPE = AdPositionType.enumeration.values.insert(0, nil).inject do |result, array|
     result ||= {}
     result[array.first] = array.last
@@ -54,8 +56,6 @@ class Ad < ActiveRecord::Base
   validates_attachment_content_type :image, :content_type => [%r{image/.*jpg}, %r{image/.*jpeg}, %r{image/.*gif}, %r{image/.*png}], :if => lambda {|obj| obj.image.size.present? }
   validates_attachment_size :image, :less_than => 1.megabytes, :if => lambda {|obj| obj.image.size.present? }
   validates_presence_of :name, :url, :province, :city, :display_type, :period
-
-  default_scope order("position desc")
 
   scope :slider_ads, where(:display_type => AdPositionType::SLIDER_AD).where("? between start_at and end_at", Time.now)
   scope :featured_jobs, where(:display_type => AdPositionType::FEATURED_JOB).where("? between start_at and end_at", Time.now)

@@ -55,7 +55,7 @@ class Company < ActiveRecord::Base
   # Company.all.each do |c|
   #   c.logo.reprocess!
   # end
-  has_attached_file :logo, :styles => { :thumb => "200>x80", :square => "283x50>" }, :default_style => :thumb
+  has_attached_file :logo, :styles => { :thumb => "200>x80", :fix_height => "283x50>" }, :default_style => :thumb
   validates_attachment_content_type :logo, :content_type => [%r{image/.*jpg}, %r{image/.*jpeg}, %r{image/.*gif}, %r{image/.*png}], :if => lambda {|obj| obj.logo.size.present? }
   validates_attachment_size :logo, :less_than => 1.megabytes
   validates_attachment_presence :logo
