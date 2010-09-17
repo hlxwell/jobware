@@ -216,6 +216,7 @@ table.top-vlign-td td { vertical-align: top; }
 .loud {color: #666;}
 .highlight {background:#ff0;}
 .shine { color: red; font-weight: bold;}
+.black {color: black;}
 
 .text-left {text-align: left;}
 .text-right {text-align: right;}
@@ -458,7 +459,7 @@ img.alignright, img.right {margin: 0 0 1em 0;}
 }
 #network li.current-tab a, #network li.highlighted a {
   padding: 5px;
-  border-top: 3px solid #999;	
+  border-top: 3px solid #999;
 	background: #FFF;
 	font-weight: bold;
 }

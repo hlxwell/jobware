@@ -9,21 +9,21 @@
 	</div>
 
 	<div class="right sidebar" id="sidebar-1">
-    <h3>公司加入</h3>
+    <h4 class="black ss_sprite ss_building">公司加入</h4>    
     <div>
-      免费展示公司，您的工作将展示于全国各大小IT社区，高效应聘。
+      <font size="2">免费展示公司，您的工作将展示于全国各大小IT社区，高效应聘。</font>
 
       <div class="clearer">&nbsp;</div>
-      <div class="right"><a href="#">立刻加入</a></div>
+      <div class="right small_top_margin"><%= button_to "立刻加入", new_company_path, :method => :get, :class => "button" %></div>
     </div>
-    <div class="clearer">&nbsp;</div><br>
+    <div class="clearer">&nbsp;</div><br/>
 
-    <h3>求职者加入</h3>
+    <h4 class="black ss_sprite ss_note_edit">求职者加入</h4>
     <div>
-      专注于IT职位招聘，免费短信提示简历动态，一份简历走天下。
+      <font size="2">专注于IT职位招聘，免费短信提示简历动态，一份简历走天下。</font>
 
       <div class="clearer">&nbsp;</div>
-      <div class="right"><a href="#">立刻加入</a></div>
+      <div class="right small_top_margin"><%= button_to "立刻加入", new_jobseeker_resume_path, :method => :get, :class => "button" %></div>
     </div>
 	</div>
   <div class="clearer">&nbsp;</div>

@@ -23,4 +23,4 @@
   <div class="post-title"><h2>简历</h2></div>
 </div>
 <div class="content-separator-quite"></div>
-<%= render :partial => "jobseeker/resumes/item", :object => @resume %>
+<%= render :partial => "jobseeker/resumes/item", :object => @resume, :locals => {:hide_cover_letter => true} %>

@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20100916071749
+# Schema version: 20100917101409
 #
 # Table name: jobs
 #
@@ -14,7 +14,7 @@
 #  requirement                  :text
 #  welfare                      :text
 #  desc                         :text
-#  salary_range                 :string(255)
+#  salary_range                 :integer(4)
 #  highlight_start_at           :datetime
 #  highlight_end_at             :datetime
 #  start_at                     :datetime

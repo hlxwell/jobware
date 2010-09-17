@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100916071749) do
+ActiveRecord::Schema.define(:version => 20100917101409) do
 
   create_table "ad_positions", :force => true do |t|
     t.string   "name"
@@ -188,7 +188,7 @@ ActiveRecord::Schema.define(:version => 20100916071749) do
     t.text     "requirement"
     t.text     "welfare"
     t.text     "desc"
-    t.string   "salary_range"
+    t.integer  "salary_range"
     t.datetime "highlight_start_at"
     t.datetime "highlight_end_at"
     t.datetime "start_at"
@@ -221,6 +221,9 @@ ActiveRecord::Schema.define(:version => 20100916071749) do
     t.text     "stylesheet"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "header_height"
+    t.string   "footer_height"
+    t.text     "global_css"
   end
 
   create_table "partners", :force => true do |t|

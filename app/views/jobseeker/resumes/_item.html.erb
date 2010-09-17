@@ -60,17 +60,22 @@
 		<% end %>
 	</table>
 </div>
+<br/>
+<%
+  hide_cover_letter = false if hide_cover_letter.nil?
 
-<% {
-  :previous_jobs => "工作经历",
-  :schools => "教育经历",
-  :projects => "项目经验",
-  :skills => "技能",
-  :certifications => "证书",
-  :languages => "语言能力",
-  :cover_letters => "求职信"
-  }.each do |key, value|
+  display_item_hash = {
+    :previous_jobs => "工作经历",
+    :schools => "教育经历",
+    :projects => "项目经验",
+    :skills => "技能",
+    :certifications => "证书",
+    :languages => "语言能力",
+  }
+  display_item_hash.merge!(:cover_letters => "求职信") unless hide_cover_letter
+  display_item_hash.each do |key, value|
   next if item.send(key).blank? %>
+
   <div class="post">
     <div class="post-title"><h4><%= value %></h4></div>
   </div>

@@ -1,6 +1,6 @@
 <% title "自定义招聘站" %>
 
-<%= jobware_form_for @partner_site_style, :url => partner_partner_site_style_path(@partner_site_style), :title => "设置自定义招聘站" do |f| %>
+<%= jobware_form_for @partner_site_style, :url => partner_partner_site_style_path, :title => "设置自定义招聘站" do |f| %>
   <%= render :partial => 'form', :locals => { :f => f } %>
   <%= f.submit "提交", :class => "right button" %>
 <% end %>

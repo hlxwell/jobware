@@ -43,7 +43,7 @@ class JobsController < ApplicationController
   private
 
   def get_job_by_id
-    @job = current_user.company.jobs.find(params[:id]) if current_user.try(:company)
+    @job = current_user.company.jobs.find_by_id(params[:id]) if current_user.try(:company)
     @job ||= Job.opened.find(params[:id])
   end
 end
