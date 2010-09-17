@@ -1,5 +1,6 @@
 class JobsController < ApplicationController
   before_filter :jobseeker_login_required, :only => :star
+  before_filter :get_job_by_id, :only => [:show, :star]
 
   def index
     @jobs = Job.opened.order("updated_at desc").paginate :all, :page => params[:page], :per_page => 20
@@ -11,12 +12,10 @@ class JobsController < ApplicationController
   end
 
   def show
-    @job = Job.opened.find(params[:id]) || current_user.company.jobs.find(params[:id])
     @starred_job = current_user.try(:jobseeker).present? ? current_user.jobseeker.starred_jobs.where(:job_id => params[:id]).first : nil
   end
 
   def star
-    @job = Job.opened.find(params[:id])
     rating = params[:starred_job].present? ? params[:starred_job][:rating]||0 : 0
     @result = current_user.jobseeker.star_job(@job, rating.to_i)
 
@@ -39,5 +38,12 @@ class JobsController < ApplicationController
     })
 
     render "index"
+  end
+
+  private
+
+  def get_job_by_id
+    @job = current_user.company.jobs.find(params[:id]) if current_user.try(:company)
+    @job ||= Job.opened.find(params[:id])
   end
 end
