@@ -11,7 +11,7 @@ class JobsController < ApplicationController
   end
 
   def show
-    @job = Job.opened.find(params[:id])
+    @job = Job.opened.find(params[:id]) || current_user.company.jobs.find(params[:id])
     @starred_job = current_user.try(:jobseeker).present? ? current_user.jobseeker.starred_jobs.where(:job_id => params[:id]).first : nil
   end
 
