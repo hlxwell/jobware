@@ -6,8 +6,8 @@ class CreatePreviousJobs < ActiveRecord::Migration
       t.integer :company_type
       t.integer :company_size
       t.string :job_title
-      t.datetime :start_at
-      t.datetime :end_at
+      t.date :start_at
+      t.date :end_at
       t.timestamps
     end
   end

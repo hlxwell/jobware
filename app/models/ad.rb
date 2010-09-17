@@ -55,13 +55,12 @@ class Ad < ActiveRecord::Base
 
   validates_attachment_content_type :image, :content_type => [%r{image/.*jpg}, %r{image/.*jpeg}, %r{image/.*gif}, %r{image/.*png}], :if => lambda {|obj| obj.image.size.present? }
   validates_attachment_size :image, :less_than => 1.megabytes, :if => lambda {|obj| obj.image.size.present? }
-  validates_presence_of :name, :url, :province, :city, :display_type, :period
+  validates_presence_of :display_type, :period # :name, :url
 
   scope :slider_ads, where(:display_type => AdPositionType::SLIDER_AD).where("? between start_at and end_at", Time.now)
   scope :featured_jobs, where(:display_type => AdPositionType::FEATURED_JOB).where("? between start_at and end_at", Time.now)
   scope :urgent_jobs, where(:display_type => AdPositionType::URGENT_JOB).where("? between start_at and end_at", Time.now)
-  scope :right_featured_companies, where(:display_type => AdPositionType::RIGHT_FEATURED_COMPANY).where("? between start_at and end_at", Time.now)
-  scope :bottom_featured_companies, where(:display_type => AdPositionType::BOTTOM_FEATURED_COMPANY).where("? between start_at and end_at", Time.now)
+  scope :featured_companies, where(:display_type => AdPositionType::FEATURED_COMPANY).where("? between start_at and end_at", Time.now)
 
   state_machine :initial => :unactive do
     event :active do
@@ -75,11 +74,6 @@ class Ad < ActiveRecord::Base
 
   before_save do
     errors.add :end_at, '展示结束时间必需大于展示开始时间。' if self.start_at and self.end_at and self.start_at > self.end_at
-  end
-
-  def location
-    loc = self.province + self.city
-    loc.blank? ? "全国" : loc
   end
 
   def preview_partial_name

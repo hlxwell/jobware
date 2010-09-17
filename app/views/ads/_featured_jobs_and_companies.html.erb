@@ -1,4 +1,4 @@
-<% companies = Company.limit(3).all %>
+<% companies = Ad.featured_jobs.all.map(&:company) %>
 <div class="section network-section">
 	<div class="section-title">知名企业招聘</div>
 	<div class="section-content">

@@ -12,10 +12,6 @@
 		<td><%= @ad.display_type_humanize %></td>
 	</tr>
 	<tr>
-	  <th width="50px">所在省市</th>
-		<td><%= @ad.location %></td>
-	</tr>
-	<tr>
 	  <th width="50px">广告名</th>
 		<td><%= @ad.name %></td>
 	</tr>
@@ -29,7 +25,7 @@
 	</tr>
 	<tr>
 	  <th>广告图片</th>
-		<td><%= image_tag @ad.image.url %></td>
+		<td><%= image_tag @ad.image.url if @ad.image.size.present? %></td>
 	</tr>
 	<tr>
 	  <th>展示周期</th>

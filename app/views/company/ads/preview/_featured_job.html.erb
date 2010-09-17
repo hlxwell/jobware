@@ -1,12 +1,24 @@
-<div class="ads-block">
-  <!-- logo -->
-  <%= link_to image_tag(ad.image.url(:featured_job), :class => 'logo'), ad.url %>
-	<!-- title and company -->
-	<div class="content">
-		<h4>
-		  <span class="city"><%= ad.location %></span>
-		  <span class="title"><%= link_to ad.name, ad.url %></span>
-		</h4>
-		<div class="desc"><%= raw ad.desc %></div>
-	</div>
+<div id="top_job_list">
+  <div class="section network-section">
+  	<div class="section-title">知名企业招聘</div>
+  	<div class="section-content">
+        <% ([ad.company]*2).each_with_index do |company, i| %>
+        <div class="top-page-job <%= (i+1)%2 == 0 ? "right" : "left" %>">
+          <div class="company-logo text-center"><%= link_to image_tag(company.logo.url(:fix_height)), company, :title => company.desc %></div>
+          <div class="company-jobs">
+            <h5><%= link_to company.name, company, :title => company.desc %></h5>
+              <% company.jobs.opened.limit(4).each do |job| %>
+              <div>
+                <div class="left" style="margin: 0"><%= link_to truncate(job.name, :length => 20) , job, :title => job.desc, :class => "quiet" %></div>
+      			    <strong class="quiet right" style="margin: 0"><%= job.location %></strong>
+      			  </div>
+      			  <div class="clearer">&nbsp;</div>
+      			  <% end %>
+          </div>
+        </div>
+        <% end %>
+  	</div>
+  </div>
+
+  <div class="clearer">&nbsp;</div>
 </div>

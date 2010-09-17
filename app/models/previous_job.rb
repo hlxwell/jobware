@@ -21,4 +21,12 @@ class PreviousJob < ActiveRecord::Base
 
   belongs_to :resume
   validates_presence_of :company_name, :company_type, :company_size, :job_title, :start_at
+
+  def start_at
+    read_attribute(:start_at).to_date if read_attribute(:start_at)
+  end
+  
+  def end_at
+    read_attribute(:end_at).to_date if read_attribute(:end_at)
+  end
 end
