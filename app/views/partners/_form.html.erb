@@ -1,7 +1,7 @@
 <% show_error_message_for(f.object) %>
 <%= f.text_field :name, :label => "网站名", :class => "text w600" %>
 <%= f.text_field :url, :label => "网站地址", :class => "text w600" %>
-<%= f.select :site_size, SiteSize.to_a, {:include_blank => true}, { :label => "网站流量" } %>
+<%= f.select :site_size, SiteSize.to_sorted_a, {:include_blank => true}, { :label => "网站流量" } %>
 <%= f.text_field :contact_name, :label => "联系人", :class => "text w600" %>
 <%= f.text_field :phone_number, :label => "联系电话", :class => "text w600" %>
 <%= f.cktext_area(:desc, :height => '200px', :toolbar=>'Basic', :skin => "office2003", :label => "网站描述") %>

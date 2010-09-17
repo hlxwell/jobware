@@ -2,9 +2,9 @@
 <%= f.text_field :name, :label => "名称", :class => "text w600" %>
 <%= f.city_select :location_province, :location_city, :label => "工作所在地" %>
 <%= f.text_field :vacancy, :label => "岗位数", :class => "text w600" %>
-<%= f.select :contract_type, ContractType.to_a, {:include_blank => true}, { :label => "工作类型" } %>
-<%= f.select :category, JobCategory.to_a, {:include_blank => true}, {:label => "类别"} %>
-<%= f.text_field :salary_range, :label => "薪资范围", :class => "text w600", :hint => "留空表示（面议）" %>
+<%= f.select :contract_type, ContractType.to_sorted_a, {:include_blank => true}, { :label => "工作类型" } %>
+<%= f.select :category, JobCategory.to_sorted_a, {:include_blank => true}, {:label => "类别"} %>
+<%= f.select :salary_range, SalaryRange.to_sorted_a, :label => "薪资范围" %>
 <%= f.cktext_area(:content, :height => '200px', :toolbar=>'Basic', :skin => "office2003", :label => "工作内容") %>
 <%= f.cktext_area(:requirement, :height => '200px', :toolbar=>'Basic', :skin => "office2003", :label => "岗位需求") %>
 <%= f.cktext_area(:welfare, :height => '200px', :toolbar=>'Basic', :skin => "office2003", :label => "福利待遇") %>

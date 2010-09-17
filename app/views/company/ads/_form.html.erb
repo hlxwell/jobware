@@ -1,5 +1,5 @@
 <% show_error_message_for(f.object) %>
-<%= f.select :display_type, AdPositionType.to_a, {:include_blank => true}, {:label => "广告类型"} %>
+<%= f.select :display_type, AdPositionType.to_sorted_a, {:include_blank => true}, {:label => "广告类型"} %>
 <%= f.text_field :name, :label => "广告标题", :class => "text w600", :hint => "最大长度为20个中文字。" %>
 <%= f.city_select :province, :city, :label => "工作所在地" %>
 <%= f.text_field :url, :label => "广告链接地址", :hint => "点击广告后跳转的地址。", :class => "text w600" %>

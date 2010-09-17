@@ -14,7 +14,7 @@
 
 class Service < ActiveRecord::Base
   has_enumeration_for :serving_target_type, :with => ServingTargetType
-  SERVING_TARGET_TYPE = ServingTargetType.to_a
+  SERVING_TARGET_TYPE = ServingTargetType.to_sorted_a
 
   has_many :service_item_amounts
   has_many :service_items, :through => :service_item_amounts

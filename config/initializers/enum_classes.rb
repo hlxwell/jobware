@@ -2,6 +2,26 @@ class ActiveRecord::Base
   include EnumerateIt
 end
 
+class EnumerateIt::Base
+  def self.to_sorted_a
+    self.to_a.sort{|x,y| x[1] <=> y[1] }
+  end
+end
+
+class SalaryRange < EnumerateIt::Base
+  associate_values(
+    :none   => [0, '面议'],
+    :a      => [1, '1000以下'],
+    :b      => [2, '1000-3000'],
+    :c      => [3, '3000-5000'],
+    :d      => [4, '5000-7000'],
+    :e      => [5, '7000-10000'],
+    :f      => [6, '10000-15000'],
+    :g      => [7, '15000-20000'],
+    :h      => [8, '20000以上']
+  )
+end
+
 class PeriodType < EnumerateIt::Base
   associate_values(
     :daily   => [1, '每天'],

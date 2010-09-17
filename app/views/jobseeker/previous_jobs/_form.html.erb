@@ -1,8 +1,8 @@
 <fieldset id="new_previous_jobs">
   <% show_error_message_for(f.object) %>
   <%= f.text_field :company_name, :label => "公司名", :class => "text w580" %>
-  <%= f.select :company_type, CompanyType.to_a, {:include_blank => true}, {:label => "性质"} %>
-  <%= f.select :company_size, CompanySize.to_a, {:include_blank => true}, {:label => "规模"} %>
+  <%= f.select :company_type, CompanyType.to_sorted_a, {:include_blank => true}, {:label => "性质"} %>
+  <%= f.select :company_size, CompanySize.to_sorted_a, {:include_blank => true}, {:label => "规模"} %>
   <%= f.text_field :job_title, :label => "职务", :class => "text w580", :hint => "所担当的职务。" %>
   <%= f.text_field :start_at, :label => "加入时间", :class => "text w580 datepicker", :hint => "入职的时间。" %>
   <%= f.text_field :end_at, :label => "离职时间", :class => "text w580 datepicker", :hint => "留空表示在职。" %>
