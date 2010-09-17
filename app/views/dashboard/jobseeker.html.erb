@@ -1,13 +1,15 @@
 <fieldset>
   <legend>应聘情况</legend>
-  <% visualization "my_chart", "LineChart", :width => 635, :height => 200, :html => {:class => "graph_chart"} do |chart| %>
-    <% chart.string "日期" %>
-    <% chart.number "应聘数" %>
-    <% chart.add_rows(
-        @applications.group_by(&:created_at_to_s).map do |date, app|
-          [date, app.size]
-        end
-       ) %>
+  <% show_no_record(@applications) do %>
+    <% visualization "my_chart", "LineChart", :width => 635, :height => 200, :html => {:class => "graph_chart"} do |chart| %>
+      <% chart.string "日期" %>
+      <% chart.number "应聘数" %>
+      <% chart.add_rows(
+          @applications.group_by(&:created_at_to_s).map do |date, app|
+            [date, app.size]
+          end
+         ) %>
+    <% end %>
   <% end %>
 </fieldset>
 

@@ -8,7 +8,7 @@
 		  <% jobs.each do |job| %>
 			<li>
 			  <span style="font-weight: bold" class="right text-right">
-			    <%= job.location %> <br/> 查看：<%= job.views_count %> 次
+			    <%= job.location %> <br/> 查看：<%= job.views_count_s %> 次
 			  </span>
 			  <h4><%= link_to job.name, job %></h4>
 			  <%= link_to job.company.name, job.company %>

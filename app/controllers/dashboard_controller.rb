@@ -16,7 +16,11 @@ class DashboardController < ApplicationController
   end
 
   def partner
-    @partner = current_user.partner
+    @partner_job_counters             = @partner.job_counters
+    @partner_company_counters         = @partner.company_counters
+    @partner_job_application_counters = @partner.job_application_counters
+    @partner_jobseeker_counters       = @partner.jobseeker_counters
+    @partner                          = current_user.partner
     render :layout => "partner"
   end
 end

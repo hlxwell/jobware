@@ -7,3 +7,4 @@ public/system/**/*
 .DS_Store
 db/sphinx
 config/development.sphinx.conf
+public/ckeditor_assets/**/*

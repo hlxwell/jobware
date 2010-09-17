@@ -1,7 +1,7 @@
-<div class="post">
+<div class="post <%= "notice" if job.highlighted? %>">
   <!-- click -->
   <div class="archive-post-date">
-    <div class="archive-post-day"><%= job.views_count %></div>
+    <div class="archive-post-day"><%= job.views_count_s %></div>
     <div class="archive-post-month">点击</div>
   </div>
 

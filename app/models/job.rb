@@ -75,6 +75,14 @@ class Job < ActiveRecord::Base
     end
   end
 
+  def highlighted?
+    if highlight_start_at and highlight_end_at
+      highlight_start_at < Time.now and Time.now < highlight_end_at
+    else
+      false
+    end
+  end
+
   def to_param
     "#{id}-#{permalink}"
   end

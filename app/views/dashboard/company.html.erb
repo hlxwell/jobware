@@ -2,38 +2,44 @@
   <legend>报表</legend>
 
   <h4 class="text-center">公司查看数</h4>
-  <% visualization "company_views_count_chart", "LineChart", :width => 635, :height => 200, :html => {:class => "graph_chart"} do |chart| %>
-    <% chart.string "日期" %>
-    <% chart.number "查看数" %>
-    <% chart.add_rows(
-        @company.counters.map do |counter|
-          [counter.happened_at.to_s_date, counter.click]
-        end
-       ) %>
+  <% show_no_record(@company.counters) do %>  
+    <% visualization "company_views_count_chart", "LineChart", :width => 635, :height => 200, :html => {:class => "graph_chart"} do |chart| %>
+      <% chart.string "日期" %>
+      <% chart.number "查看数" %>
+      <% chart.add_rows(
+          @company.counters.map do |counter|
+            [counter.happened_at.to_s_date, counter.click]
+          end
+         ) %>
+    <% end %>
   <% end %>
-
+  
   <div class="content-separator"></div>
   <h4 class="text-center">所有工作查看数</h4>
-  <% visualization "all_jobs_views_count_chart", "LineChart", :width => 635, :height => 200, :html => {:class => "graph_chart"} do |chart| %>
-    <% chart.string "日期" %>
-    <% chart.number "查看数" %>
-    <% chart.add_rows(
-        @company.job_counters.group_by(&:happened_at).map do |date, counters|
-          ["#{date.to_s_date}", counters.sum(&:click)]
-        end
-       ) %>
+  <% show_no_record(@company.job_counters) do %>
+    <% visualization "all_jobs_views_count_chart", "LineChart", :width => 635, :height => 200, :html => {:class => "graph_chart"} do |chart| %>
+      <% chart.string "日期" %>
+      <% chart.number "查看数" %>
+      <% chart.add_rows(
+          @company.job_counters.group_by(&:happened_at).map do |date, counters|
+            ["#{date.to_s_date}", counters.sum(&:click)]
+          end
+         ) %>
+    <% end %>
   <% end %>
 
   <div class="content-separator"></div>
   <h4 class="text-center">岗位应聘数</h4>
-  <% visualization "job_applications_count_chart", "LineChart", :width => 635, :height => 200, :html => {:class => "graph_chart"} do |chart| %>
-    <% chart.string "日期" %>
-    <% chart.number "应聘数" %>
-    <% chart.add_rows(
-        @company.job_applications.group_by(&:created_at_to_s).map do |date, apps|
-          [date, apps.size]
-        end
-       ) %>
+  <% show_no_record(@company.job_applications) do %>
+    <% visualization "job_applications_count_chart", "LineChart", :width => 635, :height => 200, :html => {:class => "graph_chart"} do |chart| %>
+      <% chart.string "日期" %>
+      <% chart.number "应聘数" %>
+      <% chart.add_rows(
+          @company.job_applications.group_by(&:created_at_to_s).map do |date, apps|
+            [date, apps.size]
+          end
+         ) %>
+    <% end %>
   <% end %>
 </fieldset>
 

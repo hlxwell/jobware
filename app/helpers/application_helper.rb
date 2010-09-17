@@ -67,7 +67,7 @@ module ApplicationHelper
 
   def show_no_record collection, &block
     if collection.blank?
-      return raw("<div class='no_record'>没有记录。</div>")
+      return raw("<div class='no_record'>没有数据。</div>")
     else
       block.call
       return ""
