@@ -1,10 +1,10 @@
 <% title @job.name %>
 
+<h3 class="right small_top_margin"><%= link_to "查看前台效果", @job %></h3>
+<h2><%= @job.name %></h2>
+<div class="archive-separator"></div>
+
 <table class="data-table top-vlign">
-	<tr>
-	  <th width="50px">工作名</th>
-		<td><%= @job.name %></td>
-	</tr>
 	<tr>
 	  <th>所在地</th>
 		<td><%= @job.location %></td>

@@ -1,6 +1,5 @@
 <fieldset>
   <legend>应聘情况</legend>
-
   <% visualization "my_chart", "LineChart", :width => 635, :height => 200, :html => {:class => "graph_chart"} do |chart| %>
     <% chart.string "日期" %>
     <% chart.number "应聘数" %>
@@ -10,12 +9,10 @@
         end
        ) %>
   <% end %>
-
 </fieldset>
 
 <fieldset class="left w298">
   <legend>最新应聘</legend>
-  
   <% show_no_record(@applications) do %>
   <table class="data-table">
     <tr>
@@ -38,27 +35,27 @@
   <table class="data-table">
     <tr class="even">
       <th width="40">基本信息</th>
-      <td width="40"><%= @resume.name_present? %></td>
+      <td width="40"><%= raw @resume.name_present? %></td>
       <th width="40">求职信</th>
-      <td width="40"><%= @resume.cover_letters_present? %></td>
+      <td width="40"><%= raw @resume.cover_letters_present? %></td>
     </tr>
     <tr class="even">
       <th>证书</th>
-      <td><%= @resume.certifications_present? %></td>
+      <td><%= raw @resume.certifications_present? %></td>
       <th>项目</th>
-      <td><%= @resume.projects_present? %></td>
+      <td><%= raw @resume.projects_present? %></td>
     </tr>
     <tr class="even">
       <th>技能</th>
-      <td><%= @resume.skills_present? %></td>
+      <td><%= raw @resume.skills_present? %></td>
       <th>学校</th>
-      <td><%= @resume.schools_present? %></td>
+      <td><%= raw @resume.schools_present? %></td>
     </tr>
     <tr class="even">
       <th>工作经历</th>
-      <td><%= @resume.previous_jobs_present? %></td>
+      <td><%= raw @resume.previous_jobs_present? %></td>
       <th>语言</th>
-      <td><%= @resume.languages_present? %></td>
+      <td><%= raw @resume.languages_present? %></td>
     </tr>
   </table>
 </fieldset>

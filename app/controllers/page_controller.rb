@@ -10,7 +10,6 @@ class PageController < ApplicationController
   end
 
   def services
-    
   end
 
   def contactus

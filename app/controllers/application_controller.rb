@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
   end
   
   def current_partner
-    current_partner_site.partner
+    current_partner_site.try(:partner)
   end
 
   def partner_site_or_main_site

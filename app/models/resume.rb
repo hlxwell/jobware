@@ -40,7 +40,7 @@
 #
 
 class Resume < ActiveRecord::Base
-  attr_accessor :quick_resume
+  attr_accessor :quick_resume, :accept_terms
 
   has_enumeration_for :gender, :with => Gender
   has_enumeration_for :current_working_state, :with => WorkingState
@@ -73,6 +73,7 @@ class Resume < ActiveRecord::Base
   validates_attachment_size :file, :less_than => 10.megabytes, :message => "文件必需小于10M", :if => lambda {|obj| obj.file.size.present? }
   validates_attachment_presence :file, :if => lambda {|obj| obj.quick_resume == 'true' }
 
+  validates_acceptance_of :accept_terms, :accept => "1", :message => "你必需接受服务条款"
   validates_presence_of :name, :gender, :email, :working_years, :degree, :major, :birthday, :hometown_province, :hometown_city, :current_residence_province, :current_residence_city, :email, :phone_number, :expected_positions, :expected_job_location, :expected_salary, :current_working_state, :if => lambda {|obj| obj.quick_resume != 'true' and obj.file.size.nil? }
   validate :check_file_type_when_creating, :on => :create, :if => lambda {|obj| obj.quick_resume == 'true' }
   validate :check_file_type_when_updating, :on => :update, :if => lambda {|obj| obj.quick_resume == 'true' }
@@ -138,7 +139,7 @@ class Resume < ActiveRecord::Base
 
   [:name, :cover_letters, :certifications, :schools, :previous_jobs, :languages, :skills, :projects].each do |method_name|
     define_method("#{method_name}_present?") do |*args|
-      self.send(method_name).present? ? "填写" : "未填写"
+      self.send(method_name).present? ? "已填写" : "<a href='/jobseeker/resume/edit'><b color='red'>未填写</b></a>"
     end
   end
 
