@@ -1,3 +1,10 @@
+<!-- foot dashboard -->
+<% if content_for?(:footer_ad_zone) %>
+  <%= yield(:footer_ad_zone) %>
+<% else %>
+  <%= render "shared/ads/bottom_ads" %>
+<% end %>
+
 <div class="content-separator-quite"></div>
 
 <!-- ### footer links -->

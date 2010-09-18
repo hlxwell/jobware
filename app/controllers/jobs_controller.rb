@@ -12,7 +12,9 @@ class JobsController < ApplicationController
   end
 
   def show
+    @company = @job.company
     @starred_job = current_user.try(:jobseeker).present? ? current_user.jobseeker.starred_jobs.where(:job_id => params[:id]).first : nil
+    render :layout => "company_home_page"
   end
 
   def star
@@ -44,6 +46,6 @@ class JobsController < ApplicationController
 
   def get_job_by_id
     @job = current_user.company.jobs.find_by_id(params[:id]) if current_user.try(:company)
-    @job ||= Job.opened.find(params[:id])
+    @job ||= Job.opened.find(params[:job_id] || params[:id])
   end
 end

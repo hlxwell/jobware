@@ -409,7 +409,11 @@ img.alignright, img.right {margin: 0 0 1em 0;}
 .post-body a:hover {color: #039;}
 
 .post-body img.left, .post-body img.right {margin-bottom: 1em;}
-
+.bordered {
+  background-color: #FFF;
+	border: 1px solid #DDD;
+	padding: 3px;
+}
 
 
 /* Archives */
@@ -818,7 +822,7 @@ div.highlighted {
 }
 
 .company_info {
-  float: right;
+/*  float: right;*/
 }
 
 /* home page ads block */
@@ -993,4 +997,34 @@ div.highlighted {
   text-align: left;
   vertical-align: top;
   width: 300px;
+}
+
+/* company home page */
+.company_home_page .menu a {
+  font-size: 1.4em;
+  padding: 0.5em;
+  margin-right: 0.5em;
+}
+
+.company_home_page .title {
+  text-align: center;
+}
+
+.company_home_page .menu li a {
+  font-size: 1.5em;
+  border: 1px solid #999;
+  padding: 0.5em;
+  margin-right: 0.5em;
+  text-decoration: none;
+}
+
+.company_home_page .menu li.highlighted a {
+  font-size: 1.5em;
+  border: 1px solid #999;
+  background: #999;
+  padding: 0.5em;
+  margin-right: 0.5em;
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
 }

@@ -93,6 +93,10 @@ class Job < ActiveRecord::Base
   def location
     self.location_province + self.location_city
   end
+  
+  def deadline
+    (end_at.to_date - Date.today).to_i
+  end
 
   def increased_views_count
     self.counters.create(:happened_at => Date.today) if self.counters.today.blank?

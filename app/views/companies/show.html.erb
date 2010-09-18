@@ -1,25 +1,73 @@
-<% title @company.name %>
+<% if @company.presentations.count > 0 %>
+<div class="post">
+	<div class="post-body ">
+    <%= render :partial => 'companies/presentation', :locals => {:company => @company} %>
+	</div>
+</div>
+<div class="content-separator "></div>
+<% end %>
 
-<script type="text/javascript">
-  $(function() {
-    $('#main-left').tabs();
-  });
-</script>
-<div class="main" id="main-two-columns-right-sidebar">
+<div class="post">
+	<div class="post-title"><h3>基本信息</h3></div>
 
-  <!-- ### left main side -->
-	<div class="left" id="main-left">
-    <ul class="larger">
-      <li><a href="#fragment-1"><span>公司信息</span></a></li>
-      <li><a href="#fragment-2"><span>该公司所有工作</span></a></li>
-    </ul>
+	<div class="company_info">
+		<table class="data-table" style="margin-top: 10px;">
+			<tr class="even">
+				<th width="5%">公司地点</th>
+				<td width="10%"><%= @company.location %></td>
+				<th width="5%">规模</th>
+				<td width="10%"><%= @company.size_humanize %></td>
+				<th width="5%">性质</th>
+				<td width="10%"><%= @company.company_type_humanize %></td>
+				<th width="5%">点击数</th>
+				<td width="10%"><%= @company.increased_views_count %></td>
+			</tr>
+		</table>
+	</div>
+</div>
 
-	  <div id="fragment-1"><%= render "jobs/tab_of_company", :company => @company %></div>
-    <div id="fragment-2"><%= render "jobs/tab_of_other_jobs", :jobs => @company.jobs.opened, :company => @company %></div>
-  </div> <!-- end of left zone -->
+<div class="clearer">&nbsp;</div>
+<div class="content-separator "></div>
 
 
-  <!-- ### right side part -->
-	<%= render "shared/ads/right_side_ads" %>
-	<div class="clearer">&nbsp;</div>
+<div class="post">
+	<div class="post-title"><h3>公司简介</h3></div>
+	<div class="post-body">
+	  <%= raw @company.desc %>
+	</div>
+</div>
+
+<div class="content-separator "></div>
+
+<% if @company.products.count > 0 %>
+<div class="post">
+	<div class="post-title"><h3>公司产品</h3></div>
+	<div class="post-body">
+		<table class="data-table top-vlign top-vlign-td">
+		  <% @company.products.each do |p| %>
+			<tr class="even">
+				<th width="20%"><%= image_tag p.file.url, :class => "bordered w200" %></th>
+				<td width="80%"><%= raw p.desc %></td>
+			</tr>
+      <% end %>
+		</table>
+	</div>
+</div>
+<div class="content-separator "></div>
+<% end %>
+
+<div class="post">
+	<div class="post-title"><h3>联系方式</h3></div>
+	<div class="post-body ">
+		<table class="data-table">
+			<tr class="even">
+				<th width="10%">网址</th>
+				<td width="15%"><%= @company.homepage %></td>
+				<th width="10%">公司地址</th>
+				<td width="15%"><%= @company.address %></td>
+				<th width="10%">邮箱</th>
+				<td width="15%"><%= @company.user.email %></td>
+			</tr>
+		</table>
+	</div>
 </div>

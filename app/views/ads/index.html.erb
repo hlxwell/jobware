@@ -57,10 +57,3 @@
 
 	<div class="clearer">&nbsp;</div>
 </div>
-
-<!-- foot dashboard -->
-<% if content_for?(:footer_ad_zone) %>
-  <%= yield(:footer_ad_zone) %>
-<% else %>
-  <%= render "shared/ads/bottom_ads" %>
-<% end %>

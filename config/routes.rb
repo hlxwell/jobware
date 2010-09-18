@@ -32,6 +32,12 @@ Jobware::Application.routes.draw do
   end
 
   resources :jobs do
+    resources :companies, :only => [:show] do
+      member do
+        get :all_jobs
+      end
+    end
+
     member do
       post :star
       get :star
@@ -48,6 +54,7 @@ Jobware::Application.routes.draw do
   resources :companies do
     member do
       get :presentations
+      get :all_jobs
     end
   end
 

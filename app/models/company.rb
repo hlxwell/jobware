@@ -28,6 +28,7 @@
 class Company < ActiveRecord::Base
   attr_accessor :accept_terms
   acts_as_views_count :delay => 30
+  chinese_permalink :name
 
   has_enumeration_for :company_type, :with => CompanyType
   has_enumeration_for :size, :with => CompanySize
@@ -59,6 +60,10 @@ class Company < ActiveRecord::Base
   validates_attachment_content_type :logo, :content_type => [%r{image/.*jpg}, %r{image/.*jpeg}, %r{image/.*gif}, %r{image/.*png}], :if => lambda {|obj| obj.logo.size.present? }
   validates_attachment_size :logo, :less_than => 1.megabytes
   validates_attachment_presence :logo
+
+  def to_param
+    "#{id}-#{permalink}"
+  end
 
   def location
     self.province + self.city

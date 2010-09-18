@@ -1,0 +1,35 @@
+<% content_for :content do %>
+
+<!-- ### main content -->
+<div class="main company_home_page">
+
+  <div class="title">
+    <h1><%= @company.name %></h1>
+    <p><%= image_tag @company.logo.url(:original) %></p>
+  </div>
+
+  <br/>
+
+  <div class="menu">
+    <% semantic_navigation "company-home-menu", :html => {:class => "tabbed"} do |n| %>
+      <%= n.item '公司首页', :link => company_path(@company) %>
+      <%= n.item '所有工作', :link => all_jobs_company_path(@company) %>
+    <% end %>
+
+    <% if @job %>
+      > <%= link_to @job.name, @job %>
+    <% end %>
+    <div class="clearer">&nbsp;</div>
+  </div>
+
+  <br/>
+
+  <%= yield %>
+</div>
+<% end %>
+
+<% content_for :footer_ad_zone do %>
+  <%= render "shared/ads/bottom_ads" %>
+<% end %>
+
+<%= render :file => current_layout %>
