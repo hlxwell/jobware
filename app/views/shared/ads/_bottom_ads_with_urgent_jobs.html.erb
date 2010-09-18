@@ -1,0 +1,31 @@
+<div class="section network-section left" style="width: 185px">
+	<div class="section-title">紧急招聘</div>
+	<div class="section-content">
+	  <% show_no_record(@urgent_jobs = Ad.urgent_jobs) do %>
+		<ul class="nice-list">		  
+		  <% @urgent_jobs.each do |ad| %>
+			<li>			  
+			  <%= link_to ad.name, ad.url, :title => ad.desc %>
+        <!-- <span style="font-weight: bold; float: right;"><%#= ad.location %></span> -->
+			</li>
+		  <% end %>
+		</ul>
+		<% end %>
+	</div>
+</div>
+
+<div class="section network-section right" style="width: 785px">
+	<div class="section-title">推荐企业</div>
+	<div class="section-content">
+	  <% show_no_record(Ad.featured_companies) do %>
+  	<table class="data-table">
+  		<tr>
+  		  <% Ad.featured_companies.each_with_index do |ad, i| %>
+  			  <td><%= link_to image_tag(ad.image.url(:bottom_ad), :class => "aligncenter bordered bottom_ad_logo"), ad.url %></td>
+  			  <%= raw "</tr><tr>" if (i+1)%4 == 0 and i != 1 %>
+  			<% end %>
+  		</tr>
+  	</table>
+  	<% end %>
+	</div>
+</div>
