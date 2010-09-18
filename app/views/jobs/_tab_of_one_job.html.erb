@@ -19,11 +19,11 @@
 
       <!-- <span id="stars-cap"></span> -->
     	<div class="stars-wrapper">
-    	  <%= f.radio_button :rating, "1", :title => "很差" %>
-    	  <%= f.radio_button :rating, "2", :title => "差" %>
-    	  <%= f.radio_button :rating, "3", :title => "一般" %>
-    	  <%= f.radio_button :rating, "4", :title => "不错" %>
-    	  <%= f.radio_button :rating, "5", :title => "很好" %>
+    	  <%= f.radio_button :rating, "1", :title => "还行" %>
+    	  <%= f.radio_button :rating, "2", :title => "不错" %>
+    	  <%= f.radio_button :rating, "3", :title => "很好" %>
+    	  <%= f.radio_button :rating, "4", :title => "非常好" %>
+    	  <%= f.radio_button :rating, "5", :title => "极好" %>
     	</div>
     	<% end %>
   	</div>
@@ -37,6 +37,12 @@
         <td width="40%"><%= job.location %></td>
         <th width="20%">招聘人数</th>
         <td width="20%"><%= job.vacancy %></td>
+      </tr>
+      <tr>
+        <th>薪资</th>
+        <td><%= job.salary_range_humanize %></td>
+        <th>工作类型</th>
+        <td><%= job.contract_type_humanize %></td>
       </tr>
       <tr>
         <th>发布日期</th>

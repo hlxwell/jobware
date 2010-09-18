@@ -23,7 +23,7 @@
 	</tr>
 	<tr>
 	  <th>薪资范围</th>
-		<td><%= @job.salary_range %></td>
+		<td><%= @job.salary_range_humanize %></td>
 	</tr>
 	<tr>
 	  <th>工作内容</th>
@@ -50,3 +50,6 @@
 	 <td><%= @job.only_use_custom_apply_method? ? "否" : "是" %></td>
 	</tr>
 </table>
+
+<br />
+<%= button_to_function "修改", "$(location).attr('href','#{edit_company_job_path(@job)}')", :class => 'largest right button' %>

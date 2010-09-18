@@ -38,6 +38,7 @@ class Job < ActiveRecord::Base
 
   has_enumeration_for :category, :with => JobCategory
   has_enumeration_for :contract_type, :with => ContractType
+  has_enumeration_for :salary_range, :with => SalaryRange
 
   scope :opened, where("? BETWEEN start_at AND end_at", Time.now)
   scope :closed, where("? NOT BETWEEN start_at AND end_at", Time.now)
@@ -91,11 +92,6 @@ class Job < ActiveRecord::Base
 
   def location
     self.location_province + self.location_city
-  end
-
-  def salary_range
-    return "面议" if read_attribute(:salary_range).blank?
-    read_attribute(:salary_range)
   end
 
   def increased_views_count
