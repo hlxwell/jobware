@@ -395,7 +395,9 @@ CKEDITOR.config.toolbarLocation = 'top';
  */
 CKEDITOR.config.toolbar_Basic =
 [
-	['Bold', 'Italic', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink','-','About']
+	['Bold', 'Italic', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink'],
+	['Styles','Format','Font','FontSize'],
+	['TextColor','BGColor']
 ];
 
 /**
