@@ -10,7 +10,7 @@ atom_feed(
   feed.description "专注于程序员招聘"
   feed.language "UTF-8"
   feed.generator "ITJob.fm"
-  feed.updated(@jobs.empty? ? Time.now : @jobs.first.updated_at.to_s_date)
+  feed.updated(@jobs.empty? ? Time.now : @jobs.first.updated_at)
 
   @jobs.each do |job|
     feed.entry(job) do |entry|
@@ -18,7 +18,7 @@ atom_feed(
       entry.link job_url(job)
       entry.summary truncate(strip_tags(job.atom_summary), :length => 300)
       entry.content job.atom_content, :type => 'html'
-      entry.tag!('app:edited', job.updated_at.to_s_date)
+      entry.tag!('app:edited', job.updated_at)
       entry.category job.category_humanize
 
       entry.author do |author|
