@@ -1,4 +1,4 @@
-class PageController < ApplicationController
+class PagesController < ApplicationController
 
   def company_benifit
   end
@@ -19,5 +19,12 @@ class PageController < ApplicationController
     respond_to do |format|
       format.xml
     end
+  end
+  
+  def not_found
+    
+  end
+  
+  def internal_error
   end
 end

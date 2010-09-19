@@ -1,13 +1,13 @@
 Jobware::Application.routes.draw do
   match "track" => Tracker.action(:track), :as => :tracker
-  match "slideshowpro(.:format)" => "page#slideshowpro"
-  match "/partner_benifit" => "page#partner_benifit"
-  match "/company_benifit" => "page#company_benifit"
-  match "/aboutus" => "page#aboutus"
+  match "slideshowpro(.:format)" => "pages#slideshowpro"
+  match "/partner_benifit" => "pages#partner_benifit"
+  match "/company_benifit" => "pages#company_benifit"
+  match "/aboutus" => "pages#aboutus"
   match "/partner_site_header" => "partners#partner_site_header"
   match "/partner_site_footer" => "partners#partner_site_footer"
-  match "/services" => "page#services"
-  match "/contactus" => "page#contactus"
+  match "/services" => "pages#services"
+  match "/contactus" => "pages#contactus"
 
   ### auth stuff
   match "/login" => "sessions#new", :as => :login
