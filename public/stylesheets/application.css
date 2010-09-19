@@ -353,6 +353,15 @@ img.alignright, img.right {margin: 0 0 1em 0;}
    Separators
 ------------------------------------------------------------------- */
 
+.dashed-separator {
+	border-bottom: 1px dashed #D5D5D5;
+	clear: both;
+	color: #FFE;
+	display: block;
+	font-size: 0;
+	line-height: 0;
+}
+
 .content-separator, .archive-separator {
 	background: #D5D5D5;
 	clear: both;
@@ -364,6 +373,7 @@ img.alignright, img.right {margin: 0 0 1em 0;}
 }
 .content-separator {margin: 20px 0;}
 .archive-separator {margin: 10px 0;}
+.dashed-separator {margin: 10px 0;}
 
 .content-separator-quite {
   background: #eee;

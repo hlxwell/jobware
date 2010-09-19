@@ -1,7 +1,11 @@
 <% image_size ||= :slideshow %>
 <div class="post">
-	<div class="post-body ">
+  <div class="post-title"><h3><%= presentation.name %></h3></div>
+	<div class="post-body">
 	  <%= image_tag presentation.file.url(image_size) %>
 	</div>
+	<div class="large middle_top_margin">
+	 <%= raw presentation.desc %>
+	</div>
 </div>
-<div class="content-separator "></div>
+<div class="content-separator"></div>
