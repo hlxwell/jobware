@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100918170503) do
+ActiveRecord::Schema.define(:version => 20100919054652) do
 
   create_table "ad_positions", :force => true do |t|
     t.string   "name"
@@ -203,6 +203,7 @@ ActiveRecord::Schema.define(:version => 20100918170503) do
     t.string   "state"
     t.string   "permalink"
     t.integer  "partner_id"
+    t.string   "source"
   end
 
   create_table "languages", :force => true do |t|
