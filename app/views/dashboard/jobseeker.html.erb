@@ -15,13 +15,13 @@
 
 <fieldset class="left w298">
   <legend>最新应聘</legend>
-  <% show_no_record(@applications) do %>
+  <% show_no_record(@latest_applications) do %>
   <table class="data-table">
     <tr>
       <th>工作名</th>
       <th>应聘日期</th>
     </tr>
-    <% @applications.each do |app| %>
+    <% @latest_applications.each do |app| %>
     <tr class="even">
       <td width="160"><%= link_to app.job.name, job_path(app.job) %></td>
       <td><%= app.created_at.to_s_date %></td>

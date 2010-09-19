@@ -47,7 +47,7 @@ class JobApplication < ActiveRecord::Base
   scope :rejected, where(:state => :rejected)
 
   def created_at_to_s
-    created_at.to_s_date
+    created_at.to_s_short_date
   end
 
   def state_humanize
