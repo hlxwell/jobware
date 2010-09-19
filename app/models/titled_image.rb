@@ -26,11 +26,11 @@ class TitledImage < ActiveRecord::Base
   belongs_to :parent, :polymorphic => true
 
   has_attached_file :file, :styles => {
+    :preview => "50>x50",
     :thumb => "150>x150",
     :popup_preview => "100>x100",
-    :preview => "50>x50",
-    :slideshow => "670x300>",
-    :slideshow_small => "520x230>",
+    :slideshow_small => "670>x230",
+    :slideshow => "980>x500",
   }, :default_style => :thumb
 
   validates_attachment_content_type :file, :content_type => [%r{image/.*jpg}, %r{image/.*jpeg}, %r{image/.*gif}, %r{image/.*png}], :if => lambda {|obj| obj.file.size.present? }

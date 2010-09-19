@@ -1,0 +1,3 @@
+<% show_no_record(@company.presentations.count) do %>
+  <%= render :partial => 'companies/presentation', :collection => @company.presentations %>
+<% end %>

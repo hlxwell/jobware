@@ -76,4 +76,12 @@ class Company < ActiveRecord::Base
     update_views_count
     views_count_s
   end
+  
+  def logo_width
+    Paperclip::Geometry.from_file(logo.to_file(:original)).width
+  end
+  
+  def logo_margin
+    (980 - logo_width) / 2
+  end
 end

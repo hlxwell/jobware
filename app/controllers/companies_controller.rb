@@ -19,7 +19,7 @@ class CompaniesController < ApplicationController
 
   def presentations
     @presentations = @company.presentations
-    respond_with @presentations
+    render :layout => "company_home_page"
   end
 
   def new

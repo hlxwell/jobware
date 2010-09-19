@@ -217,6 +217,7 @@ table.top-vlign-td td { vertical-align: top; }
 .highlight {background:#ff0;}
 .shine { color: red; font-weight: bold;}
 .black {color: black;}
+.bold {font-weight: bold;}
 
 .text-left {text-align: left;}
 .text-right {text-align: right;}
@@ -1027,4 +1028,19 @@ div.highlighted {
   text-decoration: none;
   color: #fff;
   font-weight: bold;
+}
+
+.agency_mark {
+  float: left;
+}
+
+.auth_company {
+  border: 1px solid #FFD324;
+  background: #FFF6BF;
+  color: red;
+  float: right;
+  font-size: 1.2em;
+  padding: 0.3em;
+  font-weight: bold;
+  margin-right: 0.5em;
 }
