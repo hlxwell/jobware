@@ -56,11 +56,13 @@
 		<table class="data-table">
 			<tr class="even">
 				<th width="10%">网址</th>
-				<td width="15%"><%= @company.homepage %></td>
-				<th width="10%">公司地址</th>
-				<td width="15%"><%= @company.address %></td>
+				<td width="40%"><%= @company.homepage %></td>
 				<th width="10%">邮箱</th>
-				<td width="15%"><%= @company.user.email %></td>
+				<td width="40%"><%= @company.user.email %></td>
+			</tr>
+			<tr class="even">
+			  <th>公司地址</th>
+				<td colspan="3"><%= @company.address %></td>
 			</tr>
 		</table>
 	</div>
