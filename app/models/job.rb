@@ -31,8 +31,6 @@
 #
 
 class Job < ActiveRecord::Base
-  attr_accessor :salary_range_start, :salary_range_end
-
   chinese_permalink :name
   acts_as_views_count :delay => 30
 
