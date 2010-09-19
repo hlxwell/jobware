@@ -57,7 +57,7 @@ function show_tooltip() {
 }
 
 function hide_fields(link) {
-  $(link).prev("input[type=hidden]").val("1");
+  $(link).next("input[type=hidden]").val("1");
   $(link).closest("fieldset").fadeOut("slow");
 }
 

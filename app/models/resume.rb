@@ -67,7 +67,7 @@ class Resume < ActiveRecord::Base
 
   has_attached_file :portrait, :styles => { :thumb => "150x150>" }, :default_style => :thumb
   validates_attachment_content_type :portrait, :content_type => [%r{image/.*jpg}, %r{image/.*jpeg}, %r{image/.*gif}, %r{image/.*png}], :if => lambda {|obj| obj.portrait.size.present? }
-  validates_attachment_size :portrait, :less_than => 1.megabytes, :message => "文件必需小于1M", :if => lambda {|obj| obj.portrait.size.present? }
+  validates_attachment_size :portrait, :less_than => 5.megabytes, :message => "文件必需小于5M", :if => lambda {|obj| obj.portrait.size.present? }
 
   has_attached_file :file
   validates_attachment_size :file, :less_than => 10.megabytes, :message => "文件必需小于10M", :if => lambda {|obj| obj.file.size.present? }
