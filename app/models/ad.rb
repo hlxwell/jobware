@@ -54,7 +54,7 @@ class Ad < ActiveRecord::Base
   }, :default_style => :bottom_ad
 
   validates_attachment_content_type :image, :content_type => [%r{image/.*jpg}, %r{image/.*jpeg}, %r{image/.*gif}, %r{image/.*png}], :if => lambda {|obj| obj.image.size.present? }
-  validates_attachment_size :image, :less_than => 1.megabytes, :if => lambda {|obj| obj.image.size.present? }
+  validates_attachment_size :image, :less_than => 1.megabytes, :message => "文件尺寸不能大于1M。",:if => lambda {|obj| obj.image.size.present? }
   validates_presence_of :display_type, :period # :name, :url
 
   scope :slider_ads, where(:display_type => AdPositionType::SLIDER_AD).where("? between start_at and end_at", Time.now)

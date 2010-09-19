@@ -41,4 +41,5 @@
 <h2>效果预览</h2>
 <%= render "company/ads/preview/#{@ad.preview_partial_name}", :ad => @ad %>
 
+<div class="clearer">&nbsp;</div><br>
 <%= button_to_function "修改", "$(location).attr('href','#{edit_company_ad_path(@ad)}')", :class => 'largest right button' unless @ad.active? %>

@@ -1,16 +1,18 @@
-<div id="slider">
-  <a href="<%= ad.url %>" target="_blank">
-    <%= image_tag(ad.image.url(:slideshow), :alt => ad.name) %>
-    <span>
-      <b><%= ad.name %></b>
-      <p><%= raw ad.desc %></p>
-    </span>
-  </a>
+<div style="width: 520px;">
+  <div id="slider-center">
+    <a href="<%= ad.url %>" target="_blank">
+      <%= image_tag(ad.image.url(:slideshow_small), :alt => ad.name) %>
+      <span>
+        <b><%= ad.name %></b>
+        <p><%= raw ad.desc %></p>
+      </span>
+    </a>
 
-  <a href="http://www.minininjas.com/" target="_blank">
-    <img src="http://workshop.rs/projects/coin-slider/games/mini_ninjas.jpg" alt="Mini Ninjas"/>
-    <span>
-      <b>杭州招聘高级rails程序员</b>
-    </span>
-  </a>
+    <a href="http://www.minininjas.com/" target="_blank">
+      <img src="http://workshop.rs/projects/coin-slider/games/mini_ninjas.jpg" alt="Mini Ninjas"/>
+      <span>
+        <b>杭州招聘高级rails程序员</b>
+      </span>
+    </a>
+  </div>
 </div>
