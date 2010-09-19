@@ -20,11 +20,4 @@ class PagesController < ApplicationController
       format.xml
     end
   end
-  
-  def not_found
-    
-  end
-  
-  def internal_error
-  end
 end
