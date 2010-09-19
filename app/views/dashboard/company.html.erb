@@ -85,6 +85,7 @@
 
 <fieldset>
   <legend>剩余消费点</legend>
+  <% show_no_record(current_user.all_remains.compact!) do %>
   <table class="data-table">
     <!-- [[ItemObj, 1],[ItemObj, 2]] -->
     <% current_user.all_remains.in_groups_of(3) do |group| %>
@@ -97,6 +98,7 @@
     </tr>
     <% end %>
   </table>
+  <% end %>
 </fieldset>
 
 
