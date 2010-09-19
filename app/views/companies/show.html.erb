@@ -37,7 +37,10 @@
 		<table class="data-table top-vlign top-vlign-td">
 		  <% @company.products.each do |p| %>
 			<tr class="even">
-				<th width="20%"><%= image_tag p.file.url, :class => "bordered w200" %></th>
+		    <th colspan="2"><h3><%= p.name %></h3></th>
+		  </tr>
+			<tr class="even">
+				<td width="20%"><%= image_tag p.file.url, :class => "bordered w200" %></td>
 				<td width="80%"><%= raw p.desc %></td>
 			</tr>
       <% end %>
