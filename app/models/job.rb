@@ -72,8 +72,35 @@ class Job < ActiveRecord::Base
     end
 
     event :approve do
-      transition :unapproved => :approved
+      transition [:disapproved, :unapproved] => :approved
     end
+
+    event :disapprove do
+      transition :unapproved => :disapproved
+    end
+
+    event :close do
+      transition :approved => :closed
+    end
+  end
+
+  def opened?
+    return false if start_at.blank? or end_at.blank? or closed?
+    (start_at..end_at).include?(Time.now)
+  end
+
+  def state_s
+    return "展示中" if opened?
+    return "等待审核" if unapproved?
+    return "审核通过" if approved?
+    return "审核不通过" if disapproved?
+    return "关闭" if closed?
+  end
+
+  def font_color
+    return "gray" if unapproved? or closed?
+    return "green" if approved?
+    return "red" if disapproved?
   end
 
   def highlighted?

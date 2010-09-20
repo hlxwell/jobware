@@ -1,5 +1,5 @@
 class Company::JobsController < Company::BaseController
-  before_filter :get_job_by_id, :only => [:show, :edit, :update, :destroy]
+  before_filter :get_job_by_id, :only => [:show, :edit, :update, :destroy, :close]
   # before_filter :check_job_credit, :only => [:new, :create]
 
   def index
@@ -38,6 +38,12 @@ class Company::JobsController < Company::BaseController
   def destroy
     @job.destroy
     flash[:success] = "删除岗位成功。"
+    redirect_to company_jobs_path
+  end
+
+  def close
+    @job.close
+    flash[:success] = "岗位已经关闭。"
     redirect_to company_jobs_path
   end
 

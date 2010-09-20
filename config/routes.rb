@@ -68,7 +68,11 @@ Jobware::Application.routes.draw do
     resources :transactions
     resources :starred_resumes
     resource :company
-    resources :jobs
+    resources :jobs do
+      member do
+        get :close
+      end
+    end
     resources :job_applications do
       member do
         post :star

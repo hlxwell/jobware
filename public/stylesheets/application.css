@@ -195,6 +195,10 @@ table.data-table td {
 }
 table.data-table tr.even td {background: #FCFCFC;}
 table.data-table tr.unread td {background: #FFF6BF;}
+table.data-table tr.red td {background: red;}
+table.data-table tr.green td {background: green;}
+table.data-table tr.gray td {background: gray;}
+
 table.top-vlign th { vertical-align: top; }
 table.top-vlign-td td { vertical-align: top; }
 
@@ -453,7 +457,7 @@ img.alignright, img.right {margin: 0 0 1em 0;}
 /* General */
 .center-wrapper {
 	margin: 0 auto;
-	width: 980px;
+	width: 960px;
 }
 
 /* Network */

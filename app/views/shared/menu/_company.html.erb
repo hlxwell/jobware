@@ -9,23 +9,26 @@
     <div class="section-content">
       <ul class="nice-list">
         <li>
-          <div class="left"><%= link_to "工作", company_jobs_path %></div>
-          <div class="right"><%= link_to "发布", new_company_job_path %> (剩<%= current_user.remains(ServiceItem.job_credit_id) %>点)</div>
+          <div class="left"><%= link_to "工作", company_jobs_path %> <small class="quiet">(<%= current_user.company.jobs.opened.count %>/<%= current_user.company.jobs.count %> 个展示中)</small></div>
+          <div class="right"><%= link_to "发布", new_company_job_path %> <small class="quiet">(剩 <%= current_user.remains(ServiceItem.job_credit_id) %> 点)</small></div>
           <div class="clearer">&nbsp;</div>
         </li>
         <li>
-          <div class="left"><%= link_to "收到的应聘", company_job_applications_path %></div>
+          <div class="left"><%= link_to "收到的应聘", company_job_applications_path %> <small class="quiet">(<%= current_user.company.job_applications.count %>)</small></div>
           <div class="right">
             <%= display_new_jobapplication_count %>
             <%= link_to "已收藏", company_job_applications_path(:filter => :starred) %>
+            <small class="quiet">(<%= current_user.company.job_applications.starred.count %>)</small>
           </div>
           <div class="clearer">&nbsp;</div>
         </li>
-        <!-- <li>
+        <!--
+        <li>
           <div class="left"><a href="#">简历库</a></div>
           <div class="right">搜索 | 收藏</div>
           <div class="clearer">&nbsp;</div>
-        </li> -->
+        </li> 
+        -->
         <li>
           <div class="left"><%= link_to "公司信息", company_company_path %></div>
           <div class="right"><%= link_to "管理", edit_company_company_path %></div>
