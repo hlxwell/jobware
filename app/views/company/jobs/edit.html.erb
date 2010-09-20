@@ -1,6 +1,6 @@
 <% title "修改工作" %>
 
-<%= jobware_form_for @job, :url => company_job_path(@job), :method => :put, :title => "发布工作" do |f| %>
+<%= jobware_form_for @job, :url => company_job_path(@job), :method => :put, :title => "修改工作" do |f| %>
   <%= render :partial => 'form', :locals => {:f => f} %>
   <%= f.submit "提交", :class => "right button" %>
 <% end %>

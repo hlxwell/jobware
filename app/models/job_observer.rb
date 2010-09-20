@@ -4,4 +4,8 @@ class JobObserver < ActiveRecord::Observer
     job.partner.try(:increase_job)
   end
 
+  def before_update(job)
+    job.reapprove if job.disapproved?
+  end
+
 end

@@ -1,11 +1,15 @@
 <% title "工作管理" %>
 
+<h3 class="right small_top_margin"><%= link_to "查看前台效果", all_jobs_company_path(current_user.company) %></h3>
+<h2>工作管理</h2>
+<div class="archive-separator"></div>
+
 <% show_no_record(@jobs) do %>
   <table class="data-table">
   	<tr>
   	  <th>工作名</th>
   		<th>所在省市</th>
-  		<th>更新时间</th>
+  		<th>展示时间段</th>
   		<th>状态</th>
   		<th>操作</th>
   	</tr>
@@ -13,11 +17,13 @@
   	<tr class="even">
   	  <td><%= link_to job.name, company_job_path(job) %></td>
   		<td><%= job.location %></td>
-  		<td><%= job.updated_at.to_s_datetime %></td>
+  		<td><%= job.start_at.try(:to_s_short_date) %> - <%= job.end_at.try(:to_s_short_date) %></td>
   		<td style="color: <%= job.font_color %>"><%= job.state_s %></td>
   		<td>
-  		  <%= link_to "修改", edit_company_job_path(job) %>
-  		  <%= link_to "关闭", close_company_job_path(job) if job.approved? %>
+  		  <%= link_to "修改并重审", edit_company_job_path(job) if job.disapproved? %>
+  		  <%= link_to "修改", edit_company_job_path(job) if !job.disapproved? %>
+  		  <%= link_to "关闭", close_company_job_path(job), :confirm => "确定关闭工作？" if job.approved? %>
+  		  <%= link_to "重开", open_company_job_path(job), :confirm => "确定打开工作？" if job.closed? %>
   		</td>
   	</tr>
     <% end %>

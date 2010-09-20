@@ -1,4 +1,11 @@
-<% title "收到的应聘" %>
+<% if params[:filter] == "starred" %>
+  <% title "收藏的应聘" %>
+  <h2>收藏的应聘</h2>
+<% else %>
+  <% title "收到的应聘" %>
+  <h2>收到的应聘</h2>
+<% end %>
+<div class="archive-separator"></div>
 
 <% show_no_record(@applications) do %>
   <table class="data-table">

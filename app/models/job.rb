@@ -30,6 +30,13 @@
 #  partner_id                   :integer(4)
 #
 
+
+# 发布的时候，需要填写 “招聘开始时间，周期，是否高亮”， 保存。
+# 审核通过的时候，需要检查 state => approved, 但是需要active, 只有当钱足够的时候才能be actived.
+# 然后有个 active 按钮，就是表示去扣点数
+#
+#
+
 class Job < ActiveRecord::Base
   chinese_permalink :name
   acts_as_views_count :delay => 30
@@ -38,8 +45,8 @@ class Job < ActiveRecord::Base
   has_enumeration_for :contract_type, :with => ContractType
   has_enumeration_for :salary_range, :with => SalaryRange
 
-  scope :opened, where("? BETWEEN start_at AND end_at", Time.now)
-  scope :closed, where("? NOT BETWEEN start_at AND end_at", Time.now)
+  scope :opened, where("? BETWEEN start_at AND end_at AND state=?", Time.now, :approved)
+  scope :closed, where("(? NOT BETWEEN start_at AND end_at) OR state!=?", Time.now, :approved)
   scope :unapproved, where("state = ?", :unapproved)
   scope :approved, where("state = ?", :approved)
   scope :highlighted, where("? BETWEEN highlight_start_at AND highlight_end_at", Time.now)
@@ -79,8 +86,16 @@ class Job < ActiveRecord::Base
       transition :unapproved => :disapproved
     end
 
+    event :open do
+      transition :closed => :approved
+    end
+
     event :close do
       transition :approved => :closed
+    end
+
+    event :reapprove do
+      transition :disapproved => :reapproving
     end
   end
 
@@ -90,22 +105,24 @@ class Job < ActiveRecord::Base
   end
 
   def state_s
+    return "高亮展示中" if highlighted? and opened?
     return "展示中" if opened?
-    return "等待审核" if unapproved?
+    return "重新审核中" if reapproving?
+    return "等待审核中" if unapproved?
     return "审核通过" if approved?
     return "审核不通过" if disapproved?
     return "关闭" if closed?
   end
 
   def font_color
-    return "gray" if unapproved? or closed?
+    return "gray" if unapproved? or closed? or reapproving?
     return "green" if approved?
     return "red" if disapproved?
   end
 
   def highlighted?
     if highlight_start_at and highlight_end_at
-      highlight_start_at < Time.now and Time.now < highlight_end_at
+      [highlight_start_at..highlight_end_at].include?(Time.now)
     else
       false
     end

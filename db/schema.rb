@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100919054652) do
+ActiveRecord::Schema.define(:version => 20100920101213) do
 
   create_table "ad_positions", :force => true do |t|
     t.string   "name"
@@ -190,10 +190,10 @@ ActiveRecord::Schema.define(:version => 20100919054652) do
     t.text     "welfare"
     t.text     "desc"
     t.integer  "salary_range"
-    t.datetime "highlight_start_at"
-    t.datetime "highlight_end_at"
-    t.datetime "start_at"
-    t.datetime "end_at"
+    t.date     "highlight_start_at"
+    t.date     "highlight_end_at"
+    t.date     "start_at"
+    t.date     "end_at"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "company_id"
@@ -247,8 +247,8 @@ ActiveRecord::Schema.define(:version => 20100919054652) do
     t.integer  "company_type"
     t.integer  "company_size"
     t.string   "job_title"
-    t.datetime "start_at"
-    t.datetime "end_at"
+    t.date     "start_at"
+    t.date     "end_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -302,8 +302,8 @@ ActiveRecord::Schema.define(:version => 20100919054652) do
     t.integer  "resume_id"
     t.string   "name"
     t.string   "major"
-    t.datetime "start_at"
-    t.datetime "end_at"
+    t.date     "start_at"
+    t.date     "end_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -71,6 +71,7 @@ Jobware::Application.routes.draw do
     resources :jobs do
       member do
         get :close
+        get :open
       end
     end
     resources :job_applications do

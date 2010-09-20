@@ -53,3 +53,5 @@
 
 <br />
 <%= button_to_function "修改", "$(location).attr('href','#{edit_company_job_path(@job)}')", :class => 'largest right button' %>
+
+<%= button_to_function "返回列表", "$(location).attr('href','#{company_jobs_path}')", :class => 'largest right button small_right_margin' %>
