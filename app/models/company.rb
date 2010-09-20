@@ -56,7 +56,7 @@ class Company < ActiveRecord::Base
   # Company.all.each do |c|
   #   c.logo.reprocess!
   # end
-  has_attached_file :logo, :styles => { :thumb => "200>x80", :fix_height => "283x50>", :title => "980>x100" }, :default_style => :thumb
+  has_attached_file :logo, :styles => { :thumb => "200>x80", :fix_height => "283x50>", :title => "960>x100" }, :default_style => :thumb
   validates_attachment_content_type :logo, :content_type => [%r{image/.*jpg}, %r{image/.*jpeg}, %r{image/.*gif}, %r{image/.*png}], :if => lambda {|obj| obj.logo.size.present? }
   validates_attachment_size :logo, :less_than => 5.megabytes
   validates_attachment_presence :logo
@@ -76,12 +76,12 @@ class Company < ActiveRecord::Base
     update_views_count
     views_count_s
   end
-  
+
   def logo_width
     Paperclip::Geometry.from_file(logo.to_file(:original)).width
   end
-  
+
   def logo_margin
-    (980 - logo_width) / 2
+    (960 - logo_width) / 2
   end
 end

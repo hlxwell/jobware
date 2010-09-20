@@ -1,7 +1,7 @@
 <% title "新建简历" %>
 
 <div class="main">
-  <div class="left" style="width: 330px;">
+  <div class="left" style="width: 310px;">
     <%= jobware_form_for UserSession.new, :as => :user_session, :url => sessions_path, :title => "已经是注册用户" do |f| %>
       <%= render :partial => "sessions/form", :locals => { :f => f } %>
       <%= f.submit "登陆" %>

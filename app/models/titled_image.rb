@@ -30,7 +30,7 @@ class TitledImage < ActiveRecord::Base
     :thumb => "150>x150",
     :popup_preview => "100>x100",
     :slideshow_small => "670>x230",
-    :slideshow => "980>x500",
+    :slideshow => "960>x500",
   }, :default_style => :thumb
 
   validates_attachment_content_type :file, :content_type => [%r{image/.*jpg}, %r{image/.*jpeg}, %r{image/.*gif}, %r{image/.*png}], :if => lambda {|obj| obj.file.size.present? }
