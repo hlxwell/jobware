@@ -2,5 +2,5 @@
 
 <% show_no_record(@jobs) do %>
   <div class="archive-separator"></div>
-  <%= render :partial => "jobs/job", :collection => @jobs %>
+  <%= render :partial => "jobs/job", :collection => @jobs, :locals => {:wide => true} %>
 <% end %>

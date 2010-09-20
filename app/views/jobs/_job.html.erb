@@ -1,3 +1,4 @@
+<% wide ||= false %>
 <div class="post <%= "notice" if job.highlighted? %>">
   <!-- click -->
   <div class="archive-post-date">
@@ -12,7 +13,7 @@
   <% end %>
 
 	<!-- title and company -->
-	<div class="archive-post-title">
+	<div class="<%= wide ? "archive-post-title-wide" : "archive-post-title" %>">
 		<h3><%= link_to job.name, job %></h3>
 		<div class="post-date"><%= link_to job.company.try(:name), job.company %></div>
 		<div class="post-date">薪资：<%= job.salary_range_humanize %></div>
@@ -20,7 +21,7 @@
 
 	<!-- address and date -->
 	<div class="archive-post-address">
-		<h3><%= job.location %></h3>		
+		<h3><%= job.location %></h3>
 		<div class="post-date text-center">发布于 <%= job.start_at.to_s_short_date %></div>
 		<div class="right bordered small_top_margin">还有<b><%= job.deadline %></b>天结束</div>
 	</div>
@@ -28,7 +29,6 @@
 </div>
 
 <div class="archive-separator"></div>
-
 
 <!-- <table>
   <tr>
