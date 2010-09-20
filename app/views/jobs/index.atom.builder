@@ -16,7 +16,7 @@ atom_feed(
     feed.entry(job) do |entry|
       entry.title "#{job.location} - #{job.name} - #{job.company.name}"
       entry.link job_url(job)
-      entry.summary truncate(strip_tags(job.atom_summary), :length => 300)
+      entry.summary truncate(strip_tags(job.atom_content), :length => 300)
       entry.content job.atom_content, :type => 'html'
       entry.tag!('app:edited', job.updated_at)
       entry.category job.category_humanize

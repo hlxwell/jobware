@@ -6,7 +6,7 @@
 		  <% @urgent_jobs.each do |ad| %>
 			<li>			  
 			  <%= link_to ad.name, ad.url, :title => ad.desc %>
-        <!-- <span style="font-weight: bold; float: right;"><%#= ad.location %></span> -->
+        <span style="font-weight: bold; float: right;"><%= ad.location %></span>
 			</li>
 		  <% end %>
 		</ul>

@@ -91,7 +91,7 @@ class Job < ActiveRecord::Base
   def location
     self.location_province + self.location_city
   end
-  
+
   def deadline
     (end_at.to_date - Date.today).to_i
   end
@@ -102,26 +102,6 @@ class Job < ActiveRecord::Base
 
     update_views_count
     views_count_s
-  end
-
-  def atom_summary
-    image = self.company.logo.size.nil? ? "" : "<a href='/companies/#{self.company.id}' target='_blank'><img src='#{self.company.logo.url}'/></a>"
-    "
-    #{image}
-    <br>
-      <h1><a href='/jobs/#{self.to_param}' target='_blank'>#{self.name}</a></h1>
-      公司：<a href='/companies/#{self.company.id}' target='_blank'>#{self.company.name}</a>，
-      薪酬：#{self.salary_range_humanize}，  岗位数：#{self.vacancy}，  类别：#{self.category_humanize}
-    <br>
-      <h3>工作内容：</h3>
-      #{self.content}
-    <br>
-      <h3>岗位需求：</h3>
-      #{self.requirement}
-    <br>
-      <h3>福利待遇：</h3>
-      #{self.welfare}
-    "
   end
 
   def atom_content

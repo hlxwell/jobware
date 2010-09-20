@@ -26,7 +26,8 @@ module BankAccountMethods
   #   end
   # end
 
-  def remains(service_item_id = ServiceItem.money_id)
+  def remains(service_item_id)
+    return 0 if service_item_id.blank?
     transactions.without_cancelled.where(:service_item_id => service_item_id).sum(:amount)
   end
 

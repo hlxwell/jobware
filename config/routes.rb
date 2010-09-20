@@ -78,7 +78,11 @@ Jobware::Application.routes.draw do
     end
     resources :presentations
     resources :products
-    resources :ads
+    resources :ads do
+      collection do
+        get :plans
+      end
+    end
     resources :services do
       member do
         get :buy

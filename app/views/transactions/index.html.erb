@@ -10,7 +10,6 @@
         }
       }
     });
-
   });
 </script>
 
@@ -23,13 +22,12 @@
       <li><a href="?service_item_id=<%= ServiceItem.get_id_by_name("简历高亮") %>"><span>简历高亮消费记录</span></a></li>
     <% elsif current_user_section == "company" %>
       <li><a href="?service_item_id=<%= ServiceItem.money_id %>"><span>现金记录</span></a></li>
-      <li><a href="?service_item_id=<%= ServiceItem.get_id_by_name("岗位发布") %>"><span>岗位发布</span></a></li>
-      <li><a href="?service_item_id=<%= ServiceItem.get_id_by_name("岗位高亮") %>"><span>岗位高亮</span></a></li>
-      <li><a href="?service_item_id=<%= ServiceItem.get_id_by_name("首页头条") %>"><span>首页头条</span></a></li>
-      <li><a href="?service_item_id=<%= ServiceItem.get_id_by_name("推荐岗位") %>"><span>推荐岗位</span></a></li>
-      <li><a href="?service_item_id=<%= ServiceItem.get_id_by_name("急聘") %>"><span>急聘</span></a></li>
-      <li><a href="?service_item_id=<%= ServiceItem.get_id_by_name("推荐公司(右)") %>"><span>推荐公司(右)</span></a></li>
-      <li><a href="?service_item_id=<%= ServiceItem.get_id_by_name("推荐公司(底)") %>"><span>推荐公司(底)</span></a></li>
+      <li><a href="?service_item_id=<%= ServiceItem.job_credit_id %>"><span>岗位发布</span></a></li>
+      <li><a href="?service_item_id=<%= ServiceItem.job_highlight_credit_id %>"><span>岗位高亮</span></a></li>
+      <li><a href="?service_item_id=<%= ServiceItem.slider_ad_credit_id %>"><span>首页头条</span></a></li>
+      <li><a href="?service_item_id=<%= ServiceItem.urgent_job_credit_id %>"><span>急聘</span></a></li>
+      <li><a href="?service_item_id=<%= ServiceItem.famous_company_credit_id %>"><span>知名企业招聘</span></a></li>
+      <li><a href="?service_item_id=<%= ServiceItem.featured_company_credit_id %>"><span>推荐企业</span></a></li>
     <% elsif current_user_section == "partner" %>
       <li><a href="?service_item_id=<%= ServiceItem.money_id %>"><span>现金记录</span></a></li>
     <% end %>

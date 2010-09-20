@@ -18,14 +18,31 @@ class ServiceItem < ActiveRecord::Base
   has_many :service_item_amounts
   has_many :service, :through => :service_item_amounts
 
-  def self.money_id
-    ServiceItem.find_by_name("人民币").try(:id)
+
+  CREDIT_TYPE_HASH = {
+    :money => "人民币",
+    :job_credit => "岗位发布",
+    :urgent_job_credit => "紧急招聘",
+    :job_highlight_credit => "岗位高亮显示",
+    :slider_ad_credit => "首页滚动图片广告",
+    :featured_company_credit => "推荐企业",
+    :famous_company_credit => "知名企业招聘"
+  }
+
+  class << self
+    CREDIT_TYPE_HASH.each do |key, value|
+      define_method("#{key}_id") do |*args|
+        ServiceItem.get_id_by_name(value)
+      end
+    end
   end
-  
-  def is_money?
-    ServiceItem.money_id == self.id
+
+  CREDIT_TYPE_HASH.each do |key, value|
+    define_method("is_#{key}?") do |*args|
+      ServiceItem.send("#{key}_id") == self.id
+    end
   end
-  
+
   def self.get_id_by_name(name)
     ServiceItem.find_by_name(name).try(:id)
   end

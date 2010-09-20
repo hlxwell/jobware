@@ -1,5 +1,11 @@
 <!-- ### highlighted -->
 <div class="post">
+  <!-- click -->
+  <div class="archive-post-date">
+    <div class="archive-post-day"><%= company.views_count_s %></div>
+    <div class="archive-post-month">点击</div>
+  </div>
+
   <!-- logo -->
   <div class="company_logo">
     <%= link_to image_tag(company.logo.url, :class => "aligncenter bordered company_logo"), company %>
@@ -7,10 +13,10 @@
 
 	<!-- title and company -->
 	<div class="archive-post-title">
-		<h3><b>[<%= company.company_type_humanize %></b>] <%= link_to company.name, company %></h3> 
+		<h3><b>[<%= company.company_type_humanize %></b>] <%= link_to company.name, company %></h3>
 		<div class="post-date">
-		  <ul>	  
-		  <% company.jobs.limit(3).each do |job| %>
+		  <ul>
+		  <% company.jobs.opened.limit(3).each do |job| %>
 		    <li><%= link_to job.name, job %></li>
 		  <% end %>
 		  </ul>
@@ -20,7 +26,8 @@
 	<!-- address and date -->
 	<div class="archive-post-address">
 		<h3><%= company.province %> - <%= company.city %></h3>
-		<div class="post-date"><%= company.updated_at.to_s_datetime %></div>
+		<div class="post-date text-center">发布于 <%= company.updated_at.to_s_short_date %></div>
+		<div class="right bordered small_top_margin">共有 <b><%= company.jobs.opened.count %></b> 个岗位</div>
 	</div>
 	<div class="clearer">&nbsp;</div>
 </div>

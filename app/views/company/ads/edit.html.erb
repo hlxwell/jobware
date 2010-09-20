@@ -1,6 +1,6 @@
-<% title "修改广告" %>
+<% title "修改“#{@ad.display_type_humanize}”广告" %>
 
-<%= jobware_form_for @ad, :url => company_ad_path(@ad), :title => "修改广告", :html => {:multipart => true} do |f| %>
-  <%= render :partial => 'form', :locals => {:f => f} %>
+<%= jobware_form_for @ad, :url => company_ad_path(@ad), :title => "修改“#{@ad.display_type_humanize}”广告", :html => {:multipart => true} do |f| %>
+  <%= render :partial => @template, :locals => {:f => f} %>
   <%= f.submit "更新", :class => "right button" %>
 <% end %>

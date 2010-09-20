@@ -8,8 +8,17 @@ class Company::AdsController < Company::BaseController
   def show
   end
 
+  def plans
+  end
+
   def new
-    @ad = current_user.company.ads.build
+    if params[:type].present? and %w{slider_ad urgent_job famous_company featured_company}.include?(params[:type])
+      @ad = current_user.company.ads.build(:display_type => eval("AdPositionType::#{params[:type].upcase}"))
+      @template = "company/ads/forms/#{params[:type]}"
+    else
+      @ad = current_user.company.ads.build
+      @template = "company/ads/forms/form"
+    end
   end
 
   def create
@@ -18,12 +27,14 @@ class Company::AdsController < Company::BaseController
     if @ad.save
       redirect_to company_ad_path(@ad), :notice => "广告创建成功。"
     else
+      @template = params[:type].present? ? "company/ads/forms/#{params[:type]}" : "company/ads/forms/form"
       render :action => 'new'
     end
   end
 
   def edit
     flash[:notice] = "不能修改展示中的广告，如需修改请联系我们。" if @ad.active?
+    @template = "company/ads/forms/#{@ad.display_type_key}"
   end
 
   def update

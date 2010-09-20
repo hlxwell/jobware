@@ -10,7 +10,7 @@
       <ul class="nice-list">
         <li>
           <div class="left"><%= link_to "工作", company_jobs_path %></div>
-          <div class="right"><%= link_to "发布", new_company_job_path %></div>
+          <div class="right"><%= link_to "发布", new_company_job_path %> (剩<%= current_user.remains(ServiceItem.job_credit_id) %>点)</div>
           <div class="clearer">&nbsp;</div>
         </li>
         <li>
@@ -41,12 +41,12 @@
       <ul class="nice-list">
         <li>
           <div class="left"><%= link_to "广告管理", company_ads_path %></div>
-          <div class="right"><%= link_to "发布", new_company_ad_path %></div>
+          <div class="right"><%= link_to "发布", plans_company_ads_path %></div>
           <div class="clearer">&nbsp;</div>
         </li>
         <li>
           <div class="left"><%= link_to "高级服务", company_services_path %></div>
-          <div class="right"><%= link_to "已购买", bought_company_services_path %></div>
+          <div class="right"><%= link_to "购买列表", bought_company_services_path %></div>
           <div class="clearer">&nbsp;</div>
         </li>
         <li>

@@ -32,9 +32,9 @@ end
 
 class AdPositionType < EnumerateIt::Base
   associate_values(
-    :slider_ad        => [1, '首页滚动图片广告'],
+    :slider_ad        => [1, '首页滚动图片'],
     :urgent_job       => [2, '紧急招聘'],
-    :featured_job     => [3, '知名企业招聘'],
+    :famous_company   => [3, '知名企业招聘'],
     :featured_company => [4, '推荐企业']
   )
 end

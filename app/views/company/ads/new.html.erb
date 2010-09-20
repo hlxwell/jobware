@@ -1,6 +1,7 @@
-<% title "发布广告" %>
+<% title "发布 “#{@ad.display_type_humanize}” 广告" %>
 
-<%= jobware_form_for @ad, :url => company_ads_path, :title => "发布广告", :html => {:multipart => true} do |f| %>
-  <%= render :partial => 'form', :locals => {:f => f} %>
+<%= jobware_form_for @ad, :url => company_ads_path(:type => params[:type]), :title => "发布 “#{@ad.display_type_humanize}” 广告", :html => {:multipart => true} do |f| %>
+  <%= render :partial => @template, :locals => {:f => f} %>
+  <%= f.hidden_field :display_type %>
   <%= f.submit "发布", :class => "right button" %>
 <% end %>

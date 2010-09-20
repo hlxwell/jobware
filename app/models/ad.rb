@@ -35,6 +35,9 @@ class Ad < ActiveRecord::Base
     result
   end
 
+  DISPLAY_TYPE_KEYS = {}
+  AdPositionType.enumeration.to_a.map { |array| DISPLAY_TYPE_KEYS[array[1][0]] = array[0].to_s }
+
   STATE = {
     'active' => "激活",
     'expired' => "过期",
@@ -55,11 +58,15 @@ class Ad < ActiveRecord::Base
 
   validates_attachment_content_type :image, :content_type => [%r{image/.*jpg}, %r{image/.*jpeg}, %r{image/.*gif}, %r{image/.*png}], :if => lambda {|obj| obj.image.size.present? }
   validates_attachment_size :image, :less_than => 1.megabytes, :message => "文件尺寸不能大于1M。",:if => lambda {|obj| obj.image.size.present? }
-  validates_presence_of :display_type, :period # :name, :url
+
+  validates_presence_of :display_type, :period
+  validates_presence_of :name, :province, :city, :url, :if => Proc.new { |ad| ad.display_type == AdPositionType::URGENT_JOB }
+  validates_presence_of :name, :url, :if => Proc.new { |ad| [AdPositionType::SLIDER_AD, AdPositionType::FEATURED_COMPANY].include?(ad.display_type) }
+  validates_attachment_presence :image, :message => "必须上传图片。",:if => lambda {|ad| [AdPositionType::SLIDER_AD, AdPositionType::FEATURED_COMPANY].include?(ad.display_type) }
 
   scope :slider_ads, where(:display_type => AdPositionType::SLIDER_AD).where("? between start_at and end_at", Time.now)
-  scope :featured_jobs, where(:display_type => AdPositionType::FEATURED_JOB).where("? between start_at and end_at", Time.now)
   scope :urgent_jobs, where(:display_type => AdPositionType::URGENT_JOB).where("? between start_at and end_at", Time.now)
+  scope :famous_companies, where(:display_type => AdPositionType::FAMOUS_COMPANY).where("? between start_at and end_at", Time.now)
   scope :featured_companies, where(:display_type => AdPositionType::FEATURED_COMPANY).where("? between start_at and end_at", Time.now)
 
   state_machine :initial => :unactive do
@@ -74,6 +81,10 @@ class Ad < ActiveRecord::Base
 
   before_save do
     errors.add :end_at, '展示结束时间必需大于展示开始时间。' if self.start_at and self.end_at and self.start_at > self.end_at
+  end
+
+  def location
+    self.province + self.city
   end
 
   def preview_partial_name
@@ -107,5 +118,9 @@ class Ad < ActiveRecord::Base
 
   def move_higher
     self.increment!(:position)
+  end
+
+  def display_type_key
+    DISPLAY_TYPE_KEYS[self.display_type]
   end
 end
