@@ -5,12 +5,12 @@
     <% show_no_record(companies) do %>
       <% companies.each_with_index do |company, i| %>
       <div class="top-page-job <%= (i+1)%3 == 0 ? "right" : "left" %>">
-        <div class="company-logo text-center"><%= link_to image_tag(company.logo.url(:fix_height)), company, :title => company.desc %></div>
+        <div class="company-logo text-center"><%= link_to image_tag(company.logo.url(:fix_height)), company, :title => raw(company.name) %></div>
         <div class="company-jobs">
-          <h5><%= link_to company.name, company, :title => company.desc %></h5>
+          <h5><%= link_to company.name, company, :title => company.name %></h5>
             <% company.jobs.opened.limit(4).each do |job| %>
             <div>
-              <div class="left" style="margin: 0"><%= link_to truncate(job.name, :length => 20) , job, :title => job.desc, :class => "quiet" %></div>
+              <div class="left" style="margin: 0"><%= link_to truncate(job.name, :length => 26) , job, :title => job.name, :class => "quiet" %></div>
     			    <strong class="quiet right" style="margin: 0"><%= job.location %></strong>
     			  </div>
     			  <div class="clearer">&nbsp;</div>

@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
 
   def current_partner_site
     @current_partner_site = PartnerSiteStyle.find_by_subdomain(request.subdomain)
-    @current_partner_site = nil unless @current_partner_site.partner.approved?
+    @current_partner_site = nil if @current_partner_site.blank? or !@current_partner_site.partner.approved?
     @current_partner_site
   end
 
