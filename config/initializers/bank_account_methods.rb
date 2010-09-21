@@ -1,15 +1,3 @@
-# == Schema Information
-# Schema version: 20100904140030
-#
-# Table name: bank_accounts
-#
-#  id         :integer(4)      not null, primary key
-#  user_id    :integer(4)
-#  name       :string(255)
-#  created_at :datetime
-#  updated_at :datetime
-#
-
 module BankAccountMethods
   def self.included mod
     # mod.extend ClassMethods
@@ -62,10 +50,10 @@ module BankAccountMethods
 
     case operation
     when "charge", "refund"
-      positive_transactions.create! option.merge(:amount => amount, :to => "account")
+      positive_transactions.create! option.merge(:amount => amount, :to => "用户账户")
     when "pay", "withdraw"
       raise CreditNotEnoughError.new if remains(option[:service_item_id]) < amount.abs
-      negative_transactions.create! option.merge(:amount => - amount, :from => "account")
+      negative_transactions.create! option.merge(:amount => - amount, :from => "用户账户")
     else
       raise "unknown operation"
     end

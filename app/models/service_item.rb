@@ -18,7 +18,6 @@ class ServiceItem < ActiveRecord::Base
   has_many :service_item_amounts
   has_many :service, :through => :service_item_amounts
 
-
   CREDIT_TYPE_HASH = {
     :money => "人民币",
     :job_credit => "岗位发布",

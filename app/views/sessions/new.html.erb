@@ -1,14 +1,14 @@
 <% title "用户登陆" %>
 
 <div class="main">
-  <div class='left' style="width: 310px;">
+  <div class='left' style="width: 325px;">
     <%= jobware_form_for UserSession.new, :as => :user_session, :url => sessions_path, :title => "登陆" do |f| %>
         <%= render :partial => "sessions/form", :locals => { :f => f } %>
         <%= f.submit "登陆" %>
     <% end %>
   </div>
 
-  <div class='left' style="width: 605px; margin-left: 1em;">
+  <div class='left' style="width: 590px; margin-left: 1em;">
 
     <fieldset style="width: 100%;" class="big">
       <legend>企业注册</legend>

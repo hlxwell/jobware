@@ -25,13 +25,12 @@ class CompaniesController < ApplicationController
   def new
     @company = Company.new
     @company.build_user
-    @company.jobs.build
   end
 
   def create
     @company = Company.new(params[:company])
     @company.user = current_user if current_user
-    @company.partner = current_partner
+    @company.partner = current_partner # referral partner
 
     if @company.save
       redirect_to company_job_path(@company.jobs.first), :notice => "岗位创建成功。"
