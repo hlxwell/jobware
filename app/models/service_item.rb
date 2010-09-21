@@ -22,8 +22,8 @@ class ServiceItem < ActiveRecord::Base
   CREDIT_TYPE_HASH = {
     :money => "人民币",
     :job_credit => "岗位发布",
-    :urgent_job_credit => "紧急招聘",
     :job_highlight_credit => "岗位高亮显示",
+    :urgent_job_credit => "紧急招聘",
     :slider_ad_credit => "首页滚动图片广告",
     :featured_company_credit => "推荐企业",
     :famous_company_credit => "知名企业招聘"

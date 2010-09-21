@@ -31,7 +31,7 @@ class Service < ActiveRecord::Base
 
     ### charge credits to user account
     self.service_item_amounts.each do |item_amount|
-      user.charge! item_amount.amount, :service_item_id => item_amount.service_item
+      user.charge! item_amount.amount, :service_item_id => item_amount.service_item_id
     end
   end
 end

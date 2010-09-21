@@ -19,6 +19,6 @@
 </table>
 
 <br />
-<h3 class="right">当前余额：<%= format_price current_user.remains %></h3>
+<h3 class="right">当前余额：<%= format_price current_user.remains(ServiceItem.money_id) %></h3>
 <div class="clearer">&nbsp;</div>
 <%= button_to_function "#{format_price @service.price} - 购买", "$(location).attr('href','#{send("buy_#{current_user_section}_service_path", @service)}')", :class => 'largest right button', :confirm => "确定购买？" %>

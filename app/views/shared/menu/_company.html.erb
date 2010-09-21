@@ -10,7 +10,9 @@
       <ul class="nice-list">
         <li>
           <div class="left"><%= link_to "工作", company_jobs_path %> <small class="quiet">(<%= current_user.company.jobs.opened.count %>/<%= current_user.company.jobs.count %> 个展示中)</small></div>
-          <div class="right"><%= link_to "发布", new_company_job_path %> <small class="quiet">(剩 <%= current_user.remains(ServiceItem.job_credit_id) %> 点)</small></div>
+          <% remained_job_credits = current_user.remains(ServiceItem.job_credit_id) %>
+          <div class="right">
+            <%= link_to "发布", remained_job_credits > 0 ? new_company_job_path : "javascript:alert('没有岗位发布点数，请购买后再发布。');" %> <small class="quiet">(剩 <%= remained_job_credits %> 点)</small></div>
           <div class="clearer">&nbsp;</div>
         </li>
         <li>
@@ -39,7 +41,7 @@
   </div>
 
   <div class="section network-section">
-    <div class="section-title">增值服务</div>
+    <div class="section-title">企业服务</div>
     <div class="section-content">
       <ul class="nice-list">
         <li>
@@ -51,7 +53,7 @@
           <div class="clearer">&nbsp;</div>
         </li>
         <li>
-          <div class="left"><%= link_to "高级服务", company_services_path %></div>
+          <div class="left"><%= link_to "增值服务", company_services_path %></div>
           <div class="right"><%= link_to "购买列表", bought_company_services_path %></div>
           <div class="clearer">&nbsp;</div>
         </li>
