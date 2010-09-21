@@ -84,7 +84,7 @@ Language:
 
 Partner:
   fields:
-    default: user_id, name, url, contact_name, phone_number, site_size, user
+    default: user_id, name, url, contact_name, phone_number, site_size, state, user
     form: user_id, name, url, contact_name, phone_number, site_size, desc, user
   order_by:
   relationships: user

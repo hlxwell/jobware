@@ -68,6 +68,7 @@ class Ad < ActiveRecord::Base
   scope :urgent_jobs, where(:display_type => AdPositionType::URGENT_JOB).where("? between start_at and end_at", Time.now)
   scope :famous_companies, where(:display_type => AdPositionType::FAMOUS_COMPANY).where("? between start_at and end_at", Time.now)
   scope :featured_companies, where(:display_type => AdPositionType::FEATURED_COMPANY).where("? between start_at and end_at", Time.now)
+  scope :opened, where("? BETWEEN start_at AND end_at AND state=?", Time.now, :active)
 
   state_machine :initial => :unactive do
     event :active do

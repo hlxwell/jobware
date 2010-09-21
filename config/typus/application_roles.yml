@@ -11,7 +11,7 @@ admin:
   Job: create, read, update, delete, approve, disapprove
   JobApplication: create, read, update, delete
   Language: create, read, update, delete
-  Partner: create, read, update, delete
+  Partner: create, read, update, delete, approve, disapprove
   Presentation: create, read, update, delete
   PreviousJob: create, read, update, delete
   Product: create, read, update, delete

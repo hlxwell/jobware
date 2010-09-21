@@ -23,10 +23,12 @@ class ApplicationController < ActionController::Base
 
   def current_partner_site
     @current_partner_site = PartnerSiteStyle.find_by_subdomain(request.subdomain)
+    @current_partner_site = nil unless @current_partner_site.partner.approved?
+    @current_partner_site
   end
 
   def current_partner
-    current_partner_site.try(:partner)
+     @current_partner_site.try(:partner)
   end
 
   def partner_site_or_main_site
@@ -68,6 +70,13 @@ class ApplicationController < ActionController::Base
   end
 
 private
+
+  def approved_partner_required
+    unless current_user.partner.approved?
+      flash[:error] = "你的帐号还没有验证通过，谢谢您的耐心等待。"
+      redirect_to login_path
+    end
+  end
 
   ### define - xxx_login_required and no_xxx_login_required
   {:company => "公司", :jobseeker => "应聘者", :partner => "合作站"}.each do |key, value|

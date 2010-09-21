@@ -27,7 +27,7 @@
           <div class="left"><a href="#">简历库</a></div>
           <div class="right">搜索 | 收藏</div>
           <div class="clearer">&nbsp;</div>
-        </li> 
+        </li>
         -->
         <li>
           <div class="left"><%= link_to "公司信息", company_company_path %></div>
@@ -43,7 +43,10 @@
     <div class="section-content">
       <ul class="nice-list">
         <li>
-          <div class="left"><%= link_to "广告管理", company_ads_path %></div>
+          <div class="left">
+            <%= link_to "广告管理", company_ads_path %>
+            <small class="quiet">(<%= current_user.company.ads.opened.count %>/<%= current_user.company.ads.count %> 展示中)</small>
+          </div>
           <div class="right"><%= link_to "发布", plans_company_ads_path %></div>
           <div class="clearer">&nbsp;</div>
         </li>
