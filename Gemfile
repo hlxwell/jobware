@@ -5,10 +5,6 @@ gem 'mysql'
 gem 'nifty-generators'
 gem 'authlogic', :git => 'http://github.com/binarylogic/authlogic.git'
 gem 'ckeditor', :git => 'http://github.com/galetahub/rails-ckeditor.git', :branch => 'rails3'
-# gem 'formtastic', :git => "http://github.com/justinfrench/formtastic.git", :branch => "rails3"
-# gem 'tabletastic'
-# gem 'cancan'
-# gem 'acts-as-taggable-on'
 gem 'navigasmic'
 gem 'capistrano'
 gem 'capistrano-ext'
@@ -25,6 +21,11 @@ gem "chinese_permalink"
 gem "activemerchant", :require => "active_merchant"
 gem "activemerchant_patch_for_china"
 gem 'ruby-graphviz', :require => 'graphviz'
+
+# gem 'formtastic', :git => "http://github.com/justinfrench/formtastic.git", :branch => "rails3"
+# gem 'tabletastic'
+# gem 'cancan'
+# gem 'acts-as-taggable-on'
 
 group :development do
   gem "rails3-generators"
