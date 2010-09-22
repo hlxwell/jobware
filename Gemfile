@@ -21,10 +21,10 @@ gem "chinese_permalink"
 gem "activemerchant", :require => "active_merchant"
 gem "activemerchant_patch_for_china"
 gem 'ruby-graphviz', :require => 'graphviz'
+gem 'cancan'
 
 # gem 'formtastic', :git => "http://github.com/justinfrench/formtastic.git", :branch => "rails3"
 # gem 'tabletastic'
-# gem 'cancan'
 # gem 'acts-as-taggable-on'
 
 group :development do
