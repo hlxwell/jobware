@@ -72,6 +72,7 @@ GEM
     braintree (2.6.0)
       builder
     builder (2.1.2)
+    cancan (1.3.4)
     capistrano (2.5.19)
       highline
       net-scp (>= 1.0.0)
@@ -156,6 +157,7 @@ DEPENDENCIES
   annotate-models
   authlogic!
   awesome_print
+  cancan
   capistrano
   capistrano-ext
   chinese_permalink

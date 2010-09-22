@@ -66,6 +66,7 @@ class Job < ActiveRecord::Base
     indexes requirement
     indexes company(:name), :as => :company_name, :sortable => true
     has company_id, created_at, updated_at
+    where "#{Date.today} BETWEEN start_at AND end_at AND state='opened'"
   end
 
   state_machine :state, :initial => :unapproved do
