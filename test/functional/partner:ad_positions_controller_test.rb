@@ -1,4 +1,4 @@
-require 'test_helper'
+require File.join(File.dirname(__FILE__), '..', 'test_helper')
 
 class Partner:adPositionsControllerTest < ActionController::TestCase
   def test_index

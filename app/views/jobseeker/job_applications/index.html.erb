@@ -1,13 +1,15 @@
 <% title "应聘记录" %>
 
+<h3>应聘记录</h3>
+<div class="archive-separator"></div>
 <% show_no_record(@applications) do %>
   <table class="data-table">
   	<tr>
   	  <th>工作名</th>
-  		<th>所在省市</th>
-  		<th>所用求职信</th>
-  		<th>应聘时间</th>
-  		<th>公司反馈</th>
+  		<th width="50">所在省市</th>
+  		<th width="60">所用求职信</th>
+  		<th width="130">应聘时间</th>
+  		<th width="50">公司反馈</th>
   	</tr>
   	<% @applications.each do |app| %>
   	<% job = app.job %>

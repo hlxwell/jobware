@@ -1,13 +1,13 @@
 GIT
   remote: http://github.com/binarylogic/authlogic.git
-  revision: 6e2745b
+  revision: 66ed795
   specs:
     authlogic (2.1.6)
       activesupport
 
 GIT
   remote: http://github.com/freelancing-god/thinking-sphinx.git
-  revision: 38362ac
+  revision: 644f57e
   branch: rails3
   specs:
     thinking-sphinx (2.0.0.rc2)
@@ -16,24 +16,15 @@ GIT
 
 GIT
   remote: http://github.com/galetahub/rails-ckeditor.git
-  revision: 71347cd
+  revision: 9fb3c74
   branch: rails3
   specs:
-    ckeditor (3.4.0.pre)
-
-GIT
-  remote: http://github.com/justinfrench/formtastic.git
-  revision: eeba8d4
-  branch: rails3
-  specs:
-    formtastic (1.1.0.beta)
-      actionpack (>= 2.3.0)
-      activesupport (>= 2.3.0)
-      i18n (>= 0.4.0)
+    ckeditor (3.4.1.pre)
+      mime-types (>= 1.16)
 
 GIT
   remote: http://github.com/rails/exception_notification.git
-  revision: 48cf433
+  revision: 192a49a
   branch: master
   specs:
     exception_notification (1.0.0)
@@ -41,7 +32,6 @@ GIT
 GEM
   remote: http://rubygems.org/
   specs:
-    aasm (2.1.7)
     abstract (1.0.0)
     actionmailer (3.0.0)
       actionpack (= 3.0.0)
@@ -56,7 +46,7 @@ GEM
       rack-mount (~> 0.6.12)
       rack-test (~> 0.5.4)
       tzinfo (~> 0.3.23)
-    activemerchant (1.7.2)
+    activemerchant (1.7.3)
       activesupport (>= 2.3.2)
       braintree (>= 2.0.0)
       builder (>= 2.0.0)
@@ -75,15 +65,13 @@ GEM
       activemodel (= 3.0.0)
       activesupport (= 3.0.0)
     activesupport (3.0.0)
-    acts-as-taggable-on (2.0.6)
     annotate-models (1.0.4)
     arel (1.0.1)
       activesupport (~> 3.0.0)
     awesome_print (0.2.1)
-    braintree (2.5.2)
+    braintree (2.6.0)
       builder
     builder (2.1.2)
-    cancan (1.3.3)
     capistrano (2.5.19)
       highline
       net-scp (>= 1.0.0)
@@ -103,7 +91,7 @@ GEM
     highline (1.6.1)
     i18n (0.4.1)
     json (1.4.6)
-    mail (2.2.5)
+    mail (2.2.6.1)
       activesupport (>= 2.3.6)
       mime-types
       treetop (>= 1.4.5)
@@ -112,7 +100,7 @@ GEM
       rake
     mysql (2.8.1)
     navigasmic (0.4.1)
-    net-scp (1.0.3)
+    net-scp (1.0.4)
       net-ssh (>= 1.99.1)
     net-sftp (2.0.5)
       net-ssh (>= 2.0.9)
@@ -125,7 +113,7 @@ GEM
       activesupport
     polyglot (0.3.1)
     rack (1.2.1)
-    rack-mount (0.6.12)
+    rack-mount (0.6.13)
       rack (>= 1.0.0)
     rack-test (0.5.4)
       rack (>= 1.0)
@@ -145,14 +133,14 @@ GEM
       thor (~> 0.14.0)
     rake (0.8.7)
     riddle (1.1.0)
+    ruby-graphviz (0.9.17)
     shoulda (2.11.3)
     sishen-rtranslate (1.4)
       activesupport (>= 2.2.0)
       json (>= 1.1.3)
     state_machine (0.9.4)
-    tabletastic (0.1.3)
     test_benchmarker (1.2.1)
-    thor (0.14.0)
+    thor (0.14.1)
     timecop (0.3.5)
     treetop (1.4.8)
       polyglot (>= 0.3.1)
@@ -163,14 +151,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  aasm
   activemerchant
   activemerchant_patch_for_china
-  acts-as-taggable-on
   annotate-models
   authlogic!
   awesome_print
-  cancan
   capistrano
   capistrano-ext
   chinese_permalink
@@ -180,7 +165,6 @@ DEPENDENCIES
   factory_girl
   fakeweb
   fastercsv
-  formtastic!
   mocha
   mysql
   navigasmic
@@ -189,9 +173,9 @@ DEPENDENCIES
   rack-test
   rails (= 3.0.0)
   rails3-generators
+  ruby-graphviz
   shoulda
   state_machine
-  tabletastic
   test_benchmarker
   thinking-sphinx!
   timecop

@@ -3,6 +3,8 @@ require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 require 'shoulda'
 require 'factory_girl'
+require 'pp'
+
 Factory.definition_file_paths = [ File.join(Rails.root, 'test', 'factories') ]
 Factory.find_definitions
 

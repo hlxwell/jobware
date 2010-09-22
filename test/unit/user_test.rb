@@ -13,6 +13,11 @@ class UserTest < ActiveSupport::TestCase
       assert User.new(incorrect_hash).invalid?
     end
 
+    should "be able to save" do
+      u = Factory.build(:user)
+      assert u.valid?
+    end
+
     context "after save" do
       setup do
       end

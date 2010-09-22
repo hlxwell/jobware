@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20100825101513
+# Schema version: 20100921080601
 #
 # Table name: previous_jobs
 #
@@ -9,8 +9,8 @@
 #  company_type :integer(4)
 #  company_size :integer(4)
 #  job_title    :string(255)
-#  start_at     :datetime
-#  end_at       :datetime
+#  start_at     :date
+#  end_at       :date
 #  created_at   :datetime
 #  updated_at   :datetime
 #

@@ -25,8 +25,6 @@
 #
 
 class Ad < ActiveRecord::Base
-  include TestExpirationMethods
-
   default_scope order("position desc, created_at desc")
 
   DISPLAY_TYPE = AdPositionType.enumeration.values.insert(0, nil).inject do |result, array|
@@ -39,14 +37,17 @@ class Ad < ActiveRecord::Base
   AdPositionType.enumeration.to_a.map { |array| DISPLAY_TYPE_KEYS[array[1][0]] = array[0].to_s }
 
   STATE = {
-    'active' => "激活",
-    'expired' => "过期",
-    'unactive' => "未激活"
+    'closed' => "过期",
+    'opened' => "展示中",
+    'rejected' => "被拒绝",
+    'unapproved' => "未支付",
+    'approving' => "等待审核中"
   }
 
   has_enumeration_for :display_type, :with => AdPositionType
 
   belongs_to :company
+  has_one :user, :through => :company
 
   has_attached_file :image, :styles => {
     :slideshow => "670x250#",
@@ -64,24 +65,64 @@ class Ad < ActiveRecord::Base
   validates_presence_of :name, :url, :if => Proc.new { |ad| [AdPositionType::SLIDER_AD, AdPositionType::FEATURED_COMPANY].include?(ad.display_type) }
   validates_attachment_presence :image, :message => "必须上传图片。",:if => lambda {|ad| [AdPositionType::SLIDER_AD, AdPositionType::FEATURED_COMPANY].include?(ad.display_type) }
 
-  scope :slider_ads, where(:display_type => AdPositionType::SLIDER_AD).where("? between start_at and end_at", Time.now)
-  scope :urgent_jobs, where(:display_type => AdPositionType::URGENT_JOB).where("? between start_at and end_at", Time.now)
-  scope :famous_companies, where(:display_type => AdPositionType::FAMOUS_COMPANY).where("? between start_at and end_at", Time.now)
-  scope :featured_companies, where(:display_type => AdPositionType::FEATURED_COMPANY).where("? between start_at and end_at", Time.now)
-  scope :opened, where("? BETWEEN start_at AND end_at AND state=?", Time.now, :active)
-
-  state_machine :initial => :unactive do
-    event :active do
-      transition :unactive => :active
-    end
-
-    event :expire do
-      transition :active => :expired
-    end
-  end
+  scope :slider_ads, where(:display_type => AdPositionType::SLIDER_AD)
+  scope :urgent_jobs, where(:display_type => AdPositionType::URGENT_JOB)
+  scope :famous_companies, where(:display_type => AdPositionType::FAMOUS_COMPANY)
+  scope :featured_companies, where(:display_type => AdPositionType::FEATURED_COMPANY)
+  scope :opened, where("? BETWEEN start_at AND end_at AND state=?", Date.today, :opened)
 
   before_save do
     errors.add :end_at, '展示结束时间必需大于展示开始时间。' if self.start_at and self.end_at and self.start_at > self.end_at
+  end
+
+  state_machine :initial => :unapproved do
+    after_transition :on => :want_to_show do |ad|
+      ad.pay_for_active
+    end
+
+    event :want_to_show do
+      transition :unapproved => :approving, :if => :company_has_enough_credit?
+    end
+
+    event :approve do
+      transition :approving => :opened
+    end
+
+    event :close do
+      transition any => :closed
+    end
+
+    event :reject do
+      transition any => :rejected
+    end
+  end
+
+  def pay_for_active
+    Job.transaction do
+      self.set_available_time
+      self.user.pay!(1, :service_item_id => ServiceItem.send("#{self.display_type_key}_credit_id"), :to => "发布广告##{self.id}")
+    end
+  end
+
+  def set_available_time
+    self.start_at = Date.today
+    self.end_at = 1.month.since.to_date
+    self.save
+  end
+
+  def company_has_enough_credit?
+    return false if self.user.remains(ServiceItem.send("#{self.display_type_key}_credit_id")) <= 0
+    return true
+  end
+
+  def available?
+    return false if start_at.blank? or end_at.blank?
+    if (start_at...end_at).include?(Date.today)
+      return true
+    else
+      self.close if self.opened?
+      return false
+    end
   end
 
   def location
@@ -96,18 +137,19 @@ class Ad < ActiveRecord::Base
   end
 
   def display_state
-    if expired?(start_at, end_at)
-      self.expire! if state != 'expired'
-      return "过期"
-    end
+    return "已过期" unless self.available?
 
     case state
-    when 'expired'
-      "过期"
-    when 'unactive'
-      "未展示"
-    when 'active'
+    when 'unapproved'
+      "未支付"
+    when 'approving'
+      "等待审核中"
+    when 'rejected'
+      "被拒绝"
+    when 'opened'
       "展示中"
+    when 'closed'
+      "已过期"
     else
       "不明"
     end

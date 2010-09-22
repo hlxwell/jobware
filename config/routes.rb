@@ -68,12 +68,15 @@ Jobware::Application.routes.draw do
     resources :transactions
     resources :starred_resumes
     resource :company
+
     resources :jobs do
       member do
         get :close
         get :open
+        get :reactive
       end
     end
+
     resources :job_applications do
       member do
         post :star
@@ -81,13 +84,20 @@ Jobware::Application.routes.draw do
         put :star
       end
     end
+
     resources :presentations
     resources :products
+
     resources :ads do
+      member do
+        get :want_to_show
+      end
+
       collection do
         get :plans
       end
     end
+
     resources :services do
       member do
         get :buy

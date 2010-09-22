@@ -1,9 +1,9 @@
 <div class="section network-section left" style="width: 350px">
 	<div class="section-title">紧急招聘</div>
 	<div class="section-content">
-	  <% show_no_record(@urgent_jobs = Ad.urgent_jobs) do %>
+	  <% show_no_record(urgent_jobs = Ad.urgent_jobs.opened) do %>
 		<ul class="nice-list">
-		  <% @urgent_jobs.each do |ad| %>
+		  <% urgent_jobs.each do |ad| %>
 			<li>
 			  <%= link_to ad.name, ad.url, :title => ad.desc %>
         <span style="font-weight: bold; float: right;"><%= ad.location %></span>
@@ -17,7 +17,7 @@
 <div class="section network-section right" style="width: 600px">
 	<div class="section-title">推荐企业</div>
 	<div class="section-content">
-	  <% companies = Ad.featured_companies.limit(3) %>
+	  <% companies = Ad.featured_companies.opened.limit(3) %>
 	  <% show_no_record(companies) do %>
   	<table class="data-table">
   		<tr>

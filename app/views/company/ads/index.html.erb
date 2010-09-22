@@ -6,11 +6,11 @@
 <% show_no_record(@ads) do %>
 <table class="data-table">
 	<tr>
-	  <th>类型</th>
+	  <th width="80">类型</th>
 	  <th>名称</th>
-		<th>展示时间范围</th>
-		<th>状态</th>
-		<th>操作</th>
+		<th width="50">展示时间</th>
+		<th width="60">状态</th>
+		<th width="100">操作</th>
 	</tr>
 	<% @ads.each do |ad| %>
 	<tr class="even">
@@ -19,13 +19,14 @@
 		<td><%= ad.period %> 周</td>
 		<td><%= ad.display_state %></td>
 		<td>
-		  <% if ad.active? %>
-		    <%= link_to "修改", "#", :onclick => "alert('展示中的广告不能修改。')", :class => "quiet" %>
-		    -
-		    <%= link_to "删除", "#", :onclick => "alert('展示中的广告不能被删除。')", :class => "quiet" %>
+		  <% if ad.opened? %>
+		    <%= link_to "修改", "#", :onclick => "alert('展示中的广告不能被修改，若需改动请联系我们。')", :class => "quiet" %>
+		    <%= link_to "删除", "#", :onclick => "alert('展示中的广告不能被删除，若需删除请联系我们。')", :class => "quiet" %>
+		  <% elsif ad.approving? %>
+  	    <%= link_to "修改", edit_company_ad_path(ad) %>
 		  <% else %>
+		    <%= link_to "激活", want_to_show_company_ad_path(ad), :confirm => "激活需要扣除1点#{ad.display_type_humanize}点数，是否继续？" %>
 		    <%= link_to "修改", edit_company_ad_path(ad) %>
-		    -
 		    <%= link_to "删除", company_ad_path(ad), :method => :delete, :confirm => "是否确定删除？" %>
 		  <% end %>
 		</td>

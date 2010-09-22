@@ -8,8 +8,8 @@ class Admin::PartnersController < Admin::ResourcesController
     end
   end
 
-  def disapprove
-    if get_object.disapprove
+  def reject
+    if get_object.reject
       redirect_to :back, :notice => "审核不通过。"
     else
       redirect_to :back, :notice => "拒绝审核出错。"

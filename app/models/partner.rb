@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20100902074625
+# Schema version: 20100921080601
 #
 # Table name: partners
 #
@@ -14,6 +14,7 @@
 #  created_at   :datetime
 #  updated_at   :datetime
 #  bank_info    :text
+#  state        :string(255)
 #
 
 class Partner < ActiveRecord::Base

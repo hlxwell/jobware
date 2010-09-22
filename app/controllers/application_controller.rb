@@ -73,7 +73,7 @@ private
 
   def approved_partner_required
     unless current_user.partner.approved?
-      flash[:error] = "你的帐号还没有验证通过，谢谢您的耐心等待。"
+      flash[:error] = "你的合作站信息还在验证中，谢谢您的耐心等待。"
       redirect_to login_path
     end
   end

@@ -1,7 +1,7 @@
 <% title "广告管理 - #{@ad.name}" %>
 
 <table class="data-table top-vlign">
-  <% if @ad.active? and @ad.start_at and @ad.end_at %>
+  <% if @ad.opened? and @ad.start_at and @ad.end_at %>
 	<tr>
 	  <th>展示时间</th>
 		<td><%= @ad.start_at.to_s_date %> - <%= @ad.end_at.to_s_date %></td>
@@ -12,8 +12,12 @@
 		<td><%= @ad.display_type_humanize %></td>
 	</tr>
 	<tr>
-	  <th width="50px">广告名</th>
+	  <th>广告名</th>
 		<td><%= @ad.name %></td>
+	</tr>
+	<tr>
+	  <th>地区</th>
+		<td><%= @ad.location %></td>
 	</tr>
 	<tr>
 	  <th>广告内容</th>
@@ -42,4 +46,4 @@
 <%= render "company/ads/preview/#{@ad.preview_partial_name}", :ad => @ad %>
 
 <div class="clearer">&nbsp;</div><br>
-<%= button_to_function "修改", "$(location).attr('href','#{edit_company_ad_path(@ad)}')", :class => 'largest right button' unless @ad.active? %>
+<%= button_to_function "修改", "$(location).attr('href','#{edit_company_ad_path(@ad)}')", :class => 'largest right button' unless @ad.opened? %>

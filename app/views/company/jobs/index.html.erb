@@ -20,10 +20,11 @@
   		<td><%= job.start_at.try(:to_s_short_date) %> - <%= job.end_at.try(:to_s_short_date) %></td>
   		<td style="color: <%= job.font_color %>"><%= job.state_s %></td>
   		<td>
-  		  <%= link_to "修改并重审", edit_company_job_path(job) if job.disapproved? %>
-  		  <%= link_to "修改", edit_company_job_path(job) if !job.disapproved? %>
-  		  <%= link_to "关闭", close_company_job_path(job), :confirm => "确定关闭工作？" if job.approved? %>
-  		  <%= link_to "重开", open_company_job_path(job), :confirm => "确定打开工作？" if job.closed? %>
+  		  <%= link_to "修改并重审", edit_company_job_path(job) if job.rejected? %>
+        <%= link_to "开始展示", open_company_job_path(job), :confirm => "激活岗位会扣取一个岗位发布点数，是否继续？" if job.closed? and !job.available? %>
+    	  <%= link_to "关闭", close_company_job_path(job), :confirm => "确定关闭工作？" if job.opened? and job.available? %>
+    	  <%= link_to "开放", open_company_job_path(job), :confirm => "确定开放工作？" if job.closed? and job.available? %>
+    	  <%= link_to "修改", edit_company_job_path(job), :confirm => "修改以后需要重新等待审核，是否继续？" if !job.rejected? %>
   		</td>
   	</tr>
     <% end %>

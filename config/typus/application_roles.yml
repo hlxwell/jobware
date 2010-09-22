@@ -8,10 +8,10 @@ admin:
   Certification: create, read, update, delete
   Company: create, read, update, delete
   CoverLetter: create, read, update, delete
-  Job: create, read, update, delete, approve, disapprove
+  Job: create, read, update, delete, approve, reject
   JobApplication: create, read, update, delete
   Language: create, read, update, delete
-  Partner: create, read, update, delete, approve, disapprove
+  Partner: create, read, update, delete, approve, reject
   Presentation: create, read, update, delete
   PreviousJob: create, read, update, delete
   Product: create, read, update, delete
@@ -21,7 +21,7 @@ admin:
   Skill: create, read, update, delete
   StarredJob: create, read, update, delete
   User: create, read, update, delete
-  Ad: create, read, update, delete
+  Ad: create, read, update, delete, approve, reject
   Counter: create, read, update, delete
   Revenue: create, read, update, delete
   Service: create, read, update, delete

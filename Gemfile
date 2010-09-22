@@ -4,28 +4,27 @@ gem 'rails', '3.0.0'
 gem 'mysql'
 gem 'nifty-generators'
 gem 'authlogic', :git => 'http://github.com/binarylogic/authlogic.git'
-gem 'tabletastic'
 gem 'ckeditor', :git => 'http://github.com/galetahub/rails-ckeditor.git', :branch => 'rails3'
-gem 'formtastic', :git => "http://github.com/justinfrench/formtastic.git", :branch => "rails3"
+# gem 'formtastic', :git => "http://github.com/justinfrench/formtastic.git", :branch => "rails3"
+# gem 'tabletastic'
+# gem 'cancan'
+# gem 'acts-as-taggable-on'
 gem 'navigasmic'
-gem 'cancan'
 gem 'capistrano'
 gem 'capistrano-ext'
 gem 'will_paginate', '~> 3.0.pre2'
 gem 'awesome_print', :require => "ap"
 gem 'paperclip'
-gem 'acts-as-taggable-on'
 gem 'enumerate_it'
 gem 'state_machine'
 gem 'annotate-models'
 gem "exception_notification", :git => "http://github.com/rails/exception_notification.git", :branch => "master"
-gem "cancan"
 gem 'thinking-sphinx', :git => 'http://github.com/freelancing-god/thinking-sphinx.git', :branch  => 'rails3', :require => 'thinking_sphinx'
 gem 'fastercsv'
-gem "aasm"
 gem "chinese_permalink"
 gem "activemerchant", :require => "active_merchant"
 gem "activemerchant_patch_for_china"
+gem 'ruby-graphviz', :require => 'graphviz'
 
 group :development do
   gem "rails3-generators"

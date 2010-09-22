@@ -1,7 +1,7 @@
 class Company::JobsController < Company::BaseController
-  before_filter :get_job_by_id, :only => [:show, :edit, :update, :destroy, :close, :open]
-  before_filter :check_job_credit, :only => [:new, :create]
-
+  before_filter :get_job_by_id, :only => [:show, :edit, :update, :destroy, :close, :open, :reactive]
+  before_filter :check_job_credit, :only => [:new, :create, :reactive]
+  before_filter :check_job_highlight_credit, :only => [:reactive, :open]
   def index
     @jobs = current_user.company.jobs.paginate :page => params[:page], :per_page => 20
   end
@@ -29,6 +29,7 @@ class Company::JobsController < Company::BaseController
 
   def update
     if @job.update_attributes(params[:job])
+      @job.reapprove
       redirect_to company_job_path(@job), :notice => "岗位更新成功。"
     else
       render :action => 'edit'
@@ -36,20 +37,38 @@ class Company::JobsController < Company::BaseController
   end
 
   def destroy
-    @job.destroy
-    flash[:success] = "删除岗位成功。"
+    if @job.destroy
+      flash[:success] = "删除岗位成功。"
+    else
+      flash[:error] = "删除岗位失败。"
+    end
     redirect_to company_jobs_path
   end
 
   def open
-    @job.open
-    flash[:success] = "岗位打开成功。"
+    if @job.active
+      flash[:success] = "岗位打开成功。"
+    else
+      flash[:error] = "岗位打开失败。"
+    end
     redirect_to company_jobs_path
   end
 
   def close
-    @job.close
-    flash[:success] = "岗位关闭成功。"
+    if @job.close
+      flash[:success] = "岗位关闭成功。"
+    else
+      flash[:error] = "岗位关闭失败。"
+    end
+    redirect_to company_jobs_path
+  end
+
+  def reactive
+    if @job.active
+      flash[:success] = "扣除一点“岗位发布”,岗位重新激活成功。"
+    else
+      flash[:error] = "岗位重新激活失败，可能没有足够“岗位发布”点数。"
+    end
     redirect_to company_jobs_path
   end
 
@@ -61,5 +80,9 @@ private
 
   def check_job_credit
     redirect_to company_jobs_path, :notice => "没有足够的岗位发布点数，请购买后再发布。" if current_user.remains(ServiceItem.job_credit_id) <= 0
+  end
+
+  def check_job_highlight_credit
+    redirect_to company_jobs_path, :notice => "没有足够的岗位高亮显示点数，请购买后再发布，或者取消岗位高亮显示。" if @job.highlighted? and current_user.remains(ServiceItem.job_highlight_credit_id) <= 0
   end
 end

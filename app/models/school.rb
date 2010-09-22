@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20100825101513
+# Schema version: 20100921080601
 #
 # Table name: schools
 #
@@ -7,8 +7,8 @@
 #  resume_id  :integer(4)
 #  name       :string(255)
 #  major      :string(255)
-#  start_at   :datetime
-#  end_at     :datetime
+#  start_at   :date
+#  end_at     :date
 #  created_at :datetime
 #  updated_at :datetime
 #

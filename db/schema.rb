@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100921015029) do
+ActiveRecord::Schema.define(:version => 20100921080601) do
 
   create_table "ad_positions", :force => true do |t|
     t.string   "name"
@@ -190,8 +190,6 @@ ActiveRecord::Schema.define(:version => 20100921015029) do
     t.text     "welfare"
     t.text     "desc"
     t.integer  "salary_range"
-    t.date     "highlight_start_at"
-    t.date     "highlight_end_at"
     t.date     "start_at"
     t.date     "end_at"
     t.datetime "created_at"
@@ -204,6 +202,7 @@ ActiveRecord::Schema.define(:version => 20100921015029) do
     t.string   "permalink"
     t.integer  "partner_id"
     t.string   "source"
+    t.boolean  "highlighted"
   end
 
   create_table "languages", :force => true do |t|

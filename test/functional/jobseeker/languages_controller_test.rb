@@ -1,4 +1,4 @@
-require 'test_helper'
+require File.join(File.dirname(__FILE__), '..', 'test_helper')
 
 class Jobseeker::LanguagesControllerTest < ActionController::TestCase
   def test_index

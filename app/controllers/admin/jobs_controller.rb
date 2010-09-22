@@ -4,12 +4,12 @@ class Admin::JobsController < Admin::ResourcesController
     if get_object.approve
       redirect_to :back, :notice => "审核通过。"
     else
-      redirect_to :back, :notice => "不能审核已经通过审核的工作。"
+      redirect_to :back, :notice => "不能审核已经通过审核的。"
     end
   end
-  
-  def disapprove
-    if get_object.disapprove
+
+  def reject
+    if get_object.reject
       redirect_to :back, :notice => "审核不通过。"
     else
       redirect_to :back, :notice => "拒绝审核出错。"

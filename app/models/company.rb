@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20100916071749
+# Schema version: 20100921080601
 #
 # Table name: companies
 #
@@ -23,6 +23,7 @@
 #  logo_updated_at   :datetime
 #  views_count       :integer(4)      default(0)
 #  partner_id        :integer(4)
+#  permalink         :string(255)
 #
 
 class Company < ActiveRecord::Base

@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20100917101409
+# Schema version: 20100921080601
 #
 # Table name: jobs
 #
@@ -15,10 +15,8 @@
 #  welfare                      :text
 #  desc                         :text
 #  salary_range                 :integer(4)
-#  highlight_start_at           :datetime
-#  highlight_end_at             :datetime
-#  start_at                     :datetime
-#  end_at                       :datetime
+#  start_at                     :date
+#  end_at                       :date
 #  created_at                   :datetime
 #  updated_at                   :datetime
 #  company_id                   :integer(4)
@@ -28,6 +26,8 @@
 #  state                        :string(255)
 #  permalink                    :string(255)
 #  partner_id                   :integer(4)
+#  source                       :string(255)
+#  highlighted                  :boolean(1)
 #
 
 
@@ -42,11 +42,11 @@ class Job < ActiveRecord::Base
   has_enumeration_for :contract_type, :with => ContractType
   has_enumeration_for :salary_range, :with => SalaryRange
 
-  scope :opened, where("? BETWEEN start_at AND end_at AND state=?", Time.now, :approved)
-  scope :closed, where("(? NOT BETWEEN start_at AND end_at) OR state!=?", Time.now, :approved)
+  scope :opened, where("? BETWEEN start_at AND end_at AND state=?", Date.today, :opened)
+  scope :closed, where("(? NOT BETWEEN start_at AND end_at) OR state!=?", Date.today, :opened)
   scope :unapproved, where("state = ?", :unapproved)
-  scope :approved, where("state = ?", :approved)
-  scope :highlighted, where("? BETWEEN highlight_start_at AND highlight_end_at", Time.now)
+  scope :approved, where("state in ?", [:closed, :opened])
+  scope :highlighted, where(:highlighted => true)
 
   belongs_to :company
   belongs_to :partner
@@ -69,59 +69,63 @@ class Job < ActiveRecord::Base
   end
 
   state_machine :state, :initial => :unapproved do
-    after_transition any => :approved do |job|
-      job.start_at = Time.now
-      job.end_at = 1.month.since
-      job.save
+    before_transition :on => :active do |job|
+      job.pay_for_active unless job.available?
     end
 
     event :approve do
-      transition [:disapproved, :unapproved] => :approved
-    end
-
-    event :disapprove do
-      transition :unapproved => :disapproved
-    end
-
-    event :open do
-      transition :closed => :approved
-    end
-
-    event :close do
-      transition :approved => :closed
+      transition [:rejected, :unapproved] => :closed
     end
 
     event :reapprove do
-      transition :disapproved => :reapproving
+      transition any => :unapproved
+    end
+
+    event :reject do
+      transition all => :rejected
+    end
+
+    event :active do
+      transition :closed => :opened, :if => :can_open?
+    end
+
+    event :close do
+      transition :opened => :closed
     end
   end
 
-  def opened?
-    return false if start_at.blank? or end_at.blank? or closed?
-    (start_at..end_at).include?(Time.now)
+  def can_open?
+    available? or company_has_enough_credit?
   end
 
-  def state_s
-    return "高亮展示中" if highlighted? and opened?
-    return "展示中" if opened?
-    return "重新审核中" if reapproving?
-    return "等待审核中" if unapproved?
-    return "审核通过" if approved?
-    return "审核不通过" if disapproved?
-    return "关闭" if closed?
+  def company_has_enough_credit?
+    return false if self.user.remains(ServiceItem.job_credit_id) <= 0
+    return false if self.highlighted? and self.user.remains(ServiceItem.job_highlight_credit_id) <= 0
+    return true
   end
 
-  def font_color
-    return "gray" if unapproved? or closed? or reapproving?
-    return "green" if approved?
-    return "red" if disapproved?
+  def pay_for_active
+    Job.transaction do
+      self.set_available_time
+      self.user.pay!(1, :service_item_id => ServiceItem.job_credit_id, :to => "激活岗位##{self.id}")
+      self.user.pay!(1, :service_item_id => ServiceItem.job_highlight_credit_id, :to => "高亮显示岗位##{self.id}") if self.highlighted?
+      self.partner.try(:increase_job)  # increase job count for referal partner
+    end
   end
 
-  def highlighted?
-    if highlight_start_at and highlight_end_at
-      [highlight_start_at..highlight_end_at].include?(Time.now)
+  def set_available_time
+    self.start_at = Date.today
+    self.end_at = 1.month.since.to_date
+    self.save
+  end
+
+  def available?
+    return false if start_at.blank? or end_at.blank?
+    if (start_at...end_at).include?(Date.today)
+      return true
     else
-      false
+      self.close if self.opened?
+      return false
     end
   end
 
@@ -147,8 +151,7 @@ class Job < ActiveRecord::Base
 
   def atom_content
     image = self.company.logo.size.nil? ? "" : "<a href='/companies/#{self.company.id}' target='_blank'><img src='#{self.company.logo.url}'/></a>"
-    "
-    #{image}
+    "#{image}
     <br>
       <h1><a href='/jobs/#{self.to_param}' target='_blank'>#{self.name}</a></h1>
       公司：<a href='/companies/#{self.company.id}' target='_blank'>#{self.company.name}</a>，
@@ -161,8 +164,27 @@ class Job < ActiveRecord::Base
       #{self.requirement}
     <br>
       <h3>福利待遇：</h3>
-      #{self.welfare}
-    "
+      #{self.welfare}"
   end
 
+  ### state to cn string
+  # unapproved, approved, rejected, opened, closed
+  # highlighted available
+  def state_s
+    return "等待审核中" if unapproved?
+    return "审核被拒绝" if rejected?
+
+    return "展示中" if opened? and available?
+    return "高亮展示中" if highlighted? and opened? and available?
+
+    return "未展示" if closed?
+    return "已过期" if !available?
+  end
+
+  def font_color
+    return "gray" if unapproved? or (closed? and available?)
+    return "green" if closed? and !available?
+    return "#ff00ff" if !available?
+    return "red" if rejected?
+  end
 end
