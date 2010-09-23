@@ -2,26 +2,6 @@
 #
 # Use the README file as a reference to customize settings.
 
-AdPosition:
-  fields:
-    default: name, job_list_tags, width, height, type, style, partner_id
-    form: name, job_list_tags, width, height, type, style, partner_id
-  order_by:
-  relationships:
-  filters:
-  search: name
-  application: Partner
-
-Adclick:
-  fields:
-    default: ad_position_id, remote_ip, source_page, dest_page, http_user_agent, remote_host, request_uri, ad_position
-    form: remote_ip, source_page, dest_page, http_user_agent, remote_host, request_uri, ad_position
-  order_by:
-  relationships: ad_position
-  filters:
-  search:
-  application: Partner
-
 Certification:
   fields:
     default: resume_id, name, get_at, resume
@@ -134,7 +114,7 @@ Project:
 
 Resume:
   fields:
-    default: user_id, name, gender, working_years, degree, major, birthday, hometown_province, hometown_city, current_residence_province, current_residence_city, email, phone_number, expected_salary, expected_positions, expected_job_location, current_working_state, highlight_start_at, highlight_end_at, is_sending_sms, portrait_file_name, user
+    default: user_id, name, gender, working_years, degree, major, birthday, current_residence_province, current_residence_city, user
     form: user_id, name, gender, working_years, degree, major, birthday, hometown_province, hometown_city, current_residence_province, current_residence_city, email, phone_number, expected_salary, expected_job_location, current_working_state, highlight_start_at, highlight_end_at, is_sending_sms, portrait_file_name, user
   order_by:
   relationships: certifications, cover_letters, job_applications, jobs, languages, previous_jobs, projects, schools, skills, starred_jobs, user
@@ -207,26 +187,6 @@ Counter:
   filters:
   search:
   application: Partner
-
-Revenue:
-  fields:
-    default: partner_id, period_start_at, period_end_at, state
-    form: partner_id, period_start_at, period_end_at, state
-  order_by:
-  relationships:
-  filters:
-  search:
-  application: Partner
-
-StarredResume:
-  fields:
-    default: company_id, resume_id, rating, resume, company
-    form: company_id, resume_id, rating, resume, company
-  order_by:
-  relationships: company, resume
-  filters:
-  search:
-  application: Company
 
 Subscription:
   fields:
