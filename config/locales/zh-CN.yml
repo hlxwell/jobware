@@ -17,17 +17,17 @@
   models:
     user_session: UserSession
     user: User
-  attributes:
-    user_session:
-      username: 用户名
-      login: 用户名
-      email: 邮箱
-      password: 密码
-      remember_me: 记住登陆
-    user:
-      username: 用户名
-      email: 邮箱
-      password: 密码
+  # attributes:
+  #   user_session:
+  #     username: 用户名
+  #     login: 用户名
+  #     email: 邮箱
+  #     password: 密码
+  #     remember_me: 记住登陆
+  #   user:
+  #     username: 用户名
+  #     email: 邮箱
+  #     password: 密码
 
   date:
     formats:
