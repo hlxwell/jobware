@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
   def create
     @user_session = UserSession.new(params[:user_session])
     if @user_session.save
-      flash[:notice] = "登陆成功。"
+      flash[:success] = "登陆成功。"
       redirect_back_or_default(dashboard_path_for(current_user))
     else
       flash[:error] = "错误的用户名或者密码！"

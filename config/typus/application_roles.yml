@@ -18,7 +18,7 @@ admin:
   School: create, read, update, delete
   Skill: create, read, update, delete
   StarredJob: create, read, update, delete
-  User: create, read, update, delete
+  User: create, read, update, delete, login
   Ad: create, read, update, delete, approve, reject
   Counter: create, read, update, delete
   Service: create, read, update, delete
