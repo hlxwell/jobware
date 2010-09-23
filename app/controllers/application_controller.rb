@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   include Authentication
   protect_from_forgery
 
+  before_filter :http_auth
   before_filter :set_locale, :current_partner_site
   helper_method :current_user_type, :current_user_section, :show_error_message_for, :current_partner_site, :current_layout
 
@@ -70,6 +71,13 @@ class ApplicationController < ActionController::Base
   end
 
 private
+
+  def http_auth
+    return if Rails.env != 'production'
+    authenticate_or_request_with_http_basic do |username, password|
+      username == "theplant" && password == "hangzhoubranch"
+    end
+  end
 
   def approved_partner_required
     unless current_user.partner.approved?
