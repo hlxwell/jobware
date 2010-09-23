@@ -1,4 +1,4 @@
-<%= page_name_html("广告 - #{@ad.name}", :with_title => true) %>
+<%= page_name_html("#{@ad.try(:name)||@ad.display_type_humanize}", :with_title => true) %>
 
 <table class="data-table top-vlign">
   <% if @ad.opened? and @ad.start_at and @ad.end_at %>
@@ -7,30 +7,30 @@
 		<td><%= @ad.start_at.to_s_date %> - <%= @ad.end_at.to_s_date %></td>
 	</tr>
 	<% end %>
-	<tr>
-	  <th width="50px">广告形式</th>
-		<td><%= @ad.display_type_humanize %></td>
-	</tr>
-	<tr>
-	  <th>广告名</th>
-		<td><%= @ad.name %></td>
-	</tr>
-	<tr>
-	  <th>地区</th>
-		<td><%= @ad.location %></td>
-	</tr>
-	<tr>
-	  <th>广告内容</th>
-		<td><%= raw @ad.desc %></td>
-	</tr>
-	<tr>
-	  <th>广告链接</th>
-		<td><%= @ad.url %></td>
-	</tr>
+
+  <% if @ad.image.size.present? %>
 	<tr>
 	  <th>广告图片</th>
-		<td><%= image_tag @ad.image.url if @ad.image.size.present? %></td>
+		<td><%= image_tag @ad.image.url %></td>
 	</tr>
+	<% end %>
+
+	<%
+	  {
+	    :display_type_humanize => "广告形式",
+	    :name => "广告标题",
+	    :location => "地区",
+	    :desc => "广告内容",
+	    :url => "广告链接"
+	  }.each do |k, v|
+	    next if @ad.send(k).blank?
+	%>
+    	<tr>
+    	  <th width="50px"><%= v %></th>
+    		<td><%= raw @ad.send(k) %></td>
+    	</tr>
+	<% end %>
+
 	<tr>
 	  <th>展示周期</th>
 	  <td><%= @ad.period %></td>
@@ -43,6 +43,7 @@
 
 <br />
 <h2>效果预览</h2>
+<div class="archive-separator"></div>
 <%= render "company/ads/preview/#{@ad.preview_partial_name}", :ad => @ad %>
 
 <div class="clearer">&nbsp;</div><br>

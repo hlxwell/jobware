@@ -134,7 +134,7 @@ class Ad < ActiveRecord::Base
   end
 
   def location
-    self.province + self.city
+    "#{self.try(:province)}#{self.try(:city)}"
   end
 
   def preview_partial_name

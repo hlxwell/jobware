@@ -16,7 +16,10 @@
           <div class="clearer">&nbsp;</div>
         </li>
         <li>
-          <div class="left"><%= link_to "收到的应聘", company_job_applications_path %> <small class="quiet">(<%= current_user.company.job_applications.count %>)</small></div>
+          <div class="left">
+            <%= link_to "收到的应聘", company_job_applications_path %> 
+            <small class="quiet">(<%= current_user.company.job_applications.unread.count %>/<%= current_user.company.job_applications.count %> 已阅读)</small>
+          </div>
           <div class="right">
             <%= display_new_jobapplication_count %>
             <%= link_to "已收藏", company_job_applications_path(:filter => :starred) %>
