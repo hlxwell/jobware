@@ -6,9 +6,13 @@
 		<ul class="nice-list">
 		  <% companies.each do |company| %>
 			<li>
-			  <span style="font-weight: bold" class="right small_top_margin"><%= company.location %></span>
-			  <h4><%= link_to company.name, company %></h4>
-			  <%#= link_to image_tag(company.logo.url), company %>
+			  <span style="font-weight: bold" class="right">
+			    <%= company.location %> <br/>
+			    <%= company.created_at.to_s_date %>
+			  </span>
+			  <h4><%= link_to company.name.truncate(14), company %></h4>
+
+			  <div class="clearer">&nbsp;</div>
 			</li>
 		  <% end %>
 		</ul>

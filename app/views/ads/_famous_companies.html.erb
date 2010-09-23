@@ -10,7 +10,7 @@
           <h5><%= link_to company.name, company, :title => company.name %></h5>
             <% company.jobs.opened.limit(4).each do |job| %>
             <div>
-              <div class="left" style="margin: 0"><%= link_to truncate(job.name, :length => 26) , job, :title => job.name, :class => "quiet" %></div>
+              <div class="left" style="margin: 0"><%= link_to job.name.truncate(26), job, :title => job.name, :class => "quiet" %></div>
     			    <strong class="quiet right" style="margin: 0"><%= job.location %></strong>
     			  </div>
     			  <div class="clearer">&nbsp;</div>

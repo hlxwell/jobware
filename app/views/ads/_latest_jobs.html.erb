@@ -9,8 +9,8 @@
 			  <span style="font-weight: bold" class="right text-right">
 			    <%= job.location %> <br/> <%= job.created_at.to_s_date %>
 			  </span>
-			  <h4><%= link_to job.name, job %></h4>
-			  <%= link_to job.company.name, job.company %>
+			  <h4><%= link_to job.name.truncate(16), job %></h4>
+			  <%= link_to job.company.name.truncate(20), job.company %>
 			</li>
 		  <% end %>
 		</ul>
