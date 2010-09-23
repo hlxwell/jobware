@@ -1,18 +1,18 @@
 <% title "新建简历" %>
 
 <div class="main">
-  <div class="left" style="width: 310px;">
+  <div class="left" style="width: 280px;">
     <%= jobware_form_for UserSession.new, :as => :user_session, :url => sessions_path, :title => "已经是注册用户" do |f| %>
       <%= render :partial => "sessions/form", :locals => { :f => f } %>
       <%= f.submit "登陆" %>
     <% end %>
   </div>
 
-  <div class="right" style="width: 640px;">
+  <div class="right" style="width: 670px;">
     <%= render "quick_resume_form" %>
   </div>
 
-  <div class="right" style="width: 640px;">
+  <div class="right" style="width: 670px;">
     <fieldset class="big">
       <legend>简历向导（推荐）</legend>
       <img src="/images/icons/TextEdit.png" class="left" />
