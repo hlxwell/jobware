@@ -7,10 +7,10 @@
 		  <% jobs.each do |job| %>
 			<li>
 			  <span style="font-weight: bold" class="right text-right">
-			    <%= job.location %> <br/> <%= job.created_at.to_s_date %>
+			    <%= job.location %> <br/> <%= job.created_at.to_s_short_date %>
 			  </span>
-			  <h4><%= link_to job.name.truncate(16), job %></h4>
-			  <%= link_to job.company.name.truncate(20), job.company %>
+			  <h4><%= link_to job.name.truncate(20), job %></h4>
+			  <%= link_to job.company.name.truncate(26), job.company %>
 			</li>
 		  <% end %>
 		</ul>

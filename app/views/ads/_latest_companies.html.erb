@@ -6,11 +6,11 @@
 		<ul class="nice-list">
 		  <% companies.each do |company| %>
 			<li>
-			  <span style="font-weight: bold" class="right">
+			  <span style="font-weight: bold" class="right text-right">
 			    <%= company.location %> <br/>
-			    <%= company.created_at.to_s_date %>
+			    <%= company.created_at.to_s_short_date %>
 			  </span>
-			  <h4><%= link_to company.name.truncate(14), company %></h4>
+			  <h4><%= link_to company.name.truncate(20), company %></h4>
 
 			  <div class="clearer">&nbsp;</div>
 			</li>
