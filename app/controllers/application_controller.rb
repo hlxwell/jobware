@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   include Authentication
   protect_from_forgery
 
-  before_filter :http_auth
+  # before_filter :http_auth
   before_filter :set_locale, :current_partner_site
   helper_method :current_user_type, :current_user_section, :show_error_message_for, :current_partner_site, :current_layout
 

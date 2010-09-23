@@ -64,6 +64,7 @@ class Ad < ActiveRecord::Base
   validates_presence_of :name, :province, :city, :url, :if => Proc.new { |ad| ad.display_type == AdPositionType::URGENT_JOB }
   validates_presence_of :name, :url, :if => Proc.new { |ad| [AdPositionType::SLIDER_AD, AdPositionType::FEATURED_COMPANY].include?(ad.display_type) }
   validates_attachment_presence :image, :message => "必须上传图片。",:if => lambda {|ad| [AdPositionType::SLIDER_AD, AdPositionType::FEATURED_COMPANY].include?(ad.display_type) }
+  validate :check_time
 
   scope :slider_ads, where(:display_type => AdPositionType::SLIDER_AD)
   scope :urgent_jobs, where(:display_type => AdPositionType::URGENT_JOB)
@@ -71,13 +72,13 @@ class Ad < ActiveRecord::Base
   scope :featured_companies, where(:display_type => AdPositionType::FEATURED_COMPANY)
   scope :opened, where("? BETWEEN start_at AND end_at AND state=?", Date.today, :opened)
 
-  before_save do
-    errors.add :end_at, '展示结束时间必需大于展示开始时间。' if self.start_at and self.end_at and self.start_at > self.end_at
-  end
-
   state_machine :initial => :unapproved do
     after_transition :on => :want_to_show do |ad|
       ad.pay_for_active
+    end
+
+    after_transition :on => :approve do |ad|
+      ad.set_available_time
     end
 
     event :want_to_show do
@@ -85,7 +86,7 @@ class Ad < ActiveRecord::Base
     end
 
     event :approve do
-      transition :approving => :opened
+      transition any => :opened
     end
 
     event :close do
@@ -95,12 +96,19 @@ class Ad < ActiveRecord::Base
     event :reject do
       transition any => :rejected
     end
+    
+    event :reapprove do
+      transition :rejected => :approving
+    end
+  end
+
+  def check_time
+    errors.add :end_at, '展示结束时间必需大于展示开始时间。' if start_at and end_at and start_at > end_at
   end
 
   def pay_for_active
     Job.transaction do
-      self.set_available_time
-      self.user.pay!(1, :service_item_id => ServiceItem.send("#{self.display_type_key}_credit_id"), :to => "发布广告##{self.id}")
+      self.user.pay!(self.period, :service_item_id => ServiceItem.send("#{self.display_type_key}_credit_id"), :to => "发布广告##{self.id}")
     end
   end
 
@@ -111,7 +119,7 @@ class Ad < ActiveRecord::Base
   end
 
   def company_has_enough_credit?
-    return false if self.user.remains(ServiceItem.send("#{self.display_type_key}_credit_id")) <= 0
+    return false if self.user.remains(ServiceItem.send("#{self.display_type_key}_credit_id")) < self.period
     return true
   end
 
@@ -137,13 +145,13 @@ class Ad < ActiveRecord::Base
   end
 
   def display_state
-    return "已过期" unless self.available?
+    return "已过期" if !self.available? and closed?
 
     case state
     when 'unapproved'
       "未支付"
     when 'approving'
-      "等待审核中"
+      "审核中"
     when 'rejected'
       "被拒绝"
     when 'opened'
@@ -152,6 +160,19 @@ class Ad < ActiveRecord::Base
       "已过期"
     else
       "不明"
+    end
+  end
+
+  def display_state_font_color
+    case display_state
+    when "已过期"
+      "blue"
+    when "未支付", "审核中"
+      "gray"
+    when "展示中"
+      "green"
+    when "被拒绝"
+      "red"
     end
   end
 

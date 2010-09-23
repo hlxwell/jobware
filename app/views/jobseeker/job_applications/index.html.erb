@@ -1,7 +1,5 @@
-<% title "应聘记录" %>
+<%= page_name_html("应聘记录", :with_title => true) %>
 
-<h3>应聘记录</h3>
-<div class="archive-separator"></div>
 <% show_no_record(@applications) do %>
   <table class="data-table">
   	<tr>

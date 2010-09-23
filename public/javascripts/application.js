@@ -38,6 +38,14 @@ $(function(){
   //   }
   // });
 
+  $(".transaction-list").tabs({
+    ajaxOptions: {
+      error: function(xhr, status, index, anchor) {
+        $(anchor.hash).html("加载列表出错，请稍后再试。");
+      }
+    }
+  });
+
   show_and_hide_ajax_loading_bar();
 });
 

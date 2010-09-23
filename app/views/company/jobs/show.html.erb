@@ -1,8 +1,5 @@
-<% title @job.name %>
-
 <h3 class="right small_top_margin"><%= link_to "查看前台效果", @job %></h3>
-<h2><%= @job.name %></h2>
-<div class="archive-separator"></div>
+<%= page_name_html(@job.name, :with_title => true) %>
 
 <table class="data-table top-vlign">
 	<tr>
@@ -47,7 +44,7 @@
 	</tr>
 	<tr>
 	 <th>是否使用应聘系统</th>
-	 <td><%= @job.only_use_custom_apply_method? ? "否" : "是" %></td>
+	 <td><%= @job.only_use_custom_apply_method_to_s %></td>
 	</tr>
 </table>
 

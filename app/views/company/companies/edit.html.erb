@@ -1,17 +1,8 @@
-<% title "发布工作" %>
+<%= page_name_html("修改公司信息", :with_title => true) %>
 
 <%= jobware_form_for @company, :url => company_company_path, :use_fieldset => false, :html => { :multipart => true } do |f| %>
-
   <%= field_set_tag "公司信息", :class => 'big' do %>
     <%= render "companies/form", :f => f %>
-  <% end %>
-
-  <%= field_set_tag "公司展示图片", :class => 'big' do %>
-    <%= f.fields_for :presentations do |presentation_form| %>
-      <%= render "company/presentations/form", :f => presentation_form %>
-    <% end %>
-
-    <%= f.button_to_add_fields '添加', :presentations, :namespace_dir => "company" %>
   <% end %>
 
   <%= field_set_tag "公司产品", :class => 'big' do %>
@@ -20,6 +11,14 @@
     <% end %>
 
     <%= f.button_to_add_fields '添加', :products, :namespace_dir => "company" %>
+  <% end %>
+
+  <%= field_set_tag "公司展示图片", :class => 'big' do %>
+    <%= f.fields_for :presentations do |presentation_form| %>
+      <%= render "company/presentations/form", :f => presentation_form %>
+    <% end %>
+
+    <%= f.button_to_add_fields '添加', :presentations, :namespace_dir => "company" %>
   <% end %>
 
   <%= f.submit "更新", :class => "right button" %>

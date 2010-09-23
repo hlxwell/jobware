@@ -1,4 +1,4 @@
-<% title "收藏的工作" %>
+<%= page_name_html("收藏的工作", :with_title => true) %>
 
 <% show_no_record(@starred_jobs) do %>
   <table class="data-table">
@@ -9,7 +9,10 @@
   		<th width="100">操作</th>
   	</tr>
   	<% @starred_jobs.each do |starred_job| %>
-  	<% job = starred_job.job %>
+  	<%
+  	  job = starred_job.try(:job)
+  	  next if job.nil?
+  	%>
   	<tr class="even" id="job_<%= job.id %>">
   	  <td><%= link_to job.name, job_path(job) %></td>
   		<td><%= job.location %></td>

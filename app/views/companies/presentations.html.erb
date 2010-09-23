@@ -1,3 +1,6 @@
+<% title @company.name %>
+
 <% show_no_record(@company.presentations) do %>
+  <div class="archive-separator"></div>
   <%= render :partial => 'companies/presentation', :collection => @company.presentations %>
 <% end %>

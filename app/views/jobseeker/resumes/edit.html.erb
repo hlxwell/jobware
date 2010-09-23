@@ -1,4 +1,4 @@
-<% title "简历管理" %>
+<%= page_name_html("简历修改", :with_title => true) %>
 
 <%= jobware_form_for @resume, :url => jobseeker_resume_path, :use_fieldset => false, :html => { :multipart => true } do |f| %>
   <%= render :partial => "form", :locals => {:f => f} %>

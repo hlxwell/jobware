@@ -1,6 +1,5 @@
-<% title "修改个人信息" %>
+<%= page_name_html("修改个人信息", :with_title => true) %>
 
-<h1>修改个人信息</h1>
 <%= jobware_form_for @user||User.new, :url => user_path do |f| %>
   <%= render "form", :f => f %>
   <%= f.submit "更新" %>

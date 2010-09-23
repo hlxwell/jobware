@@ -59,9 +59,9 @@ class Company::AdsController < Company::BaseController
 
   def want_to_show
     if @ad.want_to_show
-      flash[:success] = "扣除一点“#{@ad.display_type_humanize}”，广告正在审核中，如果审核通过则会显示在前台。"
+      flash[:success] = "扣除#{@ad.period}点“#{@ad.display_type_humanize}”，广告正在审核中，如果审核通过则会显示在前台。"
     else
-      flash[:error] = "扣除一点“#{@ad.display_type_humanize}”失败，请充值后再激活。"
+      flash[:error] = "扣除#{@ad.period}点“#{@ad.display_type_humanize}”失败，请充值后再激活。"
     end
     redirect_to company_ads_path
   end

@@ -172,20 +172,30 @@ class Job < ActiveRecord::Base
   # unapproved, approved, rejected, opened, closed
   # highlighted available
   def state_s
-    return "等待审核中" if unapproved?
+    return "审核中" if unapproved?
     return "审核被拒绝" if rejected?
-
     return "展示中" if opened? and available?
     return "高亮展示中" if highlighted? and opened? and available?
-
     return "未展示" if closed?
     return "已过期" if !available?
   end
 
-  def font_color
-    return "gray" if unapproved? or (closed? and available?)
-    return "green" if closed? and !available?
-    return "#ff00ff" if !available?
-    return "red" if rejected?
+  def state_font_color
+    case state_s
+    when "已过期"
+      "blue"
+    when "未展示"
+      "gray"
+    when "审核中"
+      "gray"
+    when "展示中","高亮展示中"
+      "green"
+    when "审核被拒绝"
+      "red"
+    end
+  end
+
+  def only_use_custom_apply_method_to_s
+    self.only_use_custom_apply_method? ? "否" : "是"
   end
 end

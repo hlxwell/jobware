@@ -21,7 +21,7 @@
   		<td><%= tx.from %></td>
   		<td><%= tx.to %></td>
   		<td><%= tx.created_at.to_s_datetime %></td>
-  		<td class="large"><%= transaction_is_money ? format_price(tx.amount, :with_plus => true) : tx.amount%></td>
+  		<td class="large"><%= transaction_is_money ? format_price(tx.amount, :with_plus => true) : tx.amount_s %></td>
   		<td class="large"><%= transaction_is_money ? format_price(total_amount) : total_amount %></td>
   	</tr>
     <% end %>

@@ -8,6 +8,11 @@ module ApplicationHelper
     @show_title = show_title
   end
 
+  def page_name_html(name, options)
+    title(name) if options[:with_title]
+    raw "<h2>#{name}</h2><div class='archive-separator'></div>"
+  end
+
   ### forcing use jobware form builder
   def jobware_form_for(*args, &block)
     options = args.extract_options!.merge(:builder => JobwareFormBuilder)

@@ -1,3 +1,5 @@
+<h4>基本信息</h4>
+<div class="content-separator-quite"></div>
 <div class="post">
   <table class="data-table top-vlign">
 		<tr>
@@ -72,15 +74,12 @@
     :certifications => "证书",
     :languages => "语言能力",
   }
-  display_item_hash.merge!(:cover_letters => "求职信") unless hide_cover_letter
+  display_item_hash.merge!(:cover_letters => "求职信") unless hide_cover_letter # if hide_cover_letter then hide it.
   display_item_hash.each do |key, value|
-  next if item.send(key).blank? %>
-
-  <div class="post">
-    <div class="post-title"><h4><%= value %></h4></div>
-  </div>
-  <div class="content-separator-quite"></div>
-  <%= render :partial => "jobseeker/#{key}/item", :collection => item.send(key) %>
-  <div class="clearer">&nbsp;</div>
-  <br>
+    next if item.send(key).blank? %>
+    <h4><%= value %></h4>
+    <div class="content-separator-quite"></div>
+    <%= render :partial => "jobseeker/#{key}/item", :collection => item.send(key) %>
+    <div class="clearer">&nbsp;</div>
+    <br>
 <% end %>

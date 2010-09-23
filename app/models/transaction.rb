@@ -45,4 +45,9 @@ class Transaction < ActiveRecord::Base
   def destroy
     update_attribute(:deleted_at, Time.now)
   end
+  
+  def amount_s
+    amount > 0 ? "+#{amount}" : "#{amount}"
+  end
+  
 end

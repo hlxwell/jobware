@@ -1,21 +1,20 @@
-<fieldset class="left w298 big">
+<%= page_name_html("请选择广告类型", :with_title => true) %>
+<fieldset class="left w298">
   <legend>紧急招聘</legend>
-
   <%= link_to "发布", new_company_ad_path(:type => :urgent_job), :class => "right" %>
 </fieldset>
-<fieldset class="right w298 big">
-  <legend>知名企业招聘</legend>
 
+<fieldset class="right w298">
+  <legend>知名企业招聘</legend>
   <%= link_to "发布", new_company_ad_path(:type => :famous_company), :class => "right" %>
 </fieldset>
 
-<fieldset class="left w298 big">
+<fieldset class="left w298">
   <legend>首页滚动图片广告</legend>
-
   <%= link_to "发布", new_company_ad_path(:type => :slider_ad), :class => "right" %>
 </fieldset>
-<fieldset class="right w298 big">
-  <legend>推荐企业</legend>
 
+<fieldset class="right w298">
+  <legend>推荐企业</legend>
   <%= link_to "发布", new_company_ad_path(:type => :featured_company), :class => "right" %>
 </fieldset>

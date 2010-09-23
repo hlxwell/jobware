@@ -1,7 +1,0 @@
-<% show_error_message_for(f.object) %>
-<%= f.select :ad_type, AdType.to_sorted_a, {:include_blank => true}, {:label => "类型"} %>
-<%= f.text_field :name, :label => "名称", :class => "text w600" %>
-<%= f.text_field :job_list_tags, :label => "岗位关键字", :class => "text w600", :hint => "广告位里的广告内容过滤关键词。" %>
-<%= f.text_field :width, :label => "宽度", :class => "text w600", :hint => "请输入数字。" %>
-<%= f.text_field :height, :label => "高度", :class => "text w600", :hint => "请输入数字。" %>
-<%= f.text_field :style, :label => "样式", :class => "text w600" %>

@@ -1,20 +1,5 @@
-<% title "消费记录" %>
-
-<script type="text/javascript">
-  $(function() {
-    // { cookie: { expires: 0 } }
-    $("#main-right").tabs({
-      ajaxOptions: {
-        error: function(xhr, status, index, anchor) {
-          $(anchor.hash).html("加载列表出错，请稍后再试。");
-        }
-      }
-    });
-  });
-</script>
-
 <!-- ### left main side -->
-<div class="right" id="main-right">
+<div class="right transaction-list" id="main-right">
   <ul class="larger">
     <% if current_user_section == "jobseeker" %>
       <li><a href="?service_item_id=<%= ServiceItem.money_id %>"><span>现金记录</span></a></li>

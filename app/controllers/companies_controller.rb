@@ -33,7 +33,7 @@ class CompaniesController < ApplicationController
     @company.partner = current_partner # referral partner
 
     if @company.save
-      redirect_to company_job_path(@company.jobs.first), :notice => "岗位创建成功。"
+      redirect_to new_company_job_path, :notice => "公司创建成功，您可以继续发布工作。"
     else
       render :action => 'new'
     end

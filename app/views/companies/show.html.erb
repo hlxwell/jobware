@@ -1,3 +1,5 @@
+<% title @company.name %>
+
 <div class="post">
 	<div class="post-title"><h3>基本信息</h3></div>
 
@@ -37,7 +39,7 @@
 		<table class="data-table top-vlign top-vlign-td">
 		  <% @company.products.each do |p| %>
 			<tr class="even">
-		    <th colspan="2"><h3><%= p.name %></h3></th>
+		    <th colspan="2"><h5 class="bold"><%= p.name %></h5></th>
 		  </tr>
 			<tr class="even">
 				<td width="20%"><%= image_tag p.file.url, :class => "bordered w200" %></td>

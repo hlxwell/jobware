@@ -1,9 +1,4 @@
-<% title "充值" %>
-
-<div class="post">
-  <div class="post-title"><h2>充值</h2></div>
-</div>
-<div class="content-separator-quite"></div>
+<%= page_name_html("充值", :with_title => true) %>
 
 <%= jobware_form_for :transaction, :url => send("#{current_user_section}_transactions_path"), :use_fieldset => false do |f| %>
   <%= f.text_field :amount, :label => "充值金额", :hint => "请输入需要充入的金额。" %>

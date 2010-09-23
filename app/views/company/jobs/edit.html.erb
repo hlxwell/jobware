@@ -1,6 +1,7 @@
-<% title "修改工作" %>
+<% title("岗位修改") %>
 
 <%= jobware_form_for @job, :url => company_job_path(@job), :method => :put, :title => "修改工作" do |f| %>
   <%= render :partial => 'form', :locals => {:f => f} %>
   <%= f.submit "提交", :class => "right button" %>
+  <h3 class="right small_top_margin"><%= link_to "查看前台效果", @job %></h3>  
 <% end %>

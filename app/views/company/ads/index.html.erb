@@ -1,31 +1,32 @@
-<% title "广告管理" %>
-
-<h2>广告管理</h2>
-<div class="archive-separator"></div>
+<%= page_name_html("广告管理", :with_title => true) %>
 
 <% show_no_record(@ads) do %>
 <table class="data-table">
 	<tr>
 	  <th width="80">类型</th>
 	  <th>名称</th>
-		<th width="50">展示时间</th>
-		<th width="60">状态</th>
-		<th width="100">操作</th>
+		<th width="50">展示时长</th>
+		<th width="150">展示时间</th>
+		<th width="40">状态</th>
+		<th width="80">操作</th>
 	</tr>
 	<% @ads.each do |ad| %>
 	<tr class="even">
 	  <td><%= ad.display_type_humanize %></td>
 	  <td><%= link_to ad.name, company_ad_path(ad) %></td>
 		<td><%= ad.period %> 周</td>
-		<td><%= ad.display_state %></td>
+		<td><%= ad.start_at %> - <%= ad.end_at %></td>
+		<td style="color: <%= ad.display_state_font_color %>;"><%= ad.display_state %></td>
 		<td>
 		  <% if ad.opened? %>
 		    <%= link_to "修改", "#", :onclick => "alert('展示中的广告不能被修改，若需改动请联系我们。')", :class => "quiet" %>
 		    <%= link_to "删除", "#", :onclick => "alert('展示中的广告不能被删除，若需删除请联系我们。')", :class => "quiet" %>
 		  <% elsif ad.approving? %>
   	    <%= link_to "修改", edit_company_ad_path(ad) %>
+  	  <% elsif ad.rejected? %>
+    	  <%= link_to "修改并申请", edit_company_ad_path(ad) %>
 		  <% else %>
-		    <%= link_to "激活", want_to_show_company_ad_path(ad), :confirm => "激活需要扣除1点#{ad.display_type_humanize}点数，是否继续？" %>
+		    <%= link_to "激活", want_to_show_company_ad_path(ad), :confirm => "激活需要扣除#{ad.period}点#{ad.display_type_humanize}点数，是否继续？" %>
 		    <%= link_to "修改", edit_company_ad_path(ad) %>
 		    <%= link_to "删除", company_ad_path(ad), :method => :delete, :confirm => "是否确定删除？" %>
 		  <% end %>

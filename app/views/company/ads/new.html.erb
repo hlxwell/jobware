@@ -1,4 +1,4 @@
-<% title "发布 “#{@ad.display_type_humanize}” 广告" %>
+<% title("发布 “#{@ad.display_type_humanize}” 广告") %>
 
 <%= jobware_form_for @ad, :url => company_ads_path(:type => params[:type]), :title => "发布 “#{@ad.display_type_humanize}” 广告", :html => {:multipart => true} do |f| %>
   <%= render :partial => @template, :locals => {:f => f} %>

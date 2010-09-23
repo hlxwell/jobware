@@ -1,6 +1,3 @@
-<div class="post">
-  <div class="post-title"><h2>我的简历</h2></div>
-</div>
-<div class="content-separator-quite"></div>
+<%= page_name_html("我的简历", :with_title => true) %>
 
 <%= render :partial => "item", :object => @resume %>

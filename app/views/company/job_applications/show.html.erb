@@ -1,26 +1,20 @@
-<div class="right"><%= link_to "返回所有应聘列表", company_job_applications_path %></div>
+<h4 class="right small_top_margin"><%= link_to "返回所有应聘列表", company_job_applications_path %></h4>
 
-<div class="post">
-  <div class="post-title"><h2>应聘的工作</h2></div>
-</div>
-<div class="content-separator-quite"></div>
+<h3>应聘的工作</h3>
+<div class="archive-separator"></div>
 <div class="post">
   <%= link_to @job.name, company_job_path(@job), :class => "largest" %>
-  <div class="right large">应聘于 <%= @application.created_at.to_s_datetime %></div>
-</div><br>
+  <div class="right small">应聘于 <%= @application.created_at.to_s_datetime %></div>
+</div>
+<br>
 
 <% if @cover_letter %>
-<div class="post">
-  <div class="post-title"><h2>求职信</h2></div>
-</div>
-<div class="content-separator-quite"></div>
-<div class="post">
-<%= raw @cover_letter.content %>
-</div><br>
+<h3>求职信</h3>
+<div class="archive-separator"></div>
+<div class="post"><%= raw @cover_letter.content %></div>
+<br>
 <% end %>
 
-<div class="post">
-  <div class="post-title"><h2>简历</h2></div>
-</div>
-<div class="content-separator-quite"></div>
+<h3>简历</h3>
+<div class="archive-separator"></div>
 <%= render :partial => "jobseeker/resumes/item", :object => @resume, :locals => {:hide_cover_letter => true} %>

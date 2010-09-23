@@ -222,6 +222,7 @@ table.top-vlign-td td { vertical-align: top; }
 .shine { color: red; font-weight: bold;}
 .black {color: black;}
 .bold {font-weight: bold;}
+.thin {font-weight: normal;}
 
 .text-left {text-align: left;}
 .text-right {text-align: right;}
@@ -526,7 +527,7 @@ img.alignright, img.right {margin: 0 0 1em 0;}
 
 /* Header */
 
-#header {margin-bottom: 24px;}
+#header {margin-bottom: 1em;}
 
 /* Site title */
 #site-title {

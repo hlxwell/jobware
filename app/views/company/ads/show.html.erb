@@ -1,4 +1,4 @@
-<% title "广告管理 - #{@ad.name}" %>
+<%= page_name_html("广告 - #{@ad.name}", :with_title => true) %>
 
 <table class="data-table top-vlign">
   <% if @ad.opened? and @ad.start_at and @ad.end_at %>
@@ -47,3 +47,4 @@
 
 <div class="clearer">&nbsp;</div><br>
 <%= button_to_function "修改", "$(location).attr('href','#{edit_company_ad_path(@ad)}')", :class => 'largest right button' unless @ad.opened? %>
+<h3 class="right middle_right_margin"><%= link_to "返回列表", company_ads_path %></h3>

@@ -43,11 +43,11 @@ class Partner < ActiveRecord::Base
 
   state_machine :state, :initial => :unapproved do
     event :approve do
-      transition [:disapproved, :unapproved] => :approved
+      transition any => :approved
     end
 
-    event :disapprove do
-      transition [:unapproved, :approved] => :disapproved
+    event :reject do
+      transition any => :rejected
     end
   end
 

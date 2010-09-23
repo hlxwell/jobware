@@ -48,9 +48,13 @@
 
   <table class="data-table">
     <tr class="even">
-      <th width="20%">工作总数</th>
+      <th width="50%" colspan="2"><h3>工作</h3></th>
+      <th width="50%" colspan="2"><h3>应聘</h3></th>
+    </tr>
+    <tr class="even">
+      <th width="20%">总数</th>
       <td width="30%"><%= @company.jobs.count %></td>
-      <th width="20%">应聘总数</th>
+      <th width="20%">总数</th>
       <td width="30%"><%= @company.job_applications.count %></td>
     </tr>
     <tr class="even">
@@ -80,20 +84,17 @@
   </table>
 </fieldset>
 
-
-
-
 <fieldset>
   <legend>剩余消费点</legend>
-  <% show_no_record(current_user.all_remains.compact!) do %>
+  <% show_no_record(current_user.all_remains.compact) do %>
   <table class="data-table">
     <!-- [[ItemObj, 1],[ItemObj, 2]] -->
     <% current_user.all_remains.in_groups_of(3) do |group| %>
     <tr class="even">
       <% 3.times do |i| %>
-      <% next if group[i].blank? %>
-      <th width="20%"><%= group[i][0].name %></th>
-      <td width="10%"><%= group[i][0].is_money? ? format_price(group[i][1]) : group[i][1] %></td>
+        <% next if group[i].blank? %>
+        <th width="18%"><%= group[i][0].name %></th>
+        <td width="15%"><%= group[i][0].is_money? ? format_price(group[i][1]) : group[i][1] %></td>
       <% end %>
     </tr>
     <% end %>
