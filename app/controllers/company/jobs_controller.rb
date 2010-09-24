@@ -29,6 +29,7 @@ class Company::JobsController < Company::BaseController
 
   def update
     if @job.update_attributes(params[:job])
+      # need to reapprove after job info was updated.
       @job.reapprove
       redirect_to company_job_path(@job), :notice => "岗位更新成功。"
     else

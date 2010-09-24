@@ -4,8 +4,11 @@
   <div class='left' style="width: 280px;">
     <%= jobware_form_for UserSession.new, :as => :user_session, :url => sessions_path, :title => "登陆" do |f| %>
         <%= render :partial => "sessions/form", :locals => { :f => f } %>
+        <%= link_to "忘记密码？", reset_password_path, :class => "right small_top_margin", :remote => true %>
         <%= f.submit "登陆" %>
     <% end %>
+
+    <div id="reset_password_form"></div>
   </div>
 
   <div class='left' style="width: 635px; margin-left: 1em;">

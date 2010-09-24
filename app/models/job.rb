@@ -30,11 +30,14 @@
 #  highlighted                  :boolean(1)
 #
 
-
-# 发布工作后就扣一个点.
-# 初始状态：未审核，然后审核通过，显示“开始展示”按钮，展示中可以（关闭），(关闭)后可以(重开)，只要有效期的时间没有超过。过期显示“激活”按钮
-
 class Job < ActiveRecord::Base
+  STATE = {
+    'unapproved' => "等待审核中",
+    'rejected' => "被拒绝",
+    'opened' => "展示中",
+    'closed' => "关闭"
+  }
+
   chinese_permalink :name
   acts_as_views_count :delay => 30
 
@@ -72,6 +75,12 @@ class Job < ActiveRecord::Base
   state_machine :state, :initial => :unapproved do
     before_transition :on => :active do |job|
       job.pay_for_active unless job.available?
+    end
+
+    after_transition :on => :close do |job|
+      unless job.available?
+        ### send mail to company
+      end
     end
 
     event :approve do
@@ -120,6 +129,10 @@ class Job < ActiveRecord::Base
     self.save
   end
 
+  def allow_to_apply?
+    available? and opened?
+  end
+
   def available?
     return false if start_at.blank? or end_at.blank?
     if (start_at...end_at).include?(Date.today)
@@ -139,7 +152,7 @@ class Job < ActiveRecord::Base
   end
 
   def deadline
-    (end_at.to_date - Date.today).to_i
+    end_at.present? ? (end_at.to_date - Date.today).to_i : 0
   end
 
   def increased_views_count

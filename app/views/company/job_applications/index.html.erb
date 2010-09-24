@@ -4,21 +4,19 @@
 <% show_no_record(@applications) do %>
   <table class="data-table">
   	<tr>
+  	  <th width="20">ID</th>
   	  <th>应聘岗位</th>
-  		<th width="60">所在省市</th>
   		<th width="130">时间</th>
-  		<th width="60">操作</th>
-  		<th width="100">收藏级别</th>
+  		<th width="70">收藏级别</th>
+  		<th width="50">状态</th>
+  		<th width="50">操作</th>
   	</tr>
   	<% @applications.each do |app| %>
     	<% job = app.job; resume = app.resume	%>
     	<tr class="<%= app.unread? ? "unread" : "even" %>">
-    	  <td><%= raw "<span class='shine'>(新)</span>" if app.unread? %> <%= link_to job.name, company_job_path(job) %></td>
-    		<td><%= resume.current_residence %></td>
+    	  <td><%= app.id %></td>
+    	  <td><%= raw "<span class='shine'>(新)</span>" if app.unread? %> <%= link_to job.name.truncate(24), company_job_path(job) %></td>
     		<td><%= app.updated_at.to_s_datetime %></td>
-    		<td>
-    		  <%= link_to "查看简历", company_job_application_path(app) %>
-    		</td>
     		<td class="app_<%= app.id %>">
           <script>
             $(function(){
@@ -32,16 +30,16 @@
           </script>
 
           <%= form_for app, :url => star_company_job_application_path(app), :remote => true do |f| %>
-          <div class="app_<%= app.id %>_options">
-        	  <%= f.radio_button :rating, "1", :title => "很差" %>
-        	  <%= f.radio_button :rating, "2", :title => "差" %>
-        	  <%= f.radio_button :rating, "3", :title => "一般" %>
-        	  <%= f.radio_button :rating, "4", :title => "不错" %>
-        	  <%= f.radio_button :rating, "5", :title => "很好" %>
-        	</div>
-        	<span style="margin-left: 5px; font-weight: bold;"></span>
+            <div class="app_<%= app.id %>_options">
+          	  <%= f.radio_button :rating, "1", :title => "一般" %>
+          	  <%= f.radio_button :rating, "2", :title => "不错" %>
+          	  <%= f.radio_button :rating, "3", :title => "很好" %>
+          	</div>
+          	<span style="margin-left: 5px; font-weight: bold;"></span>
         	<% end %>
     		</td>
+    		<td><%= raw app.state_humanize(:for => 'company') %></td>
+    		<td><%= link_to "查看简历", company_job_application_path(app) %></td>
     	</tr>
     <% end %>
   </table>

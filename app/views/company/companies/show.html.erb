@@ -1,8 +1,5 @@
-<% title "发布工作" %>
-
 <h3 class="right small_top_margin"><%= link_to "查看前台效果", @company %></h3>
-<h2>公司信息预览</h2>
-<div class="archive-separator"></div>
+<%= page_name_html("公司信息预览", :with_title => true) %>
 
 <div class="text-center">
   <h2><%= @company.name %></h2>
@@ -42,24 +39,6 @@
 <div class="content-separator"></div>
 
 <div class="post">
-	<div class="post-title"><h3>公司产品</h3></div>
-	<div class="post-body">
-	  <% show_no_record(@company.products) do %>
-		<table class="data-table top-vlign top-vlign-td">
-		  <% @company.products.each do |p| %>
-			<tr>
-				<th width="30%"><%= image_tag p.file.url, :class => "bordered w200" %></th>
-				<td width="70%"><%= raw p.desc %></td>
-			</tr>
-      <% end %>
-		</table>
-		<% end %>
-	</div>
-</div>
-
-<div class="content-separator"></div>
-
-<div class="post">
 	<div class="post-title"><h3>联系方式</h3></div>
 	<div class="post-body">
 		<table class="data-table">
@@ -75,7 +54,37 @@
 				<th>邮箱</th>
 				<td><%= @company.user.email %></td>
 			</tr>
+			<tr>
+				<th>联系人</th>
+				<td><%= @company.contact_name %></td>
+			</tr>
+			<tr>
+				<th>联系电话</th>
+				<td><%= @company.phone_number %></td>
+			</tr>
+			<tr>
+				<th>是否公开联系方式</th>
+				<td><b><%= @company.open_contact? ? "是" : "否" %></b></td>
+			</tr>
 		</table>
+	</div>
+</div>
+
+<div class="content-separator"></div>
+
+<div class="post">
+	<div class="post-title"><h3>公司产品</h3></div>
+	<div class="post-body">
+	  <% show_no_record(@company.products) do %>
+		<table class="data-table top-vlign top-vlign-td">
+		  <% @company.products.each do |p| %>
+			<tr>
+				<th width="30%"><%= image_tag p.file.url, :class => "bordered w200" %></th>
+				<td width="70%"><%= raw p.desc %></td>
+			</tr>
+      <% end %>
+		</table>
+		<% end %>
 	</div>
 </div>
 

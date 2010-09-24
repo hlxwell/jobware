@@ -1,6 +1,6 @@
 <fieldset id="new_cover_letters">
   <% show_error_message_for(f.object) %>
-  <%= f.text_field :name, :label => "名称", :class => "text", :style => "width: 98%;" %>
-  <%= f.cktext_area(:content, :height => '200px', :toolbar=>'Basic', :skin => "office2003", :label => "内容") %>
+  <%= f.text_field :name, :label => "保存名称", :class => "text", :style => "width: 98%;", :hint => "如中文求职信或者英文求职信。" %>
+  <%= f.cktext_area(:content, :height => '200px', :toolbar=>'Basic', :skin => "office2003", :label => "求职信内容") %>
   <%= f.hidden_field :resume_id, :value => current_user.jobseeker.id %>
 </fieldset>

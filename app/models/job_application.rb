@@ -16,6 +16,14 @@
 
 class JobApplication < ActiveRecord::Base
   state_machine :state, :initial => :unread do
+    after_transition :on => :accept do |app|
+      # app.send_acception_mail
+    end
+
+    after_transition :on => :reject do |app|
+      # app.send_rejection_mail
+    end
+
     event :view do
       transition :unread => :read
     end
@@ -50,16 +58,31 @@ class JobApplication < ActiveRecord::Base
     created_at.to_s_short_date
   end
 
-  def state_humanize
-    case state
-    when "unread"
-      "未阅读"
-    when "read"
-      "已阅读"
-    when "accepted"
-      "接受"
-    when "rejected"
-      "拒绝"
+  def state_humanize(options)
+    options.reverse_merge!(:for => "company")
+
+    if options[:for] == "jobseeker"
+      case state
+      when "unread"
+        "<span>未被阅读</span>"
+      when "read"
+        "<b>已被阅读</b>"
+      when "accepted"
+        "<b class='green'>已被接受</b>"
+      when "rejected"
+        "<b class='red'>已被拒绝</b>"
+      end
+    else
+      case state
+      when "unread"
+        "<b class='red'>未被阅读</b>"
+      when "read"
+        "<span>已被阅读</span>"
+      when "accepted"
+        "<b class='green'>已被接受</b>"
+      when "rejected"
+        "<b class='gray'>已被拒绝</b>"
+      end
     end
   end
 end

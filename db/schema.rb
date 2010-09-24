@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100921080601) do
+ActiveRecord::Schema.define(:version => 20100924070011) do
 
   create_table "ad_positions", :force => true do |t|
     t.string   "name"
@@ -147,6 +147,7 @@ ActiveRecord::Schema.define(:version => 20100921080601) do
     t.integer  "views_count",       :default => 0
     t.integer  "partner_id"
     t.string   "permalink"
+    t.boolean  "open_contact",      :default => false
   end
 
   create_table "counters", :force => true do |t|

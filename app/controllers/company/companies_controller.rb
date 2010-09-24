@@ -12,6 +12,7 @@ class Company::CompaniesController < Company::BaseController
 
   def update
     @company = current_user.company
+    @company.permalink = nil ### regenerate the url permalink.
     if @company.update_attributes(params[:company])
       redirect_to company_company_path, :notice => "公司信息更新成功。"
     else

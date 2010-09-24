@@ -19,4 +19,12 @@ class SessionsController < ApplicationController
     current_user_session.destroy
     redirect_to login_path, :notice => "退出登陆成功！"
   end
+
+  def reset_password
+    if params.get(:user, :email) and User.reset_password(params[:user][:email])
+      flash[:message] = "<p class='success'>密码重置成功请检查邮箱。</p>"
+    elsif params[:user] and params[:user][:email]
+      flash[:message] = "<p class='error'>邮箱填写错误或者不存在。</p>"
+    end
+  end
 end

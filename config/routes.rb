@@ -1,6 +1,6 @@
 Jobware::Application.routes.draw do
-  match "track" => Tracker.action(:track), :as => :tracker
-  match "slideshowpro(.:format)" => "pages#slideshowpro"
+  # match "track" => Tracker.action(:track), :as => :tracker
+  # match "slideshowpro(.:format)" => "pages#slideshowpro"
   match "/partner_benifit" => "pages#partner_benifit"
   match "/company_benifit" => "pages#company_benifit"
   match "/aboutus" => "pages#aboutus"
@@ -13,7 +13,7 @@ Jobware::Application.routes.draw do
   match "/login" => "sessions#new", :as => :login
   match "/logout" => "sessions#destroy", :as => :logout
   match "/signup" => "users#new", :as => :signup
-  match "/forgot_password" => "sessions#forgot_password", :as => :forgot_password
+  match "/reset_password(.:format)" => "sessions#reset_password", :as => :reset_password
 
   resource :sessions do
     member do
@@ -82,6 +82,8 @@ Jobware::Application.routes.draw do
         post :star
         get :star
         put :star
+        post :accept
+        post :reject
       end
     end
 

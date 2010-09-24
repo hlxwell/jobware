@@ -1,1 +1,5 @@
-$("#job_application_form").html("<%= escape_javascript(render('form')) %>");
+if(<%= @job.allow_to_apply? %>) {
+  $("#job_application_form").html("<%= escape_javascript(render('form')) %>");
+} else {
+  $("#job_application_form").html("<p class='notice'>该工作不允许被应聘。</p>")
+}

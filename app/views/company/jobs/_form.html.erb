@@ -11,4 +11,4 @@
 <%= f.cktext_area(:desc, :height => '200px', :toolbar=>'Basic', :skin => "office2003", :label => "其他描述") %>
 <%= f.cktext_area(:apply_method, :height => '200px', :toolbar=>'Basic', :skin => "office2003", :label => "应聘方式 (可选)", :hint => "如果你公司有自己的应聘系统，或者希望应聘者发送简历到公司邮箱，请填写在这里。") %>
 <%= f.check_box :only_use_custom_apply_method, :label => "只使用自定义应聘方式", :hint => "选中后系统自带的应聘系统将不会被使用。" %>
-<%= f.check_box :highlighted, :label => "是否高亮显示？", :hint => "选中后该工作在任何列表里都将高亮显示，增加显示效果，但是需要购买“岗位高亮”点数。" %>
+<%= f.check_box :highlighted, :label => "是否高亮显示？", :hint => "选中后该工作在任何列表里都将高亮显示，增加显示效果，但是需要购买“岗位高亮”点数。" if f.object.new_record? %>

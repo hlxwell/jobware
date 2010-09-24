@@ -18,3 +18,14 @@
 <h3>简历</h3>
 <div class="archive-separator"></div>
 <%= render :partial => "jobseeker/resumes/item", :object => @resume, :locals => {:hide_cover_letter => true} %>
+
+<% if @application.read? %>
+  <fieldset class="small_top_margin">
+    <legend>说明</legend>
+    为了让所有应聘者及时得到反馈信息，而不至于耽搁更多机会，该简历1周后将会被自动拒绝并发信通知，所以请及时做出决定。
+  </fieldset>
+  <%= button_to "拒绝该简历", reject_company_job_application_path(@application), :method => :post, :class => "button right", :confirm => "此操作将会发邮件通知用户，是否继续？" %>
+  <%= button_to "接受并发送面试函", accept_company_job_application_path(@application), :method => :post, :class => "button right small_right_margin", :confirm => "此操作将会发邮件通知用户，是否继续？" %>
+<% else %>
+  <h3 class="right">该简历 <%= raw @application.state_humanize(:for => "company") %></h3>
+<% end %>

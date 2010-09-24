@@ -1,4 +1,4 @@
-<% companies = Company.limit(10).order("created_at DESC").all %>
+<% companies = Company.limit(12).order("created_at DESC").all %>
 <div class="section network-section w318 right">
 	<div class="section-title">最新企业</div>
 	<div class="section-content">
@@ -7,11 +7,9 @@
 		  <% companies.each do |company| %>
 			<li>
 			  <span style="font-weight: bold" class="right text-right">
-			    <%= company.location %> <br/>
-			    <%= company.created_at.to_s_short_date %>
+			    <%= company.location %>
 			  </span>
-			  <h4><%= link_to company.name.truncate(20), company %></h4>
-
+			  <h5><%= link_to company.name.truncate(20), company %></h5>
 			  <div class="clearer">&nbsp;</div>
 			</li>
 		  <% end %>

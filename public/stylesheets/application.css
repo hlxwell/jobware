@@ -220,9 +220,12 @@ table.top-vlign-td td { vertical-align: top; }
 .loud {color: #666;}
 .highlight {background:#ff0;}
 .shine { color: red; font-weight: bold;}
-.black {color: black;}
 .bold {font-weight: bold;}
 .thin {font-weight: normal;}
+.black {color: black;}
+.red {color: red;}
+.green {color: green;}
+.gray {color: gray;}
 
 .text-left {text-align: left;}
 .text-right {text-align: right;}
@@ -548,7 +551,7 @@ img.alignright, img.right {margin: 0 0 1em 0;}
 #navigation {
   border-top: 1px solid #CCC;
   border-bottom: 1px solid #CCC;
-  margin-bottom: 24px;
+  margin-bottom: 1em;
 }
 #navigation a {
 	display: block;

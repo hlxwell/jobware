@@ -85,4 +85,8 @@ class Company < ActiveRecord::Base
   def logo_margin
     (960 - logo_width) / 2
   end
+  
+  def homepage_url
+    homepage.sub(/^(http:\/\/)|(https:\/\/)?/,'http://')
+  end
 end
