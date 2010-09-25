@@ -20,4 +20,8 @@ class PagesController < ApplicationController
       format.xml
     end
   end
+
+  def term
+    render :layout => false
+  end
 end

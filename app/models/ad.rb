@@ -79,6 +79,14 @@ class Ad < ActiveRecord::Base
 
     after_transition :on => :approve do |ad|
       ad.set_available_time
+      CompanyMailer.ad_approval(ad.company, ad)
+    end
+
+    after_transition :on => :close do |ad|
+      unless ad.available?
+        ### send mail to company
+        CompanyMailer.ad_expired(ad.company, ad)
+      end
     end
 
     event :want_to_show do
@@ -96,7 +104,7 @@ class Ad < ActiveRecord::Base
     event :reject do
       transition any => :rejected
     end
-    
+
     event :reapprove do
       transition :rejected => :approving
     end
@@ -114,7 +122,7 @@ class Ad < ActiveRecord::Base
 
   def set_available_time
     self.start_at = Date.today
-    self.end_at = 1.month.since.to_date
+    self.end_at = 7.days.since.to_date
     self.save
   end
 

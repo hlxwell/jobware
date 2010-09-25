@@ -8,12 +8,10 @@
 <!-- ### footer links -->
 <div id="footer">
 	<div class="left">&copy; 2002-2010 ThePlant  <span class="text-separator">&rarr;</span>
-	  <a href="#">首页</a> <span class="text-separator">|</span>
-	  <a href="#">关于我们</a> <span class="text-separator">|</span>
-	  <a href="#">收费标准</a> <span class="text-separator">|</span>
-	  <a href="#">联系方式</a> <span class="text-separator">|</span>
+	  <%= link_to "关于我们", aboutus_path %> <span class="text-separator">|</span>
+	  <%= link_to "联系方式", contactus_path %> <span class="text-separator">|</span>
+	  <%= link_to "企业服务", services_path %>  <span class="text-separator">|</span>
 	  <%= link_to "网站合作", new_partner_path %> <span class="text-separator">|</span>
-	  <a href="#">企业服务</a>
 	</div>
 	<div class="right">Powered by <a href="http://theplant.jp/">The Plant</a></div>
 	<div class="clearer">&nbsp;</div>

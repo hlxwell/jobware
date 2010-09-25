@@ -17,11 +17,15 @@
 class JobApplication < ActiveRecord::Base
   state_machine :state, :initial => :unread do
     after_transition :on => :accept do |app|
-      # app.send_acception_mail
+      JobseekerMailer.app_been_accepted(app.resume)
     end
 
     after_transition :on => :reject do |app|
-      # app.send_rejection_mail
+      JobseekerMailer.app_been_rejected(app.resume)
+    end
+
+    after_transition :on => :view do |app|
+      JobseekerMailer.app_been_checked(app.resume)
     end
 
     event :view do

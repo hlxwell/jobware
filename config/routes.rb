@@ -8,6 +8,7 @@ Jobware::Application.routes.draw do
   match "/partner_site_footer" => "partners#partner_site_footer"
   match "/services" => "pages#services"
   match "/contactus" => "pages#contactus"
+  match "/term" => "pages#term"
 
   ### auth stuff
   match "/login" => "sessions#new", :as => :login

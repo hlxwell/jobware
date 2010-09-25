@@ -10,7 +10,7 @@
       <li>我们能够帮助您更好的展示公司。</li>
       <li>专注于IT招聘，保证求职者质量。</li>
     </ol>
-    
+
     <h3>遇到困难请联系我们：</h3>
     <br>
     <ul>
@@ -24,11 +24,11 @@
     <%= jobware_form_for @company, :use_fieldset => false, :html => {:multipart => true} do |f| %>
       <%= field_set_tag "公司信息", :class => 'big' do %>
         <%= render "companies/form", :f => f %>
-        <%= f.check_box :accept_terms, :label => "同意条款", :hint => raw("<a href='#'>查看条款</a>"), :required => true, :type => 'agree_term' %>
+        <%#= f.check_box :accept_terms, :label => "同意条款", :hint => raw("<a href='#'>查看条款</a>"), :required => true, :type => 'agree_term' %>
       <% end %>
-
       <%= render "shared/new_user_form", :f => f %>
-      <%= f.submit "发布", :class => "right button" %>
+      <%= show_term %>
+      <%= f.submit "同意用户协议并注册公司", :class => "right button" %>
     <% end %>
   </div>
 

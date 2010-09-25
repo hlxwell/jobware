@@ -77,9 +77,14 @@ class Job < ActiveRecord::Base
       job.pay_for_active unless job.available?
     end
 
+    after_transition :on => :approve do |job|
+      CompanyMailer.job_approval(job.company, job)
+    end
+
     after_transition :on => :close do |job|
       unless job.available?
         ### send mail to company
+        CompanyMailer.job_expired(job.company, job)
       end
     end
 
@@ -92,7 +97,7 @@ class Job < ActiveRecord::Base
     end
 
     event :reject do
-      transition all => :rejected
+      transition any => :rejected
     end
 
     event :active do

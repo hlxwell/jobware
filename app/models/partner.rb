@@ -20,7 +20,7 @@
 class Partner < ActiveRecord::Base
   has_enumeration_for :site_size, :with => SiteSize
 
-  attr_accessor :accept_terms
+  # attr_accessor :accept_terms
 
   # has_many :ad_positions
   has_many :jobs
@@ -39,9 +39,13 @@ class Partner < ActiveRecord::Base
   accepts_nested_attributes_for :user
 
   validates_presence_of :name, :url, :contact_name, :phone_number, :site_size, :desc
-  validates_acceptance_of :accept_terms, :message => "你必需接受服务条款。"
+  # validates_acceptance_of :accept_terms, :message => "你必需接受服务条款。"
 
   state_machine :state, :initial => :unapproved do
+    after_transition :on => :approve do |partner|
+      PartnerMailer.approval(partner)
+    end
+
     event :approve do
       transition any => :approved
     end

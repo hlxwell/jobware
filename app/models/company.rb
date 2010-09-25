@@ -27,7 +27,7 @@
 #
 
 class Company < ActiveRecord::Base
-  attr_accessor :accept_terms
+  # attr_accessor :accept_terms
   acts_as_views_count :delay => 30
   chinese_permalink :name
 
@@ -51,7 +51,7 @@ class Company < ActiveRecord::Base
 
   validates_uniqueness_of :name
   validates_presence_of :name, :company_type, :size, :address, :contact_name, :phone_number, :province, :city, :desc
-  validates_acceptance_of :accept_terms, :accept => "1", :message => "你必需接受服务条款"
+  # validates_acceptance_of :accept_terms, :accept => "1", :message => "你必需接受服务条款"
 
   ### to reprocess all image.
   # Company.all.each do |c|

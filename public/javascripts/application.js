@@ -31,7 +31,7 @@ $(function(){
   // $(".post .company_logo").each(function() {
   //   //Get the width of the image
   //   var width = $(this).width();
-  // 
+  //
   //   //Max-width substitution (works for all browsers)
   //   if (width > 100) {
   //     $(this).css("width", "100px");
@@ -47,6 +47,15 @@ $(function(){
   });
 
   show_and_hide_ajax_loading_bar();
+
+  $(".show_dialog").click(function(){
+    $(".dialog-modal").dialog({
+      width: 500,
+      height: 350,
+      modal: true
+    });
+  });
+
 });
 
 function show_and_hide_ajax_loading_bar() {
