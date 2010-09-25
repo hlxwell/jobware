@@ -78,13 +78,13 @@ class Job < ActiveRecord::Base
     end
 
     after_transition :on => :approve do |job|
-      CompanyMailer.job_approval(job.company, job)
+      CompanyMailer.job_approval(job.company, job).deliver
     end
 
     after_transition :on => :close do |job|
       unless job.available?
         ### send mail to company
-        CompanyMailer.job_expired(job.company, job)
+        CompanyMailer.job_expired(job.company, job).deliver
       end
     end
 

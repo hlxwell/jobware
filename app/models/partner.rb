@@ -43,7 +43,7 @@ class Partner < ActiveRecord::Base
 
   state_machine :state, :initial => :unapproved do
     after_transition :on => :approve do |partner|
-      PartnerMailer.approval(partner)
+      PartnerMailer.approval(partner).deliver
     end
 
     event :approve do

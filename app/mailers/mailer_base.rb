@@ -1,3 +1,3 @@
 class MailerBase < ActionMailer::Base
-  default :from => "notifier@itjob.fm"
+  default :from => "ITJob.fm <notifier@itjob.fm>"
 end
