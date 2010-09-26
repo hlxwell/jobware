@@ -73,7 +73,6 @@ class Job < ActiveRecord::Base
     indexes requirement
     indexes company(:name), :as => :company_name, :sortable => true
     has company_id, created_at, updated_at
-    where "state='opened'"
   end
 
   state_machine :state, :initial => :unapproved do

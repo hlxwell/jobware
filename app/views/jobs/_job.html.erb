@@ -23,7 +23,7 @@
 	<!-- address and date -->
 	<div class="archive-post-address">
 		<h3><%= job.location %></h3>
-		<div class="post-date text-center">发布于 <%= job.start_at.to_s_short_date %></div>
+		<div class="post-date text-center">发布于 <%= job.start_at.try(:to_s_short_date) %></div>
 		<div class="right bordered small_top_margin">还有<b><%= job.deadline %></b>天结束</div>
 	</div>
 	<div class="clearer">&nbsp;</div>
