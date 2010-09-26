@@ -1,20 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
 <head>
-	<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
-	<meta name="description" content=""/>
-	<meta name="keywords" content="" />
-	<meta name="author" content="" />
-  <meta name="google-site-verification" content="hfpGME0XXysypscnq5tRsaWY24wb3T0QFU3e-crq3FE" />
-
-	<%= auto_discovery_link_tag(:atom, "/jobs.atom") %>
-	<%= csrf_meta_tag %>
-  <%= stylesheet_link_tag "application", "pagination", "tipsy", "jquery-ui", "jquery.ui.stars", "coin-slider-styles" %>
+  <%= render "shared/meta" %>
   <style><%= current_partner_site.try(:global_css) %></style>
-  <%= javascript_include_tag "jquery", "jquery.tipsy", "ui.datepicker-zh-CN", "jquery.tools.min", "jquery-ui", "jquery.ui.stars", "jquery.cookies", "jquery.formtips", "jquery.citySelector", "coin-slider", "rails", "application", :ckeditor %>
-
-  <%= include_visualization_api %>
-	<%= render_visualizations %>
   <title><%= "#{@content_for_title} - " if @content_for_title %> <%= current_partner_site.title %> - 中国最大的开发者招聘网站</title>
 </head>
 

@@ -786,6 +786,10 @@ img.alignright, img.right {margin: 0 0 1em 0;}
   height: 250px;
 }
 
+.h270 {
+  height: 270px;
+}
+
 .w49p {
   width: 49%;
 }

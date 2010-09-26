@@ -1,4 +1,9 @@
 <% title("发布岗位") %>
+<div class="text-center middle_bottom_margin">
+  <span class="bordered largest bold">第一步：发布岗位</span>
+  <span class="bordered small_left_margin largest bold">第二步：等待管理员验证</span>
+  <span class="bordered small_left_margin largest bold">第三步：激活并展示岗位</span>
+</div>
 
 <%= jobware_form_for @job, :url => company_jobs_path, :title => "发布岗位" do |f| %>
   <%= render :partial => 'form', :locals => {:f => f} %>

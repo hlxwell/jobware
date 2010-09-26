@@ -1,24 +1,28 @@
 <%= page_name_html("请选择广告类型", :with_title => true) %>
-<fieldset class="left w298">
+<fieldset class="left w298 h250">
   <legend>紧急招聘</legend>
-  <div class="bordered" style="width: 290px; height:150px"></div>
-  <%= link_to "发布", new_company_ad_path(:type => :urgent_job), :class => "right small_top_margin" %>
+  <%= image_tag '/images/ads/urgent_jobs.png', :width => 290, :height => 150 %>
+  <div class="bordered middle_top_margin large">位于首页头条处.</div>
+  <%= link_to "发布", new_company_ad_path(:type => :urgent_job), :class => "right small_top_margin largest" %>
 </fieldset>
 
-<fieldset class="right w298">
-  <legend>知名企业招聘</legend>
-  <div class="bordered" style="width: 290px; height:150px"></div>
-  <%= link_to "发布", new_company_ad_path(:type => :famous_company), :class => "right small_top_margin" %>
-</fieldset>
-
-<fieldset class="left w298">
+<fieldset class="right w298 h250">
   <legend>首页滚动图片广告</legend>
-  <div class="bordered" style="width: 290px; height:150px"></div>
-  <%= link_to "发布", new_company_ad_path(:type => :slider_ad), :class => "right small_top_margin" %>
+  <%= image_tag '/images/ads/slider_ad.png', :width => 290, :height => 150 %>
+  <div class="bordered middle_top_margin large">位于首页头条处。</div>
+  <%= link_to "发布", new_company_ad_path(:type => :slider_ad), :class => "right small_top_margin largest" %>
 </fieldset>
 
-<fieldset class="right w298">
+<fieldset class="left w298 h270">
+  <legend>知名企业招聘</legend>
+  <%= image_tag '/images/ads/famous_company.png', :width => 290, :height => 150 %>
+  <div class="bordered middle_top_margin large">仅次于首页头条的下一行，展示公司logo，公司名和公司的几个工作。</div>
+  <%= link_to "发布", new_company_ad_path(:type => :famous_company), :class => "right small_top_margin largest" %>
+</fieldset>
+
+<fieldset class="right w298 h270">
   <legend>推荐企业</legend>
-  <div class="bordered" style="width: 290px; height:150px"></div>
-  <%= link_to "发布", new_company_ad_path(:type => :featured_company), :class => "right small_top_margin" %>
+  <%= image_tag '/images/ads/featured_company.png', :width => 290, :height => 150 %>
+  <div class="bordered middle_top_margin large">位于首页，岗位展示页底部，以及公司和岗位列表右侧。</div>
+  <%= link_to "发布", new_company_ad_path(:type => :featured_company), :class => "right small_top_margin largest" %>
 </fieldset>
