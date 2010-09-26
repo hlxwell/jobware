@@ -5,6 +5,7 @@
   <h2><%= @company.name %></h2>
   <%= image_tag @company.logo.url, :class => "bordered" %>
 </div>
+<div class="middle_top_margin text-center"><%= show_tag_list @company.tag_list %></div>
 
 <div class="content-separator"></div>
 

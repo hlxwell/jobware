@@ -14,6 +14,8 @@
 	<!-- title and company -->
 	<div class="archive-post-title">
 		<h3><b>[<%= company.company_type_humanize %></b>] <%= link_to company.name, company %></h3>
+		<div class="small_top_margin small_bottom_margin"><%= show_tag_list company.tag_list %></div>
+
 		<div class="post-date">
 		  <ul>
 		  <% company.jobs.opened.limit(3).each do |job| %>

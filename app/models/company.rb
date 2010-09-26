@@ -30,6 +30,7 @@ class Company < ActiveRecord::Base
   # attr_accessor :accept_terms
   acts_as_views_count :delay => 30
   chinese_permalink :name
+  acts_as_taggable
 
   has_enumeration_for :company_type, :with => CompanyType
   has_enumeration_for :size, :with => CompanySize
@@ -52,6 +53,7 @@ class Company < ActiveRecord::Base
   validates_uniqueness_of :name
   validates_presence_of :name, :company_type, :size, :address, :contact_name, :phone_number, :province, :city, :desc
   # validates_acceptance_of :accept_terms, :accept => "1", :message => "你必需接受服务条款"
+  validate :check_tag
 
   ### to reprocess all image.
   # Company.all.each do |c|
@@ -61,6 +63,13 @@ class Company < ActiveRecord::Base
   validates_attachment_content_type :logo, :content_type => [%r{image/.*jpg}, %r{image/.*jpeg}, %r{image/.*gif}, %r{image/.*png}], :if => lambda {|obj| obj.logo.size.present? }
   validates_attachment_size :logo, :less_than => 5.megabytes
   validates_attachment_presence :logo
+
+  def check_tag
+    errors.add :tag_list, '请不要超过5个关键字。' if self.tag_list.count > 5
+    self.tag_list.each do |tag|
+      errors.add :tag_list, '单个关键字请不要超过20个字。' if tag.size > 20
+    end
+  end
 
   def to_param
     "#{id}-#{permalink}"
@@ -85,7 +94,7 @@ class Company < ActiveRecord::Base
   def logo_margin
     (960 - logo_width) / 2
   end
-  
+
   def homepage_url
     homepage.sub(/^(http:\/\/)|(https:\/\/)?/,'http://')
   end

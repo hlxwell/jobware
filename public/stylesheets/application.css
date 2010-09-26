@@ -1067,3 +1067,12 @@ div.highlighted {
   font-weight: bold;
   margin-right: 0.5em;
 }
+
+.tag {
+  font-weight: bold;
+  padding: 0.3em 0.5em 0.3em 0.5em;
+  background-color: #ff6666;
+  color: white;
+  margin: 1em 0.5em 0 0;
+  font-size: 11px;
+}

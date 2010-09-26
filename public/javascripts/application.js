@@ -55,22 +55,6 @@ $(function(){
       modal: true
     });
   });
-
-  $('a[href*=#]').live('click', function() {
-    $.bbq.pushState( '#/' + this.hash.slice(1) );
-    return false;
-  });
-
-  $(window).bind('hashchange', function(event) {
-    if (location.hash) {
-      var tgt = location.hash.replace(/#\//,'');
-    } else {
-      var tgt = '#top';
-    }
-    $.smoothScroll({scrollTarget: '#' + tgt});
-  });
-
-  $(window).trigger('hashchange');
 });
 
 function show_and_hide_ajax_loading_bar() {

@@ -63,6 +63,7 @@ class Ad < ActiveRecord::Base
   validates_presence_of :display_type, :period
   validates_presence_of :name, :province, :city, :url, :if => Proc.new { |ad| ad.display_type == AdPositionType::URGENT_JOB }
   validates_presence_of :name, :url, :if => Proc.new { |ad| [AdPositionType::SLIDER_AD, AdPositionType::FEATURED_COMPANY].include?(ad.display_type) }
+  validates_numericality_of :period, :greater_than => 1, :allow_nil => false
   validates_attachment_presence :image, :message => "必须上传图片。",:if => lambda {|ad| [AdPositionType::SLIDER_AD, AdPositionType::FEATURED_COMPANY].include?(ad.display_type) }
   validate :check_time
 

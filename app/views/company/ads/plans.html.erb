@@ -1,20 +1,24 @@
 <%= page_name_html("请选择广告类型", :with_title => true) %>
 <fieldset class="left w298">
   <legend>紧急招聘</legend>
-  <%= link_to "发布", new_company_ad_path(:type => :urgent_job), :class => "right" %>
+  <div class="bordered" style="width: 290px; height:150px"></div>
+  <%= link_to "发布", new_company_ad_path(:type => :urgent_job), :class => "right small_top_margin" %>
 </fieldset>
 
 <fieldset class="right w298">
   <legend>知名企业招聘</legend>
-  <%= link_to "发布", new_company_ad_path(:type => :famous_company), :class => "right" %>
+  <div class="bordered" style="width: 290px; height:150px"></div>
+  <%= link_to "发布", new_company_ad_path(:type => :famous_company), :class => "right small_top_margin" %>
 </fieldset>
 
 <fieldset class="left w298">
   <legend>首页滚动图片广告</legend>
-  <%= link_to "发布", new_company_ad_path(:type => :slider_ad), :class => "right" %>
+  <div class="bordered" style="width: 290px; height:150px"></div>
+  <%= link_to "发布", new_company_ad_path(:type => :slider_ad), :class => "right small_top_margin" %>
 </fieldset>
 
 <fieldset class="right w298">
   <legend>推荐企业</legend>
-  <%= link_to "发布", new_company_ad_path(:type => :featured_company), :class => "right" %>
+  <div class="bordered" style="width: 290px; height:150px"></div>
+  <%= link_to "发布", new_company_ad_path(:type => :featured_company), :class => "right small_top_margin" %>
 </fieldset>

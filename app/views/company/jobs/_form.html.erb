@@ -5,10 +5,13 @@
 <%= f.select :contract_type, ContractType.to_sorted_a, {:include_blank => true}, { :label => "工作类型" } %>
 <%= f.select :category, JobCategory.to_sorted_a, {:include_blank => true}, {:label => "类别"} %>
 <%= f.select :salary_range, SalaryRange.to_sorted_a, :label => "薪资范围" %>
+<%= f.select :working_year_requirement, WorkingYearRequirement.to_sorted_a, :label => "工作年限" %>
+<%= f.select :degree_requirement, DegreeRequirement.to_sorted_a, :label => "学历要求" %>
 <%= f.cktext_area(:content, :height => '200px', :toolbar=>'Basic', :skin => "office2003", :label => "工作内容") %>
 <%= f.cktext_area(:requirement, :height => '200px', :toolbar=>'Basic', :skin => "office2003", :label => "岗位需求") %>
 <%= f.cktext_area(:welfare, :height => '200px', :toolbar=>'Basic', :skin => "office2003", :label => "福利待遇") %>
 <%= f.cktext_area(:desc, :height => '200px', :toolbar=>'Basic', :skin => "office2003", :label => "其他描述") %>
 <%= f.cktext_area(:apply_method, :height => '200px', :toolbar=>'Basic', :skin => "office2003", :label => "应聘方式 (可选)", :hint => "如果你公司有自己的应聘系统，或者希望应聘者发送简历到公司邮箱，请填写在这里。") %>
+<%= f.text_field :tag_list, :label => "岗位关键字", :class => "text w600", :hint => "岗位关键字会显示在岗位列表里，帮助求职者快速找到符合的工作。例如：c++, java, ruby on rails, css等。注意请用英文的逗号隔开关键字。" %>
 <%= f.check_box :only_use_custom_apply_method, :label => "只使用自定义应聘方式", :hint => "选中后系统自带的应聘系统将不会被使用。" %>
 <%= f.check_box :highlighted, :label => "是否高亮显示？", :hint => "选中后该工作在任何列表里都将高亮显示，增加显示效果，但是需要购买“岗位高亮”点数。" if f.object.new_record? %>

@@ -13,3 +13,4 @@
 <%= f.cktext_area(:desc, :height => '200px', :toolbar=>'Basic', :skin => "office2003", :label => "公司简介", :hint => "如公司主要业务，公司文化等。") %>
 <%= f.file_field :logo, :label => "公司LOGO", :hint => "最佳尺寸是283x50。" %>
 <%= image_tag f.object.logo.url if f.object.logo.size %>
+<%= f.text_field :tag_list, :label => "公司关键字", :class => "text w600", :hint => "描述公司的行业，或者主要需要招聘人才的类型等关键字，如 php,游戏,web game。注意请用英文的逗号隔开关键字。" %>

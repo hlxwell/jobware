@@ -12,6 +12,14 @@ module ApplicationHelper
     @show_title = show_title
   end
 
+  def show_tag_list tags
+    result = ""
+    tags.each do |tag|
+      result += "<span class='tag'>#{tag}</span>"
+    end
+    raw result
+  end
+
   def page_name_html(name, options)
     title(name) if options[:with_title]
     raw "<h2>#{name}</h2><div class='archive-separator'></div>"

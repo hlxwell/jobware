@@ -8,6 +8,27 @@ class EnumerateIt::Base
   end
 end
 
+class DegreeRequirement < EnumerateIt::Base
+  associate_values(
+    :none           => [0, '不限'],
+    :junior_college => [1, '大专及以上'],
+    :bachelor       => [2, '本科及以上'],
+    :master         => [3, '硕士及以上'],
+    :doctor         => [4, '博士及以上']
+  )
+end
+
+class WorkingYearRequirement < EnumerateIt::Base
+  associate_values(
+    :none => [0, '不限'],
+    :a    => [1, '1年以上'],
+    :b    => [2, '2年以上'],
+    :c    => [3, '3年以上'],
+    :d    => [4, '5年以上'],
+    :e    => [5, '10年以上']
+  )
+end
+
 class SalaryRange < EnumerateIt::Base
   associate_values(
     :none   => [0, '面议'],

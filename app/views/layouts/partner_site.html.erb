@@ -11,7 +11,7 @@
 	<%= csrf_meta_tag %>
   <%= stylesheet_link_tag "application", "pagination", "tipsy", "jquery-ui", "jquery.ui.stars", "coin-slider-styles" %>
   <style><%= current_partner_site.try(:global_css) %></style>
-  <%= javascript_include_tag "jquery", "jquery.smooth-scroll", "jquery.ba-bbq", "jquery.tipsy", "ui.datepicker-zh-CN", "jquery.tools.min", "jquery-ui", "jquery.ui.stars", "jquery.cookies", "jquery.formtips", "jquery.citySelector", "coin-slider", "rails", "application", :ckeditor %>
+  <%= javascript_include_tag "jquery", "jquery.tipsy", "ui.datepicker-zh-CN", "jquery.tools.min", "jquery-ui", "jquery.ui.stars", "jquery.cookies", "jquery.formtips", "jquery.citySelector", "coin-slider", "rails", "application", :ckeditor %>
 
   <%= include_visualization_api %>
 	<%= render_visualizations %>
@@ -29,5 +29,7 @@
       <%= render "shared/partner_site_footer" %>
 	  </div>
   </div>
+
+  <%= render "shared/counter" if Rails.env == 'production' %>
 </body>
 </html>

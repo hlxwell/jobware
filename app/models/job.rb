@@ -38,12 +38,15 @@ class Job < ActiveRecord::Base
     'closed' => "关闭"
   }
 
+  acts_as_taggable
   chinese_permalink :name
   acts_as_views_count :delay => 30
 
   has_enumeration_for :category, :with => JobCategory
   has_enumeration_for :contract_type, :with => ContractType
   has_enumeration_for :salary_range, :with => SalaryRange
+  has_enumeration_for :degree_requirement, :with => DegreeRequirement
+  has_enumeration_for :working_year_requirement, :with => WorkingYearRequirement
 
   scope :opened, where("? BETWEEN start_at AND end_at AND state=?", Date.today, :opened)
   scope :closed, where("(? NOT BETWEEN start_at AND end_at) OR state!=?", Date.today, :opened)
@@ -60,6 +63,7 @@ class Job < ActiveRecord::Base
   accepts_nested_attributes_for :company
 
   validates_presence_of :name, :location_province, :location_city, :contract_type, :category, :vacancy, :content, :requirement
+  validate :check_tag
 
   define_index do
     indexes name, :sortable => true
@@ -69,43 +73,43 @@ class Job < ActiveRecord::Base
     indexes requirement
     indexes company(:name), :as => :company_name, :sortable => true
     has company_id, created_at, updated_at
-    where "#{Date.today} BETWEEN start_at AND end_at AND state='opened'"
+    where "state='opened'"
   end
 
   state_machine :state, :initial => :unapproved do
     before_transition :on => :active do |job|
       job.pay_for_active unless job.available?
     end
-
     after_transition :on => :approve do |job|
       CompanyMailer.job_approval(job.company, job).deliver
     end
-
     after_transition :on => :close do |job|
       unless job.available?
         ### send mail to company
         CompanyMailer.job_expired(job.company, job).deliver
       end
     end
-
     event :approve do
       transition [:rejected, :unapproved] => :closed
     end
-
     event :reapprove do
       transition any => :unapproved
     end
-
     event :reject do
       transition any => :rejected
     end
-
     event :active do
       transition :closed => :opened, :if => :can_open?
     end
-
     event :close do
       transition :opened => :closed
+    end
+  end
+
+  def check_tag
+    errors.add :tag_list, '请不要超过5个关键字。' if self.tag_list.count > 5
+    self.tag_list.each do |tag|
+      errors.add :tag_list, '单个关键字请不要超过20个字。' if tag.size > 20
     end
   end
 
