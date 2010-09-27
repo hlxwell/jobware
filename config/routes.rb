@@ -85,8 +85,8 @@ Jobware::Application.routes.draw do
         post :star
         get :star
         put :star
-        post :accept
-        post :reject
+        put :accept
+        put :reject
       end
     end
 
