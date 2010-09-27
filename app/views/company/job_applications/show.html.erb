@@ -40,8 +40,8 @@
     <% end %>
   </div>
 
-  <%= button_to_function "拒绝该简历", "$('#accept_mail_message_form').hide(); $('#reject_mail_message_form').fadeIn('slow'); $.scrollTo(1000, 0);", :class => "button right small_right_margin show_dialog" %>
-  <%= button_to_function "接受并发送面试函", "$('#reject_mail_message_form').hide(); $('#accept_mail_message_form').fadeIn('slow'); $.scrollTo(1000, 0);", :class => "button right small_right_margin show_dialog" %>
+  <%= button_to_function "拒绝该简历", "$('#accept_mail_message_form').hide(); $('#reject_mail_message_form').fadeIn('slow'); $.scrollTo(1000, 500);", :class => "button right small_right_margin show_dialog" %>
+  <%= button_to_function "接受并发送面试函", "$('#reject_mail_message_form').hide(); $('#accept_mail_message_form').fadeIn('slow'); $.scrollTo(1000, 500);", :class => "button right small_right_margin show_dialog" %>
 <% else %>
   <h3 class="right">该简历 <%= raw @application.state_humanize(:for => "company") %></h3>
 <% end %>
