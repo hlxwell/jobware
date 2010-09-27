@@ -20,7 +20,7 @@
 <div class="archive-separator"></div>
 <%= render :partial => "jobseeker/resumes/item", :object => @resume, :locals => {:hide_cover_letter => true} %>
 
-<% if !@application.read? %>
+<% if @application.read? %>
   <fieldset class="small_top_margin">
     <legend>说明</legend>
     为了让所有应聘者及时得到反馈信息，而不至于耽搁更多机会，该简历会在该岗位关闭时自动被拒绝并发信通知，所以请及时做出决定。
