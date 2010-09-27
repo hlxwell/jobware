@@ -53,6 +53,7 @@ class JobApplication < ActiveRecord::Base
 
   accepts_nested_attributes_for :cover_letter, :allow_destroy => true
 
+  scope :read, where(:state => "read")
   scope :unread, where(:state => "unread")
   scope :starred, where("rating > 0")
   scope :accepted, where(:state => :accepted)

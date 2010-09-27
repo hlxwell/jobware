@@ -86,6 +86,11 @@ class Job < ActiveRecord::Base
       unless job.available?
         ### send mail to company
         CompanyMailer.job_expired(job.company, job).deliver
+        ## read means unaccepted or unrejected
+        job.job_applications.read.each do |app|
+          app.update_attribute(:mail_message, "岗位到期。")
+          app.reject
+        end
       end
     end
     event :approve do
