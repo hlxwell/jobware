@@ -6,7 +6,7 @@ Jobware::Application.routes.draw do
   match "/aboutus" => "pages#aboutus"
   match "/partner_site_header" => "partners#partner_site_header"
   match "/partner_site_footer" => "partners#partner_site_footer"
-  match "/services" => "pages#services"
+  match "/law" => "pages#law"
   match "/contactus" => "pages#contactus"
   match "/term" => "pages#term"
 

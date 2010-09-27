@@ -15,7 +15,7 @@
   	  <td><%= link_to job.name, job_path(job) %></td>
   		<td><%= job.location %></td>
   		<td><%= app.cover_letter.try(:name) %></td>
-  		<td><%= job.updated_at.to_s_datetime %></td>
+  		<td><%= app.created_at.to_s_datetime %></td>
   		<td><%= raw app.state_humanize(:for => 'jobseeker') %></td>
   	</tr>
     <% end %>

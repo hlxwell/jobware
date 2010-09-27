@@ -1,7 +1,7 @@
 <% title "用户注册" %>
 
 <div class="main">
-  <fieldset style="width: 46%;" class="left big">
+  <fieldset style="width: 46%; height: 350px" class="left big">
     <legend>企业注册</legend>
     <img src="/images/icons/agency.png" class="left"/>
     <div class="right w300 middle_bottom_margin large"><%= render "company_reg_intro" %></div>
@@ -12,12 +12,12 @@
   </fieldset>
 
 
-  <fieldset style="width: 46%;" class="right big">
+  <fieldset style="width: 46%; height: 350px" class="right big">
     <legend>求职者注册</legend>
     <img src="/images/icons/old-edit-find.png" class="left"/>
     <div class="right w300 middle_bottom_margin large"><%= render "jobseeker_reg_intro" %></div>
     <div class="clearer">&nbsp;</div>
-    <div class="right">
+    <div class="right" style="margin-top: 42px">
       <div class="btn"><%= link_to "立刻注册", new_jobseeker_resume_path, :class => "black" %><span></span></div>
     </div>
   </fieldset>
