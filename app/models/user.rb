@@ -32,11 +32,12 @@ class User < ActiveRecord::Base
   has_one :jobseeker, :class_name => "Resume"
 
   accepts_nested_attributes_for :company
-  
+
   def self.reset_password(email)
     user = self.find_by_email(email)
     if user.present?
-      # TODO send reset password mail
+      user.reset_perishable_token!
+      UserMailer.reset_password(user).deliver
       true
     else
       false

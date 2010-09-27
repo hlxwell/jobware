@@ -1,4 +1,4 @@
-<% companies = Ad.famous_companies.opened.map(&:company) %>
+<% companies = Ad.famous_companies.opened.limit(3).map(&:company) %>
 <div class="section network-section">
 	<div class="section-title">知名企业招聘</div>
 	<div class="section-content">

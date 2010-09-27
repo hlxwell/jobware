@@ -5,18 +5,26 @@ class JobseekerMailer < MailerBase
   end
 
   def app_been_accepted(jobseeker, app)
-    mail :to => jobseeker.user.email, :subject => "[ITJob.fm 订阅]最新工作机会"
+    @jobseeker = jobseeker
+    @app = app
+    mail :to => jobseeker.user.email, :subject => "ITJob.fm：恭喜您，您的应聘被公司接受了。"
   end
 
   def app_been_checked(jobseeker, app)
-    mail :to => jobseeker.user.email, :subject => "[ITJob.fm 订阅]最新工作机会"
+    @jobseeker = jobseeker
+    @app = app
+    mail :to => jobseeker.user.email, :subject => "ITJob.fm：您的应聘被公司查看了。"
   end
 
   def app_been_rejected(jobseeker, app)
-    mail :to => jobseeker.user.email, :subject => "[ITJob.fm 订阅]最新工作机会"
+    @jobseeker = jobseeker
+    @app = app
+    mail :to => jobseeker.user.email, :subject => "ITJob.fm：您的应聘被公司拒绝了"
   end
 
   def app_been_starred(jobseeker, app)
-    mail :to => jobseeker.user.email, :subject => "[ITJob.fm 订阅]最新工作机会"
+    @jobseeker = jobseeker
+    @app = app
+    mail :to => jobseeker.user.email, :subject => "ITJob.fm：恭喜您，您的应聘被公司关注了。"
   end
 end

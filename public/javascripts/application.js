@@ -15,7 +15,7 @@ $(function(){
   // top page slider
   $('#slider-center').coinslider({
     width: 510,
-    height: 200,
+    height: 250,
     navigation: true,
     delay: 5000,
     effect: 'random'

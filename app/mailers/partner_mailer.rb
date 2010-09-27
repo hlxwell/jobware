@@ -1,6 +1,12 @@
 class PartnerMailer < MailerBase
   def approval(partner)
-    mail :to => partner.user.email
+    @partner = partner
+    mail :to => partner.user.email, :subject => "ITJob.fm：加入合作站申请审核通过。"
+  end
+  
+  def reject(partner)
+    @partner = partner
+    mail :to => partner.user.email, :subject => "ITJob.fm：加入合作站申请被拒绝。"
   end
 
   def daily_report(partner)

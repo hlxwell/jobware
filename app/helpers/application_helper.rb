@@ -124,4 +124,5 @@ module ApplicationHelper
       raw("<strong class='loud'>(#{count})</strong> |")
     end
   end
+
 end

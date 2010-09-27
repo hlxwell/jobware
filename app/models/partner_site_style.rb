@@ -22,4 +22,5 @@ class PartnerSiteStyle < ActiveRecord::Base
 
   validates_uniqueness_of :subdomain
   validates_presence_of :header, :footer, :header_height, :footer_height, :partner_id
+  validates_exclusion_of :subdomain, :in => %w( www itjob admin mail help ), :message => "不能使用该子域名。"
 end

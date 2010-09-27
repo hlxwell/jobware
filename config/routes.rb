@@ -15,6 +15,8 @@ Jobware::Application.routes.draw do
   match "/logout" => "sessions#destroy", :as => :logout
   match "/signup" => "users#new", :as => :signup
   match "/reset_password(.:format)" => "sessions#reset_password", :as => :reset_password
+  match "/edit_password/:id" => "sessions#edit_password", :as => :edit_password
+  match "/update_password" => "sessions#update_password", :as => :update_password
 
   resource :sessions do
     member do

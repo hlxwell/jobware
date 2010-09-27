@@ -4,16 +4,8 @@
   <fieldset style="width: 46%;" class="left big">
     <legend>企业注册</legend>
     <img src="/images/icons/agency.png" class="left"/>
-    <div class="right w300" style="margin-bottom: 1em;">
-      <h3>介绍</h3>
-      我们是内首推的“分行业招聘”系统，以专业、精准及针对性的招聘，满足不同领域、不同岗位层次的人才需求。
-      10个行业专业招聘网站，汇集全国百万人才简历库，再难寻的人才，英才网联都会为您实现。
-      “企业招聘平台”以专业招聘人才为目标，为企业提供各行业的专业人才管理库，让您轻松自如的完成您的招聘计划。
-      如果您已经注册为会员，请使用您的用户名，密码登录。
-    </div>
-
+    <div class="right w300 middle_bottom_margin large"><%= render "company_reg_intro" %></div>
     <div class="clearer">&nbsp;</div>
-
     <div class="right">
       <div class="btn"><%= link_to "立刻注册", new_company_path, :class => "black" %><span></span></div>
     </div>
@@ -23,17 +15,8 @@
   <fieldset style="width: 46%;" class="right big">
     <legend>求职者注册</legend>
     <img src="/images/icons/old-edit-find.png" class="left"/>
-
-    <div class="right w300" style="margin-bottom: 1em;">
-      <h3>介绍</h3>
-      我们是内首推的“分行业招聘”系统，以专业、精准及针对性的招聘，满足不同领域、不同岗位层次的人才需求。
-      10个行业专业招聘网站，汇集全国百万人才简历库，再难寻的人才，英才网联都会为您实现。
-      “企业招聘平台”以专业招聘人才为目标，为企业提供各行业的专业人才管理库，让您轻松自如的完成您的招聘计划。
-      如果您已经注册为会员，请使用您的用户名，密码登录。
-    </div>
-
+    <div class="right w300 middle_bottom_margin large"><%= render "jobseeker_reg_intro" %></div>
     <div class="clearer">&nbsp;</div>
-
     <div class="right">
       <div class="btn"><%= link_to "立刻注册", new_jobseeker_resume_path, :class => "black" %><span></span></div>
     </div>

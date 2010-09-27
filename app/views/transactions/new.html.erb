@@ -1,6 +1,21 @@
 <%= page_name_html("充值", :with_title => true) %>
 
-<%= jobware_form_for :transaction, :url => send("#{current_user_section}_transactions_path"), :use_fieldset => false do |f| %>
-  <%= f.text_field :amount, :label => "充值金额", :hint => "请输入需要充入的金额。" %>
-  <%= f.submit "充值", :class => "button" %>
-<% end %>
+<table class="data-table">
+  <tr>
+    <th>户名</th>
+    <td>杭州大浪软件技术有限公司</td>
+  </tr>
+  <tr>
+    <th>帐号</th>
+    <td>7331 7101 8260 0056 349</td>
+  </tr>
+  <tr>
+    <th>开户行</th>
+    <td>中信银行杭州钱江支行</td>
+  </tr>
+</table>
+
+<%#= jobware_form_for :transaction, :url => send("#{current_user_section}_transactions_path"), :use_fieldset => false do |f| %>
+  <%#= f.text_field :amount, :label => "充值金额", :hint => "请输入需要充入的金额。" %>
+  <%#= f.submit "充值", :class => "button" %>
+<%# end %>
