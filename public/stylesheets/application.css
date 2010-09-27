@@ -1040,11 +1040,24 @@ div.highlighted {
 
 .company_home_page .menu li a {
   font-size: 1.5em;
-  border: 1px solid #eee;
+  border: 1px solid #ccc;
+  background-color: #eee;
   padding: 0.5em;
   margin-right: 0.5em;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.company_home_page .menu li a:hover {
+  font-size: 1.5em;
+  border: 1px solid #ccc;
+  background-color: #ddd;
+  padding: 0.5em;
+  margin-right: 0.5em;
+  font-weight: bold;
   text-decoration: none;
 }
+
 
 .company_home_page .menu li.highlighted a {
   font-size: 1.5em;
