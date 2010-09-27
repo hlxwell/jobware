@@ -3,8 +3,9 @@
 <h3>应聘的工作</h3>
 <div class="archive-separator"></div>
 <div class="post">
-  <%= link_to @job.name, company_job_path(@job), :class => "largest" %>
-  <div class="right small">应聘于 <%= @application.created_at.to_s_datetime %></div>
+  <div class="left"><%= link_to @job.name, company_job_path(@job), :class => "largest" %></div>
+  <div class="bold right">应聘于 <%= @application.created_at.to_s_datetime %></div>
+  <div class="clearer">&nbsp;</div>
 </div>
 <br>
 
@@ -22,10 +23,25 @@
 <% if @application.read? %>
   <fieldset class="small_top_margin">
     <legend>说明</legend>
-    为了让所有应聘者及时得到反馈信息，而不至于耽搁更多机会，该简历1周后将会被自动拒绝并发信通知，所以请及时做出决定。
+    为了让所有应聘者及时得到反馈信息，而不至于耽搁更多机会，该简历会在该岗位关闭时自动被拒绝并发信通知，所以请及时做出决定。
   </fieldset>
-  <%= button_to "拒绝该简历", reject_company_job_application_path(@application), :method => :post, :class => "button right", :confirm => "此操作将会发邮件通知用户，是否继续？" %>
-  <%= button_to "接受并发送面试函", accept_company_job_application_path(@application), :method => :post, :class => "button right small_right_margin", :confirm => "此操作将会发邮件通知用户，是否继续？" %>
+
+  <div id="accept_mail_message_form" class="hidden">
+    <%= jobware_form_for @application, :url => accept_company_job_application_path(@application), :title => "填写面试函" do |f| %>
+      <%= f.cktext_area :mail_message, :label => "面试函内容", :height => '150px', :toolbar=>'Basic', :skin => "office2003", :id => "accept", :hint => "如面试时间地点，或者联系方式。" %>
+      <%= f.submit "发送", :confirm => "此操作将会发邮件通知用户，是否继续？" %>
+    <% end %>
+  </div>
+
+  <div id="reject_mail_message_form" class="hidden">
+    <%= jobware_form_for @application, :url => reject_company_job_application_path(@application), :title => "填写拒绝理由" do |f| %>
+      <%= f.cktext_area :mail_message, :label => "拒绝理由", :height => '150px', :toolbar=>'Basic', :skin => "office2003", :id => "reject", :hint => "如岗位已经招满，或者某项条件不符合。" %>
+      <%= f.submit "发送", :confirm => "此操作将会发邮件通知用户，是否继续？" %>
+    <% end %>
+  </div>
+
+  <%= button_to_function "拒绝该简历", "$('#accept_mail_message_form').hide(); $('#reject_mail_message_form').fadeIn('slow'); $.scrollTo(1000, 0);", :class => "button right small_right_margin show_dialog" %>
+  <%= button_to_function "接受并发送面试函", "$('#reject_mail_message_form').hide(); $('#accept_mail_message_form').fadeIn('slow'); $.scrollTo(1000, 0);", :class => "button right small_right_margin show_dialog" %>
 <% else %>
   <h3 class="right">该简历 <%= raw @application.state_humanize(:for => "company") %></h3>
 <% end %>

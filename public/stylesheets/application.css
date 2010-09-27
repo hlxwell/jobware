@@ -258,6 +258,10 @@ fieldset {padding: 1.4em; margin: 0 0 1.5em 0; border: 1px solid #ccc;}
 legend {font-size: 1.2em; padding: 0px 10px 0px 10px;}
 fieldset.big legend, legend.big {font-size: 2.0em; padding: 0px 10px 0px 10px;}
 
+.cke_skin_office2003 {
+  margin-bottom: 0.5em;
+}
+
 textarea {overflow: auto;}
 
 input.text, textarea, select {

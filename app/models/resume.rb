@@ -109,9 +109,11 @@ class Resume < ActiveRecord::Base
     if portrait.size
       portrait.url
     elsif gender == Gender::MALE
-      "/images/generic_male.gif"
+      "/images/gender/user_male.png"
     elsif gender == Gender::FEMALE
-      "/images/generic_female.gif"
+      "/images/gender/user_female.png"
+    else
+      "/images/gender/user_unknown.png"
     end
   end
 

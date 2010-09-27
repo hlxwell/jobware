@@ -50,8 +50,8 @@ class Ad < ActiveRecord::Base
   has_one :user, :through => :company
 
   has_attached_file :image, :styles => {
-    :slideshow => "670x250#",
-    :slideshow_small => "520x200#",
+    :slideshow => "510x250#",
+    :slideshow_small => "510x250#",
     :bottom_ad => "166>x50",
     :featured_job => "310>x80",
     :right_ad => "250>x70"

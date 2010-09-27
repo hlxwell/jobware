@@ -34,7 +34,7 @@ class Company::JobApplicationsController < Company::BaseController
   end
 
   def accept
-    if @application.accept
+    if @application.update_attributes(params[:job_application]) and @application.accept
       redirect_to :back, :notice => "接受该简历成功，已发送邮件通知该应聘者，最好能再通过电话联系确认通知送达。"
     else
       redirect_to :back, :notice => "不能接受已接受的简历。"
@@ -42,7 +42,7 @@ class Company::JobApplicationsController < Company::BaseController
   end
 
   def reject
-    if @application.reject
+    if @application.update_attributes(params[:job_application]) and @application.reject
       redirect_to :back, :notice => "该简历已被拒绝，已发送了邮件通知该应聘者。"
     else
       redirect_to :back, :notice => "不能拒绝已被拒绝的简历。"

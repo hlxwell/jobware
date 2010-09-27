@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100926145605) do
+ActiveRecord::Schema.define(:version => 20100927093310) do
 
   create_table "ad_positions", :force => true do |t|
     t.string   "name"
@@ -177,6 +177,7 @@ ActiveRecord::Schema.define(:version => 20100926145605) do
     t.datetime "updated_at"
     t.integer  "rating"
     t.integer  "partner_id"
+    t.text     "mail_message"
   end
 
   create_table "jobs", :force => true do |t|

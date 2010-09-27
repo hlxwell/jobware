@@ -3,6 +3,6 @@
 <%= f.text_field :url, :label => "网站地址", :class => "text w600" %>
 <%= f.select :site_size, SiteSize.to_sorted_a, {:include_blank => true}, { :label => "网站流量" } %>
 <%= f.text_field :contact_name, :label => "联系人", :class => "text w600" %>
-<%= f.text_field :phone_number, :label => "联系电话", :class => "text w600" %>
-<%= f.cktext_area(:desc, :height => '200px', :toolbar=>'Basic', :skin => "office2003", :label => "网站描述") %>
-<%= f.cktext_area(:bank_info, :height => '200px', :toolbar=>'Basic', :skin => "office2003", :label => "佣金支付方式") %>
+<%= f.text_field :phone_number, :label => "联系电话", :class => "text w600", :hint => "请正确填写，我们会联系您进行更好的合作洽谈。" %>
+<%= f.cktext_area(:desc, :height => '200px', :toolbar=>'Basic', :skin => "office2003", :label => "网站描述", :hint =>"如网站流量和人群。") %>
+<%= f.cktext_area(:bank_info, :height => '200px', :toolbar=>'Basic', :skin => "office2003", :label => "佣金支付方式", :hint => "您可以填写您的银行帐号和户名以及开户行，或者支付宝帐号。我们将会通过它来支付您您的收入。") %>
