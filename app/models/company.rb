@@ -74,7 +74,6 @@ class Company < ActiveRecord::Base
     end
   end
 
-
   def check_tag
     errors.add :tag_list, '请不要超过5个关键字。' if self.tag_list.count > 5
     self.tag_list.each do |tag|

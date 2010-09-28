@@ -28,6 +28,9 @@ class CompaniesController < ApplicationController
   end
 
   def create
+    if params.get(:company, :tag_list)
+      params[:company][:tag_list] = params[:company][:tag_list].gsub("，", ",")
+    end
     @company = Company.new(params[:company])
     @company.user = current_user if current_user
     @company.partner = current_partner # referral partner

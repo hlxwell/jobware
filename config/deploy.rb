@@ -21,7 +21,7 @@ namespace :deploy do
   task :init_project do
     run "cd #{release_path}; /home/hlx/.rvm/gems/ree-1.8.7-2010.01/bin/bundle install"
     run "cd #{release_path}; ln -s #{shared_path}/sphinx #{release_path}/db/sphinx"
-    run "cd #{release_path}; ./script/delayed_job reload;"
+    # run "cd #{release_path}; ./script/delayed_job reload;"
     # run "cd #{release_path}; crontab #{release_path}/config/crontab/#{rails_env}"
     # run "cd #{release_path}; /home/hlx/.rvm/gems/ree-1.8.7-2010.01/bin/rake db:migrate RAILS_ENV=production"
   end
