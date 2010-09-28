@@ -156,7 +156,7 @@ StarredJob:
 
 User:
   fields:
-    default: email, login_count, failed_login_count, last_request_at, current_login_at, last_login_at, current_login_ip, last_login_ip
+    default: email, login_count, failed_login_count, last_request_at, current_login_at, last_login_at, current_login_ip, last_login_ip, confirmed?
     form: email, login_count, failed_login_count, last_request_at, current_login_at, last_login_at, current_login_ip, last_login_ip
     cvs: email, login_count
   export: csv, xml

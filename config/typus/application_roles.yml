@@ -3,6 +3,7 @@
 # Use the README file as a reference to customize settings.
 
 admin:
+  User: create, read, update, delete, login, confirm
   Certification: create, read, update, delete
   Company: create, read, update, delete
   CoverLetter: create, read, update, delete
@@ -18,7 +19,6 @@ admin:
   School: create, read, update, delete
   Skill: create, read, update, delete
   StarredJob: create, read, update, delete
-  User: create, read, update, delete, login
   Ad: create, read, update, delete, approve, reject
   Counter: create, read, update, delete
   Service: create, read, update, delete

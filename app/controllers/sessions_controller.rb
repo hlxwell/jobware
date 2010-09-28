@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
       flash[:success] = "登陆成功。"
       redirect_back_or_default(dashboard_path_for(current_user))
     else
-      flash[:error] = "错误的用户名或者密码！"
+      flash[:error] = "账户没有被激活，或者输入了错误的用户名或密码，请检查邮箱或者重新登录。"
       render :action => :new
     end
   end
@@ -37,13 +37,33 @@ class SessionsController < ApplicationController
   def update_password
     @user = User.find_by_id(params[:user].try(:delete, :user_id))
 
-    if !params.get(:user, :password).blank? and 
-       !params.get(:user, :password_confirmation).blank? and 
+    if !params.get(:user, :password).blank? and
+       !params.get(:user, :password_confirmation).blank? and
        @user.update_attributes!(params[:user])
       redirect_to login_path, :notice => '密码修改成功，您可以重新登录了。'
     else
       flash[:error] = "请输入正确的新密码。"
       render :action => "edit_password"
     end
+  end
+
+  def email_confirmation
+    @user = User.find_and_confirm(params[:id])
+    if @user.is_a?(User)
+      flash[:success] = "恭喜您，账户激活成功。您现在可以登录了。"
+      redirect_to login_path
+    else
+      flash[:error] = "对不起您的激活码已经过期了，请重新发送激活码。"
+      respond_to do |format|
+        format.html
+        format.js
+      end
+    end
+  end
+
+  def resend_confirmation
+    @user = User.find_and_resend_confirmation_instructions(params.get(:user,:email))
+    flash[:message] = "<p class='success'>激活邮件发送成功，请在24小时内激活。</p>" if @user.is_a?(User) and !@user.new_record?
+    render "email_confirmation"
   end
 end

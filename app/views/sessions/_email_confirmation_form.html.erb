@@ -1,0 +1,5 @@
+<%= jobware_form_for @user||User.new, :url => resend_confirmation_url, :title => "重新发送激活码", :remote => true do |f| %>
+  <%= raw flash[:message] %>
+  <%= f.text_field :email, :label => "邮箱" %>
+  <%= f.submit "发送", :class => "right button" %>
+<% end %>

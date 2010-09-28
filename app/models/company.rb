@@ -54,15 +54,26 @@ class Company < ActiveRecord::Base
   validates_presence_of :name, :company_type, :size, :address, :contact_name, :phone_number, :province, :city, :desc
   # validates_acceptance_of :accept_terms, :accept => "1", :message => "你必需接受服务条款"
   validate :check_tag
+  validate :check_logo
 
   ### to reprocess all image.
   # Company.all.each do |c|
   #   c.logo.reprocess!
   # end
   has_attached_file :logo, :styles => { :thumb => "200>x80", :fix_height => "283x50>", :title => "960>x100" }, :default_style => :thumb
-  validates_attachment_content_type :logo, :content_type => [%r{image/.*jpg}, %r{image/.*jpeg}, %r{image/.*gif}, %r{image/.*png}], :if => lambda {|obj| obj.logo.size.present? }
-  validates_attachment_size :logo, :less_than => 5.megabytes
-  validates_attachment_presence :logo
+
+  # validates_attachment_content_type :logo, :content_type => [%r{image/.*jpg}, %r{image/.*jpeg}, %r{image/.*gif}, %r{image/.*png}], :if => lambda {|obj| obj.logo.size.present? }
+  # validates_attachment_size :logo, :less_than => 5.megabytes
+  # validates_attachment_presence :logo
+  def check_logo
+    if self.logo.size.blank?
+      errors.add :logo, "必须上传logo。"
+    else
+      errors.add :logo, "logo大小不能大于5M。" if self.logo.size > 5.megabytes
+      errors.add :logo, "只允许上传 jpg, gif, png。" if File.extname(self.logo.original_filename) !~ /\.(jpe?g)|(gif)|(png)/i
+    end
+  end
+
 
   def check_tag
     errors.add :tag_list, '请不要超过5个关键字。' if self.tag_list.count > 5

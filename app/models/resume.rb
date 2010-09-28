@@ -89,7 +89,7 @@ class Resume < ActiveRecord::Base
 
   def uploaded_an_illegal_file?
     return false if self.file_file_name_changed?            ### not upload anything return legal uploading
-    return true if !doc?(self.file_file_name_change.last)   ### if uploading something, it should be doc or pdf
+    return true if !doc?(self.file_file_name_change.last)   ### if uploading something, it should be doc
     return false
   end
 

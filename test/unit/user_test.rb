@@ -18,12 +18,28 @@ class UserTest < ActiveSupport::TestCase
       assert u.valid?
     end
 
-    context "after save" do
+    context "after create" do
       setup do
+        @valid_attributes = {
+          :email                 => "test@email.com",
+          :password              => "abcdef",
+          :password_confirmation => "abcdef"
+        }
+        @user = User.new(@valid_attributes)
       end
 
-      should "should create an bank account" do
+      should "send confirm mail" do
+        assert @user.expects(:send_confirmation_instructions)
+        assert @user.save
+        assert_equal false, @user.confirmed?
+      end
+
+      should "be able to confirm" do
+        @user.save
+        @user.confirm!
+        assert @user.confirmed?
       end
     end
+
   end
 end

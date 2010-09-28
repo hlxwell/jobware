@@ -32,15 +32,55 @@ class User < ActiveRecord::Base
   has_one :jobseeker, :class_name => "Resume"
 
   accepts_nested_attributes_for :company
+  after_create :send_confirmation_instructions
 
-  def self.reset_password(email)
-    user = self.find_by_email(email)
-    if user.present?
-      user.reset_perishable_token!
-      UserMailer.reset_password(user).deliver
-      true
-    else
-      false
+  def confirmed?
+    !(self.new_record? || self.confirmed_at.nil?)
+  end
+
+  def confirm!
+    update_attribute(:confirmed_at, Time.now)
+  end
+
+  def send_confirmation_instructions
+    reset_perishable_token!
+    confirmed_at = nil
+    confirmation_sent_at = Time.now
+    save(false)
+    UserMailer.send_confirmation(self).deliver
+  end
+
+  class << self
+    def reset_password(email)
+      user = self.find_by_email(email)
+      if user.present?
+        user.reset_perishable_token!
+        UserMailer.reset_password(user).deliver
+        true
+      else
+        false
+      end
+    end
+
+    def find_and_confirm(perishable_token)
+      if confirmable = self.find_using_perishable_token(perishable_token, 1.day)
+        confirmable.confirm!
+        confirmable
+      end
+    end
+
+    def find_and_resend_confirmation_instructions(email)
+      confirmable = User.find_by_email(email) || User.new
+
+      if confirmable.new_record?
+        confirmable.errors.add(:email, "邮箱没有注册过。")
+      elsif confirmable.confirmed?
+        confirmable.errors.add(:email, "账户已经激活。")
+      else
+        confirmable.send_confirmation_instructions
+      end
+
+      confirmable
     end
   end
 end

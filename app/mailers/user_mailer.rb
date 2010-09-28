@@ -5,9 +5,9 @@ class UserMailer < MailerBase
     mail :to => user.email, :subject => "ITJob.fm：重设密码"
   end
 
-  def email_confirmation(user)
-    @link = "#"
+  def send_confirmation(user)
     @user = user
+    @link = email_confirmation_url(user.perishable_token)
     mail :to => user.email, :subject => "ITJob.fm：邮件确认信"
   end
 end

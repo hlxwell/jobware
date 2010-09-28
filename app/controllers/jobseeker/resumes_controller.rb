@@ -49,9 +49,9 @@ class Jobseeker::ResumesController < Jobseeker::BaseController
         @job_application.partner = current_partner
 
         if @job_application.save
-          redirect_to job_path(session[:continue_apply_job_id]), :notice => "您已应聘成功。"
+          redirect_to job_path(session[:continue_apply_job_id]), :notice => "您已应聘成功该岗位，请检查您的邮箱激活您的登录帐号。"
         else
-          redirect_to job_path(session[:continue_apply_job_id]), :notice => "简历创建成功，您可以继续应聘。"
+          redirect_to job_path(session[:continue_apply_job_id]), :notice => "简历创建成功，请检查您的邮箱激活您的登录帐号，然后再继续应聘。"
         end
 
         # clear continue_apply_job_id

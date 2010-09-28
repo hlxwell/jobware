@@ -23,7 +23,9 @@ gem "activemerchant_patch_for_china"
 gem 'ruby-graphviz', :require => 'graphviz'
 gem 'cancan'
 gem 'acts-as-taggable-on'
-
+gem 'delayed_job'
+gem 'inherited_resources', '1.1.2'
+ 
 # gem 'formtastic', :git => "http://github.com/justinfrench/formtastic.git", :branch => "rails3"
 # gem 'tabletastic'
 

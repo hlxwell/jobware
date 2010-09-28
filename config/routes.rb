@@ -17,6 +17,10 @@ Jobware::Application.routes.draw do
   match "/reset_password(.:format)" => "sessions#reset_password", :as => :reset_password
   match "/edit_password/:id" => "sessions#edit_password", :as => :edit_password
   match "/update_password" => "sessions#update_password", :as => :update_password
+  match "/email_confirmation/(:id)" => "sessions#email_confirmation", :as => :email_confirmation
+  match "/resend_confirmation" => "sessions#resend_confirmation", :as => :resend_confirmation
+
+  resource :user
 
   resource :sessions do
     member do
@@ -24,8 +28,6 @@ Jobware::Application.routes.draw do
       post :send_reset_password_mail
     end
   end
-
-  resource :user
 
   ### basic frontend
   resources :ads do
@@ -58,6 +60,10 @@ Jobware::Application.routes.draw do
     member do
       get :presentations
       get :all_jobs
+    end
+
+    collection do
+      get :created
     end
   end
 
@@ -144,7 +150,12 @@ Jobware::Application.routes.draw do
   end
 
   ### partner section
-  resource :partner
+  resource :partner do
+    member do
+      get :created
+    end
+  end
+
   namespace :partner do
     resource :partner_site_style
     resource :code

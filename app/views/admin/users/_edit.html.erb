@@ -1,1 +1,2 @@
 <%= link_to "登录该用户 (login)", {:controller => "admin/users", :action => "login", :id => @item.id}, :target => "_blank" %>
+<%= link_to "激活该用户 (confirm)", {:controller => "admin/users", :action => "confirm", :id => @item.id} %>
