@@ -1,5 +1,6 @@
 <%= page_name_html("充值", :with_title => true) %>
 
+
 <table class="data-table">
   <tr>
     <th>户名</th>
@@ -15,7 +16,9 @@
   </tr>
 </table>
 
-<%#= jobware_form_for :transaction, :url => send("#{current_user_section}_transactions_path"), :use_fieldset => false do |f| %>
-  <%#= f.text_field :amount, :label => "充值金额", :hint => "请输入需要充入的金额。" %>
-  <%#= f.submit "充值", :class => "button" %>
-<%# end %>
+<% if params[:c] = "9527" %>
+  <%= jobware_form_for :transaction, :url => send("#{current_user_section}_transactions_path"), :title => "现金充值" do |f| %>
+    <%= f.text_field :amount, :label => "充值金额", :hint => "请输入需要充入的金额。" %>
+    <%= f.submit "充值", :class => "button" %>
+  <% end %>
+<% end %>

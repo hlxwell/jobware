@@ -1,6 +1,6 @@
 <script>
   $(function(){
-    $(".datepicker").datepicker();
+    $(".datepicker").datepicker('option', {changeYear:true, changeMonth:true, yearRange:"1970:2000"});
 
     var forms = {
       "previous_jobs" : "工作经历",

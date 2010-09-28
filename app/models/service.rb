@@ -27,7 +27,7 @@ class Service < ActiveRecord::Base
 
   def buy_from!(user)
     ### substract money from user
-    user.pay!(self.price, :service_item_id => ServiceItem.money_id, :related_object => self)
+    user.pay!(self.price, :service_item_id => ServiceItem.money_id, :related_object => self, :to => "购买#{self.name}")
 
     ### charge credits to user account
     self.service_item_amounts.each do |item_amount|

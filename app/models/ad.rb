@@ -52,20 +52,9 @@ class Ad < ActiveRecord::Base
   has_attached_file :image, :styles => {
     :slideshow => "510x250#",
     :slideshow_small => "510x250#",
-    :bottom_ad => "166>x50",
-    :featured_job => "310>x80",
+    :bottom_ad => "180>x50",
     :right_ad => "250>x70"
   }, :default_style => :bottom_ad
-
-  validates_attachment_content_type :image, :content_type => [%r{image/.*jpg}, %r{image/.*jpeg}, %r{image/.*gif}, %r{image/.*png}], :if => lambda {|obj| obj.image.size.present? }
-  validates_attachment_size :image, :less_than => 1.megabytes, :message => "文件尺寸不能大于1M。",:if => lambda {|obj| obj.image.size.present? }
-
-  validates_presence_of :display_type, :period
-  validates_presence_of :name, :province, :city, :url, :if => Proc.new { |ad| ad.display_type == AdPositionType::URGENT_JOB }
-  validates_presence_of :name, :url, :if => Proc.new { |ad| [AdPositionType::SLIDER_AD, AdPositionType::FEATURED_COMPANY].include?(ad.display_type) }
-  validates_numericality_of :period, :greater_than => 0, :allow_nil => false
-  validates_attachment_presence :image, :message => "必须上传图片。",:if => lambda {|ad| [AdPositionType::SLIDER_AD, AdPositionType::FEATURED_COMPANY].include?(ad.display_type) }
-  validate :check_time
 
   scope :slider_ads, where(:display_type => AdPositionType::SLIDER_AD)
   scope :urgent_jobs, where(:display_type => AdPositionType::URGENT_JOB)
@@ -108,6 +97,29 @@ class Ad < ActiveRecord::Base
 
     event :reapprove do
       transition :rejected => :approving
+    end
+  end
+
+  validates_presence_of :display_type, :period
+  validates_presence_of :name, :province, :city, :url, :if => Proc.new { |ad| ad.display_type == AdPositionType::URGENT_JOB }
+  validates_presence_of :name, :url, :if => Proc.new { |ad| [AdPositionType::SLIDER_AD, AdPositionType::FEATURED_COMPANY].include?(ad.display_type) }
+  validates_numericality_of :period, :greater_than => 0, :allow_nil => false
+  validates_length_of :name, :within => 5..20, :message => "长度必须控制在20个字以内。"
+  validate :check_time
+  validate :check_image
+
+  ### this seems not work.
+  # validates_attachment_presence :image, :message => "必须上传图片。", :if => lambda {|ad| [AdPositionType::SLIDER_AD, AdPositionType::FEATURED_COMPANY].include?(ad.display_type) }
+  # validates_attachment_content_type :image, :content_type => [%r{image/.*jpg}, %r{image/.*jpeg}, %r{image/.*gif}, %r{image/.*png}], :message => "只允许上传 jpg, gif, png", :if => lambda {|obj| obj.image.size.present? }
+  # validates_attachment_size :image, :less_than => 1.megabytes, :message => "文件尺寸不能大于1M。", :if => lambda {|obj| obj.image.size.present? }
+  def check_image
+    if [AdPositionType::SLIDER_AD, AdPositionType::FEATURED_COMPANY].include?(self.display_type)
+      if self.image.size.blank?
+        errors.add :image, "必须上传图片。"
+      else
+        errors.add :image, "文件尺寸不能大于5M。" if self.image.size > 5.megabytes
+        errors.add :image, "只允许上传 jpg, gif, png。" if File.extname(self.image.original_filename) !~ /\.(jpe?g)|(gif)|(png)/i
+      end
     end
   end
 

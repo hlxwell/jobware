@@ -146,7 +146,7 @@ ul.tabbed li {float: left;}
 ul.plain-list {margin: 0;}
 
 ul.ads-list {margin-left: 0;}
-ul.ads-list img {width: 95%; height: 60px;}
+ul.ads-list img {width: 250px; height: 70px;}
 ul.ads-list li {
 	list-style: none;
 /*  border-top: 1px solid #EEE;*/
