@@ -1,7 +1,7 @@
 <div style="width: 510px;">
   <div id="slider-center">
     <a href="<%= ad.url %>" target="_blank">
-      <%= image_tag(ad.image.url(:slideshow_small), :alt => ad.name) %>
+      <%= image_tag(URI.escape(ad.image.url(:slideshow_small)), :alt => ad.name) %>
       <span>
         <b><%= ad.name %></b>
         <p><%= raw ad.desc %></p>
@@ -11,7 +11,8 @@
     <a href="http://www.minininjas.com/" target="_blank">
       <img src="http://workshop.rs/projects/coin-slider/games/mini_ninjas.jpg" alt="Mini Ninjas"/>
       <span>
-        <b>杭州招聘高级rails程序员</b>
+        <b>招聘高级rails程序员</b>
+        <p>杭州大浪软件技术有限公司紧急招聘高级Rails程序员，10-15k/月</p>
       </span>
     </a>
   </div>

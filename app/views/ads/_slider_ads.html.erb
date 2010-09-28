@@ -4,7 +4,7 @@
   <div id="slider-center">
       <% ads.each do |ad| %>
         <a href="<%= ad.url %>" target="_blank">
-          <%= image_tag(ad.image.url(:slideshow_small), :alt => ad.name) %>
+          <%= image_tag(URI.escape( ad.image.url(:slideshow_small) ), :alt => ad.name) %>
           <span>
             <b><%= ad.name %></b>
             <p><%= raw ad.desc %></p>
