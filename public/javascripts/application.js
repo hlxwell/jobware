@@ -3,7 +3,7 @@
 $(function(){
   $.each($(".city_selector"), function(i, n){ $(n).CitySelector(); });
 
-  $(".datepicker").datepicker('option', {changeYear:true, changeMonth:true, showAnim: "show"});
+  $(".datepicker").datepicker();
 
   $(".stars-wrapper").stars({
       // captionEl: $(".stars-cap"),
