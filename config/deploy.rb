@@ -24,7 +24,7 @@ namespace :deploy do
       run "cd #{release_path}; rake db:migrate RAILS_ENV=production"
     end
 
-    run "cd #{release_path}; ./script/delayed_job reload;"
+    run "cd #{release_path}; ./script/delayed_job reload RAILS_ENV=production;"
     run "cd #{release_path}; crontab #{release_path}/config/crontab/#{rails_env}"
   end
 

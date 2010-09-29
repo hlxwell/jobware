@@ -1,4 +1,6 @@
-source 'http://rubygems.org'
+source "http://rubygems.org"
+source 'http://gems.github.com'
+source "http://gemcutter.org"
 
 gem 'rails', '3.0.0'
 gem 'mysql'
@@ -25,8 +27,8 @@ gem 'cancan'
 gem 'acts-as-taggable-on'
 gem 'delayed_job'
 gem 'inherited_resources', '1.1.2'
- 
-# gem 'formtastic', :git => "http://github.com/justinfrench/formtastic.git", :branch => "rails3"
+
+# gem 'formtastic', :git => "git://github.com/justinfrench/formtastic.git", :branch => "rails3"
 # gem 'tabletastic'
 
 group :development do
