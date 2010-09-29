@@ -28,6 +28,8 @@ class JobsController < ApplicationController
   end
 
   def search
+    @keywords = params[:search][:keywords]
+
     @jobs = Job.opened.search(params[:search][:keywords],
     :page => params[:page],
     :rank_mode  => :wordcount,
