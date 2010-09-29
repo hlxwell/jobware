@@ -8,3 +8,4 @@ public/system/**/*
 db/sphinx
 config/development.sphinx.conf
 public/ckeditor_assets/**/*
+config/database.yml

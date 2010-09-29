@@ -1,17 +1,12 @@
-# require 'capistrano/ext/multistage'
+require 'capistrano/ext/multistage'
 
-set :application, "jobware"
+set :stages, %w(staging production)
+set :default_stage, 'staging'
 set :repository,  "git@github.com:anatole/jobware.git"
 set :branch, ENV["BRANCH"] || "master"
-set :deploy_to, "/home/hlx/www/jobware/"
-set :user, "hlx"
+set :scm, "git"
 set :use_sudo, false
 set :rails_env, "production"
-set :scm, "git"
-
-role :web, "bbs.hzva.org"                          # Your HTTP server, Apache/etc
-role :app, "bbs.hzva.org"                          # This may be the same as your `Web` server
-role :db,  "bbs.hzva.org", :primary => true        # This is where Rails migrations will run
 
 # If you are using Passenger mod_rails uncomment this:
 # if you're still using the script/reapear helper you will need
@@ -19,11 +14,18 @@ role :db,  "bbs.hzva.org", :primary => true        # This is where Rails migrati
 
 namespace :deploy do
   task :init_project do
-    run "cd #{release_path}; /home/hlx/.rvm/gems/ree-1.8.7-2010.01/bin/bundle install"
+    run "cd #{release_path}; cp #{shared_path}/config/database.yml #{release_path}/config/database.yml"
     run "cd #{release_path}; ln -s #{shared_path}/sphinx #{release_path}/db/sphinx"
-    # run "cd #{release_path}; ./script/delayed_job reload;"
-    # run "cd #{release_path}; crontab #{release_path}/config/crontab/#{rails_env}"
-    # run "cd #{release_path}; /home/hlx/.rvm/gems/ree-1.8.7-2010.01/bin/rake db:migrate RAILS_ENV=production"
+
+    if application == "production"
+      run "cd #{release_path}; /home/hlx/.rvm/gems/ree-1.8.7-2010.01/bin/bundle install"
+    else
+      run "cd #{release_path}; bundle install"
+      run "cd #{release_path}; rake db:migrate RAILS_ENV=production"
+    end
+
+    run "cd #{release_path}; ./script/delayed_job reload;"
+    run "cd #{release_path}; crontab #{release_path}/config/crontab/#{rails_env}"
   end
 
   task :start do ; end

@@ -3,8 +3,8 @@ source 'http://rubygems.org'
 gem 'rails', '3.0.0'
 gem 'mysql'
 gem 'nifty-generators'
-gem 'authlogic', :git => 'http://github.com/binarylogic/authlogic.git'
-gem 'ckeditor', :git => 'http://github.com/galetahub/rails-ckeditor.git', :branch => 'rails3'
+gem 'authlogic', :git => 'git://github.com/binarylogic/authlogic.git'
+gem 'ckeditor', :git => 'git://github.com/galetahub/rails-ckeditor.git', :branch => 'rails3'
 gem 'navigasmic'
 gem 'capistrano'
 gem 'capistrano-ext'
@@ -14,8 +14,8 @@ gem 'paperclip'
 gem 'enumerate_it'
 gem 'state_machine'
 gem 'annotate-models'
-gem "exception_notification", :git => "http://github.com/rails/exception_notification.git", :branch => "master"
-gem 'thinking-sphinx', :git => 'http://github.com/freelancing-god/thinking-sphinx.git', :branch  => 'rails3', :require => 'thinking_sphinx'
+gem "exception_notification", :git => "git://github.com/rails/exception_notification.git", :branch => "master"
+gem 'thinking-sphinx', :git => 'git://github.com/freelancing-god/thinking-sphinx.git', :branch  => 'rails3', :require => 'thinking_sphinx'
 gem 'fastercsv'
 gem "chinese_permalink"
 gem "activemerchant", :require => "active_merchant"
