@@ -1,6 +1,6 @@
 <fieldset id="new_cover_letters">
   <% show_error_message_for(f.object) %>
   <%= f.text_field :name, :label => "名称", :class => "text", :style => "width: 98%;" %>
-  <%= f.cktext_area(:content, :height => '200px', :toolbar=>'Basic', :skin => "office2003", :label => "内容") %>
+  <%= f.cktext_area :content, :height => '200px', :toolbar=>'Basic', :skin => "office2003", :label => "内容", :hint => raw("请仔细填写求职信，可以让公司有个好的印象。<a class='show_dialog' href='javascript:void(0)'>查看范文</a>") %>
   <%= f.link_to_remove_fields "删除" %>
 </fieldset>

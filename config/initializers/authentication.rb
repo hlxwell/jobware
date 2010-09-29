@@ -33,7 +33,7 @@ module Authentication
   def logged_in?
     current_user
   end
-  
+
   def not_logged_in?
     !logged_in?
   end
@@ -55,8 +55,9 @@ module Authentication
   end
 
   def redirect_back_or_default(default)
-    redirect_to(session[:return_to] || default)
+    return_to = session[:return_to]
     session[:return_to] = nil
+    redirect_to(return_to || default)
   end
 
 private

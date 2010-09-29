@@ -52,24 +52,31 @@
 <div class="content-separator "></div>
 <% end %>
 
+
 <div class="post">
 	<div class="post-title"><h3>联系方式</h3></div>
 	<div class="post-body ">
 		<table class="data-table">
-			<tr class="even">
-				<th width="10%">网址</th>
-				<td width="40%"><%= link_to @company.homepage, @company.homepage_url %></td>
-				<th width="10%">邮箱</th>
-				<td width="40%"><%= @company.user.email %></td>
-			</tr>
-			<% if @company.open_contact? %>
-			<tr class="even">
-				<th>联系人</th>
-				<td><%= @company.contact_name %></td>
-				<th>联系电话</th>
-				<td><%= @company.phone_number %></td>
-			</tr>
-			<% end %>
+		  <% if @company.open_contact? %>
+  			<tr class="even">
+  				<th width="10%">网址</th>
+  				<td width="40%"><%= link_to @company.homepage, @company.homepage_url %></td>
+  				<th width="10%">邮箱</th>
+  				<td width="40%"><%= @company.user.email %></td>
+  			</tr>
+  			<tr class="even">
+  				<th>联系人</th>
+  				<td><%= @company.contact_name %></td>
+  				<th>联系电话</th>
+  				<td><%= @company.phone_number %></td>
+  			</tr>
+  		<% else %>
+  		  <tr class="even">
+  				<th width="15%">网址</th>
+  				<td><%= link_to @company.homepage, @company.homepage_url %></td>
+  			</tr>
+      <% end %>
+
 			<tr class="even">
 			  <th>公司地址</th>
 				<td colspan="3"><%= @company.address %></td>

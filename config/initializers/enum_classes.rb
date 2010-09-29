@@ -126,7 +126,8 @@ class JobCategory < EnumerateIt::Base
     :designer   => [1, 'UI设计师'],
     :programmer => [2, '程序开发'],
     :dba        => [3, '数据库管理'],
-    :sa         => [4, '系统管理']
+    :sa         => [4, '系统管理'],
+    :game       => [5, '游戏开发']
   )
 end
 
