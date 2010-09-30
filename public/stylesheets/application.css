@@ -723,7 +723,9 @@ img.alignright, img.right {margin: 0 0 1em 0;}
   float: right;
   margin: 7px 5px 0px 0px;
   font-size: 1.5em;
-  padding: 0 0.5em 0.2em 0.5em;
+  height: 29px;
+  line-height:29px;
+  padding:0 5px;
   cursor: auto;
   color: gray;
 }
@@ -783,8 +785,8 @@ img.alignright, img.right {margin: 0 0 1em 0;}
   width: 440px;
 }
 
-.h450 {
-  height: 450px;
+.h530 {
+  height: 530px;
 }
 
 .h250 {
