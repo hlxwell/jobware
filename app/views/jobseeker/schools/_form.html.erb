@@ -7,5 +7,5 @@
   <%= f.link_to_remove_fields "删除" %>
 </fieldset>
 <script>
-  $(".datepicker").datepicker();
+  $(".datepicker").datepicker('option', {changeYear:true, changeMonth:true, yearRange:"1960:2010"});
 </script>
