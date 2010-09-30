@@ -31,13 +31,6 @@
 #
 
 class Job < ActiveRecord::Base
-  STATE = {
-    'unapproved' => "等待审核中",
-    'rejected' => "被拒绝",
-    'opened' => "展示中",
-    'closed' => "关闭"
-  }
-
   acts_as_taggable
   chinese_permalink :name
   acts_as_views_count :delay => 30
@@ -75,13 +68,22 @@ class Job < ActiveRecord::Base
     has company_id, created_at, updated_at
   end
 
+  STATE = {
+    'unapproved' => "等待审核中",
+    'rejected' => "被拒绝",
+    'opened' => "展示中",
+    'closed' => "未展示"
+  }
+
   state_machine :state, :initial => :unapproved do
     before_transition :on => :active do |job|
       job.pay_for_active unless job.available?
     end
+
     after_transition :on => :approve do |job|
       CompanyMailer.job_approval(job.company, job).deliver
     end
+
     after_transition :on => :close do |job|
       unless job.available?
         ### send mail to company
@@ -93,6 +95,7 @@ class Job < ActiveRecord::Base
         end
       end
     end
+
     event :approve do
       transition [:rejected, :unapproved] => :closed
     end
