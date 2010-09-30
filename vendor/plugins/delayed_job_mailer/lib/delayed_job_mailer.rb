@@ -11,7 +11,7 @@ module Delayed
           def method_missing(method_symbol, *params)
             
             if ::Delayed::Mailer.excluded_environments &&
-              ::Delayed::Mailer.excluded_environments.include?(::RAILS_ENV.to_sym)
+              ::Delayed::Mailer.excluded_environments.include?(::Rails.env.to_sym)
               return orig_method_missing(method_symbol, *params)
             end
             

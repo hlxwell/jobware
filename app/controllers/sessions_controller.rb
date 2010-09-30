@@ -63,7 +63,9 @@ class SessionsController < ApplicationController
 
   def resend_confirmation
     @user = User.find_and_resend_confirmation_instructions(params.get(:user,:email))
-    flash[:message] = "<p class='success'>激活邮件发送成功，请在24小时内激活。</p>" if @user.is_a?(User) and !@user.new_record?
+    if @user.is_a?(User) and !@user.new_record? and @user.errors.blank?
+      flash[:message] = "<p class='success'>激活邮件发送成功，请在24小时内激活。</p>"
+    end
     render "email_confirmation"
   end
 end

@@ -21,10 +21,12 @@ namespace :deploy do
       run "cd #{release_path}; /usr/local/rvm/gems/ree-1.8.7-2010.02/bin/bundle install"
       run "cd #{release_path}; /usr/local/rvm/rubies/ree-1.8.7-2010.02/bin/ruby script/delayed_job reload RAILS_ENV=production;"
       run "cd #{release_path}; /usr/local/rvm/gems/ree-1.8.7-2010.02/bin/rake db:migrate RAILS_ENV=production"
+      run "cd #{release_path}; /usr/local/rvm/gems/ree-1.8.7-2010.02/bin/rake ts:rebuild RAILS_ENV=production"
     else
       run "cd #{release_path}; bundle install"
       run "cd #{release_path}; rake db:migrate RAILS_ENV=production"
       run "cd #{release_path}; ./script/delayed_job reload RAILS_ENV=production;"
+      run "cd #{release_path}; rake ts:rebuild RAILS_ENV=production"
     end
 
     run "cd #{release_path}; crontab #{release_path}/config/crontab/#{rails_env}"
