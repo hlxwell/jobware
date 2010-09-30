@@ -135,7 +135,7 @@ class Ad < ActiveRecord::Base
 
   def set_available_time
     self.start_at = Date.today
-    self.end_at = self.period.days.since.to_date
+    self.end_at = (self.period*7).days.since.to_date
     self.save
   end
 
