@@ -1,10 +1,13 @@
 <fieldset id="new_certifications">
   <% show_error_message_for(f.object) %>
-  <div class="left" class="w280 h450">
+  <div class="left w280 h450">
     <%= f.text_field :name, :label => "证书名", :class => "text w280" %>
   </div>
-  <div class="left" class="w280 h450" style="margin-left: 10px;">
+  <div class="left w280 h450" style="margin-left: 10px;">
     <%= f.text_field :get_at, :label => "获得时间", :class => "text w280 datepicker" %>
   </div>
   <%= f.link_to_remove_fields "删除" %>
 </fieldset>
+<script>
+  $(".datepicker").datepicker();
+</script>

@@ -50,8 +50,9 @@ class SessionsController < ApplicationController
   def email_confirmation
     @user = User.find_and_confirm(params[:id])
     if @user.is_a?(User)
-      flash[:success] = "恭喜您，账户激活成功。您现在可以登录了。"
-      redirect_to login_path
+      flash[:success] = "恭喜您，账户激活成功。您现在可以继续使用了。"
+      UserSession.create(@user)
+      redirect_back_or_default(dashboard_path_for(current_user))
     else
       flash[:error] = "对不起您的激活码已经过期了，请重新发送激活码。"
       respond_to do |format|

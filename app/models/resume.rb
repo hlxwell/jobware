@@ -75,10 +75,9 @@ class Resume < ActiveRecord::Base
 
   # validates_acceptance_of :accept_terms, :accept => "1", :message => "你必需接受服务条款"
   validates_presence_of :name, :gender, :email, :working_years, :degree, :major, :birthday, :hometown_province, :hometown_city, :current_residence_province, :current_residence_city, :email, :phone_number, :expected_positions, :expected_job_location, :expected_salary, :current_working_state, :if => lambda {|obj| obj.quick_resume != 'true' and obj.file.size.nil? }
-  validates_length_of :name, :within => 1..20
+  validates_length_of :name, :within => 1..20, :if => lambda {|obj| obj.quick_resume != 'true' and obj.file.size.nil? }
   validate :check_file_type_when_creating, :on => :create, :if => lambda {|obj| obj.quick_resume == 'true' }
   validate :check_file_type_when_updating, :on => :update, :if => lambda {|obj| obj.quick_resume == 'true' }
-
 
   def check_file_type_when_creating
     errors.add(:file, "文件格式错误，请上传 doc 或者 docx 格式的简历。") if !doc?

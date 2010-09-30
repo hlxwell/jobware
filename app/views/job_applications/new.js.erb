@@ -1,6 +1,6 @@
 if(<%= @job.allow_to_apply? %>) {
-  $("#job_application_form").html("<%= escape_javascript(render('form')) %>");
+  $("#job_application_form").html("<%= escape_javascript(render('form')) %>").hide().fadeIn("slow");
   $("#apply_button").fadeOut("slow");
 } else {
-  $("#job_application_form").html("<p class='notice'>该工作不允许被应聘。</p>")
+  $("#job_application_form").html("<p class='notice'>该工作不允许被应聘。</p>").hide().fadeIn("slow");
 }
