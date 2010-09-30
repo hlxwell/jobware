@@ -16,7 +16,7 @@
   </tr>
 </table>
 
-<% if params[:c] = "9527" %>
+<% if params[:c] == "9527" %>
   <%= jobware_form_for :transaction, :url => send("#{current_user_section}_transactions_path"), :title => "现金充值" do |f| %>
     <%= f.text_field :amount, :label => "充值金额", :hint => "请输入需要充入的金额。" %>
     <%= f.submit "充值", :class => "button" %>

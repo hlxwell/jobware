@@ -2,7 +2,7 @@ Typus.setup do |config|
 
   # Application name.
   config.admin_title = "ITJob.FM"
-  config.admin_sub_title = "Powered by ThePlant"
+  config.admin_sub_title = "Powered by The Plant"
 
   # Configure the e-mail address which will be shown in Admin::Mailer.
   # When this option is define Typus will allow admin users to recover
