@@ -4,8 +4,8 @@
   <%= f.select :company_type, CompanyType.to_sorted_a, {:include_blank => true}, {:label => "性质"} %>
   <%= f.select :company_size, CompanySize.to_sorted_a, {:include_blank => true}, {:label => "规模"} %>
   <%= f.text_field :job_title, :label => "职务", :class => "text w580", :hint => "所担当的职务。" %>
-  <%= f.text_field :start_at, :label => "加入时间", :class => "text w580 datepicker", :hint => "入职的时间。" %>
-  <%= f.text_field :end_at, :label => "离职时间", :class => "text w580 datepicker", :hint => "留空表示在职。" %>
+  <%= f.text_field :start_at, :label => "加入时间", :class => "text w580 datepicker", :hint => "入职的时间，输入格式如：2009-09-12。" %>
+  <%= f.text_field :end_at, :label => "离职时间", :class => "text w580 datepicker", :hint => "留空表示在职，输入格式如：2009-09-12。" %>
   <%= f.link_to_remove_fields "删除" %>
 </fieldset>
 
