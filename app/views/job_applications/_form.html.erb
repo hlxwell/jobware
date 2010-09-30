@@ -1,4 +1,4 @@
-<%= jobware_form_for @job_application, :url => job_job_applications_path(@job), :title => '发送应聘申请', :html => {:id => 'send_job_application_form'}, :remote => true do |f| %>
+<%= jobware_form_for @job_application || JobApplication.new, :url => job_job_applications_path(@job), :title => '发送应聘申请', :html => {:id => 'send_job_application_form'}, :remote => true do |f| %>
   <% show_error_message_for(f.object) %>
   <%= raw render_message %>
 
