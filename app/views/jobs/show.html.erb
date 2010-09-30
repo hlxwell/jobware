@@ -77,15 +77,7 @@
   <% if current_user.try(:jobseeker).try(:applied_to_job?, @job) %>
     <%= button_to '您已经应聘过了此岗位。', "#", :remote => true, :method => :get, :class => "button largest", :disabled => true %>
   <% elsif !@job.only_use_custom_apply_method? %>
-    <script>
-      function apply_this_job() {
-        $("#job_application_form").html("<%= escape_javascript(render('job_applications/form')) %>").hide().fadeIn("slow");
-        $("#apply_button").fadeOut("slow");
-      }
-    </script>
-    <%= button_to_function("添加求职书", "apply_this_job", :class => 'button') %>
-
-    <%#= link_to '应聘此岗位', new_job_job_application_path(@job), :remote => true, :method => :get, :class => "button largest", :id => "apply_button" %>
+    <%= link_to '应聘此岗位', new_job_job_application_path(@job), :remote => true, :method => :get, :class => "button largest", :id => "apply_button" %>
   <% end %>
 </div>
 <div class="clearer">&nbsp;</div>
