@@ -1035,8 +1035,9 @@ div.highlighted {
 /* company home page */
 .company_home_page .menu a {
   font-size: 1.4em;
-  padding: 0.5em;
   margin-right: 0.5em;
+  padding: 0.5em;
+  display:block;
 }
 
 .company_home_page .title {
@@ -1047,7 +1048,6 @@ div.highlighted {
   font-size: 1.5em;
   border: 1px solid #ccc;
   background-color: #eee;
-  padding: 0.5em;
   margin-right: 0.5em;
   font-weight: bold;
   text-decoration: underline;
@@ -1057,7 +1057,6 @@ div.highlighted {
   font-size: 1.5em;
   border: 1px solid #ccc;
   background-color: #ddd;
-  padding: 0.5em;
   margin-right: 0.5em;
   font-weight: bold;
   text-decoration: none;

@@ -1,12 +1,12 @@
 GIT
-  remote: http://github.com/binarylogic/authlogic.git
+  remote: git://github.com/binarylogic/authlogic.git
   revision: 66ed795
   specs:
     authlogic (2.1.6)
       activesupport
 
 GIT
-  remote: http://github.com/freelancing-god/thinking-sphinx.git
+  remote: git://github.com/freelancing-god/thinking-sphinx.git
   revision: 644f57e
   branch: rails3
   specs:
@@ -15,15 +15,15 @@ GIT
       riddle (>= 1.0.12)
 
 GIT
-  remote: http://github.com/galetahub/rails-ckeditor.git
-  revision: 9fb3c74
+  remote: git://github.com/galetahub/rails-ckeditor.git
+  revision: ffb4026
   branch: rails3
   specs:
-    ckeditor (3.4.1.pre)
+    ckeditor (3.4.2.pre)
       mime-types (>= 1.16)
 
 GIT
-  remote: http://github.com/rails/exception_notification.git
+  remote: git://github.com/rails/exception_notification.git
   revision: 192a49a
   branch: master
   specs:
