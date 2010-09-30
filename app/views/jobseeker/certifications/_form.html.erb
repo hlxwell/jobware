@@ -3,12 +3,12 @@
   <div class="left w280 h450">
     <%= f.text_field :name, :label => "证书名", :class => "text w280" %>
   </div>
-  <div class="left w280 h450" style="margin-left: 10px;">
+  <div class="left w280 h450" style="margin-left: 20px;">
     <%= f.text_field :get_at, :label => "获得时间", :class => "text w280 datepicker" %>
   </div>
   <div class="clearer">&nbsp;</div>
   <%= f.link_to_remove_fields "删除" %>
 </fieldset>
 <script>
-  $(".datepicker").datepicker('option', {changeYear:true, changeMonth:true, yearRange:"1960:2010"});
+  $(".datepicker").datepicker();
 </script>

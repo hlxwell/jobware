@@ -812,6 +812,10 @@ img.alignright, img.right {margin: 0 0 1em 0;}
   margin: 0.3em;
 }
 
+.small_padding {
+  padding: 0.5em;
+}
+
 .small_left_padding { padding-left: 0.5em; }
 .small_right_padding { padding-right: 0.5em; }
 .small_top_padding { padding-top: 0.5em; }
