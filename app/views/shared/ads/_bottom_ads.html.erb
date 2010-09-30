@@ -5,7 +5,7 @@
   	<table class="data-table">
   		<tr>
   		  <% featured_companies.each_with_index do |ad, i| %>
-  			  <td><%= link_to image_tag(ad.image.url(:bottom_ad), :class => "aligncenter bordered bottom_ad_logo"), ad.url %></td>
+  			  <td class="with_tooltip" title="<%= ad.name %>"><%= link_to image_tag(ad.image.url(:bottom_ad), :class => "aligncenter bordered bottom_ad_logo"), ad.url %></td>
   			  <%= raw "</tr><tr>" if (i+1)%5 == 0 and i != 1 %>
   			<% end %>
   		</tr>

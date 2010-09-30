@@ -23,6 +23,7 @@ $(function(){
 
   // form tip for normal form
   $("form [title]:not(#search_term)").tipsy({fade: true, trigger: 'focus', gravity: 'w', title: 'title'});
+  $(".with_tooltip").tipsy({trigger: 'hover', gravity: 's', title: 'title'});
 
   // form tip for search input
   $("form input#search_term").formtips({ tippedClass: 'tipped' });
