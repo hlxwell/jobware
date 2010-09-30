@@ -1,4 +1,4 @@
-<div class="section network-section left" style="width: 300px">
+<div class="section network-section left" style="width: 250px">
 	<div class="section-title">紧急招聘</div>
 	<div class="section-content">
 	  <% show_no_record(urgent_jobs = Ad.urgent_jobs.opened) do %>
@@ -15,7 +15,7 @@
 	</div>
 </div>
 
-<div class="section network-section right" style="width: 650px">
+<div class="section network-section right" style="width: 700px">
 	<div class="section-title">推荐企业</div>
 	<div class="section-content">
 	  <% companies = Ad.featured_companies.opened.limit(3) %>
