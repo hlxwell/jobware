@@ -34,7 +34,7 @@ CoverLetter:
 
 Job:
   fields:
-    default: name, location, category_humanize, salary_range_humanize, start_at, end_at, company, state_s, source
+    default: name, location, category_humanize, salary_range_humanize, highlighted, start_at, end_at, company, state_s, source
     form: name, location_province, location_city, category, vacancy, content, requirement, welfare, desc, salary_range, highlighted, start_at, end_at, tag_list, company, source, state
     options:
       selectors: state
@@ -176,7 +176,7 @@ Ad:
         desc: text
   order_by: position
   relationships: company
-  filters: display_type
+  filters: display_type, state
   search: name, company
   application: Company
 
