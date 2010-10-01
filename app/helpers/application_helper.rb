@@ -1,6 +1,7 @@
 module ApplicationHelper
   include GoogleVisualization
   include UrlHelper
+  include ActsAsTaggableOn::TagsHelper
 
   def show_term
     render "shared/term"

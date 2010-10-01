@@ -1103,3 +1103,11 @@ div.highlighted {
   margin: 1em 0.5em 0 0;
   font-size: 11px;
 }
+
+
+
+/* tag sizes */
+.css1 { font-size: 1.0em; }
+.css2 { font-size: 1.2em; }
+.css3 { font-size: 1.4em; }
+.css4 { font-size: 1.6em; }

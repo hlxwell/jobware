@@ -28,7 +28,7 @@
 
 class Company < ActiveRecord::Base
   # attr_accessor :accept_terms
-  acts_as_views_count :delay => 30
+  acts_as_views_count :delay => 5
   chinese_permalink :name
   acts_as_taggable
 
