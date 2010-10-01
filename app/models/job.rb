@@ -196,6 +196,10 @@ class Job < ActiveRecord::Base
       <h3>福利待遇：</h3>
       #{self.welfare}"
   end
+  
+  def meta_description
+    strip_tags("岗位:#{self.name},公司:#{self.company.name},类别:#{self.category_humanize},岗位需求:#{self.requirement},工作内容:#{self.content},福利待遇:#{self.welfare}").chomp.strip.gsub(/\r|\n/,'').truncate(300)
+  end
 
   ### state to cn string
   # unapproved, approved, rejected, opened, closed
