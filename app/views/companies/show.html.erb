@@ -1,5 +1,10 @@
 <% title @company.name %>
 
+<% content_for(:meta_info) do %>
+  <meta name="keywords" content="<%= @company.tag_list << @company.name %>" />
+  <meta name="description" content="<%= strip_tags(raw(@company.desc)).chomp.strip.gsub(/\r/,'').truncate(300) %>"/>
+<% end %>
+
 <div class="post">
 	<div class="post-title"><h3>基本信息</h3></div>
 

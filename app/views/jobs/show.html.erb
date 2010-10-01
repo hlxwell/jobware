@@ -1,5 +1,10 @@
 <% title @job.name %>
 
+<% content_for(:meta_info) do %>
+  <meta name="keywords" content="<%= @job.tag_list.to_s %>, <%= @job.name %>" />
+  <meta name="description" content="<%= strip_tags(@job.atom_content).chomp.strip.gsub(/\r/,'').truncate(300) %>"/>
+<% end %>
+
 <div class="post">
 
   <div class="company_info">
