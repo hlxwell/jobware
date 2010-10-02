@@ -17,11 +17,6 @@ module ApplicationHelper
     result = ""
     tags.each do |tag|
       result += "<span class='tag'>#{tag}</span>"
-      result += "<span class='tag'>#{tag}</span>"
-      result += "<span class='tag'>#{tag}</span>"
-      result += "<span class='tag'>#{tag}</span>"
-      result += "<span class='tag'>#{tag}</span>"
-      result += "<span class='tag'>#{tag}</span>"
     end
     raw result
   end
