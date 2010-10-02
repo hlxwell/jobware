@@ -15,4 +15,17 @@ class Admin::PartnersController < Admin::ResourcesController
       redirect_to :back, :notice => "拒绝审核出错。"
     end
   end
+
+  def send_commission
+    amount = params.get(:commission, :amount)
+    money_from = params.get(:commission, :money_from)
+
+    if amount and money_from and amount.to_i > 0
+      get_object.user.charge!(amount, :from => money_from)
+      flash[:notice] = "付给#{get_object.name}#{money_from}#{amount}元成功。"
+    else
+      flash[:notice] = "请输入佣金数量和来源。"
+    end
+    redirect_to :back
+  end
 end
