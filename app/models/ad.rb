@@ -104,7 +104,7 @@ class Ad < ActiveRecord::Base
   validates_presence_of :name, :province, :city, :url, :if => Proc.new { |ad| ad.display_type == AdPositionType::URGENT_JOB }
   validates_presence_of :name, :url, :if => Proc.new { |ad| [AdPositionType::SLIDER_AD, AdPositionType::FEATURED_COMPANY].include?(ad.display_type) }
   validates_numericality_of :period, :greater_than => 0, :allow_nil => false
-  validates_length_of :name, :within => 5..20, :message => "长度必须控制在20个字以内。"
+  validates_length_of :name, :within => 5..20, :message => "长度必须控制在5-20个字以内。", :if => Proc.new { |ad| ad.display_type != AdPositionType::FAMOUS_COMPANY }
   validate :check_time
   validate :check_image
 
