@@ -1,6 +1,9 @@
-<div class="section network-section">
+<style>
+  #urgent-job-marquee {height:215px;overflow:hidden;}
+</style>
+<div class="section network-section" style="margin-bottom: 0px;">
 	<div class="section-title">紧急招聘</div>
-	<div class="section-content">
+	<div id="urgent-job-marquee" class="section-content">
 	  <% show_no_record(@urgent_jobs = Ad.urgent_jobs.opened) do %>
 		<ul class="nice-list">		  
 		  <% @urgent_jobs.each do |ad| %>

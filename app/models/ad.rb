@@ -208,4 +208,8 @@ class Ad < ActiveRecord::Base
   def display_type_key
     DISPLAY_TYPE_KEYS[self.display_type]
   end
+  
+  def self.check_all_jobs_availability
+    all.each(&:available?)
+  end
 end

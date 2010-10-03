@@ -9,4 +9,7 @@ class PagesController < ApplicationController
   def term
     render :layout => false
   end
+  
+  def ad_service
+  end
 end

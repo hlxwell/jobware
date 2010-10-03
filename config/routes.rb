@@ -9,6 +9,7 @@ Jobware::Application.routes.draw do
   match "/law" => "pages#law"
   match "/contactus" => "pages#contactus"
   match "/term" => "pages#term"
+  match "/ad_service" => "pages#ad_service"
 
   ### auth stuff
   match "/login" => "sessions#new", :as => :login

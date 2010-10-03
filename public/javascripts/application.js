@@ -17,8 +17,14 @@ $(function(){
     width: 510,
     height: 250,
     navigation: true,
-    delay: 5000,
-    effect: 'random'
+    delay: 3000,
+    effect: 'swirl', // random, swirl, rain, straight
+    sDelay: 10 // delay beetwen squares in ms
+    // hoverPause: true
+    // opacity: 0.7, // opacity of title and navigation
+    // titleSpeed: 500, // speed of title appereance in ms
+    // navigation: true, // prev next and buttons
+    // links : true, // show images as links
   });
 
   // form tip for normal form
@@ -55,6 +61,14 @@ $(function(){
       height: 350,
       modal: true
     });
+  });
+
+  $('#urgent-job-marquee').kxbdSuperMarquee({
+		isEqual:false,
+		distance:31,
+		time:2,
+    // duration:100,
+		direction:'up'
   });
 });
 
