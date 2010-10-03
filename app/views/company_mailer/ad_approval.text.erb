@@ -1,3 +1,3 @@
 您好，<%= @company.name %>：
 
-我们诚挚地通知您，您发布的<%= @ad.display_type_humanize %>《<%= @ad.name %>》已经通过审核，请打开http://www.itjob.fm查看展示效果。
+我们诚挚地通知您，您发布的<%= @ad.display_type_humanize %>《<%= @ad.name || @ad.company.name %>》已经通过审核，请打开http://www.itjob.fm查看展示效果。
