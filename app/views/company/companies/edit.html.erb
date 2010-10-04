@@ -2,10 +2,22 @@
 <%= page_name_html("修改公司信息", :with_title => true) %>
 
 <%= jobware_form_for @company, :url => company_company_path, :use_fieldset => false, :html => { :multipart => true } do |f| %>
+  <a name="top"></a>
+
+  <p class="middle_bottom_margin">
+    <span class="largest bold">跳转到：</span>
+    <a href="#products" class="small_padding larger">公司产品</a>
+    <a href="#presentations" class="small_padding larger">公司展示图片</a>
+  </p>
+
+  <a name="company_info"></a>
   <%= field_set_tag "公司信息", :class => 'big' do %>
     <%= render "companies/form", :f => f %>
   <% end %>
+  <a href="#top" class="right middle_bottom_margin largest bold">回到顶部</a>
+  <div class="clearer">&nbsp;</div>
 
+  <a name="products"></a>
   <%= field_set_tag "公司产品", :class => 'big' do %>
     <%= f.fields_for :products do |product_form| %>
       <%= render "company/products/form", :f => product_form %>
@@ -13,7 +25,10 @@
 
     <%= f.button_to_add_fields '添加', :products, :namespace_dir => "company" %>
   <% end %>
+  <a href="#top" class="right middle_bottom_margin largest bold">回到顶部</a>
+  <div class="clearer">&nbsp;</div>
 
+  <a name="presentations"></a>
   <%= field_set_tag "公司展示图片", :class => 'big' do %>
     <%= f.fields_for :presentations do |presentation_form| %>
       <%= render "company/presentations/form", :f => presentation_form %>
@@ -21,6 +36,8 @@
 
     <%= f.button_to_add_fields '添加', :presentations, :namespace_dir => "company" %>
   <% end %>
+  <a href="#top" class="right middle_bottom_margin largest bold">回到顶部</a>
+  <div class="clearer">&nbsp;</div>
 
   <%= f.submit "更新", :class => "right button" %>
 <% end %>

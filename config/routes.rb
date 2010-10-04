@@ -1,4 +1,8 @@
 Jobware::Application.routes.draw do
+  get "alipay/pay"
+  get "alipay/notify"
+  get "alipay/done"
+
   # match "track" => Tracker.action(:track), :as => :tracker
   # match "slideshowpro(.:format)" => "pages#slideshowpro"
   match "/partner_benifit" => "pages#partner_benifit"
@@ -75,7 +79,13 @@ Jobware::Application.routes.draw do
 
   ### company section
   namespace :company do
-    resources :transactions
+    resources :transactions do
+      collection do
+        get :notify
+        get :done
+      end
+    end
+
     resources :starred_resumes
     resource :company
 

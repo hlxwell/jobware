@@ -47,12 +47,10 @@ module Jobware
   end
 end
 
-require "tracker"
+# require "tracker"
 require 'active_merchant'
 require 'active_merchant/billing/integrations/action_view_helper'
-
 ActionView::Base.send(:include, ActiveMerchant::Billing::Integrations::ActionViewHelper)
-
-ActiveMerchant::Billing::Integrations::Alipay::KEY = ""
-ActiveMerchant::Billing::Integrations::Alipay::ACCOUNT = ""
-ActiveMerchant::Billing::Integrations::Alipay::EMAIL = "hlxwell@hotmail.com"
+ActiveMerchant::Billing::Integrations::Alipay::KEY     = "v8eqe23g0lgdre2726vn8f100g041jlx"
+ActiveMerchant::Billing::Integrations::Alipay::ACCOUNT = "2088002016425361"
+ActiveMerchant::Billing::Integrations::Alipay::EMAIL   = "hlxwell@hotmail.com"
