@@ -41,6 +41,7 @@ Jobware::Application.routes.draw do
     end
   end
 
+  match "/jobs/tag/:tag" => "jobs#tag", :as => :tag_jobs
   resources :jobs do
     resources :companies, :only => [:show] do
       member do
@@ -61,6 +62,7 @@ Jobware::Application.routes.draw do
     resources :job_applications
   end
 
+  match "/companies/tag/:tag" => "companies#tag", :as => :tag_companies
   resources :companies do
     member do
       get :presentations
