@@ -59,7 +59,7 @@ Jobware::Application.routes.draw do
     end
     resources :job_applications
   end
-  match "/jobs/tag/:tag" => "jobs#tag", :as => :tag_jobs
+  match "/jobs/tags/:tag" => "jobs#tag", :as => :tag_jobs
 
   resources :companies do
     member do
@@ -71,7 +71,7 @@ Jobware::Application.routes.draw do
       get :created
     end
   end
-  match "/companies/tag/:tag" => "companies#tag", :as => :tag_companies
+  match "/companies/tags/:tag" => "companies#tag", :as => :tag_companies
 
 
   ### dashboard rewrite
