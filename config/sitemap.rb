@@ -1,5 +1,5 @@
 # Set the host name for URL creation
-SitemapGenerator::Sitemap.default_host = "http://www.itjob.fm"
+SitemapGenerator::Sitemap.default_host = "http://itjob.fm"
 SitemapGenerator::Sitemap.yahoo_app_id = "eDxJEwvV34GRHfVWnsaJPk08DfVCgDtZag.H9dsKTtXbj9eRoaNXEJYXzg.Jyw--"
 SitemapGenerator::Sitemap.add_links do |sitemap|
   # Put links creation logic here.
@@ -26,11 +26,7 @@ SitemapGenerator::Sitemap.add_links do |sitemap|
   sitemap.add new_company_path, :priority => 0.3, :changefreq => 'weekly'
   sitemap.add new_partner_path, :priority => 0.3, :changefreq => 'weekly'
   sitemap.add new_jobseeker_resume_path, :priority => 0.3, :changefreq => 'weekly'
-  sitemap.add "/partner_benifit", :priority => 0.3, :changefreq => 'weekly'
-  sitemap.add "/company_benifit", :priority => 0.3, :changefreq => 'weekly'
   sitemap.add "/aboutus", :priority => 0.3, :changefreq => 'weekly'
-  sitemap.add "/partner_site_header", :priority => 0.3, :changefreq => 'weekly'
-  sitemap.add "/partner_site_footer", :priority => 0.3, :changefreq => 'weekly'
   sitemap.add "/law", :priority => 0.3, :changefreq => 'weekly'
   sitemap.add "/contactus", :priority => 0.3, :changefreq => 'weekly'
   sitemap.add "/term", :priority => 0.3, :changefreq => 'weekly'
