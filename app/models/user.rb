@@ -55,9 +55,9 @@ class User < ActiveRecord::Base
   end
 
   class << self
-    # def disable_perishable_token_maintenance?
-    #   false
-    # end
+    def disable_perishable_token_maintenance?
+      false
+    end
     
     def reset_password(email)
       user = self.find_by_email(email)
