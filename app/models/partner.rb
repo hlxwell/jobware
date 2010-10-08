@@ -43,6 +43,10 @@ class Partner < ActiveRecord::Base
       PartnerMailer.approval(partner).deliver
     end
 
+    after_transition any => :unapproved do |partner|
+      AdminNotification.need_check(partner).deliver
+    end
+
     event :approve do
       transition any => :approved
     end
