@@ -3,6 +3,7 @@ class SessionsController < ApplicationController
   # before_filter :no_login_required, :only => [:edit_password, :update_password]
 
   def new
+    clear_stored_location
   end
 
   def create

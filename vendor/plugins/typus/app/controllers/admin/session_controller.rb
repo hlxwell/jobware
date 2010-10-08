@@ -7,7 +7,6 @@ class Admin::SessionController < AdminController
   before_filter :create_an_account?, :except => [:destroy]
 
   def new
-    clear_stored_location
   end
 
   def create
