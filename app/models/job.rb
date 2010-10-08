@@ -82,6 +82,10 @@ class Job < ActiveRecord::Base
       job.pay_for_active unless job.available?
     end
 
+    after_transition any => :unapproved do |job|
+      AdminNotification.need_check(job).deliver
+    end
+
     after_transition :on => :approve do |job|
       CompanyMailer.job_approval(job.company, job).deliver
     end
