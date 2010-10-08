@@ -33,6 +33,7 @@
 #
 
 class Job < ActiveRecord::Base
+  sitemap :order => 'updated_at DESC', :change_frequency => :weekly, :limit => 1000, :priority => 1
   acts_as_taggable
   chinese_permalink :name
   acts_as_views_count :delay => 5
@@ -198,7 +199,7 @@ class Job < ActiveRecord::Base
       <h3>福利待遇：</h3>
       #{self.welfare}"
   end
-  
+
   def meta_description
     "岗位:#{self.name},公司:#{self.company.name},类别:#{self.category_humanize},岗位需求:#{self.requirement},工作内容:#{self.content},福利待遇:#{self.welfare}"
   end

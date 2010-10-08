@@ -26,6 +26,7 @@ gem 'cancan'
 gem 'acts-as-taggable-on'
 gem 'delayed_job'
 gem 'inherited_resources', '1.1.2'
+gem 'sitemap_generator'
 
 # gem 'authlogic', :git => 'git://github.com/binarylogic/authlogic.git'
 # gem 'formtastic', :git => "git://github.com/justinfrench/formtastic.git", :branch => "rails3"
