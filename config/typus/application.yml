@@ -40,7 +40,7 @@ Job:
       selectors: state
   order_by:
   relationships: company, job_applications, user
-  filters:
+  filters: state
   search: name
   application: Company
 
