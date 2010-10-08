@@ -9,3 +9,5 @@ db/sphinx
 config/development.sphinx.conf
 public/ckeditor_assets/**/*
 config/database.yml
+public/sitemap1.xml.gz
+public/sitemap_index.xml.gz

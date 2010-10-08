@@ -33,7 +33,6 @@
 #
 
 class Job < ActiveRecord::Base
-  sitemap :order => 'updated_at DESC', :change_frequency => :weekly, :limit => 1000, :priority => 1
   acts_as_taggable
   chinese_permalink :name
   acts_as_views_count :delay => 5
