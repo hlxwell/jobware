@@ -41,5 +41,19 @@ class UserTest < ActiveSupport::TestCase
       end
     end
 
+    context "User" do
+      setup do
+        @user = Factory(:user)
+      end
+
+      should "be able to active by code" do
+        Timecop.travel(23.hours.since)
+        assert_equal @user, User.find_and_confirm(@user.perishable_token)
+        Timecop.travel(1.hours.since)
+        assert_equal nil, User.find_and_confirm(@user.perishable_token)
+        Timecop.return
+      end
+    end
+
   end
 end

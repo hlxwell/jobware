@@ -1,11 +1,4 @@
 GIT
-  remote: git://github.com/binarylogic/authlogic.git
-  revision: 66ed795
-  specs:
-    authlogic (2.1.6)
-      activesupport
-
-GIT
   remote: git://github.com/freelancing-god/thinking-sphinx.git
   revision: 644f57e
   branch: rails3
@@ -165,7 +158,6 @@ DEPENDENCIES
   activemerchant_patch_for_china
   acts-as-taggable-on
   annotate-models
-  authlogic!
   awesome_print
   cancan
   capistrano

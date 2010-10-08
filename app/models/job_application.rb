@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20100916071749
+# Schema version: 20100928090424
 #
 # Table name: job_applications
 #
@@ -12,6 +12,7 @@
 #  updated_at      :datetime
 #  rating          :integer(4)
 #  partner_id      :integer(4)
+#  mail_message    :text
 #
 
 class JobApplication < ActiveRecord::Base

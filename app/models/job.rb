@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20100921080601
+# Schema version: 20100928090424
 #
 # Table name: jobs
 #
@@ -28,6 +28,8 @@
 #  partner_id                   :integer(4)
 #  source                       :string(255)
 #  highlighted                  :boolean(1)
+#  degree_requirement           :integer(4)
+#  working_year_requirement     :integer(4)
 #
 
 class Job < ActiveRecord::Base

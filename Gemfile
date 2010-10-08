@@ -5,7 +5,6 @@ source "http://gemcutter.org"
 gem 'rails', '3.0.0'
 gem 'mysql'
 gem 'nifty-generators'
-gem 'authlogic', :git => 'git://github.com/binarylogic/authlogic.git'
 gem 'ckeditor', :git => 'git://github.com/galetahub/rails-ckeditor.git', :branch => 'rails3'
 gem 'navigasmic'
 gem 'capistrano'
@@ -28,6 +27,7 @@ gem 'acts-as-taggable-on'
 gem 'delayed_job'
 gem 'inherited_resources', '1.1.2'
 
+# gem 'authlogic', :git => 'git://github.com/binarylogic/authlogic.git'
 # gem 'formtastic', :git => "git://github.com/justinfrench/formtastic.git", :branch => "rails3"
 # gem 'tabletastic'
 
