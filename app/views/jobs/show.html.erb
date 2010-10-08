@@ -2,7 +2,7 @@
 
 <% content_for(:meta_info) do %>
   <meta name="keywords" content="<%= @job.tag_list.to_s %>, <%= @job.name %>" />
-  <meta name="description" content="<%= strip_tags(@job.meta_description).chomp.strip.gsub(/\r|\n/,'').truncate(300) %>"/>
+  <meta name="description" content="<%= strip_tags(@job.meta_description).chomp.strip.gsub(/\r|\n/,'').truncate(100) %>"/>
 <% end %>
 
 <div class="post">

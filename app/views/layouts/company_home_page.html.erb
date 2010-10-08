@@ -1,5 +1,13 @@
-<% content_for :content do %>
+<% if @company %>
+  <% content_for(:meta_info) do %>
+    <meta name="keywords" content="<%= @company.tag_list << @company.name %>" />
+    <meta name="description" content="<%= strip_tags(raw(@company.desc)).truncate(100).gsub(/\n/,'') %>"/>
+  <% end %>
+<% elsif @job %>
+  <% @company = @job.company %>
+<% end %>
 
+<% content_for :content do %>
 <!-- ### main content -->
 <div class="main company_home_page">
   <!-- <div class="right bordered largest">认证企业</div> -->

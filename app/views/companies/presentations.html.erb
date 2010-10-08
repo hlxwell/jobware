@@ -1,10 +1,5 @@
 <% title @company.name %>
 
-<% content_for(:meta_info) do %>
-  <meta name="keywords" content="<%= @company.tag_list << @company.name %>" />
-  <meta name="description" content="<%= strip_tags(raw(@company.desc)).truncate(300).gsub(/\n/,'') %>"/>
-<% end %>
-
 <% show_no_record(@company.presentations) do %>
   <div class="archive-separator"></div>
   <%= render :partial => 'companies/presentation', :collection => @company.presentations %>

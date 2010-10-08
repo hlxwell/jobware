@@ -16,7 +16,7 @@ class JobsController < ApplicationController
   end
 
   def show
-    @company = @job.company
+    # @company = @job.company
     @starred_job = current_user.try(:jobseeker).present? ? current_user.jobseeker.starred_jobs.where(:job_id => params[:id]).first : nil
     render :layout => "company_home_page"
   end
