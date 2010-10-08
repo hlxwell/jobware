@@ -79,6 +79,10 @@ class Ad < ActiveRecord::Base
       end
     end
 
+    after_transition any => :unapproved do |ad|
+      AdminNotification.need_check(ad).deliver
+    end
+
     event :want_to_show do
       transition :unapproved => :approving, :if => :company_has_enough_credit?
     end
@@ -208,7 +212,7 @@ class Ad < ActiveRecord::Base
   def display_type_key
     DISPLAY_TYPE_KEYS[self.display_type]
   end
-  
+
   def self.check_all_jobs_availability
     all.each(&:available?)
   end
