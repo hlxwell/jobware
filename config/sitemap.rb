@@ -1,5 +1,5 @@
 # Set the host name for URL creation
-SitemapGenerator::Sitemap.default_host = "http://itjob.fm"
+SitemapGenerator::Sitemap.default_host = Rails.env == 'production' ? "http://itjob.fm" : "http://lvh.me:3000"
 SitemapGenerator::Sitemap.yahoo_app_id = "eDxJEwvV34GRHfVWnsaJPk08DfVCgDtZag.H9dsKTtXbj9eRoaNXEJYXzg.Jyw--"
 SitemapGenerator::Sitemap.add_links do |sitemap|
   # Put links creation logic here.
