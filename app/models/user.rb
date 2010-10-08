@@ -38,6 +38,14 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :company
   after_create :send_confirmation_instructions
 
+  def send_confirmation_instructions
+    confirmed_at = nil
+    confirmation_sent_at = Time.now
+    save(:validate => false)
+    reset_perishable_token!
+    UserMailer.send_confirmation(self).deliver
+  end
+
   def confirmed?
     !(self.new_record? || self.confirmed_at.nil?)
   end
@@ -46,15 +54,11 @@ class User < ActiveRecord::Base
     update_attribute(:confirmed_at, Time.now)
   end
 
-  def send_confirmation_instructions
-    reset_perishable_token!
-    confirmed_at = nil
-    confirmation_sent_at = Time.now
-    save(:validate => false)
-    UserMailer.send_confirmation(self).deliver
-  end
-
   class << self
+    # def disable_perishable_token_maintenance?
+    #   false
+    # end
+    
     def reset_password(email)
       user = self.find_by_email(email)
       if user.present?

@@ -6,9 +6,9 @@ module Authlogic
     # See Authlogic::ActsAsAuthentic::PerishableToken for more information.
     module PerishableToken
       def self.included(klass)
-        klass.after_save :reset_perishable_token!
+        # klass.after_save :reset_perishable_token!
       end
-      
+
       private
         def reset_perishable_token!
           record.reset_perishable_token if record.respond_to?(:reset_perishable_token) && !record.disable_perishable_token_maintenance?

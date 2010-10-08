@@ -47,11 +47,20 @@ class UserTest < ActiveSupport::TestCase
       end
 
       should "be able to active by code" do
+        puts Time.now
         Timecop.travel(23.hours.since)
         assert_equal @user, User.find_and_confirm(@user.perishable_token)
+
+        puts Time.now
         Timecop.travel(1.hours.since)
         assert_equal nil, User.find_and_confirm(@user.perishable_token)
+
         Timecop.return
+        puts Time.now
+      end
+
+      should have_sent_email do |email|
+        email.body.include?(@user.perishable_token)
       end
     end
 

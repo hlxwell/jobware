@@ -127,7 +127,8 @@ class JobCategory < EnumerateIt::Base
     :programmer => [2, '程序开发'],
     :dba        => [3, '数据库管理'],
     :sa         => [4, '系统管理'],
-    :game       => [5, '游戏开发']
+    :game       => [5, '游戏开发'],
+    :test       => [6, '测试工程师']
   )
 end
 
