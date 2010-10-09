@@ -1,7 +1,21 @@
 module ApplicationHelper
   include GoogleVisualization
   include UrlHelper
-  include ActsAsTaggableOn::TagsHelper
+
+  # include ActsAsTaggableOn::TagsHelper
+  def tag_cloud(tags, classes)
+    tags = tags.all if tags.respond_to?(:all)
+    return [] if tags.empty?
+    max_count = tags.sort_by(&:count).last.count.to_f
+    tags.each do |tag|
+      if max_count > 1
+        index = ((tag.count / max_count) * (classes.size - 1)).round
+      else
+        index = 0
+      end
+      yield tag, classes[index]
+    end
+  end
 
   def show_term
     render "shared/term"
