@@ -5,11 +5,11 @@ class CompaniesController < ApplicationController
   before_filter :get_job_by_job_id, :only => [:show, :all_jobs, :presentations]
 
   def index
-    @companies = Company.paginate :all, :page => params[:page], :per_page => 10
+    @companies = Company.opened.paginate :all, :page => params[:page], :per_page => 10
   end
 
   def tag
-    @companies = Company.tagged_with(params[:tag]).paginate :all, :page => params[:page], :per_page => 10
+    @companies = Company.opened.tagged_with(params[:tag]).paginate :all, :page => params[:page], :per_page => 10
     render :index
   end
 
