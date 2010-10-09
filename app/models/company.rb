@@ -57,6 +57,9 @@ class Company < ActiveRecord::Base
   validate :check_tag
   validate :check_logo
 
+  default_scope order("companies.updated_at desc")
+  scope :opened, includes(:user).where("users.confirmed_at IS NOT NULL")
+
   ### to reprocess all image.
   # Company.all.each do |c|
   #   c.logo.reprocess!
