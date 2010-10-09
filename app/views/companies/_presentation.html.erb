@@ -1,6 +1,12 @@
 <% image_size ||= :slideshow %>
 <div class="post">
-  <div class="post-title"><h2><%= presentation.name %></h2></div>
+  <div class="post-title">    
+    <% if image_size == :slideshow %>
+      <h2><%= presentation.name %></h2>
+    <% else %>
+      <h5><%= presentation.name %></h5>
+    <% end %>
+  </div>
 	<div class="post-body">
 	  <%= image_tag presentation.file.url(image_size) %>
 	</div>

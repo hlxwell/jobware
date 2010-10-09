@@ -1,7 +1,11 @@
 <div id="header">
   <!-- #### site logo and title -->
-	<div id="site-title">
+	<div id="site-title" class="left">
 	  <%= link_to image_tag("/images/logo/logo_big.png", :alt => "专注于程序员招聘求职 - ITJob.fm"), "/" %>
+	</div>
+
+	<div class="right">
+	  <%= link_to image_tag("/images/rss.png", :style => "margin-top: 1.3em"), jobs_url(:format => :atom), :target => "_blank" %>
 	</div>
 	<div class="clearer">&nbsp;</div>
 

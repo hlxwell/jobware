@@ -52,8 +52,10 @@ class UserTest < ActiveSupport::TestCase
         assert_equal nil, User.find_and_confirm(@user.perishable_token)
       end
 
-      should have_sent_email do |email|
-        email.body.include?(@user.perishable_token)
+      should "send active code mail" do
+        assert_sent_email do |email|
+          email.body.include?(@user.perishable_token)
+        end
       end
     end
 
