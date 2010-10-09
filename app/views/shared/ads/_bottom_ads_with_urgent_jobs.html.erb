@@ -1,4 +1,4 @@
-<style>#urgent-job-marquee {height:154px;overflow:hidden;}</style>
+<style>#urgent-job-marquee {height:242px;overflow:hidden;}</style>
 <div class="section network-section left" style="width: 250px">
 	<div class="section-title">紧急招聘</div>
 	<div id="urgent-job-marquee" class="section-content">
@@ -19,12 +19,12 @@
 <div class="section network-section right" style="width: 700px">
 	<div class="section-title">推荐企业</div>
 	<div class="section-content">
-	  <% companies = Ad.featured_companies.opened.limit(6) %>
+	  <% companies = Ad.featured_companies.opened.limit(9) %>
 	  <% show_no_record(companies) do %>
   	<table class="data-table">
   		<tr>
   		  <% companies.each_with_index do |ad, i| %>
-  			  <td class="with_tooltip" title="<%= ad.name %>"><%= link_to image_tag(ad.image.url(:bottom_ad), :class => "aligncenter bordered bottom_ad_logo"), ad.url %></td>
+  			  <td class="with_tooltip" title="<%= ad.name %>" style="padding: 12px"><%= link_to image_tag(ad.image.url(:bottom_ad), :class => "aligncenter bordered bottom_ad_logo"), ad.url %></td>
   			  <%= raw "</tr><tr>" if (i+1)%3 == 0 and i != 1 %>
   			<% end %>
   		</tr>

@@ -65,9 +65,9 @@ $(function(){
 
   $('#urgent-job-marquee').kxbdSuperMarquee({
 		isEqual:false,
-		distance:31,
-		time:2,
-    // duration:100,
+		distance:30.92,
+		time: 1,
+    duration: 20,
 		direction:'up'
   });
 });
