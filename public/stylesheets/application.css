@@ -224,6 +224,7 @@ table.top-vlign-td td { vertical-align: top; }
 .thin {font-weight: normal;}
 .black {color: black;}
 .red {color: red;}
+.white {color: white;}
 .green {color: green;}
 .gray {color: gray;}
 
@@ -1106,6 +1107,12 @@ div.highlighted {
   line-height: 2.2em;
   font-size: 11px;
 }
+
+.tag a {
+  color: white;
+}
+
+.tag a:hover {color: white;}
 
 /* tag sizes */
 .css1 { font-size: 1.0em; padding: 0.2em; }

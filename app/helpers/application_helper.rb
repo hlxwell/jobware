@@ -27,10 +27,10 @@ module ApplicationHelper
     @show_title = show_title
   end
 
-  def show_tag_list tags
+  def show_tag_list tags, path
     result = ""
     tags.each do |tag|
-      result += "<span class='tag'>#{tag}</span>"
+      result += "<span class='tag'>#{link_to(tag, "#{path}?tag=#{tag}")}</span>"
     end
     raw result
   end
@@ -135,8 +135,8 @@ module ApplicationHelper
     end
 
     if count > 0
-      link_to("新", company_job_applications_path(:filter => :unread)) +
-      raw("<strong class='loud'>(#{count})</strong> |")
+      link_to(raw("<span class='red'>新</span>"), company_job_applications_path(:filter => :unread)) +
+      raw("<strong class='loud red'>(#{count})</strong> |")
     end
   end
 
