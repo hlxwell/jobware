@@ -1,6 +1,11 @@
 // Place your application-specific JavaScript functions and classes here
 // This file is automatically included by javascript_include_tag :defaults
 $(function(){
+  $("img").lazyload({
+    effect : "fadeIn",
+    placeholder : "/images/bg.png"
+  });
+
   $.each($(".city_selector"), function(i, n){ $(n).CitySelector(); });
 
   $(".datepicker").datepicker('option', {changeYear:true, changeMonth:true, yearRange:"1960:2010"});
