@@ -1,53 +1,29 @@
 <h1 class="text-center" style="padding: 2em;">正在转向支付宝，请稍候...</h1>
 
-<!-- 
-<% payment_service_for "#{Time.now.to_i+rand(10000)}",
-  ActiveMerchant::Billing::Integrations::Alipay::ACCOUNT,
-  :service => :alipay,
-  :html => { :id => 'payment-form', :method => :get } do |service| %>
-
-  <% service.discount 0 %>
-  <% service.price @charge_amount %>
-  <% service.quantity 1 %>
-  <% service.seller :email => ActiveMerchant::Billing::Integrations::Alipay::EMAIL %>
-  <% service.notify_url url_for(:only_path => false, :action => 'notify') %>
-  <% service.return_url url_for(:only_path => false, :action => 'done') %>
-  <% service.show_url "http://www.itjob.fm" %>
-  <% service.body '向itjob.fm充值。' %>
-  <% service.charset "utf-8" %>
-  <% service.service ActiveMerchant::Billing::Integrations::Alipay::Helper::CREATE_PARTNER_TRADE_BY_BUYER %>
-  <% service.payment_type 1 %>
-  <% service.paymethod "directPay" %>
-  <% service.logistics :type => 'EXPRESS', :fee => 0.0, :payment => 'SELLER_PAY' %>
-  <% service.subject "ITJob.fm 账户充值 #{@charge_amount}元" %>
-  <% service.agent ActiveMerchant::Billing::Integrations::Alipay::ACCOUNT %>
-  <% service.receive :name => '杭州大浪软件技术有限公司', :address => '杭州教工路18号EAC-C1407', :zip => '310000', :phone => '0571-28820982', :mobile => '13600528084' %>
-  <% service.sign %>
-<% end %> 
--->
-
-<% payment_service_for "#{Time.now.to_i+rand(10000)}",
-                       ActiveMerchant::Billing::Integrations::Alipay::ACCOUNT,
-                       :service => :alipay,
-                       :html => { :id => 'payment-form', :method => :get } do |service| %>
-  <% service.total_fee @charge_amount %>
-  <% service.extra_common_param current_user.id %>
-  <% service.seller :email => ActiveMerchant::Billing::Integrations::Alipay::EMAIL %>
-  <% service.error_notify_url url_for(:only_path => false, :action => 'error') %>
-  <% service.notify_url url_for(:only_path => false, :action => 'notify') %>
-  <% service.return_url url_for(:only_path => false, :action => 'done') %>
-  <% service.show_url "http://www.itjob.fm" %>
-  <% service.body '向itjob.fm充值。' %>
-  <% service.charset "utf-8" %>
-  <% service.service ActiveMerchant::Billing::Integrations::Alipay::Helper::CREATE_DIRECT_PAY_BY_USER %>
-  <% service.payment_type 1 %>
-  <% service.subject "ITJob.fm 账户充值 #{@charge_amount}元" %>
-  <% service.sign %>
-<% end %>
+<div class="hidden">
+  <% payment_service_for "#{Time.now.to_i+rand(10000)}",
+                         ActiveMerchant::Billing::Integrations::Alipay::ACCOUNT,
+                         :service => :alipay,
+                         :html => { :id => 'payment-form', :method => :get } do |service| %>
+    <% service.total_fee @charge_amount %>
+    <% service.extra_common_param current_user.id %>
+    <% service.seller :email => ActiveMerchant::Billing::Integrations::Alipay::EMAIL %>
+    <% service.error_notify_url url_for(:only_path => false, :action => 'error') %>
+    <% service.notify_url url_for(:only_path => false, :action => 'notify') %>
+    <% service.return_url url_for(:only_path => false, :action => 'done') %>
+    <% service.show_url "http://www.itjob.fm" %>
+    <% service.body '向itjob.fm充值。' %>
+    <% service.charset "utf-8" %>
+    <% service.service ActiveMerchant::Billing::Integrations::Alipay::Helper::CREATE_DIRECT_PAY_BY_USER %>
+    <% service.payment_type 1 %>
+    <% service.subject "ITJob.fm 账户充值 #{@charge_amount}元" %>
+    <% service.sign %>
+  <% end %>
+</div>
 
 <script>
 $(function(){
   $('#payment-form div').remove();
-  // $('#payment-form').submit();
+  $('#payment-form').submit();
 });
 </script>
