@@ -1,6 +1,6 @@
 Jobware::Application.routes.draw do
   get "alipay/pay"
-  get "alipay/notify"
+  post "alipay/notify"
   get "alipay/done"
   get "alipay/error"
 

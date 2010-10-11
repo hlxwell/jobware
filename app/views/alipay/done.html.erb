@@ -1,1 +1,12 @@
-<h3 class="text-center" style="padding: 3em">恭喜您，充值<%= @result.total_fee %>元成功。 <%= link_to "回到首页", root_path %></h3>
+<h3 class="text-center" style="padding: 3em">
+  <% if params[:trade_status] == "TRADE_SUCCESS" %>
+    恭喜您，您支付<%= @result.amount %>元已经完成，请耐心等待系统从支付宝获得最终确认信息，谢谢。
+    <br>如果超过1小时还没有结果请联系我们。
+  <% elsif params[:trade_status] == "TRADE_FINISHED" %>
+    恭喜您，充值<%= @result.amount %>元成功，请检查您的账户。
+  <% else %>
+    对不起充值失败，请联系我们。
+  <% end %>
+
+  <br><%= link_to "回到首页", root_path %>
+</h3>
