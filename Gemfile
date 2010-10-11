@@ -20,7 +20,7 @@ gem 'thinking-sphinx', :git => 'git://github.com/freelancing-god/thinking-sphinx
 gem 'fastercsv'
 gem "chinese_permalink"
 gem "activemerchant", :require => "active_merchant"
-gem "activemerchant_patch_for_china"
+# gem "activemerchant_patch_for_china"
 gem 'ruby-graphviz', :require => 'graphviz'
 gem 'cancan'
 gem 'acts-as-taggable-on'

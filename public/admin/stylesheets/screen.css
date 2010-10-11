@@ -256,7 +256,7 @@ fieldset.buttons { }
 
 /* @group Pagination */
 
-#pagination { margin: 1.5em auto; text-align: center; height: 1em;}
+#pagination { margin: 1.5em auto; text-align: center; height: 2em;}
 
 #pagination a { padding: 3px 5px; text-decoration: none; }
 #pagination a:hover { background: #000; color: #FFF; }

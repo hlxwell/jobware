@@ -11,7 +11,7 @@ class AlipayController < ApplicationController
     notification = ActiveMerchant::Billing::Integrations::Alipay::Notification.new(request.raw_post)
 
     ### TODO
-    user = User.find_by_id(params[:extra_common_param])
+    user = User.find_by_id(notification.extra_common_param)
     raise "Wrong Alipay notification, can't find user." if user.blank?
 
     ### check if the notification is correct.
