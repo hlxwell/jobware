@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100928090424) do
+ActiveRecord::Schema.define(:version => 20101011085541) do
 
   create_table "ad_positions", :force => true do |t|
     t.string   "name"
@@ -155,9 +155,9 @@ ActiveRecord::Schema.define(:version => 20100928090424) do
     t.date     "happened_at"
     t.string   "parent_type"
     t.integer  "parent_id"
+    t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "type"
   end
 
   create_table "cover_letters", :force => true do |t|
@@ -219,9 +219,9 @@ ActiveRecord::Schema.define(:version => 20100928090424) do
     t.string   "permalink"
     t.integer  "partner_id"
     t.string   "source"
-    t.boolean  "highlighted"
-    t.integer  "degree_requirement"
-    t.integer  "working_year_requirement"
+    t.boolean  "highlighted",                  :default => false
+    t.integer  "degree_requirement",           :default => 0
+    t.integer  "working_year_requirement",     :default => 0
   end
 
   create_table "languages", :force => true do |t|
@@ -424,7 +424,7 @@ ActiveRecord::Schema.define(:version => 20100928090424) do
     t.string   "related_object_type"
     t.string   "from"
     t.string   "to"
-    t.integer  "amount"
+    t.float    "amount"
     t.string   "note"
     t.string   "cancel_reason"
     t.datetime "cancelled_at"
@@ -453,7 +453,6 @@ ActiveRecord::Schema.define(:version => 20100928090424) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "perishable_token",     :default => "", :null => false
-    t.string   "state"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
   end
