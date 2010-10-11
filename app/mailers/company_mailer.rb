@@ -14,7 +14,7 @@ class CompanyMailer < MailerBase
   def job_expired(company, job)
     @company = company
     @job = job
-    mail :to => company.user.email, :subject => "ITJob.fm：岗位审核被拒绝"
+    mail :to => company.user.email, :subject => "ITJob.fm：岗位已经过期"
   end
 
   def ad_approval(company, ad)
@@ -26,7 +26,7 @@ class CompanyMailer < MailerBase
   def ad_expired(company, ad)
     @company = company
     @ad = ad
-    mail :to => company.user.email, :subject => "ITJob.fm：广告审核被拒绝"
+    mail :to => company.user.email, :subject => "ITJob.fm：广告已经过期"
   end
 
   def daily_report(company)

@@ -4,7 +4,7 @@ class AlipayController < ApplicationController
 
   def pay
     @charge_amount = params[:charge_amount]
-    redirect_to :back, :notice => "必须输入充值的金额。" if @charge_amount.blank? or @charge_amount.to_f <= 0
+    redirect_to :back, :notice => "必须输入大于1的充值金额。" if @charge_amount.blank? or @charge_amount.to_f < 1
   end
 
   def notify
