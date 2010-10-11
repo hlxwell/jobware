@@ -24,7 +24,8 @@ class AlipayController < ApplicationController
       user.charge!(
         notification.total_fee,
         :from => "支付宝 交易号：#{notification.trade_no}",
-        :note => params.inspect
+        :note => params.inspect,
+        :partner_id => current_partner
       )
       render :text => "Money arrived."
       return

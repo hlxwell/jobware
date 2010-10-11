@@ -15,7 +15,7 @@ module TransactionsControllerBase
   def create
     if params[:transaction] and params[:transaction][:amount]
       operation = params[:transaction][:operation] || 'charge!'
-      current_user.send(operation, params[:transaction][:amount])
+      current_user.send(operation, params[:transaction][:amount], :from => "手动增加")
       flash[:notice] = "操作成功。"
     else
       flash[:notice] = "操作失败。"

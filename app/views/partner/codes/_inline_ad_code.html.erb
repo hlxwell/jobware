@@ -13,7 +13,7 @@
 <style type="text/css">@import url("http://www.google.com/uds/solutions/dynamicfeed/gfdynamicfeedcontrol.css");</style>
 <script type="text/javascript">
   function LoadDynamicFeedControl() {
-    var feeds = [{title: 'IT招聘网', url: 'http://itjob.fm/jobs.atom'}];
+    var feeds = [{title: 'IT招聘网', url: <%= @rss_url %>}];
     var options = {
       stacked : false,
       horizontal : true,

@@ -62,4 +62,8 @@ class Partner < ActiveRecord::Base
       self.send("#{method_name}_counters".to_sym).today.last.increment!(:click)
     end
   end
+  
+  def has_partner_site?
+    self.partner_site_style.try(:subdomain).try(:present?)
+  end
 end
