@@ -25,6 +25,7 @@ class Transaction < ActiveRecord::Base
   scope :with_deleted, where("deleted_at IS NOT NULL")
   scope :without_cancelled, where(:cancelled_at => nil)
 
+  belongs_to :partner
   belongs_to :user
   belongs_to :service_item
   belongs_to :related_object, :polymorphic => true
