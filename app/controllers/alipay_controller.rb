@@ -22,13 +22,11 @@ class AlipayController < ApplicationController
     when "TRADE_FINISHED"
       user.charge!(
         notification.total_fee,
-        :from => "支付宝 交易号：#{notification.trade_no}"
-        :note => "
-          notify_id: #{notification.notify_id},
+        :from => "支付宝 交易号：#{notification.trade_no}",
+        :note => "notify_id: #{notification.notify_id},
           status: #{notification.trade_status},
           status: #{notification.trade_status},
-          received_at: #{notification.notify_time}
-        "
+          received_at: #{notification.notify_time}"
       )
     else
     end
