@@ -31,7 +31,9 @@
                        :service => :alipay,
                        :html => { :id => 'payment-form', :method => :get } do |service| %>
   <% service.total_fee @charge_amount %>
+  <% service.out_trade_no current_user.id %>
   <% service.seller :email => ActiveMerchant::Billing::Integrations::Alipay::EMAIL %>
+  <% service.error_notify_url url_for(:only_path => false, :action => 'error') %>
   <% service.notify_url url_for(:only_path => false, :action => 'notify') %>
   <% service.return_url url_for(:only_path => false, :action => 'done') %>
   <% service.show_url "http://www.itjob.fm" %>

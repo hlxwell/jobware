@@ -2,6 +2,7 @@ Jobware::Application.routes.draw do
   get "alipay/pay"
   get "alipay/notify"
   get "alipay/done"
+  get "alipay/error"
 
   # match "track" => Tracker.action(:track), :as => :tracker
   # match "slideshowpro(.:format)" => "pages#slideshowpro"

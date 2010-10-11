@@ -1,36 +1,49 @@
 class AlipayController < ApplicationController
+  before_filter :login_required, :only => :pay
+
   def pay
     @charge_amount = params[:charge_amount]
-    redirect_to :back, :notice => "必须输入充值的金额。" if @charge_amount.blank? or @charge_amount.to_i <= 0
+    redirect_to :back, :notice => "必须输入充值的金额。" if @charge_amount.blank? or @charge_amount.to_f <= 0
   end
 
   def notify
     notification = ActiveMerchant::Billing::Integrations::Alipay::Notification.new(request.raw_post)
-    AlipayTxn.create(:notify_id => notification.notify_id,
-                     :total_fee => notification.total_fee,
-                     :status => notification.trade_status,
-                     :trade_no => notification.trade_no,
-                     :received_at => notification.notify_time)
+
+    ### TODO
+    user = User.find_by_id(notification.out_trade_no)
+    raise "Wrong Alipay notification, can't find user." if user
+
     notification.acknowledge
 
     case notification.status
     when "WAIT_BUYER_PAY"
-      @order.pend_payment!
-    when "WAIT_SELLER_SEND_GOODS"
-      @order.pend_shipment!
-    when "WAIT_BUYER_CONFIRM_GOODS"
-      @order.confirm_shipment!
+    when "TRADE_CLOSED"
+    when "TRADE_SUCCESS"
     when "TRADE_FINISHED"
-      @order.pay!
+      user.charge!(
+        notification.total_fee,
+        :from => "支付宝 交易号：#{notification.trade_no}"
+        :note => "
+          notify_id: #{notification.notify_id},
+          status: #{notification.trade_status},
+          status: #{notification.trade_status},
+          received_at: #{notification.notify_time}
+        "
+      )
     else
-      @order.fail_payment!
     end
   end
 
   def done
-    r = ActiveMerchant::Billing::Integrations::Alipay::Return.new(request.query_string)
-    unless @result = r.success?
-      logger.warn(r.message)
+    @result = ActiveMerchant::Billing::Integrations::Alipay::Return.new(request.query_string)
+    if @result.success?
+      render :done
+    else
+      logger.warn(@result.message)
+      render :error
     end
+  end
+
+  def error
   end
 end

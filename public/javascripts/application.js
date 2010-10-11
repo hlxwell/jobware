@@ -2,8 +2,7 @@
 // This file is automatically included by javascript_include_tag :defaults
 $(function(){
   $("img").lazyload({
-    effect : "fadeIn",
-    placeholder : "/images/bg.png"
+    effect : "fadeIn"
   });
 
   $.each($(".city_selector"), function(i, n){ $(n).CitySelector(); });
