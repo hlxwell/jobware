@@ -19,7 +19,7 @@ gem "exception_notification", :git => "git://github.com/rails/exception_notifica
 gem 'thinking-sphinx', :git => 'git://github.com/freelancing-god/thinking-sphinx.git', :branch  => 'rails3', :require => 'thinking_sphinx'
 gem 'fastercsv'
 gem "chinese_permalink"
-gem "activemerchant", :require => "active_merchant"
+# gem "activemerchant", :require => "active_merchant"
 # gem "activemerchant_patch_for_china"
 gem 'ruby-graphviz', :require => 'graphviz'
 gem 'cancan'

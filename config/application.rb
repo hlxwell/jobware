@@ -18,6 +18,7 @@ module Jobware
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
     # config.plugins = [ :exception_notification ]
+    config.plugins = [:all, :active_merchant, :activemerchant_patch_for_china]
 
     # Activate observers that should always be running.
     config.active_record.observers = :job_application_observer, :job_observer, :company_observer, :resume_observer, :ad_observer
@@ -48,9 +49,3 @@ module Jobware
 end
 
 # require "tracker"
-require 'active_merchant'
-require 'active_merchant/billing/integrations/action_view_helper'
-ActionView::Base.send(:include, ActiveMerchant::Billing::Integrations::ActionViewHelper)
-ActiveMerchant::Billing::Integrations::Alipay::KEY     = "v8eqe23g0lgdre2726vn8f100g041jlx"
-ActiveMerchant::Billing::Integrations::Alipay::ACCOUNT = "2088002016425361"
-ActiveMerchant::Billing::Integrations::Alipay::EMAIL   = "hlxwell@hotmail.com"
