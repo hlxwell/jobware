@@ -11,25 +11,25 @@ class AlipayController < ApplicationController
     notification = ActiveMerchant::Billing::Integrations::Alipay::Notification.new(request.raw_post)
 
     ### TODO
-    user = User.find_by_id(notification.out_trade_no)
-    raise "Wrong Alipay notification, can't find user." if user
+    user = User.find_by_id(params[:extra_common_param])
+    raise "Wrong Alipay notification, can't find user." if user.blank?
 
+    ### check if the notification is correct.
     notification.acknowledge
 
     case notification.status
-    when "WAIT_BUYER_PAY"
-    when "TRADE_CLOSED"
-    when "TRADE_SUCCESS"
-    when "TRADE_FINISHED"
+    when "WAIT_BUYER_PAY", "TRADE_CLOSED"
+      raise "Money didn't paid."
+    when "TRADE_FINISHED", "TRADE_SUCCESS"
       user.charge!(
         notification.total_fee,
         :from => "支付宝 交易号：#{notification.trade_no}",
-        :note => "notify_id: #{notification.notify_id},
-          status: #{notification.trade_status},
-          status: #{notification.trade_status},
-          received_at: #{notification.notify_time}"
+        :note => params.inspect
       )
+      render :text => "Money arrived."
+      return
     else
+      raise "Money didn't arrived."
     end
   end
 
