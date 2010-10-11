@@ -35,7 +35,7 @@
 class Job < ActiveRecord::Base
   acts_as_taggable
   chinese_permalink :name
-  acts_as_views_count :delay => 2
+  acts_as_views_count :delay => 1
 
   has_enumeration_for :category, :with => JobCategory
   has_enumeration_for :contract_type, :with => ContractType
