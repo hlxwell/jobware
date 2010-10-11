@@ -1,5 +1,6 @@
 class AlipayController < ApplicationController
   before_filter :login_required, :only => :pay
+  skip_before_filter :verify_authenticity_token, :only => :notify
 
   def pay
     @charge_amount = params[:charge_amount]
