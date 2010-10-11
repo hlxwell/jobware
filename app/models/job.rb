@@ -65,8 +65,8 @@ class Job < ActiveRecord::Base
     indexes name, :sortable => true
     indexes location_province
     indexes location_city
-    indexes content
-    indexes requirement
+    # indexes content
+    # indexes requirement
     indexes company(:name), :as => :company_name, :sortable => true
     has company_id, created_at, updated_at
   end
