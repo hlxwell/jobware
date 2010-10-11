@@ -93,6 +93,8 @@ class Job < ActiveRecord::Base
 
     after_transition :on => :close do |job|
       unless job.available?
+        puts "found one expired job##{id}"
+
         ### send mail to company
         CompanyMailer.job_expired(job.company, job).deliver
         ## read means unaccepted or unrejected

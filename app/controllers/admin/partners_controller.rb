@@ -20,7 +20,7 @@ class Admin::PartnersController < Admin::ResourcesController
     amount = params.get(:commission, :amount)
     money_from = params.get(:commission, :money_from)
 
-    if amount and money_from and amount.to_i > 0
+    if amount and money_from and amount.to_f > 0
       get_object.user.charge!(amount, :from => money_from)
       flash[:notice] = "付给#{get_object.name}#{money_from}#{amount}元成功。"
     else

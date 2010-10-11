@@ -113,7 +113,7 @@ module ApplicationHelper
     # split integer and fractional parts
     int, frac = ("%.1f" % number).split('.')
 
-    plus_mark = (options[:with_plus] and int.to_i > 0) ? "+" : ""
+    plus_mark = (options[:with_plus] and int.to_f > 0) ? "+" : ""
 
     # insert the delimiters
     int.gsub!(/(\d)(?=(\d\d\d)+(?!\d))/, "\\1#{options[:delimiter]}")
