@@ -17,7 +17,7 @@
 		<h3><%= link_to job.name, job %></h3>
 		<div class="post-date"><%= link_to job.company.try(:name), job.company %></div>
 		<div class="bold">薪资：<%= job.salary_range_humanize %></div>
-		<div class="small_top_margin"><%= show_tag_list job.tag_list, "/jobs" %></div>
+		<div class="small_top_margin"><%= show_tag_list job.tag_list, "/jobs/tag" %></div>
 	</div>
 
 	<!-- address and date -->
