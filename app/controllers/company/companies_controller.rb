@@ -6,8 +6,8 @@ class Company::CompaniesController < Company::BaseController
 
   def edit
     @company = current_user.company
-    @company.products.build if @company.products.count == 0
-    @company.presentations.build if @company.presentations.count == 0
+    # @company.products.build if @company.products.count == 0
+    # @company.presentations.build if @company.presentations.count == 0
   end
 
   def update

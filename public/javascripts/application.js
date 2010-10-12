@@ -3,7 +3,8 @@
 $(function(){
   $("img").lazyload({
     effect: "fadeIn",
-    threshold: 200
+    threshold: 200,
+    placeholder : "/images/bg.png", 
   });
 
   $.each($(".city_selector"), function(i, n){ $(n).CitySelector(); });

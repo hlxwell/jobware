@@ -38,7 +38,6 @@
 </div>
 
 <div class="content-separator"></div>
-
 <div class="post">
 	<div class="post-title"><h3>联系方式</h3></div>
 	<div class="post-body">
@@ -71,8 +70,9 @@
 	</div>
 </div>
 
-<div class="content-separator"></div>
 
+<% if @company.products.size > 0 %>
+<div class="content-separator"></div>
 <div class="post">
 	<div class="post-title"><h3>公司产品</h3></div>
 	<div class="post-body">
@@ -88,16 +88,17 @@
 		<% end %>
 	</div>
 </div>
+<% end %>
 
+<% if @company.presentations.size > 0 %>
 <div class="content-separator"></div>
-
 <div class="post">
   <div class="post-title"><h3>公司展示</h3></div>
 	<div class="post-body">
     <%= render :partial => 'companies/presentation', :collection => @company.presentations, :locals => {:image_size => :slideshow_small} %>
 	</div>
 </div>
-
+<% end %>
 
 
 <br/>

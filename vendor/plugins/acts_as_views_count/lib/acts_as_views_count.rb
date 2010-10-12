@@ -31,10 +31,10 @@ module ActsAsViewsCount
         # 处理 acts_as_versioned 的跳过
         if !self.class.methods.index("versioned_table_name").blank?
           self.class.without_revision do
-            self.update_attribute(:views_count, self.views_count)
+            self.class.update_all("views_count=#{self.views_count}", "id=#{self.id}")
           end
         else
-          self.update_attribute(:views_count, self.views_count)
+          self.class.update_all("views_count=#{self.views_count}", "id=#{self.id}")
         end
   	    views_count = 0
   	  end

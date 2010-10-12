@@ -150,7 +150,7 @@ class Job < ActiveRecord::Base
 
   def set_available_time
     self.start_at = Date.today
-    self.end_at = 1.month.since.to_date
+    self.end_at = 30.days.since.to_date
     self.save
   end
 
