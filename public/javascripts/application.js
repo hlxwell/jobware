@@ -71,10 +71,11 @@ $(function(){
 
   $('#urgent-job-marquee').kxbdSuperMarquee({
 		isEqual:false,
-		distance: 31,
-		time: 1,
+		distance: 216,
+		time: 5,
     duration: 20,
-		direction:'up'
+		direction:'up',
+		btnGo:{up:'#goUp',down:'#goDown'},
   });
 });
 
