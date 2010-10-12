@@ -36,7 +36,7 @@
 
 	$.fn.kxbdSuperMarquee = function(options){
 		var opts = $.extend({},$.fn.kxbdSuperMarquee.defaults, options);
-		
+
 		return this.each(function(){
 			var $marquee = $(this);//滚动元素容器
 			var _scrollObj = $marquee.get(0);//滚动元素容器DOM
@@ -50,7 +50,7 @@
 			var t,b,c,d,e; //滚动动画的参数,t:当前时间，b:开始的位置，c:改变的位置，d:持续的时间，e:结束的位置
 			var _size, _len; //子元素的尺寸与个数
 			var $nav,$navBtns;
-			var arrPos = []; 
+			var arrPos = [];
 			var numView = 0; //当前所看子元素
 			var numRoll=0; //轮换的次数
 			var numMoved = 0;//已经移动的距离
@@ -75,12 +75,12 @@
 				});
 			}
 			navHtml += '</ul>';
-			
+
 			//滚动元素总尺寸小于容器尺寸，不滚动
-			if (scrollSize<(_type?scrollW:scrollH)) return; 
+			if (scrollSize<(_type?scrollW:scrollH)) return;
 			//克隆滚动子元素将其插入到滚动元素后，并设定滚动元素宽度
 			$element.append($kids.clone()).css(_type?'width':'height',scrollSize*2);
-			
+
 			//轮换导航
 			if (opts.navId) {
 				$nav = $(opts.navId).append(navHtml).hover( stop, start );
@@ -97,14 +97,14 @@
 				});
 				$navBtns.eq(numView).addClass('navOn');
 			}
-			
+
 			//设定初始位置
 			if (opts.direction == 'right' || opts.direction == 'down') {
 				_scrollObj[_type?'scrollLeft':'scrollTop'] = scrollSize;
 			}else{
 				_scrollObj[_type?'scrollLeft':'scrollTop'] = 0;
 			}
-			
+
 			if(opts.isMarquee){
 				//滚动开始
 				//marqueeId = setInterval(scrollFunc, opts.scrollDelay);
@@ -120,7 +120,7 @@
 						marqueeId = setTimeout(scrollFunc, opts.scrollDelay);
 					}
 				);
-				
+
 				//控制加速运动
 				if(opts.controlBtn){
 					$.each(opts.controlBtn, function(i,val){
@@ -137,11 +137,11 @@
 				if(opts.isAuto){
 					//轮换开始
 					start();
-					
+
 					//鼠标划过停止轮换
 					$marquee.hover( stop, start );
 				}
-			
+
 				//控制前后走
 				if(opts.btnGo){
 					$.each(opts.btnGo, function(i,val){
@@ -157,17 +157,17 @@
 					});
 				}
 			}
-			
+
 			function scrollFunc(){
 				var _dir = (opts.direction == 'left' || opts.direction == 'right') ? 'scrollLeft':'scrollTop';
-				
+
 				if(opts.isMarquee){
 					if (opts.loop > 0) {
 						numMoved+=opts.scrollAmount;
 						if(numMoved>scrollSize*opts.loop){
 							_scrollObj[_dir] = 0;
 							return clearInterval(marqueeId);
-						} 
+						}
 					}
 					var newPos = _scrollObj[_dir]+(opts.direction == 'left' || opts.direction == 'up'?1:-1)*opts.scrollAmount;
 				}else{
@@ -189,7 +189,7 @@
 						clearInterval(scrollId);
 					}
 				}
-				
+
 				if(opts.direction == 'left' || opts.direction == 'up'){
 					if(newPos>=scrollSize){
 						newPos-=scrollSize;
@@ -200,7 +200,7 @@
 					}
 				}
 				_scrollObj[_dir] = newPos;
-				
+
 				if(opts.isMarquee){
 					marqueeId = setTimeout(scrollFunc, opts.scrollDelay);
 				}else if(t<d){
@@ -209,9 +209,9 @@
 				}else{
 					isMove = false;
 				}
-				
+
 			};
-			
+
 			function rollFunc(pPos){
 				isMove = true;
 				var _dir = (opts.direction == 'left' || opts.direction == 'right') ? 'scrollLeft':'scrollTop';
@@ -250,12 +250,12 @@
 					}
 				}
 				d=opts.duration;
-				
+
 				//scrollId = setInterval(scrollFunc, opts.scrollDelay);
 				if(scrollId) clearTimeout(scrollId);
 				scrollId = setTimeout(scrollFunc, opts.scrollDelay);
 			}
-			
+
 			function start(){
 				rollId = setInterval(function(){
 					rollFunc();
@@ -264,11 +264,11 @@
 			function stop(){
 				clearInterval(rollId);
 			}
-			
+
 			function easeOutQuad(t,b,c,d){
 				return -c *(t/=d)*(t-2) + b;
 			}
-			
+
 			function easeOutQuint(t,b,c,d){
 				return c*((t=t/d-1)*t*t*t*t + 1) + b;
 			}
@@ -291,11 +291,11 @@
 		scrollDelay:10,//时长
 		eventNav:'click'//导航事件
 	};
-	
+
 	$.fn.kxbdSuperMarquee.setDefaults = function(settings) {
 		$.extend( $.fn.kxbdSuperMarquee.defaults, settings );
 	};
-	
+
 })(jQuery);
 
 
