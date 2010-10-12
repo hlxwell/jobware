@@ -1,20 +1,8 @@
-<style>#urgent-job-marquee {height:242px;overflow:hidden;}</style>
-<div class="section network-section left" style="width: 250px">
-	<div class="section-title">紧急招聘</div>
-	<div id="urgent-job-marquee" class="section-content">
-	  <% show_no_record(urgent_jobs = Ad.urgent_jobs.opened) do %>
-		<ul class="nice-list">
-		  <% urgent_jobs.each do |ad| %>
-			<li>
-			  <span style="float: left;"><%= link_to ad.name, ad.url, :title => ad.desc %></span>
-        <span style="font-weight: bold; float: right;"><%= ad.location %></span>
-        <div class="clearer">&nbsp;</div>
-			</li>
-		  <% end %>
-		</ul>
-		<% end %>
-	</div>
-</div>
+<%= render "shared/ads/right_side/urgent_jobs" %>
+<style>
+  #urgent-job-marquee {height:244px;overflow:hidden;}
+  #urgent_jobs { width: 250px; float: left;}
+</style>
 
 <div class="section network-section right" style="width: 700px">
 	<div class="section-title">推荐企业</div>

@@ -71,7 +71,7 @@ $(function(){
 
   $('#urgent-job-marquee').kxbdSuperMarquee({
 		isEqual:false,
-		distance:30.92,
+		distance:31,
 		time: 1,
     duration: 20,
 		direction:'up'

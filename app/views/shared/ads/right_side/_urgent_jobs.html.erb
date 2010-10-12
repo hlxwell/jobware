@@ -1,13 +1,14 @@
 <style>
-  #urgent-job-marquee {height:215px;overflow:hidden;}
+  #urgent-job-marquee { height:215px; overflow:hidden; }
 </style>
-<div class="section network-section" style="margin-bottom: 0px;">
+
+<div id='urgent_jobs' class="section network-section" style="margin-bottom: 0px;">
 	<div class="section-title">紧急招聘</div>
 	<div id="urgent-job-marquee" class="section-content">
 	  <% show_no_record(@urgent_jobs = Ad.urgent_jobs.opened) do %>
   		<ul class="nice-list">
   		  <% @urgent_jobs.each do |ad| %>
-  			<li>
+  			<li class='fix_height'>
   			  <span style="float: left;"><%= link_to ad.name, ad.url, :title => ad.desc %></span>
           <span style="font-weight: bold; float: right;"><%= ad.location %></span>
           <div class="clearer">&nbsp;</div>

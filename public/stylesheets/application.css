@@ -157,7 +157,12 @@ ul.nice-list {margin-left: 0;}
 ul.nice-list li {
 	list-style: none;
 	border-top: 1px solid #EEE;
-	padding: 6px 8px 6px 8px;
+	padding: 6px 8px;
+}
+ul.nice-list li.fix_height {
+  height: 30px;
+	line-height: 30px;
+	padding: 0px 8px;
 }
 ul.nice-list li:first-child {border-top: none;}
 ul.nice-list li .right {color: #999;}
@@ -591,23 +596,23 @@ img.alignright, img.right {margin: 0 0 1em 0;}
 /* Main */
 .main {margin-bottom: 18px;}
 
-.main#main-three-columns {background: url('/images/main-three-columns.gif') repeat-y left top;}
+.main#main-three-columns {background: url('/images/main-three-columns.gif') repeat-y left top; overflow: hidden;}
 .main#main-three-columns .sidebar {width: 193px;}
 .main#main-three-columns #main-right {width: 520px;}
 
-.main#main-three-columns-center {background: url('/images/main-three-columns-center.gif') repeat-y left top;}
+.main#main-three-columns-center {background: url('/images/main-three-columns-center.gif') repeat-y left top; overflow: hidden;}
 .main#main-three-columns-center .sidebar {width: 208px;}
 .main#main-three-columns-center #main-center {width: 510px; margin-left: 17px;}
 
-.main#main-three-columns-right-sidebar {background: url('/images/main-three-columns-right-sidebar.gif') repeat-y right top;}
+.main#main-three-columns-right-sidebar {background: url('/images/main-three-columns-right-sidebar.gif') repeat-y right top; overflow: hidden;}
 .main#main-three-columns-right-sidebar .sidebar {width: 193px;}
 .main#main-three-columns-right-sidebar #main-left {width: 520px;}
 
-.main#main-two-columns {background: url('/images/main-two-columns.gif') repeat-y left top;}
+.main#main-two-columns {background: url('/images/main-two-columns.gif') repeat-y left top; overflow: hidden;}
 .main#main-two-columns .sidebar {width: 260px;}
 .main#main-two-columns #main-right {width: 671px;}
 
-.main#main-two-columns-right-sidebar {background: url('/images/main-two-columns-right-sidebar.gif') repeat-y right top;}
+.main#main-two-columns-right-sidebar {background: url('/images/main-two-columns-right-sidebar.gif') repeat-y right top; overflow: hidden;}
 .main#main-two-columns-right-sidebar #main-left {width: 671px;}
 .main#main-two-columns-right-sidebar .sidebar {width: 260px;}
 
