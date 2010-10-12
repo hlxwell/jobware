@@ -8,7 +8,7 @@
     <% end %>
   </div>
 	<div class="post-body">
-	  <%= image_tag presentation.file.url(image_size) %>
+	  <%= image_tag presentation.file.url(image_size), :class => "lazyload" %>
 	</div>
 	<div class="large middle_top_margin">
 	 <%= raw presentation.desc %>

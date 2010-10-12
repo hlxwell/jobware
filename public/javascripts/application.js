@@ -1,7 +1,7 @@
 // Place your application-specific JavaScript functions and classes here
 // This file is automatically included by javascript_include_tag :defaults
 $(function(){
-  $("img").lazyload({
+  $("img.lazyload").lazyload({
     effect : "fadeIn",
     threshold : 200,
     placeholder : "/images/bg.png"

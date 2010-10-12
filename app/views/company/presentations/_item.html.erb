@@ -9,6 +9,6 @@
   </tr>
   <tr>
     <th>展示图片</th>
-    <td><%= link_to image_tag(item.file.url), item.file.url(:original), :target => "_blank" %></td>
+    <td><%= link_to image_tag(item.file.url, :class => "lazyload"), item.file.url(:original), :target => "_blank" %></td>
   </tr>
 </table>
