@@ -5,8 +5,8 @@ class JobsController < ApplicationController
   def index
     @jobs = Job.opened.order("updated_at desc").paginate :all, :page => params[:page], :per_page => 10
     respond_to do |format|
-      format.atom
       format.html
+      format.atom
     end
   end
 
