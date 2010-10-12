@@ -161,8 +161,9 @@ ul.nice-list li {
 }
 ul.nice-list li.fix_height {
   height: 30px;
-	line-height: 30px;
-	padding: 0px 8px;
+  line-height: 30px;
+  padding: 0px 8px;
+  overflow:hidden;
 }
 ul.nice-list li:first-child {border-top: none;}
 ul.nice-list li .right {color: #999;}
