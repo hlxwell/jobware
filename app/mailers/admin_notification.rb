@@ -7,6 +7,6 @@ class AdminNotification < MailerBase
   #
   def need_check(obj)
     @obj = obj
-    mail :to => "itjob.fm@gmail.com", :subject => "ITJob.fm管理员：《#{obj.class}##{obj.id}》有个新发布的信息等待您审核"
+    mail :to => "info@itjob.fm", :subject => "ITJob.fm管理员：《#{obj.class}##{obj.id}》有个新发布的信息等待您审核"
   end
 end

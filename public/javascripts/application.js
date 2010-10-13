@@ -73,7 +73,7 @@ $(function(){
 		isEqual:false,
 		distance: 216,
 		time: 5,
-    duration: 20,
+    duration: 100,
 		direction:'up',
 		btnGo:{up:'#goUp',down:'#goDown'}
   });
