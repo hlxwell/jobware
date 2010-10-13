@@ -9,7 +9,7 @@ $(function(){
 
   $.each($(".city_selector"), function(i, n){ $(n).CitySelector(); });
 
-  $(".datepicker").datepicker('option', {changeYear:true, changeMonth:true, yearRange:"1960:2010"});
+  $(".datepicker").datepicker();
 
   $(".stars-wrapper").stars({
       // captionEl: $(".stars-cap"),
@@ -69,13 +69,21 @@ $(function(){
     });
   });
 
-  $('#urgent-job-marquee').kxbdSuperMarquee({
-		isEqual:false,
-		distance: 216,
-		time: 5,
-    duration: 100,
-		direction:'up',
-		btnGo:{up:'#goUp',down:'#goDown'}
+  // $('#urgent-job-marquee').kxbdSuperMarquee({
+  //    isEqual:false,
+  //    distance: 216,
+  //    time: 5,
+  //   duration: 100,
+  //    direction:'up',
+  //    btnGo:{up:'#goUp',down:'#goDown'}
+  // });
+
+  $("#slider").easySlider({
+    prevText:'前一页',
+		nextText:'后一页',
+		orientation:'vertical',
+		pager_put_at: '#pager',
+		speed: 200
   });
 });
 

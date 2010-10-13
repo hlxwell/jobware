@@ -1,3 +1,66 @@
+<%= field_set_tag "个人信息", :class => 'big', :id => "basic_info" do %>
+  <% show_error_message_for(f.object) %>
+  <div class="left w318 h530">
+    <%= f.text_field :name, :label => "姓名", :class => "text w300", :hint => "请输入真实姓名。" %>
+    <%= f.select :gender, Gender.to_sorted_a, {:include_blank => true}, {:label => "性别"} %>
+    <%= f.text_field :birthday, :label => "出生年月", :class => "text w300 datepicker", :hint => "输入格式如：2009-09-12" %>
+    <%= f.city_select :hometown_province, :hometown_city, :label => "户口所在地" %>
+    <%= f.city_select :current_residence_province, :current_residence_city, :label => "现所在城市" %>
+    <%= f.text_field :email, :label => "邮箱", :class => "text w300" %>
+    <%= f.text_field :phone_number, :label => "联系电话", :class => "text w300" %>
+    <%= f.file_field :portrait, :label => "个人照片" %>
+    <%= image_tag f.object.portrait_path if !f.object.new_record? and f.object.portrait.size %>
+  </div>
+
+  <div class="left w318 h500" style="margin-left: 10px;">
+    <%= f.select :working_years, 0..30, {:include_blank => true}, {:label => "工作年限", :hint => "请输入数字。"} %>
+    <%= f.select :degree, Degree.to_sorted_a, {:include_blank => true}, {:label => "最高学历"} %>
+    <%= f.text_field :major, :label => "专业", :class => "text w300", :hint => "如：计算机，或者生物科学" %>
+    <%= f.text_field :expected_salary, :label => "期待薪资", :class => "text w300" %>
+    <%= f.text_field :expected_positions, :label => "希望应聘的岗位", :class => "text w300" %>
+    <%= f.text_field :expected_job_location, :label => "希望工作的地点", :class => "text w300" %>
+    <%= f.select :current_working_state, WorkingState.to_sorted_a, {:include_blank => true}, {:label => "求职状态"} %>
+    <%= f.file_field :file, :label => "简历文件" %>
+    <% if !f.object.new_record? and f.object.file.size %>
+      当前简历文件：<%= link_to f.object.file_file_name %>
+    <% end %>
+  </div>
+  <div class="clearer">&nbsp;</div>
+  <%= f.cktext_area :self_intro, :skin => "office2003", :toolbar => 'Basic', :label => "自我评价", :height => "200" %>
+<% end %>
+
+<!-- ################ one to many info ################ -->
+<% {
+    :previous_jobs => "工作经历",
+    :schools => "教育经历",
+    :projects => "项目经验",
+    :skills => "技能",
+    :certifications => "证书",
+    :languages => "语言能力",
+    :cover_letters => "求职信"
+  }.each do |key, value| %>
+  <% should_show_field = f.object.send(key).map(&:errors).size > 0 ? "" : "hidden" %>
+  <%= field_set_tag raw("#{value} <a id='cancel_#{key}' href='javascript:void(0)'>隐藏</a>"), :class => "big #{should_show_field}", :id => key do %>
+    <% if f.object.send(key).blank? %>
+      <div id="<%= key %>_notice" class="notice">没有<%= value %>记录。</div>
+    <% end %>
+    <%= f.fields_for key do |new_form| %>
+      <%= render "jobseeker/#{key}/form", :f => new_form %>
+    <% end %>
+    <%= f.button_to_add_fields '添加', key, :namespace_dir => "jobseeker" %>
+  <% end %>
+<% end %>
+
+<div id="optional_items"></div>
+
+<a name="buttons"></a>
+<fieldset class="big text-center" id="appending-buttons">
+  <legend>添加信息</legend>
+</fieldset>
+
+<%= render "cover_letter_sample" %>
+
+
 <script>
   $(function(){
     $(".datepicker").datepicker('option', {changeYear:true, changeMonth:true, yearRange:"1970:2000"});
@@ -32,66 +95,3 @@
     });
   });
 </script>
-
-<%= field_set_tag "个人信息", :class => 'big', :id => "basic_info" do %>
-  <% show_error_message_for(f.object) %>
-  <div class="left w318 h530">
-    <%= f.text_field :name, :label => "姓名", :class => "text w300", :hint => "请输入真实姓名。" %>
-    <%= f.select :gender, Gender.to_sorted_a, {:include_blank => true}, {:label => "性别"} %>
-    <%= f.text_field :birthday, :label => "出生年月", :class => "text w300 datepicker", :hint => "输入格式如：2009-09-12" %>
-    <%= f.city_select :hometown_province, :hometown_city, :label => "户口所在地" %>
-    <%= f.city_select :current_residence_province, :current_residence_city, :label => "现所在城市" %>
-    <%= f.text_field :email, :label => "邮箱", :class => "text w300" %>
-    <%= f.text_field :phone_number, :label => "联系电话", :class => "text w300" %>
-    <%= f.file_field :portrait, :label => "个人照片" %>
-    <%= image_tag f.object.portrait_path if !f.object.new_record? and f.object.portrait.size %>
-  </div>
-
-  <div class="left w318 h500" style="margin-left: 10px;">
-    <%= f.select :working_years, 0..30, {:include_blank => true}, {:label => "工作年限", :hint => "请输入数字。"} %>
-    <%= f.select :degree, Degree.to_sorted_a, {:include_blank => true}, {:label => "最高学历"} %>
-    <%= f.text_field :major, :label => "专业", :class => "text w300" %>
-    <%= f.text_field :expected_salary, :label => "期待薪资", :class => "text w300" %>
-    <%= f.text_field :expected_positions, :label => "希望应聘的岗位", :class => "text w300" %>
-    <%= f.text_field :expected_job_location, :label => "希望工作的地点", :class => "text w300" %>
-    <%= f.select :current_working_state, WorkingState.to_sorted_a, {:include_blank => true}, {:label => "求职状态"} %>
-    <%= f.file_field :file, :label => "简历文件" %>
-    <% if !f.object.new_record? and f.object.file.size %>
-      当前简历文件：<%= link_to f.object.file_file_name %>
-    <% end %>
-  </div>
-  <div class="clearer">&nbsp;</div>
-  <%= f.cktext_area :self_intro, :skin => "office2003", :toolbar => 'Basic', :label => "自我评价", :height => "200" %>
-  <%#= f.check_box :accept_terms, :label => "同意条款", :hint => raw("<a href='#'>查看条款</a>"), :required => true, :type => 'agree_term' if f.object.new_record? %>
-<% end %>
-
-<!-- ################ one to many info ################ -->
-<% {
-  :previous_jobs => "工作经历",
-  :schools => "教育经历",
-  :projects => "项目经验",
-  :skills => "技能",
-  :certifications => "证书",
-  :languages => "语言能力",
-  :cover_letters => "求职信"
-  }.each do |key, value| %>
-  <% should_show_field = f.object.send(key).map(&:errors).size > 0 ? "" : "hidden" %>
-  <%= field_set_tag raw("#{value} <a id='cancel_#{key}' href='javascript:void(0)'>隐藏</a>"), :class => "big #{should_show_field}", :id => key do %>
-    <% if f.object.send(key).blank? %>
-      <div id="<%= key %>_notice" class="notice">没有<%= value %>记录。</div>
-    <% end %>
-    <%= f.fields_for key do |new_form| %>
-      <%= render "jobseeker/#{key}/form", :f => new_form %>
-    <% end %>
-    <%= f.button_to_add_fields '添加', key, :namespace_dir => "jobseeker" %>
-  <% end %>
-<% end %>
-
-<div id="optional_items"></div>
-
-<a name="buttons"></a>
-<fieldset class="big text-center" id="appending-buttons">
-  <legend>添加信息</legend>
-</fieldset>
-
-<%= render "cover_letter_sample" %>

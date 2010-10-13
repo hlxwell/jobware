@@ -18,8 +18,8 @@
   	<tr class="even">
   		<td><%= tx.service_item.name %></td>
   		<td>
-  		  来源：<%= tx.from %><br>
-  		  去向：<%= tx.to %>
+  		  <b>来源：</b><%= tx.from %><br>
+  		  <b>去向：</b><%= tx.to %>
   		</td>
   		<td><%= tx.created_at.to_s_datetime %></td>
   		<td class="large"><%= transaction_is_money ? format_price(tx.amount, :with_plus => true) : tx.amount_s %></td>

@@ -159,12 +159,7 @@ ul.nice-list li {
 	border-top: 1px solid #EEE;
 	padding: 6px 8px;
 }
-ul.nice-list li.fix_height {
-  height: 30px;
-  line-height: 30px;
-  padding: 0px 8px;
-  overflow:hidden;
-}
+
 ul.nice-list li:first-child {border-top: none;}
 ul.nice-list li .right {color: #999;}
 
@@ -1127,3 +1122,32 @@ div.highlighted {
 .css4 { font-size: 1.6em; padding: 0.2em; }
 .css5 { font-size: 1.8em; padding: 0.2em; }
 .css6 { font-size: 2.0em; padding: 0.2em; }
+
+
+/* easy slider */
+#slider ul, #slider li{
+	margin:0;
+	padding:0;
+	list-style:none;
+}
+#slider, #slider li{
+	overflow:hidden;
+}
+#slider li h2{
+	margin:0 20px;
+	padding-top:20px;
+}
+#slider li p{
+	margin:20px;
+}
+span#prevBtn{ font-size: 11px; font-weight: 1;}
+span#nextBtn{ font-size: 11px; font-weight: 1;}
+
+div.fix_height {
+  width: 190px;
+  height: 30px;
+  line-height: 30px;
+  padding: 0px 8px;
+  overflow:hidden;
+  border-top: 1px solid #EEE;
+}

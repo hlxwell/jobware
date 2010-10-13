@@ -1,8 +1,14 @@
-<%= render "shared/ads/right_side/urgent_jobs" %>
+<%= render "shared/ads/right_side/urgent_jobs", :locals => { :urgent_jobs => urgent_job_groups(8) } %>
 <style>
-  #urgent-job-marquee {height:248px;overflow:hidden;}
+  #slider { height:248px;overflow:hidden;}
   #urgent_jobs { width: 250px; float: left;}
+  div.fix_height { width: 230px; }
 </style>
+<!--[if IE]>
+<style type="text/css">
+  #slider { height:251px; }
+</style>
+<![endif]-->
 
 <div class="section network-section right" style="width: 700px">
 	<div class="section-title">推荐企业</div>

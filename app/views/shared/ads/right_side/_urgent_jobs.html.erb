@@ -1,26 +1,38 @@
-<style>
-  #urgent-job-marquee { height:217px; overflow:hidden; }
+<style type="text/css">
+  #slider { height:217px; }
 </style>
+<!--[if IE]>
+<style type="text/css">
+  #slider { height:220px; }
+</style>
+<![endif]-->
 
 <div id='urgent_jobs' class="section network-section" style="margin-bottom: 0px;">
 	<div class="section-title">
 	  <span class="left">紧急招聘</span>
-	  <span class="right">
-	    <a id="goUp" href="javascript:void(0)">< 前</a>
-	     •
-	    <a id="goDown" href="javascript:void(0)">后 ></a>
-    </span>
-    <div class="clearer"></div>
+	  <span id="pager" class="right"></span>
+	  <div class="clearer"></div>
 	</div>
-	<div id="urgent-job-marquee" class="section-content">
-	  <% show_no_record(@urgent_jobs = Ad.urgent_jobs.opened) do %>
-  		<ul class="nice-list">
-  		  <% @urgent_jobs.each do |ad| %>
-  			<li class='fix_height'>
-  			  <span style="float: left;"><%= link_to ad.name, ad.url, :title => ad.desc %></span>
-          <span style="font-weight: bold; float: right;"><%= ad.location %></span>
-  			</li>
+
+	<div id="slider" class="section-content">
+  		<ul class="plain-list">
+        <!-- new li -->
+  		  <% @urgent_job_groups = urgent_jobs || urgent_job_groups
+
+    	    show_no_record(@urgent_job_groups.flatten) do %>
+          <% @urgent_job_groups.each_with_index do |group, index| %>
+  		  <li>
+          <!-- job list -->
+  		    <% group.each do |ad|
+    		    break if ad.nil? %>
+    			  <div class='fix_height'>
+    			    <span style="float: left;"><%= link_to ad.name, ad.url, :title => ad.desc %></span>
+              <span style="font-weight: bold; float: right;"><%= ad.location %></span>
+    			  </div>
+    		  <% end %>
+  		  </li>
   		  <% end %>
+
   		</ul>
 		<% end %>
 	</div>

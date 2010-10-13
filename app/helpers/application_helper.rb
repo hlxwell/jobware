@@ -2,6 +2,11 @@ module ApplicationHelper
   include GoogleVisualization
   include UrlHelper
 
+  def urgent_job_groups(group_size = 7)
+    @urgent_jobs = Ad.urgent_jobs.opened
+    @urgent_jobs.in_groups_of(group_size)
+  end
+
   # include ActsAsTaggableOn::TagsHelper
   def tag_cloud(tags, classes)
     tags = tags.all if tags.respond_to?(:all)
