@@ -75,7 +75,7 @@ $(function(){
 		time: 5,
     duration: 20,
 		direction:'up',
-		btnGo:{up:'#goUp',down:'#goDown'},
+		btnGo:{up:'#goUp',down:'#goDown'}
   });
 });
 
