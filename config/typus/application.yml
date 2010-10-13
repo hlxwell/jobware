@@ -15,7 +15,7 @@ Certification:
 Company:
   fields:
     default: user_id, name, size, province, city, address, homepage, contact_name, phone_number, logo_file_name, user
-    form: user_id, name, size, province, city, address, homepage, contact_name, phone_number, desc, logo_file_name, user
+    form: user_id, name, size, province, city, address, homepage, contact_name, phone_number, desc, logo, user
   order_by:
   relationships: job_applications, jobs, presentations, products, resumes, user
   filters:
@@ -77,7 +77,7 @@ Partner:
 Presentation:
   fields:
     default: type, parent_id, name, file_file_name
-    form: type, parent_id, name, desc, file_file_name
+    form: type, parent_id, name, desc, file
   order_by:
   relationships:
   filters:
@@ -97,7 +97,7 @@ PreviousJob:
 Product:
   fields:
     default: type, parent_id, name, file_file_name
-    form: type, parent_id, name, desc, file_file_name
+    form: type, parent_id, name, desc, file
   order_by:
   relationships:
   filters:
@@ -107,7 +107,7 @@ Product:
 Project:
   fields:
     default: type, parent_id, name, file_file_name
-    form: type, parent_id, name, desc, file_file_name
+    form: type, parent_id, name, desc, file
   order_by:
   relationships:
   filters:
@@ -117,7 +117,7 @@ Project:
 Resume:
   fields:
     default: user_id, name, gender, working_years, degree, major, birthday, current_residence_province, current_residence_city, user
-    form: user_id, name, gender, working_years, degree, major, birthday, hometown_province, hometown_city, current_residence_province, current_residence_city, email, phone_number, expected_salary, expected_job_location, current_working_state, highlight_start_at, highlight_end_at, is_sending_sms, portrait_file_name, user
+    form: user_id, name, gender, working_years, degree, major, birthday, hometown_province, hometown_city, current_residence_province, current_residence_city, email, phone_number, expected_salary, expected_job_location, current_working_state, highlight_start_at, highlight_end_at, is_sending_sms, portrait, user
   order_by:
   relationships: certifications, cover_letters, job_applications, jobs, languages, previous_jobs, projects, schools, skills, starred_jobs, user
   filters:
