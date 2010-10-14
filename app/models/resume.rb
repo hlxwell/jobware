@@ -73,15 +73,27 @@ class Resume < ActiveRecord::Base
   validates_attachment_size :file, :less_than => 10.megabytes, :message => "文件必需小于10M", :if => lambda {|obj| obj.file.size.present? }
   validates_attachment_presence :file, :if => lambda {|obj| obj.resume_type == 'file' }
 
-  validates_presence_of :name, :gender, :email, :working_years, :degree, :major, :birthday, :hometown_province, :hometown_city, :current_residence_province, :current_residence_city, :email, :phone_number, :expected_positions, :expected_job_location, :expected_salary, :current_working_state, :if => lambda {|obj| !%{file url}.include? obj.try(:resume_type).to_s }
+  validates_presence_of :name, :gender, :email, :working_years, :degree, :major, :birthday,
+                        :hometown_province, :hometown_city, :current_residence_province, :current_residence_city,
+                        :email, :phone_number, :expected_positions, :expected_job_location, :expected_salary, :current_working_state,
+                        :if => lambda {|obj| !['file', 'url'].include?(obj.try(:resume_type).to_s) }
+
   validates_length_of :name, :within => 1..20, :allow_nil => true, :allow_blank => true
   validates_presence_of :url, :if => lambda {|obj| obj.resume_type == 'url' }
   validates_format_of :url, :allow_blank => true, :allow_nil => true, :with => /(^$)|(^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/.*)?$)/ix, :message => "URL格式错误。"
   validate :check_file_type
 
   def resume_type
-    "builder" if @resume_type.nil?
-    @resume_type
+    @resume_type if @resume_type.present?
+    return "builder" if self.name.present?
+    return "url" if self.url.present?
+    return "file" if self.file_file_name.present?
+  end
+
+  %w{builder url file}.each do |key|
+    define_method("#{key}_resume?") do |*args|
+      resume_type == key
+    end
   end
 
   def check_file_type

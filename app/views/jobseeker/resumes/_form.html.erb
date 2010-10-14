@@ -1,19 +1,7 @@
 <%= field_set_tag "个人信息", :class => 'big', :id => "basic_info" do %>
   <% show_error_message_for(f.object) %>
 
-  <div class="lite_background">
-    <%= f.file_field :file, :label => "简历文件", :hint => "只支持 doc 和 docx 文件格式。"%>
-    <% if !f.object.new_record? and f.object.file.size %>
-      <b>当前简历文件：</b><%= link_to f.object.file_file_name %>
-    <% end %>
-  </div>
-
-  <div class="lite_background" style="margin-bottom: 0px">
-    <%= f.text_field :url, :label => "在线简历URL", :class => "text w600", :hint => "如果您有在线的博客或者在线简历可以填写URL到此项。" %>
-  </div>
-
-  <div id="basic_info_form" class="hidden middle_top_margin">
-    <div class="content-separator"></div>
+  <div id="basic_info_form" class="<%= "hidable" if jobseeker_user? and !f.object.builder_resume? %>">
     <div class="left w318 h480">
       <%= f.text_field :name, :label => "姓名", :class => "text w300", :hint => "请输入真实姓名。" %>
       <%= f.select :gender, Gender.to_sorted_a, {:include_blank => true}, {:label => "性别"} %>
@@ -35,18 +23,33 @@
     </div>
     <div class="clearer">&nbsp;</div>
 
-    <div class="lite_background">
-      <div class="left"><%= f.file_field :portrait, :label => "个人照片" %></div>
-      <%= image_tag f.object.portrait_path, :class => "right" if !f.object.new_record? and f.object.portrait.size %>
-      <div class="clearer">&nbsp;</div>
-    </div>
+    <div class="left"><%= f.file_field :portrait, :label => "个人照片" %></div>
+    <%= image_tag f.object.portrait_path, :class => "right bordered" if !f.object.new_record? and f.object.portrait.size %>
+    <div class="clearer">&nbsp;</div>
 
     <%= f.cktext_area :self_intro, :skin => "office2003", :toolbar => 'Basic', :label => "自我评价", :height => "200" %>
   </div>
 
+  <!-- resume file -->
+  <div class="lite_background <%= "hidable" if !f.object.file_resume? and !f.object.builder_resume? %>">
+    <%= f.file_field :file, :label => "简历文件", :hint => "只支持 doc 和 docx 文件格式。"%>
+    <% if !f.object.new_record? and f.object.file.size %>
+      <b>当前简历文件：</b><%= link_to f.object.file_file_name, f.object.file.url, :class => "ss_sprite ss_page_white_word" %>
+    <% end %>
+  </div>
 
-  <a href="javascript:void(0)" class="show_basic_info_form bordered small_padding right middle_top_margin">填写个人信息</a>
-  <div class="clearer">&nbsp;</div>
+  <!-- resume url -->
+  <div class="lite_background <%= "hidable" if !f.object.url_resume? and !f.object.builder_resume? %>" style="margin-bottom: 0px">
+    <%= f.text_field :url, :label => "在线简历URL", :class => "text w600", :hint => "如果您有在线的博客或者在线简历可以填写URL到此项。" %>
+  </div>
+
+  <% if jobseeker_user? and !f.object.builder_resume? %>
+    <div class="middle_top_margin">
+      <a href="javascript:void(0)" class="show_basic_info_form bordered small_padding right">显示完整信息</a>
+      <a href="javascript:void(0)" class="hide_basic_info_form bordered small_padding right hidden">隐藏完整信息</a>
+    </div>
+    <div class="clearer">&nbsp;</div>
+  <% end %>
 <% end %>
 
 <!-- ################ one to many info ################ -->
@@ -82,10 +85,20 @@
 
 
 <script>
+  function toggleBasicInfoFormButton(){
+    $(".show_basic_info_form").toggle();
+    $(".hide_basic_info_form").toggle();
+  }
   $(function(){
     $(".show_basic_info_form").click(function(){
-      $("#basic_info_form").fadeIn("slow");
+      $(".hidable").fadeIn("slow");
+      toggleBasicInfoFormButton();
     });
+
+    $(".hide_basic_info_form").click(function(){
+      $(".hidable").fadeOut("slow");
+      toggleBasicInfoFormButton();
+    })
 
     $(".datepicker").datepicker('option', {changeYear:true, changeMonth:true, yearRange:"1970:2000"});
 

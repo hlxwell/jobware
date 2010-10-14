@@ -216,6 +216,7 @@ table.top-vlign-td td { vertical-align: top; }
 .huge {font-size: 2.0em;}
 
 .hidden {display: none;}
+.hidable {display: none;}
 
 .quiet {color: #999;}
 .loud {color: #666;}
@@ -276,7 +277,7 @@ input.text, textarea, select {
 }
 
 select {
-  height: 22px;
+  height: 24px;
   font-size: 0.8em;
 }
 input.text:focus, textarea:focus, select:focus {background: #FFFFF5;}

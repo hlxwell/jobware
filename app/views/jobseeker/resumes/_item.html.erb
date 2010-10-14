@@ -1,6 +1,6 @@
 <h4>基本信息</h4>
 <div class="content-separator-quite"></div>
-<% if item.name.present? %>
+<% if item.builder_resume? %>
 <div class="post">
   <table class="data-table top-vlign">
 		<tr>
@@ -62,7 +62,7 @@
 <% end %>
 <br/>
 
-<% if item.file.size %>
+<% if item.file_resume? %>
 <div class="post">
   <h4>文件简历</h4>
   <div class="content-separator-quite"></div>
@@ -71,11 +71,11 @@
 <br/>
 <% end %>
 
-<% if item.url.present? %>
+<% if item.url_resume? %>
 <div class="post">
   <h4>在线简历URL</h4>
   <div class="content-separator-quite"></div>
-  <div class="largest"><%= link_to item.url, item.url %></div>
+  <div class="bold"><%= link_to item.url, item.url, :class => "ss_sprite ss_page_link" %></div>
 </div>
 <br/>
 <% end %>
