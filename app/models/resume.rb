@@ -73,11 +73,16 @@ class Resume < ActiveRecord::Base
   validates_attachment_size :file, :less_than => 10.megabytes, :message => "文件必需小于10M", :if => lambda {|obj| obj.file.size.present? }
   validates_attachment_presence :file, :if => lambda {|obj| obj.resume_type == 'file' }
 
-  validates_presence_of :name, :gender, :email, :working_years, :degree, :major, :birthday, :hometown_province, :hometown_city, :current_residence_province, :current_residence_city, :email, :phone_number, :expected_positions, :expected_job_location, :expected_salary, :current_working_state, :if => lambda {|obj| !%{file url}.include?(obj.resume_type) }
+  validates_presence_of :name, :gender, :email, :working_years, :degree, :major, :birthday, :hometown_province, :hometown_city, :current_residence_province, :current_residence_city, :email, :phone_number, :expected_positions, :expected_job_location, :expected_salary, :current_working_state, :if => lambda {|obj| !%{file url}.include? obj.try(:resume_type).to_s }
   validates_length_of :name, :within => 1..20, :allow_nil => true, :allow_blank => true
   validates_presence_of :url, :if => lambda {|obj| obj.resume_type == 'url' }
   validates_format_of :url, :allow_blank => true, :allow_nil => true, :with => /(^$)|(^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/.*)?$)/ix, :message => "URL格式错误。"
   validate :check_file_type
+
+  def resume_type
+    "builder" if @resume_type.nil?
+    @resume_type
+  end
 
   def check_file_type
     if (self.resume_type == 'file' and self.new_record? and !doc?) or (!self.new_record? and uploading_illegal_file?)
@@ -86,7 +91,7 @@ class Resume < ActiveRecord::Base
   end
 
   def uploading_illegal_file?
-    return false if self.file_file_name_changed?            ### not upload anything return legal uploading
+    return false unless self.file_file_name_changed?              ### not upload anything return legal uploading
     return true if !doc?(self.file_file_name_change.try(:last))   ### if uploading something, it should be doc
     return false
   end

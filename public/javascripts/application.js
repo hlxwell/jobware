@@ -1,11 +1,13 @@
 // Place your application-specific JavaScript functions and classes here
 // This file is automatically included by javascript_include_tag :defaults
 $(function(){
-  $("img.lazyload").lazyload({
-    effect : "fadeIn",
-    threshold : 200,
-    placeholder : "/images/bg.png"
-  });
+  if (navigator.platform != "iPad") {
+    $("img.lazyload").lazyload({
+      effect : "fadeIn",
+      threshold : 200,
+      placeholder : "/images/lazyload.gif"
+    });
+  }
 
   $.each($(".city_selector"), function(i, n){ $(n).CitySelector(); });
 

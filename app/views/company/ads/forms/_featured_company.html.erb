@@ -1,7 +1,7 @@
 <% show_error_message_for(f.object) %>
 <%= f.hidden_field :display_type %>
-<%= f.text_field :name, :label => "广告标题", :class => "text w600", :hint => "最大长度为20个中文字。" %>
-<%= f.text_field :url, :label => "广告链接地址", :hint => "点击广告后跳转的地址。", :class => "text w600" %>
-<%= f.text_field :period, :label => "展示周期", :class => "text w600", :hint => "单位：周" %>
+<%= f.text_field :name, :label => "广告标题", :class => "text w620", :hint => "最大长度为20个中文字。" %>
+<%= f.text_field :url, :label => "广告链接地址", :hint => "点击广告后跳转的地址。", :class => "text w620" %>
+<%= f.text_field :period, :label => "展示周期", :class => "text w620", :hint => "单位：周" %>
 <%= f.file_field :image, :label => "广告图片", :hint => "最佳尺寸为250X70，否则图表会变形影响最终显示效果。" %>
 <%= image_tag f.object.image.url if f.object.image.size %>

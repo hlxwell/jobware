@@ -1,7 +1,7 @@
 <%= jobware_form_for @resume, :url => jobseeker_resume_path(:type => 'url'), :title => "URL简历", :html => {:multipart => true} do |f| %>
   <% show_error_message_for(f.object) %>
 
-  <%= f.text_field :url, :label => "简历URL", :class => "text w600", :hint => "请填写您的在线简历URL。格式如：http://itjob.fm" %>
+  <%= f.text_field :url, :label => "简历URL", :class => "text w620", :hint => "请填写您的在线简历URL。格式如：http://itjob.fm" %>
 
   <%= f.fields_for :cover_letters do |cv_form| %>
     <%= cv_form.hidden_field :name, :value => "默认求职信" %>
@@ -12,9 +12,9 @@
   <% if not_logged_in? %>
     <div class="archive-separator"></div>
     <%= f.fields_for :user do |user_form| %>
-    <%= user_form.text_field :email, :label => "邮箱", :class => "text w600", :hint => "用于登陆。" %>
-    <%= user_form.password_field :password, :label => "密码", :class => "text w600", :hint => "长度请控制在6到20位。" %>
-    <%= user_form.password_field :password_confirmation, :class => "text w600", :label => "确认密码" %>
+    <%= user_form.text_field :email, :label => "邮箱", :class => "text w620", :hint => "用于登陆。" %>
+    <%= user_form.password_field :password, :label => "密码", :class => "text w620", :hint => "长度请控制在6到20位。" %>
+    <%= user_form.password_field :password_confirmation, :class => "text w620", :label => "确认密码" %>
     <% end %>
     <div class="archive-separator"></div>
   <% end %>

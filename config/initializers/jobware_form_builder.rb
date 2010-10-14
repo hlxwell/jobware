@@ -1,7 +1,7 @@
 class JobwareFormBuilder < ActionView::Helpers::FormBuilder
   alias_method :origin_select, :select
 
-  # <%= f.text_field :contact_name, :label => "联系人", :class => "text w600" %>
+  # <%= f.text_field :contact_name, :label => "联系人", :class => "text w620" %>
   %w[text_field text_area password_field check_box cktext_area file_field].each do |method_name|
     define_method(method_name) do |field_name, *args|
       options = merge_to_options args.last, :class => "text"

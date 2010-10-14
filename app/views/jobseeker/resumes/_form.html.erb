@@ -1,32 +1,52 @@
 <%= field_set_tag "个人信息", :class => 'big', :id => "basic_info" do %>
   <% show_error_message_for(f.object) %>
-  <div class="left w318 h530">
-    <%= f.text_field :name, :label => "姓名", :class => "text w300", :hint => "请输入真实姓名。" %>
-    <%= f.select :gender, Gender.to_sorted_a, {:include_blank => true}, {:label => "性别"} %>
-    <%= f.text_field :birthday, :label => "出生年月", :class => "text w300 datepicker", :hint => "输入格式如：2009-09-12" %>
-    <%= f.city_select :hometown_province, :hometown_city, :label => "户口所在地" %>
-    <%= f.city_select :current_residence_province, :current_residence_city, :label => "现所在城市" %>
-    <%= f.text_field :email, :label => "邮箱", :class => "text w300" %>
-    <%= f.text_field :phone_number, :label => "联系电话", :class => "text w300" %>
-    <%= f.file_field :portrait, :label => "个人照片" %>
-    <%= image_tag f.object.portrait_path if !f.object.new_record? and f.object.portrait.size %>
-  </div>
 
-  <div class="left w318 h500" style="margin-left: 10px;">
-    <%= f.select :working_years, 0..30, {:include_blank => true}, {:label => "工作年限", :hint => "请输入数字。"} %>
-    <%= f.select :degree, Degree.to_sorted_a, {:include_blank => true}, {:label => "最高学历"} %>
-    <%= f.text_field :major, :label => "专业", :class => "text w300", :hint => "如：计算机，或者生物科学" %>
-    <%= f.text_field :expected_salary, :label => "期待薪资", :class => "text w300" %>
-    <%= f.text_field :expected_positions, :label => "希望应聘的岗位", :class => "text w300" %>
-    <%= f.text_field :expected_job_location, :label => "希望工作的地点", :class => "text w300" %>
-    <%= f.select :current_working_state, WorkingState.to_sorted_a, {:include_blank => true}, {:label => "求职状态"} %>
-    <%= f.file_field :file, :label => "简历文件" %>
+  <div class="lite_background">
+    <%= f.file_field :file, :label => "简历文件", :hint => "只支持 doc 和 docx 文件格式。"%>
     <% if !f.object.new_record? and f.object.file.size %>
-      当前简历文件：<%= link_to f.object.file_file_name %>
+      <b>当前简历文件：</b><%= link_to f.object.file_file_name %>
     <% end %>
   </div>
+
+  <div class="lite_background" style="margin-bottom: 0px">
+    <%= f.text_field :url, :label => "在线简历URL", :class => "text w600", :hint => "如果您有在线的博客或者在线简历可以填写URL到此项。" %>
+  </div>
+
+  <div id="basic_info_form" class="hidden middle_top_margin">
+    <div class="content-separator"></div>
+    <div class="left w318 h480">
+      <%= f.text_field :name, :label => "姓名", :class => "text w300", :hint => "请输入真实姓名。" %>
+      <%= f.select :gender, Gender.to_sorted_a, {:include_blank => true}, {:label => "性别"} %>
+      <%= f.text_field :birthday, :label => "出生年月", :class => "text w300 datepicker", :hint => "输入格式如：2009-09-12" %>
+      <%= f.city_select :hometown_province, :hometown_city, :label => "户口所在地" %>
+      <%= f.city_select :current_residence_province, :current_residence_city, :label => "现所在城市" %>
+      <%= f.text_field :email, :label => "邮箱", :class => "text w300" %>
+      <%= f.text_field :phone_number, :label => "联系电话", :class => "text w300" %>
+    </div>
+
+    <div class="left w318 h480" style="margin-left: 10px;">
+      <%= f.select :working_years, 0..30, {:include_blank => true}, {:label => "工作年限", :hint => "请输入数字。"} %>
+      <%= f.select :degree, Degree.to_sorted_a, {:include_blank => true}, {:label => "最高学历"} %>
+      <%= f.text_field :major, :label => "专业", :class => "text w300", :hint => "如：计算机，或者生物科学" %>
+      <%= f.text_field :expected_salary, :label => "期待薪资", :class => "text w300" %>
+      <%= f.text_field :expected_positions, :label => "希望应聘的岗位", :class => "text w300" %>
+      <%= f.text_field :expected_job_location, :label => "希望工作的地点", :class => "text w300" %>
+      <%= f.select :current_working_state, WorkingState.to_sorted_a, {:include_blank => true}, {:label => "求职状态"} %>
+    </div>
+    <div class="clearer">&nbsp;</div>
+
+    <div class="lite_background">
+      <div class="left"><%= f.file_field :portrait, :label => "个人照片" %></div>
+      <%= image_tag f.object.portrait_path, :class => "right" if !f.object.new_record? and f.object.portrait.size %>
+      <div class="clearer">&nbsp;</div>
+    </div>
+
+    <%= f.cktext_area :self_intro, :skin => "office2003", :toolbar => 'Basic', :label => "自我评价", :height => "200" %>
+  </div>
+
+
+  <a href="javascript:void(0)" class="show_basic_info_form bordered small_padding right middle_top_margin">填写个人信息</a>
   <div class="clearer">&nbsp;</div>
-  <%= f.cktext_area :self_intro, :skin => "office2003", :toolbar => 'Basic', :label => "自我评价", :height => "200" %>
 <% end %>
 
 <!-- ################ one to many info ################ -->
@@ -63,6 +83,10 @@
 
 <script>
   $(function(){
+    $(".show_basic_info_form").click(function(){
+      $("#basic_info_form").fadeIn("slow");
+    });
+
     $(".datepicker").datepicker('option', {changeYear:true, changeMonth:true, yearRange:"1970:2000"});
 
     var forms = {

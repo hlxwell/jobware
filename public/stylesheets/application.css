@@ -276,7 +276,7 @@ input.text, textarea, select {
 }
 
 select {
-  height: 26px;
+  height: 22px;
   font-size: 0.8em;
 }
 input.text:focus, textarea:focus, select:focus {background: #FFFFF5;}
@@ -432,7 +432,7 @@ img.alignright, img.right {margin: 0 0 1em 0;}
 .post-meta a {color: #345; }
 .post-meta a:hover {color: #001;}
 
-.post-body {font-size: 1.1em; margin-top: 8px;}
+.post-body {font-size: 1.1em; margin-top: 8px; white-space:normal; word-wrap: break-word; word-break: normal;}
 .post-body a {color: #039;}
 .post-body a:hover {color: #039;}
 
@@ -745,12 +745,16 @@ img.alignright, img.right {margin: 0 0 1em 0;}
 }
 
 /* width define */
-.w600 {
+.w620 {
   width: 620px;
 }
 
 .w640 {
   width: 640px;
+}
+
+.w600 {
+  width: 600px;
 }
 
 .w580 {
@@ -789,10 +793,17 @@ img.alignright, img.right {margin: 0 0 1em 0;}
   width: 440px;
 }
 
+.h480 {
+  height: 480px;
+}
+
 .h530 {
   height: 530px;
 }
 
+.h500 {
+  height: 500px;
+}
 .h250 {
   height: 250px;
 }

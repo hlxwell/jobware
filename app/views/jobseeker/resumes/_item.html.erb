@@ -1,5 +1,6 @@
 <h4>基本信息</h4>
 <div class="content-separator-quite"></div>
+<% if item.name.present? %>
 <div class="post">
   <table class="data-table top-vlign">
 		<tr>
@@ -54,15 +55,31 @@
 		  <th>自我评价</th>
 		  <td colspan="3"><%= raw item.self_intro_if_present %></td>
 		</tr>
-		<% if item.file.size %>
-		<tr>
-		  <th>文件简历</th>
-		  <td colspan="3"><%= link_to item.file_file_name, item.file.url %></td>
-		</tr>
-		<% end %>
 	</table>
 </div>
+<% else %>
+  <div><%= link_to "使用简历向导完善简历，增加应聘机会。（很多公司怕文件简历和URL简历中可能含有病毒所以可能不会查看。）", edit_jobseeker_resume_path, :class => "ss_sprite ss_vcard_edit" %></div>
+<% end %>
 <br/>
+
+<% if item.file.size %>
+<div class="post">
+  <h4>文件简历</h4>
+  <div class="content-separator-quite"></div>
+  <div><%= link_to item.file_file_name, item.file.url, :class => "ss_sprite ss_page_white_word" %></div>
+</div>
+<br/>
+<% end %>
+
+<% if item.url.present? %>
+<div class="post">
+  <h4>在线简历URL</h4>
+  <div class="content-separator-quite"></div>
+  <div class="largest"><%= link_to item.url, item.url %></div>
+</div>
+<br/>
+<% end %>
+
 <%
   hide_cover_letter = false if hide_cover_letter.nil?
 
