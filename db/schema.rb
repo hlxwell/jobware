@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101011085541) do
+ActiveRecord::Schema.define(:version => 20101014064036) do
 
   create_table "ad_positions", :force => true do |t|
     t.string   "name"
@@ -306,6 +306,7 @@ ActiveRecord::Schema.define(:version => 20101011085541) do
     t.integer  "file_file_size"
     t.datetime "file_updated_at"
     t.integer  "partner_id"
+    t.string   "url"
   end
 
   create_table "revenues", :force => true do |t|
@@ -425,12 +426,13 @@ ActiveRecord::Schema.define(:version => 20101011085541) do
     t.string   "from"
     t.string   "to"
     t.float    "amount"
-    t.string   "note"
+    t.text     "note",                :limit => 16777215
     t.string   "cancel_reason"
     t.datetime "cancelled_at"
     t.datetime "deleted_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "partner_id"
   end
 
   add_index "transactions", ["related_object_type", "related_object_id"], :name => "index_transactions_on_related_object_type_and_related_object_id"

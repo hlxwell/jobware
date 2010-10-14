@@ -1,7 +1,18 @@
 class Jobseeker::ResumesController < Jobseeker::BaseController
-  before_filter :no_jobseeker_login_required, :only => [:new, :create]
-  before_filter :jobseeker_login_required, :except => [:new, :create]
+  before_filter :no_jobseeker_login_required, :only => [:new, :new_with_choices, :create]
+  before_filter :jobseeker_login_required, :except => [:new,:new_with_choices, :create, :created]
   before_filter :get_resume, :only => [:show, :edit, :update]
+
+  def new
+    @resume = Resume.new
+    @resume.build_user
+    @resume.cover_letters.build
+    render :layout => current_layout
+  end
+
+  def new_with_choices
+    render :layout => current_layout
+  end
 
   def show
   end
@@ -17,55 +28,35 @@ class Jobseeker::ResumesController < Jobseeker::BaseController
     end
   end
 
-
-
-  #### signup
-  # ["languages", "previous_jobs", "certifications", "cover_letters", "projects", "schools", "skills"].each do |association|
-  #   @resume.send("#{association}").build
-  # end
-  def new
-    @resume = Resume.new
-    @resume.build_user
-    @resume.cover_letters.build
-
-    render (params[:choose].present? ? "new_with_choices" : "new"), :layout => current_layout
-  end
-
   def create
-    # TODO send password to user and make a random password.
-    # if params[:resume][:quick_resume] == 'true' and params[:resume][:user_attributes].present?
-    #   random_password = "123321"
-    #   params[:resume][:user_attributes].update(:password => random_password, :password_confirmation => random_password)
-    # end
-
     @resume = Resume.new(params[:resume])
     @resume.user = current_user if current_user
     @resume.partner = current_partner
 
     if @resume.save
+      continue_apply_job_id = session[:continue_apply_job_id]
+      session[:continue_apply_job_id] = nil
+
       # if knows the job id, send one job application.
-      if session[:continue_apply_job_id].present? and Job.find_by_id(session[:continue_apply_job_id])
-        @job_application = @resume.job_applications.build( :job_id => session[:continue_apply_job_id], :cover_letter_id => @resume.cover_letters.first)
+      if continue_apply_job_id.present? and Job.find_by_id(continue_apply_job_id)
+        @job_application = @resume.job_applications.build( :job_id => continue_apply_job_id, :cover_letter_id => @resume.cover_letters.first)
         @job_application.partner = current_partner
 
         if @job_application.save
-          redirect_to job_path(session[:continue_apply_job_id]), :notice => "您已应聘成功该岗位，请检查您的邮箱激活您的登录帐号。"
+          redirect_to job_path(continue_apply_job_id), :notice => "您已应聘成功该岗位，请检查您的邮箱激活您的登录帐号。"
         else
-          redirect_to job_path(session[:continue_apply_job_id]), :notice => "简历创建成功，请检查您的邮箱激活您的登录帐号，然后再继续应聘。"
+          redirect_to job_path(continue_apply_job_id), :notice => "简历创建成功，请检查您的邮箱激活您的登录帐号，然后再继续应聘。"
         end
-
-        # clear continue_apply_job_id
-        session[:continue_apply_job_id] = nil
       else
-        redirect_to jobseeker_dashboard_path, :notice => "简历创建成功。"
+        redirect_to created_jobseeker_resume_path
       end
     else
-      if @resume.quick_resume == 'true'
-        render :action => 'new_with_choices', :layout => current_layout
-      else
-        render :action => 'new', :layout => current_layout
-      end
+      render :action => 'new', :layout => current_layout
     end
+  end
+
+  def created
+    render :layout => current_layout
   end
 
   private

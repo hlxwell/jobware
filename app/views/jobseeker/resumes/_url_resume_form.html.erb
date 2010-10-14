@@ -1,0 +1,23 @@
+<%= jobware_form_for @resume, :url => jobseeker_resume_path(:type => 'url'), :title => "URL简历", :html => {:multipart => true} do |f| %>
+  <% show_error_message_for(f.object) %>
+
+  <%= f.text_field :url, :label => "简历URL", :class => "text w600", :hint => "请填写您的在线简历URL。格式如：http://itjob.fm" %>
+
+  <!-- if current user logged in, should not send him/her password. -->
+  <% if not_logged_in? %>
+    <div class="archive-separator"></div>
+    <%= f.fields_for :user do |user_form| %>
+    <%= user_form.text_field :email, :label => "邮箱", :class => "text w600", :hint => "用于登陆。" %>
+    <%= user_form.password_field :password, :label => "密码", :class => "text w600", :hint => "长度请控制在6到20位。" %>
+    <%= user_form.password_field :password_confirmation, :class => "text w600", :label => "确认密码" %>
+    <% end %>
+    <div class="archive-separator"></div>
+  <% end %>
+
+  <!-- system will check resume type to decide which column should be filled. -->
+  <%= f.hidden_field :resume_type, :value => "url" %>
+  <%= show_term %>
+  <%= f.submit "同意用户协议并上传简历", :class => "button right largest" %>
+<% end %>
+
+<%= render "cover_letter_sample" %>

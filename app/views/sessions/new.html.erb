@@ -16,7 +16,7 @@
   <div class="right" style="width: 670px;">
     <fieldset style="width: 95%;" class="big">
       <legend>企业注册</legend>
-      <img src="/images/icons/agency.png" class="left"/>
+      <img src="/images/icons/building.jpg" class="left"/>
       <div class="right w300 middle_bottom_margin large" style="width: 75%;"><%= render "users/company_reg_intro" %></div>
       <div class="clearer">&nbsp;</div>
       <div class="right">
@@ -26,11 +26,11 @@
 
     <fieldset style="width: 95%;" class="big">
       <legend>求职者注册</legend>
-      <img src="/images/icons/old-edit-find.png" class="left"/>
+      <img src="/images/icons/resume_guide.jpg" class="left"/>
       <div class="right w300 middle_bottom_margin large" style="width: 75%;"><%= render "users/jobseeker_reg_intro" %></div>
       <div class="clearer">&nbsp;</div>
       <div class="right">
-        <div class="btn right"><%= link_to "立刻注册", new_jobseeker_resume_path, :class => "black" %><span></span></div>
+        <div class="btn right"><%= link_to "立刻注册", new_with_choices_jobseeker_resume_path, :class => "black" %><span></span></div>
       </div>
     </fieldset>
   </div>

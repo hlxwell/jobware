@@ -28,7 +28,6 @@
 #
 
 class Company < ActiveRecord::Base
-  # attr_accessor :accept_terms
   acts_as_views_count :delay => 1
   chinese_permalink :name
   acts_as_taggable
@@ -53,7 +52,6 @@ class Company < ActiveRecord::Base
 
   validates_uniqueness_of :name
   validates_presence_of :name, :company_type, :size, :address, :contact_name, :province, :city, :desc  # phone_number
-  # validates_acceptance_of :accept_terms, :accept => "1", :message => "你必需接受服务条款"
   validate :check_tag
   validate :check_logo
 

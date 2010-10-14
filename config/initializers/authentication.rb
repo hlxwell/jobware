@@ -64,8 +64,6 @@ module Authentication
     session[:return_to] = nil
   end
 
-private
-
   def store_target_location
     session[:return_to] = request.request_uri
   end

@@ -276,7 +276,7 @@ input.text, textarea, select {
 }
 
 select {
-  height: 23px;
+  height: 26px;
   font-size: 0.8em;
 }
 input.text:focus, textarea:focus, select:focus {background: #FFFFF5;}

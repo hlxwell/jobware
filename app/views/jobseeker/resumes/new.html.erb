@@ -18,11 +18,20 @@
   </div>
 
   <div class="left" id="main-left">
-    <%= jobware_form_for @resume, :url => jobseeker_resume_path, :use_fieldset => false, :html => { :multipart => true } do |f| %>
-      <%= render "form", :f => f %>
-      <%= render "shared/new_user_form", :f => f %>
-      <%= show_term %>
-      <%= f.submit "同意用户协议并创建简历", :class => "button right" %>
+    <% if params[:type] == "builder" %>
+      <!-- new user form -->
+      <%= jobware_form_for @resume, :url => jobseeker_resume_path(:type => 'builder'), :use_fieldset => false, :html => { :multipart => true } do |f| %>
+        <%= render "form", :f => f %>
+        <%= render "shared/new_user_form", :f => f if not_logged_in? %>
+        <%= show_term %>
+        <%= f.submit "同意用户协议并创建简历", :class => "button right" %>
+      <% end %>
+    <% elsif params[:type] == "file" %>
+      <%= render "file_resume_form" %>
+    <% elsif params[:type] == "url" %>
+      <%= render "url_resume_form" %>
+    <% else %>
+      <p class="notice">请选择正确的简历形式。</p>
     <% end %>
   </div>
 

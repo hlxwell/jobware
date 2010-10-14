@@ -1,32 +1,70 @@
 <% title "新建简历" %>
 
 <div class="main">
-  <div class="left" style="width: 280px;">
-    <%= jobware_form_for UserSession.new, :as => :user_session, :url => sessions_path, :title => "已经是注册用户" do |f| %>
-      <%= render :partial => "sessions/form", :locals => { :f => f } %>
-      <%= f.submit "登陆" %>
-    <% end %>
-  </div>
+  <h1 class="left">求职者注册</h1>
+  <h3 class="left middle_left_padding middle_top_padding"><%= link_to "已经有求职者帐号？", login_path(:applying_job => true) %></h3>
+  <div class="clearer">&nbsp;</div>
 
-  <div class="right" style="width: 670px;">
-    <%= render "quick_resume_form" %>
-  </div>
+  <p class="lite_background largest">请选择一种对您来说最适合您的简历形式进行填写。</p>
+  <div style="width: 312px;" class="left h250">
+    <fieldset>
+      <legend>在线填写简历（推荐）</legend>
+      <img src="/images/icons/resume_guide.jpg" class="center" />
 
-  <div class="right" style="width: 670px;">
-    <fieldset class="big">
-      <legend>简历向导（推荐）</legend>
-      <img src="/images/icons/TextEdit.png" class="left" />
-
-      <div style="width: 75%" class="right">
-        <p>如果您还不是我们的个人会员，请您先注册。</p>
-        <p>只需注册并创建一份简历，您就可以随时查询和订阅最新的工作机会信息，应聘您心仪的岗位，并享受职位推荐、HR主动搜索等会员服务。</p>
-        <p>同时您还可以享受到免费的简历修改指导、分行业职业指导、个人适岗性测评、律师在线指导等全方位的个人服务。</p>
+      <div>
+        <h4>优点：</h4>
+        <ul>
+          <li>公司不会担心附件或网站携带病毒，放心查看。</li>
+          <li>让简历更科学完善。</li>
+          <li>会被加入到人才库被其他公司或者猎头搜索。</li>
+        </ul>
 
         <div class="right">
-          <div class="btn"><%= link_to "开始填写简历", new_jobseeker_resume_path, :class => "black" %><span></span></div>
+          <div class="btn"><%= link_to "填写在线简历", new_jobseeker_resume_path(:type => :builder), :class => "black" %><span></span></div>
         </div>
       </div>
     </fieldset>
   </div>
+
+  <div style="width: 312px;" class="left middle_left_margin h250">
+    <fieldset>
+      <legend>文件简历</legend>
+      <img src="/images/icons/file_resume.jpg" class="center" />
+
+      <div>
+        <h4>优点：</h4>
+        <ul>
+          <li>方便，简单，快速。</li>
+          <li>维护容易。</li>
+          <li>容易做到个性化。</li>
+        </ul>
+
+        <div class="right">
+          <div class="btn"><%= link_to "上传文件简历", new_jobseeker_resume_path(:type => :file), :class => "black" %><span></span></div>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+
+  <div style="width: 312px;" class="left middle_left_margin">
+    <fieldset>
+      <legend>URL简历</legend>
+      <img src="/images/icons/url_resume.jpg" class="center" />
+
+      <div>
+        <h4>优点：</h4>
+        <ul>
+          <li>方便，快速，简单。</li>
+          <li>可以让企业获得更多侧面资料。</li>
+          <li>容易做到个性化。</li>
+        </ul>
+
+        <div class="right">
+          <div class="btn"><%= link_to "填写URL简历", new_jobseeker_resume_path(:type => :url), :class => "black" %><span></span></div>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+
   <div class="clearer">&nbsp;</div>
 </div>

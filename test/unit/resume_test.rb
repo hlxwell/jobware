@@ -6,9 +6,17 @@ class ResumeTest < ActiveSupport::TestCase
       @resume = Factory.build(:resume)
     end
 
-    should "description" do
+    should "send confirmation mail" do
       @resume.expects(:send_confirmation).once
       assert @resume.save
+    end
+    
+    should "check file when create file resume" do
+      
+    end
+    
+    should "check file when update text resume, but allow blank" do
+      
     end
   end
   

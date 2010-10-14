@@ -24,7 +24,6 @@
 
       <%= field_set_tag "合作站信息", :class => 'big' do %>
         <%= render :partial => 'form', :locals => { :f => f } %>
-        <%#= f.check_box :accept_terms, :label => "同意协议", :required => true, :type => 'agree_term', :hint => raw("<a href='#'>查看条款</a>") %>
       <% end %>
       <%= render "shared/new_user_form", :f => f %>
       <%= show_term %>

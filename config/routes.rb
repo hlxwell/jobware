@@ -144,6 +144,11 @@ Jobware::Application.routes.draw do
     resource :subscription
 
     resource :resume do
+      member do
+        get :created
+        get :new_with_choices
+      end
+
       resources :previous_jobs
       resources :schools
       resources :projects

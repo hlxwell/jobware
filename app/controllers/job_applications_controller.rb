@@ -33,10 +33,11 @@ private
 
   def redirect_to_new_resume_page_if_not_jobseeker
     unless jobseeker_user?
+      store_target_location
       session[:continue_apply_job_id] = params[:job_id]
       respond_to do |format|
-        format.html {redirect_to new_jobseeker_resume_path(:choose => true)}
-        format.js {render :text => "$(location).attr('href', '#{new_jobseeker_resume_path(:choose => true)}');"}
+        # format.html {redirect_to new_with_choices_jobseeker_resume_path}
+        format.js {render :text => "$(location).attr('href', '#{new_with_choices_jobseeker_resume_path}');"}
       end
     end
   end

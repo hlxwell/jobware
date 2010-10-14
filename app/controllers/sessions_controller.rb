@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
   # before_filter :no_login_required, :only => [:edit_password, :update_password]
 
   def new
-    clear_stored_location
+    clear_stored_location if params[:applying_job].blank?
   end
 
   def create
