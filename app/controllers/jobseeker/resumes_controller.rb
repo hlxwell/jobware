@@ -6,7 +6,8 @@ class Jobseeker::ResumesController < Jobseeker::BaseController
   def new
     @resume = Resume.new
     @resume.build_user
-    @resume.cover_letters.build
+    @resume.cover_letters.build if session[:continue_apply_job_id].present?
+
     render :layout => current_layout
   end
 
