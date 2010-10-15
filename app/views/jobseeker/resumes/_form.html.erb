@@ -67,6 +67,7 @@
     <% if f.object.send(key).blank? %>
       <div id="<%= key %>_notice" class="notice">没有<%= value %>记录。</div>
     <% end %>
+
     <%= f.fields_for key do |new_form| %>
       <%= render "jobseeker/#{key}/form", :f => new_form %>
     <% end %>

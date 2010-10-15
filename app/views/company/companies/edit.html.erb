@@ -18,7 +18,7 @@
   <div class="clearer">&nbsp;</div>
 
   <a name="products"></a>
-  <%= field_set_tag "公司产品", :class => 'big' do %>
+  <%= field_set_tag "公司产品", :class => 'big' do %>  
     <%= f.fields_for :products do |product_form| %>
       <%= render "company/products/form", :f => product_form %>
     <% end %>

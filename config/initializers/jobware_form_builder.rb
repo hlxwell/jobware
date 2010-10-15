@@ -116,9 +116,14 @@ class JobwareFormBuilder < ActionView::Helpers::FormBuilder
 
   def button_to_add_fields(name, association, *args)
     options = merge_to_options args.last, :class => "button right"
+
     new_object = @object.class.reflect_on_association(association).klass.new
     fields = fields_for(association, new_object, :child_index => "new_#{association}") do |builder|
-      @template.render("#{options[:namespace_dir]}/#{association}/form", :f => builder)
+      if options[:form_path].present?
+        @template.render("#{options[:namespace_dir]}/#{options[:form_path]}/form", :f => builder)
+      else
+        @template.render("#{options[:namespace_dir]}/#{association}/form", :f => builder)
+      end
     end
     button_to_function(name, "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")", options)
   end

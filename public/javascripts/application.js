@@ -87,6 +87,11 @@ $(function(){
 		pager_put_at: '#pager',
 		speed: 200
   });
+  
+  
+  $(".optional_option_tag").click(function(){
+    alert("aaa");
+  });
 });
 
 function show_and_hide_ajax_loading_bar() {

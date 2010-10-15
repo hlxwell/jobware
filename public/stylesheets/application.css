@@ -233,6 +233,7 @@ table.top-vlign-td td { vertical-align: top; }
 .text-right {text-align: right;}
 .text-center {text-align: center;}
 .text-separator {padding: 0 5px;}
+.gray_bg {background-color: gray;}
 
 .error, .notice, .success, .errorExplanation, .lite_background {
 	border: 1px solid #DDD;
@@ -781,6 +782,14 @@ img.alignright, img.right {margin: 0 0 1em 0;}
   width: 300px;
 }
 
+.w340 {
+  width: 343px;
+}
+
+.w330 {
+  width: 330px;
+}
+
 .w298 {
   width: 296px;
 }
@@ -830,6 +839,15 @@ img.alignright, img.right {margin: 0 0 1em 0;}
 .small_padding {
   padding: 0.5em;
 }
+
+.middle_margin {
+  margin: 1em;
+}
+
+.middle_padding {
+  padding: 1em;
+}
+
 
 .small_left_padding { padding-left: 0.5em; }
 .small_right_padding { padding-right: 0.5em; }
@@ -1161,4 +1179,14 @@ div.fix_height {
   padding: 0px 8px;
   overflow:hidden;
   border-top: 1px solid #EEE;
+}
+
+
+/* exist options div */
+.exist_options {}
+
+.optional_option_tag {
+  padding: 0.3em;
+  margin: 0 0.5em 0.5em 0;
+  float: left;
 }

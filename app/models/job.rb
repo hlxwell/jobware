@@ -55,6 +55,8 @@ class Job < ActiveRecord::Base
   has_one :user, :through => :company
   has_many :job_applications
   has_many :counters, :as => :parent, :dependent => :destroy, :order => "happened_at ASC"
+  has_many :welfare_options, :as => :parent, :dependent => :destroy
+  has_many :question_options, :as => :parent, :dependent => :destroy
 
   accepts_nested_attributes_for :company
 
@@ -204,9 +206,11 @@ class Job < ActiveRecord::Base
     <br>
       <h3>福利待遇：</h3>
       #{self.welfare}"
+    # TODO welfare change to tags
   end
 
   def meta_description
+    # TODO welfare change to tags
     "岗位:#{self.name},公司:#{self.company.name},类别:#{self.category_humanize},岗位需求:#{self.requirement},工作内容:#{self.content},福利待遇:#{self.welfare}"
   end
 

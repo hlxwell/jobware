@@ -1,0 +1,2 @@
+class WelfareOption < OptionalOption
+end

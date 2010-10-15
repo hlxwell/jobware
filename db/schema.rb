@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101014064036) do
+ActiveRecord::Schema.define(:version => 20101015082935) do
 
   create_table "ad_positions", :force => true do |t|
     t.string   "name"
@@ -228,6 +228,16 @@ ActiveRecord::Schema.define(:version => 20101014064036) do
     t.integer  "resume_id"
     t.string   "name"
     t.string   "level"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "optional_options", :force => true do |t|
+    t.integer  "parent_id"
+    t.string   "parent_type"
+    t.string   "type"
+    t.string   "name"
+    t.string   "desc"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
