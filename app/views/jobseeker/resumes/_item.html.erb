@@ -58,7 +58,7 @@
 	</table>
 </div>
 <% else %>
-  <div><%= link_to "使用简历向导完善简历，增加应聘机会。（很多公司怕文件简历和URL简历中可能含有病毒所以可能不会查看。）", edit_jobseeker_resume_path, :class => "ss_sprite ss_vcard_edit" %></div>
+  <div><%= link_to "使用简历向导完善简历，增加应聘机会。（很多公司怕文件简历和URL简历中可能含有病毒所以可能不会查看。）", edit_jobseeker_resume_path(:show_all => true), :class => "ss_sprite ss_vcard_edit" %></div>
 <% end %>
 <br/>
 

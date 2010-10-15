@@ -1,7 +1,7 @@
 <%= field_set_tag "个人信息", :class => 'big', :id => "basic_info" do %>
   <% show_error_message_for(f.object) %>
 
-  <div id="basic_info_form" class="<%= "hidable" if jobseeker_user? and !f.object.builder_resume? %>">
+  <div id="basic_info_form" class="<%= "hidable" if jobseeker_user? and !f.object.builder_resume? %> middle_top_margin">
     <div class="left w318 h480">
       <%= f.text_field :name, :label => "姓名", :class => "text w300", :hint => "请输入真实姓名。" %>
       <%= f.select :gender, Gender.to_sorted_a, {:include_blank => true}, {:label => "性别"} %>
@@ -94,14 +94,16 @@
     $(".hidable").prependTo("#hidable_block");
 
     $(".show_basic_info_form").click(function(){
-      $(".hidable").fadeIn("slow");
+      $(".hidable").slideDown("slow");
       toggleBasicInfoFormButton();
     });
 
     $(".hide_basic_info_form").click(function(){
-      $(".hidable").fadeOut("slow");
+      $(".hidable").slideUp("slow");
       toggleBasicInfoFormButton();
     })
+
+    <%= "$('.show_basic_info_form').click();" if params[:show_all] %>
 
     $(".datepicker").datepicker('option', {changeYear:true, changeMonth:true, yearRange:"1970:2000"});
 

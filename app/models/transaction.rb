@@ -51,5 +51,4 @@ class Transaction < ActiveRecord::Base
   def amount_s
     amount > 0 ? "+#{amount}" : "#{amount}"
   end
-
 end
