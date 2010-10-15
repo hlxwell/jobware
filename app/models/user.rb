@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20100928090424
+# Schema version: 20101014064036
 #
 # Table name: users
 #
@@ -19,7 +19,6 @@
 #  created_at           :datetime
 #  updated_at           :datetime
 #  perishable_token     :string(255)     default(""), not null
-#  state                :string(255)
 #  confirmed_at         :datetime
 #  confirmation_sent_at :datetime
 #

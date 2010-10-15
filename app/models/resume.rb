@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20100916071749
+# Schema version: 20101014064036
 #
 # Table name: resumes
 #
@@ -37,6 +37,7 @@
 #  file_file_size             :integer(4)
 #  file_updated_at            :datetime
 #  partner_id                 :integer(4)
+#  url                        :string(255)
 #
 
 class Resume < ActiveRecord::Base
@@ -76,29 +77,33 @@ class Resume < ActiveRecord::Base
   validates_presence_of :name, :gender, :email, :working_years, :degree, :major, :birthday,
                         :hometown_province, :hometown_city, :current_residence_province, :current_residence_city,
                         :email, :phone_number, :expected_positions, :expected_job_location, :expected_salary, :current_working_state,
-                        :if => lambda {|obj| !['file', 'url'].include?(obj.try(:resume_type).to_s) }
-
+                        :if => lambda {|obj| obj.builder_resume? }
   validates_length_of :name, :within => 1..20, :allow_nil => true, :allow_blank => true
-  validates_presence_of :url, :if => lambda {|obj| obj.resume_type == 'url' }
+  validates_presence_of :url, :if => lambda {|obj| obj.url_resume? }
   validates_format_of :url, :allow_blank => true, :allow_nil => true, :with => /(^$)|(^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/.*)?$)/ix, :message => "URL格式错误。"
   validate :check_file_type
 
+  def check_file_type
+    if (self.resume_type == 'file' and self.new_record? and !doc?) or (!self.new_record? and uploading_illegal_file?)
+      errors.add(:file, "文件格式错误，请上传 doc 或者 docx 格式的简历。")
+    end
+  end
+
+  def resume_type= type
+    @resume_type = type
+  end
+
   def resume_type
-    @resume_type if @resume_type.present?
+    return @resume_type if @resume_type.present?
     return "builder" if self.name.present?
-    return "url" if self.url.present?
     return "file" if self.file_file_name.present?
+    return "url" if self.url.present?
+    'builder'
   end
 
   %w{builder url file}.each do |key|
     define_method("#{key}_resume?") do |*args|
       resume_type == key
-    end
-  end
-
-  def check_file_type
-    if (self.resume_type == 'file' and self.new_record? and !doc?) or (!self.new_record? and uploading_illegal_file?)
-      errors.add(:file, "文件格式错误，请上传 doc 或者 docx 格式的简历。")
     end
   end
 

@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20100910083810
+# Schema version: 20101014064036
 #
 # Table name: transactions
 #
@@ -11,13 +11,14 @@
 #  related_object_type :string(255)
 #  from                :string(255)
 #  to                  :string(255)
-#  amount              :integer(4)
-#  note                :string(255)
+#  amount              :float
+#  note                :text(16777215)
 #  cancel_reason       :string(255)
 #  cancelled_at        :datetime
 #  deleted_at          :datetime
 #  created_at          :datetime
 #  updated_at          :datetime
+#  partner_id          :integer(4)
 #
 
 class Transaction < ActiveRecord::Base

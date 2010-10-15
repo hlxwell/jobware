@@ -45,10 +45,10 @@
 
   <% if jobseeker_user? and !f.object.builder_resume? %>
     <div class="middle_top_margin">
-      <a href="javascript:void(0)" class="show_basic_info_form bordered small_padding right">显示完整信息</a>
-      <a href="javascript:void(0)" class="hide_basic_info_form bordered small_padding right hidden">隐藏完整信息</a>
+      <a href="javascript:void(0)" class="show_basic_info_form bordered small_padding"  style="text-decoration: none;"><img src="/images/down_arrow.png" /> 显示完整信息</a>
+      <a href="javascript:void(0)" class="hide_basic_info_form bordered small_padding hidden"  style="text-decoration: none;"><img src="/images/up_arrow.png" /> 隐藏完整信息</a>
     </div>
-    <div class="clearer">&nbsp;</div>
+    <div id="hidable_block"></div>
   <% end %>
 <% end %>
 
@@ -89,7 +89,10 @@
     $(".show_basic_info_form").toggle();
     $(".hide_basic_info_form").toggle();
   }
+
   $(function(){
+    $(".hidable").prependTo("#hidable_block");
+
     $(".show_basic_info_form").click(function(){
       $(".hidable").fadeIn("slow");
       toggleBasicInfoFormButton();

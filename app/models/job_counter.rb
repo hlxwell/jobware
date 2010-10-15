@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20100916071749
+# Schema version: 20101014064036
 #
 # Table name: counters
 #
@@ -8,9 +8,9 @@
 #  happened_at :date
 #  parent_type :string(255)
 #  parent_id   :integer(4)
+#  type        :string(255)
 #  created_at  :datetime
 #  updated_at  :datetime
-#  type        :string(255)
 #
 
 class JobCounter < Counter

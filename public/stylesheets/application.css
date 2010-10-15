@@ -215,8 +215,7 @@ table.top-vlign-td td { vertical-align: top; }
 .largest {font-size: 1.35em;}
 .huge {font-size: 2.0em;}
 
-.hidden {display: none;}
-.hidable {display: none;}
+.hidden, .hidable, .hidable_block {display: none;}
 
 .quiet {color: #999;}
 .loud {color: #666;}
