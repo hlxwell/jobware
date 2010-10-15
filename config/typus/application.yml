@@ -243,3 +243,13 @@ Voucher:
   filters:
   search:
   application: Service
+
+Transaction:
+  fields:
+    default: type, user_id, service_item_id, related_object_id, from, to, amount, note, cancel_reason, cancelled_at, partner_id, service_item, partner, user
+    form: type, user_id, service_item_id, related_object_id, from, to, amount, note, cancel_reason, cancelled_at, partner_id, service_item, partner, user
+  order_by:
+  relationships: partner, service_item, user
+  filters:
+  search:
+  application: Service
