@@ -1,5 +1,5 @@
 class Company::JobsController < Company::BaseController
-  before_filter :get_job_by_id, :only => [:show, :edit, :update, :destroy, :close, :open, :reactive]
+  before_filter :get_job_by_id, :only => [:show, :edit, :update, :destroy, :close, :open, :reactive, :get_options]
   before_filter :check_job_credit, :only => [:new, :create, :reactive]
   before_filter :check_job_highlight_credit, :only => [:reactive, :open]
   def index
@@ -71,6 +71,12 @@ class Company::JobsController < Company::BaseController
       flash[:error] = "岗位重新激活失败，可能没有足够“岗位发布”点数。"
     end
     redirect_to company_jobs_path
+  end
+
+  def get_options
+    raise 'wrong option type.' unless ['welfare', 'problem'].include?(params[:type])
+    @options = @job.send("#{params[:type]}_options").map {|option| [option.name, option.desc]}
+    render :json => @options
   end
 
 private

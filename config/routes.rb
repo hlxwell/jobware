@@ -98,6 +98,7 @@ Jobware::Application.routes.draw do
         get :close
         get :open
         get :reactive
+        get :get_options
       end
     end
 

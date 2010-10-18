@@ -59,6 +59,7 @@ class Job < ActiveRecord::Base
   has_many :question_options, :as => :parent, :dependent => :destroy
 
   accepts_nested_attributes_for :company
+  accepts_nested_attributes_for :welfare_options, :question_options, :allow_destroy => true
 
   validates_presence_of :name, :location_province, :location_city, :contract_type, :category, :vacancy, :content, :requirement
   validate :check_tag

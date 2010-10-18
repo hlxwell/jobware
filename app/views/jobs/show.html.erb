@@ -72,13 +72,43 @@
 <div class="clearer">&nbsp;</div>
 <div class="content-separator "></div>
 
-<% [ [:content, "工作内容"], [:requirement, "岗位要求"], [:welfare, "福利"], [:desc, "其他描述"], [:apply_method, "应聘方式 <small class='smallest shine'>(请注明来自ITJob.fm)</small>"] ].each do |key, value| %>
+<!-- [:welfare, "福利待遇"], [:desc, "其他描述"] -->
+<% [ [:content, "工作内容"], [:requirement, "岗位要求"], [:apply_method, "应聘方式 <small class='smallest shine'>(请注明来自ITJob.fm)</small>"] ].each do |key, value| %>
   <% next if @job.send(key).blank? %>
   <div class="post">
     <div class="post-title"><h3><%= raw value %></h3></div>
     <div class="post-body"><%= raw @job.send(key) %></div>
   </div>
   <div class="content-separator "></div>
+<% end %>
+
+<% if @job.welfare_options.size > 0 %>
+<div class="post">
+  <div class="post-title"><h3>福利待遇</h3></div>
+  <div class="post-body">
+    <ul>
+    <% @job.welfare_options.each do |w| %>
+      <li><%= w.name %> <%= w.desc %></li>
+    <% end %>
+    </ul>
+  </div>
+</div>
+<div class="content-separator"></div>
+<% end %>
+
+
+<% if @job.question_options.size > 0 %>
+<div class="post">
+  <div class="post-title"><h3>公司希望您回答的问题</h3></div>
+  <div class="post-body">
+    <ul>
+    <% @job.question_options.each do |w| %>
+      <li><%= w.name %> <%= w.desc %></li>
+    <% end %>
+    </ul>
+  </div>
+</div>
+<div class="content-separator"></div>
 <% end %>
 
 <div id="job_application_form"></div>

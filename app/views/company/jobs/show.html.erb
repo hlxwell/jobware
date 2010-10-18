@@ -37,14 +37,40 @@
 	  <th>岗位需求</th>
 		<td><%= raw @job.requirement %></td>
 	</tr>
+
+  <!--
+  <tr>
+    <th>福利待遇</th>
+    <td><%= raw @job.welfare %></td>
+  </tr>
+  <tr>
+    <th>其他描述</th>
+    <td><%= raw @job.desc %></td>
+  </tr>
+  -->
+
 	<tr>
-	  <th>福利待遇</th>
-		<td><%= raw @job.welfare %></td>
+	 <th>福利待遇</th>
+	 <td>
+	    <ul>
+      <% @job.welfare_options.each do |welfare| %>
+        <li><b><%= welfare.name %></b> <%= welfare.desc %></li>
+	    <% end %>
+	    </ul>
+	 </td>
 	</tr>
+
 	<tr>
-	  <th>其他描述</th>
-		<td><%= raw @job.desc %></td>
+	 <th>其他问题</th>
+	 <td>
+	   <ul>
+      <% @job.question_options.each do |question| %>
+        <li><b><%= question.name %></b> <%= question.desc %></li>
+	    <% end %>
+	    </ul>
+	 </td>
 	</tr>
+
 	<tr>
 	  <th>应聘方式</th>
 		<td><%= raw @job.apply_method %></td>

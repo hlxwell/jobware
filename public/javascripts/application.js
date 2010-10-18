@@ -42,16 +42,7 @@ $(function(){
   // form tip for search input
   $("form input#search_term").formtips({ tippedClass: 'tipped' });
 
-  // adjust company logo size
-  // $(".post .company_logo").each(function() {
-  //   //Get the width of the image
-  //   var width = $(this).width();
-  //
-  //   //Max-width substitution (works for all browsers)
-  //   if (width > 100) {
-  //     $(this).css("width", "100px");
-  //   }
-  // });
+
 
   $(".transaction-list").tabs({
     ajaxOptions: {
@@ -71,14 +62,6 @@ $(function(){
     });
   });
 
-  // $('#urgent-job-marquee').kxbdSuperMarquee({
-  //    isEqual:false,
-  //    distance: 216,
-  //    time: 5,
-  //   duration: 100,
-  //    direction:'up',
-  //    btnGo:{up:'#goUp',down:'#goDown'}
-  // });
 
   $("#slider").easySlider({
     prevText:'前一页',
@@ -87,11 +70,55 @@ $(function(){
 		pager_put_at: '#pager',
 		speed: 200
   });
-  
-  
+
   $(".optional_option_tag").click(function(){
-    alert("aaa");
+    if($(this).parent().parent().prev('div').children('fieldset').find("input[value=" + $(this).html() + "]").length > 0) {
+      alert("该项已经存在。");
+    } else {
+      $(this).parent().parent().prev('div').children("input").click();
+      $(this).parent().parent().prev('div').children('fieldset').last().find("input:text:first").val($(this).html());
+      $(this).parent().parent().prev('div').children('fieldset').last().find("input:text:last").val($(this).attr('desc'));
+    }
   });
+
+  $(".copy_options_from_other_job").click(function(){
+    var job_id           = $(this).prev("select").val();
+    var copy_option_type = $(this).attr("option_type");
+    var add_item_button  = $(this).parent().parent().find('input[value=添加自定义项]');
+
+    $.get("/company/jobs/"+job_id+"/get_options", {'type':copy_option_type}, function(data){
+      $.each( data, function(i, item){
+        exist_item_name_input = add_item_button.parent().children('fieldset').find("input[value=" + item[0] + "]");
+        exist_item_desc_input = exist_item_name_input.parents('fieldset.optional_option').find("input[value=" + item[1] + "]");
+
+        if(exist_item_name_input.length == 0 || exist_item_desc_input.length == 0) {
+          add_item_button.click();
+          add_item_button.prev('fieldset').find("input:text:first").val(item[0]);
+          add_item_button.prev('fieldset').find("input:text:last").val(item[1]);
+        }
+      });
+    });
+  });
+
+  // adjust company logo size
+  // $(".post .company_logo").each(function() {
+  //   //Get the width of the image
+  //   var width = $(this).width();
+  //
+  //   //Max-width substitution (works for all browsers)
+  //   if (width > 100) {
+  //     $(this).css("width", "100px");
+  //   }
+  // });
+
+  // $('#urgent-job-marquee').kxbdSuperMarquee({
+  //    isEqual:false,
+  //    distance: 216,
+  //    time: 5,
+  //   duration: 100,
+  //    direction:'up',
+  //    btnGo:{up:'#goUp',down:'#goDown'}
+  // });
 });
 
 function show_and_hide_ajax_loading_bar() {
@@ -125,6 +152,10 @@ function remove_fields(link) {
 }
 
 function add_fields(link, association, content) {
+  if( $(link).parent().children("fieldset").size() == 0 ) {
+    $(link).parent().children("div.notice").fadeOut("slow");
+  }
+
   var new_id = new Date().getTime();
   var regexp = new RegExp("new_" + association, "g")
   $(link).before(content.replace(regexp, new_id));
