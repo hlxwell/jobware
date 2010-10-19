@@ -50,7 +50,7 @@ class Job < ActiveRecord::Base
   has_enumeration_for :degree_requirement, :with => DegreeRequirement
   has_enumeration_for :working_year_requirement, :with => WorkingYearRequirement
 
-  default_scope order("updated_at desc")
+  # default_scope order("keep_top desc, updated_at desc")
   scope :opened, where("? BETWEEN start_at AND end_at AND state=?", Date.today, :opened)
   scope :closed, where("(? NOT BETWEEN start_at AND end_at) OR state!=?", Date.today, :opened)
   scope :unapproved, where("state = ?", :unapproved)
@@ -147,6 +147,7 @@ class Job < ActiveRecord::Base
       self.set_available_time
       self.user.pay!(1, :service_item_id => ServiceItem.job_credit_id, :to => "激活岗位##{self.id}")
       self.user.pay!(1, :service_item_id => ServiceItem.job_highlight_credit_id, :to => "高亮显示岗位##{self.id}") if self.highlighted?
+      self.user.pay!(1, :service_item_id => ServiceItem.job_keep_top_credit_id, :to => "置顶岗位##{self.id}") if self.keep_top?
       self.partner.try(:increase_job)  # increase job count for referal partner
     end
   end

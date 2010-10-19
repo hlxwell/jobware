@@ -72,8 +72,8 @@
 <div class="clearer">&nbsp;</div>
 <div class="content-separator "></div>
 
-<!-- [:welfare, "福利待遇"], [:desc, "其他描述"] -->
-<% [ [:content, "工作内容"], [:requirement, "岗位要求"], [:apply_method, "应聘方式 <small class='smallest shine'>(请注明来自ITJob.fm)</small>"] ].each do |key, value| %>
+<!-- [:welfare, "福利待遇"] -->
+<% [ [:content, "工作内容"], [:requirement, "岗位要求"], [:desc, "其他描述"], [:apply_method, "应聘方式 <small class='smallest shine'>(请注明来自ITJob.fm)</small>"] ].each do |key, value| %>
   <% next if @job.send(key).blank? %>
   <div class="post">
     <div class="post-title"><h3><%= raw value %></h3></div>
@@ -112,6 +112,7 @@
 <% end %>
 
 <div id="job_application_form"></div>
+<%= render "jobseeker/resumes/cover_letter_sample" %>
 
 <div class="right">
   <% if current_user.try(:jobseeker).try(:applied_to_job?, @job) %>

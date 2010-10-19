@@ -17,7 +17,7 @@
   <div class="post-title"><h4>您可以从这里选择：</h4></div>
 	<div class="post-body">
 	  <% WELFARE_OPTIONS.each do |title, items| %>
-	    <h5><%= title %></h5>
+      <h6 class="middle_top_margin middle_bottom_margin"><%= title %></h6>
   	  <% items.each do |k, v| %>
   	    <a href="javascript:void(0)" class="bordered optional_option_tag" desc="<%= v %>"><%= k %></a>
   	  <% end %>
@@ -49,7 +49,7 @@
   <div class="post-title"><h4>您可以从这里选择：</h4></div>
 	<div class="post-body">
 	  <% QUESTION_OPTIONS.each do |title, items| %>
-	    <h5><%= title %></h5>
+	    <h6 class="middle_top_margin middle_bottom_margin"><%= title %></h6>
   	  <% items.each do |k, v| %>
   	    <a href="javascript:void(0)" class="bordered optional_option_tag" desc="<%= v %>"><%= k %></a>
   	  <% end %>

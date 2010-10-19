@@ -1,6 +1,6 @@
 class AddKeepTopToJobs < ActiveRecord::Migration
   def self.up
-    add_column :jobs, :keep_top, :boolean
+    add_column :jobs, :keep_top, :integer, :default => 0
   end
 
   def self.down

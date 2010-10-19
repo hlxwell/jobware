@@ -22,6 +22,7 @@ class ServiceItem < ActiveRecord::Base
     :money => "人民币",
     :job_credit => "岗位发布",
     :job_highlight_credit => "岗位高亮显示",
+    :job_keep_top_credit => "岗位置顶",
     :urgent_job_credit => "紧急招聘",
     :slider_ad_credit => "首页滚动图片",
     :featured_company_credit => "推荐企业",

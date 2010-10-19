@@ -4,3 +4,17 @@
   <%= f.cktext_area(:content, :height => '200px', :toolbar=>'Basic', :skin => "office2003", :label => "求职信内容", :hint => raw("请仔细填写求职信，可以让公司有个好的印象。<a class='show_dialog' href='javascript:void(0)'>查看范文</a>")) %>
   <%= f.hidden_field :resume_id, :value => current_user.jobseeker.id %>
 </fieldset>
+
+<script>
+$(function(){
+
+  $(".show_dialog").click(function(){
+    $(".dialog-modal").dialog({
+      width: 500,
+      height: 350,
+      modal: true
+    });
+  });
+
+});
+</script>
