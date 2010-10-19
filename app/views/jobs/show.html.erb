@@ -88,7 +88,7 @@
   <div class="post-body">
     <ul>
     <% @job.welfare_options.each do |w| %>
-      <li><%= w.name %> <%= w.desc %></li>
+      <li><b><%= w.name %></b> <%= w.desc %></li>
     <% end %>
     </ul>
   </div>
@@ -99,11 +99,11 @@
 
 <% if @job.question_options.size > 0 %>
 <div class="post">
-  <div class="post-title"><h3>公司希望您回答的问题</h3></div>
+  <div class="post-title"><h3>公司希望得到回答的问题 <span class="quiet smallest">您可以在您的求职信或者简历中回答这些问题。</span></h3> </div>
   <div class="post-body">
     <ul>
     <% @job.question_options.each do |w| %>
-      <li><%= w.name %> <%= w.desc %></li>
+      <li><b><%= w.name %></b> <%= w.desc %></li>
     <% end %>
     </ul>
   </div>

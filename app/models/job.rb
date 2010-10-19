@@ -196,7 +196,7 @@ class Job < ActiveRecord::Base
     image = self.company.logo.size.nil? ? "" : "<a href='http://itjob.fm/companies/#{self.company.id}' target='_blank'><img src='#{self.company.logo.url(:host => 'itjob.fm')}'/></a>"
     "#{image}
     <br>
-      <h1><a href='http://itjob.fm/jobs/#{self.to_param}' target='_blank'>#{self.name}</a></h1>
+      <h1><a href='http://itjob.fm/jobs/#{self.to_param}' target='_blank'>#{self.name}</a></h1><br>
       公司：<a href='http://itjob.fm/companies/#{self.company.id}' target='_blank'>#{self.company.name}</a>，
       薪酬：#{self.salary_range_humanize}，  岗位数：#{self.vacancy}，  类别：#{self.category_humanize}
     <br>
