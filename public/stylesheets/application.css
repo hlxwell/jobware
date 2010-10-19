@@ -1210,7 +1210,7 @@ margin: 1em 0 1em 0; /* set margins as desired */
 font-size: 1.5em;
 border-bottom: 1px solid #ccc; /* set border COLOR as desired */
 list-style-type: none;
-padding: 6px 10px 6px 10px; /* THIRD number must change with respect to padding-top (X) below */
+padding: 6px 0; /* THIRD number must change with respect to padding-top (X) below */
 line-height: 1.0em;
 }
 
@@ -1229,7 +1229,7 @@ border-bottom: none;
 }
 
 ul#tabnav a:hover { /* settings for hover effect */
-background: #ddd; /* set desired hover color */
+border-top: 3px solid #ccc;
 }
 
 ul#tabnav li.highlighted { /* settings for selected tab */
@@ -1238,7 +1238,7 @@ ul#tabnav li.highlighted { /* settings for selected tab */
 }
 
 ul#tabnav li.highlighted a { /* settings for selected tab link */
-background-color: #ddd; /* set selected tab background color as desired */
+background-color: #eee; /* set selected tab background color as desired */
 color: #000; /* set selected tab link color as desired */
 font-weight:bold;
 border-top: 3px solid #999;
