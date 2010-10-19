@@ -41,11 +41,7 @@
   <!--
   <tr>
     <th>福利待遇</th>
-    <td><%= raw @job.welfare %></td>
-  </tr>
-  <tr>
-    <th>其他描述</th>
-    <td><%= raw @job.desc %></td>
+    <td><%#= raw @job.welfare %></td>
   </tr>
   -->
 
@@ -71,6 +67,11 @@
 	 </td>
 	</tr>
 
+  <tr>
+    <th>其他描述</th>
+    <td><%= raw @job.desc %></td>
+  </tr>
+
 	<tr>
 	  <th>应聘方式</th>
 		<td><%= raw @job.apply_method %></td>
@@ -78,6 +79,16 @@
 	<tr>
 	 <th>是否使用<br>应聘系统</th>
 	 <td><%= @job.only_use_custom_apply_method_to_s %></td>
+	</tr>
+
+	<tr>
+	 <th>是否高亮</th>
+	 <td><%= @job.highlighted? ? "是" : "否" %></td>
+	</tr>
+
+	<tr>
+	 <th>是否置顶</th>
+	 <td><%= @job.keep_top? ? "是" : "否" %></td>
 	</tr>
 </table>
 

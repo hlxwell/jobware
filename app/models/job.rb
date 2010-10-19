@@ -33,6 +33,13 @@
 #
 
 class Job < ActiveRecord::Base
+  STATE = {
+    'unapproved' => "等待审核中",
+    'rejected' => "被拒绝",
+    'opened' => "展示中",
+    'closed' => "未展示"
+  }
+
   acts_as_taggable
   chinese_permalink :name
   acts_as_views_count :delay => 1
@@ -73,13 +80,6 @@ class Job < ActiveRecord::Base
     indexes company(:name), :as => :company_name, :sortable => true
     has company_id, created_at, updated_at
   end
-
-  STATE = {
-    'unapproved' => "等待审核中",
-    'rejected' => "被拒绝",
-    'opened' => "展示中",
-    'closed' => "未展示"
-  }
 
   state_machine :state, :initial => :unapproved do
     before_transition :on => :active do |job|

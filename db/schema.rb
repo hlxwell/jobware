@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101015082935) do
+ActiveRecord::Schema.define(:version => 20101019033152) do
 
   create_table "ad_positions", :force => true do |t|
     t.string   "name"
@@ -222,6 +222,7 @@ ActiveRecord::Schema.define(:version => 20101015082935) do
     t.boolean  "highlighted",                  :default => false
     t.integer  "degree_requirement",           :default => 0
     t.integer  "working_year_requirement",     :default => 0
+    t.boolean  "keep_top"
   end
 
   create_table "languages", :force => true do |t|

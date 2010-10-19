@@ -34,8 +34,8 @@ CoverLetter:
 
 Job:
   fields:
-    default: name, location, category_humanize, salary_range_humanize, highlighted, start_at, end_at, company, state_s, source
-    form: name, location_province, location_city, category, vacancy, content, requirement, welfare, desc, salary_range, highlighted, start_at, end_at, tag_list, company, source, state
+    default: name, location, category_humanize, salary_range_humanize, highlighted, start_at, end_at, company, state_s, source, keep_top
+    form: name, location_province, location_city, category, vacancy, content, requirement, welfare, desc, salary_range, highlighted, start_at, end_at, tag_list, company, source, state, keep_top
     options:
       selectors: state
   order_by:

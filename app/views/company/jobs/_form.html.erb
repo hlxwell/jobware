@@ -15,4 +15,5 @@
 <%= f.cktext_area(:desc, :height => '200px', :toolbar=>'Basic', :skin => "office2003", :label => "其他描述") %>
 <%= f.text_field :tag_list, :label => "岗位关键字", :class => "text w620", :hint => "岗位关键字会显示在岗位列表里，帮助求职者快速找到符合的工作。例如：c++, java, ruby on rails, css等。最多只能添加5个关键字。" %>
 <%= f.check_box :only_use_custom_apply_method, :label => "只使用自定义应聘方式", :hint => "选中后系统自带的应聘系统将不会被使用。" %>
-<%= f.check_box :highlighted, :label => "是否高亮显示？", :hint => "选中后该工作在任何列表里都将高亮显示，增加显示效果，但是需要购买“岗位高亮”点数。" if f.object.new_record? %>
+<%= f.check_box :highlighted, :label => "是否高亮显示？", :hint => "选中后该工作在任何列表里都将高亮显示，增加显示效果，但是需要购买“岗位高亮”点数。" if f.object.new_record? or !f.object.available? %>
+<%= f.check_box :keep_top, :label => "是否置顶？", :hint => "选中后该工作将显示在工作列表顶部，应聘者将在第一时间看到，但是需要支付“岗位置顶”点数。"if f.object.new_record? or !f.object.available? %>
