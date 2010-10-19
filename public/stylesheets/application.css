@@ -840,6 +840,10 @@ img.alignright, img.right {margin: 0 0 1em 0;}
   margin: 0.3em;
 }
 
+.no_padding {
+  padding: 0px;
+}
+
 .small_padding {
   padding: 0.5em;
 }
