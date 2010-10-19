@@ -15,14 +15,11 @@
 	<div class="archive-post-title">
 		<h3><b><%= link_to company.name, company %></h3>
 		<div class="small_top_margin small_bottom_margin"><%= show_tag_list company.tag_list, "/companies/tag" %></div>
-
-		<div class="post-date">
-		  <ul>
+		<ul>
 		  <% company.jobs.opened.limit(3).each do |job| %>
 		    <li><%= link_to job.name, job %></li>
 		  <% end %>
-		  </ul>
-		</div>
+		</ul>
 	</div>
 
 	<!-- address and date -->
