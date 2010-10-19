@@ -74,7 +74,7 @@ class Ad < ActiveRecord::Base
 
     after_transition :on => :close do |ad|
       unless ad.available?
-        puts "found one expired ad##{id}"
+        puts "found one expired ad##{self.id}"
 
         ### send mail to company
         CompanyMailer.ad_expired(ad.company, ad).deliver

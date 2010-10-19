@@ -8,7 +8,7 @@
         <div class="company-logo text-center"><%= link_to image_tag(company.logo.url(:fix_height)), company, :title => raw(company.name) %></div>
         <div class="company-jobs">
           <h5><%= link_to company.name, company, :title => company.name %></h5>
-            <% company.jobs.opened.limit(4).each do |job| %>
+            <% company.jobs.opened.limit(2).each do |job| %>
             <div>
               <div class="left" style="margin: 0"><%= link_to job.name.truncate(26), job, :title => job.name, :class => "quiet" %></div>
     			    <strong class="quiet right" style="margin: 0"><%= job.location %></strong>

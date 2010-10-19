@@ -4,6 +4,6 @@ task :daily => [
 
 desc "check expired ads and jobs"
 task :check_expired_ads_and_jobs => :environment do
-  Ad.opened.each(&:available?)
-  Job.opened.each(&:available?)
+  Ad.all.each(&:available?)
+  Job.all.each(&:available?)
 end
