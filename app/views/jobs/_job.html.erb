@@ -1,9 +1,9 @@
 <% wide ||= false %>
-<div class="post <%= "notice" if job.highlighted? %>">
+<div class="post <%= "highlighted_job" if job.highlighted? %> <%= "keep_top_job" if job.keep_top? %>">
   <!-- click -->
   <div class="archive-post-date">
     <% if job.keep_top? %>
-      <b class="red">置顶</b>
+      <b class="red largest bold">置顶</b>
     <% end %>
     <div class="archive-post-day"><%= job.views_count_s %></div>
     <div class="archive-post-month">点击</div>

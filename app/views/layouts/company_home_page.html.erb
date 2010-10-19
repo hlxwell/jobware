@@ -13,26 +13,21 @@
   <!-- <div class="right bordered largest">认证企业</div> -->
 
   <div class="title">
-    <h1><%= @company.name %></h1>
     <%= image_tag @company.logo.url(:title), :class => "aligncenter" %>
+    <h2><%= @company.name %></h2>
+    <% if @company.homepage.present? %>
+      <h4><%= link_to @company.homepage, @company.homepage %></h4>
+    <% end %>
   </div>
 
   <div class="clearer">&nbsp;</div><br/>
 
-  <div class="menu">
-    <% semantic_navigation "company-home-menu", :html => {:class => "tabbed"} do |n| %>
-      <%= n.item '公司信息', :link => company_path(@company) %>
-      <%= n.item '公司展示', :link => presentations_company_path(@company) %>
-      <%= n.item '所有工作', :link => all_jobs_company_path(@company) %>
-    <% end %>
-
-    <% if @job %>
-      <%= link_to "#{@job.name}", @job %>
-    <% end %>
-    <div class="clearer">&nbsp;</div>
-  </div>
-
-  <br/>
+  <% semantic_navigation "tabnav" do |n| %>
+    <%= n.item '公司信息', :link => company_path(@company) %>
+    <%= n.item '公司展示', :link => presentations_company_path(@company) %>
+    <%= n.item '所有工作', :link => all_jobs_company_path(@company) %>
+  <% end %>
+  <div class="clearer">&nbsp;</div>
 
   <%= yield %>
 </div>

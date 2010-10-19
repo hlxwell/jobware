@@ -259,7 +259,7 @@ table.top-vlign-td td { vertical-align: top; }
 ------------------------------------------------------------------- */
 
 label {font-weight: bold; cursor: pointer; margin-right: 5px;}
-fieldset {padding: 1.4em; margin: 0 0 1.5em 0; border: 1px solid #ccc;}
+fieldset {padding: 0.5em 1.4em 1.4em 1.4em; margin: 0 0 1.5em 0; border: 1px solid #ccc;}
 legend {font-size: 1.2em; padding: 0px 10px 0px 10px;}
 fieldset.big legend, legend.big {font-size: 2.0em; padding: 0px 10px 0px 10px;}
 
@@ -576,7 +576,7 @@ img.alignright, img.right {margin: 0 0 1em 0;}
 }
 #main-nav li {background: url('/images/navigation-separator.gif') no-repeat left center;}
 #main-nav li:first-child {background: none;}
-#main-nav li.highlighted a, #main-nav li.current-tab a, #main-nav a:hover {color: #002;}
+#main-nav li.highlighted a, #main-nav li.current-tab a, #main-nav a:hover {color: #002; font-weight: bold;}
 #main-nav li.highlighted a, #main-nav li.current-tab a {/*background: url('/images/navigation-arrow.gif') no-repeat center bottom;*/}
 
 
@@ -1189,4 +1189,65 @@ div.fix_height {
   padding: 0.3em;
   margin: 0 0.5em 0.5em 0;
   float: left;
+}
+
+
+
+/* begin css tabs */
+
+ul#tabnav { /* general settings */
+text-align: left; /* set to left, right or center */
+margin: 1em 0 1em 0; /* set margins as desired */
+font-size: 1.5em;
+border-bottom: 1px solid #ccc; /* set border COLOR as desired */
+list-style-type: none;
+padding: 6px 10px 6px 10px; /* THIRD number must change with respect to padding-top (X) below */
+line-height: 1.0em;
+}
+
+ul#tabnav li { /* do not change */
+display: inline;
+}
+
+ul#tabnav li a { /* settings for all tab links */
+padding: 6px 1em; /* set padding (tab size) as desired; FIRST number must change with respect to padding-top (X) above */
+border: 1px solid #fff; /* set border COLOR as desired; usually matches border color specified in #tabnav */
+background-color: #eee; /* set unselected tab background color as desired */
+color: #666; /* set unselected tab link color as desired */
+margin-right: 0px; /* set additional spacing between tabs as desired */
+text-decoration: none;
+border-bottom: none;
+}
+
+ul#tabnav a:hover { /* settings for hover effect */
+background: #ddd; /* set desired hover color */
+}
+
+ul#tabnav li.highlighted { /* settings for selected tab */
+/*border-top: 1px solid #000;*/
+/*background-color: #ddd;*/
+}
+
+ul#tabnav li.highlighted a { /* settings for selected tab link */
+background-color: #ddd; /* set selected tab background color as desired */
+color: #000; /* set selected tab link color as desired */
+font-weight:bold;
+border-top: 3px solid #999;
+}
+
+/* end css tabs */
+
+.keep_top_job {
+  border-left: 5px solid red;
+  padding-left: 6px;
+}
+
+.highlighted_job {
+  padding: 6px;
+  background-color: #FFF6BF;
+}
+
+.highlighted_job h3 a {
+  color: black;
+  font-weight: bold;
 }
