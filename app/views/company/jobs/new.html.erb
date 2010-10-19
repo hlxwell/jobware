@@ -1,9 +1,11 @@
 <% title("发布岗位") %>
-<div class="text-center middle_bottom_margin">
-  <span class="largest bold white small_padding gray_bg">第一步：发布岗位</span>
-  <span class="middle_left_margin largest bold white small_padding gray_bg">第二步：等待管理员验证</span>
-  <span class="middle_left_margin largest bold white small_padding gray_bg">第三步：激活并展示岗位</span>
-</div>
+
+<ul id="mainNav" class="threeStep" style="margin: 0">
+	<li class="current"><a title=""><em>第一步：发布</em><span>填写并提交尽量详细的工作信息。</span></a></li>
+	<li><a title=""><em>第二步：验证</em><span>等待管理员审核验证。</span></a></li>
+	<li class="mainNavNoBg"><a title=""><em>第三步：激活</em><span>激活并展示岗位。</span></a></li>
+</ul>
+<div class="clearer">&nbsp;</div><br>
 
 <%= jobware_form_for @job, :url => company_jobs_path, :title => "发布岗位" do |f| %>
   <%= render :partial => 'form', :locals => {:f => f} %>

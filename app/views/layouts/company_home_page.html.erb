@@ -10,15 +10,20 @@
 <% content_for :content do %>
 <!-- ### main content -->
 <div class="main company_home_page">
-  <!-- <div class="right bordered largest">认证企业</div> -->
 
-  <div class="title">
-    <%= image_tag @company.logo.url(:title), :class => "aligncenter" %>
-    <h2><%= @company.name %></h2>
-    <% if @company.homepage.present? %>
-      <h4><%= link_to @company.homepage, @company.homepage %></h4>
-    <% end %>
-  </div>
+  <table style="width:700px;" class="center">
+    <tr>
+      <td>
+        <%= image_tag @company.logo.url(:thumb), :class => "bordered" %>
+      </td>
+      <td>
+        <h2 class="title"><%= @company.name %></h2>
+        <% if @company.homepage.present? %>
+          <h4><%= link_to @company.homepage, @company.homepage %></h4>
+        <% end %>
+      </td>
+    </tr>
+  </table>
 
   <div class="clearer">&nbsp;</div><br/>
 

@@ -746,6 +746,10 @@ img.alignright, img.right {margin: 0 0 1em 0;}
 }
 
 /* width define */
+.w960 {
+  width: 960px;
+}
+
 .w620 {
   width: 620px;
 }
@@ -1081,6 +1085,7 @@ div.highlighted {
 
 .company_home_page .title {
   text-align: center;
+  color: black;
 }
 
 .company_home_page .menu li a {
