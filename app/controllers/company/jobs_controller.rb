@@ -74,7 +74,7 @@ class Company::JobsController < Company::BaseController
   end
 
   def get_options
-    raise 'wrong option type.' unless ['welfare', 'problem'].include?(params[:type])
+    raise 'wrong option type.' unless ['welfare', 'question'].include?(params[:type])
     @options = @job.send("#{params[:type]}_options").map {|option| [option.name, option.desc]}
     render :json => @options
   end

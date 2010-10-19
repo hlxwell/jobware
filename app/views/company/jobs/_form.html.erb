@@ -10,66 +10,9 @@
 <%= f.cktext_area(:content, :height => '200px', :toolbar=>'Basic', :skin => "office2003", :label => "工作内容") %>
 <%= f.cktext_area(:requirement, :height => '200px', :toolbar=>'Basic', :skin => "office2003", :label => "岗位需求") %>
 <%#= f.cktext_area(:welfare, :height => '200px', :toolbar=>'Basic', :skin => "office2003", :label => "福利待遇") %>
-<%#= f.cktext_area(:desc, :height => '200px', :toolbar=>'Basic', :skin => "office2003", :label => "其他描述") %>
-
-
-<%= field_set_tag "福利待遇", :class => 'big' do %>
-<fieldset>
-  <legend style="font-size: 1.2em">从其他工作复制</legend>
-  <%= select("copy", "job_id", current_user.company.jobs.map {|j| [ j.name, j.id ] }, { :include_blank => true }) %>
-  <input type="button" class="button copy_options_from_other_job" value="复制" option_type="welfare" />
-</fieldset>
-
-<div class="left welfare_list">
-  <div class="notice w340 <%= "hidden" if f.object.welfare_options.present? %>">没有福利待遇。</div>
-
-  <%= f.fields_for :welfare_options do |new_form| %>
-    <%= render "optional_options/form", :f => new_form if new_form.object.present? %>
-  <% end %>
-
-  <%= f.button_to_add_fields '添加自定义项', :welfare_options, :form_path => "optional_options", :id => "add_welfare_botton" %>
-</div>
-
-<div class="post lite_background right w200 welfare_option_list">
-  <div class="post-title"><h4>您可以从这里选择：</h4></div>
-	<div class="post-body">
-	  <a href="javascript:void(0)" class="bordered optional_option_tag" desc="例如：包午餐">包午餐</a>
-	  <a href="javascript:void(0)" class="bordered optional_option_tag" desc="例如：包住宿">包住宿</a>
-	  <a href="javascript:void(0)" class="bordered optional_option_tag" desc="例如：公司分红">公司分红</a>
-	</div>
-	<div class="clearer"></div>
-</div>
-<% end %>
-
-
-
-<%= field_set_tag "需要问应聘者的其他问题", :class => 'big' do %>
-<div class="left question_list">
-  <div class="notice w340 <%= "hidden" if f.object.question_options.present? %>">没有需要问应聘者的其他问题。</div>
-
-  <%= f.fields_for :question_options do |new_form| %>
-    <%= render "optional_options/form", :f => new_form if new_form.object.present? %>
-  <% end %>
-
-  <%= f.button_to_add_fields '添加自定义项', :question_options, :form_path => "optional_options", :id => "add_question_botton" %>
-</div>
-
-<div class="post lite_background right w200 question_option_list">
-  <div class="post-title"><h4>您可以从这里选择：</h4></div>
-	<div class="post-body">
-	  <a href="javascript:void(0)" class="bordered optional_option_tag">手机</a>
-	  <a href="javascript:void(0)" class="bordered optional_option_tag">邮箱</a>
-	  <a href="javascript:void(0)" class="bordered optional_option_tag">QQ</a>
-	  <a href="javascript:void(0)" class="bordered optional_option_tag">是否拥有iPhone/iPad</a>
-	</div>
-	<div class="clearer"></div>
-	<div class="quiet">基本信息会在简历里要求，所以不需要额外提问。</div>
-</div>
-<% end %>
-
-
-
+<%= render "optional_options", :f => f %>
 <%= f.cktext_area(:apply_method, :height => '200px', :toolbar=>'Basic', :skin => "office2003", :label => "应聘方式 (可选)", :hint => "如果你公司有自己的应聘系统，或者希望应聘者发送简历到公司邮箱，请填写在这里。") %>
+<%= f.cktext_area(:desc, :height => '200px', :toolbar=>'Basic', :skin => "office2003", :label => "其他描述") %>
 <%= f.text_field :tag_list, :label => "岗位关键字", :class => "text w620", :hint => "岗位关键字会显示在岗位列表里，帮助求职者快速找到符合的工作。例如：c++, java, ruby on rails, css等。最多只能添加5个关键字。" %>
 <%= f.check_box :only_use_custom_apply_method, :label => "只使用自定义应聘方式", :hint => "选中后系统自带的应聘系统将不会被使用。" %>
 <%= f.check_box :highlighted, :label => "是否高亮显示？", :hint => "选中后该工作在任何列表里都将高亮显示，增加显示效果，但是需要购买“岗位高亮”点数。" if f.object.new_record? %>
