@@ -88,7 +88,7 @@
   <div class="post-body">
     <ul>
     <% @job.welfare_options.each do |w| %>
-      <li><b><%= w.name %></b> <%= w.desc %></li>
+    <li><%= w.name %> <span class="quiet"><%= w.desc %></span></li>
     <% end %>
     </ul>
   </div>
@@ -103,7 +103,7 @@
   <div class="post-body">
     <ul>
     <% @job.question_options.each do |w| %>
-      <li><b><%= w.name %></b> <%= w.desc %></li>
+      <li><%= w.name %> <span class="quiet"><%= w.desc %></span></li>
     <% end %>
     </ul>
   </div>

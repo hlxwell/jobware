@@ -1,6 +1,6 @@
 require 'capistrano/ext/multistage'
 
-set :stages, %w(staging production)
+set :stages, %w(staging cnc telecom)
 set :default_stage, 'staging'
 set :repository,  "git@github.com:anatole/jobware.git"
 set :branch, ENV["BRANCH"] || "master"
@@ -17,7 +17,7 @@ namespace :deploy do
     run "cd #{release_path}; cp #{shared_path}/config/database.yml #{release_path}/config/database.yml"
     run "cd #{release_path}; ln -s #{shared_path}/sphinx #{release_path}/db/sphinx"
 
-    if application == "production"
+    if application == "cnc"
       run "cd #{release_path}; /usr/local/rvm/gems/ree-1.8.7-2010.02/bin/bundle install"
       run "cd #{release_path}; /usr/local/rvm/rubies/ree-1.8.7-2010.02/bin/ruby script/delayed_job reload RAILS_ENV=production;"
       run "cd #{release_path}; /usr/local/rvm/gems/ree-1.8.7-2010.02/bin/rake db:migrate RAILS_ENV=production"

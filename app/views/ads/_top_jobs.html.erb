@@ -11,7 +11,7 @@
 			    <%= job.location %> <br/> 查看：<%= job.views_count_s %> 次
 			  </span>
 			  <h5><%= link_to job.name.truncate(20), job %></h5>
-			  <%= link_to job.company.name.truncate(28), job.company %>
+			  <%= link_to job.company.name.truncate(28), job.company, :class => "quiet" %>
 			</li>
 		  <% end %>
 		</ul>

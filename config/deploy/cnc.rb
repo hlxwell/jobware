@@ -1,4 +1,4 @@
-set :application, "production"
+set :application, "cnc"
 set :deploy_to, "/home/hlx/www/jobware/"
 set :user, "hlx"
 

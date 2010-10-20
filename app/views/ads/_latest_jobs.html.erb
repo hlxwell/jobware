@@ -10,7 +10,7 @@
 			    <%= job.location %> <br/> <%= job.created_at.to_s_short_date %>
 			  </span>
 			  <h5><%= link_to job.name.truncate(20), job %></h5>
-			  <%= link_to job.company.name.truncate(26), job.company %>
+			  <%= link_to job.company.name.truncate(26), job.company, :class => "quiet" %>
 			</li>
 		  <% end %>
 		</ul>
