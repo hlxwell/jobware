@@ -1,0 +1,27 @@
+<% total_amount = 0 %>
+
+<div>
+  <% show_no_record(@transactions) do %>
+  <table class="data-table small">
+  	<tr>
+  	  <th width="40">类型</th>
+  	  <th>来源公司</th>
+  	  <th>时间</th>
+  		<th width="80">数量</th>
+      <th width="80">剩余</th>
+  	</tr>
+  	<% @transactions.each do |tx| %>
+  	<% total_amount += tx.amount %>
+  	<tr class="even">
+  		<td><%= tx.service_item.name %></td>
+  		<td><%= tx.user.company.name %></td>
+  		<td><%= tx.created_at.to_s_datetime %></td>
+  		<td class="large"><%= format_price(tx.amount, :with_plus => true) %></td>
+  		<td class="large"><%= format_price(total_amount) %></td>
+  	</tr>
+    <% end %>
+  </table>
+  <% end %>
+</div>
+
+<h3 class="right middle_top_margin middle_bottom_margin">总收入：<%= format_price(total_amount) %></h3>

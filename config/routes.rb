@@ -186,6 +186,7 @@ Jobware::Application.routes.draw do
     resources :revenues
     resources :transactions do
       collection do
+        get :income
         get :withdraw
       end
     end

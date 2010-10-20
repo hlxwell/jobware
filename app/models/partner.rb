@@ -33,6 +33,7 @@ class Partner < ActiveRecord::Base
   has_many :job_counters, :as => :parent, :dependent => :destroy
   has_many :job_application_counters, :as => :parent, :dependent => :destroy
   has_many :jobseeker_counters, :as => :parent, :dependent => :destroy
+  has_many :income_transactions, :class_name => "PositiveTransaction", :conditions => { :service_item_id => ServiceItem.money_id }
 
   accepts_nested_attributes_for :user
 
@@ -62,7 +63,11 @@ class Partner < ActiveRecord::Base
       self.send("#{method_name}_counters".to_sym).today.last.increment!(:click)
     end
   end
-  
+
+  def income
+
+  end
+
   def has_partner_site?
     self.partner_site_style.try(:subdomain).try(:present?)
   end

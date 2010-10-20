@@ -31,4 +31,9 @@ module TransactionsControllerBase
     render "transactions/withdraw", :layout => current_user_section
   end
 
+  def income
+    @transactions = current_user.partner.income_transactions
+    render :partial => "transactions/income_list"
+  end
+
 end
