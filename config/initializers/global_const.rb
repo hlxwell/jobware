@@ -1,0 +1,1 @@
+PRESERVED_SUBDOMAINS = %w{www help cnc}

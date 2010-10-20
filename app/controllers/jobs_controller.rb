@@ -38,7 +38,7 @@ class JobsController < ApplicationController
     :page => params[:page],
     :rank_mode  => :wordcount,
     :sort_mode  => :extended,
-    :order => "@rank DESC, created_at DESC",
+    :order => "keep_top DESC, @rank DESC, updated_at DESC",
     :per_page => 20,
     :match_mode => :extended,
     :field_weights => {

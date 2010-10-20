@@ -28,7 +28,7 @@ namespace :deploy do
     else
       run "cd #{release_path}; bundle install"
       run "cd #{release_path}; rake db:migrate RAILS_ENV=production"
-      run "cd #{release_path}; ./script/delayed_job reload RAILS_ENV=production;"
+      run "cd #{release_path}; ./script/delayed_job reload RAILS_ENV=production"
       run "cd #{release_path}; rake ts:rebuild RAILS_ENV=production"
     end
   end

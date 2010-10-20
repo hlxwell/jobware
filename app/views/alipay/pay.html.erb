@@ -11,7 +11,7 @@
     <% service.error_notify_url url_for(:only_path => false, :action => 'error') %>
     <% service.notify_url url_for(:only_path => false, :action => 'notify') %>
     <% service.return_url url_for(:only_path => false, :action => 'done') %>
-    <% service.show_url "http://www.itjob.fm" %>
+    <% service.show_url "http://itjob.fm" %>
     <% service.body '向itjob.fm充值。' %>
     <% service.charset "utf-8" %>
     <% service.service ActiveMerchant::Billing::Integrations::Alipay::Helper::CREATE_DIRECT_PAY_BY_USER %>
