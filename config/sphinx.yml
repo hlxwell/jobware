@@ -47,6 +47,6 @@ test:
 production:
   <<: *default
   port: 9500
-  chinese_dictionary: /home/hlx/xdict
+  chinese_dictionary: config/xdict
   pid_file: tmp/pids/searchd.pid
   bin_path: /usr/local/bin
