@@ -78,7 +78,7 @@ class Job < ActiveRecord::Base
     # indexes content
     # indexes requirement
     indexes company(:name), :as => :company_name, :sortable => true
-    has company_id, created_at, updated_at
+    has company_id, created_at, updated_at, keep_top
   end
 
   state_machine :state, :initial => :unapproved do
