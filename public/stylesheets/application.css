@@ -280,6 +280,11 @@ select {
   height: 24px;
   font-size: 0.8em;
 }
+
+select.big {
+  font-size: 1em;
+}
+
 input.text:focus, textarea:focus, select:focus {background: #FFFFF5;}
 
 button {
@@ -462,7 +467,7 @@ img.alignright, img.right {margin: 0 0 1em 0;}
 .archive-post-title-wide { float: left; width: 780px;}
 .archive-post-day {font: normal 1.6em Georgia,serif;}
 
-.archive-post-address {margin: 0; float: right;}
+.archive-post-address {margin: 0 5px 0 0; float: right;}
 .archive-post-address h3 {padding-top: 4px; text-align: right;}
 
 /*
@@ -970,7 +975,7 @@ div.highlighted {
 /* top page job block */
 #top_job_list .top-page-job {
   width: 286px;
-  height: 120px;
+  height: 123px;
   padding: 1em;
   background-color: #FFF;
 	border: 1px solid #DDD;
@@ -1194,13 +1199,17 @@ div.fix_height {
 /* exist options div */
 .exist_options {}
 
+.optional_option {
+  margin-bottom: 0;
+}
+
 .optional_option_tag {
   padding: 0.3em;
   margin: 0 0.5em 0.5em 0;
-  float: left;
+  display:inline-block;
+  zoom:1;
+  *display:inline;
 }
-
-
 
 /* begin css tabs */
 

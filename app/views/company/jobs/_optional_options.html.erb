@@ -5,7 +5,7 @@
   <input type="button" class="button copy_options_from_other_job" value="复制" option_type="welfare" />
 </fieldset>
 
-<div class="left welfare_list">
+<div class="left welfare_list" style="width: 365px">
   <div class="notice w340 <%= "hidden" if f.object.welfare_options.present? %>">没有福利待遇。</div>
   <%= f.fields_for :welfare_options do |new_form| %>
     <%= render "optional_options/form", :f => new_form if new_form.object.present? %>
@@ -37,7 +37,7 @@
   <input type="button" class="button copy_options_from_other_job" value="复制" option_type="question" />
 </fieldset>
 
-<div class="left question_list">
+<div class="left question_list" style="width: 365px">
   <div class="notice w340 <%= "hidden" if f.object.question_options.present? %>">没有需要问应聘者的其他问题。</div>
   <%= f.fields_for :question_options do |new_form| %>
     <%= render "optional_options/form", :f => new_form if new_form.object.present? %>
