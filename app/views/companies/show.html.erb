@@ -33,11 +33,15 @@
 <div class="content-separator "></div>
 
 <% if @company.presentations.count > 0 %>
-<ul class="small_picture_list">
-  <% @company.presentations.each do |p| %>
-  <li><div style="width: 100px; height: 100px; overflow: hidden"><%= link_to image_tag(p.file.url(:thumb)), presentations_company_path(@company) %></div></li>
-  <% end %>
-</ul>
+<div class="post">
+  <div class="post-title middle_bottom_margin"><h3>公司展示</h3></div>
+	<ul class="small_picture_list">
+    <% @company.presentations.each do |p| %>
+    <li><div style="width: 100px; height: 100px; overflow: hidden"><%= link_to image_tag(p.file.url(:thumb)), presentations_company_path(@company) %></div></li>
+    <% end %>
+  </ul>
+</div>
+
 <div class="clearer">&nbsp;</div>
 <div class="content-separator middle_top_margin"></div>
 <% end %>
