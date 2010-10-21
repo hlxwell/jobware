@@ -1,8 +1,14 @@
 <%= link_to "审核通过 (approve)", :controller => "admin/partners", :action => "approve", :id => @item.id %>
 <%= link_to "拒绝 (reject)", :controller => "admin/partners", :action => "reject", :id => @item.id %>
 
-<%= jobware_form_for :commission, :url => {:controller => "admin/partners", :action => "send_commission", :id => @item.id}, :title => "结算佣金" do |f| %>
+<%= jobware_form_for :commission, :url => {:controller => "admin/partners", :action => "send_commission", :id => @item.id}, :title => "结算佣金到用户账户" do |f| %>
   <%= f.text_field :amount, :label => "佣金数量" %>
   <%= f.text_field :money_from, :label => "佣金来源" %>
+  <%= f.submit "提交" %>
+<% end %>
+
+<%= jobware_form_for :commission, :url => {:controller => "admin/partners", :action => "withdraw", :id => @item.id}, :title => "佣金取现" do |f| %>
+  <%= f.text_field :amount, :label => "取现数量" %>
+  <%= f.text_field :money_to, :label => "取现去处", :hint => "如支付帐号，或者银行单编号。" %>
   <%= f.submit "提交" %>
 <% end %>

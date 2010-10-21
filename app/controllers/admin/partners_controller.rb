@@ -28,4 +28,17 @@ class Admin::PartnersController < Admin::ResourcesController
     end
     redirect_to :back
   end
+  
+  def withdraw
+    amount = params.get(:commission, :amount)
+    money_to = params.get(:commission, :money_to)
+    
+    if amount and money_to and amount.to_f > 0
+      get_object.user.withdraw!(amount, :to => money_to)
+      flash[:notice] = "通过#{money_to}支付给#{get_object.name}#{amount}元成功。"
+    else
+      flash[:notice] = "请输入佣金数量和去处。"
+    end
+    redirect_to :back
+  end
 end

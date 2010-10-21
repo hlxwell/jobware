@@ -10,7 +10,7 @@ admin:
   Job: create, read, update, delete, approve, reject
   JobApplication: create, read, update, delete
   Language: create, read, update, delete
-  Partner: create, read, update, delete, approve, reject, send_commission
+  Partner: create, read, update, delete, approve, reject, send_commission, withdraw
   Presentation: create, read, update, delete
   PreviousJob: create, read, update, delete
   Product: create, read, update, delete
