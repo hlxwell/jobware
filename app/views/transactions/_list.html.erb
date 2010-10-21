@@ -26,8 +26,12 @@
   		<td class="large"><%= transaction_is_money ? format_price(total_amount) : total_amount %></td>
   	</tr>
     <% end %>
+    
+    <tr>
+      <td colspan="5">
+        <h3 class="right">帐户余额：<%= transaction_is_money ? format_price(total_amount) : total_amount %></h3>
+      </td>
+    </tr>
   </table>
   <% end %>
 </div>
-
-<h3 class="right middle_top_margin middle_bottom_margin">帐户余额：<%= transaction_is_money ? format_price(total_amount) : total_amount %></h3>

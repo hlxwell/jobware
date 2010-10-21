@@ -32,7 +32,7 @@ module TransactionsControllerBase
   end
 
   def income
-    @transactions = current_user.partner.income_transactions
+    @transactions = current_user.partner.income_transactions.group_by(&:year_month)
     render :partial => "transactions/income_list"
   end
 

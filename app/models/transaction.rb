@@ -51,4 +51,8 @@ class Transaction < ActiveRecord::Base
   def amount_s
     amount > 0 ? "+#{amount}" : "#{amount}"
   end
+  
+  def year_month
+    "#{created_at.year}年#{created_at.month}月"
+  end
 end

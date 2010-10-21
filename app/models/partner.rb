@@ -33,7 +33,7 @@ class Partner < ActiveRecord::Base
   has_many :job_counters, :as => :parent, :dependent => :destroy
   has_many :job_application_counters, :as => :parent, :dependent => :destroy
   has_many :jobseeker_counters, :as => :parent, :dependent => :destroy
-  has_many :income_transactions, :class_name => "PositiveTransaction", :conditions => { :service_item_id => ServiceItem.money_id }
+  has_many :income_transactions, :class_name => "PositiveTransaction", :conditions => { :service_item_id => ServiceItem.money_id }, :order => "created_at ASC"
 
   accepts_nested_attributes_for :user
 
