@@ -1,7 +1,7 @@
 class DashboardController < ApplicationController
   before_filter :company_login_required, :only => :company
   before_filter :jobseeker_login_required, :only => :jobseeker
-  before_filter :partner_login_required, :approved_partner_required, :only => :partner
+  before_filter :partner_login_required, :only => :partner
 
   def jobseeker
     @resume = current_user.jobseeker

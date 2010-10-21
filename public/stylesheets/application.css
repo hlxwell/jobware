@@ -1242,12 +1242,11 @@ ul#tabnav li { /* do not change */
 }
 
 ul#tabnav li a { /* settings for all tab links */
-  border: 1px solid #fff;
+  border-top: 3px solid #ddd;
   background-color: #eee;
   color: #666;
-  margin-right: .5em;
+  margin-right: .3em;
   text-decoration: none;
-  border-bottom: none;
   display:inline-block;
   zoom:1;
   *display:inline;
@@ -1257,14 +1256,14 @@ ul#tabnav li a { /* settings for all tab links */
 }
 
 ul#tabnav li a:hover {
-  border-top: 3px solid #ccc;
+  border-top: 3px solid #bbb;
 }
 
 ul#tabnav li.highlighted a {
   background-color: #eee;
   color: #000;
   font-weight:bold;
-  border-top: 3px solid #999;
+  border-top: 3px solid #888;
 }
 /* end css tabs */
 

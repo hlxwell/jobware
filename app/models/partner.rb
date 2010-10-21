@@ -38,6 +38,7 @@ class Partner < ActiveRecord::Base
   accepts_nested_attributes_for :user
 
   validates_presence_of :name, :url, :contact_name, :phone_number, :site_size, :desc
+  validates_uniqueness_of :name
 
   state_machine :state, :initial => :unapproved do
     after_transition :on => :approve do |partner|
