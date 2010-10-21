@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101019033152) do
+ActiveRecord::Schema.define(:version => 20101021035439) do
 
   create_table "ad_positions", :force => true do |t|
     t.string   "name"
@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(:version => 20101019033152) do
     t.datetime "updated_at"
   end
 
+  add_index "ad_positions", ["partner_id"], :name => "index_ad_positions_on_partner_id"
+
   create_table "adclicks", :force => true do |t|
     t.integer  "ad_position_id"
     t.string   "remote_ip"
@@ -35,6 +37,8 @@ ActiveRecord::Schema.define(:version => 20101019033152) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "adclicks", ["ad_position_id"], :name => "index_adclicks_on_ad_position_id"
 
   create_table "admin_users", :force => true do |t|
     t.string   "first_name",       :default => "",    :null => false
@@ -70,6 +74,8 @@ ActiveRecord::Schema.define(:version => 20101019033152) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
   end
+
+  add_index "ads", ["company_id"], :name => "index_ads_on_company_id"
 
   create_table "bank_accounts", :force => true do |t|
     t.integer  "user_id"
@@ -107,6 +113,8 @@ ActiveRecord::Schema.define(:version => 20101019033152) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "certifications", ["resume_id"], :name => "index_certifications_on_resume_id"
 
   create_table "ckeditor_assets", :force => true do |t|
     t.string   "data_file_name",                                 :null => false
@@ -150,6 +158,9 @@ ActiveRecord::Schema.define(:version => 20101019033152) do
     t.boolean  "open_contact",      :default => false
   end
 
+  add_index "companies", ["partner_id"], :name => "index_companies_on_partner_id"
+  add_index "companies", ["user_id"], :name => "index_companies_on_user_id"
+
   create_table "counters", :force => true do |t|
     t.integer  "click",       :default => 0
     t.date     "happened_at"
@@ -160,6 +171,9 @@ ActiveRecord::Schema.define(:version => 20101019033152) do
     t.datetime "updated_at"
   end
 
+  add_index "counters", ["id", "type"], :name => "index_counters_on_id_and_type"
+  add_index "counters", ["parent_id", "parent_type"], :name => "index_counters_on_parent_id_and_parent_type"
+
   create_table "cover_letters", :force => true do |t|
     t.integer  "resume_id"
     t.string   "name"
@@ -167,6 +181,8 @@ ActiveRecord::Schema.define(:version => 20101019033152) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "cover_letters", ["resume_id"], :name => "index_cover_letters_on_resume_id"
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
@@ -194,6 +210,11 @@ ActiveRecord::Schema.define(:version => 20101019033152) do
     t.integer  "partner_id"
     t.text     "mail_message"
   end
+
+  add_index "job_applications", ["cover_letter_id"], :name => "index_job_applications_on_cover_letter_id"
+  add_index "job_applications", ["job_id"], :name => "index_job_applications_on_job_id"
+  add_index "job_applications", ["partner_id"], :name => "index_job_applications_on_partner_id"
+  add_index "job_applications", ["resume_id"], :name => "index_job_applications_on_resume_id"
 
   create_table "jobs", :force => true do |t|
     t.string   "name"
@@ -225,6 +246,9 @@ ActiveRecord::Schema.define(:version => 20101019033152) do
     t.integer  "keep_top",                     :default => 0
   end
 
+  add_index "jobs", ["company_id"], :name => "index_jobs_on_company_id"
+  add_index "jobs", ["partner_id"], :name => "index_jobs_on_partner_id"
+
   create_table "languages", :force => true do |t|
     t.integer  "resume_id"
     t.string   "name"
@@ -232,6 +256,8 @@ ActiveRecord::Schema.define(:version => 20101019033152) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "languages", ["resume_id"], :name => "index_languages_on_resume_id"
 
   create_table "optional_options", :force => true do |t|
     t.integer  "parent_id"
@@ -242,6 +268,9 @@ ActiveRecord::Schema.define(:version => 20101019033152) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "optional_options", ["id", "type"], :name => "index_optional_options_on_id_and_type"
+  add_index "optional_options", ["parent_id", "parent_type"], :name => "index_optional_options_on_parent_id_and_parent_type"
 
   create_table "partner_site_styles", :force => true do |t|
     t.integer  "partner_id"
@@ -257,6 +286,8 @@ ActiveRecord::Schema.define(:version => 20101019033152) do
     t.text     "global_css"
   end
 
+  add_index "partner_site_styles", ["partner_id"], :name => "index_partner_site_styles_on_partner_id"
+
   create_table "partners", :force => true do |t|
     t.integer  "user_id"
     t.string   "name"
@@ -271,6 +302,8 @@ ActiveRecord::Schema.define(:version => 20101019033152) do
     t.string   "state"
   end
 
+  add_index "partners", ["user_id"], :name => "index_partners_on_user_id"
+
   create_table "previous_jobs", :force => true do |t|
     t.integer  "resume_id"
     t.string   "company_name"
@@ -282,6 +315,8 @@ ActiveRecord::Schema.define(:version => 20101019033152) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "previous_jobs", ["resume_id"], :name => "index_previous_jobs_on_resume_id"
 
   create_table "resumes", :force => true do |t|
     t.integer  "user_id"
@@ -320,6 +355,9 @@ ActiveRecord::Schema.define(:version => 20101019033152) do
     t.string   "url"
   end
 
+  add_index "resumes", ["partner_id"], :name => "index_resumes_on_partner_id"
+  add_index "resumes", ["user_id"], :name => "index_resumes_on_user_id"
+
   create_table "revenues", :force => true do |t|
     t.integer  "partner_id"
     t.date     "period_start_at"
@@ -328,6 +366,8 @@ ActiveRecord::Schema.define(:version => 20101019033152) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "revenues", ["partner_id"], :name => "index_revenues_on_partner_id"
 
   create_table "schools", :force => true do |t|
     t.integer  "resume_id"
@@ -339,6 +379,8 @@ ActiveRecord::Schema.define(:version => 20101019033152) do
     t.datetime "updated_at"
   end
 
+  add_index "schools", ["resume_id"], :name => "index_schools_on_resume_id"
+
   create_table "service_item_amounts", :force => true do |t|
     t.integer  "service_id"
     t.integer  "service_item_id"
@@ -346,6 +388,9 @@ ActiveRecord::Schema.define(:version => 20101019033152) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "service_item_amounts", ["service_id"], :name => "index_service_item_amounts_on_service_id"
+  add_index "service_item_amounts", ["service_item_id"], :name => "index_service_item_amounts_on_service_item_id"
 
   create_table "service_items", :force => true do |t|
     t.string   "name"
@@ -372,6 +417,8 @@ ActiveRecord::Schema.define(:version => 20101019033152) do
     t.datetime "updated_at"
   end
 
+  add_index "skills", ["resume_id"], :name => "index_skills_on_resume_id"
+
   create_table "starred_jobs", :force => true do |t|
     t.integer  "resume_id"
     t.integer  "job_id"
@@ -379,6 +426,9 @@ ActiveRecord::Schema.define(:version => 20101019033152) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "starred_jobs", ["job_id"], :name => "index_starred_jobs_on_job_id"
+  add_index "starred_jobs", ["resume_id"], :name => "index_starred_jobs_on_resume_id"
 
   create_table "starred_resumes", :force => true do |t|
     t.integer  "company_id"
@@ -388,6 +438,9 @@ ActiveRecord::Schema.define(:version => 20101019033152) do
     t.datetime "updated_at"
   end
 
+  add_index "starred_resumes", ["company_id"], :name => "index_starred_resumes_on_company_id"
+  add_index "starred_resumes", ["resume_id"], :name => "index_starred_resumes_on_resume_id"
+
   create_table "subscriptions", :force => true do |t|
     t.integer  "resume_id"
     t.string   "keywords"
@@ -396,6 +449,8 @@ ActiveRecord::Schema.define(:version => 20101019033152) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "subscriptions", ["resume_id"], :name => "index_subscriptions_on_resume_id"
 
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"
@@ -428,6 +483,9 @@ ActiveRecord::Schema.define(:version => 20101019033152) do
     t.datetime "file_updated_at"
   end
 
+  add_index "titled_images", ["id", "type"], :name => "index_titled_images_on_id_and_type"
+  add_index "titled_images", ["parent_id", "parent_type"], :name => "index_titled_images_on_parent_id_and_parent_type"
+
   create_table "transactions", :force => true do |t|
     t.string   "type"
     t.integer  "user_id"
@@ -446,6 +504,8 @@ ActiveRecord::Schema.define(:version => 20101019033152) do
     t.integer  "partner_id"
   end
 
+  add_index "transactions", ["id", "type"], :name => "index_transactions_on_id_and_type"
+  add_index "transactions", ["partner_id"], :name => "index_transactions_on_partner_id"
   add_index "transactions", ["related_object_type", "related_object_id"], :name => "index_transactions_on_related_object_type_and_related_object_id"
   add_index "transactions", ["service_item_id"], :name => "index_transactions_on_service_item_id"
   add_index "transactions", ["user_id"], :name => "index_transactions_on_bank_account_id"
@@ -481,5 +541,8 @@ ActiveRecord::Schema.define(:version => 20101019033152) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "vouchers", ["service_item_id"], :name => "index_vouchers_on_service_item_id"
+  add_index "vouchers", ["user_id"], :name => "index_vouchers_on_user_id"
 
 end
