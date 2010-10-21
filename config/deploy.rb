@@ -1,6 +1,6 @@
 require 'capistrano/ext/multistage'
 
-set :stages, %w(staging cnc telecom)
+set :stages, %w(staging production cnc)
 set :default_stage, 'staging'
 set :repository,  "git@github.com:anatole/jobware.git"
 set :branch, ENV["BRANCH"] || "master"
@@ -25,11 +25,17 @@ namespace :deploy do
       run "cd #{release_path}; crontab #{release_path}/config/crontab/#{rails_env}"
       # run "cd #{release_path}; sudo chown hlx:www-data -R #{shared_path}/pids #{shared_path}/sphinx"
       # run "cd #{release_path}; /usr/local/rvm/gems/ree-1.8.7-2010.02/bin/rake ts:reindex RAILS_ENV=production"
+    elsif application == "production"
+      run "cd #{release_path}; bundle install"
+      run "cd #{release_path}; rake db:migrate RAILS_ENV=production"
+      run "cd #{release_path}; ./script/delayed_job reload RAILS_ENV=production"
+      run "cd #{release_path}; rake sitemap:refresh RAILS_ENV=production"
+      run "cd #{release_path}; rake ts:rebuild RAILS_ENV=production"
+      run "cd #{release_path}; crontab #{release_path}/config/crontab/#{rails_env}"
     else
       run "cd #{release_path}; bundle install"
       run "cd #{release_path}; rake db:migrate RAILS_ENV=production"
       run "cd #{release_path}; ./script/delayed_job reload RAILS_ENV=production"
-      run "cd #{release_path}; rake ts:rebuild RAILS_ENV=production"
     end
   end
 

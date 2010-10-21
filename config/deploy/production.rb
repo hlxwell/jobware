@@ -1,4 +1,4 @@
-set :application, "telecom"
+set :application, "production"
 set :deploy_to, "/home/itjob.fm/app"
 set :user, "itjob.fm"
 
