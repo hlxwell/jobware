@@ -93,7 +93,7 @@ class Company < ActiveRecord::Base
 
   def increased_views_count
     self.counters.create(:happened_at => Date.today) if self.counters.today.blank?
-    self.counters.today.last.increment!(:click)
+    self.counters.today.last.try(:increment!, :click)
 
     update_views_count
     views_count_s

@@ -40,14 +40,14 @@ WELFARE_OPTIONS = {
 
 QUESTION_OPTIONS = {
   "联系方式方面：" => {
-    "QQ" => "",
-    "Gmail/Gtalk" => "",
-    "skype" => "",
-    "twitter" => "",
-    "blog" => "",
-    "github" => "",
-    "facebook" => "",
-    "linkedin" => ""
+    "QQ号码" => "",
+    "Gmail/Gtalk帐号" => "",
+    "skype帐号" => "",
+    "twitter帐号" => "",
+    "blog地址" => "",
+    "github帐号" => "",
+    "facebook帐号" => "",
+    "linkedin帐号" => ""
   },
 
   "习惯方面：" => {
