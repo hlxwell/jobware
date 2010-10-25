@@ -8,12 +8,12 @@
     padding-bottom: 5px;
   }
 </style>
-<script type="text/javascript" src="http://www.google.com/jsapi?key=ABQIAAAAMY5fC0lJle04sP4hvWZMsRRivqsmXMu5J-9nKkLX19vNGXivNxRPoF9waCSYc27uBwUM-qoB433YCQ"></script>
+<script type="text/javascript" src="http://itjob.fm/javascripts/jsapi.js"></script>
 <script src="http://itjob.fm/javascripts/gfdynamicfeedcontrol.js" type="text/javascript"></script>
-<style type="text/css">@import url("http://www.google.com/uds/solutions/dynamicfeed/gfdynamicfeedcontrol.css");</style>
+<style type="text/css">@import url("http://itjob.fm/stylesheets/gfdynamicfeedcontrol.css");</style>
 <script type="text/javascript">
   function LoadDynamicFeedControl() {
-    var feeds = [{title: 'IT招聘网', url: <%= @rss_url %>}];
+    var feeds = [{title: 'IT招聘网', url: "<%= @rss_url %>"}];
     var options = {
       stacked : false,
       horizontal : true,
