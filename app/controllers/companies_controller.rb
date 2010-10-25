@@ -9,7 +9,7 @@ class CompaniesController < ApplicationController
   end
 
   def tag
-    @companies = Company.opened.tagged_with(params[:tag]).paginate :all, :page => params[:page], :per_page => 10
+    @companies = Company.opened.with_theme(current_theme_site).tagged_with(params[:tag]).paginate :all, :page => params[:page], :per_page => 10
     render :index
   end
 

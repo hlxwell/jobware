@@ -24,7 +24,8 @@ gem "chinese_permalink"
 gem 'ruby-graphviz', :require => 'graphviz'
 gem 'cancan'
 gem 'acts-as-taggable-on'
-gem 'delayed_job'
+gem 'daemons'
+gem 'delayed_job', :git => 'git://github.com/collectiveidea/delayed_job.git', :branch => 'master'
 gem 'inherited_resources', '1.1.2'
 gem 'sitemap_generator'
 

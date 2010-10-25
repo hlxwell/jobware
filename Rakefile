@@ -3,5 +3,10 @@
 
 require File.expand_path('../config/application', __FILE__)
 require 'rake'
+begin
+  require 'delayed/tasks'
+rescue LoadError
+  STDERR.puts "Run `rake gems:install` to install delayed_job"
+end
 
 Jobware::Application.load_tasks

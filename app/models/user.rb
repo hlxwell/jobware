@@ -42,7 +42,7 @@ class User < ActiveRecord::Base
     confirmation_sent_at = Time.now
     save(:validate => false)
     reset_perishable_token!
-    UserMailer.send_confirmation(self).deliver
+    UserMailer.delay.send_confirmation(self)
   end
 
   def confirmed?
@@ -57,12 +57,12 @@ class User < ActiveRecord::Base
     def disable_perishable_token_maintenance?
       false
     end
-    
+
     def reset_password(email)
       user = self.find_by_email(email)
       if user.present?
         user.reset_perishable_token!
-        UserMailer.reset_password(user).deliver
+        UserMailer.delay.reset_password(user)
         true
       else
         false
