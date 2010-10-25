@@ -10,5 +10,5 @@
 <%= jobware_form_for @ad, :url => company_ads_path(:type => params[:type]), :title => "发布 “#{@ad.display_type_humanize}” 广告", :html => {:multipart => true} do |f| %>
   <%= render :partial => @template, :locals => {:f => f} %>
   <%= f.hidden_field :display_type %>
-  <%= f.submit "发布", :class => "right button" %>
+  <%= f.submit "发布", :class => "right button", :disable_with => "提交中..." %>
 <% end %>

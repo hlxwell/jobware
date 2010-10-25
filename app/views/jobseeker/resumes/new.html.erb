@@ -24,7 +24,7 @@
         <%= render "form", :f => f %>
         <%= render "shared/new_user_form", :f => f if not_logged_in? %>
         <%= show_term %>
-        <%= f.submit "同意用户协议并创建简历", :class => "button right" %>
+        <%= f.submit "同意用户协议并创建简历", :class => "button right", :disable_with => "提交中..." %>
       <% end %>
     <% elsif params[:type] == "file" %>
       <%= render "file_resume_form" %>

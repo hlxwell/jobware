@@ -23,7 +23,7 @@
   <%= f.hidden_field :resume_type, :value => "file" %>
 
   <%= show_term %>
-  <%= f.submit "同意用户协议并上传简历", :class => "button right largest" %>
+  <%= f.submit "同意用户协议并上传简历", :class => "button right largest", :disable_with => "提交中..." %>
 <% end %>
 
 <%= render "cover_letter_sample" %>

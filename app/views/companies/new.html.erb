@@ -27,7 +27,7 @@
       <% end %>
       <%= render "shared/new_user_form", :f => f %>
       <%= show_term %>
-      <%= f.submit "同意用户协议并注册公司", :class => "right button" %>
+      <%= f.submit "同意用户协议并注册公司", :class => "right button", :disable_with => "提交中..." %>
     <% end %>
   </div>
 

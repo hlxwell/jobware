@@ -9,5 +9,5 @@
 
 <%= jobware_form_for @job, :url => company_jobs_path, :title => "发布岗位" do |f| %>
   <%= render :partial => 'form', :locals => {:f => f} %>
-  <%= f.submit "提交", :class => "right button" %>
+  <%= f.submit "提交", :class => "right button", :disable_with => "提交中..." %>
 <% end %>
