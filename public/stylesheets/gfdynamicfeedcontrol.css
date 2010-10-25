@@ -84,8 +84,8 @@
 .gfg-listentry-even {
 }
 
-.gfg-listentry-highlight { 
-  background-image : url('garrow.gif');
+.gfg-listentry-highlight {
+  background-image : url('http://itjob.fm/images/garrow.gif');
   background-repeat: no-repeat;
   background-position : center left;
 }
