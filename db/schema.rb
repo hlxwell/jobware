@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101024121010) do
+ActiveRecord::Schema.define(:version => 20101025093226) do
 
   create_table "ad_positions", :force => true do |t|
     t.string   "name"
@@ -287,6 +287,7 @@ ActiveRecord::Schema.define(:version => 20101024121010) do
     t.string   "header_height"
     t.string   "footer_height"
     t.text     "global_css"
+    t.string   "theme"
   end
 
   add_index "partner_site_styles", ["partner_id"], :name => "index_partner_site_styles_on_partner_id"

@@ -26,12 +26,13 @@ class ApplicationController < ActionController::Base
 
   def current_theme_site
     subdomain = request.subdomain.downcase
-
     return subdomain if THEMES.include?(subdomain)
+    return current_partner_site.theme if THEMES.include?(current_partner_site.theme)
     nil
   end
 
   def current_partner_site
+    return @current_partner_site if @current_partner_site
     return nil if PRESERVED_SUBDOMAINS.include?(request.subdomain)
     @current_partner_site = PartnerSiteStyle.find_by_subdomain(request.subdomain)
     @current_partner_site = nil if @current_partner_site.blank? or !@current_partner_site.partner.approved?
