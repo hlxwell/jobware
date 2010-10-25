@@ -11,7 +11,7 @@ class JobsController < ApplicationController
   end
 
   def tag
-    @jobs = Job.with_theme(current_theme_site).tagged_with(params[:tag]).opened.order("updated_at desc").paginate :all, :page => params[:page], :per_page => 10
+    @jobs = Job.tagged_with(params[:tag]).opened.with_theme(current_theme_site).order("updated_at desc").paginate :all, :page => params[:page], :per_page => 10
     render :index
   end
 
