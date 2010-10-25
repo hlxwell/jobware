@@ -21,6 +21,7 @@
 		<td><%= ad.start_at %> - <%= ad.end_at %></td>
 		<td style="color: <%= ad.display_state_font_color %>;"><%= ad.display_state %></td>
 		<td>
+		  <%= hidden_field_tag "ids[]", ad.id %>
 		  <% THEMES.each do |theme| %>
 		    <%= check_box_tag "ad_ids[#{ad.id}][]", theme, ad.themes.try(:split, ',').try(:include?, theme) %> <%= theme %>
 		  <% end %>

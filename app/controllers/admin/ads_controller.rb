@@ -21,10 +21,20 @@ class Admin::AdsController < Admin::ResourcesController
   end
 
   def update_themes
-    flash[:notice] = "Update successfully。"
-    params[:ad_ids].each do |ad_id, themes|
-      Ad.update_all(["themes=?", themes.uniq.join(",")], ["id=?", ad_id])
+    edited_ids = params[:ad_ids].try(:keys) ||[]
+    non_themes_ids = params[:ids] - edited_ids
+
+    if params[:ad_ids]
+      params[:ad_ids].each do |ad_id, themes|
+        Ad.update_all(["themes=?", themes.uniq.join(",")], ["id=?", ad_id])
+      end
+
+      flash[:notice] = "Update successfully。"
     end
+
+    # clean cancelled themes
+    Ad.update_all(["themes=?", ""], ["id in (?)", non_themes_ids])
+
     redirect_to :action => :theme, :page => params[:page]
   end
 end

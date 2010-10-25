@@ -21,10 +21,19 @@ class Admin::JobsController < Admin::ResourcesController
   end
 
   def update_themes
-    flash[:notice] = "Update successfully。"
-    params[:job_ids].each do |job_id, themes|
-      Job.update_all(["themes=?", themes.uniq.join(",")], ["id=?", job_id])
+    edited_ids = params[:job_ids].try(:keys) ||[]
+    non_themes_ids = params[:ids] - edited_ids
+
+    if params[:job_ids]
+      flash[:notice] = "Update successfully。"
+      params[:job_ids].each do |job_id, themes|
+        Job.update_all(["themes=?", themes.uniq.join(",")], ["id=?", job_id])
+      end
     end
+
+    # clean cancelled themes
+    Job.update_all(["themes=?", ""], ["id in (?)", non_themes_ids])
+
     redirect_to :action => :theme, :page => params[:page]
   end
 end

@@ -17,6 +17,8 @@
 		<td><%= job.start_at.try(:to_s_short_date) %> - <%= job.end_at.try(:to_s_short_date) %></td>
 		<td style="color: <%= job.state_font_color %>"><%= job.state_s %></td>
 		<td>
+		  <%= hidden_field_tag "ids[]", job.id %>
+
 		  <% THEMES.each do |theme| %>
 		    <%= check_box_tag "job_ids[#{job.id}][]", theme, job.themes.try(:split, ',').try(:include?, theme) %> <%= theme %>
 		  <% end %>

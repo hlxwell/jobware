@@ -5,10 +5,19 @@ class Admin::CompaniesController < Admin::ResourcesController
   end
 
   def update_themes
-    flash[:notice] = "Update successfully。"
-    params[:company_ids].each do |company_id, themes|
-      Company.update_all(["themes=?", themes.uniq.join(",")], ["id=?", company_id])
+    edited_ids = params[:company_ids].try(:keys) ||[]
+    non_themes_ids = params[:ids] - edited_ids
+
+    if params[:company_ids]
+      flash[:notice] = "Update successfully。"
+      params[:company_ids].each do |company_id, themes|
+        Company.update_all(["themes=?", themes.uniq.join(",")], ["id=?", company_id])
+      end
     end
+
+    # clean cancelled themes
+    Company.update_all(["themes=?", ""], ["id in (?)", non_themes_ids])
+
     redirect_to :action => :theme, :page => params[:page]
   end
 end

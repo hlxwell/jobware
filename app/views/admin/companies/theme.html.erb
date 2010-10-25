@@ -13,6 +13,8 @@
 	  <td><%= link_to company.name, "/admin/companies/edit/#{company.id}" %></td>
 		<td><%= company.location %></td>
 		<td>
+		  <%= hidden_field_tag "ids[]", company.id %>
+
 		  <% THEMES.each do |theme| %>
 		    <%= check_box_tag "company_ids[#{company.id}][]", theme, company.themes.try(:split, ',').try(:include?, theme) %> <%= theme %>
 		  <% end %>
