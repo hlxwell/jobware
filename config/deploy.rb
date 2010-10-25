@@ -33,10 +33,11 @@ namespace :deploy do
       run "cd #{release_path}; cp #{shared_path}/sphinx/xdict #{release_path}/config/"
       run "cd #{release_path}; rake ts:rebuild RAILS_ENV=production"
       run "cd #{release_path}; crontab #{release_path}/config/crontab/#{rails_env}"
+      run "cd #{release_path}; ./script/delayed_job restart RAILS_ENV=production"
     else
       run "cd #{release_path}; bundle install"
       run "cd #{release_path}; rake db:migrate RAILS_ENV=production"
-      run "cd #{release_path}; ./script/delayed_job reload RAILS_ENV=production"
+      run "cd #{release_path}; ./script/delayed_job restart RAILS_ENV=production"
     end
   end
 
