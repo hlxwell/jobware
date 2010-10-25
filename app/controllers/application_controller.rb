@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
   def current_theme_site
     subdomain = request.subdomain.downcase
     return subdomain if THEMES.include?(subdomain)
-    return current_partner_site.theme if THEMES.include?(current_partner_site.theme)
+    return current_partner_site.try(:theme) if THEMES.include?(current_partner_site.try(:theme))
     nil
   end
 
