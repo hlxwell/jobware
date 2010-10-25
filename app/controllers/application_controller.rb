@@ -4,9 +4,9 @@ class ApplicationController < ActionController::Base
 
   # before_filter :http_auth
   before_filter :set_locale, :current_partner_site
-  helper_method :current_user_type, :current_user_section, :show_error_message_for, :current_partner_site, :current_layout
+  helper_method :current_user_type, :current_user_section, :show_error_message_for, :current_partner_site, :current_layout, :current_theme_site
 
-  layout :partner_site_or_main_site
+  layout :current_layout
 
   # go login page if access denied.
   rescue_from CanCan::AccessDenied do |exception|
@@ -15,11 +15,20 @@ class ApplicationController < ActionController::Base
   end
 
   def current_layout
-    if current_partner_site.present?
+    if request.subdomain == 'rails'
+      "layouts/themes/rails"
+    elsif current_partner_site.present?
       "layouts/partner_site"
     else
       "layouts/application"
     end
+  end
+
+  def current_theme_site
+    subdomain = request.subdomain.downcase
+
+    return subdomain if THEMES.include?(subdomain)
+    nil
   end
 
   def current_partner_site
@@ -31,10 +40,6 @@ class ApplicationController < ActionController::Base
 
   def current_partner
      @current_partner_site.try(:partner)
-  end
-
-  def partner_site_or_main_site
-    @current_partner_site.present? ? "partner_site" : "application"
   end
 
   def set_locale

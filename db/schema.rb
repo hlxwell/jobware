@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101021035439) do
+ActiveRecord::Schema.define(:version => 20101024121010) do
 
   create_table "ad_positions", :force => true do |t|
     t.string   "name"
@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(:version => 20101021035439) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.string   "themes"
   end
 
   add_index "ads", ["company_id"], :name => "index_ads_on_company_id"
@@ -156,6 +157,7 @@ ActiveRecord::Schema.define(:version => 20101021035439) do
     t.integer  "partner_id"
     t.string   "permalink"
     t.boolean  "open_contact",      :default => false
+    t.string   "themes"
   end
 
   add_index "companies", ["partner_id"], :name => "index_companies_on_partner_id"
@@ -244,6 +246,7 @@ ActiveRecord::Schema.define(:version => 20101021035439) do
     t.integer  "degree_requirement",           :default => 0
     t.integer  "working_year_requirement",     :default => 0
     t.integer  "keep_top",                     :default => 0
+    t.string   "themes"
   end
 
   add_index "jobs", ["company_id"], :name => "index_jobs_on_company_id"
@@ -467,6 +470,21 @@ ActiveRecord::Schema.define(:version => 20101021035439) do
 
   create_table "tags", :force => true do |t|
     t.string "name"
+  end
+
+  create_table "theme_site_resources", :force => true do |t|
+    t.integer  "theme_site_id"
+    t.integer  "resource_id"
+    t.string   "resource_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "theme_sites", :force => true do |t|
+    t.string   "name"
+    t.string   "subdomain"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "titled_images", :force => true do |t|

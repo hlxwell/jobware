@@ -46,9 +46,6 @@ class Ad < ActiveRecord::Base
 
   has_enumeration_for :display_type, :with => AdPositionType
 
-  belongs_to :company
-  has_one :user, :through => :company
-
   has_attached_file :image, :styles => {
     :slideshow => "510x250#",
     :slideshow_small => "510x250#",
@@ -61,6 +58,7 @@ class Ad < ActiveRecord::Base
   scope :famous_companies, where(:display_type => AdPositionType::FAMOUS_COMPANY)
   scope :featured_companies, where(:display_type => AdPositionType::FEATURED_COMPANY)
   scope :opened, where("? BETWEEN start_at AND end_at AND state=?", Date.today, :opened)
+  scope :with_theme, lambda {|theme| where(["themes LIKE ?", "%#{theme}%"]) }
 
   state_machine :initial => :unapproved do
     after_transition :on => :want_to_show do |ad|
@@ -105,6 +103,9 @@ class Ad < ActiveRecord::Base
       transition :rejected => :approving
     end
   end
+
+  belongs_to :company
+  has_one :user, :through => :company
 
   validates_presence_of :display_type, :period
   validates_presence_of :name, :province, :city, :url, :if => Proc.new { |ad| ad.display_type == AdPositionType::URGENT_JOB }

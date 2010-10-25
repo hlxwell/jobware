@@ -15,4 +15,16 @@ class Admin::AdsController < Admin::ResourcesController
       redirect_to :back, :notice => "拒绝审核出错。"
     end
   end
+
+  def theme
+    @ads = Ad.paginate :all, :page => params[:page], :per_page => 20
+  end
+
+  def update_themes
+    flash[:notice] = "Update successfully。"
+    params[:ad_ids].each do |ad_id, themes|
+      Ad.update_all(["themes=?", themes.uniq.join(",")], ["id=?", ad_id])
+    end
+    redirect_to :action => :theme, :page => params[:page]
+  end
 end

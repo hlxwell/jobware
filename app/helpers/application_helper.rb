@@ -3,7 +3,7 @@ module ApplicationHelper
   include UrlHelper
 
   def urgent_job_groups(group_size = 7)
-    @urgent_jobs = Ad.urgent_jobs.opened
+    @urgent_jobs = Ad.urgent_jobs.opened.with_theme(current_theme_site)
     @urgent_jobs.in_groups_of(group_size)
   end
 

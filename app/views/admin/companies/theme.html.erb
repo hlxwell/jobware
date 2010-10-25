@@ -1,0 +1,24 @@
+<%= raw render_message %>
+
+<%= form_tag("/admin/companies/update_themes") %>
+<input type='hidden' name="page" value="<%= params[:page]||1 %>" />
+<table class="data-table">
+	<tr>
+	  <th>公司名</th>
+		<th>所在省市</th>
+		<th>所属主题</th>
+	</tr>
+	<% @companies.each do |company| %>
+	<tr class="even">
+	  <td><%= link_to company.name, "/admin/companies/edit/#{company.id}" %></td>
+		<td><%= company.location %></td>
+		<td>
+		  <% THEMES.each do |theme| %>
+		    <%= check_box_tag "company_ids[#{company.id}][]", theme, company.themes.try(:split, ',').try(:include?, theme) %> <%= theme %>
+		  <% end %>
+		</td>
+	</tr>
+  <% end %>
+  <tr><td colspan="5" align="right"><%= will_paginate @companies %> <%= submit_tag "更新" %></td></tr>
+</table>
+</form>

@@ -15,4 +15,16 @@ class Admin::JobsController < Admin::ResourcesController
       redirect_to :back, :notice => "拒绝审核出错。"
     end
   end
+
+  def theme
+    @jobs = Job.paginate :all, :page => params[:page], :per_page => 20
+  end
+
+  def update_themes
+    flash[:notice] = "Update successfully。"
+    params[:job_ids].each do |job_id, themes|
+      Job.update_all(["themes=?", themes.uniq.join(",")], ["id=?", job_id])
+    end
+    redirect_to :action => :theme, :page => params[:page]
+  end
 end

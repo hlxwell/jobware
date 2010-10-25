@@ -28,7 +28,7 @@ class Admin::PartnersController < Admin::ResourcesController
     end
     redirect_to :back
   end
-  
+
   def withdraw
     amount = params.get(:commission, :amount)
     money_to = params.get(:commission, :money_to)

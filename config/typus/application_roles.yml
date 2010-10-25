@@ -5,9 +5,9 @@
 admin:
   User: create, read, update, delete, login, confirm
   Certification: create, read, update, delete
-  Company: create, read, update, delete
+  Company: create, read, update, delete, theme, update_themes
   CoverLetter: create, read, update, delete
-  Job: create, read, update, delete, approve, reject
+  Job: create, read, update, delete, approve, reject, theme, update_themes
   JobApplication: create, read, update, delete
   Language: create, read, update, delete
   Partner: create, read, update, delete, approve, reject, send_commission, withdraw
@@ -19,7 +19,7 @@ admin:
   School: create, read, update, delete
   Skill: create, read, update, delete
   StarredJob: create, read, update, delete
-  Ad: create, read, update, delete, approve, reject
+  Ad: create, read, update, delete, approve, reject, theme, update_themes
   Counter: create, read, update, delete
   Service: create, read, update, delete
   ServiceItem: create, read, update, delete

@@ -1,4 +1,4 @@
-<% ads = Ad.slider_ads.opened %>
+<% ads = Ad.slider_ads.with_theme(current_theme_site).opened %>
 
 <% show_no_record(ads) do %>
   <div id="slider-center">

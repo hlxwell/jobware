@@ -1,6 +1,6 @@
 <div class="section-title">推荐企业</div>
 <div class="section-content text-center">
-  <% Company.all.each do |company| %>
+  <% Company.all.with_theme(current_theme_site).each do |company| %>
     <%= link_to image_tag(company.logo.url, :class => "bordered small_bottom_margin small_right_margin with_tooltip bottom_ad_logo", :style => "width: 174px", :title => company.name), company %>
   <% end %>
 </div>

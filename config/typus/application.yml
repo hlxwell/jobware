@@ -14,8 +14,8 @@ Certification:
 
 Company:
   fields:
-    default: user_id, name, size, province, city, address, homepage, contact_name, phone_number, logo_file_name, user
-    form: user_id, name, size, province, city, address, homepage, contact_name, phone_number, desc, logo, user
+    default: user_id, name, size, province, city, address, homepage, contact_name, phone_number, logo_file_name, user, themes
+    form: user_id, name, size, province, city, address, homepage, contact_name, phone_number, desc, logo, user, themes
   order_by:
   relationships: job_applications, jobs, presentations, products, resumes, user
   filters:
@@ -34,8 +34,8 @@ CoverLetter:
 
 Job:
   fields:
-    default: name, location, category_humanize, salary_range_humanize, highlighted, start_at, end_at, company, state_s, source, keep_top
-    form: name, location_province, location_city, category, vacancy, content, requirement, welfare, desc, salary_range, highlighted, start_at, end_at, tag_list, company, source, state, keep_top
+    default: name, location, category_humanize, salary_range_humanize, highlighted, start_at, end_at, company, state_s, source, keep_top, themes
+    form: name, location_province, location_city, category, vacancy, content, requirement, welfare, desc, salary_range, highlighted, start_at, end_at, tag_list, company, source, state, keep_top, themes
     options:
       selectors: state
   order_by:
@@ -168,8 +168,8 @@ User:
 
 Ad:
   fields:
-    default: position, name, company, display_type_humanize, state, start_at, end_at
-    form: position, name, desc, display_type, url, state, start_at, end_at, company, image, province, city, period
+    default: position, name, company, display_type_humanize, state, start_at, end_at, themes
+    form: position, name, desc, display_type, url, state, start_at, end_at, company, image, province, city, period, themes
     options:
       selectors: display_type, state
       templates:

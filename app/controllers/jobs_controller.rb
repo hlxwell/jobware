@@ -3,7 +3,7 @@ class JobsController < ApplicationController
   before_filter :get_job_by_id, :only => [:show, :star]
 
   def index
-    @jobs = Job.opened.order("keep_top desc, updated_at desc").paginate :all, :page => params[:page], :per_page => 10
+    @jobs = Job.opened.with_theme(current_theme_site).order("keep_top desc, updated_at desc").paginate :all, :page => params[:page], :per_page => 10
     respond_to do |format|
       format.html
       format.atom
@@ -16,7 +16,6 @@ class JobsController < ApplicationController
   end
 
   def show
-    # @company = @job.company
     @starred_job = current_user.try(:jobseeker).present? ? current_user.jobseeker.starred_jobs.where(:job_id => params[:id]).first : nil
     render :layout => "company_home_page"
   end
@@ -34,7 +33,7 @@ class JobsController < ApplicationController
   def search
     @keywords = params[:search][:keywords]
 
-    @jobs = Job.opened.search(params[:search][:keywords],
+    @jobs = Job.opened.with_theme(current_theme_site).search(params[:search][:keywords],
     :page => params[:page],
     :rank_mode  => :wordcount,
     :sort_mode  => :extended,
