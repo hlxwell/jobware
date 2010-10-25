@@ -220,11 +220,11 @@
 }
 
 .gfg-collapse-open {
-  background-image : url('arrow_open.gif');
+  background-image : url('http://itjob.fm/images/arrow_open.gif');
 }
 
 .gfg-collapse-closed {
-  background-image : url('arrow_close.gif');
+  background-image : url('http://itjob.fm/images/arrow_close.gif');
 }
 
 .gfg-collapse-href {
