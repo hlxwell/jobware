@@ -1,6 +1,6 @@
 <%= render "shared/ads/right_side/urgent_jobs", :locals => { :urgent_jobs => urgent_jobs = urgent_job_groups(8) } %>
 
-<% if urgent_jobs.size >=8 %>
+<% if urgent_jobs.size > 1 %>
 <style>
   #slider { height:248px;overflow:hidden;}
 </style>
