@@ -52,7 +52,7 @@
 			var ts = s-1;
 			var t = 0;
 			var vertical = (options.orientation == 'vertical');
-			$("ul", obj).css('width',s*w);
+      // $("ul", obj).css('width',s*w);
 			if(!vertical) $("li", obj).css('float','left');
 			if(options.pager_put_at == '') {
 			  $(obj).after('<span id="'+ options.prevId +'"><a href=\"javascript:void(0);\">'+ options.prevText +'</a></span> <span id="'+ options.nextId +'"><a href=\"javascript:void(0);\">'+ options.nextText +'</a></span>');

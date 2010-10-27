@@ -60,6 +60,7 @@ Jobware::Application.routes.draw do
 
     collection do
       post :search
+      get :search
     end
     resources :job_applications
   end

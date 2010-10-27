@@ -16,6 +16,7 @@ namespace :deploy do
   task :init_project do
     run "cd #{release_path}; cp #{shared_path}/config/database.yml #{release_path}/config/database.yml"
     run "cd #{release_path}; ln -s #{shared_path}/sphinx #{release_path}/db/sphinx"
+    run "cd #{release_path}; ln -s #{shared_path}/ckeditor_assets #{release_path}/public"
 
     if application == "cnc"
       run "cd #{release_path}; /usr/local/rvm/gems/ree-1.8.7-2010.02/bin/bundle install"

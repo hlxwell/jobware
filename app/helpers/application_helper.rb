@@ -35,7 +35,7 @@ module ApplicationHelper
   def show_tag_list tags, path
     result = ""
     tags.each do |tag|
-      result += "<span class='tag'>#{link_to(tag, "#{path}?tag=#{tag}")}</span>"
+      result += "<span class='tag'>#{link_to(tag, "#{path}?keyword=#{tag}")}</span>"
     end
     raw result
   end
