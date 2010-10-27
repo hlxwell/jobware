@@ -1,4 +1,4 @@
-<% companies = Company.opened.with_theme(current_theme_site).all %>
+<% companies = Company.opened.with_theme(current_theme_site).limit(12).all %>
 <div class="section network-section w318 right">
 	<div class="section-title">最新企业</div>
 	<div class="section-content">

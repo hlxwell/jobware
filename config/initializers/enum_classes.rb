@@ -123,14 +123,43 @@ end
 
 class JobCategory < EnumerateIt::Base
   associate_values(
-    :designer   => [1, 'UI设计师'],
-    :programmer => [2, '程序开发'],
-    :dba        => [3, '数据库管理'],
-    :sa         => [4, '系统管理'],
-    :game       => [5, '游戏开发'],
-    :test       => [6, '测试工程师']
+    :designer        => [1, '美工设计'],
+    :programmer      => [2, '软件开发'],
+    :dba             => [3, 'DBA/数据库管理'],
+    :sa              => [4, '系统管理'],
+    :game            => [5, '游戏开发'],
+    :test            => [6, '软件测试'],
+    :architect       => [7, '系统架构'],
+    :network_manager => [8, '网络管理'],
+    :security        => [9, "信息安全"],
+    :embeded         => [10, "嵌入式开发"],
+    :requirement     => [11, "需求分析"],
+    :telecom         => [12,"通信工程"]
   )
 end
+
+class CompanyIndustry < EnumerateIt::Base
+  associate_values(
+    :a => [1, '软件开发商'],
+    :b => [2, '计算机硬件'],
+    :c => [3, '互联网'],
+    :d => [4, '游戏开发'],
+    :e => [5, '移动开发'],
+    :f => [6, '电子'],
+    :g => [7, '网络通信'],
+    :h => [8, '电信'],
+    :i => [9, '金融'],
+    :j => [10, '政府'],
+    :k => [11, '交通'],
+    :l => [12, '医疗'],
+    :m => [13, '贸易'],
+    :n => [14, '教育'],
+    :o => [15, '媒体'],
+    :p => [16, '能源'],
+    :other => [99, '其他']
+  )
+end
+
 
 class SiteSize < EnumerateIt::Base
   associate_values(
@@ -146,5 +175,15 @@ class WorkingState < EnumerateIt::Base
     :working    => [1, '在职'],
     :no_job     => [2, '失业中'],
     :freelancer => [3, '自由职业']
+  )
+end
+
+class TimeLimit < EnumerateIt::Base
+  associate_values(
+    :today        => [1, "今天"],
+    :three_days   => [3, "三日内"],
+    :one_week     => [7, "一周内"],
+    :one_month    => [30, "一月内"],
+    :three_months => [90, "三月内"]
   )
 end

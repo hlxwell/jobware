@@ -51,7 +51,7 @@ class Company < ActiveRecord::Base
   accepts_nested_attributes_for :user, :jobs, :products, :presentations, :allow_destroy => true
 
   validates_uniqueness_of :name
-  validates_presence_of :name, :company_type, :size, :address, :contact_name, :province, :city, :desc  # phone_number
+  validates_presence_of :name, :industry, :company_type, :size, :address, :contact_name, :province, :city, :desc  # phone_number
   validate :check_tag
   validate :check_logo
 

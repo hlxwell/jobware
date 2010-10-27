@@ -1,22 +1,29 @@
 <fieldset>
-  <legend>关键字</legend>
-  <% tag_cloud(Job.tag_counts_on(:tags), %w(css1 css2 css3 css4 css5 css6)) do |tag, css_class| %>
-    <%= link_to tag.name, "/jobs/tag?tag=#{CGI::escape(tag.name)}", :class => css_class %>
-  <% end %>
-
-  <!-- <div class="middle_bottom_margin">
-    <b>地区：</b> 北京, 上海, 杭州, 广州, 深圳, 青岛, 南京, 合肥, 珠海,  南宁, 武汉, 长沙, 南昌, 成都, 大连, 宁波
-  </div>
-  <div class="middle_bottom_margin">
-    <b>编程语言：</b> java, JSP, ASP, ASP.NET, c, c++, PHP, c#, VB, Python, Perl, Objective-C, Javascript, Delphi, Ruby, SQL, ActionScript, Flash, 游戏
-  </div>
-  <div class="middle_bottom_margin">
-    <b>工具：</b> Linux, Unix, Macosx, MYSQL, SQL SERVER, ORACLE, iPhone, iPad
-  </div>
-  <div class="middle_bottom_margin">
-    <b>类型：</b> 前端工程师, 架构师, 项目经理, 技术主管, 技术总监, 测试工程师, QA, 数据库管理员, 系统管理员, 网络管理员
-  </div>
-  <div class="middle_bottom_margin">
-    <b>行业：</b> 游戏, 金融, 通信, 搜索引擎, 培训教育, 互联网, 媒体出版, 政府机关, 电子商务, 电信增值, 软件开发
-  </div> -->
+  <legend>过滤器</legend>
+  <table class="filter">
+    <tr>
+      <th width="30">地区</th>
+      <td>全部 北京, 上海, 杭州, 广州, 深圳, 青岛, 南京, 合肥, 珠海,  南宁, 武汉, 长沙, 南昌, 成都, 大连, 宁波</td>
+    </tr>
+    <tr>
+      <th width="30">工具</th>
+      <td>全部 java, JSP, ASP, .NET, c, c++, PHP, Python, cocoa, Objective-C, Javascript, Delphi, Ruby, ActionScript, Flash, Flex, VB, Linux, Unix, Macosx, MYSQL, SQL SERVER, ORACLE, iPhone, iPad</td>
+    </tr>
+    <tr>
+      <th width="30">类型</th>
+      <td>全部 前端工程师, 架构师, 项目经理, 技术主管, 技术总监, 测试工程师, QA, 数据库管理员, 系统管理员, 网络管理员</td>
+    </tr>
+    <tr>
+      <th width="30">行业</th>
+      <td>全部 游戏, 金融, 通信, 搜索引擎, 培训教育, 互联网, 媒体出版, 政府机关, 电子商务, 电信增值, 软件开发</td>
+    </tr>
+    <tr>
+      <th width="30">工资</th>
+      <td>全部 2000以下, 2000-3000, 3000-5000, 5000-7000, 7000-9000, 6000-10000, 8000-15000, 10000-20000, 20000以上</td>
+    </tr>
+    <tr>
+      <th width="30">时间</th>
+      <td>全部 三天内, 一周内, 一个月内, 三个月内</td>
+    </tr>
+  </table>
 </fieldset>

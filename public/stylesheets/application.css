@@ -727,7 +727,7 @@ Misc overriding classes
 /* search box */
 .search-box {
   float: right;
-  width:382px;
+  width:450px;
   padding-top: .8em;
 }
 
@@ -740,7 +740,7 @@ Misc overriding classes
 }
 
 .search-box form#search_form input#search_term {
-  margin: 7px 0px 0px 0px;
+  margin: 7px 5px 0px 0px;
   font-size: 1.5em;
   padding: 3px 5px 3px 20px;
   background: url(/images/icon-search.png) 5px 8px no-repeat #fff;
@@ -1296,4 +1296,15 @@ ul#tabnav li.highlighted a {
 .highlighted_job h3 a {
   color: black;
   font-weight: bold;
+}
+
+table.filter th {
+  font-weight: bold;
+  padding: 5px 0 0 0;
+  vertical-align: top;
+}
+
+table.filter td {
+  padding: 5px 0 0 5px;
+  vertical-align: top;
 }

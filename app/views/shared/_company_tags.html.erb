@@ -1,6 +1,21 @@
 <fieldset>
-  <legend>公司标签</legend>
-  <% tag_cloud(Company.tag_counts_on(:tags), %w(css1 css2 css3 css4 css5 css6)) do |tag, css_class| %>
-    <%= link_to tag.name, "/companies/tag?tag=#{CGI::escape(tag.name)}", :class => css_class %>
-  <% end %>
+  <legend>过滤器</legend>
+  <table class="filter">
+    <tr>
+      <th width="30">地区</th>
+      <td>全部 北京, 上海, 杭州, 广州, 深圳, 青岛, 南京, 合肥, 珠海,  南宁, 武汉, 长沙, 南昌, 成都, 大连, 宁波</td>
+    </tr>
+    <tr>
+      <th width="30">规模</th>
+      <td>全部 小型1-50人, 中型50-100人, 大型100-500人, 超大型500人以上</td>
+    </tr>
+    <tr>
+      <th width="30">类型</th>
+      <td>全部 外企, 国企, 私营, 合资, 其他</td>
+    </tr>
+    <tr>
+      <th width="30">行业</th>
+      <td>全部 游戏, 金融, 通信, 搜索引擎, 培训教育, 互联网, 媒体出版, 政府机关, 电子商务, 电信增值, 软件开发</td>
+    </tr>
+  </table>
 </fieldset>

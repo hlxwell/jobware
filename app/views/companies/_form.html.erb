@@ -2,6 +2,8 @@
 <%= f.text_field :name, :label => "公司名", :class => "text w620" %>
 <%= f.select :company_type, CompanyType.to_sorted_a, {:include_blank => true}, {:label => "性质"} %>
 <%= f.select :size, CompanySize.to_sorted_a, {:include_blank => true}, {:label => "规模"} %>
+<%= f.select :industry, CompanyIndustry.to_sorted_a, {:include_blank => true}, {:label => "行业"} %>
+
 <%= f.city_select :province, :city, :label => "所在地" %>
 <%= f.text_field :address, :label => "地址", :class => "text w620" %>
 <%= f.text_field :homepage, :label => "网址", :class => "text w620" %>
