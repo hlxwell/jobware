@@ -1,3 +1,5 @@
+<% @urgent_job_groups = urgent_jobs || urgent_job_groups %>
+<% if @urgent_job_groups.size > 7 %>
 <style type="text/css">
   #slider { height:217px; }
 </style>
@@ -6,6 +8,7 @@
   #slider { height:220px; }
 </style>
 <![endif]-->
+<% end %>
 
 <div id='urgent_jobs' class="section network-section" style="margin-bottom: 0px;">
 	<div class="section-title">
@@ -17,9 +20,7 @@
 	<div id="slider" class="section-content">
   		<ul class="plain-list">
         <!-- new li -->
-  		  <% @urgent_job_groups = urgent_jobs || urgent_job_groups
-
-    	    show_no_record(@urgent_job_groups.flatten) do %>
+  		  <% show_no_record(@urgent_job_groups.flatten) do %>
           <% @urgent_job_groups.each_with_index do |group, index| %>
   		  <li>
           <!-- job list -->

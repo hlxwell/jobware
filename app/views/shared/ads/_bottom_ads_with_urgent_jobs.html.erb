@@ -1,14 +1,20 @@
-<%= render "shared/ads/right_side/urgent_jobs", :locals => { :urgent_jobs => urgent_job_groups(8) } %>
+<%= render "shared/ads/right_side/urgent_jobs", :locals => { :urgent_jobs => urgent_jobs = urgent_job_groups(8) } %>
+
+<% if urgent_jobs.size >=8 %>
 <style>
   #slider { height:248px;overflow:hidden;}
-  #urgent_jobs { width: 250px; float: left;}
-  div.fix_height { width: 230px; }
 </style>
 <!--[if IE]>
 <style type="text/css">
   #slider { height:251px; }
 </style>
 <![endif]-->
+<% end %>
+
+<style>
+  #urgent_jobs { width: 250px; float: left;}
+  div.fix_height { width: 230px; }
+</style>
 
 <div class="section network-section right" style="width: 700px">
 	<div class="section-title">推荐企业</div>

@@ -725,20 +725,34 @@ Misc overriding classes
 * html #sub-nav, * html .section-title, * html .main {height: 0.01%; min-height: 0.01%;}
 
 /* search box */
-.search-box form#search_form input#search_term {
+.search-box {
   float: right;
-  margin: 7px 5px 0px 0px;
+  width:382px;
+  padding-top: .8em;
+}
+
+.search-box td {
+  padding-right: 0px;
+}
+
+.search-box .keyword {
+  margin-right: 3px;
+}
+
+.search-box form#search_form input#search_term {
+  margin: 7px 0px 0px 0px;
   font-size: 1.5em;
   padding: 3px 5px 3px 20px;
   background: url(/images/icon-search.png) 5px 8px no-repeat #fff;
   cursor: auto;
-  width: 400px;
+  line-height:21px;
+  width: 300px;
   color: gray;
 }
 
 .search-box form#search_form input.button {
   float: right;
-  margin: 7px 5px 0px 0px;
+  margin: 7px 0px 0px 0px;
   font-size: 1.5em;
   height: 29px;
   line-height:29px;

@@ -4,10 +4,19 @@
 	  <%= link_to image_tag("/images/logo/it-job-logo.jpg", :alt => "专注于程序员招聘求职 - ITJob.fm"), "/" %>
 	</div>
 
-	<div class="right">
-	  <%#= auto_discovery_link_tag(:atom, "/jobs.atom") %>
-	  <%#= link_to image_tag("/images/rss.png", :style => "margin-top: 1.3em"), "http://feed.feedsky.com/ITJobFM", :target => "_blank" %>
-	</div>
+  <div class="search-box">
+    <%= form_for :search, :url => search_jobs_path, :html => {:id => "search_form"} do |f| %>
+      <%= f.submit "搜索", :class => "button right" %>
+      <%= f.text_field :keywords, :title => "请输入关键字：如JAVA，北京，微软", :class => "text tipped", :id => "search_term" %>
+    <% end %>
+
+    <div class="small_top_margin">
+      热门关键字：
+      <% %w{rails php java python flash 杭州 广州 上海}.each do |keyword| %>
+        <%= link_to keyword, search_jobs_path(:keyword => keyword), :class => "keyword" %>
+      <% end %>
+    </div>
+  </div>
 
 	<div class="clearer">&nbsp;</div>
 
@@ -21,11 +30,12 @@
         <%= n.item "发布工作", :link => new_company_path %>
       <% end %>
 
-      <div class="search-box">
-        <%= form_for :search, :url => search_jobs_path, :html => {:id => "search_form"} do |f| %>
-          <%= f.submit "搜索", :class => "button right" %>
-          <%= f.text_field :keywords, :title => "请输入关键字：如JAVA，北京，微软", :class => "text tipped", :id => "search_term" %>
-        <% end %>
+      <div class="right">
+        <%#= auto_discovery_link_tag(:atom, "/jobs.atom") %>
+    	  <%#= link_to image_tag("/images/rss.png", :style => "margin-top: 1.3em"), "http://feed.feedsky.com/ITJobFM", :target => "_blank" %>
+
+        <link title="RSS 2.0" type="application/rss+xml" href="http://feed.itjob.fm" rel="alternate" />
+        <a href="http://feed.itjob.fm" target="_blank"><img border="0" src="http://img.feedsky.com/images/icon_sub_c1s17_d.gif" alt="feedsky" vspace="2" style="margin-top: 0.2em;" ></a>
       </div>
 			<div class="clearer">&nbsp;</div>
 		</div>

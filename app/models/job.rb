@@ -194,7 +194,7 @@ class Job < ActiveRecord::Base
   end
 
   def atom_content
-    image = self.company.logo.size.nil? ? "" : "<a href='http://itjob.fm/companies/#{self.company.id}' target='_blank'><img src='#{self.company.logo.url(:host => 'itjob.fm')}'/></a>"
+    image = self.company.logo.size.nil? ? "" : "<a href='http://itjob.fm/companies/#{self.company.id}' target='_blank'><img src='http://itjob.fm#{self.company.logo.url}'/></a>"
     "#{image}
     <br>
       <h1><a href='http://itjob.fm/jobs/#{self.to_param}' target='_blank'>#{self.name}</a></h1><br>
