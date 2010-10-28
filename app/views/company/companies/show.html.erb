@@ -15,14 +15,16 @@
 	<div class="post-body">
 		<table class="data-table">
 			<tr>
-				<th width="15%">公司地点</th>
-				<td width="15%"><%= @company.location %></td>
-				<th width="10%">规模</th>
-				<td width="15%"><%= @company.size_humanize %></td>
-				<th width="10%">性质</th>
-				<td width="10%"><%= @company.company_type_humanize %></td>
-				<th width="10%">点击数</th>
-				<td width="10%"><%= @company.views_count_s %></td>
+				<th>公司地点</th>
+				<td><%= @company.location %></td>
+				<th>规模</th>
+				<td><%= @company.size_humanize %></td>
+				<th>性质</th>
+				<td><%= @company.company_type_humanize %></td>
+				<th>行业</th>
+				<td><%= @company.industry_humanize %></td>
+				<th>点击数</th>
+				<td><%= @company.views_count_s %></td>
 			</tr>
 		</table>
 	</div>

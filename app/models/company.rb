@@ -34,6 +34,7 @@ class Company < ActiveRecord::Base
 
   has_enumeration_for :company_type, :with => CompanyType
   has_enumeration_for :size, :with => CompanySize
+  has_enumeration_for :industry, :with => CompanyIndustry
 
   belongs_to :partner
   # has_many :starred_resumes

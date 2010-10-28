@@ -6,14 +6,16 @@
 	<div class="company_info">
 		<table class="data-table" style="margin-top: 10px;">
 			<tr class="even">
-				<th width="5%">公司地点</th>
-				<td width="10%"><%= @company.location %></td>
-				<th width="5%">规模</th>
-				<td width="10%"><%= @company.size_humanize %></td>
-				<th width="5%">性质</th>
-				<td width="10%"><%= @company.company_type_humanize %></td>
-				<th width="5%">点击数</th>
-				<td width="10%"><%= @company.increased_views_count %></td>
+				<th>公司地点</th>
+				<td><%= @company.location %></td>
+				<th>规模</th>
+				<td><%= @company.size_humanize %></td>
+				<th>性质</th>
+				<td><%= @company.company_type_humanize %></td>
+				<th>行业</th>
+				<td><%= @company.industry_humanize %></td>
+				<th>点击数</th>
+				<td><%= @company.increased_views_count %></td>
 			</tr>
 		</table>
 	</div>

@@ -219,4 +219,8 @@ class Ad < ActiveRecord::Base
   def self.check_all_jobs_availability
     all.each(&:available?)
   end
+
+  def ad_name
+    name.blank? ? company.name : name
+  end
 end

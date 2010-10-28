@@ -16,7 +16,7 @@
 	<% @ads.each do |ad| %>
 	<tr class="even">
 	  <td><%= ad.display_type_humanize %></td>
-	  <td><%= link_to (ad.name.present? ? ad.name : ad.display_type_humanize), "/admin/ads/edit/#{ad.id}" %></td>
+	  <td><%= link_to ad.ad_name, "/admin/ads/edit/#{ad.id}" %></td>
 		<td><%= ad.period %> 周</td>
 		<td><%= ad.start_at %> - <%= ad.end_at %></td>
 		<td style="color: <%= ad.display_state_font_color %>;"><%= ad.display_state %></td>

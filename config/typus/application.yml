@@ -168,7 +168,7 @@ User:
 
 Ad:
   fields:
-    default: position, name, company, display_type_humanize, state, start_at, end_at, themes
+    default: position, ad_name, company, display_type_humanize, state, start_at, end_at, themes
     form: position, name, desc, display_type, url, state, start_at, end_at, company, image, province, city, period, themes
     options:
       selectors: display_type, state
