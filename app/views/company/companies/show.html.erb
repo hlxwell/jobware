@@ -81,8 +81,11 @@
 	  <% show_no_record(@company.products) do %>
 		<table class="data-table top-vlign top-vlign-td">
 		  <% @company.products.each do |p| %>
-			<tr>
-				<th width="30%"><%= image_tag p.file.url, :class => "bordered w200" %></th>
+		  <tr>
+		    <th colspan="2"><%= p.name %></th>
+		  </tr>
+			<tr class="even">
+				<td width="30%"><%= image_tag p.file.url, :class => "bordered w200" %></td>
 				<td width="70%"><%= raw p.desc %></td>
 			</tr>
       <% end %>

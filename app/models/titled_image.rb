@@ -23,6 +23,8 @@
 # end
 
 class TitledImage < ActiveRecord::Base
+  attr_accessor :not_require_file
+
   belongs_to :parent, :polymorphic => true
 
   has_attached_file :file, :styles => {
@@ -36,4 +38,16 @@ class TitledImage < ActiveRecord::Base
   validates_attachment_content_type :file, :content_type => [%r{image/.*jpg}, %r{image/.*jpeg}, %r{image/.*gif}, %r{image/.*png}], :if => lambda {|obj| obj.file.size.present? }
   validates_attachment_size :file, :less_than => 5.megabytes, :message => "文件尺寸不得大于5M。", :if => lambda {|obj| obj.file.size.present? }
   validates_presence_of :name
+  validate :check_file
+
+  def check_file
+    return if @not_require_file
+
+    if self.file.size.blank?
+      errors.add :file, "必须上传logo。"
+    else
+      errors.add :file, "文件大小不能大于5M。" if self.file.size > 5.megabytes
+      errors.add :file, "只允许上传 jpg, gif, png。" if File.extname(self.file.original_filename) !~ /\.(jpe?g)|(gif)|(png)/i
+    end
+  end
 end
