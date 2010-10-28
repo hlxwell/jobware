@@ -6,14 +6,6 @@
   <div id="network" class="middle_bottom_margin middle_top_margin">
   	<div class="center-wrapper middle_left_padding">
   		<div class="left">
-        <!--
-        当前本站共有:
-        <span class="text-separator"></span>
-        <span class="quiet"><%#= User.count %> 个用户,</span>
-        <span class="quiet"><%#= Job.count %> 个工作,</span>
-        <span class="quiet"><%#= Company.count %> 个公司</span>
-        -->
-
         <%= render "shared/login_status" %>
   		</div>
 
@@ -42,7 +34,7 @@
         <%= n.item "发布工作", :link => new_company_path %>
       <% end %>
 
-      <div class="search-box">
+      <div class="search-box" style="padding-top: 1px">
         <%= form_for :search, :url => search_jobs_path, :html => {:id => "search_form"} do |f| %>
           <%= f.submit "搜索", :class => "button right" %>
           <%= f.text_field :keywords, :title => "请输入关键字：如JAVA，北京，微软", :class => "text tipped", :id => "search_term" %>
