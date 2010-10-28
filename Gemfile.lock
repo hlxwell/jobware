@@ -1,6 +1,6 @@
 GIT
-  remote: http://github.com/collectiveidea/delayed_job.git
-  revision: aba9905
+  remote: git://github.com/collectiveidea/delayed_job.git
+  revision: aba9905764c2a13a110a272137d1ad9798fd55e0
   branch: master
   specs:
     delayed_job (2.1.0.pre2)
@@ -8,8 +8,8 @@ GIT
       daemons
 
 GIT
-  remote: http://github.com/freelancing-god/thinking-sphinx.git
-  revision: 108a1fc
+  remote: git://github.com/freelancing-god/thinking-sphinx.git
+  revision: 108a1fce2623f392152aa1bc5e5866890556f31d
   branch: rails3
   specs:
     thinking-sphinx (2.0.0.rc2)
@@ -17,19 +17,26 @@ GIT
       riddle (>= 1.0.12)
 
 GIT
-  remote: http://github.com/galetahub/rails-ckeditor.git
-  revision: 3ccf813
+  remote: git://github.com/galetahub/rails-ckeditor.git
+  revision: 3ccf81326faea6248b01bf863137a7cc4ad9e819
   branch: rails3
   specs:
     ckeditor (3.4.2.pre)
       mime-types (>= 1.16)
 
 GIT
-  remote: http://github.com/rails/exception_notification.git
-  revision: 192a49a
+  remote: git://github.com/rails/exception_notification.git
+  revision: 192a49a02d63d28b23ed41cebadfedd490929cf1
   branch: master
   specs:
     exception_notification (1.0.0)
+
+GIT
+  remote: http://github.com/thoughtbot/pacecar.git
+  revision: beba2773b1db61943d85bd93f50f973e85ad2190
+  branch: rails3
+  specs:
+    pacecar (1.2.0)
 
 GEM
   remote: http://rubygems.org/
@@ -177,6 +184,7 @@ DEPENDENCIES
   mysql
   navigasmic
   nifty-generators
+  pacecar!
   paperclip
   rack-test
   rails (= 3.0.0)
