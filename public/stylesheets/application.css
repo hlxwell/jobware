@@ -731,10 +731,6 @@ Misc overriding classes
   padding-top: .8em;
 }
 
-.search-box td {
-  padding-right: 0px;
-}
-
 .search-box .keyword {
   margin-right: 3px;
 }
@@ -748,6 +744,7 @@ Misc overriding classes
   line-height:21px;
   width: 300px;
   color: gray;
+  float: right;
 }
 
 .search-box form#search_form input.button {

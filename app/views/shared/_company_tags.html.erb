@@ -1,21 +1,38 @@
 <fieldset>
-  <legend>过滤器</legend>
+  <legend>过滤器 （共有 <b><%= @companies.count %>个公司）</b> </legend>
   <table class="filter">
     <tr>
       <th width="30">地区</th>
-      <td>全部 北京, 上海, 杭州, 广州, 深圳, 青岛, 南京, 合肥, 珠海,  南宁, 武汉, 长沙, 南昌, 成都, 大连, 宁波</td>
+      <td>
+        <% %w{全部 北京 上海 杭州 广州 深圳 青岛 南京 合肥 珠海 南宁 武汉 长沙 南昌 成都 大连 宁波}.each do |location| %>
+          <% location_value = location == "全部" ? "" : location %>
+          <%= company_filter_link_to :location => [location, location_value] %>
+        <% end %>
+      </td>
     </tr>
     <tr>
       <th width="30">规模</th>
-      <td>全部 小型1-50人, 中型50-100人, 大型100-500人, 超大型500人以上</td>
+      <td>
+        <% CompanySize.to_sorted_a.insert(0, ["全部", ""]).each do |key, value| %>
+           <%= company_filter_link_to :size => [key, value] %>
+        <% end %>
+      </td>
     </tr>
     <tr>
       <th width="30">类型</th>
-      <td>全部 外企, 国企, 私营, 合资, 其他</td>
+      <td>
+        <% CompanyType.to_sorted_a.insert(0, ["全部", ""]).each do |key, value| %>
+           <%= company_filter_link_to :company_type => [key, value] %>
+        <% end %>
+      </td>
     </tr>
     <tr>
       <th width="30">行业</th>
-      <td>全部 游戏, 金融, 通信, 搜索引擎, 培训教育, 互联网, 媒体出版, 政府机关, 电子商务, 电信增值, 软件开发</td>
+      <td>
+        <% CompanyIndustry.to_sorted_a.insert(0, ["全部", ""]).each do |key, value| %>
+           <%= company_filter_link_to :industry => [key, value] %>
+        <% end %>
+      </td>
     </tr>
   </table>
 </fieldset>

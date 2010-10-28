@@ -56,7 +56,7 @@ class Job < ActiveRecord::Base
   scope :unapproved, where("state = ?", :unapproved)
   scope :approved, where("state in ?", [:closed, :opened])
   scope :highlighted, where(:highlighted => true)
-  scope :with_theme, lambda {|theme| where(["themes LIKE ?", "%#{theme}%"]) }
+  scope :with_theme, lambda {|theme| where(["jobs.themes LIKE ?", "%#{theme}%"]) }
 
   belongs_to :company
   belongs_to :partner

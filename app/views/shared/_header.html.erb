@@ -12,7 +12,7 @@
 		<div id="main-nav">
 		  <% semantic_navigation :main, :html => {:class => "tabbed"} do |n| %>
 		    <%= n.item '首页', :link => root_path %>
-        <%= n.item '找工作', :link => jobs_path %>
+        <%= n.item '找工作', :link => jobs_path, :highlights_on => [filter_jobs_path, search_jobs_path] %>
         <%= n.item '找公司', :link => companies_path %>
         <%= n.item "发布工作", :link => new_company_path %>
       <% end %>

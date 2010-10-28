@@ -3,9 +3,9 @@ source 'http://gems.github.com'
 source "http://gemcutter.org"
 
 gem 'rails', '3.0.0'
+
 gem 'mysql'
 gem 'nifty-generators'
-gem 'ckeditor', :git => 'git://github.com/galetahub/rails-ckeditor.git', :branch => 'rails3'
 gem 'navigasmic'
 gem 'capistrano'
 gem 'capistrano-ext'
@@ -15,23 +15,26 @@ gem 'paperclip'
 gem 'enumerate_it'
 gem 'state_machine'
 gem 'annotate-models'
-gem "exception_notification", :git => "git://github.com/rails/exception_notification.git", :branch => "master"
-gem 'thinking-sphinx', :git => 'git://github.com/freelancing-god/thinking-sphinx.git', :branch  => 'rails3', :require => 'thinking_sphinx'
 gem 'fastercsv'
 gem "chinese_permalink"
-# gem "activemerchant", :require => "active_merchant"
-# gem "activemerchant_patch_for_china"
 gem 'ruby-graphviz', :require => 'graphviz'
 gem 'cancan'
 gem 'acts-as-taggable-on'
 gem 'daemons'
-gem 'delayed_job', :git => 'git://github.com/collectiveidea/delayed_job.git', :branch => 'master'
 gem 'inherited_resources', '1.1.2'
 gem 'sitemap_generator'
 
+# gem 'qor', :git => 'https://hlxwell@github.com/anatole/qor.git'
+gem 'ckeditor', :git => 'git://github.com/galetahub/rails-ckeditor.git', :branch => 'rails3'
+gem "exception_notification", :git => "git://github.com/rails/exception_notification.git", :branch => "master"
+gem 'thinking-sphinx', :git => 'git://github.com/freelancing-god/thinking-sphinx.git', :branch  => 'rails3', :require => 'thinking_sphinx'
+gem 'delayed_job', :git => 'git://github.com/collectiveidea/delayed_job.git', :branch => 'master'
+
+# gem 'pacecar', :git => 'http://github.com/thoughtbot/pacecar.git', :branch => 'rails3'
+# gem "activemerchant", :require => "active_merchant"
+# gem "activemerchant_patch_for_china"
 # gem 'authlogic', :git => 'git://github.com/binarylogic/authlogic.git'
-# gem 'formtastic', :git => "git://github.com/justinfrench/formtastic.git", :branch => "rails3"
-# gem 'tabletastic'
+
 
 group :development do
   gem "rails3-generators"

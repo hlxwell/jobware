@@ -158,7 +158,7 @@ ActiveRecord::Schema.define(:version => 20101027063250) do
     t.string   "permalink"
     t.boolean  "open_contact",      :default => false
     t.string   "themes"
-    t.integer  "industry"
+    t.integer  "industry",          :default => 99
   end
 
   add_index "companies", ["partner_id"], :name => "index_companies_on_partner_id"

@@ -1,10 +1,10 @@
 <div class="search-box">
   <%= form_for :search, :url => search_jobs_path, :html => {:id => "search_form", :method => "get"} do |f| %>
     <%= f.submit "搜索", :class => "button right" %>
-    <%= f.text_field :keywords, :title => "请输入关键字：如JAVA，北京，微软", :class => "text tipped", :id => "search_term" %>
+    <%= f.text_field :keyword, :title => "请输入公司名，工作名，工作地点", :class => "text tipped", :id => "search_term" %>
   <% end %>
 
-  <div class="small_top_margin">
+  <div class="small_top_margin right">
     热门关键字：
     <% %w{rails php java python flash 杭州 广州 上海}.each do |keyword| %>
       <%= link_to keyword, search_jobs_path(:keyword => keyword), :class => "keyword" %>

@@ -26,9 +26,6 @@ Jobware::Application.routes.draw do
   match "/email_confirmation/(:id)" => "sessions#email_confirmation", :as => :email_confirmation
   match "/resend_confirmation" => "sessions#resend_confirmation", :as => :resend_confirmation
 
-  match "/jobs/tag" => "jobs#tag", :as => :tag_jobs
-  match "/companies/tag" => "companies#tag", :as => :tag_companies
-
   resource :user
 
   resource :sessions do
@@ -59,6 +56,7 @@ Jobware::Application.routes.draw do
     end
 
     collection do
+      get :filter
       post :search
       get :search
     end
@@ -72,6 +70,7 @@ Jobware::Application.routes.draw do
     end
 
     collection do
+      get :filter
       get :created
     end
   end

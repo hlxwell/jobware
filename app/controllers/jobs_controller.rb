@@ -10,10 +10,10 @@ class JobsController < ApplicationController
     end
   end
 
-  def tag
-    @jobs = Job.tagged_with(params[:tag]).opened.with_theme(current_theme_site).order("updated_at desc").paginate :all, :page => params[:page], :per_page => 10
-    render :index
-  end
+  # def tag
+  #   @jobs = Job.tagged_with(params[:tag]).opened.with_theme(current_theme_site).order("updated_at desc").paginate :all, :page => params[:page], :per_page => 10
+  #   render :index
+  # end
 
   def show
     @starred_job = current_user.try(:jobseeker).present? ? current_user.jobseeker.starred_jobs.where(:job_id => params[:id]).first : nil
@@ -30,10 +30,31 @@ class JobsController < ApplicationController
     end
   end
 
-  def search
-    @keywords = params[:keyword] || params[:search][:keywords]
+  def filter
+    @location     = params[:location]
+    @tool         = params[:tool]
+    @category     = params[:category]
+    @industry     = params[:industry]
+    @salary_range = params[:salary_range]
+    @dateline     = params[:dateline]
 
-    @jobs = Job.opened.with_theme(current_theme_site).search(@keywords,
+    @search_query = Job.opened.with_theme(current_theme_site).joins(:company)
+    @search_query = @search_query.where(["location_province=? or location_city=?", @location, @location]) unless @location.blank?
+    @search_query = @search_query.where(["jobs.name LIKE ?", "%#{@tool}%"]) unless @tool.blank?
+    @search_query = @search_query.where(["jobs.category=?", @category]) unless @category.blank?
+    @search_query = @search_query.where(["companies.industry=?", @industry]) unless @industry.blank?
+    @search_query = @search_query.where(["salary_range=?", @salary_range]) unless @salary_range.blank?
+    @search_query = @search_query.where(["start_at between ? and ?", @dateline.to_i.days.ago, Time.now]) unless @dateline.blank?
+
+    @jobs = @search_query.paginate :all, :page => params[:page], :per_page => 10
+    render :index
+  end
+
+
+  def search
+    @keyword      = params[:keyword] || params[:search][:keyword]
+
+    @jobs = Job.opened.with_theme(current_theme_site).search(@keyword,
     :page => params[:page],
     :rank_mode  => :wordcount,
     :sort_mode  => :extended,

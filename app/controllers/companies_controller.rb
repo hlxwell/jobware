@@ -8,8 +8,24 @@ class CompaniesController < ApplicationController
     @companies = Company.opened.with_theme(current_theme_site).paginate :all, :page => params[:page], :per_page => 10
   end
 
-  def tag
-    @companies = Company.opened.with_theme(current_theme_site).tagged_with(params[:tag]).paginate :all, :page => params[:page], :per_page => 10
+  # def tag
+  #   @companies = Company.opened.with_theme(current_theme_site).tagged_with(params[:tag]).paginate :all, :page => params[:page], :per_page => 10
+  #   render :index
+  # end
+
+  def filter
+    @location     = params[:location]
+    @size         = params[:size]
+    @company_type = params[:company_type]
+    @industry     = params[:industry]
+
+    @search_query = Company.opened.with_theme(current_theme_site)
+    @search_query = @search_query.where(["province=? or city=?", @location, @location]) unless @location.blank?
+    @search_query = @search_query.where(["size LIKE ?", "%#{@size}%"]) unless @size.blank?
+    @search_query = @search_query.where(["company_type=?", @company_type]) unless @company_type.blank?
+    @search_query = @search_query.where(["industry=?", @industry]) unless @industry.blank?
+
+    @companies = @search_query.paginate :all, :page => params[:page], :per_page => 10
     render :index
   end
 

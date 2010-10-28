@@ -1,5 +1,5 @@
 GIT
-  remote: git://github.com/collectiveidea/delayed_job.git
+  remote: http://github.com/collectiveidea/delayed_job.git
   revision: aba9905
   branch: master
   specs:
@@ -8,24 +8,24 @@ GIT
       daemons
 
 GIT
-  remote: git://github.com/freelancing-god/thinking-sphinx.git
-  revision: 644f57e
+  remote: http://github.com/freelancing-god/thinking-sphinx.git
+  revision: 108a1fc
   branch: rails3
   specs:
     thinking-sphinx (2.0.0.rc2)
-      activerecord (>= 3.0.0.rc)
+      activerecord (>= 3.0.0)
       riddle (>= 1.0.12)
 
 GIT
-  remote: git://github.com/galetahub/rails-ckeditor.git
-  revision: ffb4026
+  remote: http://github.com/galetahub/rails-ckeditor.git
+  revision: 3ccf813
   branch: rails3
   specs:
     ckeditor (3.4.2.pre)
       mime-types (>= 1.16)
 
 GIT
-  remote: git://github.com/rails/exception_notification.git
+  remote: http://github.com/rails/exception_notification.git
   revision: 192a49a
   branch: master
   specs:
@@ -33,6 +33,8 @@ GIT
 
 GEM
   remote: http://rubygems.org/
+  remote: http://gems.github.com/
+  remote: http://gemcutter.org/
   specs:
     abstract (1.0.0)
     actionmailer (3.0.0)
@@ -67,7 +69,7 @@ GEM
       activesupport (~> 3.0.0)
     awesome_print (0.2.1)
     builder (2.1.2)
-    cancan (1.3.4)
+    cancan (1.4.0)
     capistrano (2.5.19)
       highline
       net-scp (>= 1.0.0)
@@ -79,7 +81,7 @@ GEM
     chinese_permalink (1.1.3)
       sishen-rtranslate
     daemons (1.1.0)
-    enumerate_it (0.5.0)
+    enumerate_it (0.6.0)
     erubis (2.6.6)
       abstract (>= 1.0.0)
     factory_girl (1.3.2)
@@ -87,17 +89,18 @@ GEM
     fastercsv (1.5.3)
     has_scope (0.5.0)
     highline (1.6.1)
-    i18n (0.4.1)
+    i18n (0.4.2)
     inherited_resources (1.1.2)
       has_scope (~> 0.5.0)
       responders (~> 0.6.0)
     json (1.4.6)
-    mail (2.2.6.1)
+    mail (2.2.9)
       activesupport (>= 2.3.6)
-      mime-types
-      treetop (>= 1.4.5)
+      i18n (~> 0.4.1)
+      mime-types (~> 1.16)
+      treetop (~> 1.4.8)
     mime-types (1.16)
-    mocha (0.9.8)
+    mocha (0.9.9)
       rake
     mysql (2.8.1)
     navigasmic (0.4.1)
@@ -108,7 +111,7 @@ GEM
     net-ssh (2.0.23)
     net-ssh-gateway (1.0.1)
       net-ssh (>= 1.99.1)
-    nifty-generators (0.4.0)
+    nifty-generators (0.4.2)
     paperclip (2.3.3)
       activerecord
       activesupport
@@ -116,7 +119,7 @@ GEM
     rack (1.2.1)
     rack-mount (0.6.13)
       rack (>= 1.0.0)
-    rack-test (0.5.4)
+    rack-test (0.5.6)
       rack (>= 1.0)
     rails (3.0.0)
       actionmailer (= 3.0.0)
@@ -126,7 +129,7 @@ GEM
       activesupport (= 3.0.0)
       bundler (~> 1.0.0)
       railties (= 3.0.0)
-    rails3-generators (0.13.0)
+    rails3-generators (0.14.0)
     railties (3.0.0)
       actionpack (= 3.0.0)
       activesupport (= 3.0.0)
@@ -135,15 +138,15 @@ GEM
     rake (0.8.7)
     responders (0.6.2)
     riddle (1.1.0)
-    ruby-graphviz (0.9.17)
+    ruby-graphviz (0.9.18)
     shoulda (2.11.3)
     sishen-rtranslate (1.4)
       activesupport (>= 2.2.0)
       json (>= 1.1.3)
-    sitemap_generator (1.1.1)
+    sitemap_generator (1.2.3)
     state_machine (0.9.4)
     test_benchmarker (1.2.1)
-    thor (0.14.1)
+    thor (0.14.3)
     timecop (0.3.5)
     treetop (1.4.8)
       polyglot (>= 0.3.1)

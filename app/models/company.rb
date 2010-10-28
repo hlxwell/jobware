@@ -57,7 +57,7 @@ class Company < ActiveRecord::Base
 
   default_scope order("companies.created_at desc")
   scope :opened, includes(:user).where("users.confirmed_at IS NOT NULL")
-  scope :with_theme, lambda {|theme| where(["themes LIKE ?", "%#{theme}%"]) }
+  scope :with_theme, lambda {|theme| where(["companies.themes LIKE ?", "%#{theme}%"]) }
 
   ### to reprocess all image.
   # Company.all.each do |c|

@@ -2,6 +2,44 @@ module ApplicationHelper
   include GoogleVisualization
   include UrlHelper
 
+  def job_filter_link_to(options)
+    raise "no option passed to job_filter_link_to function" if options.blank?
+
+    url_hash = {
+      :location     => options[:location].try(:last) || params[:location] || "",
+      :tool         => options[:tool].try(:last) || params[:tool] || "",
+      :category     => options[:category].try(:last) || params[:category] || "",
+      :industry     => options[:industry].try(:last) || params[:industry] || "",
+      :salary_range => options[:salary_range].try(:last) || params[:salary_range] || "",
+      :dateline     => options[:dateline].try(:last) || params[:dateline] || "",
+    }
+
+    ### {:location => ["上海", "shanghai"]}
+    if params[options.keys.first].to_s == options.values.first.last.to_s
+      link_to options.values.first.first, filter_jobs_path(url_hash), :class => "black bold small_right_margin"
+    else
+      link_to options.values.first.first, filter_jobs_path(url_hash), :class => "small_right_margin"
+    end
+  end
+
+  def company_filter_link_to(options)
+    raise "no option passed to company_filter_link_to function" if options.blank?
+
+    url_hash = {
+      :location     => options[:location].try(:last) || params[:location] || "",
+      :size         => options[:size].try(:last) || params[:size] || "",
+      :company_type => options[:company_type].try(:last) || params[:company_type] || "",
+      :industry     => options[:industry].try(:last) || params[:industry] || ""
+    }
+
+    ### {:location => ["上海", "shanghai"]}
+    if params[options.keys.first].to_s == options.values.first.last.to_s
+      link_to options.values.first.first, filter_companies_path(url_hash), :class => "black bold small_right_margin"
+    else
+      link_to options.values.first.first, filter_companies_path(url_hash), :class => "small_right_margin"
+    end
+  end
+
   def urgent_job_groups(group_size = 7)
     @urgent_jobs = Ad.urgent_jobs.opened.with_theme(current_theme_site)
     @urgent_jobs.in_groups_of(group_size)

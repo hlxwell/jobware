@@ -134,7 +134,8 @@ class JobCategory < EnumerateIt::Base
     :security        => [9, "信息安全"],
     :embeded         => [10, "嵌入式开发"],
     :requirement     => [11, "需求分析"],
-    :telecom         => [12,"通信工程"]
+    :telecom         => [12, "通信工程"],
+    :other           => [99, "其他"]
   )
 end
 
@@ -178,7 +179,7 @@ class WorkingState < EnumerateIt::Base
   )
 end
 
-class TimeLimit < EnumerateIt::Base
+class DatelineRange < EnumerateIt::Base
   associate_values(
     :today        => [1, "今天"],
     :three_days   => [3, "三日内"],

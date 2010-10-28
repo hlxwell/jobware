@@ -2,7 +2,7 @@
 
   <!-- ### left main side -->
 	<div class="left" id="main-left">
-	  <%= render "shared/job_tags" if current_theme_site.nil? %>
+	  <%= render "shared/job_tags" if params[:keyword].blank? %>
 
 	  <% if @keywords %>
       <%= page_name_html("“#{@keywords}”搜索结果", :with_title => true) %>

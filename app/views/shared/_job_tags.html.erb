@@ -1,29 +1,55 @@
 <fieldset>
-  <legend>过滤器</legend>
+  <legend>过滤器 （共有 <b><%= @jobs.count %>个工作）</b> </legend>
   <table class="filter">
     <tr>
       <th width="30">地区</th>
-      <td>全部 北京, 上海, 杭州, 广州, 深圳, 青岛, 南京, 合肥, 珠海,  南宁, 武汉, 长沙, 南昌, 成都, 大连, 宁波</td>
+      <td>
+        <% %w{全部 北京 上海 杭州 广州 深圳 青岛 南京 合肥 珠海 南宁 武汉 长沙 南昌 成都 大连 宁波}.each do |location| %>
+          <% location_value = location == "全部" ? "" : location %>
+          <%= job_filter_link_to :location => [location, location_value] %>
+        <% end %>
+      </td>
     </tr>
     <tr>
       <th width="30">工具</th>
-      <td>全部 java, JSP, ASP, .NET, c, c++, PHP, Python, cocoa, Objective-C, Javascript, Delphi, Ruby, ActionScript, Flash, Flex, VB, Linux, Unix, Macosx, MYSQL, SQL SERVER, ORACLE, iPhone, iPad</td>
+      <td>
+        <% %w{全部 java JSP ASP .NET c c++ PHP Python cocoa Objective-C Javascript Delphi Rails ActionScript Flash Flex VB Linux Unix Macosx MYSQL SQL SERVER ORACLE iPhone iPad}.each do |tool| %>
+          <% tool_value = tool == "全部" ? "" : tool %>
+          <%= job_filter_link_to :tool => [tool, tool_value] %>
+        <% end %>
+      </td>
     </tr>
     <tr>
       <th width="30">类型</th>
-      <td>全部 前端工程师, 架构师, 项目经理, 技术主管, 技术总监, 测试工程师, QA, 数据库管理员, 系统管理员, 网络管理员</td>
+      <td>
+        <% JobCategory.to_sorted_a.insert(0, ["全部", ""]).each do |key, value| %>
+           <%= job_filter_link_to :category => [key, value] %>
+        <% end %>
+      </td>
     </tr>
     <tr>
       <th width="30">行业</th>
-      <td>全部 游戏, 金融, 通信, 搜索引擎, 培训教育, 互联网, 媒体出版, 政府机关, 电子商务, 电信增值, 软件开发</td>
+      <td>
+        <% CompanyIndustry.to_sorted_a.insert(0, ["全部", ""]).each do |key, value| %>
+           <%= job_filter_link_to :industry => [key, value] %>
+        <% end %>
+      </td>
     </tr>
     <tr>
       <th width="30">工资</th>
-      <td>全部 2000以下, 2000-3000, 3000-5000, 5000-7000, 7000-9000, 6000-10000, 8000-15000, 10000-20000, 20000以上</td>
+      <td>
+        <% SalaryRange.to_sorted_a.insert(0, ["全部", ""]).each do |key, value| %>
+           <%= job_filter_link_to :salary_range => [key, value] %>
+        <% end %>
+      </td>
     </tr>
     <tr>
       <th width="30">时间</th>
-      <td>全部 三天内, 一周内, 一个月内, 三个月内</td>
+      <td>
+        <% DatelineRange.to_sorted_a.insert(0, ["全部", ""]).each do |key, value| %>
+           <%= job_filter_link_to :dateline => [key, value] %>
+        <% end %>
+      </td>
     </tr>
   </table>
 </fieldset>
