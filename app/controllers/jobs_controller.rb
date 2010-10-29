@@ -3,21 +3,22 @@ class JobsController < ApplicationController
   before_filter :get_job_by_id, :only => [:show, :star]
 
   def index
-    @jobs = Job.opened.with_theme(current_theme_site).order("keep_top desc, updated_at desc").paginate :all, :page => params[:page], :per_page => 10
+    @jobs = Job.opened.with_theme(current_theme_site).order("keep_top desc, updated_at desc").paginate :all, :page => params[:page], :per_page => 15
     respond_to do |format|
       format.html
       format.atom
     end
   end
 
-  # def tag
-  #   @jobs = Job.tagged_with(params[:tag]).opened.with_theme(current_theme_site).order("updated_at desc").paginate :all, :page => params[:page], :per_page => 10
-  #   render :index
-  # end
-
   def show
     @starred_job = current_user.try(:jobseeker).present? ? current_user.jobseeker.starred_jobs.where(:job_id => params[:id]).first : nil
-    render :layout => "company_home_page"
+
+    respond_to do |format|
+      format.html {render :layout => "company_home_page"}
+      format.ubb
+      format.text
+      format.bbshtml
+    end
   end
 
   def star
@@ -46,7 +47,7 @@ class JobsController < ApplicationController
     @search_query = @search_query.where(["salary_range=?", @salary_range]) unless @salary_range.blank?
     @search_query = @search_query.where(["start_at between ? and ?", @dateline.to_i.days.ago, Time.now]) unless @dateline.blank?
 
-    @jobs = @search_query.paginate :all, :page => params[:page], :per_page => 10
+    @jobs = @search_query.paginate :all, :page => params[:page], :per_page => 15
     render :index
   end
 

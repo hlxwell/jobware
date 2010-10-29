@@ -4,7 +4,7 @@
     <tr>
       <th width="30">地区</th>
       <td>
-        <% %w{全部 北京 上海 杭州 广州 深圳 青岛 南京 合肥 珠海 南宁 武汉 长沙 南昌 成都 大连 宁波}.each do |location| %>
+        <% %w{全部 不限 北京 上海 杭州 广州 深圳 青岛 南京 合肥 珠海 南宁 武汉 长沙 南昌 成都 大连 宁波}.each do |location| %>
           <% location_value = location == "全部" ? "" : location %>
           <%= job_filter_link_to :location => [location, location_value] %>
         <% end %>

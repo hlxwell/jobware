@@ -17,7 +17,7 @@ class Admin::JobsController < Admin::ResourcesController
   end
 
   def theme
-    @jobs = Job.paginate :all, :page => params[:page], :per_page => 20
+    @jobs = Job.paginate :all, :page => params[:page], :per_page => 30
   end
 
   def update_themes

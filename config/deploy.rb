@@ -55,7 +55,7 @@ after "deploy:update", "bluepill:restart"
 namespace :bluepill do
   desc "Stop processes that bluepill is monitoring and quit bluepill"
   task :quit, :roles => [:app] do
-    run "sudo bluepill #{application} quit"
+    run "sudo bluepill quit"
   end
 
   desc "Load bluepill configuration and start it"
@@ -64,7 +64,7 @@ namespace :bluepill do
   end
 
   task :restart, :roles => [:app] do
-    run "sudo bluepill #{application} quit"
+    # run "sudo bluepill quit"
     run "sudo bluepill load #{release_path}/config/bluepill/#{application}.pill"
   end
 

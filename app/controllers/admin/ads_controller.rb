@@ -17,7 +17,7 @@ class Admin::AdsController < Admin::ResourcesController
   end
 
   def theme
-    @ads = Ad.paginate :all, :page => params[:page], :per_page => 20
+    @ads = Ad.paginate :all, :page => params[:page], :per_page => 30
   end
 
   def update_themes

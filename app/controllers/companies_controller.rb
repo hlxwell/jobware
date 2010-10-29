@@ -5,13 +5,8 @@ class CompaniesController < ApplicationController
   before_filter :get_job_by_job_id, :only => [:show, :all_jobs, :presentations]
 
   def index
-    @companies = Company.opened.with_theme(current_theme_site).paginate :all, :page => params[:page], :per_page => 10
+    @companies = Company.opened.with_theme(current_theme_site).paginate :all, :page => params[:page], :per_page => 15
   end
-
-  # def tag
-  #   @companies = Company.opened.with_theme(current_theme_site).tagged_with(params[:tag]).paginate :all, :page => params[:page], :per_page => 10
-  #   render :index
-  # end
 
   def filter
     @location     = params[:location]
@@ -25,7 +20,7 @@ class CompaniesController < ApplicationController
     @search_query = @search_query.where(["company_type=?", @company_type]) unless @company_type.blank?
     @search_query = @search_query.where(["industry=?", @industry]) unless @industry.blank?
 
-    @companies = @search_query.paginate :all, :page => params[:page], :per_page => 10
+    @companies = @search_query.paginate :all, :page => params[:page], :per_page => 15
     render :index
   end
 
