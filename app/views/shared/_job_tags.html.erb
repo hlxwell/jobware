@@ -44,6 +44,14 @@
       </td>
     </tr>
     <tr>
+      <th width="30">合同</th>
+      <td>
+        <% ContractType.to_sorted_a.insert(0, ["全部", ""]).each do |key, value| %>
+           <%= job_filter_link_to :contract_type => [key, value] %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
       <th width="30">时间</th>
       <td>
         <% DatelineRange.to_sorted_a.insert(0, ["全部", ""]).each do |key, value| %>

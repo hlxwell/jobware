@@ -32,20 +32,22 @@ class JobsController < ApplicationController
   end
 
   def filter
-    @location     = params[:location]
-    @tool         = params[:tool]
-    @category     = params[:category]
-    @industry     = params[:industry]
-    @salary_range = params[:salary_range]
-    @dateline     = params[:dateline]
+    @location      = params[:location]
+    @tool          = params[:tool]
+    @category      = params[:category]
+    @industry      = params[:industry]
+    @salary_range  = params[:salary_range]
+    @dateline      = params[:dateline]
+    @contract_type = params[:contract_type]
 
-    @search_query = Job.opened.with_theme(current_theme_site).joins(:company)
-    @search_query = @search_query.where(["location_province=? or location_city=?", @location, @location]) unless @location.blank?
-    @search_query = @search_query.where(["jobs.name LIKE ?", "%#{@tool}%"]) unless @tool.blank?
-    @search_query = @search_query.where(["jobs.category=?", @category]) unless @category.blank?
-    @search_query = @search_query.where(["companies.industry=?", @industry]) unless @industry.blank?
-    @search_query = @search_query.where(["salary_range=?", @salary_range]) unless @salary_range.blank?
-    @search_query = @search_query.where(["start_at between ? and ?", @dateline.to_i.days.ago, Time.now]) unless @dateline.blank?
+    @search_query  = Job.opened.with_theme(current_theme_site).joins(:company)
+    @search_query  = @search_query.where(["location_province=? or location_city=?", @location, @location]) unless @location.blank?
+    @search_query  = @search_query.where(["jobs.name LIKE ?", "%#{@tool}%"]) unless @tool.blank?
+    @search_query  = @search_query.where(["jobs.category=?", @category]) unless @category.blank?
+    @search_query  = @search_query.where(["companies.industry=?", @industry]) unless @industry.blank?
+    @search_query  = @search_query.where(["salary_range=?", @salary_range]) unless @salary_range.blank?
+    @search_query  = @search_query.where(["contract_type=?", @contract_type]) unless @contract_type.blank?
+    @search_query  = @search_query.where(["start_at between ? and ?", @dateline.to_i.days.ago, Time.now]) unless @dateline.blank?
 
     @jobs = @search_query.paginate :all, :page => params[:page], :per_page => 15
     render :index

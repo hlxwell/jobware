@@ -6,12 +6,13 @@ module ApplicationHelper
     raise "no option passed to job_filter_link_to function" if options.blank?
 
     url_hash = {
-      :location     => options[:location].try(:last) || params[:location] || "",
-      :tool         => options[:tool].try(:last) || params[:tool] || "",
-      :category     => options[:category].try(:last) || params[:category] || "",
-      :industry     => options[:industry].try(:last) || params[:industry] || "",
-      :salary_range => options[:salary_range].try(:last) || params[:salary_range] || "",
-      :dateline     => options[:dateline].try(:last) || params[:dateline] || "",
+      :location      => options[:location].try(:last) || params[:location] || "",
+      :tool          => options[:tool].try(:last) || params[:tool] || "",
+      :category      => options[:category].try(:last) || params[:category] || "",
+      :industry      => options[:industry].try(:last) || params[:industry] || "",
+      :salary_range  => options[:salary_range].try(:last) || params[:salary_range] || "",
+      :dateline      => options[:dateline].try(:last) || params[:dateline] || "",
+      :contract_type => options[:contract_type].try(:last) || params[:contract_type] || ""
     }
 
     ### {:location => ["上海", "shanghai"]}

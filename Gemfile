@@ -29,7 +29,7 @@ gem 'ckeditor', :git => 'git://github.com/galetahub/rails-ckeditor.git', :branch
 gem "exception_notification", :git => "git://github.com/rails/exception_notification.git", :branch => "master"
 gem 'thinking-sphinx', :git => 'git://github.com/freelancing-god/thinking-sphinx.git', :branch  => 'rails3', :require => 'thinking_sphinx'
 gem 'delayed_job', :git => 'git://github.com/collectiveidea/delayed_job.git', :branch => 'master'
-gem 'pacecar', :git => 'http://github.com/thoughtbot/pacecar.git', :branch => 'rails3'
+# gem 'pacecar', :git => 'git://github.com/thoughtbot/pacecar.git', :branch => 'rails3'
 
 group :development do
   gem "rails3-generators"
