@@ -1247,7 +1247,6 @@ ul#tabnav {
 
 ul#tabnav li { /* do not change */
   display:inline-block;
-  display: -moz-inline-stack;
   zoom:1;
   *display:inline;
   vertical-align:bottom;
@@ -1262,7 +1261,6 @@ ul#tabnav li a { /* settings for all tab links */
   display:inline-block;
   zoom:1;
   *display:inline;
-  display:block;
   padding:0.2em 1em;
   vertical-align:bottom;
 }
