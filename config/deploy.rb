@@ -60,12 +60,12 @@ namespace :bluepill do
 
   desc "Load bluepill configuration and start it"
   task :start, :roles => [:app] do
-    run "sudo bluepill load #{current_path}/config/bluepill/#{application}.pill"
+    run "sudo bluepill load #{release_path}/config/bluepill/#{application}.pill"
   end
 
   task :restart, :roles => [:app] do
     run "sudo bluepill #{application} quit"
-    run "sudo bluepill load #{current_path}/config/bluepill/#{application}.pill"
+    run "sudo bluepill load #{release_path}/config/bluepill/#{application}.pill"
   end
 
   desc "Prints bluepills monitored processes statuses"

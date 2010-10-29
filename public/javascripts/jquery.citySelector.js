@@ -37,7 +37,8 @@ $.fn.CitySelector = function(){
     ["香港","香港"],
     ["澳门","澳门"],
     ["台湾","台北","高雄","台中","台南","屏东","南投","云林","新竹","彰化","苗栗","嘉义","花莲","桃园","宜兰","基隆","台东","金门","马祖","澎湖"],
-    ["其他","任何地方","国外"]
+    ["任何地方","任何地方"]
+    ["国外","美国","日本","澳大利亚","德国","英国","韩国","加拿大","其他"]
   ];
 
   function addProvincesOption() {
@@ -67,7 +68,7 @@ $.fn.CitySelector = function(){
 
   // add province list and change event.
   if(_province) {
-    addProvincesOption(); 
+    addProvincesOption();
   } else {
     alert("Please specify a province selector.")
   }
