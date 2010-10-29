@@ -1,4 +1,4 @@
-Bluepill.application("development", :log_file => "/Users/michael/projects/work/jobware/log/bluepill.log") do |app|
+Bluepill.application("itjob_development", :log_file => "/Users/michael/projects/work/jobware/log/bluepill.log") do |app|
   app.process("itjob_delayed_job") do |process|
     process.working_dir = "/Users/michael/projects/work/jobware"
 
