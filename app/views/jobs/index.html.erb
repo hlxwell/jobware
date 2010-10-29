@@ -9,6 +9,7 @@
     <% else %>
       <% title "所有工作" %>
     <% end %>
+    <br>
 
     <% show_no_record(@jobs) do %>
       <%= render :partial => "job", :collection => @jobs %>

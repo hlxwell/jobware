@@ -25,7 +25,7 @@
 	<!-- address and date -->
 	<div class="archive-post-address">
 		<h3><%= company.province %> - <%= company.city %></h3>
-		<div class="post-date text-center">发布于 <%= company.updated_at.to_s_short_date %></div>
+		<div class="post-date">发布于 <%= company.updated_at.to_s_short_date %></div>
 		<div class="right bordered small_top_margin">共有 <b><%= company.jobs.opened.count %></b> 个岗位</div>
 	</div>
 	<div class="clearer">&nbsp;</div>

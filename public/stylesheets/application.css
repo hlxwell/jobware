@@ -470,12 +470,12 @@ Posts
   width: 46px;
 }
 .archive-post-title .post-date {margin: 0;}
-.archive-post-title { float: left; width: 320px;}
-.archive-post-title-wide { float: left; width: 780px;}
+.archive-post-title { float: left; width: 300px;}
+.archive-post-title-wide { float: left; width: 765px;}
 .archive-post-day {font: normal 1.6em Georgia,serif;}
 
-.archive-post-address {margin: 0 5px 0 0; float: right;}
-.archive-post-address h3 {padding-top: 4px; text-align: right;}
+.archive-post-address {margin: 0 5px 0 0; float: right; text-align: right;}
+.archive-post-address h3 {padding-top: 4px; text-align: right; text-align: right;}
 
 /*
 Layout
@@ -1290,7 +1290,7 @@ ul#tabnav li.highlighted a {
 }
 
 .highlighted_job {
-  padding: 6px;
+  padding: 6px 0px 6px 6px;
   background-color: #FFF6BF;
 }
 

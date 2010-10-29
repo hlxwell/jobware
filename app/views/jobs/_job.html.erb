@@ -1,5 +1,5 @@
 <% wide ||= false %>
-<div class="post <%= "highlighted_job" if job.highlighted? %> <%= "keep_top_job" if job.keep_top? %>" style="width:<%= wide ? "942" : "653" %>px">
+<div class="small_left_padding post <%= "highlighted_job" if job.highlighted? %> <%= "keep_top_job" if job.keep_top? %>" style="width:<%= wide ? "948" : "660" %>px">
   <!-- click -->
   <div class="archive-post-date">
     <% if job.keep_top? %>
@@ -26,7 +26,7 @@
 	<!-- address and date -->
 	<div class="archive-post-address">
 		<h3><%= job.location %></h3>
-		<div class="post-date text-center">发布于 <%= job.start_at.try(:to_s_short_date) %></div>
+		<div class="post-date">发布于 <%= job.start_at.try(:to_s_short_date) %></div>
 		<div class="right bordered small_top_margin">还有<b><%= job.deadline %></b>天结束</div>
 	</div>
 	<div class="clearer">&nbsp;</div>
