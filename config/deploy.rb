@@ -50,3 +50,26 @@ namespace :deploy do
 end
 
 before "deploy:symlink", "deploy:init_project"
+# Bluepill related tasks
+after "deploy:update", "bluepill:restart"
+namespace :bluepill do
+  desc "Stop processes that bluepill is monitoring and quit bluepill"
+  task :quit, :roles => [:app] do
+    run "sudo bluepill #{application} quit"
+  end
+
+  desc "Load bluepill configuration and start it"
+  task :start, :roles => [:app] do
+    run "sudo bluepill load #{current_path}/config/bluepill/#{application}.pill"
+  end
+
+  task :restart, :roles => [:app] do
+    run "sudo bluepill #{application} quit"
+    run "sudo bluepill load #{current_path}/config/bluepill/#{application}.pill"
+  end
+
+  desc "Prints bluepills monitored processes statuses"
+  task :status, :roles => [:app] do
+    run "sudo bluepill #{application} status"
+  end
+end

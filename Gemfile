@@ -22,6 +22,7 @@ gem 'daemons'
 gem 'inherited_resources', '1.1.2'
 gem 'sitemap_generator'
 gem 'cancan'
+gem 'bluepill'
 
 # gem 'qor', :git => 'git@github.com:anatole/qor.git'
 gem 'ckeditor', :git => 'git://github.com/galetahub/rails-ckeditor.git', :branch => 'rails3'

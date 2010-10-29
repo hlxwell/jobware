@@ -75,6 +75,12 @@ GEM
     arel (1.0.1)
       activesupport (~> 3.0.0)
     awesome_print (0.2.1)
+    blankslate (2.1.2.3)
+    bluepill (0.0.44)
+      activesupport (>= 2.3.4)
+      blankslate (>= 2.1.2.2)
+      daemons (>= 1.0.9)
+      state_machine (>= 0.8.0)
     builder (2.1.2)
     cancan (1.4.0)
     capistrano (2.5.19)
@@ -167,6 +173,7 @@ DEPENDENCIES
   acts-as-taggable-on
   annotate-models
   awesome_print
+  bluepill
   cancan
   capistrano
   capistrano-ext
