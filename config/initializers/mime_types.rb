@@ -5,5 +5,5 @@
 # Mime::Type.register_alias "text/html", :iphone
 
 Mime::Type.register "ubb", :ubb
-Mime::Type.register "bbshtml", :bbshtml
+Mime::Type.register "text/html", :bbshtml
 Mime::Type.register "text", :text
