@@ -1,6 +1,9 @@
 module ServicesControllerBase
   def index
     @services = current_user_section != 'partner' ? Service.send("for_#{current_user_section}") : []
+    
+    @set_services = @services.map {|service| service if service.service_items.count > 1 }.compact
+    @single_services = @services.map {|service| service if service.service_items.count <= 1 }.compact
     render "services/index", :layout => current_user_section
   end
 

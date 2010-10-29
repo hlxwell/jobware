@@ -900,6 +900,11 @@ Misc overriding classes
 .middle_top_margin { margin-top: 1em; }
 .middle_bottom_margin { margin-bottom: 1em; }
 
+.big_left_margin { margin-left: 2em; }
+.big_right_margin { margin-right: 2em; }
+.big_top_margin { margin-top: 2em; }
+.big_bottom_margin { margin-bottom: 2em; }
+
 /* Font-Sizer Specific Styling */
 
 .fsizer { } /* Container element */
@@ -1279,6 +1284,7 @@ ul#tabnav li.highlighted a {
 
 
 .keep_top_job {
+  display:block;
   border-left: 5px solid red;
   padding-left: 6px;
 }
