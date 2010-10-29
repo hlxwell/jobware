@@ -3,8 +3,7 @@
 <div class="main" id="main-two-columns-right-sidebar">
   <!-- ### left main side -->
 	<div class="left" id="main-left">
-	  <%= render "shared/company_tags" if current_theme_site.nil? %>
-    <br>
+	  <%= render "shared/company_tags" %>
 
 	  <% show_no_record(@companies) do %>
 	    <%= render :partial => "company", :collection => @companies %>

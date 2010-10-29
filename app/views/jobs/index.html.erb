@@ -2,14 +2,13 @@
 
   <!-- ### left main side -->
 	<div class="left" id="main-left">
-	  <%= render "shared/job_tags" if params[:keyword].blank? %>
+	  <%= render "shared/job_tags" if @keyword.blank? %>
 
-	  <% if @keywords %>
-      <%= page_name_html("“#{@keywords}”搜索结果", :with_title => true) %>
+	  <% if @keyword %>
+      <%= page_name_html("“#{@keyword}”搜索结果", :with_title => true) %>
     <% else %>
       <% title "所有工作" %>
     <% end %>
-    <br>
 
     <% show_no_record(@jobs) do %>
       <%= render :partial => "job", :collection => @jobs %>
