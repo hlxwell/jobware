@@ -4,11 +4,11 @@
 <% show_no_record(@jobs) do %>
   <table class="data-table">
   	<tr>
-  	  <th width="300">工作名</th>
+  	  <th>工作名</th>
   		<th width="80">所在省市</th>
   		<th width="150">展示时间段</th>
   		<th width="80">状态</th>
-  		<th width="90">操作</th>
+  		<th width="95">操作</th>
   	</tr>
   	<% @jobs.each do |job| %>
   	<tr class="even">
@@ -18,7 +18,7 @@
   		<td style="color: <%= job.state_font_color %>"><%= job.state_s %></td>
   		<td>
   		  <%= link_to "修改并重审", edit_company_job_path(job) if job.rejected? %>
-        <%= link_to "开始展示", open_company_job_path(job), :confirm => "激活岗位会扣取一个岗位发布点数，是否继续？" if job.closed? and !job.available? %>
+        <%= link_to "开始展示", open_company_job_path(job), :confirm => job.active_confirm_words if job.closed? and !job.available? %>
     	  <%= link_to "关闭", close_company_job_path(job), :confirm => "确定关闭工作？" if job.opened? and job.available? %>
     	  <%= link_to "开放", open_company_job_path(job), :confirm => "确定开放工作？" if job.closed? and job.available? %>
     	  <%= link_to "修改", edit_company_job_path(job) if !job.rejected? %>

@@ -31,13 +31,6 @@ GIT
   specs:
     exception_notification (1.0.0)
 
-GIT
-  remote: http://github.com/thoughtbot/pacecar.git
-  revision: beba2773b1db61943d85bd93f50f973e85ad2190
-  branch: rails3
-  specs:
-    pacecar (1.2.0)
-
 GEM
   remote: http://rubygems.org/
   remote: http://gems.github.com/
@@ -191,7 +184,6 @@ DEPENDENCIES
   mysql
   navigasmic
   nifty-generators
-  pacecar!
   paperclip
   rack-test
   rails (= 3.0.0)

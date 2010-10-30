@@ -1223,7 +1223,7 @@ div.fix_height {
 .exist_options {}
 
 .optional_option {
-  margin-bottom: 0;
+  margin-bottom: 1em;
 }
 
 .optional_option_tag {

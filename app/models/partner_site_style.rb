@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20100917101409
+# Schema version: 20101027063250
 #
 # Table name: partner_site_styles
 #
@@ -15,6 +15,7 @@
 #  header_height :string(255)
 #  footer_height :string(255)
 #  global_css    :text
+#  theme         :string(255)
 #
 
 class PartnerSiteStyle < ActiveRecord::Base

@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20101014064036
+# Schema version: 20101027063250
 #
 # Table name: jobs
 #
@@ -30,6 +30,8 @@
 #  highlighted                  :boolean(1)
 #  degree_requirement           :integer(4)      default(0)
 #  working_year_requirement     :integer(4)      default(0)
+#  keep_top                     :integer(4)      default(0)
+#  themes                       :string(255)
 #
 
 class Job < ActiveRecord::Base
@@ -246,5 +248,15 @@ class Job < ActiveRecord::Base
 
   def only_use_custom_apply_method_to_s
     self.only_use_custom_apply_method? ? "否" : "是"
+  end
+
+  def active_confirm_words
+    if self.highlighted?
+      "激活该岗位会扣取一个 “岗位发布点” 和 “高亮显示点”，是否继续？（或者可以修改该岗位取消附加服务。）"
+    elsif self.keep_top?
+      "激活该岗位会扣取一个 “岗位发布点”，“岗位置顶点” 和 “高亮显示点”，是否继续？（或者可以修改该岗位取消附加服务。）"
+    else
+      "激活该岗位会扣取一个“岗位发布点”，是否继续？"
+    end
   end
 end
