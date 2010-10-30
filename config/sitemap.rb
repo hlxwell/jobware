@@ -14,7 +14,7 @@ SitemapGenerator::Sitemap.add_links do |sitemap|
   #           :lastmod => Time.now, :host => default_host
 
   {
-    "http://www.itjob.fm" => nil,
+    "http://itjob.fm" => nil,
     "http://rails.itjob.fm" => "rails",
     "http://chinaonrails.itjob.fm" => "rails"
   }.each do |host, theme|
