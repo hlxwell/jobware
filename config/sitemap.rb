@@ -15,8 +15,8 @@ SitemapGenerator::Sitemap.add_links do |sitemap|
 
   {
     "http://itjob.fm" => nil,
-    "http://rails.itjob.fm" => "rails",
-    "http://chinaonrails.itjob.fm" => "rails"
+    # "http://rails.itjob.fm" => "rails",
+    # "http://chinaonrails.itjob.fm" => "rails"
   }.each do |host, theme|
     sitemap.add jobs_path, :priority => 1, :changefreq => 'daily', :host => host
     Job.opened.with_theme(theme).order("keep_top desc, jobs.updated_at desc").each do |j|
