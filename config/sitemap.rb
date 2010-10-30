@@ -1,5 +1,5 @@
 # Set the host name for URL creation
-SitemapGenerator::Sitemap.default_host = Rails.env == 'production' ? "http://itjob.fm" : "http://lvh.me:3000"
+SitemapGenerator::Sitemap.default_host = "http://itjob.fm"
 SitemapGenerator::Sitemap.yahoo_app_id = "eDxJEwvV34GRHfVWnsaJPk08DfVCgDtZag.H9dsKTtXbj9eRoaNXEJYXzg.Jyw--"
 SitemapGenerator::Sitemap.add_links do |sitemap|
   # Put links creation logic here.
@@ -13,24 +13,30 @@ SitemapGenerator::Sitemap.add_links do |sitemap|
   # Defaults: :priority => 0.5, :changefreq => 'weekly',
   #           :lastmod => Time.now, :host => default_host
 
-  sitemap.add jobs_path, :priority => 1, :changefreq => 'daily'
-  Job.opened.all.each do |j|
-    sitemap.add job_path(j), :lastmod => j.updated_at
-  end
+  {
+    "http://www.itjob.fm" => nil,
+    "http://rails.itjob.fm" => "rails",
+    "http://chinaonrails.itjob.fm" => "rails"
+  }.each do |host, theme|
+    sitemap.add jobs_path, :priority => 1, :changefreq => 'daily', :host => host
+    Job.opened.with_theme(theme).order("keep_top desc, jobs.updated_at desc").each do |j|
+      sitemap.add job_path(j), :lastmod => j.updated_at, :host => host
+    end
 
-  sitemap.add jobs_path, :priority => 0.8, :changefreq => 'daily'
-  Company.all.each do |c|
-    sitemap.add company_path(c), :lastmod => c.updated_at
-  end
+    sitemap.add jobs_path, :priority => 0.8, :changefreq => 'daily', :host => host
+    Company.opened.with_theme(theme).order("companies.updated_at desc").each do |c|
+      sitemap.add company_path(c), :lastmod => c.updated_at, :host => host
+    end
 
-  sitemap.add new_company_path, :priority => 0.3, :changefreq => 'weekly'
-  sitemap.add new_partner_path, :priority => 0.3, :changefreq => 'weekly'
-  sitemap.add new_jobseeker_resume_path, :priority => 0.3, :changefreq => 'weekly'
-  sitemap.add "/aboutus", :priority => 0.3, :changefreq => 'weekly'
-  sitemap.add "/law", :priority => 0.3, :changefreq => 'weekly'
-  sitemap.add "/contactus", :priority => 0.3, :changefreq => 'weekly'
-  sitemap.add "/term", :priority => 0.3, :changefreq => 'weekly'
-  sitemap.add "/ad_service", :priority => 0.3, :changefreq => 'weekly'
+    sitemap.add new_company_path, :priority => 0.3, :changefreq => 'weekly', :host => host
+    sitemap.add new_partner_path, :priority => 0.3, :changefreq => 'weekly', :host => host
+    sitemap.add new_jobseeker_resume_path, :priority => 0.3, :changefreq => 'weekly', :host => host
+    sitemap.add "/aboutus", :priority => 0.3, :changefreq => 'weekly', :host => host
+    sitemap.add "/law", :priority => 0.3, :changefreq => 'weekly', :host => host
+    sitemap.add "/contactus", :priority => 0.3, :changefreq => 'weekly', :host => host
+    sitemap.add "/term", :priority => 0.3, :changefreq => 'weekly', :host => host
+    sitemap.add "/ad_service", :priority => 0.3, :changefreq => 'weekly', :host => host
+  end
 end
 
 # Including Sitemaps from Rails Engines.
