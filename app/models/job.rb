@@ -84,7 +84,12 @@ class Job < ActiveRecord::Base
     has company_id, created_at, updated_at, keep_top
   end
 
+  ### please export diagram first.
   state_machine :state, :initial => :unapproved do
+    after_transition :on => :want_to_show do |job|
+      job.pay_for_active
+    end
+
     before_transition :on => :active do |job|
       job.pay_for_active unless job.available?
     end
@@ -99,7 +104,7 @@ class Job < ActiveRecord::Base
 
     after_transition :on => :close do |job|
       unless job.available?
-        puts "found one expired job##{id}"
+        # puts "found one expired job##{id}"
 
         ### send mail to company
         CompanyMailer.delay.job_expired(job.company, job)
@@ -111,11 +116,11 @@ class Job < ActiveRecord::Base
       end
     end
 
-    event :approve do
-      transition [:rejected, :unapproved] => :closed
+    event :want_to_show do
+      transition :unapproved => :approving, :if => :company_has_enough_credit?
     end
-    event :reapprove do
-      transition any => :unapproved
+    event :approve do
+      transition any => :opened
     end
     event :reject do
       transition any => :rejected
@@ -125,6 +130,9 @@ class Job < ActiveRecord::Base
     end
     event :close do
       transition :opened => :closed
+    end
+    event :reapprove do
+      transition any => :unapproved
     end
   end
 
@@ -223,21 +231,20 @@ class Job < ActiveRecord::Base
   # unapproved, approved, rejected, opened, closed
   # highlighted available
   def state_s
-    return "审核中" if unapproved?
+    return "审核中" if approving?
+    return "等待激活中" if unapproved?
     return "审核被拒绝" if rejected?
     return "展示中" if opened? and available?
     return "高亮展示中" if highlighted? and opened? and available?
-    return "未展示" if closed?
     return "已过期" if !available?
+    return "未展示" if closed?
   end
 
   def state_font_color
     case state_s
     when "已过期"
       "blue"
-    when "未展示"
-      "gray"
-    when "审核中"
+    when "未展示","等待激活中","审核中"
       "gray"
     when "展示中","高亮展示中"
       "green"
@@ -259,4 +266,5 @@ class Job < ActiveRecord::Base
       "激活该岗位会扣取一个“岗位发布点”，是否继续？"
     end
   end
+
 end

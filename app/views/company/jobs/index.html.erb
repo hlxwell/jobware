@@ -18,7 +18,8 @@
   		<td style="color: <%= job.state_font_color %>"><%= job.state_s %></td>
   		<td>
   		  <%= link_to "修改并重审", edit_company_job_path(job) if job.rejected? %>
-        <%= link_to "开始展示", open_company_job_path(job), :confirm => job.active_confirm_words if job.closed? and !job.available? %>
+  		  <%= link_to "激活", reactive_company_job_path(job), :confirm => job.active_confirm_words if !job.available? %>
+        <%= link_to "激活", want_to_show_company_job_path(job), :confirm => job.active_confirm_words if job.unapproved? %>
     	  <%= link_to "关闭", close_company_job_path(job), :confirm => "确定关闭工作？" if job.opened? and job.available? %>
     	  <%= link_to "开放", open_company_job_path(job), :confirm => "确定开放工作？" if job.closed? and job.available? %>
     	  <%= link_to "修改", edit_company_job_path(job) if !job.rejected? %>

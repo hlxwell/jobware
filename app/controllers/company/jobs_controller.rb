@@ -1,7 +1,8 @@
 class Company::JobsController < Company::BaseController
-  before_filter :get_job_by_id, :only => [:show, :edit, :update, :destroy, :close, :open, :reactive, :get_options]
-  before_filter :check_job_credit, :only => [:new, :create, :reactive]
+  before_filter :get_job_by_id, :only => [:show, :edit, :update, :destroy, :close, :open, :reactive, :get_options, :want_to_show]
+  before_filter :check_job_credit, :only => [:reactive]
   before_filter :check_job_highlight_credit, :only => [:reactive, :open]
+
   def index
     @jobs = current_user.company.jobs.paginate :page => params[:page], :per_page => 20
   end
@@ -66,7 +67,7 @@ class Company::JobsController < Company::BaseController
 
   def reactive
     if @job.active
-      flash[:success] = "扣除一点“岗位发布”,岗位重新激活成功。"
+      flash[:success] = "扣除一点“岗位发布”，岗位重新激活成功。"
     else
       flash[:error] = "岗位重新激活失败，可能没有足够“岗位发布”点数。"
     end
@@ -77,6 +78,15 @@ class Company::JobsController < Company::BaseController
     raise 'wrong option type.' unless ['welfare', 'question'].include?(params[:type])
     @options = @job.send("#{params[:type]}_options").map {|option| [option.name, option.desc]}
     render :json => @options
+  end
+
+  def want_to_show
+    if @job.want_to_show
+      flash[:success] = "扣除一点“岗位发布”成功，岗位正在审核中，如果审核通过则会显示在前台。"
+    else
+      flash[:error] = "扣除一点“岗位发布”失败，请充值后再激活。"
+    end
+    redirect_to company_jobs_path
   end
 
 private

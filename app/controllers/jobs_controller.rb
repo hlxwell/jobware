@@ -40,6 +40,9 @@ class JobsController < ApplicationController
     @dateline      = params[:dateline]
     @contract_type = params[:contract_type]
 
+    @category_name = JobCategory.to_a.select{|i| i.last.to_s == @category}.flatten.first
+    @contract_type_name = ContractType.to_a.select{|i| i.last.to_s == @contract_type}.flatten.first
+
     @search_query  = Job.opened.with_theme(current_theme_site).joins(:company)
     @search_query  = @search_query.where(["location_province=? or location_city=?", @location, @location]) unless @location.blank?
     @search_query  = @search_query.where(["jobs.name LIKE ?", "%#{@tool}%"]) unless @tool.blank?
@@ -50,6 +53,8 @@ class JobsController < ApplicationController
     @search_query  = @search_query.where(["start_at between ? and ?", @dateline.to_i.days.ago, Time.now]) unless @dateline.blank?
 
     @jobs = @search_query.paginate :all, :page => params[:page], :per_page => 15
+
+    @title = "#{@location} #{@contract_type_name} #{@tool} #{@category_name}"
     render :index
   end
 

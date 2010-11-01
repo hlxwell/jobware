@@ -7,7 +7,7 @@
 	  <% if @keyword %>
       <%= page_name_html("“#{@keyword}”搜索结果", :with_title => true) %>
     <% else %>
-      <% title "所有工作" %>
+      <% title @title.blank? ? "所有工作" : @title %>
     <% end %>
 
     <% show_no_record(@jobs) do %>

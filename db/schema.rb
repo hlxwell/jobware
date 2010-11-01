@@ -73,7 +73,7 @@ ActiveRecord::Schema.define(:version => 20101027063250) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
-    t.string   "themes"
+    t.string   "themes",             :default => ""
   end
 
   add_index "ads", ["company_id"], :name => "index_ads_on_company_id"
@@ -157,7 +157,7 @@ ActiveRecord::Schema.define(:version => 20101027063250) do
     t.integer  "partner_id"
     t.string   "permalink"
     t.boolean  "open_contact",      :default => false
-    t.string   "themes"
+    t.string   "themes",            :default => ""
     t.integer  "industry",          :default => 99
   end
 
@@ -247,7 +247,7 @@ ActiveRecord::Schema.define(:version => 20101027063250) do
     t.integer  "degree_requirement",           :default => 0
     t.integer  "working_year_requirement",     :default => 0
     t.integer  "keep_top",                     :default => 0
-    t.string   "themes"
+    t.string   "themes",                       :default => ""
   end
 
   add_index "jobs", ["company_id"], :name => "index_jobs_on_company_id"
