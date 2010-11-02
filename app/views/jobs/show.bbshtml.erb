@@ -44,5 +44,29 @@
 </p>
 <% end %>
 
+<% if @job.company.presentations.count > 0 %>
+<h3>公司展示</h3>
+<p>
+  <% @job.company.presentations.each do |presentation| %>
+    <p><%= image_tag presentation.file.url %></p>
+  <% end %>
+</p>
+<% end %>
+
+
+<% if @job.company.products.count > 0 %>
+<h3>公司产品</h3>
+<p>
+  <% @job.company.products.each do |product| %>
+    <p>
+      <h4><%= product.name %></h4>
+      <%= image_tag product.file.url %>
+      <p><%= raw product.desc %></p>
+    </p>
+  <% end %>
+</p>
+<% end %>
+
+
 <h3>简历投递地址：</h3>
 <%= link_to job_url(@job), job_url(@job) %>

@@ -46,5 +46,26 @@
 [/quote]
 <% end %>
 
+<% if @job.company.presentations.count > 0 %>
+[size=3][b]公司展示[/b][/size]
+[quote]
+<% @job.company.presentations.each do |presentation| %>
+[img]http://itjob.fm<%= presentation.file.url(:slideshow_small) %>[/img]
+<% end %>
+[/quote]
+<% end %>
+
+
+<% if @job.company.products.count > 0 %>
+[size=3][b]公司产品[/b][/size]
+[quote]
+<% @job.company.products.each do |product| %>
+[b]<%= product.name %>[/b]
+[img]http://itjob.fm<%= product.file.url(:slideshow_small) %>[/img]
+<%= raw product.desc.gsub(/<\/?[^>]*>/, "").gsub("&nbsp;","") %>
+<% end %>
+[/quote]
+<% end %>
+
 
 [size=3][b]简历投递地址：[/b] [url]<%= job_url(@job) %>[/url][/size]

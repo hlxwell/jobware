@@ -135,6 +135,8 @@ class JobCategory < EnumerateIt::Base
     :embeded         => [10, "嵌入式开发"],
     :requirement     => [11, "需求分析"],
     :telecom         => [12, "通信工程"],
+    :pm              => [13, "项目经理"],
+    :product_design  => [14, "产品设计"],
     :other           => [99, "其他"]
   )
 end
@@ -157,6 +159,9 @@ class CompanyIndustry < EnumerateIt::Base
     :n => [14, '教育'],
     :o => [15, '媒体'],
     :p => [16, '能源'],
+    :r => [17, '建筑'],
+    :s => [18, '平面设计／网站设计'],
+    :t => [19, '网站开发'],
     :other => [99, '其他']
   )
 end
