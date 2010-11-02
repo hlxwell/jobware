@@ -5,7 +5,7 @@
 
   <%= f.fields_for :cover_letters do |cv_form| %>
     <%= cv_form.hidden_field :name, :value => "默认求职信" %>
-    <%= cv_form.cktext_area :content, :label => "求职信", :skin => "office2003", :height => '200', :toolbar => 'Basic', :hint => raw("请仔细填写求职信，可以让公司有个好的印象。<a class='show_dialog' href='javascript:void(0)'>查看范文</a>") %>
+    <%= cv_form.cktext_area :content, :label => "求职信（可选）", :skin => "office2003", :height => '200', :toolbar => 'Basic', :hint => raw("求职信能够让公司了解您的态度和诚意。<a class='show_dialog' href='javascript:void(0)'>查看范文</a>") %>
   <% end %>
 
   <!-- if current user logged in, should not send him/her password. -->

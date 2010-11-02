@@ -1,17 +1,33 @@
-<%= jobware_form_for @job_application, :url => job_job_applications_path(@job), :title => '发送应聘申请', :html => {:id => 'send_job_application_form'}, :remote => true do |f| %>
-  <% show_error_message_for(f.object) %>
-  <%= raw render_message %>
+<table border="0" cellspacing="5" cellpadding="5" class="top-vlign-td">
+  <tr>
+    <td style="padding-left: 0px">
+      
+      <%= jobware_form_for @job_application, :url => job_job_applications_path(@job), :title => '填写求职信，再发送简历', :html => {:id => 'send_job_application_form'}, :remote => true do |f| %>
+        <% show_error_message_for(f.object) %>
+        <%= raw render_message %>
 
-  <%= f.select :cover_letter_id, current_user.jobseeker.cover_letters.map {|cv| [cv.name, cv.id] }, {:include_blank => false}, {:label => "求职书", :hint => "请选择求职书，如果没有请新建。", :required => true} if @job_application.cover_letter.try(:errors).blank? %>
-  <%= f.fields_for :cover_letter do |cover_form| %>
-    <% if cover_form.object.errors.present? %>
-      <%= render( :partial => "jobseeker/cover_letters/form_in_job_app", :locals => {:f => cover_form} ) %>
-      <%= cover_form.hidden_field :resume_id, :value => current_user.jobseeker.id %>
-    <% else %>
-      <%= button_to_function("添加求职书", "add_fields(this, \"jobseeker\", \"#{escape_javascript( render(:partial => "jobseeker/cover_letters/form_in_job_app", :locals => {:f => cover_form}) )} \"); $('#send_job_application_form > div.form-row').remove(); $(this).remove();", :class => 'button') %>
-    <% end %>
-  <% end %>
+        <%= f.select :cover_letter_id, current_user.jobseeker.cover_letters.map {|cv| [cv.name, cv.id] }, {:include_blank => false}, {:label => "已有求职信", :hint => "请选择求职书，如果没有请新建。"} if @job_application.cover_letter.try(:errors).blank? %>
+        <%= f.fields_for :cover_letter do |cover_form| %>
+          <% if cover_form.object.errors.present? %>
+            <%= render( :partial => "jobseeker/cover_letters/form_in_job_app", :locals => {:f => cover_form} ) %>
+            <%= cover_form.hidden_field :resume_id, :value => current_user.jobseeker.id %>
+          <% else %>
+            <%= button_to_function("添加求职书", "add_fields(this, \"jobseeker\", \"#{escape_javascript( render(:partial => "jobseeker/cover_letters/form_in_job_app", :locals => {:f => cover_form}) )} \"); $('#send_job_application_form > div.form-row').remove(); $(this).remove();", :class => 'button') %>
+          <% end %>
+        <% end %>
 
-  <%= f.hidden_field :job_id, :value => @job.id %>
-  <%= f.submit '发送', :class => 'right button' %>
-<% end %>
+        <%= f.hidden_field :job_id, :value => @job.id %>
+        <%= f.submit '发送', :class => 'right button' %>
+      <% end %>
+    </td>
+    <td style="width: 300px; padding-right: 0px">
+      <%= jobware_form_for @job_application, :url => job_job_applications_path(@job), :title => '直接发送简历', :html => {:id => 'direct_send_job_application_form'}, :remote => true do |f| %>
+        <img src="/images/icons/good_resume.jpg" class="left"/>
+        <h4>“我的简历里已经说得足够清楚了，不需要再写求职信了。”</h4>
+        <div class="clearer"></div>
+        <%= f.hidden_field :job_id, :value => @job.id %>
+        <%= f.submit '立即发送', :class => 'right button middle_top_margin' %>
+      <% end %>
+    </td>
+  </tr>
+</table>

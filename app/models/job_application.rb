@@ -50,7 +50,7 @@ class JobApplication < ActiveRecord::Base
 
   validates_uniqueness_of :resume_id, :scope => :job_id, :message => "已经投过简历到该职位。"
   validates_presence_of :job_id, :resume_id
-  validates_presence_of :cover_letter_id, :if => lambda {|obj| obj.cover_letter.blank? }
+  # validates_presence_of :cover_letter_id, :if => lambda {|obj| obj.cover_letter.blank? }
 
   accepts_nested_attributes_for :cover_letter, :allow_destroy => true
 

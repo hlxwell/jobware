@@ -64,7 +64,8 @@ class Resume < ActiveRecord::Base
   has_many :jobs, :through => :starred_jobs
 
   accepts_nested_attributes_for :user
-  accepts_nested_attributes_for :languages, :previous_jobs, :schools, :certifications, :cover_letters, :projects, :skills, :allow_destroy => true
+  accepts_nested_attributes_for :languages, :previous_jobs, :schools, :certifications, :projects, :skills, :allow_destroy => true
+  accepts_nested_attributes_for :cover_letters, :reject_if => proc { |attributes| attributes['content'].blank? }
 
   has_attached_file :portrait, :styles => { :thumb => "150x150>" }, :default_style => :thumb
   validates_attachment_content_type :portrait, :content_type => [%r{image/.*jpg}, %r{image/.*jpeg}, %r{image/.*gif}, %r{image/.*png}], :if => lambda {|obj| obj.portrait.size.present? }
