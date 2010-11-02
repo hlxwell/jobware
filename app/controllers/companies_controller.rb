@@ -50,6 +50,7 @@ class CompaniesController < ApplicationController
     @company = Company.new(params[:company])
     @company.user = current_user if current_user
     @company.partner = current_partner # referral partner
+    @company.themes = current_theme_site
 
     if @company.save
       redirect_to created_companies_path

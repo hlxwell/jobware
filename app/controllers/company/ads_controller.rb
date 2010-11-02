@@ -23,6 +23,7 @@ class Company::AdsController < Company::BaseController
 
   def create
     @ad = current_user.company.ads.build(params[:ad])
+    @ad.themes = current_theme_site
 
     if @ad.save
       redirect_to company_ad_path(@ad), :notice => "广告创建成功。"
