@@ -1,7 +1,7 @@
 xml.instruct! :xml, :version=>"1.0", :encoding=>"UTF-8"
 
 xml.jobs do
-  xml.job_board_name("#{current_theme_site.try(:capitalize)}最新招聘信息")
+  xml.job_board_name("最新#{current_theme_site.try(:capitalize)}招聘信息")
   xml.link_to_home("http://#{request.host}")
   xml.no_record_text("暂时没有工作。")
   xml.more_jobs_text("更多#{current_theme_site}工作")
@@ -9,8 +9,8 @@ xml.jobs do
     xml.job do job
       xml.id(job.id)
       xml.posted_at(job.updated_at)
-      xml.link_to_company(company_url(job.company))
-      xml.link_to_job(job_url(job))
+      xml.link_to_company(company_url(job.company, :host => request.host))
+      xml.link_to_job(job_url(job, :host => request.host))
       xml.title(job.name)
       xml.company(job.company.name)
       xml.location(job.location)
