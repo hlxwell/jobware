@@ -1,0 +1,116 @@
+<%= javascript_include_tag "colorpicker/js/colorpicker" %>
+<link rel="stylesheet" type="text/css" href="/javascripts/colorpicker/css/colorpicker.css" />
+<h3>自定义编辑器</h3>
+<form id='picker_form' style="margin: 0 0 20px 0">
+  <div class="pickColorBox">
+    <table>
+      <tr>
+        <td>
+          <label for="widget_title_bg" class="lb">外框颜色</label>
+        </td>
+        <td>
+          <input type="text" id="widget_title_bg" class="text" value="#4a59ba" style='background: #4a59ba' />
+        </td>
+
+        <td>
+          <label for="widget_title" class="lb">标题字颜色</label>
+        </td>
+        <td>
+          <input type="text" id="widget_title" class="text" value="#ffffff" style='background: #ffffff' />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="widget_content" class="lb subTitle">内容文字颜色</label>
+        </td>
+        <td>
+          <input type="text" id="widget_content" class="text" value="#000000" style='background: #000000' />
+        </td>
+
+        <td>
+          <label for="widget_content_bg" class="lb subTitle">内容背景颜色</label>
+        </td>
+        <td>
+          <input type="text" id="widget_content_bg" class="text" value="#ffffff" style='background: #ffffff' />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="widget_width" class="lb subTitle">宽度</label>
+        </td>
+        <td>
+          <input type="text" id="widget_width" class="text" value="300"/> px
+        </td>
+
+        <td>
+          <label for="widget_height" class="lb subTitle">高度</label>
+        </td>
+        <td>
+          <input type="text" id="widget_height" class="text" value="250"/> px
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><i><small>最小150px</small></i></td>
+        <td></td>
+        <td><i><small>最小140px</small></i></td>
+      </tr>
+    </table>
+  </div>
+</form>
+
+<script type="text/javascript">
+$(document).ready(function() {
+
+  var elem_ids = ['widget_title_bg','widget_title','widget_content','widget_content_bg'];
+  $.each(elem_ids,function(i) {
+    $('#' + elem_ids[i]).ColorPicker({
+      onShow: function (colpkr) {
+        $(colpkr).fadeIn(500);
+        return false;
+      },
+      onHide: function (colpkr) {
+        updateWigetCode();
+        $(colpkr).fadeOut(500);
+        return false;
+      },
+      onChange: function (hsb, hex, rgb) {
+        $('#' + elem_ids[i]).css('backgroundColor', '#' + hex).val('#'+ hex);
+      }
+    });
+  });
+
+  $('#widget_width,#widget_height').bind($.browser.msie ? 'blur' : 'change',function() {
+    $('#widget_width').val(Math.max(Number($('#widget_width').val()), 150))
+    $('#widget_height').val(Math.max(Number($('#widget_height').val()), 140))
+    updateWigetCode();
+  });
+
+  function updateWigetCode() {
+    $.ajax({
+        url: '/partner/code/update_widget_js_code',
+        type: 'GET',
+        data: "frame_color=" + $('#widget_title_bg').val() + "&title_color=" + $('#widget_title').val() + "&content_color=" + $('#widget_content').val() + "&content_bgcolor=" + $("#widget_content_bg").val() + "&width=" + $('#widget_width').val() + "&height=" + $('#widget_height').val(),
+        success: function(e){
+          $('#promotion_widget_code').val(e);
+        },
+        beforeSend: function(e){
+          $('#promotion_widget_code').val("自定义中，请等待...");
+        },
+        error: function(e) {
+          alert(e);
+        }
+    });
+
+    updatePreviewWidget();
+  }
+
+  function updatePreviewWidget() {
+    $("#joblet_ads_widget").remove();
+    JobletWidget.size  = { width    : $('#widget_width').val(), height   : $('#widget_height').val() };
+    JobletWidget.color = { title_bg : $('#widget_title_bg').val(), title : $('#widget_title').val(), content : $('#widget_content').val(), content_bg : $('#widget_content_bg').val() };
+    document.getElementById("widget_preview").innerHTML = '<div src="" id="joblet_widget_api"></div>';
+    $.get("/javascripts/widget.js");
+  }
+});
+</script>

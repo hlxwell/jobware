@@ -180,7 +180,11 @@ Jobware::Application.routes.draw do
 
   namespace :partner do
     resource :partner_site_style
-    resource :code
+    resource :code do
+      member do
+        get :update_widget_js_code
+      end
+    end
     resources :ad_positions do
       resources :counters
     end

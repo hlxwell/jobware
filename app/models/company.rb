@@ -65,8 +65,9 @@ class Company < ActiveRecord::Base
   ### to reprocess all image.
   # Company.all.each do |c|
   #   c.logo.reprocess!
+  #   c.save
   # end
-  has_attached_file :logo, :styles => { :thumb => "200>x80", :fix_height => "283x50>", :title => "950>x100" }, :default_style => :thumb
+  has_attached_file :logo, :styles => { :widget => "80x80>", :preview => "100x100>", :thumb => "200>x80", :fix_height => "283x50>", :title => "950>x100" }, :default_style => :thumb
 
   # validates_attachment_content_type :logo, :content_type => [%r{image/.*jpg}, %r{image/.*jpeg}, %r{image/.*gif}, %r{image/.*png}], :if => lambda {|obj| obj.logo.size.present? }
   # validates_attachment_size :logo, :less_than => 5.megabytes

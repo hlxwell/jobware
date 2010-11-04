@@ -4,4 +4,8 @@ class Partner::CodesController < Partner::BaseController
       @rss_url = "http://#{current_user.partner.partner_site_style.try(:subdomain)}.itjob.fm/jobs.atom"
     end
   end
+
+  def update_widget_js_code
+    render :partial => "partner/codes/sidebar_ad_code"
+  end
 end
