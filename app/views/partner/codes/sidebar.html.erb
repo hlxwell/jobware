@@ -1,0 +1,27 @@
+<%= page_name_html("获取边栏招聘广告代码", :with_title => true) %>
+
+<!-- javascript zoon start -->
+<table width="90%" cellspacing="10">
+  <tr>
+    <td valign=top>
+      <h3>效果演示</h3>
+      <div id='widget_preview'>
+        <%= render "sidebar_ad_code" %>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td valign=top style="padding-top:20px">
+      <%= render(:partial => "color_picker", :locals => {:widget_type => 'sidebar'}) %>
+    </td>
+  </tr>
+  <tr>
+    <td valign=top>
+      <div class="widget_snippet info_container">
+        <h3 class="T_listH3Title">复制代码到您的网站</h2>
+        <%#= clippy('promotion_widget_code') %>
+        <textarea id="promotion_widget_code" style="width: 90%; height: 120px;" class="code no_resizer" onclick="$(this).select()"><%= render "sidebar_ad_code" %></textarea>
+      </div>
+    </td>
+  </tr>
+</table>

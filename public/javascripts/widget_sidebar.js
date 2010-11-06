@@ -38,7 +38,7 @@ if(document.createElement && document.getElementById && document.createTextNode 
   }
 
   // get joblet url from src attr of script
-  var elem       = document.getElementById('joblet_widget_api');
+  var elem       = document.getElementById('joblet_sidebar_widget');
   var joblet_url = elem.getAttribute('src').replace(/((\w+):\/\/[^\/]*)\/.*/,'$1');
   if (!joblet_url.match(/^http/)) joblet_url = location.protocol + '//' + location.host;
 

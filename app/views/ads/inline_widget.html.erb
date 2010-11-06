@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
+<head>
+  <title>ITJob.fm inline ads</title>
+  <%= javascript_include_tag "jquery", "jquery.cycle.all.min" %>
+  <script>
+  $(function(){
+    $('#ads').cycle({ fx:'scrollDown', speed:300, timeout: 2000});
+  });
+  </script>
+  <style>
+    table img { border: 1px #eee solid; padding: 3px; }
+    table { cursor: hand;}
+    table.td { vertical-align: center; text-align: left; }
+    .title { font-size: 20px; font-weight: bold; text-align: left; }
+    .desc { font-size: 12px; text-align: left; margin-top: 5px;}
+    body { padding: 0; margin: 0; }
+    .hidden {display: none;}
+    a {color: black; text-decoration: none;}
+  </style>
+</head>
+
+<body>
+  <div id="ads">
+    <% @jobs.each do |job| %>
+      <table cellpadding="3" width="100%" height="72">
+        <tr>
+          <td align="left" width="0"><%= image_tag job.company.logo.url(:fix_height) %></td>
+          <td width="90%">
+            <a href="<%= job_url(job) %>" target="blank">
+              <div class="title"><%= job.location %> - <%= job.name.truncate(30) %></div>
+              <div class="desc"><%= job.company.name %></div>
+              <div class="desc">薪资范围：<%= job.salary_range_humanize %></div>
+            </a>
+          </td>
+        </tr>
+      </table>
+    <% end %>
+  </div>
+</body>
+</html>

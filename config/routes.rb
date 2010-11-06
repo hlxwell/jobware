@@ -4,6 +4,7 @@ Jobware::Application.routes.draw do
   get "alipay/done"
   get "alipay/error"
 
+  match "/inline_widget" => "ads#inline_widget"
   # match "track" => Tracker.action(:track), :as => :tracker
   # match "slideshowpro(.:format)" => "pages#slideshowpro"
   match "/partner_benifit" => "pages#partner_benifit"

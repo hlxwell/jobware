@@ -109,8 +109,8 @@ $(document).ready(function() {
     $("#joblet_ads_widget").remove();
     JobletWidget.size  = { width    : $('#widget_width').val(), height   : $('#widget_height').val() };
     JobletWidget.color = { title_bg : $('#widget_title_bg').val(), title : $('#widget_title').val(), content : $('#widget_content').val(), content_bg : $('#widget_content_bg').val() };
-    document.getElementById("widget_preview").innerHTML = '<div src="" id="joblet_widget_api"></div>';
-    $.get("/javascripts/widget.js");
+    document.getElementById("widget_preview").innerHTML = '<div src="" id="joblet_<%= widget_type %>_widget"></div>';
+    $.get("/javascripts/widget_<%= widget_type %>.js");
   }
 });
 </script>
