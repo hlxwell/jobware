@@ -14,10 +14,11 @@ if(document.createElement && document.getElementById && document.createTextNode 
         }
 
         with(htmlWidgetColor) {
-          var frameUrl  = joblet_url + '/inline_widget?id=' + JobletWidget.id + '&title=' + title + '&title_bg=' + title_bg + '&content=' + content + '&content_bg=' + content_bg;
+          var frameUrl  = joblet_url + '/inline_widget?content=' + content + '&content_bg=' + content_bg;
           var frame = document.createElement('iframe');
           frame.setAttribute('width' ,size.width);
           frame.setAttribute('height',size.height);
+          frame.setAttribute('scrolling', 'no');
           frame.setAttribute('src',frameUrl);
           frame.style.border = "solid 1px #" + title_bg;
           return frame;
