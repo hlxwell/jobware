@@ -1,4 +1,6 @@
 class AdsController < ApplicationController
+  respond_to :html, :only => :index
+
   def index
   end
 
