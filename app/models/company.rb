@@ -59,7 +59,7 @@ class Company < ActiveRecord::Base
   validate :check_logo
 
   default_scope order("companies.created_at desc")
-  scope :opened, includes(:user).where("users.confirmed_at IS NOT NULL")
+  scope :opened, includes(:user).where("users.confirmed_at IS NOT NULL and authorized=true")
   scope :with_theme, lambda {|theme| where(["companies.themes LIKE ?", "%#{theme}%"]) }
 
   ### to reprocess all image.

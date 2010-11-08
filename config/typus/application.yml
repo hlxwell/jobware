@@ -14,8 +14,8 @@ Certification:
 
 Company:
   fields:
-    default: user_id, name, size, province, city, address, homepage, contact_name, phone_number, logo_file_name, user, themes
-    form: user_id, name, size, province, city, address, homepage, contact_name, phone_number, desc, logo, user, themes
+    default: user_id, name, size, province, city, address, homepage, contact_name, phone_number, logo_file_name, user, themes, authorized
+    form: user_id, name, size, province, city, address, homepage, contact_name, phone_number, desc, logo, user, themes, authorized
   order_by:
   relationships: job_applications, jobs, presentations, products, resumes, user
   filters:

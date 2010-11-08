@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101027063250) do
+ActiveRecord::Schema.define(:version => 20101108053328) do
 
   create_table "ad_positions", :force => true do |t|
     t.string   "name"
@@ -159,6 +159,7 @@ ActiveRecord::Schema.define(:version => 20101027063250) do
     t.boolean  "open_contact",      :default => false
     t.string   "themes",            :default => ""
     t.integer  "industry",          :default => 99
+    t.boolean  "authorized",        :default => true
   end
 
   add_index "companies", ["partner_id"], :name => "index_companies_on_partner_id"
