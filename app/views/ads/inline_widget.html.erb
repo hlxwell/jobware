@@ -9,7 +9,7 @@
     $('#ads').mouseover(function(){
       $('#ads').cycle('pause');
     });
-    
+
     $('#ads').mouseout(function(){
       $('#ads').cycle('resume');
     });
@@ -25,7 +25,19 @@
     html { overflow: auto; }
     .hidden {display: none;}
     a {color: black; text-decoration: none;}
-    b { font-size: 12px; font-weight: bold; color: red; font-family: Arial;}
+    b { font: bold 12px Georgia,serif; color: red; }
+    #corner_mark {
+      position : absolute;
+      bottom: 0px;
+      right: 0;
+      font-size: 9px;
+      padding: 5px;
+      background-color: black;
+      color: white;
+      font-weight: bold;
+    }
+    #corner_mark a { color: white; text-decoration: underline; }
+    #corner_mark a:hover{ text-decoration: none; }
   </style>
 </head>
 
@@ -48,5 +60,7 @@
       </table>
     <% end %>
   </div>
+
+  <div id="corner_mark">Powdered by <a href='http://itjob.fm'>ITJob.fm</a></div>
 </body>
 </html>

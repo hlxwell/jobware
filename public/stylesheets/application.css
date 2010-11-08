@@ -79,10 +79,13 @@ h1 img, h2 img, h3 img, h4 img, h5 img, h6 img {margin: 0;}
 
 /* Links */
 
-a:focus,a:hover {color: #009F00;}
-a {
+a:focus, a:hover {
   color: #009F00;
   text-decoration: underline;
+}
+a {
+  color: #009F00;
+  text-decoration: none;
 }
 a.feed {
   background: url('/images/icon-feed.gif') no-repeat left center;
@@ -1126,7 +1129,7 @@ color: black;
   background-color: #eee;
   margin-right: 0.5em;
   font-weight: bold;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 .company_home_page .menu li a:hover {
@@ -1135,7 +1138,7 @@ color: black;
   background-color: #ddd;
   margin-right: 0.5em;
   font-weight: bold;
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 
