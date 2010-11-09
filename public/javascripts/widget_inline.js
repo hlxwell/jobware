@@ -8,7 +8,7 @@ if(document.createElement && document.getElementById && document.createTextNode 
   with (JobletWidget) {
     var Widgets = {
       flashWidget : function () {
-        var frameUrl  = joblet_url + '/inline_widget?content=' + content;
+        var frameUrl  = joblet_url + '/inline_widget';
         var frame = document.createElement('iframe');
         frame.setAttribute('width' ,size.width);
         frame.setAttribute('height',size.height);
