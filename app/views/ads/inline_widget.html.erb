@@ -5,7 +5,7 @@
   <%= javascript_include_tag "jquery", "jquery.cycle.all.min" %>
   <script>
   $(function(){
-    $('#ads').cycle({ fx:'scrollDown', speed:300, timeout: 2000});
+    $('#ads').cycle({ fx:'scrollDown', speed:500, timeout: 5000});
     $('#ads').mouseover(function(){
       $('#ads').cycle('pause');
     });
@@ -30,8 +30,9 @@
       position : absolute;
       bottom: 0px;
       right: 0;
-      font-size: 8px;
-      padding: 4px 7px;
+      font-family: Arial;
+      font-size: 10px;
+      padding: 3px 5px;
       background-color: #ccc;
       z-index: 100;
     }
