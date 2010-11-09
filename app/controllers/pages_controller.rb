@@ -12,4 +12,7 @@ class PagesController < ApplicationController
   
   def ad_service
   end
+  
+  def recruiter_service
+  end
 end

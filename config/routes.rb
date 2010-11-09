@@ -16,6 +16,7 @@ Jobware::Application.routes.draw do
   match "/contactus" => "pages#contactus"
   match "/term" => "pages#term"
   match "/ad_service" => "pages#ad_service"
+  match "/recruiter_service" => "pages#recruiter_service"
 
   ### auth stuff
   match "/login" => "sessions#new", :as => :login
