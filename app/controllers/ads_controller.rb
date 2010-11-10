@@ -2,6 +2,10 @@ class AdsController < ApplicationController
   respond_to :html, :only => :index
 
   def index
+    respond_to do |format|
+      format.html
+      format.bbshtml { render :template => 'index' }
+    end
   end
 
   def inline_widget
