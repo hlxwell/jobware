@@ -1,5 +1,6 @@
 class AdsController < ApplicationController
   respond_to :html, :only => :index
+  before_filter :find_host, :only => :inline_widget
 
   def index
     respond_to do |format|

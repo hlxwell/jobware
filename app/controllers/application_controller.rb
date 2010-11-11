@@ -79,6 +79,11 @@ class ApplicationController < ActionController::Base
 
 private
 
+  def find_host
+    subdomain = current_user.try(:partner).try(:partner_site_style).subdomain
+    @host = subdomain.blank? ? "itjob.fm" : "#{subdomain}.itjob.fm"
+  end
+
   def http_auth
     return if Rails.env != 'production'
     authenticate_or_request_with_http_basic do |username, password|

@@ -16,11 +16,4 @@ class Partner::CodesController < Partner::BaseController
   def update_widget_js_code
     render :partial => "partner/codes/sidebar_ad_code"
   end
-
-  private
-
-  def find_host
-    subdomain = current_user.try(:partner).try(:partner_site_style).subdomain
-    @host = subdomain.blank? ? "itjob.fm" : "#{subdomain}.itjob.fm"
-  end
 end
