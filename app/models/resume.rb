@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20101014064036
+# Schema version: 20101114023243
 #
 # Table name: resumes
 #
@@ -8,7 +8,7 @@
 #  name                       :string(255)
 #  gender                     :integer(4)
 #  working_years              :integer(4)
-#  degree                     :string(255)
+#  degree                     :integer(4)
 #  major                      :string(255)
 #  birthday                   :date
 #  hometown_province          :string(255)

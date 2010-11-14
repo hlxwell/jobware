@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20101027063250
+# Schema version: 20101114023243
 #
 # Table name: jobs
 #
@@ -31,7 +31,7 @@
 #  degree_requirement           :integer(4)      default(0)
 #  working_year_requirement     :integer(4)      default(0)
 #  keep_top                     :integer(4)      default(0)
-#  themes                       :string(255)
+#  themes                       :string(255)     default("")
 #
 
 class Job < ActiveRecord::Base

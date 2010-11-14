@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20101027063250
+# Schema version: 20101114023243
 #
 # Table name: ads
 #
@@ -22,7 +22,7 @@
 #  image_content_type :string(255)
 #  image_file_size    :integer(4)
 #  image_updated_at   :datetime
-#  themes             :string(255)
+#  themes             :string(255)     default("")
 #
 
 class Ad < ActiveRecord::Base

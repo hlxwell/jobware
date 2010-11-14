@@ -55,6 +55,19 @@
   		  <th>自我评价</th>
   		  <td colspan="3"><%= raw item.self_intro_if_present %></td>
   		</tr>
+  		<% if item.file.size != nil %>
+  		<tr>
+  		  <th>文件简历</th>
+  		  <td colspan="3"><%= link_to item.file_file_name, item.file.url, :class => "ss_sprite ss_page_white_word" %></td>
+  		</tr>
+  		<% end %>
+  		
+  		<% if item.url.present? %>
+  		<tr>
+  		  <th>URL简历</th>
+  		  <td colspan="3"><%= link_to item.url, item.url, :class => "ss_sprite ss_page_link" %></td>
+  		</tr>
+  		<% end %>
   	</table>
   </div>
   <br/>
