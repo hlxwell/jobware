@@ -61,7 +61,7 @@ class Partner < ActiveRecord::Base
   [:job, :job_application, :company, :jobseeker].each do |method_name|
     define_method("increase_#{method_name}") do |*args|
       self.send("#{method_name}_counters".to_sym).create(:happened_at => Date.today) if self.send("#{method_name}_counters".to_sym).today.blank?
-      self.send("#{method_name}_counters".to_sym).today.last.increment!(:click)
+      self.send("#{method_name}_counters".to_sym).today.last.try(:increment!, :click)
     end
   end
 

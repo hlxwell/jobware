@@ -166,7 +166,7 @@ class Resume < ActiveRecord::Base
     end
   end
 
-  [:name, :gender_humanize, :birthday, :degree, :working_years, :major, :hometown,
+  [:name, :gender_humanize, :birthday, :degree_humanize, :working_years, :major, :hometown,
    :expected_salary, :current_residence, :expected_job_location, :expected_positions,
    :email, :phone_number, :current_working_state_humanize, :self_intro].each do |method_name|
     define_method("#{method_name}_if_present") do |*args|
