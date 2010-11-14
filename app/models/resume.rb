@@ -44,6 +44,7 @@ class Resume < ActiveRecord::Base
   attr_accessor :resume_type
 
   has_enumeration_for :gender, :with => Gender
+  has_enumeration_for :degree, :with => Degree
   has_enumeration_for :current_working_state, :with => WorkingState
 
   belongs_to :user
