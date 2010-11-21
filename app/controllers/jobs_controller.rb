@@ -73,8 +73,8 @@ class JobsController < ApplicationController
     :match_mode => :extended,
     :field_weights => {
       :name => 6, :location => 5, :content => 5, :requirement => 2, :company_name => 2
-    },
-    :conditions => {:theme => current_theme_site})
+    })
+    # :conditions => {:theme => current_theme_site})
 
     render "index"
   end
