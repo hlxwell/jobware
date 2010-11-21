@@ -10,3 +10,4 @@ Disallow: /admin/
 Disallow: /partner_site_header
 Disallow: /partner_site_footer
 Disallow: /term
+Disallow: /reset_password

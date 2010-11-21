@@ -1,3 +1,21 @@
+/*!
+ * Copyright (c) 2010 "Michael He"
+ * Dual licensed under the MIT and GPL licenses.
+ */
+
+// GitHub          - http://github.com/hlxwell/jquery-cityselector/
+// jQuery Versions - 1.4.2
+// Browsers Tested - Internet Explorer 6-8, Firefox 2-3.7, Safari 3-4, Chrome 4-5, Opera 9.6-10.1.
+
+// Usage 
+// <div class="city_selector">
+//  <select class="province"></select> 
+//  <select class="city"></select>
+// </div>
+// $('.city_selector').CitySelector();
+
+
+
 $.fn.CitySelector = function(){
   var _self = this;
   var _province = _self.find("select.province")[0];
