@@ -14,6 +14,9 @@ class CompaniesController < ApplicationController
     @company_type = params[:company_type]
     @industry     = params[:industry]
 
+    @company_type_name = CompanyType.to_a.select{|i| i.last.to_s == @company_type}.flatten.first
+    @industry_name = CompanyIndustry.to_a.select{|i| i.last.to_s == @industry}.flatten.first
+
     @search_query = Company.opened.with_theme(current_theme_site)
     @search_query = @search_query.where(["province=? or city=?", @location, @location]) unless @location.blank?
     @search_query = @search_query.where(["size LIKE ?", "%#{@size}%"]) unless @size.blank?
@@ -21,6 +24,9 @@ class CompaniesController < ApplicationController
     @search_query = @search_query.where(["industry=?", @industry]) unless @industry.blank?
 
     @companies = @search_query.paginate :all, :page => params[:page], :per_page => 15
+    
+    @title = "#{@location}#{@industry_name}#{@company_type_name}企业"
+    
     render :index
   end
 
