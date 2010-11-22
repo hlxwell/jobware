@@ -56,7 +56,7 @@ class NewDataNotifier < ActionMailer::Base
     elsif obj.respond_to?(:name) and obj.try(:name).present?
       obj.name
     else
-      "#{key}##{obj.id}"
+      "#{obj.class}##{obj.id}"
     end
   end
 

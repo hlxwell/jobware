@@ -18,7 +18,7 @@ task :send_latest_data => :environment do
   data_hash = {}
 
   NewDataNotifier.be_monitored_models.each do |model|
-    data_hash[model.downcase.to_sym] = model.constantize.all :conditions => ["created_at > ?", last_sent_at], :order => "created_at DESC"
+    data_hash[model.downcase.to_sym] = model.constantize.all(:conditions => ["created_at > ?", last_sent_at], :order => "created_at DESC")
   end
 
   data_hash.delete_if { |key, value| value.blank? }
