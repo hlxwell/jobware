@@ -56,7 +56,7 @@ class Company < ActiveRecord::Base
 
   validates_uniqueness_of :name
   validates_presence_of :name, :industry, :company_type, :size, :address, :contact_name, :province, :city, :desc  # phone_number
-  validates_format_of :url, :with => /^http:\/\/.+$/, :on => :create, :message => "URL必须以http://开头。"
+  validates_format_of :homepage, :with => /^http:\/\/.+$/, :on => :create, :message => "URL必须以http://开头。"
   validate :check_tag
   validate :check_logo
 
