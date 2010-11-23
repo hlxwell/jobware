@@ -4,7 +4,7 @@ safe do
   s3 do
     key "1GC16GB1C78GVFV5Z1R2"
     secret "Dvuj8x5/4Wz14t22Ptsl75bxLVSZRlBcNASrDQ48"
-    bucket "itjob.fm"
+    bucket "itjobfm_backup"
     path "backup/:kind/:id"
   end
 
