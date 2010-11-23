@@ -1,6 +1,8 @@
 // Place your application-specific JavaScript functions and classes here
 // This file is automatically included by javascript_include_tag :defaults
 $(function(){
+  show_and_hide_ajax_loading_bar();
+  
   if (navigator.platform != "iPad") {
     $("img.lazyload").lazyload({
       effect : "fadeIn",
@@ -42,8 +44,6 @@ $(function(){
   // form tip for search input
   $("form input#search_term").formtips({ tippedClass: 'tipped' });
 
-
-
   $(".transaction-list").tabs({
     ajaxOptions: {
       error: function(xhr, status, index, anchor) {
@@ -52,8 +52,6 @@ $(function(){
     }
   });
 
-  show_and_hide_ajax_loading_bar();
-
   $(".show_dialog").click(function(){
     $(".dialog-modal").dialog({
       width: 500,
@@ -61,7 +59,6 @@ $(function(){
       modal: true
     });
   });
-
 
   $("#slider").easySlider({
     prevText:'前一页',
@@ -100,25 +97,6 @@ $(function(){
     });
   });
 
-  // adjust company logo size
-  // $(".post .company_logo").each(function() {
-  //   //Get the width of the image
-  //   var width = $(this).width();
-  //
-  //   //Max-width substitution (works for all browsers)
-  //   if (width > 100) {
-  //     $(this).css("width", "100px");
-  //   }
-  // });
-
-  // $('#urgent-job-marquee').kxbdSuperMarquee({
-  //    isEqual:false,
-  //    distance: 216,
-  //    time: 5,
-  //   duration: 100,
-  //    direction:'up',
-  //    btnGo:{up:'#goUp',down:'#goDown'}
-  // });
 });
 
 function show_and_hide_ajax_loading_bar() {
@@ -136,9 +114,16 @@ function show_tooltip() {
   $("input, select, radio, textarea").each(function(){ $(this).tipsy("show") });
 }
 
-function hide_fields(link) {
-  $(link).next("input[type=hidden]").val("1");
-  $(link).closest("fieldset").fadeOut("slow");
+function add_fields(link, association, content) {
+  if( $(link).parent().children("fieldset").size() == 0 ) {
+    $(link).parent().children("div.notice").fadeOut("slow");
+  }
+
+  var new_id = new Date().getTime();
+  var regexp = new RegExp("new_" + association, "g")
+  $(link).before(content.replace(regexp, new_id));
+  $("#" + new_id).hide().fadeIn("slow");
+  $("#" + association + "_notice").fadeOut("show");
 }
 
 function remove_fields(link) {
@@ -151,14 +136,7 @@ function remove_fields(link) {
   });
 }
 
-function add_fields(link, association, content) {
-  if( $(link).parent().children("fieldset").size() == 0 ) {
-    $(link).parent().children("div.notice").fadeOut("slow");
-  }
-
-  var new_id = new Date().getTime();
-  var regexp = new RegExp("new_" + association, "g")
-  $(link).before(content.replace(regexp, new_id));
-  $("#" + new_id).hide().fadeIn("slow");
-  $("#" + association + "_notice").fadeOut("show");
+function hide_fields(link) {
+  $(link).next("input[type=hidden]").val("1");
+  $(link).closest("fieldset").fadeOut("slow");
 }
