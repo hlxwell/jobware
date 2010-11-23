@@ -2,8 +2,8 @@ safe do
   local :path => "/home/itjob.fm/backup/:kind/:id"
 
   s3 do
-    key "AKIAIM4DOXXND43IZSUA"
-    secret "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"
+    key "1GC16GB1C78GVFV5Z1R2"
+    secret "Dvuj8x5/4Wz14t22Ptsl75bxLVSZRlBcNASrDQ48"
     bucket "itjob.fm"
     path "backup/:kind/:id"
   end
