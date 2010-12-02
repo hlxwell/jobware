@@ -14,8 +14,8 @@ class DashboardController < ApplicationController
   def company
     @company = current_user.company
     @applications = @company.job_applications.order("id desc").limit(5).unread
-    @company_view_counters = @company.counters
-    @company_job_view_counters = @company.job_counters
+    @company_view_counters = @company.counters.all(:order => "id desc", :limit => 15).reverse
+    @company_job_view_counters = @company.job_counters.all(:order => "id desc", :limit => 15).reverse
     @company_job_applications_counters = @company.job_applications
 
     render :layout => "company"
@@ -23,10 +23,10 @@ class DashboardController < ApplicationController
 
   def partner
     @partner                          = current_user.partner
-    @partner_job_counters             = @partner.job_counters
-    @partner_company_counters         = @partner.company_counters
-    @partner_job_application_counters = @partner.job_application_counters
-    @partner_jobseeker_counters       = @partner.jobseeker_counters
+    @partner_job_counters             = @partner.job_counters.all(:order => "id desc", :limit => 15).reverse
+    @partner_company_counters         = @partner.company_counters.all(:order => "id desc", :limit => 15).reverse
+    @partner_job_application_counters = @partner.job_application_counters.all(:order => "id desc", :limit => 15).reverse
+    @partner_jobseeker_counters       = @partner.jobseeker_counters.all(:order => "id desc", :limit => 15).reverse
     render :layout => "partner"
   end
 end
