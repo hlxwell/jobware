@@ -27,7 +27,7 @@ class AlipayController < ApplicationController
         :note => params.inspect,
         :partner_id => current_partner
       )
-      render :text => "Money arrived."
+      render :text => "success"
       return
     else
       raise "Money didn't arrived."
