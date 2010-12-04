@@ -24,7 +24,7 @@ gem 'sitemap_generator'
 gem 'cancan'
 gem 'bluepill'
 gem 'astrails-safe'
-
+gem 'new_data_notifier', :require => "new_data_notifier", :git => "git://github.com/hlxwell/new_data_notifier.git"
 # gem 'qor', :git => 'git@github.com:anatole/qor.git'
 gem 'ckeditor', :git => 'git://github.com/galetahub/rails-ckeditor.git', :branch => 'rails3'
 gem "exception_notification", :git => "git://github.com/rails/exception_notification.git", :branch => "master"

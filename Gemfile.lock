@@ -25,6 +25,12 @@ GIT
       mime-types (>= 1.16)
 
 GIT
+  remote: git://github.com/hlxwell/new_data_notifier.git
+  revision: 3f1633e3888093bf72bf9b02b3ba784840aa4a9f
+  specs:
+    new_data_notifier (0.0.2)
+
+GIT
   remote: git://github.com/rails/exception_notification.git
   revision: 192a49a02d63d28b23ed41cebadfedd490929cf1
   branch: master
@@ -195,6 +201,7 @@ DEPENDENCIES
   mocha
   mysql
   navigasmic
+  new_data_notifier!
   nifty-generators
   paperclip
   rack-test
