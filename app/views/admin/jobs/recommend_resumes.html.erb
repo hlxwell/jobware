@@ -1,0 +1,28 @@
+<p><%= flash[:notice] %></p>
+
+<%= form_for :job, "/admin/jobs/recommend_resumes/#{@job.id}" do |f| %>
+<table border="0" cellspacing="5" cellpadding="5">
+  <tr>
+    <td colspan="4"><h2>Recommend Resumes to Job: <%= @job.name %></h2></td>
+  </tr>
+  <tr>
+    <th></th>
+    <th>Email</th>
+    <th>Name</th>
+    <th>File</th>
+  </tr>
+
+  <% Resume.all.each do |resume| %>
+  <tr>
+    <td><%= check_box_tag "resume_ids[]", "#{resume.id}" %></td>
+    <td><%= link_to resume.user.email, "/admin/resumes/edit/#{resume.id}", :target => "_blank" %></td>
+    <td><%= resume.name %></td>
+    <td><%= link_to resume.file_file_name, resume.file.url, :target => "_blank" if resume.file.size %></td>
+  </tr>
+  <% end %>
+  
+  <tr>
+    <td><%= f.submit "提交" %></td>
+  </tr>
+</table>
+<% end %>

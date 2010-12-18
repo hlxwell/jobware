@@ -36,4 +36,12 @@ class Admin::JobsController < Admin::ResourcesController
 
     redirect_to :action => :theme, :page => params[:page]
   end
+  
+  def recommend_resumes
+    @job = get_object
+    
+    if request.post?
+      flash[:notice] = "Successed to recommend resumes."
+    end
+  end
 end

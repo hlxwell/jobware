@@ -423,7 +423,19 @@ Separators
 Posts
 ------------------------------------------------------------------- */
 
-.post .company_logo { float: left; margin-right: 5px; }
+.company_logo {
+/*  float: left;*/
+/*  width: 170px;*/
+
+/*  height: 80px;*/
+}
+
+.company_info {
+/*  float: right;*/
+}
+
+
+.post .company_logo { float: left; margin-right: 18px; width: 150px; }
 .post .company_logo img { max-width: 150px; }
 
 .post a {text-decoration: none;}
@@ -923,17 +935,6 @@ Misc overriding classes
 
 div.highlighted {
   background: #FFF6BF;
-}
-
-.company_logo {
-  float: left;
-  width: 170px;
-
-/*  height: 80px;*/
-}
-
-.company_info {
-/*  float: right;*/
 }
 
 /* home page ads block */

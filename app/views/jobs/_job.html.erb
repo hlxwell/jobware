@@ -11,7 +11,7 @@
 
   <% if params[:id].blank? %>
   <div class="company_logo">
-    <%= link_to image_tag(job.company.logo.url, :class => "aligncenter bordered company_logo"), job.company %>
+    <%= link_to image_tag(job.company.logo.url, :class => "aligncenter"), job.company %>
   </div>
   <% end %>
 

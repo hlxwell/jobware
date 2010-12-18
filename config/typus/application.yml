@@ -117,7 +117,7 @@ Project:
 Resume:
   fields:
     default: user_id, name, gender, working_years, degree, major, birthday, current_residence_province, current_residence_city, user
-    form: user_id, name, gender, working_years, degree, major, birthday, hometown_province, hometown_city, current_residence_province, current_residence_city, email, phone_number, expected_salary, expected_job_location, current_working_state, highlight_start_at, highlight_end_at, is_sending_sms, portrait, user
+    form: name, gender, working_years, degree, major, birthday, hometown_province, hometown_city, current_residence_province, current_residence_city, email, phone_number, expected_salary, expected_job_location, current_working_state, highlight_start_at, highlight_end_at, is_sending_sms, portrait, user, file
   order_by:
   relationships: certifications, cover_letters, job_applications, jobs, languages, previous_jobs, projects, schools, skills, starred_jobs, user
   filters:
@@ -177,7 +177,7 @@ Ad:
   order_by: position
   relationships: company
   filters: display_type, state
-  search: name, company
+  search: name
   application: Company
 
 Counter:

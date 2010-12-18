@@ -80,7 +80,7 @@ class ApplicationController < ActionController::Base
 private
 
   def find_host
-    subdomain = current_user.try(:partner).try(:partner_site_style).subdomain
+    subdomain = current_user.try(:partner).try(:partner_site_style).try(:subdomain)
     @host = subdomain.blank? ? "itjob.fm" : "#{subdomain}.itjob.fm"
   end
 
