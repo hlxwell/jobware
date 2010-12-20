@@ -36,7 +36,7 @@
 
 class Job < ActiveRecord::Base
   STATE = {
-    'unapproved' => "等待审核中",
+    'unapproved' => "审核中",
     'rejected' => "被拒绝",
     'opened' => "展示中",
     'closed' => "未展示"
@@ -118,7 +118,8 @@ class Job < ActiveRecord::Base
     end
 
     event :want_to_show do
-      transition :unapproved => :approving, :if => :company_has_enough_credit?
+      # transition :unapproved => :approving, :if => :company_has_enough_credit?
+      transition :unapproved => :opened, :if => :company_has_enough_credit?
     end
     event :approve do
       transition any => :opened
