@@ -1,0 +1,4 @@
+<%= form_for :company, :url => {:controller => "admin/companies", :action => "change_email", :id => @item.id} do |f| %>
+  New Email: <%= f.text_field :new_email %>
+  <%= f.submit "修改邮箱并且发送重置密码邮件" %>
+<% end %>
