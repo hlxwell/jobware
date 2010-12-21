@@ -15,8 +15,8 @@ class ApplicationController < ActionController::Base
   end
 
   def current_layout
-    if request.subdomain == 'rails'
-      "layouts/themes/rails"
+    if THEMES.include?(request.subdomain.downcase)
+      "layouts/themes/#{request.subdomain.downcase}"
     elsif current_partner_site.present?
       "layouts/partner_site"
     else

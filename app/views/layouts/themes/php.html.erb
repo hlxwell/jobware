@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
+<head>
+  <%= render "shared/meta" %>
+  <title><%= "#{@content_for_title} - " if @content_for_title %> PHP招聘网|专注于PHP程序员招聘的网站</title>
+</head>
+
+<body id="top">
+  <div id="loading">正在加载, 请稍候...</div>
+
+  <!-- header zone select bar and signin signup link -->
+  <div id="network">
+  	<div class="center-wrapper">
+  		<div class="left">
+        <%= render "shared/login_status" %>
+  		</div>
+
+  		<div class="right">
+  		  <% semantic_navigation "network-tabs", :html => {:class => "tabbed"} do |n| %>
+          <%= n.item '首页', :link => root_path, :highlights_on => frontend_paths %>
+          <%= n.item '我是求职者', :link => jobseeker_dashboard_path, :highlights_on => jobseeker_section_paths if jobseeker_user? %>
+          <%= n.item '我是公司', :link => company_dashboard_path, :highlights_on => company_section_paths if company_user? %>
+          <%= n.item '我是合作者', :link => partner_dashboard_path, :highlights_on => partner_section_paths if partner_user? %>
+        <% end %>
+ 		  </div>
+  		<div class="clearer">&nbsp;</div>
+  	</div>
+  </div>
+
+  <div id="site">
+  	<div class="center-wrapper">
+      <div id="header">
+        <!-- #### site logo and title -->
+      	<div id="site-title" class="left">
+      	  <%= link_to image_tag("/images/logo/php-it-job-logo.jpg", :alt => "专注于程序员招聘求职 - PHP.ITJob.fm"), "/" %>
+      	</div>
+
+        <%= render "shared/search_box" %>
+      	<div class="clearer">&nbsp;</div>
+
+        <!-- ### main nav -->
+      	<div id="navigation">
+      		<div id="main-nav">
+      		  <% semantic_navigation :main, :html => {:class => "tabbed"} do |n| %>
+      		    <%= n.item '首页', :link => root_path %>
+              <%= n.item '找工作', :link => jobs_path, :highlights_on => [filter_jobs_path, search_jobs_path] %>
+              <%= n.item '找公司', :link => companies_path %>
+              <%= n.item "发布工作", :link => new_company_path %>
+            <% end %>
+
+            <div class="right">
+              <link title="RSS 2.0" type="application/rss+xml" href="http://feed.itjob.fm" rel="alternate" />
+              <a href="http://feed.itjob.fm" target="_blank"><img border="0" src="http://img.feedsky.com/images/icon_sub_c1s17_d.gif" alt="feedsky" vspace="2" style="margin-top: 0.2em;" ></a>
+            </div>
+      			<div class="clearer">&nbsp;</div>
+      		</div>
+      	</div>
+      </div>
+
+      <%= raw render_message %>
+      <%= content_for?(:content) ? yield(:content) : yield %>
+      <%= render "shared/footer" %>
+	  </div>
+  </div>
+
+  <%= render "shared/counter" if Rails.env == 'production' %>
+</body>
+</html>

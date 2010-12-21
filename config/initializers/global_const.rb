@@ -1,2 +1,2 @@
 PRESERVED_SUBDOMAINS = %w{www help cnc}
-THEMES = ["rails"] #["java", "dotnet", "python", "ria", "web", "php", "ui"]
+THEMES = ["rails", "php"] #["java", "dotnet", "python", "ria", "web", "php", "ui"]

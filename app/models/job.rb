@@ -233,7 +233,7 @@ class Job < ActiveRecord::Base
   # unapproved, approved, rejected, opened, closed
   # highlighted available
   def state_s
-    return "审核中" if approving?
+    # return "审核中" if approving?
     return "等待激活中" if unapproved?
     return "审核被拒绝" if rejected?
     return "展示中" if opened? and available?
