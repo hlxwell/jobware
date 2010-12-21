@@ -45,7 +45,7 @@ class JobsController < ApplicationController
     @category_name = JobCategory.to_a.select{|i| i.last.to_s == @category}.flatten.first
     @contract_type_name = ContractType.to_a.select{|i| i.last.to_s == @contract_type}.flatten.first
 
-    @search_query  = Job.opened.with_theme(current_theme_site).joins(:company)
+    @search_query  = Job.opened.with_theme(current_theme_site).joins(:company).desc
     @search_query  = @search_query.where(["location_province=? or location_city=?", @location, @location]) unless @location.blank?
     @search_query  = @search_query.where(["jobs.name LIKE ?", "%#{@tool}%"]) unless @tool.blank?
     @search_query  = @search_query.where(["jobs.category=?", @category]) unless @category.blank?

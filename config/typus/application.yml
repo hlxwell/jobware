@@ -4,7 +4,7 @@
 
 Certification:
   fields:
-    default: resume_id, name, get_at, resume
+    default: id, resume_id, name, get_at, resume
     form: resume_id, name, get_at, resume
   order_by:
   relationships: image, resume
@@ -14,7 +14,7 @@ Certification:
 
 Company:
   fields:
-    default: user_id, name, size, province, city, address, homepage, contact_name, phone_number, logo_file_name, user, themes, authorized
+    default: id, user_id, name, size, province, city, address, homepage, contact_name, phone_number, logo_file_name, user, themes, authorized
     form: user_id, name, size, province, city, address, homepage, contact_name, phone_number, desc, logo, user, themes, authorized
   order_by:
   relationships: job_applications, jobs, presentations, products, resumes, user
@@ -24,7 +24,7 @@ Company:
 
 CoverLetter:
   fields:
-    default: resume_id, name
+    default: id, resume_id, name
     form: resume_id, name, content
   order_by:
   relationships:
@@ -34,7 +34,7 @@ CoverLetter:
 
 Job:
   fields:
-    default: name, location, category_humanize, salary_range_humanize, highlighted, start_at, end_at, company, state_s, source, keep_top, themes
+    default: id, name, location, category_humanize, salary_range_humanize, highlighted, start_at, end_at, company, state_s, source, keep_top, themes
     form: name, location_province, location_city, category, vacancy, content, requirement, welfare, desc, salary_range, highlighted, start_at, end_at, tag_list, company, source, state, keep_top, themes
     options:
       selectors: state
@@ -46,7 +46,7 @@ Job:
 
 JobApplication:
   fields:
-    default: job_id, resume_id, cover_letter_id, state, rating, resume, cover_letter, job
+    default: id, job_id, resume_id, cover_letter_id, state, rating, resume, cover_letter, job
     form: job_id, resume_id, cover_letter_id, state, rating, resume, cover_letter, job
   order_by:
   relationships: company, cover_letter, job, resume
@@ -56,7 +56,7 @@ JobApplication:
 
 Language:
   fields:
-    default: resume_id, name, level, resume
+    default: id, resume_id, name, level, resume
     form: resume_id, name, level, resume
   order_by:
   relationships: resume
@@ -66,7 +66,7 @@ Language:
 
 Partner:
   fields:
-    default: user_id, name, url, contact_name, phone_number, site_size, state, user
+    default: id, user_id, name, url, contact_name, phone_number, site_size, state, user
     form: user_id, name, url, contact_name, phone_number, site_size, desc, user
   order_by:
   relationships: user
@@ -76,7 +76,7 @@ Partner:
 
 Presentation:
   fields:
-    default: type, parent_id, name, file_file_name
+    default: id, type, parent_id, name, file_file_name
     form: type, parent_id, name, desc, file
   order_by:
   relationships:
@@ -86,7 +86,7 @@ Presentation:
 
 PreviousJob:
   fields:
-    default: resume_id, company_name, company_size, job_title, start_at, end_at, resume
+    default: id, resume_id, company_name, company_size, job_title, start_at, end_at, resume
     form: resume_id, company_name, company_size, job_title, start_at, end_at, resume
   order_by:
   relationships: resume
@@ -96,7 +96,7 @@ PreviousJob:
 
 Product:
   fields:
-    default: type, parent_id, name, file_file_name
+    default: id, type, parent_id, name, file_file_name
     form: type, parent_id, name, desc, file
   order_by:
   relationships:
@@ -106,7 +106,7 @@ Product:
 
 Project:
   fields:
-    default: type, parent_id, name, file_file_name
+    default: id, type, parent_id, name, file_file_name
     form: type, parent_id, name, desc, file
   order_by:
   relationships:
@@ -116,7 +116,7 @@ Project:
 
 Resume:
   fields:
-    default: user_id, name, gender, working_years, degree, major, birthday, current_residence_province, current_residence_city, user
+    default: id, user_id, name, gender, working_years, degree, major, birthday, current_residence_province, current_residence_city, user
     form: name, gender, working_years, degree, major, birthday, hometown_province, hometown_city, current_residence_province, current_residence_city, email, phone_number, expected_salary, expected_job_location, current_working_state, highlight_start_at, highlight_end_at, is_sending_sms, portrait, user, file
   order_by:
   relationships: certifications, cover_letters, job_applications, jobs, languages, previous_jobs, projects, schools, skills, starred_jobs, user
@@ -126,7 +126,7 @@ Resume:
 
 School:
   fields:
-    default: resume_id, name, major, start_at, end_at, resume
+    default: id, resume_id, name, major, start_at, end_at, resume
     form: resume_id, name, major, start_at, end_at, resume
   order_by:
   relationships: resume
@@ -136,7 +136,7 @@ School:
 
 Skill:
   fields:
-    default: resume_id, name, level, resume
+    default: id, resume_id, name, level, resume
     form: resume_id, name, level, resume
   order_by:
   relationships: resume
@@ -146,7 +146,7 @@ Skill:
 
 StarredJob:
   fields:
-    default: resume_id, job_id, rating, resume, job
+    default: id, resume_id, job_id, rating, resume, job
     form: resume_id, job_id, rating, resume, job
   order_by:
   relationships: job, resume
@@ -156,7 +156,7 @@ StarredJob:
 
 User:
   fields:
-    default: email, login_count, failed_login_count, last_request_at, current_login_at, last_login_at, current_login_ip, last_login_ip, confirmed?
+    default: id, email, login_count, failed_login_count, last_request_at, current_login_at, last_login_at, current_login_ip, last_login_ip, confirmed?
     form: email, login_count, failed_login_count, last_request_at, current_login_at, last_login_at, current_login_ip, last_login_ip
     cvs: email, login_count
   export: csv, xml
@@ -168,7 +168,7 @@ User:
 
 Ad:
   fields:
-    default: position, ad_name, company, display_type_humanize, state, start_at, end_at, themes
+    default: id, position, ad_name, company, display_type_humanize, state, start_at, end_at, themes
     form: position, name, desc, display_type, url, state, start_at, end_at, company, image, province, city, period, themes
     options:
       selectors: display_type, state
@@ -182,7 +182,7 @@ Ad:
 
 Counter:
   fields:
-    default: click, happened_at, parent_id, type
+    default: id, click, happened_at, parent_id, type
     form: click, happened_at, parent_id, type
   order_by:
   relationships:
@@ -192,7 +192,7 @@ Counter:
 
 Subscription:
   fields:
-    default: resume_id, keywords, last_sent_at
+    default: id, resume_id, keywords, last_sent_at
     form: resume_id, keywords, last_sent_at
   order_by:
   relationships:
@@ -202,7 +202,7 @@ Subscription:
 
 Service:
   fields:
-    default: serving_target_type_humanize, name, price
+    default: id, serving_target_type_humanize, name, price
     form: serving_target_type, name, desc, price
     options:
       selectors: serving_target_type
@@ -214,7 +214,7 @@ Service:
 
 ServiceItem:
   fields:
-    default: name, service_length
+    default: id, name, service_length
     form: name, desc, service_length
   order_by:
   relationships: service, service_item_amounts
@@ -224,7 +224,7 @@ ServiceItem:
 
 ServiceItemAmount:
   fields:
-    default: amount, service, service_item
+    default: id, amount, service, service_item
     form: amount, service, service_item
   order_by:
   relationships: service, service_item
@@ -234,7 +234,7 @@ ServiceItemAmount:
 
 Voucher:
   fields:
-    default: code, amount, state, user, service_item
+    default: id, code, amount, state, user, service_item
     form: amount, state, user, service_item
     options:
       selectors: state

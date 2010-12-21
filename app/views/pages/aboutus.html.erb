@@ -2,7 +2,7 @@
 
 <div class="center-wrapper large" style="margin-top: 3em; width: 83%">
 
-  <image src="/images/theplant/logo.png" class="center"/>
+  <image src="/images/theplant/logo.png" class="center theplant_logo" id="theplant_logo"/>
 
   <h4 class="middle_top_margin">itjob.fm是什么？</h4>
   <p>
@@ -32,3 +32,66 @@
   <image src="/images/theplant/office_3.jpg" class="center bordered"/>
   <div class="clearer">&nbsp;</div>
 </div>
+
+
+<script>
+  var con;
+  $(function(){
+    var ThePlantLogo = Backbone.Model.extend({
+      changeWidth: function(){
+        var width = Math.floor(Math.random() * 300);
+        this.set({width: width});
+      },
+      error: function(model, error) {
+        alert(error);
+      },
+      initialize: function(){
+        // _.bindAll(this, "error");
+
+        // this.bind('error', function(model, error) {
+        //   alert(error);
+        // });
+
+        this.bind('change:width', function(model, width) {
+          $('#theplant_logo').css({width: width});
+        });
+      },
+      validate: function(attrs) {
+        if (attrs.width < 100) {
+          return "width should bigger than 100.";
+        }
+      }
+    });
+
+    var WorkspaceController = Backbone.Controller.extend({
+
+      routes: {
+        "help":                 "help",    // #help
+        "search/:query":        "search",  // #search/kiwis
+        "search/:query/p:page": "search"   // #search/kiwis/p7
+      },
+
+      initialize: function(options) {
+        this.route("help", "help", function(){
+          alert("this is help page");
+        });
+      },
+
+      help: function() {
+        alert("help");
+      },
+
+      search: function(query, page) {
+        alert("search" + query + "" + page);
+      }
+    });
+
+    window.theplant_logo = new ThePlantLogo();
+    $("#theplant_logo").click(function(){
+      theplant_logo.changeWidth();
+    });
+
+    con = new WorkspaceController();
+    Backbone.history.start();
+  });
+</script>

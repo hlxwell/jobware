@@ -59,6 +59,7 @@ class Job < ActiveRecord::Base
   scope :approved, where("state in ?", [:closed, :opened])
   scope :highlighted, where(:highlighted => true)
   scope :with_theme, lambda {|theme| where(["jobs.themes LIKE ?", "%#{theme}%"]) }
+  scope :desc, order("created_at desc")
 
   belongs_to :company
   belongs_to :partner
