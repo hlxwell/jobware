@@ -8,7 +8,7 @@ class Admin::CompaniesController < Admin::ResourcesController
     else
       flash[:notice] = "请输入需要修改的邮箱。"
     end
-    redirect_to :action => :edit, :id => get_object
+    redirect_to :action => :edit, :id => @company
   rescue Exception => e
     flash[:notice] = e.to_s
     redirect_to :action => :edit, :id => @company
