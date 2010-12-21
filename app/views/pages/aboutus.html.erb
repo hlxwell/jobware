@@ -18,7 +18,7 @@
   <div class="clearer">&nbsp;</div>
 
   <h4 class="middle_top_margin">我们的优点：</h4>
-  <ul>
+  <ul class="advantage">
     <li>和全国各大技术社区、论坛合作，开创社区招聘模式，达到精准招聘；</li>
     <li>全身心专注于IT人才招聘，因为专注所以专业；</li>
     <li>高精准的用户群，保证招聘效果；</li>
@@ -35,9 +35,13 @@
 
 
 <script>
-  var con;
   $(function(){
     var ThePlantLogo = Backbone.Model.extend({
+      defaults: {
+          "name":     "theplant",
+          "address":  "hangzhou"
+      },
+
       changeWidth: function(){
         var width = Math.floor(Math.random() * 300);
         this.set({width: width});
@@ -52,6 +56,10 @@
         //   alert(error);
         // });
 
+        this.bind('change:name', function(model, name) {
+          console.log(this.previous('name') + "," + name);
+        });
+
         this.bind('change:width', function(model, width) {
           $('#theplant_logo').css({width: width});
         });
@@ -60,11 +68,43 @@
         if (attrs.width < 100) {
           return "width should bigger than 100.";
         }
+      },
+      url: function() {
+        return "/aboutus";
+      },
+      parse: function(response) {
+        console.log(response.name);
       }
     });
 
-    var WorkspaceController = Backbone.Controller.extend({
+    var TestView = Backbone.View.extend({
+      tagName: "div",
+      template: _.template($('.advantage').html()),
+      className: "advantage",
+      events: {
+        "click li":     "say",
+        "dbclick li":   "sayTwice"
+      },
+      say: function() {
+        console.log("say");
+      },
+      sayTwice: function() {
+        console.log("sayTwice");
+      },
+      initialize: function() {
+        _.bindAll(this, "render");
+      },
+      render: function() {
+        $(this.el).html(this.template(this.model.toJSON()));
+        return this;
+      }
+    });
 
+    window.testView = new TestView();
+    window.testView.render();
+
+
+    var WorkspaceController = Backbone.Controller.extend({
       routes: {
         "help":                 "help",    // #help
         "search/:query":        "search",  // #search/kiwis
@@ -82,16 +122,17 @@
       },
 
       search: function(query, page) {
-        alert("search" + query + "" + page);
+        alert("search," + query + "," + page);
       }
     });
 
     window.theplant_logo = new ThePlantLogo();
+    window.theplant_logo.fetch();
     $("#theplant_logo").click(function(){
       theplant_logo.changeWidth();
     });
 
-    con = new WorkspaceController();
+    window.contronller = new WorkspaceController();
     Backbone.history.start();
   });
 </script>

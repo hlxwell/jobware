@@ -9,7 +9,7 @@ Jobware::Application.routes.draw do
   # match "slideshowpro(.:format)" => "pages#slideshowpro"
   match "/partner_benifit" => "pages#partner_benifit"
   match "/company_benifit" => "pages#company_benifit"
-  match "/aboutus" => "pages#aboutus"
+  match "/aboutus(.:format)" => "pages#aboutus"
   match "/partner_site_header" => "partners#partner_site_header"
   match "/partner_site_footer" => "partners#partner_site_footer"
   match "/law" => "pages#law"

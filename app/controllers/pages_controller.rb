@@ -15,4 +15,11 @@ class PagesController < ApplicationController
   
   def recruiter_service
   end
+  
+  def aboutus
+    respond_to do |format|
+      format.json { render :json => {:name => "good", :home => "china"} }
+      format.html
+    end
+  end
 end
