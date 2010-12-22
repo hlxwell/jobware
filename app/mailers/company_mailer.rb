@@ -1,7 +1,7 @@
 class CompanyMailer < MailerBase
   def send_reset_account_password(company)
-    @company = company
-    @link = email_confirmation_url(company.user.perishable_token)
+    @company = company    
+    @link = edit_password_url(company.user.perishable_token)
     mail :to => company.user.email, :subject => "ITJob.fm：招聘管理帐号确认"
   end
 
