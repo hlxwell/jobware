@@ -1,8 +1,8 @@
 set :application, "staging"
 set :deploy_to, "/home/itjob.fm/app"
 set :user, "itjob.fm"
-set :ssh_options, {:keys => [File.join(ENV["HOME"], "michael.pem")]}
+# set :ssh_options, {:keys => [File.join(ENV["HOME"], "michael.pem")]}
 
-role :web, "www.tui8.com"
-role :app, "www.tui8.com"
-role :db,  "www.tui8.com", :primary => true
+role :web, "175.41.187.67"
+role :app, "175.41.187.67"
+role :db,  "175.41.187.67", :primary => true
