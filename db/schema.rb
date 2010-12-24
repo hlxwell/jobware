@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101114023243) do
+ActiveRecord::Schema.define(:version => 20101224032047) do
 
   create_table "ad_positions", :force => true do |t|
     t.string   "name"
@@ -424,6 +424,25 @@ ActiveRecord::Schema.define(:version => 20101114023243) do
   end
 
   add_index "skills", ["resume_id"], :name => "index_skills_on_resume_id"
+
+  create_table "staging_jobs", :force => true do |t|
+    t.string   "name"
+    t.string   "location"
+    t.string   "vacancy"
+    t.string   "industry"
+    t.string   "salary_range"
+    t.string   "work_year_requirement"
+    t.string   "degree_requirement"
+    t.string   "contact"
+    t.string   "state"
+    t.string   "page_url"
+    t.string   "origin_id"
+    t.text     "desc"
+    t.string   "company_name"
+    t.text     "company_desc"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "starred_jobs", :force => true do |t|
     t.integer  "resume_id"

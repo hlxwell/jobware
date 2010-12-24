@@ -1,0 +1,30 @@
+<%= form_for :xml, :url => {:action => :upload_xml}, :html => { :multipart => true } do |f| %>
+上传xml文件:
+<%= f.file_field :file, :required => true %>
+<%= f.submit "Upload" %>
+<% end %>
+<hr/>
+
+<table>
+  <thead>
+    <tr>
+      <th>工作名</th>
+      <th>公司名</th>
+      <th>Page URL</th>
+      <th width="20"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @staging_jobs.each do |job| %>
+    <tr class="even">
+      <td><%= job.name.html_safe %></td>
+      <td><%= job.company_name.html_safe %></td>
+      <td><%= job.page_url %></td>
+      <td><a href="/admin/jobs/import">导入</a></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= will_paginate @staging_jobs, :style => "height: 50px" %>
