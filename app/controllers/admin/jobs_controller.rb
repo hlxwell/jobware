@@ -24,6 +24,8 @@ class Admin::JobsController < Admin::ResourcesController
         Service.find(8).buy_from!(@company.user)
         # active the job.
         @company.jobs.first.want_to_show
+
+        @staging_job.update_attribute :state, "published"
         
         flash[:notice] = "工作创建成功。"
         redirect_to "/admin/users/edit/#{@company.user.id}"

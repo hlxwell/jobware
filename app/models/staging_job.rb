@@ -25,4 +25,10 @@
 class StagingJob < ActiveRecord::Base
   validates_uniqueness_of :origin_id, :on => :create, :message => "must be unique"
   validates_uniqueness_of :page_url, :on => :create, :message => "must be unique"
+  
+  before_create :trim_bad_html
+  
+  def trim_bad_html
+    
+  end
 end

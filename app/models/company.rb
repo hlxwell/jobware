@@ -58,7 +58,7 @@ class Company < ActiveRecord::Base
   validates_presence_of :name, :industry, :company_type, :size, :address, :contact_name, :province, :city, :desc  # phone_number
   validates_format_of :homepage, :with => /^http:\/\/.+$/, :on => :create, :message => "URL必须以http://开头。"
   validate :check_tag
-  validate :check_logo
+  # validate :check_logo
 
   default_scope order("companies.created_at desc")
   scope :opened, includes(:user).where("users.confirmed_at IS NOT NULL and authorized=true")
