@@ -6,6 +6,34 @@ class Admin::JobsController < Admin::ResourcesController
     @staging_jobs = StagingJob.paginate :all, :page => params[:page], :per_page => 30
   end
 
+  def import
+    @staging_job = StagingJob.find(params[:id])
+
+    if request.get?
+      @company = Company.new
+      @company.build_user
+      @company.jobs.build
+    elsif request.post?
+      @company = Company.new(params[:company])
+      if @company.save
+        # active user.
+        @company.user.confirm!
+        # charge money.
+        @company.user.charge! 100, :from => '手动添加'
+        # buy post job service.
+        Service.find(8).buy_from!(@company.user)
+        # active the job.
+        @company.jobs.first.want_to_show
+        
+        flash[:notice] = "工作创建成功。"
+        redirect_to "/admin/users/edit/#{@company.user.id}"
+        return
+      end
+    end
+
+    render :layout => "simple"
+  end
+
   def upload_xml
     if file = params[:xml][:file]
       @unsaved_jobs = []

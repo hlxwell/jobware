@@ -184,4 +184,7 @@ module ApplicationHelper
     end
   end
 
+  def show_error_message_for(obj)
+    flash[:error] = "请根据错误提示填写正确内容。" if obj.errors.size > 0
+  end
 end

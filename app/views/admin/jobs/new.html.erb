@@ -21,7 +21,7 @@
       <td><%= job.name.html_safe %></td>
       <td><%= job.company_name.html_safe %></td>
       <td><%= job.page_url %></td>
-      <td><a href="/admin/jobs/import">导入</a></td>
+      <td><a href="/admin/jobs/import/<%= job.id %>">导入</a></td>
     </tr>
     <% end %>
   </tbody>

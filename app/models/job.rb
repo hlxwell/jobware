@@ -162,7 +162,7 @@ class Job < ActiveRecord::Base
       self.user.pay!(1, :service_item_id => ServiceItem.job_credit_id, :to => "激活岗位##{self.id}")
       self.user.pay!(1, :service_item_id => ServiceItem.job_highlight_credit_id, :to => "高亮显示岗位##{self.id}") if self.highlighted?
       self.user.pay!(1, :service_item_id => ServiceItem.job_keep_top_credit_id, :to => "置顶岗位##{self.id}") if self.keep_top?
-      self.partner.try(:increase_job)  # increase job count for referal partner
+      self.partner.try(:increase_job) # increase job count for referal partner
     end
   end
 
