@@ -37,7 +37,7 @@ class Admin::JobsController < Admin::ResourcesController
   end
 
   def upload_xml
-    if file = params[:xml][:file]
+    if file = params.get(:xml, :file)
       @unsaved_jobs = []
       @saved_jobs = []
       doc = Nokogiri::XML(file.read)
