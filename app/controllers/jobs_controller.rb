@@ -3,7 +3,7 @@ class JobsController < ApplicationController
   before_filter :get_job_by_id, :only => [:show, :star]
 
   def index
-    @jobs = Job.opened.with_theme(current_theme_site).order("keep_top desc, updated_at desc").paginate :all, :page => params[:page], :per_page => params[:limit]||15
+    @jobs = Job.opened.with_theme(current_theme_site).order("keep_top desc, start_at desc").paginate :all, :page => params[:page], :per_page => params[:limit]||15
 
     respond_to do |format|
       format.html

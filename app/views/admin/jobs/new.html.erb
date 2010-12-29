@@ -10,6 +10,7 @@
     <tr>
       <th>工作名</th>
       <th>公司名</th>
+      <th>薪资范围</th>
       <th>Page URL</th>
       <th>状态</th>
       <th width="20"></th>
@@ -21,6 +22,7 @@
     <tr class="even">
       <td><%= job.name.html_safe %></td>
       <td><%= job.company_name.html_safe %></td>
+      <td><%= job.salary_range.html_safe %></td>
       <td><%= job.page_url %></td>
       <td><%= job.state %></td>
       <td><a href="/admin/jobs/import/<%= job.id %>">导入</a></td>
