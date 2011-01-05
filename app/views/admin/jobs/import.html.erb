@@ -2,7 +2,7 @@
 <%= stylesheet_link_tag "application", "step_bar", "pagination", "tipsy", "jquery-ui", "jquery.ui.stars", "coin-slider-styles", "sprite" %>
 
 
-<h2><%= link_to @staging_job.page_url, @staging_job.page_url, :target => "_blank" %></h2>
+<h2><%= link_to @staging_job.page_url, @staging_job.page_url.try(:html_safe), :target => "_blank" if @staging_job.page_url.present? %></h2>
 
 <%= jobware_form_for @company, :url => {:action => :import}, :use_fieldset => false, :html => {:multipart => true} do |f| %>
   <%= field_set_tag "登录帐号", :class => 'big' do %>  
@@ -14,23 +14,23 @@
   <% end %>
   
   <%= field_set_tag "公司信息", :class => 'big' do %>
-    <%= f.text_field :name, :label => "公司名", :class => "text w620", :value => @staging_job.company_name.html_safe %>
+    <%= f.text_field :name, :label => "公司名", :class => "text w620", :value => @staging_job.company_name.try(:html_safe) %>
     <%= f.select :company_type, CompanyType.to_sorted_a, {:include_blank => true}, {:label => "性质"} %>
     <%= f.select :size, CompanySize.to_sorted_a, {:include_blank => true}, {:label => "规模"} %>
-    <%= f.select :industry, CompanyIndustry.to_sorted_a, {:include_blank => true}, {:label => "行业", :hint => @staging_job.industry.html_safe} %>
+    <%= f.select :industry, CompanyIndustry.to_sorted_a, {:include_blank => true}, {:label => "行业", :hint => @staging_job.industry.try(:html_safe)} %>
 
     <%= f.city_select :province, :city, :label => "所在地" %>
-    <%= f.text_field :address, :label => "地址", :class => "text w620", :value => @staging_job.location.html_safe %>
+    <%= f.text_field :address, :label => "地址", :class => "text w620", :value => @staging_job.location.try(:html_safe) %>
     <%= f.text_field :homepage, :label => "网址", :class => "text w620" %>
 
-    <%= f.text_field :contact_name, :label => "联系人", :class => "text w620", :hint => @staging_job.contact.html_safe %>
+    <%= f.text_field :contact_name, :label => "联系人", :class => "text w620", :hint => @staging_job.contact.try(:html_safe) %>
     <%= f.text_field :phone_number, :label => "联系电话", :class => "text w620" %>
     <%= f.check_box :open_contact, :label => "公开联系方式", :hint => "如果您希望应聘者直接联系您，请勾选此项。" %>
 
     <%= f.cktext_area(:desc, :height => '200px', :toolbar=>'Basic', :skin => "office2003", :label => "公司简介") %>
 
     <p style="color: grey">
-      <%= CGI::unescapeHTML(@staging_job.company_desc.html_safe) %>
+      <%= CGI::unescapeHTML(@staging_job.company_desc.try(:html_safe)) if @staging_job.company_desc.present? %>
     </p>
     
     <%= f.file_field :logo, :label => "公司LOGO", :hint => "最佳尺寸是283x50。" %>
@@ -40,18 +40,18 @@
 
   <%= field_set_tag "工作信息", :class => 'big' do %>  
     <%= f.fields_for :jobs do |job_f| %>
-      <%= job_f.text_field :name, :label => "名称", :class => "text w620", :hint => @staging_job.name.html_safe %>
-      <%= job_f.city_select :location_province, :location_city, :label => "工作所在地", :hint => @staging_job.location.html_safe %>
-      <%= job_f.text_field :vacancy, :label => "岗位数", :class => "text w620", :hint => @staging_job.vacancy.html_safe %>
+      <%= job_f.text_field :name, :label => "名称", :class => "text w620", :hint => @staging_job.name.try(:html_safe) %>
+      <%= job_f.city_select :location_province, :location_city, :label => "工作所在地", :hint => @staging_job.location.try(:html_safe) %>
+      <%= job_f.text_field :vacancy, :label => "岗位数", :class => "text w620", :hint => @staging_job.vacancy.try(:html_safe) %>
       <%= job_f.select :contract_type, ContractType.to_sorted_a, {:include_blank => true}, { :label => "工作类型" } %>
       <%= job_f.select :category, JobCategory.to_sorted_a, {:include_blank => true}, {:label => "类别"} %>
-      <%= job_f.select :salary_range, SalaryRange.to_sorted_a, :label => "薪资范围", :hint => @staging_job.salary_range.html_safe %>
-      <%= job_f.select :working_year_requirement, WorkingYearRequirement.to_sorted_a, :label => "工作年限", :hint => @staging_job.work_year_requirement.html_safe %>
-      <%= job_f.select :degree_requirement, DegreeRequirement.to_sorted_a, :label => "学历要求", :hint => @staging_job.degree_requirement.html_safe %>
+      <%= job_f.select :salary_range, SalaryRange.to_sorted_a, :label => "薪资范围", :hint => @staging_job.salary_range.try(:html_safe) %>
+      <%= job_f.select :working_year_requirement, WorkingYearRequirement.to_sorted_a, :label => "工作年限", :hint => @staging_job.work_year_requirement.try(:html_safe) %>
+      <%= job_f.select :degree_requirement, DegreeRequirement.to_sorted_a, :label => "学历要求", :hint => @staging_job.degree_requirement.try(:html_safe) %>
       <%= job_f.cktext_area(:content, :height => '200px', :toolbar=>'Basic', :skin => "office2003", :label => "工作内容") %>
       
       <p style="color:grey">
-        <%= CGI::unescapeHTML(@staging_job.desc.html_safe) %>
+        <%= CGI::unescapeHTML(@staging_job.desc.try(:html_safe)) if @staging_job.desc.present? %>
       </p>
       
       <%= job_f.cktext_area(:requirement, :height => '200px', :toolbar=>'Basic', :skin => "office2003", :label => "岗位需求") %>

@@ -7,7 +7,7 @@ class Admin::JobsController < Admin::ResourcesController
   end
 
   def import
-    @staging_job = StagingJob.find(params[:id])
+    @staging_job = StagingJob.find_by_id(params[:id]) || StagingJob.new
 
     if request.get?
       @company = Company.new
@@ -25,7 +25,7 @@ class Admin::JobsController < Admin::ResourcesController
         # active the job.
         @company.jobs.first.want_to_show
 
-        @staging_job.update_attribute :state, "published"
+        @staging_job.update_attribute :state, "published" if @staging_job.persisted?
         
         flash[:notice] = "工作创建成功。"
         redirect_to "/admin/users/edit/#{@company.user.id}"
