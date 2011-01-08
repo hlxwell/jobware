@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20101114023243
+# Schema version: 20110108150514
 #
 # Table name: jobs
 #
@@ -9,7 +9,7 @@
 #  location_city                :string(255)
 #  contract_type                :integer(4)
 #  category                     :integer(4)
-#  vacancy                      :integer(4)
+#  vacancy                      :string(255)
 #  content                      :text
 #  requirement                  :text
 #  welfare                      :text
