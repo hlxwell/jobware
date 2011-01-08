@@ -31,6 +31,8 @@
 #
 
 class Company < ActiveRecord::Base
+  include ViewsCountable
+
   acts_as_views_count :delay => 1
   chinese_permalink :name
   acts_as_taggable
@@ -56,7 +58,7 @@ class Company < ActiveRecord::Base
 
   validates_uniqueness_of :name
   validates_presence_of :name, :industry, :company_type, :size, :address, :contact_name, :province, :city, :desc  # phone_number
-  validates_format_of :homepage, :with => /^http:\/\/.+$/, :on => :create, :message => "URL必须以http://开头。"
+  validates_format_of :homepage, :with => /^http:\/\/.+$/, :on => :create, :message => "URL必须以http://开头。", :allow_blank => true
   validate :check_tag
   validate :check_logo
 
@@ -82,7 +84,7 @@ class Company < ActiveRecord::Base
   # validates_attachment_presence :logo
   def check_logo
     if self.logo.size.blank?
-      errors.add :logo, "必须上传logo。"
+      # errors.add :logo, "必须上传logo。"
     else
       errors.add :logo, "logo大小不能大于5M。" if self.logo.size > 5.megabytes
       errors.add :logo, "只允许上传 jpg, gif, png。" if File.extname(self.logo.original_filename) !~ /\.(jpe?g)|(gif)|(png)/i
@@ -102,14 +104,6 @@ class Company < ActiveRecord::Base
 
   def location
     self.province + self.city
-  end
-
-  def increased_views_count
-    self.counters.create(:happened_at => Date.today) if self.counters.today.blank?
-    self.counters.today.last.try(:increment!, :click)
-
-    update_views_count
-    views_count_s
   end
 
   def logo_width

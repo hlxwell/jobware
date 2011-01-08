@@ -35,6 +35,8 @@
 #
 
 class Job < ActiveRecord::Base
+  include ViewsCountable
+
   STATE = {
     'unapproved' => "审核中",
     'rejected' => "被拒绝",
@@ -72,7 +74,7 @@ class Job < ActiveRecord::Base
   accepts_nested_attributes_for :company
   accepts_nested_attributes_for :welfare_options, :question_options, :allow_destroy => true
 
-  validates_presence_of :name, :location_province, :location_city, :contract_type, :category, :vacancy, :content, :requirement
+  validates_presence_of :name, :location_province, :location_city, :contract_type, :category, :vacancy, :requirement #:content
   validate :check_tag
 
   define_index do
@@ -196,14 +198,6 @@ class Job < ActiveRecord::Base
 
   def deadline
     end_at.present? ? (end_at.to_date - Date.today).to_i : 0
-  end
-
-  def increased_views_count
-    self.counters.create(:happened_at => Date.today) if self.counters.today.blank?
-    self.counters.today.last.try(:increment!, :click)
-
-    update_views_count
-    views_count_s
   end
 
   def atom_content
