@@ -1,48 +1,55 @@
 <%= javascript_include_tag "jquery", "jquery.tipsy", "easySlider", "jquery.lazyload", "jquery.marquee", "jquery.timers", "jquery.scrollTo", "ui.datepicker-zh-CN", "jquery.tools.min", "jquery-ui", "jquery.ui.stars", "jquery.cookies", "jquery.formtips", "jquery.citySelector", "coin-slider", "rails", :ckeditor, "application", "underscore", "backbone" %>
 <%= stylesheet_link_tag "application", "step_bar", "pagination", "tipsy", "jquery-ui", "jquery.ui.stars", "coin-slider-styles", "sprite" %>
 
+<script>
+  $(function(){
 
-<h2><%= link_to @staging_job.page_url, @staging_job.page_url.try(:html_safe), :target => "_blank" if @staging_job.page_url.present? %></h2>
+  });
+</script>
+
+<h2><%= link_to @staging_job.page_url.try(:html_safe), @staging_job.page_url.try(:html_safe), :target => "_blank" if @staging_job.page_url.present? %></h2>
 
 <%= jobware_form_for @company, :url => {:action => :import}, :use_fieldset => false, :html => {:multipart => true} do |f| %>
-  <%= field_set_tag "登录帐号", :class => 'big' do %>  
+  <%= field_set_tag "登录帐号", :class => 'big' do %>
     <%= f.fields_for :user do |user_f| %>
       <%= user_f.text_field :email, :label => "邮箱", :hint => "必须填写正确的邮箱，我们会发送确认邮件到邮箱，如果不确认将无法登录。" %>
       <%= user_f.password_field :password, :label => "密码", :hint => "长度请控制在6到20位。" %>
       <%= user_f.password_field :password_confirmation, :label => "确认密码" %>
     <% end %>
   <% end %>
-  
+
   <%= field_set_tag "公司信息", :class => 'big' do %>
     <%= f.text_field :name, :label => "公司名", :class => "text w620", :value => @staging_job.company_name.try(:html_safe) %>
     <%= f.select :company_type, CompanyType.to_sorted_a, {:include_blank => true}, {:label => "性质"} %>
     <%= f.select :size, CompanySize.to_sorted_a, {:include_blank => true}, {:label => "规模"} %>
     <%= f.select :industry, CompanyIndustry.to_sorted_a, {:include_blank => true}, {:label => "行业", :hint => @staging_job.industry.try(:html_safe)} %>
 
-    <%= f.city_select :province, :city, :label => "所在地" %>
+    <%= f.city_select :province, :city, :label => "所在地" %> <input type="text" id="company_location" />
     <%= f.text_field :address, :label => "地址", :class => "text w620", :value => @staging_job.location.try(:html_safe) %>
     <%= f.text_field :homepage, :label => "网址", :class => "text w620" %>
 
-    <%= f.text_field :contact_name, :label => "联系人", :class => "text w620", :hint => @staging_job.contact.try(:html_safe) %>
+    <%= f.text_field :contact_name, :label => "联系人(填写邮箱)", :class => "text w620", :hint => @staging_job.contact.try(:html_safe) %>
     <%= f.text_field :phone_number, :label => "联系电话", :class => "text w620" %>
-    <%= f.check_box :open_contact, :label => "公开联系方式", :hint => "如果您希望应聘者直接联系您，请勾选此项。" %>
+    <%#= f.check_box :open_contact, :label => "公开联系方式", :hint => "如果您希望应聘者直接联系您，请勾选此项。" %>
 
     <%= f.cktext_area(:desc, :height => '200px', :toolbar=>'Basic', :skin => "office2003", :label => "公司简介") %>
 
     <p style="color: grey">
       <%= CGI::unescapeHTML(@staging_job.company_desc.try(:html_safe)) if @staging_job.company_desc.present? %>
     </p>
-    
+
     <%= f.file_field :logo, :label => "公司LOGO", :hint => "最佳尺寸是283x50。" %>
     <%= image_tag f.object.logo.url if f.object.logo.size %>
     <%= f.text_field :tag_list, :label => "公司关键字", :class => "text w620", :hint => "描述公司的行业，或者主要需要招聘人才的类型等关键字，如 php,游戏,web game。注意请用英文的逗号隔开关键字。" %>
     <%= f.text_field :themes, :label => "主题站", :hint => "必须在#{THEMES.inspect}范围中。" %>
   <% end %>
 
-  <%= field_set_tag "工作信息", :class => 'big' do %>  
+  <%= field_set_tag "工作信息", :class => 'big' do %>
     <%= f.fields_for :jobs do |job_f| %>
       <%= job_f.text_field :name, :label => "名称", :class => "text w620", :hint => @staging_job.name.try(:html_safe) %>
       <%= job_f.city_select :location_province, :location_city, :label => "工作所在地", :hint => @staging_job.location.try(:html_safe) %>
+      <input type="text" id="company_location" />
+
       <%= job_f.text_field :vacancy, :label => "岗位数", :class => "text w620", :hint => @staging_job.vacancy.try(:html_safe) %>
       <%= job_f.select :contract_type, ContractType.to_sorted_a, {:include_blank => true}, { :label => "工作类型" } %>
       <%= job_f.select :category, JobCategory.to_sorted_a, {:include_blank => true}, {:label => "类别"} %>
@@ -50,22 +57,22 @@
       <%= job_f.select :working_year_requirement, WorkingYearRequirement.to_sorted_a, :label => "工作年限", :hint => @staging_job.work_year_requirement.try(:html_safe) %>
       <%= job_f.select :degree_requirement, DegreeRequirement.to_sorted_a, :label => "学历要求", :hint => @staging_job.degree_requirement.try(:html_safe) %>
       <%= job_f.cktext_area(:content, :height => '200px', :toolbar=>'Basic', :skin => "office2003", :label => "工作内容") %>
-      
+
       <p style="color:grey">
         <%= CGI::unescapeHTML(@staging_job.desc.try(:html_safe)) if @staging_job.desc.present? %>
       </p>
-      
+
       <%= job_f.cktext_area(:requirement, :height => '200px', :toolbar=>'Basic', :skin => "office2003", :label => "岗位需求") %>
       <%= render "optional_options", :f => job_f %>
-      <%= job_f.cktext_area(:apply_method, :height => '200px', :toolbar=>'Basic', :skin => "office2003", :label => "应聘方式 (可选)", :hint => "如果你公司有自己的应聘系统，或者希望应聘者发送简历到公司邮箱，请填写在这里。") %>
-      <%= job_f.cktext_area(:desc, :height => '200px', :toolbar=>'Basic', :skin => "office2003", :label => "其他描述") %>
+      <%#= job_f.cktext_area(:apply_method, :height => '200px', :toolbar=>'Basic', :skin => "office2003", :label => "应聘方式 (可选)", :hint => "如果你公司有自己的应聘系统，或者希望应聘者发送简历到公司邮箱，请填写在这里。") %>
+      <%#= job_f.cktext_area(:desc, :height => '200px', :toolbar=>'Basic', :skin => "office2003", :label => "其他描述") %>
       <%= job_f.text_field :tag_list, :label => "岗位关键字", :class => "text w620", :hint => "岗位关键字会显示在岗位列表里，帮助求职者快速找到符合的工作。例如：c++, java, ruby on rails, css等。最多只能添加5个关键字。" %>
-      <%= job_f.check_box :only_use_custom_apply_method, :label => "只使用自定义应聘方式", :hint => "选中后系统自带的应聘系统将不会被使用。" %>
-      <%= job_f.check_box :highlighted, :label => "是否高亮显示？", :hint => "选中后该工作在任何列表里都将高亮显示，增加显示效果，但是需要购买“岗位高亮”点数。" if job_f.object.new_record? or !job_f.object.available? %>
-      <%= job_f.check_box :keep_top, :label => "是否置顶？", :hint => "选中后该工作将显示在工作列表顶部，应聘者将在第一时间看到，但是需要支付“岗位置顶”点数。" if job_f.object.new_record? or !job_f.object.available? %>
+      <%#= job_f.check_box :only_use_custom_apply_method, :label => "只使用自定义应聘方式", :hint => "选中后系统自带的应聘系统将不会被使用。" %>
+      <%#= job_f.check_box :highlighted, :label => "是否高亮显示？", :hint => "选中后该工作在任何列表里都将高亮显示，增加显示效果，但是需要购买“岗位高亮”点数。" if job_f.object.new_record? or !job_f.object.available? %>
+      <%#= job_f.check_box :keep_top, :label => "是否置顶？", :hint => "选中后该工作将显示在工作列表顶部，应聘者将在第一时间看到，但是需要支付“岗位置顶”点数。" if job_f.object.new_record? or !job_f.object.available? %>
       <%= job_f.text_field :themes, :label => "主题站", :hint => "必须在#{THEMES.inspect}范围中。" %>
     <% end %>
   <% end %>
-  
+
   <%= f.submit "提交" %>
 <% end %>

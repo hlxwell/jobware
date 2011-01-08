@@ -24,9 +24,11 @@ class Admin::JobsController < Admin::ResourcesController
         Service.find(8).buy_from!(@company.user)
         # active the job.
         @company.jobs.first.want_to_show
+        @company.jobs.first.set_random_views_count
+        @company.set_random_views_count
 
         @staging_job.update_attribute :state, "published" if @staging_job.persisted?
-        
+
         flash[:notice] = "工作创建成功。"
         redirect_to "/admin/users/edit/#{@company.user.id}"
         return

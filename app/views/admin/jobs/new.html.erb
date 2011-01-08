@@ -1,10 +1,16 @@
+<div style="float: left">
 <%= form_for :xml, :url => {:action => :upload_xml}, :html => { :multipart => true } do |f| %>
 上传xml文件:
 <%= f.file_field :file, :required => true %>
 <%= f.submit "Upload" %>
 <% end %>
+</div>
 
-<%= link_to "添加工作", "/admin/jobs/import/new" %>
+<div style='float: right'>
+  <%= link_to "<h1>添加工作</h1>".html_safe, "/admin/jobs/import/new" %>
+</div>
+
+<div style="clear:both"></div>
 <hr/>
 
 <table>
