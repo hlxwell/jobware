@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20101224032047
+# Schema version: 20110108150514
 #
 # Table name: staging_jobs
 #
@@ -20,6 +20,13 @@
 #  company_desc          :text
 #  created_at            :datetime
 #  updated_at            :datetime
+#  company_size          :string(255)
+#  company_type          :string(255)
+#  company_homepage      :string(255)
+#  company_address       :string(255)
+#  company_phone_number  :string(255)
+#  company_contact_name  :string(255)
+#  email                 :string(255)
 #
 
 class StagingJob < ActiveRecord::Base

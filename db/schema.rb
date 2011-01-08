@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101224032047) do
+ActiveRecord::Schema.define(:version => 20110108150514) do
 
   create_table "ad_positions", :force => true do |t|
     t.string   "name"
@@ -226,7 +226,7 @@ ActiveRecord::Schema.define(:version => 20101224032047) do
     t.string   "location_city"
     t.integer  "contract_type"
     t.integer  "category"
-    t.integer  "vacancy"
+    t.string   "vacancy"
     t.text     "content"
     t.text     "requirement"
     t.text     "welfare"
@@ -442,6 +442,13 @@ ActiveRecord::Schema.define(:version => 20101224032047) do
     t.text     "company_desc"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "company_size"
+    t.string   "company_type"
+    t.string   "company_homepage"
+    t.string   "company_address"
+    t.string   "company_phone_number"
+    t.string   "company_contact_name"
+    t.string   "email"
   end
 
   create_table "starred_jobs", :force => true do |t|

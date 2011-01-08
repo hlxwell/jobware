@@ -59,6 +59,13 @@ class Admin::JobsController < Admin::ResourcesController
           :company_desc => d.xpath("//公司简介").children.to_s.html_safe,
           :contact => d.xpath("//联系方式").children.to_s.html_safe,
           :industry => d.xpath("//公司行业").children.to_s.html_safe,
+          :company_size => d.xpath("//企业规模").children.to_s.html_safe,
+          :company_type => d.xpath("//企业性质").children.to_s.html_safe,
+          :company_homepage => d.xpath("//企业网站").children.to_s.html_safe,
+          :company_address => d.xpath("//公司地址").children.to_s.html_safe,
+          :company_phone_number => d.xpath("//联系电话").children.to_s.html_safe,
+          :company_contact_name => d.xpath("//联系人").children.to_s.html_safe,
+          :email => d.xpath("//邮箱").children.to_s.html_safe,
           :state => '0'
         })
 
@@ -73,21 +80,12 @@ class Admin::JobsController < Admin::ResourcesController
     end
   end
 
-
   def approve
-    if get_object.approve
-      redirect_to :back, :notice => "审核通过。"
-    else
-      redirect_to :back, :notice => "不能审核已经通过审核的。"
-    end
+    redirect_to :back, :notice => (get_object.approve ? "审核通过。" : "不能审核已经通过审核的。")
   end
 
   def reject
-    if get_object.reject
-      redirect_to :back, :notice => "审核不通过。"
-    else
-      redirect_to :back, :notice => "拒绝审核出错。"
-    end
+    redirect_to :back, :notice => (get_object.reject ? "审核不通过。" : "拒绝审核出错。")
   end
 
   def theme
