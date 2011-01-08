@@ -138,6 +138,7 @@ class JobCategory < EnumerateIt::Base
     :telecom         => [12, "通信工程"],
     :pm              => [13, "项目经理"],
     :product_design  => [14, "产品设计"],
+    :web_development => [15, "web开发"],
     :other           => [99, "其他"]
   )
 end
