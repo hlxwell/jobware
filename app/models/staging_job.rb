@@ -28,14 +28,20 @@
 #  company_contact_name  :string(255)
 #  email                 :string(255)
 #
+require 'iconv'
 
 class StagingJob < ActiveRecord::Base
 #  validates_uniqueness_of :origin_id, :on => :create, :message => "must be unique"
   validates_uniqueness_of :page_url, :on => :create, :message => "must be unique"
-  
-  before_create :trim_bad_html
-  
-  def trim_bad_html
-    
+
+  before_create :read_text_from_js
+  def read_text_from_js
+    self.attributes.each do |k, v|
+      if v =~ /^http:\/\/.*zhaopin.com\/.*\.js$/
+        if content = `curl #{v}|iconv -f utf-16 -t utf-8`
+          self.send("#{k}=", content.gsub(/document.write \(\"|(\"\);)/, ''))
+        end
+      end
+    end
   end
 end
