@@ -28,7 +28,6 @@
 #  company_contact_name  :string(255)
 #  email                 :string(255)
 #
-require 'iconv'
 
 class StagingJob < ActiveRecord::Base
   scope :published, where(:state => "published")
