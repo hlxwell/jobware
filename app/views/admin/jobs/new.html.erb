@@ -21,6 +21,7 @@
       <th>薪资范围</th>
       <th>Page URL</th>
       <th>状态</th>
+      <th>Created at</th>
       <th width="20"></th>
     </tr>
   </thead>
@@ -33,6 +34,7 @@
       <td><%= job.salary_range.html_safe %></td>
       <td><%= job.page_url %></td>
       <td><%= job.state %></td>
+      <td><%= job.created_at.to_s(:db) %></td>
       <td><a href="/admin/jobs/import/<%= job.id %>">导入</a></td>
     </tr>
     <% end %>

@@ -30,7 +30,7 @@
 #
 
 class StagingJob < ActiveRecord::Base
-  default_scope order("created_at desc")
+  default_scope order("state asc, created_at desc")
   scope :published, where(:state => "published")
   scope :unpublished, where(:state => "0")
 
