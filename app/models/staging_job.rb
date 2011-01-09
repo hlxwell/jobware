@@ -31,6 +31,9 @@
 require 'iconv'
 
 class StagingJob < ActiveRecord::Base
+  scope :published, where(:state => "published")
+  scope :unpublished, where(:state => "0")
+  
 #  validates_uniqueness_of :origin_id, :on => :create, :message => "must be unique"
   validates_uniqueness_of :page_url, :on => :create, :message => "must be unique"
 
