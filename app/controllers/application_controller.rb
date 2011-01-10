@@ -15,8 +15,15 @@ class ApplicationController < ActionController::Base
   end
 
   def current_layout
-    if THEMES.keys.include?(request.subdomain.downcase)
-      "layouts/themes/#{request.subdomain.downcase}"
+    subdomain = request.subdomain.downcase
+    if THEMES.keys.include?(subdomain)
+      @theme_title = THEMES[subdomain]
+      @theme_site_logo = "/images/logo/#{subdomain}-it-job-logo.jpg"
+      if File.exist?(theme_file = "#{Rails.root}/app/views/layouts/themes/#{subdomain}")
+        theme_file
+      else # return default
+        "#{Rails.root}/app/views/layouts/themes/default"
+      end
     elsif current_partner_site.present?
       "layouts/partner_site"
     else

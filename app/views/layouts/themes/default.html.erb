@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
 <head>
   <%= render "shared/meta" %>
-  <title><%= "#{@content_for_title} - " if @content_for_title %> Rails招聘网|专注于Rails程序员招聘的网站</title>
+  <title><%= "#{@content_for_title} - " if @content_for_title %> <%= @theme_title %>招聘网|专注于<%= @theme_title %>程序员招聘的网站</title>
 </head>
 
 <body id="top">
@@ -32,7 +32,7 @@
       <div id="header">
         <!-- #### site logo and title -->
       	<div id="site-title" class="left">
-      	  <%= link_to image_tag("/images/logo/rails-it-job-logo.jpg", :alt => "专注于程序员招聘求职 - ITJob.fm"), "/" %>
+      	  <%= link_to image_tag(@theme_site_logo, :alt => "专注于程序员招聘求职 - ITJob.fm"), "/" %>
       	</div>
 
         <%= render "shared/search_box" %>

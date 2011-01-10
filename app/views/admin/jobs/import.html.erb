@@ -80,8 +80,8 @@
     });
 
     //// set ckeditor value.
-    CKEDITOR.instances.company_desc_editor.setData("<%= CGI::unescapeHTML(@staging_job.company_desc.try(:html_safe).to_s).gsub(/\"/, "'").gsub(/\s/, '') %>");
-    CKEDITOR.instances.job_requirement.setData("<%= CGI::unescapeHTML(@staging_job.desc.try(:html_safe).to_s).gsub('"', "'").gsub(/\s/, '') %>");
+    CKEDITOR.instances.company_desc_editor.setData("<%= CGI::unescapeHTML(@staging_job.company_desc.try(:html_safe).to_s).gsub('"','\'').gsub(/\s/, '') %>");
+    CKEDITOR.instances.job_requirement.setData("<%= CGI::unescapeHTML(@staging_job.desc.try(:html_safe).to_s).gsub('"', '\'').gsub(/\s/, '') %>");
   });
 </script>
 
@@ -114,7 +114,7 @@
     <%= f.file_field :logo, :label => "公司LOGO", :hint => "最佳尺寸是283x50。" %>
     <%= image_tag f.object.logo.url if f.object.logo.size %>
     <%= f.text_field :tag_list, :label => "公司关键字", :class => "text w620", :hint => "描述公司的行业，或者主要需要招聘人才的类型等关键字，如 php,游戏,web game。注意请用英文的逗号隔开关键字。" %>
-    <%= f.text_field :themes, :label => "主题站", :hint => "必须在#{THEMES.inspect}范围中。" %>
+    <%= f.text_field :themes, :label => "主题站", :hint => "必须在#{THEMES.keys.inspect}范围中。" %>
   <% end %>
 
   <%= field_set_tag "工作信息", :class => 'big' do %>
@@ -138,7 +138,7 @@
       <%#= job_f.check_box :only_use_custom_apply_method, :label => "只使用自定义应聘方式", :hint => "选中后系统自带的应聘系统将不会被使用。" %>
       <%#= job_f.check_box :highlighted, :label => "是否高亮显示？", :hint => "选中后该工作在任何列表里都将高亮显示，增加显示效果，但是需要购买“岗位高亮”点数。" if job_f.object.new_record? or !job_f.object.available? %>
       <%#= job_f.check_box :keep_top, :label => "是否置顶？", :hint => "选中后该工作将显示在工作列表顶部，应聘者将在第一时间看到，但是需要支付“岗位置顶”点数。" if job_f.object.new_record? or !job_f.object.available? %>
-      <%= job_f.text_field :themes, :label => "主题站", :hint => "必须在#{THEMES.inspect}范围中。" %>
+      <%= job_f.text_field :themes, :label => "主题站", :hint => "必须在#{THEMES.keys.inspect}范围中。" %>
     <% end %>
   <% end %>
 
