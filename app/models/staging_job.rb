@@ -38,6 +38,7 @@ class StagingJob < ActiveRecord::Base
   validates_uniqueness_of :page_url, :on => :create, :message => "must be unique"
 
   before_create :read_text_from_js
+
   def read_text_from_js
     self.attributes.each do |k, v|
       if v =~ /^http:\/\/.*zhaopin.com\/.*\.js$/

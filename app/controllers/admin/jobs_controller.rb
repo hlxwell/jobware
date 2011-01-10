@@ -53,7 +53,7 @@ class Admin::JobsController < Admin::ResourcesController
           :salary_range          => (d.xpath("//薪资范围").children.to_s).html_safe,
           :work_year_requirement => (d.xpath("//工作年限").children.to_s).html_safe,
           :degree_requirement    => (d.xpath("//学历要求").children.to_s).html_safe,
-          :page_url              => CGI::unescapeHTML(d.xpath("//PageUrl").children.to_s).html_safe,
+          :page_url              => d.xpath("//PageUrl").children.to_s,
           :desc                  => CGI::unescapeHTML(d.xpath("//职位描述").children.to_s).html_safe,
           :company_name          => (d.xpath("//公司名字").children.to_s).html_safe,
           :company_desc          => CGI::unescapeHTML(d.xpath("//公司简介").children.to_s).html_safe,
