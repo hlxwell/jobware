@@ -7,7 +7,7 @@ module ViewsCountable
   end
 
   def set_random_views_count
-    random_clicks = rand(1000)
+    random_clicks = rand(100)
     self.counters.create(:happened_at => Date.today) if self.counters.today.blank?
     self.counters.today.last.update_attribute(:click, random_clicks)
     self.views_count = random_clicks

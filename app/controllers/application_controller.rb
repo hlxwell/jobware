@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
   # before_filter :http_auth
   before_filter :set_locale, :current_partner_site
-  helper_method :current_user_type, :current_user_section, :show_error_message_for, :current_partner_site, :current_layout, :current_theme_site
+  helper_method :current_user_type, :current_user_section, :show_error_message_for, :current_partner_site, :current_layout, :current_theme_site, :current_theme_site_logo
 
   layout :current_layout
 
@@ -14,11 +14,16 @@ class ApplicationController < ActionController::Base
     redirect_to login_url
   end
 
+  def current_theme_site_logo
+    "/images/logo/#{request.subdomain.downcase}-it-job-logo.jpg"
+  end
+
   def current_layout
     subdomain = request.subdomain.downcase
     if THEMES.keys.include?(subdomain)
       @theme_title = THEMES[subdomain]
-      @theme_site_logo = "/images/logo/#{subdomain}-it-job-logo.jpg"
+      @theme_site_logo =
+
       if File.exist?(theme_file = "#{Rails.root}/app/views/layouts/themes/#{subdomain}")
         theme_file
       else # return default
