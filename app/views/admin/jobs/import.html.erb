@@ -80,8 +80,8 @@
     });
 
     //// set ckeditor value.
-    CKEDITOR.instances.company_desc_editor.setData("<%= CGI::unescapeHTML(@staging_job.company_desc.try(:html_safe).to_s).gsub('"','\'').gsub(/\s/, '') %>");
-    CKEDITOR.instances.job_requirement.setData("<%= CGI::unescapeHTML(@staging_job.desc.try(:html_safe).to_s).gsub('"', '\'').gsub(/\s/, '') %>");
+    CKEDITOR.instances.company_desc_editor.setData("<%= (@staging_job.company_desc.try(:html_safe).to_s).gsub('"','\'').gsub(/\s/, '') %>");
+    CKEDITOR.instances.job_requirement.setData("<%= (@staging_job.desc.try(:html_safe).to_s).gsub('"', '\'').gsub(/\s/, '') %>");
   });
 </script>
 
@@ -104,10 +104,7 @@
     <%= f.city_select :province, :city, :label => "所在地", :hint => "快捷设定: <input type='text' id='company_location' name='company_location' class='text' value='#{@staging_job.location.try(:html_safe)}' />".html_safe %>
     <%= f.text_field :address, :label => "地址", :class => "text w620", :value => @staging_job.company_address.present? ? @staging_job.company_address.try(:html_safe) : @staging_job.location.try(:html_safe) %>
     <%= f.text_field :homepage, :label => "网址", :class => "text w620", :value => @staging_job.company_homepage.try(:html_safe) %>
-    <%= f.text_field :contact_name, :label => "联系人(加上邮箱)", :class => "text w620",
-      :value => "#{@staging_job.company_contact_name.try(:html_safe)} #{@staging_job.email.try(:html_safe)}",
-      :hint => "#{@staging_job.company_contact_name.try(:html_safe)} #{@staging_job.email.try(:html_safe)}"
-    %>
+    <%= f.text_field :contact_name, :label => "联系人(加上邮箱)", :class => "text w620", :value => get_contact(@staging_job) %>
     <%= f.text_field :phone_number, :label => "联系电话", :class => "text w620", :value => @staging_job.company_phone_number.try(:html_safe) %>
     <%#= f.check_box :open_contact, :label => "公开联系方式", :hint => "如果您希望应聘者直接联系您，请勾选此项。" %>
     <%= f.cktext_area(:desc, :height => '200px', :toolbar=>'Basic', :skin => "office2003", :label => "公司简介") %>

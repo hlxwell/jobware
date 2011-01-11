@@ -47,25 +47,25 @@ class Admin::JobsController < Admin::ResourcesController
         d = Nokogiri::XML(n.to_s)
         staging_job = StagingJob.new({
           :origin_id             => (d.xpath("//ID").children.to_s).html_safe,
-          :name                  => (d.xpath("//岗位名称").children.to_s).html_safe,
-          :location              => (d.xpath("//工作地点").children.to_s).html_safe,
-          :vacancy               => (d.xpath("//岗位人数").children.to_s).html_safe,
-          :salary_range          => (d.xpath("//薪资范围").children.to_s).html_safe,
-          :work_year_requirement => (d.xpath("//工作年限").children.to_s).html_safe,
-          :degree_requirement    => (d.xpath("//学历要求").children.to_s).html_safe,
+          :name                  => CGI::unescapeHTML(d.xpath("//岗位名称").children.to_s).html_safe,
+          :location              => CGI::unescapeHTML(d.xpath("//工作地点").children.to_s).html_safe,
+          :vacancy               => CGI::unescapeHTML(d.xpath("//岗位人数").children.to_s).html_safe,
+          :salary_range          => CGI::unescapeHTML(d.xpath("//薪资范围").children.to_s).html_safe,
+          :work_year_requirement => CGI::unescapeHTML(d.xpath("//工作年限").children.to_s).html_safe,
+          :degree_requirement    => CGI::unescapeHTML(d.xpath("//学历要求").children.to_s).html_safe,
           :page_url              => d.xpath("//PageUrl").children.to_s,
-          :desc                  => CGI::unescapeHTML(d.xpath("//职位描述").children.to_s).html_safe,
-          :company_name          => (d.xpath("//公司名字").children.to_s).html_safe,
-          :company_desc          => CGI::unescapeHTML(d.xpath("//公司简介").children.to_s).html_safe,
-          :contact               => (d.xpath("//联系方式").children.to_s).html_safe,
-          :industry              => (d.xpath("//公司行业").children.to_s).html_safe,
-          :company_size          => (d.xpath("//企业规模").children.to_s).html_safe,
-          :company_type          => (d.xpath("//企业性质").children.to_s).html_safe,
+          :desc                  => CGI::unescapeHTML(d.xpath("//职位描述").children.to_s),
+          :company_name          => CGI::unescapeHTML(d.xpath("//公司名字").children.to_s).html_safe,
+          :company_desc          => CGI::unescapeHTML(d.xpath("//公司简介").children.to_s),
+          :contact               => CGI::unescapeHTML(d.xpath("//联系方式").children.to_s),
+          :industry              => CGI::unescapeHTML(d.xpath("//公司行业").children.to_s).html_safe,
+          :company_size          => CGI::unescapeHTML(d.xpath("//企业规模").children.to_s).html_safe,
+          :company_type          => CGI::unescapeHTML(d.xpath("//企业性质").children.to_s).html_safe,
           :company_homepage      => CGI::unescapeHTML(d.xpath("//企业网站").children.to_s).html_safe,
-          :company_address       => (d.xpath("//公司地址").children.to_s).html_safe,
-          :company_phone_number  => (d.xpath("//联系电话").children.to_s).html_safe,
-          :company_contact_name  => (d.xpath("//联系人").children.to_s).html_safe,
-          :email                 => (d.xpath("//邮箱").children.to_s).html_safe,
+          :company_address       => CGI::unescapeHTML(d.xpath("//公司地址").children.to_s).html_safe,
+          :company_phone_number  => CGI::unescapeHTML(d.xpath("//联系电话").children.to_s).html_safe,
+          :company_contact_name  => CGI::unescapeHTML(d.xpath("//联系人").children.to_s).html_safe,
+          :email                 => CGI::unescapeHTML(d.xpath("//邮箱").children.to_s).html_safe,
           :state                 => '0'
         })
 
@@ -132,4 +132,9 @@ class Admin::JobsController < Admin::ResourcesController
     end
   end
   helper_method :calculate_industry
+
+  def get_contact staging_job
+    "#{CGI::unescapeHTML(staging_job.company_contact_name.try(:html_safe).to_s)} #{CGI::unescapeHTML(staging_job.email.try(:html_safe))}"
+  end
+  helper_method :get_contact
 end
