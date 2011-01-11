@@ -1,0 +1,17 @@
+<%= field_set_tag "公司信息", :class => 'big' do %>
+  <%= f.text_field :name, :label => "公司名", :class => "text w620", :value => @staging_job.company_name.try(:html_safe) %>
+  <%= f.select :company_type, CompanyType.to_sorted_a, {:include_blank => true, :selected => calculate_company_type(@staging_job).try(:last) }, {:label => "性质", :hint => @staging_job.company_type.try(:html_safe)} %>
+  <%= f.select :size, CompanySize.to_sorted_a, {:include_blank => true}, {:label => "规模", :hint => @staging_job.company_size.try(:html_safe)} %>
+  <%= f.select :industry, CompanyIndustry.to_sorted_a, {:include_blank => true, :selected => calculate_industry(@staging_job).try(:last) }, {:label => "行业", :hint => @staging_job.industry.try(:html_safe)} %>
+  <%= f.city_select :province, :city, :label => "所在地", :hint => "快捷设定: <input type='text' id='company_location' name='company_location' class='text' value='#{@staging_job.location.try(:html_safe)}' />".html_safe %>
+  <%= f.text_field :address, :label => "地址", :class => "text w620", :value => @staging_job.company_address.present? ? @staging_job.company_address.try(:html_safe) : @staging_job.location.try(:html_safe) %>
+  <%= f.text_field :homepage, :label => "网址", :class => "text w620", :value => @staging_job.company_homepage.try(:html_safe) %>
+  <%= f.text_field :contact_name, :label => "联系人(加上邮箱)", :class => "text w620", :value => get_contact(@staging_job) %>
+  <%= f.text_field :phone_number, :label => "联系电话", :class => "text w620", :value => @staging_job.company_phone_number.try(:html_safe) %>
+  <%#= f.check_box :open_contact, :label => "公开联系方式", :hint => "如果您希望应聘者直接联系您，请勾选此项。" %>
+  <%= f.cktext_area(:desc, :height => '200px', :toolbar=>'Basic', :skin => "office2003", :label => "公司简介") %>
+  <%= f.file_field :logo, :label => "公司LOGO", :hint => "最佳尺寸是283x50。" %>
+  <%= image_tag f.object.logo.url if f.object.logo.size %>
+  <%= f.text_field :tag_list, :label => "公司关键字", :class => "text w620", :hint => "描述公司的行业，或者主要需要招聘人才的类型等关键字，如 php,游戏,web game。注意请用英文的逗号隔开关键字。" %>
+  <%= f.text_field :themes, :label => "主题站", :hint => "必须在#{THEMES.keys.inspect}范围中。" %>
+<% end %>
