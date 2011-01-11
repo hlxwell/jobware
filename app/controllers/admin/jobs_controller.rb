@@ -8,7 +8,7 @@ class Admin::JobsController < Admin::ResourcesController
 
   def import
     @staging_job = StagingJob.find_by_id(params[:id]) || StagingJob.new
-    @company = Company.where(:name => @staging_job.company_name).first
+    @company = Company.where(:name => CGI::unescapeHTML(@staging_job.company_name)).first
     @is_company_exist = @company.present?
 
     if request.get?
