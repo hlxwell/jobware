@@ -1,3 +1,8 @@
+<h3>
+  <%= link_to "加入推荐企业", :controller => "admin/companies", :action => "add_to_featured_company", :id => @item.id %>
+  <%= link_to "加入知名企业", :controller => "admin/companies", :action => "add_to_famous_company", :id => @item.id %>
+</h3>
+
 <%= form_for :company, :url => {:controller => "admin/companies", :action => "change_email", :id => @item.id} do |f| %>
   New Email: <%= f.text_field :new_email %>
   <%= f.submit "修改邮箱并且发送重置密码邮件" %>

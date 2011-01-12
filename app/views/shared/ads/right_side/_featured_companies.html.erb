@@ -1,7 +1,7 @@
 <div class="section network-section">
 	<div class="section-title">推荐企业</div>
 	<div class="section-content">
-	  <% show_no_record(@right_featured_companies = Ad.featured_companies.with_theme(current_theme_site).opened) do %>
+	  <% show_no_record(@right_featured_companies = Ad.featured_companies.with_theme(current_theme_site).opened.limit(15)) do %>
 		<ul class="ads-list">
 		  <% @right_featured_companies.each do |ad| %>
 		  <li class="with_tooltip" title="<%= ad.name %>"><%= link_to image_tag(ad.image.url(:right_ad), :class => "aligncenter bordered", :width => '95%'), ad.url %></li>

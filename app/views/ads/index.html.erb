@@ -1,6 +1,6 @@
 <div class="main" id="main-three-columns-center">
 	<div class="left sidebar" id="sidebar-1">
-		<%= render "shared/ads/right_side/urgent_jobs" %>
+		<%= render "shared/ads/homepage_urgent_jobs" %>
 	</div>
 
 	<div class="left" id="main-center">
@@ -28,12 +28,6 @@
 
 <%#= render "custom_ads" %>
 
-<div id="top_job_list">
-  <%= render "famous_companies" %>
-  <div class="clearer">&nbsp;</div>
-</div>
-
-
 <div id="new_job_list">
   <%= render "top_jobs" %>
   <%= render "latest_jobs" %>
@@ -41,6 +35,12 @@
 	<div class="clearer">&nbsp;</div>
 </div>
 
+<div id="top_job_list">
+  <%= render "famous_companies" %>
+  <div class="clearer">&nbsp;</div>
+</div>
+
 <% content_for :footer_ad_zone do %>
   <%= render "shared/ads/bottom_ads" %>
+  <%#= render "shared/ads/featured_partners" %>
 <% end %>

@@ -1,0 +1,40 @@
+<% @urgent_job_groups = urgent_job_groups %>
+<% if @urgent_job_groups.size > 1 %>
+<style type="text/css">
+  #slider { height:217px; }
+</style>
+<!--[if IE]>
+<style type="text/css">
+  #slider { height:220px; }
+</style>
+<![endif]-->
+<% end %>
+
+<div id='urgent_jobs' class="section network-section" style="margin-bottom: 0px;">
+	<div class="section-title">
+	  <span class="left">紧急招聘</span>
+	  <span id="pager" class="right"></span>
+	  <div class="clearer"></div>
+	</div>
+
+	<div id="slider" class="section-content">
+  		<ul class="plain-list">
+        <!-- new li -->
+  		  <% show_no_record(@urgent_job_groups.flatten) do %>
+          <% @urgent_job_groups.each_with_index do |group, index| %>
+  		  <li>
+          <!-- job list -->
+  		    <% group.each do |ad|
+    		    break if ad.nil? %>
+    			  <div class='fix_height'>
+    			    <span style="float: left;"><%= link_to ad.name, ad.url, :title => ad.desc %></span>
+              <span style="font-weight: bold; float: right;"><%= ad.location %></span>
+    			  </div>
+    		  <% end %>
+  		  </li>
+  		  <% end %>
+
+  		</ul>
+		<% end %>
+	</div>
+</div>

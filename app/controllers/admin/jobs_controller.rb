@@ -6,6 +6,26 @@ class Admin::JobsController < Admin::ResourcesController
     @staging_jobs = StagingJob.paginate :all, :page => params[:page], :per_page => 30
   end
 
+  def add_to_urgent_ad
+    @ad = get_object.company.ads.build(
+      :name => get_object.name,
+      :url => job_path(get_object),
+      :display_type => AdPositionType::URGENT_JOB,
+      :province => get_object.location_province,
+      :city => get_object.location_city,
+      :period => 4
+    )
+
+    if @ad.save
+      @ad.approve!
+      flash[:notice] = "加入成功。"
+    else
+      flash[:notice] = @ad.errors.inspect
+    end
+
+    redirect_to :back
+  end
+
   def import
     @staging_job = StagingJob.find_by_id(params[:id]) || StagingJob.new
     @company = Company.where(:name => CGI::unescapeHTML(@staging_job.company_name)).first
@@ -153,7 +173,7 @@ class Admin::JobsController < Admin::ResourcesController
     ("CKEDITOR.instances.company_desc_editor.setData(\"#{company_desc_html}\");").html_safe
   end
   helper_method :set_company_desc_editor_html
-  
+
   def set_job_requirement_html
     job_requirement = @staging_job.desc.try(:html_safe).to_s.gsub('"', '\'').gsub(/\s/, '')
     ("CKEDITOR.instances.job_requirement.setData(\"#{job_requirement}\");").html_safe
