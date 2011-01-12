@@ -4,7 +4,8 @@ class Admin::CompaniesController < Admin::ResourcesController
     @ad = get_object.ads.famous_companies.first
     @ad ||= get_object.ads.build(
       :display_type => AdPositionType::FAMOUS_COMPANY,
-      :period => 4
+      :period => 4,
+      :themes => get_object.themes
     )
 
     if @ad.save
@@ -23,7 +24,8 @@ class Admin::CompaniesController < Admin::ResourcesController
       :url => company_path(get_object),
       :display_type => AdPositionType::FEATURED_COMPANY,
       :image => get_object.logo,
-      :period => 4
+      :period => 4,
+      :themes => get_object.themes
     )
 
     if @ad.save

@@ -13,7 +13,8 @@ class Admin::JobsController < Admin::ResourcesController
       :display_type => AdPositionType::URGENT_JOB,
       :province => get_object.location_province,
       :city => get_object.location_city,
-      :period => 4
+      :period => 4,
+      :themes => get_object.themes
     )
 
     if @ad.save
