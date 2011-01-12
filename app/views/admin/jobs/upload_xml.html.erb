@@ -4,7 +4,7 @@
 <h2>未保存成功的记录</h2>
 <% @unsaved_jobs.each do |job| %>
   <div>
-    X <b><%= job.origin_id %> - <%= job.name %></b>
+    X <b><%= job.try(:origin_id) %> - <%= job.name %></b>
     <%= job.errors.inspect %>
   </div>
   <hr/>
