@@ -14,4 +14,5 @@
   <%= image_tag f.object.logo.url if f.object.logo.size %>
   <%= f.text_field :tag_list, :label => "公司关键字", :class => "text w620", :hint => "描述公司的行业，或者主要需要招聘人才的类型等关键字，如 php,游戏,web game。注意请用英文的逗号隔开关键字。" %>
   <%= f.text_field :themes, :label => "主题站", :hint => "必须在#{THEMES.keys.inspect}范围中。" %>
+  <%= f.hidden_field :add_by_admin, :value => true %>
 <% end %>

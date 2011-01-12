@@ -31,6 +31,7 @@
 #
 
 class Company < ActiveRecord::Base
+  attr_accessor :add_by_admin
   include ViewsCountable
 
   acts_as_views_count :delay => 1
@@ -83,9 +84,9 @@ class Company < ActiveRecord::Base
   # validates_attachment_size :logo, :less_than => 5.megabytes
   # validates_attachment_presence :logo
   def check_logo
-    if self.logo.size.blank?
-      # errors.add :logo, "必须上传logo。"
-    else
+    if self.logo.size.blank? and !@add_by_admin
+      errors.add :logo, "必须上传logo。"
+    elsif !self.logo.size.nil?
       errors.add :logo, "logo大小不能大于5M。" if self.logo.size > 5.megabytes
       errors.add :logo, "只允许上传 jpg, gif, png。" if File.extname(self.logo.original_filename) !~ /\.(jpe?g)|(gif)|(png)/i
     end
