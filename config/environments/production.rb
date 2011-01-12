@@ -57,14 +57,23 @@ Jobware::Application.configure do
   # }
 
   config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.smtp_settings = {
+  #   :address              => "smtp.gmail.com",
+  #   :port                 => 587,
+  #   :domain               => 'itjob.fm',
+  #   :user_name            => 'itjob.fm',
+  #   :password             => 'whoafeedback',
+  #   :authentication       => 'plain',
+  #   :enable_starttls_auto => true
+  # }
+
   config.action_mailer.smtp_settings = {
-    :address              => "smtp.gmail.com",
-    :port                 => 587,
+    :address              => "smtp.sendgrid.net",
+    :port                 => '25',
     :domain               => 'itjob.fm',
-    :user_name            => 'itjob.fm',
-    :password             => 'whoafeedback',
-    :authentication       => 'plain',
-    :enable_starttls_auto => true
+    :user_name            => 'a@theplant.jp',
+    :password             => 'plant^o^',
+    :authentication       => :plain
   }
 
   # exception notifier config
