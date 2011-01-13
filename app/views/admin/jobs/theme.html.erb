@@ -19,7 +19,7 @@
 		<td>
 		  <%= hidden_field_tag "ids[]", job.id %>
 
-		  <% THEMES.each do |theme| %>
+		  <% THEMES.keys.each do |theme| %>
 		    <%= check_box_tag "job_ids[#{job.id}][]", theme, job.themes.try(:split, ',').try(:include?, theme) %> <%= theme %>
 		  <% end %>
 		</td>
