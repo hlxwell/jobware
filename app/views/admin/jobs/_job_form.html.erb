@@ -20,10 +20,3 @@
   <%#= f.check_box :keep_top, :label => "是否置顶？", :hint => "选中后该工作将显示在工作列表顶部，应聘者将在第一时间看到，但是需要支付“岗位置顶”点数。" if f.object.new_record? or !f.object.available? %>
   <%= f.text_field :themes, :label => "主题站", :hint => "必须在#{THEMES.keys.inspect}范围中。" %>
 <% end %>
-
-<script>
-$(function(){
-  $('#company_jobs_attributes_0_location_province').val('<%= f.object.location_province %>').change();
-  $('#company_jobs_attributes_0_location_city').val('<%= f.object.location_city %>');
-})
-</script>

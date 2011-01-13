@@ -64,10 +64,12 @@ class JobwareFormBuilder < ActionView::Helpers::FormBuilder
 
   ###### province and city selector
   def city_select(province_field, city_field = nil, options = {})
+    rand_seed = rand(1000000)
+
     @template.content_tag(:script) do
       "$(function(){
-        $('##{@object.class.to_s.downcase}_#{province_field}').val('#{@object.send(province_field.to_sym)}').change();
-        $('##{@object.class.to_s.downcase}_#{city_field}').val('#{@object.send(city_field.to_sym)}');
+        $('.#{@object.class.to_s.downcase}_#{province_field}_#{rand_seed}').val('#{@object.send(province_field.to_sym)}').change();
+        $('.#{@object.class.to_s.downcase}_#{city_field}_#{rand_seed}').val('#{@object.send(city_field.to_sym)}');
       })"
     end +
 
@@ -93,8 +95,8 @@ class JobwareFormBuilder < ActionView::Helpers::FormBuilder
         end
       end +
       (@template.content_tag(:div, :class => "form-value") {
-       origin_select(province_field, [], {}, {:class => "province"}) +
-       (city_field.present? ? origin_select(city_field, [], {}, {:class => "city"}) : "") +
+       origin_select(province_field, [], {}, {:class => "province #{@object.class.to_s.downcase}_#{province_field}_#{rand_seed}"}) +
+       (city_field.present? ? origin_select(city_field, [], {}, {:class => "city #{@object.class.to_s.downcase}_#{city_field}_#{rand_seed}"}) : "") +
        (options[:required] == true ? @template.content_tag(:span, "（必填）", :class => "helper") : "") +
        (options[:hint].present? ? @template.content_tag(:div, options[:hint], :class => "helper") : "")
       })
