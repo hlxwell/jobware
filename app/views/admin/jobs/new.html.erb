@@ -7,7 +7,7 @@
     </p>
 
     <p>
-      <%= form_for :filter, :url => {:action => :new} do |f| %>
+      <%= form_for :filter, :url => {:action => :new}, :html => {:method => :get} do |f| %>
         Job Filter: <%= f.text_field :job_name, :required => true %>
         Company Filter: <%= f.text_field :company_name, :required => true %>
         <%= f.submit "go" %>
