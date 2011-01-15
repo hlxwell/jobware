@@ -1,6 +1,4 @@
 class UserMailer < MailerBase
-  sendgrid_category "itjob"
-
   def reset_password(user)
     @user = user
     @link = edit_password_url(user.perishable_token)
