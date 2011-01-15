@@ -28,7 +28,6 @@ gem 'astrails-safe'
 gem 'new_data_notifier', :require => "new_data_notifier", :git => "git://github.com/hlxwell/new_data_notifier.git"
 gem 'nokogiri'
 # gem 'mail_engine', :path => File.join("vendor", "mail_engine")
-gem 'mail_safe'
 
 # gem 'qor', :git => 'git@github.com:anatole/qor.git'
 gem 'ckeditor', :git => 'git://github.com/galetahub/rails-ckeditor.git', :branch => 'rails3'
@@ -38,6 +37,7 @@ gem 'delayed_job', :git => 'git://github.com/collectiveidea/delayed_job.git', :b
 # gem 'pacecar', :git => 'git://github.com/thoughtbot/pacecar.git', :branch => 'rails3'
 
 group :development do
+  gem 'mail_safe'
   gem "rails3-generators"
 end
 

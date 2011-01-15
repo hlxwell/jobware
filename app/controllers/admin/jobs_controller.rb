@@ -3,7 +3,10 @@ require 'nokogiri'
 
 class Admin::JobsController < Admin::ResourcesController
   def new
-    @staging_jobs = StagingJob.paginate :all, :page => params[:page], :per_page => 30
+    filtered_jobs = StagingJob
+    filtered_jobs = filtered_jobs.where("name like '%#{params.get(:filter, :job_name)}%'") if params.get(:filter, :job_name).present?
+    filtered_jobs = filtered_jobs.where("company_name like '%#{params.get(:filter, :company_name)}%'") if params.get(:filter, :company_name).present?
+    @staging_jobs = filtered_jobs.paginate :all, :page => params[:page], :per_page => 30
   end
 
   def add_to_urgent_ad
