@@ -35,6 +35,13 @@ class Admin::JobsController < Admin::ResourcesController
     @company = Company.where(:name => CGI::unescapeHTML(@staging_job.company_name)).first
     @is_company_exist = @company.present?
 
+    # if current staging job exist, remove it and redirect back.
+    if @is_company_exist and @company.jobs.where(:name => @staging_job.name).count > 0
+      @staging_job.destroy!
+      redirect_to :back, :notice => "该工作已经存在！当前记录被删除."
+      return
+    end
+
     if request.get?
       if @is_company_exist
         @job = @company.jobs.new
