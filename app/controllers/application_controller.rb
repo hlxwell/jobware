@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   # before_filter :http_auth
-  before_filter :set_locale, :current_partner_site
+  before_filter :set_locale, :current_partner_site, :aaa
   helper_method :current_user_type, :current_user_section, :show_error_message_for, :current_partner_site, :current_layout, :current_theme_site, :current_theme_site_logo
 
   layout :current_layout

@@ -62,7 +62,7 @@ class User < ActiveRecord::Base
       user = self.find_by_email(email)
       if user.present?
         user.reset_perishable_token!
-        UserMailer.delay.reset_password(user)
+        UserMailer.reset_password(user).deliver
         true
       else
         false

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110108150514) do
+ActiveRecord::Schema.define(:version => 20110114030841) do
 
   create_table "ad_positions", :force => true do |t|
     t.string   "name"
@@ -263,6 +263,13 @@ ActiveRecord::Schema.define(:version => 20110108150514) do
   end
 
   add_index "languages", ["resume_id"], :name => "index_languages_on_resume_id"
+
+  create_table "mail_templates", :force => true do |t|
+    t.string   "name"
+    t.string   "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "optional_options", :force => true do |t|
     t.integer  "parent_id"

@@ -1,0 +1,4 @@
+========== Features ===========
+1. Allow user to store and edit mail template in Database.
+2. Allow user to send db mail in mailer.
+3. Allow user to choose to send mail through sendgrid or self configured smtp.
