@@ -30,65 +30,71 @@ class Admin::JobsController < Admin::ResourcesController
     redirect_to :back
   end
 
+  def do_import
+    get_staging_job_and_company
+
+    # only add a new job to exist company
+    if @is_company_exist
+      @job = Job.new(params[:job])
+      if @job.save
+        # charge money.
+        @company.user.charge! 100, :from => '手动添加'
+        # buy post job service.
+        Service.find(8).buy_from!(@company.user)
+        # active the job.
+        @job.want_to_show
+        @job.set_random_views_count
+        @staging_job.update_attribute :state, "published" if @staging_job.persisted?
+
+        flash[:notice] = "工作创建成功。"
+        redirect_to "/admin/users/edit/#{@company.user.id}"
+        return
+      else
+        @with_error = true
+      end
+    else # create a company and job
+      @company = Company.new(params[:company])
+      if @company.save
+        # active user.
+        @company.user.confirm!
+        # charge money.
+        @company.user.charge! 100, :from => '手动添加'
+        # buy post job service.
+        Service.find(8).buy_from!(@company.user)
+        # active the job.
+        @company.jobs.first.want_to_show
+        @company.jobs.first.set_random_views_count
+        @company.set_random_views_count
+
+        @staging_job.update_attribute :state, "published" if @staging_job.persisted?
+
+        flash[:notice] = "公司和岗位创建成功。"
+        redirect_to "/admin/users/edit/#{@company.user.id}"
+        return
+      else
+        @with_error = true
+      end
+    end
+
+    render 'import', :layout => "simple"
+  end
+
   def import
-    @staging_job = StagingJob.find_by_id(params[:id]) || StagingJob.new
-    @company = Company.where(:name => CGI::unescapeHTML(@staging_job.company_name)).first
-    @is_company_exist = @company.present?
+    get_staging_job_and_company
 
     # if current staging job exist, remove it and redirect back.
-    if @is_company_exist and @company.jobs.where(:name => @staging_job.name).count > 0
+    if @is_company_exist and @company.jobs.where(:name => CGI::unescapeHTML(@staging_job.name)).count > 0
       @staging_job.destroy!
       redirect_to :back, :notice => "该工作已经存在！当前记录被删除."
       return
     end
 
-    if request.get?
-      if @is_company_exist
-        @job = @company.jobs.new
-      else
-        @company = Company.new
-        @company.build_user
-        @company.jobs.build
-      end
-    elsif request.post?
-      # only add a new job to exist company
-      if @is_company_exist
-        @job = Job.new(params[:job])
-        if @job.save
-          # charge money.
-          @company.user.charge! 100, :from => '手动添加'
-          # buy post job service.
-          Service.find(8).buy_from!(@company.user)
-          # active the job.
-          @job.want_to_show
-          @job.set_random_views_count
-          @staging_job.update_attribute :state, "published" if @staging_job.persisted?
-
-          flash[:notice] = "工作创建成功。"
-          redirect_to "/admin/users/edit/#{@company.user.id}"
-          return
-        end
-      else # create a company and job
-        @company = Company.new(params[:company])
-        if @company.save
-          # active user.
-          @company.user.confirm!
-          # charge money.
-          @company.user.charge! 100, :from => '手动添加'
-          # buy post job service.
-          Service.find(8).buy_from!(@company.user)
-          # active the job.
-          @company.jobs.first.want_to_show
-          @company.jobs.first.set_random_views_count
-          @company.set_random_views_count
-
-          @staging_job.update_attribute :state, "published" if @staging_job.persisted?
-
-          flash[:notice] = "公司和岗位创建成功。"
-          redirect_to "/admin/users/edit/#{@company.user.id}"
-          return
-        end
-      end
+    if @is_company_exist
+      @job = @company.jobs.new
+    else
+      @company = Company.new
+      @company.build_user
+      @company.jobs.build
     end
 
     render :layout => "simple"
@@ -177,7 +183,15 @@ class Admin::JobsController < Admin::ResourcesController
     end
   end
 
-  protected
+protected
+
+  def get_staging_job_and_company
+    @staging_job = StagingJob.find_by_id(params[:id]) || StagingJob.new
+
+    # check if company is exist.
+    @company = Company.where(:name => CGI::unescapeHTML(@staging_job.company_name)).first
+    @is_company_exist = @company.present?
+  end
 
   def set_company_desc_editor_html
     company_desc_html = @staging_job.company_desc.try(:html_safe).to_s.gsub('"','\'').gsub(/\s/, '')

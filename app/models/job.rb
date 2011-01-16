@@ -75,7 +75,7 @@ class Job < ActiveRecord::Base
   accepts_nested_attributes_for :welfare_options, :question_options, :allow_destroy => true
 
   validates_presence_of :name, :location_province, :location_city, :contract_type, :category, :vacancy, :requirement #:content
-  validates_uniqueness_of :name, :on => :create, :message => "must be unique"
+  validates_uniqueness_of :name, :scope => :company_id, :on => :create, :message => "must be unique"
   validate :check_tag
 
   define_index do

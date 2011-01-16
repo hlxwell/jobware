@@ -7,7 +7,7 @@ admin:
   Certification: create, read, update, delete
   Company: create, read, update, delete, theme, update_themes, change_email, add_to_featured_company, add_to_famous_company
   CoverLetter: create, read, update, delete
-  Job: create, read, update, delete, approve, reject, theme, update_themes, recommend_resumes, upload_xml, import, add_to_urgent_ad
+  Job: create, read, update, delete, approve, reject, theme, update_themes, recommend_resumes, upload_xml, import, add_to_urgent_ad, do_import
   JobApplication: create, read, update, delete
   Language: create, read, update, delete
   Partner: create, read, update, delete, approve, reject, send_commission, withdraw

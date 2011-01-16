@@ -89,7 +89,7 @@
 
 <% if @is_company_exist %>
 
-  <%= jobware_form_for @job, :url => {:action => :import}, :use_fieldset => false, :html => {:multipart => true} do |f| %>
+  <%= jobware_form_for @job, :url => {:action => :do_import, :id => params[:id]}, :use_fieldset => false, :html => {:multipart => true} do |f| %>
     <%= render "job_form", :f => f %>
     <%= f.hidden_field :company_id %>
     <%= f.submit "提交" %>
@@ -97,7 +97,7 @@
 
 <% else %>
 
-  <%= jobware_form_for @company, :url => {:action => :import}, :use_fieldset => false, :html => {:multipart => true} do |f| %>
+  <%= jobware_form_for @company, :url => {:action => :do_import, :id => params[:id]}, :use_fieldset => false, :html => {:multipart => true} do |f| %>
     <%= render "user_form", :f => f %>
     <%= render "company_form", :f => f %>
     <%= f.fields_for :jobs do |job_f| %>
