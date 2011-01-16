@@ -2,9 +2,9 @@
 
   <%= field_set_tag "公司信息", :class => 'big' do %>
     <%= f.text_field :name, :label => "公司名", :class => "text w620" %>
-    <%= f.select :company_type, CompanyType.to_sorted_a, {:include_blank => true, :selected => calculate_company_type(@staging_job).try(:last) }, {:label => "性质", :hint => @staging_job.company_type.try(:html_safe)} %>
+    <%= f.select :company_type, CompanyType.to_sorted_a, {:include_blank => true }, {:label => "性质", :hint => @staging_job.company_type.try(:html_safe)} %>
     <%= f.select :size, CompanySize.to_sorted_a, {:include_blank => true}, {:label => "规模", :hint => @staging_job.company_size.try(:html_safe)} %>
-    <%= f.select :industry, CompanyIndustry.to_sorted_a, {:include_blank => true, :selected => calculate_industry(@staging_job).try(:last) }, {:label => "行业", :hint => @staging_job.industry.try(:html_safe)} %>
+    <%= f.select :industry, CompanyIndustry.to_sorted_a, {:include_blank => true }, {:label => "行业", :hint => @staging_job.industry.try(:html_safe)} %>
     <%= f.city_select :province, :city, :label => "所在地", :hint => "快捷设定: <input type='text' id='company_location' name='company_location' class='text' value='#{@staging_job.location.try(:html_safe)}' />".html_safe %>
     <%= f.text_field :address, :label => "地址", :class => "text w620" %>
     <%= f.text_field :homepage, :label => "网址", :class => "text w620" %>
