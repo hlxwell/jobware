@@ -107,7 +107,7 @@ class Admin::JobsController < Admin::ResourcesController
       doc = Nokogiri::XML(file.read)
       doc.xpath("//Content").find_all { |n|
         d = Nokogiri::XML(n.to_s)
-        unless staging_job = StagingJob.where(:page_url => d.xpath("//PageUrl").children.to_s).count > 0
+        unless staging_job = StagingJob.where(:page_url => d.xpath("//PageUrl").children.to_s).first
           staging_job = StagingJob.new({
             :origin_id             => (d.xpath("//ID").children.to_s).html_safe,
             :name                  => CGI::unescapeHTML(d.xpath("//岗位名称").children.to_s).html_safe,
