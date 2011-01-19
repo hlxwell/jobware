@@ -2,6 +2,7 @@ source "http://rubygems.org"
 source 'http://gems.github.com'
 source "http://gemcutter.org"
 
+gem 'madmimi'
 gem 'rails', '3.0.0'
 gem 'mysql'
 gem "looksee"
