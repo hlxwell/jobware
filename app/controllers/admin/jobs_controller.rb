@@ -189,7 +189,7 @@ protected
     @staging_job = StagingJob.find_by_id(params[:id]) || StagingJob.new
 
     # check if company is exist.
-    @company = Company.where(:name => CGI::unescapeHTML(@staging_job.company_name)).first
+    @company = Company.where(:name => CGI::unescapeHTML(@staging_job.company_name.to_s)).first
     @is_company_exist = @company.present?
   end
 
