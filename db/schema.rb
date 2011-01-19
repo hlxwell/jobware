@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110114030841) do
+ActiveRecord::Schema.define(:version => 20110119090506) do
 
   create_table "ad_positions", :force => true do |t|
     t.string   "name"
@@ -457,6 +457,8 @@ ActiveRecord::Schema.define(:version => 20110114030841) do
     t.string   "company_contact_name"
     t.string   "email"
   end
+
+  add_index "staging_jobs", ["page_url"], :name => "index_staging_jobs_on_page_url"
 
   create_table "starred_jobs", :force => true do |t|
     t.integer  "resume_id"
