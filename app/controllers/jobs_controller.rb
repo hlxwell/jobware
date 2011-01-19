@@ -60,20 +60,21 @@ class JobsController < ApplicationController
     render :index
   end
 
-
   def search
     @keyword = params[:keyword] || params.get(:search, :keyword)
 
-    @jobs = Job.opened.with_theme(current_theme_site).search(@keyword,
-    :page => params[:page],
-    :rank_mode  => :wordcount,
-    :sort_mode  => :extended,
-    :order => "keep_top DESC, @rank DESC, updated_at DESC",
-    :per_page => 20,
-    :match_mode => :extended,
-    :field_weights => {
-      :name => 6, :location => 5, :content => 5, :requirement => 2, :company_name => 2
-    })
+    @jobs = Job.opened.with_theme(current_theme_site).search(
+      @keyword,
+      :page => params[:page],
+      :rank_mode  => :wordcount,
+      :sort_mode  => :extended,
+      :order => "keep_top DESC, @rank DESC, updated_at DESC",
+      :per_page => 20,
+      :match_mode => :extended,
+      :field_weights => {
+        :name => 6, :location => 5, :content => 5, :requirement => 2, :company_name => 2
+      }
+    )
     # :conditions => {:theme => current_theme_site})
 
     render "index"

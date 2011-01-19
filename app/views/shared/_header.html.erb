@@ -1,7 +1,8 @@
 <div id="header">
   <!-- #### site logo and title -->
 	<div id="site-title" class="left">
-	  <%= link_to image_tag("/images/logo/it-job-logo.jpg", :alt => "专注于程序员招聘求职 - ITJob.fm"), "/" %>
+	  <%= link_to image_tag("/images/logo/it-job-logo.jpg", :alt => "专注于程序员招聘求职 - ITJob.fm"), "/", :class => "left" %>
+	  <%= show_theme_list %>
 	</div>
 
   <%= render "shared/search_box" %>

@@ -2,6 +2,13 @@ module ApplicationHelper
   include GoogleVisualization
   include UrlHelper
 
+  def show_theme_list
+    other_themes = THEMES.dup
+    current_theme = current_theme_site
+    current_theme = other_themes.delete(current_theme_site) if current_theme_site
+    render :partial => "shared/theme_list", :locals => {:current_theme => current_theme, :other_themes => other_themes}
+  end
+
   def job_filter_link_to(options)
     raise "no option passed to job_filter_link_to function" if options.blank?
 

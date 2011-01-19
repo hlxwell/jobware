@@ -21,8 +21,7 @@ class ApplicationController < ActionController::Base
   def current_layout
     subdomain = request.subdomain.downcase
     if THEMES.keys.include?(subdomain)
-      @theme_title = THEMES[subdomain]
-      @theme_site_logo =
+      @theme_title = THEMES[subdomain].last
 
       if File.exist?(theme_file = "#{Rails.root}/app/views/layouts/themes/#{subdomain}")
         theme_file

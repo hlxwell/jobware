@@ -1,0 +1,16 @@
+<div class="theme_list">
+  <% if current_theme %>
+    <div class="current_theme"><%= "#{current_theme.try(:first)}工程师招聘" %></div>
+  <% end %>
+
+  <p>
+    <%= link_to "返回 ITJob.fm 总站", "http://#{request.domain}#{":#{request.port}" if request.port}" if current_theme %>
+    旗下其他子站：
+  </p>
+
+  <ul class="sub-theme-list">
+    <% other_themes.each do |theme, content| %>
+      <li><%= link_to content.first, "http://#{theme}.#{request.domain}#{":#{request.port}" if request.port}" %></li>
+    <% end %>
+  </ul>
+</div>
