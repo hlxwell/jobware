@@ -11,7 +11,7 @@
       <% urgent_jobs.each do |ad| %>
 		  <li>
 			  <div class='fix_height'>
-			    <span style="float: left;"><%= link_to ad.name, ad.url, :title => ad.desc %></span>
+			    <span style="float: left;"><%= link_to truncate(ad.name, :length => 17, :omission => ''), ad.url, :title => ad.desc %></span>
           <span style="font-weight: bold; float: right;"><%= ad.location %></span>
 			  </div>
 		  </li>
