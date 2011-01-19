@@ -3,7 +3,7 @@ module ApplicationHelper
   include UrlHelper
 
   def show_theme_list
-    other_themes = THEMES.dup
+    other_themes = THEMES.dup.delete_if {|k, v| v.size == 3 } # I will add a false value to the array.
     current_theme = current_theme_site
     current_theme = other_themes.delete(current_theme_site) if current_theme_site
     render :partial => "shared/theme_list", :locals => {:current_theme => current_theme, :other_themes => other_themes}
