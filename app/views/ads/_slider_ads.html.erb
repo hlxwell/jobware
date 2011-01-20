@@ -1,6 +1,8 @@
 <% ads = Ad.slider_ads.with_theme(current_theme_site).opened %>
 
-<% show_no_record(ads) do %>
+<% if ads.blank? %>
+  <%= link_to image_tag("/images/slider_ad.jpg"), "/ad_service" %>
+<% else %>
   <div id="slider-center">
       <% ads.each do |ad| %>
         <a href="<%= ad.url %>" target="_blank">
