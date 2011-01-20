@@ -157,11 +157,16 @@ ul.tabbed li, ul.small_picture_list li {float: left;}
 ul.plain-list {margin: 0;}
 
 ul.ads-list {margin-left: 0;}
-ul.ads-list img {width: 250px; /*height: 70px;*/}
-ul.ads-list li {
+ul.ads-list img { /*width: 250px; height: 70px;*/ }
+ul.ads-list li.bordered {
+  text-align: left;
   list-style: none;
-  /*  border-top: 1px solid #EEE;*/
-  padding: 6px 0px 0px 0px;
+  width: 250px;
+  margin-bottom: 6px;
+  /* border */
+  background-color: #FFF;
+  border: 1px solid #DDD;
+  padding: 3px;
 }
 
 ul.nice-list {margin-left: 0;}

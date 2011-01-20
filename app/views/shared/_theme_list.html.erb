@@ -3,10 +3,14 @@
     <div class="current_theme"><%= "#{current_theme.try(:first)}工程师招聘网" %></div>
   <% end %>
 
-  <p class="<%= 'largest gray' unless current_theme %>">
-    <%= link_to "返回 ITJob.fm 总站", "http://#{request.domain}#{":#{request.port}" if request.port}" if current_theme %>
-    旗下其他子站：
-  </p>
+  <% if current_theme %>
+    <p>
+      <%= link_to "返回 ITJob.fm 总站", "http://#{request.domain}#{":#{request.port}" if request.port}" if current_theme %>
+      旗下其他子站：
+    </p>
+  <% else %>
+    <p class="largest gray">旗下子站：</p>
+  <% end %>
 
   <ul class="sub-theme-list">
     <% other_themes.each do |theme, content| %>
