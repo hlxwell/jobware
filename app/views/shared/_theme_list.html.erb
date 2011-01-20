@@ -3,7 +3,7 @@
     <div class="current_theme"><%= "#{current_theme.try(:first)}工程师招聘网" %></div>
   <% end %>
 
-  <p>
+  <p class="<%= 'largest gray' unless current_theme %>">
     <%= link_to "返回 ITJob.fm 总站", "http://#{request.domain}#{":#{request.port}" if request.port}" if current_theme %>
     旗下其他子站：
   </p>

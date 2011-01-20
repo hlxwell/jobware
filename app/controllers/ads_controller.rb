@@ -1,6 +1,7 @@
 class AdsController < ApplicationController
 
   def index
+    respond_to :html
   end
 
   def inline_widget
