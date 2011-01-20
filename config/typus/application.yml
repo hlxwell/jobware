@@ -19,7 +19,7 @@ Company:
   order_by:
   relationships: job_applications, jobs, presentations, products, resumes, user
   filters:
-  search: name
+  search: name, theme
   application: Company
 
 CoverLetter:
@@ -41,7 +41,7 @@ Job:
   order_by:
   relationships: company, job_applications, user
   filters: state
-  search: name
+  search: name, theme
   application: Company
 
 JobApplication:
@@ -177,7 +177,7 @@ Ad:
   order_by: position
   relationships: company
   filters: display_type, state
-  search: name
+  search: name, theme
   application: Company
 
 Counter:
