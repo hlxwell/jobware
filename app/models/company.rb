@@ -58,7 +58,8 @@ class Company < ActiveRecord::Base
   accepts_nested_attributes_for :user, :jobs, :products, :presentations, :allow_destroy => true
 
   validates_uniqueness_of :name
-  validates_presence_of :name, :industry, :company_type, :size, :address, :contact_name, :province, :city, :desc  # phone_number
+  validates_presence_of :name, :industry, :company_type, :size, :address, :province, :city, :desc  # phone_number
+  validates_presence_of :contact_name, :if => Proc.new { |user| !user.add_by_admin }
   # validates_format_of :homepage, :with => /^http:\/\/.+$/, :on => :create, :message => "URL必须以http://开头。", :allow_blank => true
   validate :check_tag
   validate :check_logo
