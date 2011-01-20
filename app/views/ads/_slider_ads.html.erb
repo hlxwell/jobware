@@ -3,7 +3,7 @@
 <% if ads.blank? %>
   <%= link_to image_tag("/images/slider_ad.jpg"), "/ad_service" %>
 <% else %>
-  <div id="slider-center">
+  <div id="slider-center" style="height: 250px">
       <% ads.each do |ad| %>
         <a href="<%= ad.url %>" target="_blank">
           <%= image_tag(URI.escape( ad.image.url(:slideshow_small) ), :alt => ad.name) %>
