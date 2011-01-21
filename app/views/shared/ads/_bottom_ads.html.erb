@@ -1,5 +1,5 @@
 <div class="section network-section">
-	<div class="section-title">推荐企业</div>
+	<div class="section-title">推荐<%= current_theme_site %>企业</div>
 	<div class="section-content">
 	  <% show_no_record(featured_companies = Ad.featured_companies.with_theme(current_theme_site).opened.limit(15)) do %>
   	<table class="data-table">

@@ -24,9 +24,9 @@ class ApplicationController < ActionController::Base
       @theme_title = THEMES[subdomain].last
 
       if File.exist?(theme_file = "#{Rails.root}/app/views/layouts/themes/#{subdomain}")
-        theme_file
+        theme_file.sub("#{Rails.root}/app/views/", "")
       else # return default
-        "#{Rails.root}/app/views/layouts/themes/default"
+        "layouts/themes/default"
       end
     elsif current_partner_site.present?
       "layouts/partner_site"

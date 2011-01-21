@@ -1,7 +1,7 @@
 <% urgent_jobs = Ad.urgent_jobs.opened.with_theme(current_theme_site).limit(23) %>
 <div id='urgent_jobs' class="section network-section" style="margin-bottom: 0px;">
 	<div class="section-title">
-	  <span class="left">紧急招聘</span>
+	  <span class="left">紧急<%= current_theme_site %>招聘</span>
 	  <div class="clearer"></div>
 	</div>
 

@@ -1,7 +1,7 @@
 <% if @company %>
   <% content_for(:meta_info) do %>
     <meta name="keywords" content="<%= @company.tag_list << @company.name %>" />
-    <meta name="description" content="<%= strip_tags(raw(@company.desc)).truncate(100).gsub(/\n/,'') %>"/>
+    <meta name="description" content="<%= strip_tags(raw(@company.desc)).gsub(/\n|\t/,'').gsub(/(&amp;)|(nbsp;)/, '').truncate(100) %>"/>
   <% end %>
 <% elsif @job %>
   <% @company = @job.company %>
