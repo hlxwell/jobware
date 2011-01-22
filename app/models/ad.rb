@@ -59,6 +59,7 @@ class Ad < ActiveRecord::Base
   scope :famous_companies, where(:display_type => AdPositionType::FAMOUS_COMPANY)
   scope :featured_companies, where(:display_type => AdPositionType::FEATURED_COMPANY)
   scope :opened, where("? BETWEEN start_at AND end_at AND state=?", Date.today, :opened)
+  ### FIXME: if 'chrome' it would be chooen for theme c language
   scope :with_theme, lambda {|theme| where(["themes LIKE ?", "%#{theme}%"]) }
 
   state_machine :initial => :unapproved do

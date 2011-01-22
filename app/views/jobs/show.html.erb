@@ -125,3 +125,5 @@
   此职位信息转载自 <%= @job.source %> 以增加招聘单位的职位展示及为求职者提供方便为目的。如果招聘单位或者 <%= @job.source %> 希望删除或者更正该职位，我们将立刻配合采取行动。
 </fieldset>
 <% end %>
+
+<%= render 'related_jobs', :related_jobs => @job.related_jobs %>

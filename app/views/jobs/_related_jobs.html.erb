@@ -1,0 +1,31 @@
+<div class="section network-section big_top_margin">
+	<div class="section-title">相关工作</div>
+	<div class="section-content">
+	  <% show_no_record(related_jobs) do %>
+		<ul class="nice-list w49p left">
+		  <% related_jobs[0..4].each do |job| %>
+			<li>
+			  <span style="font-weight: bold" class="right text-right">
+			    <%= job.location %> <br/> <%= job.start_at.to_s_short_date %>
+			  </span>
+			  <h5><%= link_to job.name.truncate(40), job %></h5>
+			  <%= link_to job.company.name.truncate(40), job.company, :class => "quiet" %>
+			</li>
+		  <% end %>
+		</ul>
+
+		<ul class="nice-list w49p right">
+		  <% related_jobs[5..9].each do |job| %>
+			<li>
+			  <span style="font-weight: bold" class="right text-right">
+			    <%= job.location %> <br/> <%= job.start_at.to_s_short_date %>
+			  </span>
+			  <h5><%= link_to job.name.truncate(40), job %></h5>
+			  <%= link_to job.company.name.truncate(40), job.company, :class => "quiet" %>
+			</li>
+		  <% end %>
+		</ul>
+		<% end %>
+	</div>
+</div>
+<div class="clearer"></div>

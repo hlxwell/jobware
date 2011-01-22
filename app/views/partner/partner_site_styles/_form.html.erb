@@ -1,6 +1,6 @@
 <% show_error_message_for(f.object) %>
 <%= f.text_field :subdomain, :label => "自定义网站子域名", :class => "text w620" %>
-<%= f.select :theme, ([["全部", ""]] + THEMES.collect {|theme| [theme,theme]}), {:include_blank => false}, {:label => "主题"} %>
+<%= f.select :theme, ([["全部", ""]] + THEMES.collect {|domain, theme| [theme.first, domain]}), {:include_blank => false}, {:label => "主题"} %>
 <%= f.text_field :title, :label => "自定义网站标题", :class => "text w620" %>
 <%= f.text_field :header_height, :label => "页头高度", :class => "text w620", :hint => "网站页头高度。" %>
 <%= f.text_field :footer_height, :label => "页脚高度", :class => "text w620", :hint => "网站页脚高度。" %>
