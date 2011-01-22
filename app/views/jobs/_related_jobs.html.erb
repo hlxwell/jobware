@@ -2,41 +2,21 @@
 	<div class="section-title">相关工作</div>
 	<div class="section-content">
 	  <% show_no_record(related_jobs) do %>
-		<ul class="nice-list w318 left">
-		  <% related_jobs[0..4].each do |job| %>
-			<li>
-			  <span style="font-weight: bold" class="right text-right">
-			    <%= job.location %> <br/> <%= job.start_at.to_s_short_date %>
-			  </span>
-			  <h5><%= link_to job.name.truncate(20), job %></h5>
-			  <%= link_to job.company.name.truncate(28), job.company, :class => "quiet" %>
-			</li>
-		  <% end %>
-		</ul>
 
-		<ul class="nice-list w318 left" style="margin: 0 1em 0 1.1em">
-		  <% related_jobs[5..9].each do |job| %>
-			<li>
-			  <span style="font-weight: bold" class="right text-right">
-			    <%= job.location %> <br/> <%= job.start_at.to_s_short_date %>
-			  </span>
-			  <h5><%= link_to job.name.truncate(20), job %></h5>
-			  <%= link_to job.company.name.truncate(28), job.company, :class => "quiet" %>
-			</li>
-		  <% end %>
-		</ul>
+  	  <% related_jobs.in_groups_of(5, false).each_with_index do |group, index| %>
+  	    <ul class="nice-list w318 <%= index == 2 ? 'right' : 'left' %>" <%= "style='margin: 0 1em 0 1.1em'" if index==1 %>>
+    		  <% group.each do |job| %>
+    			<li>
+    			  <span style="font-weight: bold" class="right text-right">
+    			    <%= job.location %> <br/> <%= job.start_at.to_s_short_date %>
+    			  </span>
+    			  <h5><%= link_to job.name.truncate(20), job %></h5>
+    			  <%= link_to job.company.name.truncate(28), job.company, :class => "quiet" %>
+    			</li>
+    		  <% end %>
+    		</ul>
+  	  <% end %>
 
-		<ul class="nice-list w318 right">
-		  <% related_jobs[10..14].each do |job| %>
-			<li>
-			  <span style="font-weight: bold" class="right text-right">
-			    <%= job.location %> <br/> <%= job.start_at.to_s_short_date %>
-			  </span>
-			  <h5><%= link_to job.name.truncate(20), job %></h5>
-			  <%= link_to job.company.name.truncate(28), job.company, :class => "quiet" %>
-			</li>
-		  <% end %>
-		</ul>
 		<% end %>
 	</div>
 </div>
