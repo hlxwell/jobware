@@ -266,10 +266,10 @@ class Job < ActiveRecord::Base
   end
 
   # find the same theme jobs
-  # TODO add cache
+  # TODO add cach
   def related_jobs
     jobs = self.themes.split(",").map do |theme|
-      Job.with_theme(theme).limit(50).order('updated_at desc').all
+      Job.opened.with_theme(theme).limit(50).order('keep_top desc, start_at desc').all
     end
     jobs.flatten.shuffle[0..9]
   end
