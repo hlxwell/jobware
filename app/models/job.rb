@@ -268,10 +268,7 @@ class Job < ActiveRecord::Base
   # find the same theme jobs
   # TODO add cach
   def related_jobs
-    jobs = self.themes.split(",").map do |theme|
-      Job.opened.with_theme(theme).limit(50).order('keep_top desc, start_at desc').all
-    end
-    jobs.flatten.shuffle[0..9]
+    Job.opened.limit(15).order('RAND()').where("themes REGEXP ?", self.themes.split(",").join('|')).all
   end
 
 end
