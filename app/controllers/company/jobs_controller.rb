@@ -67,11 +67,18 @@ class Company::JobsController < Company::BaseController
   end
 
   def reactive
+    @extra_points_needed = ""
+    @extra_points_needed << "，高亮点数" if @job.highlighted?
+    @extra_points_needed << "，置顶点数" if @job.highlighted?
+
     if @job.active
       flash[:success] = "扣除一点“岗位发布”，岗位重新激活成功。"
     else
-      flash[:error] = "岗位重新激活失败，可能没有足够“岗位发布”点数。"
+      flash[:error] = "岗位重新激活失败，可能没有足够“岗位发布”点数#{@extra_points_needed}。"
     end
+    redirect_to company_jobs_path
+  rescue CreditNotEnoughError
+    flash[:error] = "岗位重新激活失败，可能没有足够“岗位发布”点数#{@extra_points_needed}。"
     redirect_to company_jobs_path
   end
 

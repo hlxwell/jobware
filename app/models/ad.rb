@@ -64,7 +64,7 @@ class Ad < ActiveRecord::Base
 
   state_machine :initial => :unapproved do
     after_transition :on => :want_to_show do |ad|
-      ad.pay_for_active
+      ad.pay_for_active!
     end
 
     after_transition :on => :approve do |ad|
@@ -136,7 +136,7 @@ class Ad < ActiveRecord::Base
     errors.add :end_at, '展示结束时间必需大于展示开始时间。' if start_at and end_at and start_at > end_at
   end
 
-  def pay_for_active
+  def pay_for_active!
     Job.transaction do
       self.user.pay!(self.period, :service_item_id => ServiceItem.send("#{self.display_type_key}_credit_id"), :to => "发布广告##{self.id}")
     end

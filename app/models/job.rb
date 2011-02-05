@@ -92,11 +92,11 @@ class Job < ActiveRecord::Base
   ### please export diagram first.
   state_machine :state, :initial => :unapproved do
     after_transition :on => :want_to_show do |job|
-      job.pay_for_active
+      job.pay_for_active!
     end
 
     before_transition :on => :active do |job|
-      job.pay_for_active unless job.available?
+      job.pay_for_active! unless job.available?
     end
 
     after_transition any => :unapproved do |job|
@@ -159,7 +159,7 @@ class Job < ActiveRecord::Base
     return true
   end
 
-  def pay_for_active
+  def pay_for_active!
     Job.transaction do
       self.set_available_time
       self.user.pay!(1, :service_item_id => ServiceItem.job_credit_id, :to => "激活岗位##{self.id}")
