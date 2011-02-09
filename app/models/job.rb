@@ -159,6 +159,13 @@ class Job < ActiveRecord::Base
     return true
   end
 
+  def force_open!
+    self.start_at = Time.now
+    self.end_at = 30.days.since
+    self.state = 'opened'
+    self.save!
+  end
+
   def pay_for_active!
     Job.transaction do
       self.set_available_time

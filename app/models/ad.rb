@@ -59,6 +59,8 @@ class Ad < ActiveRecord::Base
   scope :famous_companies, where(:display_type => AdPositionType::FAMOUS_COMPANY)
   scope :featured_companies, where(:display_type => AdPositionType::FEATURED_COMPANY)
   scope :opened, where("? BETWEEN start_at AND end_at AND state=?", Date.today, :opened)
+  scope :closed, where("(? NOT BETWEEN start_at AND end_at) OR state!=?", Date.today, :opened)
+
   ### FIXME: if 'chrome' it would be chooen for theme c language
   scope :with_theme, lambda {|theme| where(["themes LIKE ?", "%#{theme}%"]) }
 
@@ -136,8 +138,15 @@ class Ad < ActiveRecord::Base
     errors.add :end_at, '展示结束时间必需大于展示开始时间。' if start_at and end_at and start_at > end_at
   end
 
+  def force_open!
+    self.start_at = Time.now
+    self.end_at = 1.week.since
+    self.state = 'opened'
+    self.save!
+  end
+
   def pay_for_active!
-    Job.transaction do
+    Ad.transaction do
       self.user.pay!(self.period, :service_item_id => ServiceItem.send("#{self.display_type_key}_credit_id"), :to => "发布广告##{self.id}")
     end
   end

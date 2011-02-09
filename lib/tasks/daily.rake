@@ -17,3 +17,18 @@ task :check_permalinks => :environment do
     end
   end
 end
+
+desc "relaunch 20 old jobs"
+task :relaunch_jobs_and_ads => :environment do
+  puts "=== Total closed jobs: #{Job.closed.count}"
+  Job.closed.limit(20).order('id desc').all.each_with_index do |j, i|
+    puts "-=-=-=-= processing job##{i}"
+    j.force_open!
+  end
+
+  puts "=== Total closed ads: #{Ad.closed.count}"
+  Ad.closed.limit(20).order('id desc').all.each_with_index do |a, i|
+    puts "-=-=-=-= processing ad##{i}"
+    a.force_open!
+  end
+end
