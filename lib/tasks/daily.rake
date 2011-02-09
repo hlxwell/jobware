@@ -1,6 +1,7 @@
 task :daily => [
   :check_expired_ads_and_jobs,
-  :check_permalinks
+  :check_permalinks,
+  :relaunch_jobs_and_ads
 ]
 
 desc "check expired ads and jobs"
