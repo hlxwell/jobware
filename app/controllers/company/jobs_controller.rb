@@ -94,6 +94,9 @@ class Company::JobsController < Company::BaseController
     else
       flash[:error] = "扣除一点“岗位发布”失败，请充值后再激活。"
     end
+  rescue CreditNotEnoughError => e
+    flash[:error] = "扣除一点“岗位发布”失败，请充值后再激活。"
+  ensure
     redirect_to company_jobs_path
   end
 
