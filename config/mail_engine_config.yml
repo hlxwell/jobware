@@ -1,0 +1,23 @@
+development:
+  log_mail: false
+  sendgrid_user: "a@theplant.jp"
+  sendgrid_key: "plant^o^"
+  sendgrid_category: "itjob.fm_dev"
+  user_class_name: "User"
+  mount_at: "/admin/mail_engine"
+
+test:
+  log_mail: false
+  sendgrid_user: "a@theplant.jp"
+  sendgrid_key: "plant^o^"
+  sendgrid_category: "itjob.fm_test"
+  user_class_name: "User"
+  mount_at: "/admin/mail_engine"
+
+production:
+  log_mail: false
+  sendgrid_user: "a@theplant.jp"
+  sendgrid_key: "plant^o^"
+  sendgrid_category: "itjob.fm_prod"
+  user_class_name: "User"
+  mount_at: "/admin/mail_engine"

@@ -2,14 +2,7 @@ source "http://rubygems.org"
 source 'http://gems.github.com'
 source "http://gemcutter.org"
 
-# gem "liquid", :git => "git://github.com/hlxwell/liquid.git"
-# gem "httparty"
-# gem 'kaminari', :git => 'https://github.com/amatsuda/kaminari.git'
-# gem "carrierwave", :git => "git://github.com/jnicklas/carrierwave.git"
-# gem "nokogiri"
-# gem "deep_cloneable"
-# gem "mail_engine", :path => "/Users/michael/projects/myProject/mail_engine"
-
+gem "mail_engine", :path => "/Users/michael/projects/myProject/mail_engine"
 gem 'rails', '3.0.4'
 gem 'mysql'
 gem "looksee"
