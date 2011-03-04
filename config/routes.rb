@@ -7,16 +7,16 @@ Jobware::Application.routes.draw do
   match "/inline_widget" => "ads#inline_widget"
   # match "track" => Tracker.action(:track), :as => :tracker
   # match "slideshowpro(.:format)" => "pages#slideshowpro"
-  match "/partner_benifit" => "pages#partner_benifit"
-  match "/company_benifit" => "pages#company_benifit"
-  match "/aboutus(.:format)" => "pages#aboutus"
-  match "/partner_site_header" => "partners#partner_site_header"
-  match "/partner_site_footer" => "partners#partner_site_footer"
-  match "/law" => "pages#law"
-  match "/contactus" => "pages#contactus"
-  match "/term" => "pages#term"
-  match "/ad_service" => "pages#ad_service"
-  match "/recruiter_service" => "pages#recruiter_service"
+  match "/partner_benifit" => "pages#partner_benifit", :as => :partner_benifit
+  match "/company_benifit" => "pages#company_benifit", :as => :company_benifit
+  match "/aboutus(.:format)" => "pages#aboutus", :as => :aboutus
+  match "/partner_site_header" => "partners#partner_site_header", :as => :partner_site_header
+  match "/partner_site_footer" => "partners#partner_site_footer", :as => :partner_site_footer
+  match "/law" => "pages#law", :as => :law
+  match "/contactus" => "pages#contactus", :as => :contactus
+  match "/term" => "pages#term", :as => :term
+  match "/ad_service" => "pages#ad_service", :as => :ad_service
+  match "/recruiter_service" => "pages#recruiter_service", :as => :recruiter_service
 
   ### auth stuff
   match "/login" => "sessions#new", :as => :login

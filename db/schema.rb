@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110119090506) do
+ActiveRecord::Schema.define(:version => 20110217062316) do
 
   create_table "ad_positions", :force => true do |t|
     t.string   "name"
@@ -264,9 +264,51 @@ ActiveRecord::Schema.define(:version => 20110119090506) do
 
   add_index "languages", ["resume_id"], :name => "index_languages_on_resume_id"
 
+  create_table "mail_logs", :force => true do |t|
+    t.string   "mail_template_path"
+    t.string   "recipient"
+    t.string   "sender"
+    t.string   "subject"
+    t.string   "mime_type"
+    t.text     "raw_body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "mail_schedules", :force => true do |t|
+    t.string   "name"
+    t.integer  "mail_template_id"
+    t.string   "user_group"
+    t.integer  "count",            :default => 0
+    t.integer  "sent_count",       :default => 0
+    t.string   "period"
+    t.string   "payload"
+    t.datetime "first_send_at"
+    t.datetime "last_sent_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "mail_template_files", :force => true do |t|
+    t.integer  "mail_template_id"
+    t.string   "file"
+    t.integer  "size"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "mail_templates", :force => true do |t|
     t.string   "name"
-    t.string   "body"
+    t.string   "subject"
+    t.string   "path"
+    t.string   "format",        :default => "html"
+    t.string   "locale"
+    t.string   "handler",       :default => "liquid"
+    t.text     "body"
+    t.boolean  "partial",       :default => false
+    t.boolean  "for_marketing", :default => false
+    t.string   "layout"
+    t.string   "zip_file"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -508,6 +550,12 @@ ActiveRecord::Schema.define(:version => 20110119090506) do
 
   create_table "tags", :force => true do |t|
     t.string "name"
+  end
+
+  create_table "template_partials", :force => true do |t|
+    t.string  "placeholder_name"
+    t.integer "mail_template_id"
+    t.integer "partial_id"
   end
 
   create_table "theme_site_resources", :force => true do |t|
