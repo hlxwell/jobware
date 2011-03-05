@@ -30,6 +30,14 @@ class User < ActiveRecord::Base
   include BankAccountMethods
   acts_as_authentic
 
+  %w{company resume partner}.each do |key|
+    key_name = key == 'resume' ? "jobseeker" : key
+    scope :"#{key_name}_users", joins("LEFT OUTER JOIN #{key.pluralize} ON users.id = #{key.pluralize}.user_id").where("#{key.pluralize}.user_id IS NOT NULL")
+  end
+
+  acts_as_mail_receiver :payload_columns => %w{email},
+                        :groups => %w{company_users jobseeker_users partner_users}
+
   has_one :company
   has_one :partner
   has_one :jobseeker, :class_name => "Resume"

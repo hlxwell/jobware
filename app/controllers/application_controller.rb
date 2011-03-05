@@ -14,6 +14,14 @@ class ApplicationController < ActionController::Base
     redirect_to login_url
   end
 
+  def allow_to_access_mail_system
+    if current_user.try(:email) != "hlxwell@gmail.com"
+      flash[:error] = "Please login as mail admin."
+      redirect_to login_url
+      return
+    end
+  end
+
   def current_theme_site_logo
     "/images/logo/#{request.subdomain.downcase}-it-job-logo.jpg"
   end
