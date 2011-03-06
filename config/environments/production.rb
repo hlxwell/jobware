@@ -76,6 +76,8 @@ Jobware::Application.configure do
     :authentication       => :plain
   }
 
+  config.action_mailer.default_url_options = { :host => "itjob.fm" }
+
   # exception notifier config
   config.middleware.use "::ExceptionNotifier", :email_prefix => "[Jobware] ",
                                                :sender_address => %{ "Jobware Exception" <notifier@itjob.fm> },
