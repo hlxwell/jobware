@@ -25,20 +25,8 @@ GIT
       mime-types (>= 1.16)
 
 GIT
-  remote: git://github.com/hlxwell/new_data_notifier.git
-  revision: 6775ed9aaa0828c44c82a9e9930f8d42cd372ff9
-  specs:
-    new_data_notifier (0.0.3)
-
-GIT
-  remote: git://github.com/rails/exception_notification.git
-  revision: 192a49a02d63d28b23ed41cebadfedd490929cf1
-  branch: master
-  specs:
-    exception_notification (1.0.0)
-
-PATH
-  remote: /Users/michael/projects/myProject/mail_engine
+  remote: git://github.com/hlxwell/mail-engine.git
+  revision: 4186db332dbc5654b504398d9d258616604ab102
   specs:
     mail_engine (0.1.3)
       activesupport (>= 3.0.0)
@@ -50,6 +38,19 @@ PATH
       nokogiri
       rack
       sqlite3-ruby
+
+GIT
+  remote: git://github.com/hlxwell/new_data_notifier.git
+  revision: 6775ed9aaa0828c44c82a9e9930f8d42cd372ff9
+  specs:
+    new_data_notifier (0.0.3)
+
+GIT
+  remote: git://github.com/rails/exception_notification.git
+  revision: 192a49a02d63d28b23ed41cebadfedd490929cf1
+  branch: master
+  specs:
+    exception_notification (1.0.0)
 
 GEM
   remote: http://rubygems.org/
