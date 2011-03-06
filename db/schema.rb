@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110217062316) do
+ActiveRecord::Schema.define(:version => 20110305141445) do
 
   create_table "ad_positions", :force => true do |t|
     t.string   "name"
@@ -307,7 +307,7 @@ ActiveRecord::Schema.define(:version => 20110217062316) do
     t.text     "body"
     t.boolean  "partial",       :default => false
     t.boolean  "for_marketing", :default => false
-    t.string   "layout"
+    t.string   "layout",        :default => "none"
     t.string   "zip_file"
     t.datetime "created_at"
     t.datetime "updated_at"
