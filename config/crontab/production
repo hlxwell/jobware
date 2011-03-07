@@ -5,3 +5,4 @@
 
 50 22 * * * sh -c "cd /home/itjob.fm/app/current && astrails-safe config/backup_config.rb"
 50 23 * * * sh -c "cd /home/itjob.fm/app/current && rake backup:database RAILS_ENV=production"
+*/4 * * * * sh -c "cd /home/itjob.fm/app/current && rake mail_engine:sendmail RAILS_ENV=production"
