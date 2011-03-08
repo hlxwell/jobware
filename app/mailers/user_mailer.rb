@@ -4,7 +4,6 @@ class UserMailer < MailerBase
     @link = edit_password_url(user.perishable_token)
     mail :to => user.email do |format|
       format.text
-      format.html
     end
   end
 
@@ -13,7 +12,6 @@ class UserMailer < MailerBase
     @link = email_confirmation_url(user.perishable_token)
     mail :to => user.email do |format|
       format.text
-      format.html
     end
   end
 end
