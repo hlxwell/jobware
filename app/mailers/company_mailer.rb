@@ -11,7 +11,7 @@ class CompanyMailer < MailerBase
   def new_applicant(company, job_app)
     @company_name = company.name
     @job_name = job_app.job.name
-    @job_app_url = company_job_application_url(@job_app)
+    @job_app_url = company_job_application_url(job_app)
     mail :to => company.user.email, :subject => "ITJob.fm：《#{job_app.job.name}》有个新的应聘等待您查看" do |format|
       format.text
     end
