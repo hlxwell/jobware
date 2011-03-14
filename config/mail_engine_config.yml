@@ -3,6 +3,7 @@ development:
   user_class_name: "User"
   mount_at: "/admin/mail_engine"
   access_check_method: "allow_to_access_mail_system"
+  replacement_email: "hlxwell@gmail.com"
   sendgrid:
     sendgrid_user: "a@theplant.jp"
     sendgrid_key: "plant^o^"

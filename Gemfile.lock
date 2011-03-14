@@ -26,15 +26,16 @@ GIT
 
 GIT
   remote: git://github.com/hlxwell/mail-engine.git
-  revision: 63de1d59440dffb408f9a92e6372b5255f5f877a
+  revision: 36480c18011cf05c10e4e2cec6c7fc67eb2363f9
   specs:
-    mail_engine (0.1.4)
+    mail_engine (0.1.5)
       activesupport (>= 3.0.0)
       carrierwave
       deep_cloneable
       httparty
       kaminari
       liquid
+      mail_safe
       nokogiri
       rack
       sqlite3-ruby
@@ -165,7 +166,7 @@ GEM
       activerecord
       activesupport
     polyglot (0.3.1)
-    rack (1.2.1)
+    rack (1.2.2)
     rack-mount (0.6.13)
       rack (>= 1.0.0)
     rack-test (0.5.7)
