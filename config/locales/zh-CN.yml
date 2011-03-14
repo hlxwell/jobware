@@ -169,3 +169,10 @@
           one: "有 1 个错误发生导致「%{model}」无法被保存。"
           other: "有 %{count} 个错误发生导致「%{model}」无法被保存。"
         body: "如下字段出现错误："
+        
+  activerecord:
+    errors:
+      messages:
+        taken: "已经被占用。"
+        record_invalid: "验证失败: %{errors}"
+  
