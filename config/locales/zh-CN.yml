@@ -175,4 +175,3 @@
       messages:
         taken: "已经被占用。"
         record_invalid: "验证失败: %{errors}"
-  

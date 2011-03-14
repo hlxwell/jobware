@@ -163,7 +163,7 @@ class Job < ActiveRecord::Base
     self.start_at = Time.now
     self.end_at = 30.days.since
     self.state = 'opened'
-    self.save!
+    self.save
   end
 
   def pay_for_active!
