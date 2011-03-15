@@ -38,7 +38,6 @@ gem "mail_engine", :git => "git://github.com/hlxwell/mail-engine.git" # path => 
 # gem 'pacecar', :git => 'git://github.com/thoughtbot/pacecar.git', :branch => 'rails3'
 
 group :development do
-  gem 'mail_safe'
   gem "rails3-generators"
 end
 
