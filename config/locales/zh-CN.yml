@@ -175,3 +175,9 @@
       messages:
         taken: "已经被占用。"
         record_invalid: "验证失败: %{errors}"
+        
+  views:
+    pagination:
+      previous: "&laquo; 前一页"
+      next: "后一页 &raquo;"
+      truncate: "..."
