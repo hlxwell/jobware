@@ -1,4 +1,4 @@
-*/20 * * * * sh -c "cd /home/itjob.fm/app/current && rake send_latest_data RAILS_ENV=production"
+*/20 * * * * sh -c "cd /home/itjob.fm/app/current && rake new_data_notifier:send_latest_data RAILS_ENV=production"
 0 */2 * * * sh -c "cd /home/itjob.fm/app/current && rake ts:reindex RAILS_ENV=production"
 40 1 * * * sh -c "cd /home/itjob.fm/app/current && rake daily RAILS_ENV=production"
 10 5 * * * sh -c "cd /home/itjob.fm/app/current && rake -s sitemap:refresh RAILS_ENV=production"
