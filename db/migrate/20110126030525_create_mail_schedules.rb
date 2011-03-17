@@ -10,6 +10,8 @@ class CreateMailSchedules < ActiveRecord::Migration
       t.string :payload
       t.datetime :first_send_at
       t.datetime :last_sent_at
+      t.boolean :available, :default => false
+      t.string :default_locale
 
       t.timestamps
     end

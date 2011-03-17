@@ -10,7 +10,7 @@ class CreateTableMailTemplate < ActiveRecord::Migration
       t.text :body
       t.boolean :partial, :default => false
       t.boolean :for_marketing, :default => false
-      t.string :layout
+      t.string :layout, :default => 'none'
       t.string :zip_file
 
       t.timestamps
