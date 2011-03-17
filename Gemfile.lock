@@ -26,9 +26,9 @@ GIT
 
 GIT
   remote: git://github.com/hlxwell/mail-engine.git
-  revision: e1c6d29fa04db41b72dc51a3dd44ea7cf9e11389
+  revision: 9a081950e924d8b245e5b469e92d3ce9da990e7a
   specs:
-    mail_engine (0.1.11)
+    mail_engine (0.1.12)
       activesupport (>= 3.0.0)
       carrierwave
       deep_cloneable
@@ -37,7 +37,6 @@ GIT
       liquid
       nokogiri
       rack
-      sqlite3-ruby
 
 GIT
   remote: git://github.com/hlxwell/new_data_notifier.git
@@ -195,9 +194,6 @@ GEM
       activesupport (>= 2.2.0)
       json (>= 1.1.3)
     sitemap_generator (1.3.9)
-    sqlite3 (1.3.3)
-    sqlite3-ruby (1.3.3)
-      sqlite3 (>= 1.3.3)
     state_machine (0.9.4)
     test_benchmarker (1.2.1)
     thor (0.14.6)
