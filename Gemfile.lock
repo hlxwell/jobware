@@ -41,9 +41,10 @@ GIT
 
 GIT
   remote: git://github.com/hlxwell/new_data_notifier.git
-  revision: 6775ed9aaa0828c44c82a9e9930f8d42cd372ff9
+  revision: abfb77f7dd8ca3004141d3860bdf8a0e65badb84
   specs:
-    new_data_notifier (0.0.3)
+    new_data_notifier (0.1.4)
+      rails (>= 3.0.0)
 
 GIT
   remote: git://github.com/rails/exception_notification.git

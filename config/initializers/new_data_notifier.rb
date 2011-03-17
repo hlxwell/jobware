@@ -1,4 +1,3 @@
-NewDataNotifier.default_recipients = ["hlxwell@gmail.com"]
-NewDataNotifier.be_monitored_models = ["Job", "Company", "User"]
-# NewDataNotifier.sender_address = ["new_data@gmail.com"]
-# %("New Data Notifier" <newdata.notifier@example.com>)
+NewDataNotifier::Notifier.default_recipients = ["hlxwell@gmail.com"]
+NewDataNotifier::Notifier.be_monitored_models = ["Job", "User", "Company", "JobApplication", "Resume"]
+NewDataNotifier::Notifier.sender_address = ["new_data@itjob.fm"]
