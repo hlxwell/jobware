@@ -43,7 +43,7 @@ GIT
   remote: git://github.com/hlxwell/new_data_notifier.git
   revision: abfb77f7dd8ca3004141d3860bdf8a0e65badb84
   specs:
-    new_data_notifier (0.1.4)
+    new_data_notifier (0.1.2)
       rails (>= 3.0.0)
 
 GIT
