@@ -26,9 +26,9 @@ GIT
 
 GIT
   remote: git://github.com/hlxwell/mail-engine.git
-  revision: 9a081950e924d8b245e5b469e92d3ce9da990e7a
+  revision: e38dbcd0adaf9ca9e09063515ca6b715e564f588
   specs:
-    mail_engine (0.1.12)
+    mail_engine (0.1.13)
       activesupport (>= 3.0.0)
       carrierwave
       deep_cloneable
@@ -40,9 +40,9 @@ GIT
 
 GIT
   remote: git://github.com/hlxwell/new_data_notifier.git
-  revision: 249296a54347c6651746a096772957208e99d293
+  revision: 58a5e367fec7fc586f4f9ad1c5a033f9db67b989
   specs:
-    new_data_notifier (0.1.4)
+    new_data_notifier (0.1.5)
       rails (>= 3.0.0)
 
 GIT
