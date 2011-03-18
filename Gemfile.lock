@@ -26,7 +26,7 @@ GIT
 
 GIT
   remote: git://github.com/hlxwell/mail-engine.git
-  revision: e38dbcd0adaf9ca9e09063515ca6b715e564f588
+  revision: 04edf80581d5f622e6ad4022885d451ce292bd10
   specs:
     mail_engine (0.1.13)
       activesupport (>= 3.0.0)
