@@ -1,7 +1,7 @@
 development:
   log_mail: true
   user_class_name: "User"
-  # user_locale_column: "locale"
+  user_locale_column: "locale"
   mount_at: "/admin/mail_engine"
   intercept_email: "hlxwell+itjob@gmail.com"
   default_from: "info@itjob.fm"
@@ -24,9 +24,11 @@ test:
 production:
   log_mail: true
   user_class_name: "User"
+  user_locale_column: 'locale'
   mount_at: "/admin/mail_engine"
   default_from: "info@itjob.fm"
   access_check_method: "allow_to_access_mail_system"
+  default_from: 'hlxwell@gmail.com'
   sendgrid:
     sendgrid_user: "a@theplant.jp"
     sendgrid_key: "plant^o^"
