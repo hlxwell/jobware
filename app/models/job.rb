@@ -111,7 +111,7 @@ class Job < ActiveRecord::Base
 
     after_transition :on => :expire do |job|
       unless job.available?
-        # puts "found one expired job##{id}"
+        # puts "found one expired job##{job.id}"
 
         ### send mail to company
         CompanyMailer.job_expired(job.company, job).deliver
@@ -144,6 +144,7 @@ class Job < ActiveRecord::Base
     end
     event :expire do
       transition :opened => :expired
+      # closed still closed
     end
     event :reapprove do
       transition any => :unapproved
