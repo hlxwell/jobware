@@ -102,11 +102,11 @@ class Job < ActiveRecord::Base
     end
 
     after_transition any => :unapproved do |job|
-      AdminNotification.need_check(job)
+      AdminNotification.need_check(job).deliver
     end
 
     after_transition :on => :approve do |job|
-      CompanyMailer.job_approval(job.company, job)
+      CompanyMailer.job_approval(job.company, job).deliver
     end
 
     after_transition :on => :expire do |job|
@@ -114,7 +114,7 @@ class Job < ActiveRecord::Base
         # puts "found one expired job##{id}"
 
         ### send mail to company
-        CompanyMailer.job_expired(job.company, job)
+        CompanyMailer.job_expired(job.company, job).deliver
         ## read means unaccepted or unrejected
         job.job_applications.read.each do |app|
           app.update_attribute(:mail_message, "岗位已被关闭。")

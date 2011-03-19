@@ -285,6 +285,8 @@ ActiveRecord::Schema.define(:version => 20110305141445) do
     t.string   "payload"
     t.datetime "first_send_at"
     t.datetime "last_sent_at"
+    t.boolean  "available",        :default => false
+    t.string   "default_locale"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,7 +1,7 @@
 class JobApplicationObserver < ActiveRecord::Observer
   def after_create(job_app)
     job_app.partner.try(:increase_job_application)
-    CompanyMailer.new_applicant(job_app.job.company, job_app)
+    CompanyMailer.new_applicant(job_app.job.company, job_app).deliver
   end
 
   def after_update(job_app)
@@ -11,7 +11,7 @@ class JobApplicationObserver < ActiveRecord::Observer
       !job_app.rating_change.last.nil? and
       job_app.rating_change.last > 0
 
-      JobseekerMailer.app_been_starred(job_app.resume, job_app)
+      JobseekerMailer.app_been_starred(job_app.resume, job_app).deliver
     end
   end
 end

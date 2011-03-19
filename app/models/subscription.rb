@@ -23,7 +23,7 @@ class Subscription < ActiveRecord::Base
 
     last_sent_at = 1.month.ago if last_sent_at.blank?
     jobs = Job.search(keywords, :with => {:updated_at => last_sent_at..Time.now})
-    JobseekerMailer.newsletter(user, jobs)
+    JobseekerMailer.newsletter(user, jobs).deliver
     update_attribute :last_sent_at, Time.now
   end
 end
