@@ -22,7 +22,7 @@ end
 desc "relaunch 20 old jobs"
 task :relaunch_jobs_and_ads => :environment do
   puts "=== Total closed jobs: #{Job.closed.count}"
-  Job.closed.limit(20).order('id desc').all.each_with_index do |j, i|
+  Job.expired.limit(20).order('id desc').all.each_with_index do |j, i|
     puts "-=-=-=-= processing job##{i}"
     j.force_open!
   end

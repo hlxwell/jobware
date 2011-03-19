@@ -13,6 +13,7 @@ test:
   log_mail: true
   user_class_name: "User"
   mount_at: "/admin/mail_engine"
+  default_from: "info@itjob.fm"
   access_check_method: "allow_to_access_mail_system"
   sendgrid:
     sendgrid_user: "a@theplant.jp"

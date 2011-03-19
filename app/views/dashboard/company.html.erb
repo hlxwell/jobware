@@ -65,7 +65,7 @@
     </tr>
     <tr class="even">
       <th>关闭</th>
-      <td><%= @company.jobs.closed.count %></td>
+      <td><%= @company.jobs.closed_and_expired.count %></td>
       <th>接受</th>
       <td><%= @company.job_applications.accepted.count %></td>
     </tr>

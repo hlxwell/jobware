@@ -56,7 +56,9 @@ class Job < ActiveRecord::Base
 
   # default_scope order("keep_top desc, updated_at desc")
   scope :opened, where("? BETWEEN start_at AND end_at AND state=?", Date.today, :opened)
-  scope :closed, where("(? NOT BETWEEN start_at AND end_at) OR state!=?", Date.today, :opened)
+  scope :expired, where("state=?", :expired)
+  scope :closed, where("state=?", :closed)
+  scope :closed_and_expired, where("(? NOT BETWEEN start_at AND end_at) OR state=? OR state=?", Date.today, :expired, :closed)
   scope :unapproved, where("state = ?", :unapproved)
   scope :approved, where("state in ?", [:closed, :opened])
   scope :highlighted, where(:highlighted => true)
@@ -107,7 +109,7 @@ class Job < ActiveRecord::Base
       CompanyMailer.job_approval(job.company, job)
     end
 
-    after_transition :on => :close do |job|
+    after_transition :on => :expire do |job|
       unless job.available?
         # puts "found one expired job##{id}"
 
@@ -115,7 +117,7 @@ class Job < ActiveRecord::Base
         CompanyMailer.job_expired(job.company, job)
         ## read means unaccepted or unrejected
         job.job_applications.read.each do |app|
-          app.update_attribute(:mail_message, "岗位到期。")
+          app.update_attribute(:mail_message, "岗位已被关闭。")
           app.reject
         end
       end
@@ -132,10 +134,16 @@ class Job < ActiveRecord::Base
       transition any => :rejected
     end
     event :active do
+      transition [:expired, :closed] => :opened, :if => :can_open?
+    end
+    event :open do
       transition :closed => :opened, :if => :can_open?
     end
     event :close do
       transition :opened => :closed
+    end
+    event :expire do
+      transition :opened => :expired
     end
     event :reapprove do
       transition any => :unapproved
@@ -188,10 +196,12 @@ class Job < ActiveRecord::Base
 
   def available?
     return false if start_at.blank? or end_at.blank?
+    # expiration detection
     if (start_at...end_at).include?(Date.today)
       return true
     else
-      self.close if self.opened?
+      # if program comes here means this job is expired, need to be closed.
+      self.expire if self.opened?
       return false
     end
   end

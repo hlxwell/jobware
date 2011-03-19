@@ -49,7 +49,7 @@ class Company::JobsController < Company::BaseController
   end
 
   def open
-    if @job.active
+    if @job.open
       flash[:success] = "岗位打开成功。"
     else
       flash[:error] = "岗位打开失败。"
@@ -69,7 +69,7 @@ class Company::JobsController < Company::BaseController
   def reactive
     @extra_points_needed = ""
     @extra_points_needed << "，高亮点数" if @job.highlighted?
-    @extra_points_needed << "，置顶点数" if @job.highlighted?
+    @extra_points_needed << "，置顶点数" if @job.keep_top?
 
     if @job.active
       flash[:success] = "扣除一点“岗位发布”，岗位重新激活成功。"
