@@ -71,7 +71,7 @@ class Ad < ActiveRecord::Base
 
     after_transition :on => :approve do |ad|
       ad.set_available_time
-      CompanyMailer.delay.ad_approval(ad.company, ad) if ad.company
+      CompanyMailer.ad_approval(ad.company, ad) if ad.company
     end
 
     after_transition :on => :close do |ad|
@@ -79,12 +79,12 @@ class Ad < ActiveRecord::Base
         puts "found one expired ad##{self.id}"
 
         ### send mail to company
-        CompanyMailer.delay.ad_expired(ad.company, ad) if ad.company
+        CompanyMailer.ad_expired(ad.company, ad) if ad.company
       end
     end
 
     after_transition any => :unapproved do |ad|
-      AdminNotification.delay.need_check(ad)
+      AdminNotification.need_check(ad)
     end
 
     event :want_to_show do

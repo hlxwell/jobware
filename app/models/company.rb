@@ -123,6 +123,6 @@ class Company < ActiveRecord::Base
   def reset_email_and_send_reset_password_mail(new_email)
     self.user.update_attributes! :email => new_email
     self.user.reset_perishable_token!
-    CompanyMailer.delay.send_reset_account_password(self)
+    CompanyMailer.send_reset_account_password(self)
   end
 end

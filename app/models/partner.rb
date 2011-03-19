@@ -42,11 +42,11 @@ class Partner < ActiveRecord::Base
 
   state_machine :state, :initial => :unapproved do
     after_transition :on => :approve do |partner|
-      PartnerMailer.delay.approval(partner)
+      PartnerMailer.approval(partner)
     end
 
     after_transition any => :unapproved do |partner|
-      AdminNotification.delay.need_check(partner)
+      AdminNotification.need_check(partner)
     end
 
     event :approve do
