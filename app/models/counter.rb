@@ -15,7 +15,7 @@
 
 class Counter < ActiveRecord::Base
   default_scope order("happened_at ASC")
-  scope :today, where(:happened_at => Date.today)
+  scope :today, lambda { where(:happened_at => Date.today) }
 
   belongs_to :parent, :polymorphic => true
 

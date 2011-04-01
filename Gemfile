@@ -23,6 +23,7 @@ gem 'daemons'
 gem 'inherited_resources', '1.1.2'
 gem 'sitemap_generator'
 gem 'cancan'
+gem 'metrify'
 gem 'bluepill'
 gem 'astrails-safe'
 gem 'new_data_notifier', :require => "new_data_notifier", :git => "git://github.com/hlxwell/new_data_notifier.git"

@@ -58,8 +58,8 @@ class Ad < ActiveRecord::Base
   scope :urgent_jobs, where(:display_type => AdPositionType::URGENT_JOB)
   scope :famous_companies, where(:display_type => AdPositionType::FAMOUS_COMPANY)
   scope :featured_companies, where(:display_type => AdPositionType::FEATURED_COMPANY)
-  scope :opened, where("? BETWEEN start_at AND end_at AND state=?", Date.today, :opened)
-  scope :closed, where("(? NOT BETWEEN start_at AND end_at) OR state!=?", Date.today, :opened)
+  scope :opened, lambda { where("? BETWEEN start_at AND end_at AND state=?", Date.today, :opened) }
+  scope :closed, lambda { where("(? NOT BETWEEN start_at AND end_at) OR state!=?", Date.today, :opened) }
 
   ### FIXME: if 'chrome' it would be chooen for theme c language
   scope :with_theme, lambda {|theme| where(["themes LIKE ?", "%#{theme}%"]) }

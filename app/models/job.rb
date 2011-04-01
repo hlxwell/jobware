@@ -55,10 +55,10 @@ class Job < ActiveRecord::Base
   has_enumeration_for :working_year_requirement, :with => WorkingYearRequirement
 
   # default_scope order("keep_top desc, updated_at desc")
-  scope :opened, where("? BETWEEN start_at AND end_at AND state=?", Date.today, :opened)
+  scope :opened, lambda { where("? BETWEEN start_at AND end_at AND state=?", Date.today, :opened) }
   scope :expired, where("state=?", :expired)
   scope :closed, where("state=?", :closed)
-  scope :closed_and_expired, where("(? NOT BETWEEN start_at AND end_at) OR state=? OR state=?", Date.today, :expired, :closed)
+  scope :closed_and_expired, lambda { where("(? NOT BETWEEN start_at AND end_at) OR state=? OR state=?", Date.today, :expired, :closed) }
   scope :unapproved, where("state = ?", :unapproved)
   scope :approved, where("state in ?", [:closed, :opened])
   scope :highlighted, where(:highlighted => true)
