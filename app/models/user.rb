@@ -30,9 +30,6 @@ class User < ActiveRecord::Base
   include BankAccountMethods
   acts_as_authentic
 
-  include Metrify
-  acts_as_metrify
-
   %w{company resume partner}.each do |key|
     key_name = key == 'resume' ? "jobseeker" : key
     scope :"#{key_name}_users", joins("LEFT OUTER JOIN #{key.pluralize} ON users.id = #{key.pluralize}.user_id").where("#{key.pluralize}.user_id IS NOT NULL")
