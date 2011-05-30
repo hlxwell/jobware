@@ -87,26 +87,6 @@ ActiveRecord::Schema.define(:version => 20110305141445) do
 
   add_index "bank_accounts", ["user_id"], :name => "index_bank_accounts_on_user_id"
 
-  create_table "bank_transactions", :force => true do |t|
-    t.string   "type"
-    t.integer  "bank_account_id"
-    t.integer  "related_object_id"
-    t.string   "related_object_type"
-    t.integer  "credit_type"
-    t.string   "from"
-    t.string   "to"
-    t.integer  "amount"
-    t.string   "note"
-    t.string   "cancel_reason"
-    t.datetime "cancelled_at"
-    t.datetime "deleted_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "bank_transactions", ["bank_account_id"], :name => "index_bank_transactions_on_bank_account_id"
-  add_index "bank_transactions", ["credit_type"], :name => "index_bank_transactions_on_credit_type"
-
   create_table "certifications", :force => true do |t|
     t.integer  "resume_id"
     t.string   "name"
@@ -558,21 +538,6 @@ ActiveRecord::Schema.define(:version => 20110305141445) do
     t.string  "placeholder_name"
     t.integer "mail_template_id"
     t.integer "partial_id"
-  end
-
-  create_table "theme_site_resources", :force => true do |t|
-    t.integer  "theme_site_id"
-    t.integer  "resource_id"
-    t.string   "resource_type"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "theme_sites", :force => true do |t|
-    t.string   "name"
-    t.string   "subdomain"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "titled_images", :force => true do |t|
