@@ -25,6 +25,20 @@ GIT
       mime-types (>= 1.16)
 
 GIT
+  remote: git://github.com/hlxwell/mail-engine.git
+  revision: 9f49fccef7c9d92203a6bc97202395d95a446bfc
+  specs:
+    mail_engine (0.1.14)
+      activesupport (>= 3.0.0)
+      carrierwave
+      deep_cloneable
+      httparty
+      kaminari
+      liquid
+      nokogiri
+      rack
+
+GIT
   remote: git://github.com/hlxwell/new_data_notifier.git
   revision: 58a5e367fec7fc586f4f9ad1c5a033f9db67b989
   specs:
@@ -131,15 +145,6 @@ GEM
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
-    mail_engine (0.1.14)
-      activesupport (>= 3.0.0)
-      carrierwave
-      deep_cloneable
-      httparty
-      kaminari
-      liquid
-      nokogiri
-      rack
     mime-types (1.16)
     mocha (0.9.12)
     mysql (2.8.1)
@@ -222,7 +227,7 @@ DEPENDENCIES
   fastercsv
   inherited_resources (= 1.1.2)
   looksee
-  mail_engine
+  mail_engine!
   mocha
   mysql
   navigasmic
