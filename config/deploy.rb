@@ -28,10 +28,10 @@ namespace :deploy do
       # run "cd #{release_path}; /usr/local/rvm/gems/ree-1.8.7-2010.02/bin/rake ts:reindex RAILS_ENV=production"
     elsif ["production", "staging"].include?(application)
       run "cd #{release_path}; /home/large_scale/.rvm/gems/ree-1.8.7-2011.03/bin/bundle install"
-      run "cd #{release_path}; rake db:migrate RAILS_ENV=production"
-      run "cd #{release_path}; rake db:seed RAILS_ENV=production"
+      run "cd #{release_path}; /home/large_scale/.rvm/gems/ree-1.8.7-2011.03/bin/bundle exec rake db:migrate RAILS_ENV=production"
+      run "cd #{release_path}; /home/large_scale/.rvm/gems/ree-1.8.7-2011.03/bin/bundle exec rake db:seed RAILS_ENV=production"
       # run "cd #{release_path}; ruby script/delayed_job reload RAILS_ENV=production"
-      run "cd #{release_path}; rake sitemap:refresh RAILS_ENV=production"
+      run "cd #{release_path}; /home/large_scale/.rvm/gems/ree-1.8.7-2011.03/bin/bundle exec rake sitemap:refresh RAILS_ENV=production"
       run "cd #{release_path}; cp #{shared_path}/sphinx/xdict #{release_path}/config/"
       # run "cd #{release_path}; rake ts:rebuild RAILS_ENV=production"
       run "cd #{release_path}; crontab #{release_path}/config/crontab/#{rails_env}"
