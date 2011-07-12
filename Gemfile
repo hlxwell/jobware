@@ -35,6 +35,7 @@ gem 'thinking-sphinx', :git => 'git://github.com/freelancing-god/thinking-sphinx
 gem 'delayed_job', :git => 'git://github.com/collectiveidea/delayed_job.git', :branch => 'master'
 gem "mail_engine", :git => "git://github.com/hlxwell/mail-engine.git" # path => "/Users/michael/projects/myProject/mail_engine"
 gem "rack-cache"
+gem "unicorn"
 
 # gem 'qor', :git => 'git@github.com:anatole/qor.git'
 # gem 'pacecar', :git => 'git://github.com/thoughtbot/pacecar.git', :branch => 'rails3'
