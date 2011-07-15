@@ -61,8 +61,9 @@ class JobsController < ApplicationController
   end
 
   def search
-    @keyword = params[:keyword] || params.get(:search, :keyword)
+    @keyword = params[:keyword] || params.get(:search, :keyword) || ""
     @keyword.gsub!("/", "\/")
+    @keyword.gsub!("[--=<>]+", "")
 
     @jobs = Job.opened.with_theme(current_theme_site).search(
       @keyword,
