@@ -4,7 +4,7 @@
 <%= f.text_field :vacancy, :label => "岗位数", :class => "text w620" %>
 <%= f.select :contract_type, ContractType.to_sorted_a, {:include_blank => true}, { :label => "工作类型" } %>
 <%= f.select :category, JobCategory.to_sorted_a, {:include_blank => true}, {:label => "类别"} %>
-<%= f.select :salary_range, SalaryRange.to_sorted_a, :label => "薪资范围", :hint => "如果您的年薪到达１０万人民币，请发布完岗位后联系我们，我们将为您提供免费职位发布。" %>
+<%= f.select :salary_range, SalaryRange.to_sorted_a, :label => "薪资范围" #, :hint => "如果您的年薪到达１０万人民币，请发布完岗位后联系我们，我们将为您提供免费职位发布。" %>
 <%= f.select :working_year_requirement, WorkingYearRequirement.to_sorted_a, :label => "工作年限" %>
 <%= f.select :degree_requirement, DegreeRequirement.to_sorted_a, :label => "学历要求" %>
 <%= f.cktext_area(:content, :height => '200px', :toolbar=>'Basic', :skin => "office2003", :label => "工作内容") %>
