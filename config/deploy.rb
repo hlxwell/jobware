@@ -88,3 +88,17 @@ namespace :bluepill do
     run "sudo bluepill #{application} status"
   end
 end
+
+task :tail_log, :roles => [:app] do
+  log_file = "#{shared_path}/log/production.log"
+  run "tail -f #{log_file}" do |channel, stream, data|
+    puts data if stream == :out
+    if stream == :err
+      puts "[Error: #{channel[:host]}] #{data}"
+      break
+    end
+  end
+end
+
+# task :before_deploy
+# task :after_update_code
