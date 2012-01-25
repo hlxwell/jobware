@@ -36,6 +36,7 @@ gem 'delayed_job', :git => 'git://github.com/collectiveidea/delayed_job.git', :b
 gem "mail_engine", :git => "git://github.com/hlxwell/mail-engine.git" # path => "/Users/michael/projects/myProject/mail_engine"
 gem "rack-cache"
 gem "unicorn"
+gem "pry"
 
 # gem 'qor', :git => 'git@github.com:anatole/qor.git'
 # gem 'pacecar', :git => 'git://github.com/thoughtbot/pacecar.git', :branch => 'rails3'
