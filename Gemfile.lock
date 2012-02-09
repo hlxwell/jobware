@@ -53,9 +53,7 @@ GIT
     exception_notification (1.0.0)
 
 GEM
-  remote: http://rubygems.org/
-  remote: http://gems.github.com/
-  remote: http://gemcutter.org/
+  remote: http://ruby.taobao.org/
   specs:
     abstract (1.0.0)
     actionmailer (3.0.4)
@@ -114,8 +112,7 @@ GEM
       capistrano (>= 1.0.0)
     carrierwave (0.5.8)
       activesupport (~> 3.0)
-    chinese_permalink (1.1.3)
-      sishen-rtranslate
+    chinese_permalink (1.3.1)
     cloudfiles (1.4.14)
       mime-types (>= 1.16)
     coderay (0.9.8)
@@ -136,7 +133,6 @@ GEM
     inherited_resources (1.1.2)
       has_scope (~> 0.5.0)
       responders (~> 0.6.0)
-    json (1.5.1)
     kaminari (0.13.0)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -207,9 +203,6 @@ GEM
       sexp_processor (~> 3.0)
     sexp_processor (3.0.7)
     shoulda (2.11.3)
-    sishen-rtranslate (1.5)
-      activesupport (>= 2.2.0)
-      json (>= 1.1.3)
     sitemap_generator (1.3.9)
     slop (2.1.0)
     state_machine (0.9.4)

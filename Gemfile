@@ -1,6 +1,7 @@
-source "http://rubygems.org"
-source 'http://gems.github.com'
-source "http://gemcutter.org"
+#source "http://rubygems.org"
+#source 'http://gems.github.com'
+#source "http://gemcutter.org"
+source "http://ruby.taobao.org"
 
 gem 'rails', '3.0.4'
 gem 'mysql'
