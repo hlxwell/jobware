@@ -153,7 +153,7 @@ class Job < ActiveRecord::Base
 
   def parse_programming_language_name(permalink)
     permalink.gsub("C#", "c-sharp")
-    permalink.gsub(/(C++)|(c＋＋)/, "c-plus-plus")
+    permalink.gsub("C++", "c-plus-plus")
     permalink.gsub(".net", "dotnet")
   end
 
