@@ -45,7 +45,7 @@ class Company < ActiveRecord::Base
   belongs_to :partner
   # has_many :starred_resumes
   # has_many :candidates, :class_name => "Resume", :through => :starred_resumes
-  has_many :jobs
+  has_many :jobs, :dependent => :destroy
   has_many :job_applications, :through => :jobs
   has_many :resumes, :through => :job_applications
   has_many :products, :as => :parent, :dependent => :destroy
