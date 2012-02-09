@@ -45,7 +45,7 @@ class Job < ActiveRecord::Base
   }
 
   acts_as_taggable
-  chinese_permalink :name
+  chinese_permalink :name, :before_methods => :parse_programming_language_name
   acts_as_views_count :delay => 1
 
   has_enumeration_for :category, :with => JobCategory
@@ -149,6 +149,12 @@ class Job < ActiveRecord::Base
     event :reapprove do
       transition any => :unapproved
     end
+  end
+
+  def parse_programming_language_name(permalink)
+    permalink.gsub("C#", "c-sharp")
+    permalink.gsub(/(C++)|(c＋＋)/, "c-plus-plus")
+    permalink.gsub(".net", "dotnet")
   end
 
   def check_tag
