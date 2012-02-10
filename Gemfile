@@ -32,7 +32,7 @@ gem 'nokogiri'
 gem 'newrelic_rpm' #, :git => "git://github.com/newrelic/rpm.git"
 gem 'ckeditor', :git => 'git://github.com/galetahub/rails-ckeditor.git', :branch => 'rails3'
 gem "exception_notification", :git => "git://github.com/rails/exception_notification.git", :branch => "master"
-gem 'thinking-sphinx', :git => 'git://github.com/freelancing-god/thinking-sphinx.git', :branch  => 'rails3', :require => 'thinking_sphinx'
+gem 'thinking-sphinx', :git => 'git://github.com/freelancing-god/thinking-sphinx.git', :require => 'thinking_sphinx'
 gem 'delayed_job', :git => 'git://github.com/collectiveidea/delayed_job.git', :branch => 'master'
 gem "mail_engine", :git => "git://github.com/hlxwell/mail-engine.git" # path => "/Users/michael/projects/myProject/mail_engine"
 gem "rack-cache"
