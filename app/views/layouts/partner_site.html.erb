@@ -10,12 +10,22 @@
   <div id="loading">正在加载, 请稍候...</div>
 
   <div id="site">
-    <%= render "shared/partner_site_header" %>
+    <!-- #### site logo and title -->
+    <iframe id="header_iframe" name="header_iframe" width="100%" scrolling="no" height="<%= current_partner_site.header_height %>" frameborder="0" src="/partner_site_header"></iframe>
+
     <div class="center-wrapper">
+      <%= render "shared/partner_site_header" %>
       <%= raw render_message %>
       <%= content_for?(:content) ? yield(:content) : yield %>
+      <%= render "shared/partner_site_footer" %>
     </div>
-    <%= render "shared/partner_site_footer" %>
+
+    <iframe id="footer_iframe" name="footer_iframe" width="100%" height="<%= current_partner_site.footer_height %>" scrolling="no" frameborder="0" src="/partner_site_footer"></iframe>
+
+    <div id="footer">
+      <div class="right">Powered by <a href="http://itjob.fm/">ITJob.fm</a></div>
+      <div class="clearer">&nbsp;</div>
+    </div>
   </div>
 
   <%= render "shared/counter" if Rails.env == 'production' %>
