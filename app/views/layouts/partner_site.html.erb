@@ -10,12 +10,12 @@
   <div id="loading">正在加载, 请稍候...</div>
 
   <div id="site">
-  	<div class="center-wrapper">
-      <%= render "shared/partner_site_header" %>
+    <%= render "shared/partner_site_header" %>
+    <div class="center-wrapper">
       <%= raw render_message %>
       <%= content_for?(:content) ? yield(:content) : yield %>
-      <%= render "shared/partner_site_footer" %>
-	  </div>
+    </div>
+    <%= render "shared/partner_site_footer" %>
   </div>
 
   <%= render "shared/counter" if Rails.env == 'production' %>
