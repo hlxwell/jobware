@@ -1,12 +1,27 @@
-require 'capistrano/ext/multistage'
+# require 'capistrano/ext/multistage'
+# set :stages, %w(staging production cnc)
+# set :default_stage, 'staging'
 
-set :stages, %w(staging production cnc)
-set :default_stage, 'staging'
+require "bundler/capistrano"
+$:.unshift(File.expand_path("./lib", ENV["rvm_path"]))
+require "rvm/capistrano"
+set :rvm_ruby_string, "ree"
+set :rvm_type, :system
+
+set :application, "ITJOB.FM"
 set :repository,  "git@github.com:anatole/jobware.git"
 set :branch, ENV["BRANCH"] || "master"
 set :scm, "git"
+set :keep_releases, 5
 set :use_sudo, false
+set :user, "app"
+set :deploy_to, "/home/app/app"
+set :branch, "master"
 set :rails_env, "production"
+
+role :web, "58.215.184.207"                          # Your HTTP server, Apache/etc
+role :app, "58.215.184.207"                          # This may be the same as your `Web` server
+role :db,  "58.215.184.207", :primary => true        # This is where Rails migrations will run
 
 # If you are using Passenger mod_rails uncomment this:
 # if you're still using the script/reapear helper you will need
@@ -18,53 +33,27 @@ namespace :deploy do
     run "cd #{release_path}; ln -s #{shared_path}/sphinx #{release_path}/db/sphinx"
     run "cd #{release_path}; ln -s #{shared_path}/ckeditor_assets #{release_path}/public"
 
-    if application == "grandcloud"
-      run "cd #{release_path}; bundle install"
-      # run "cd #{release_path}; /usr/local/rvm/rubies/ree-1.8.7-2010.02/bin/ruby script/delayed_job reload RAILS_ENV=production;"
-      run "cd #{release_path}; rake db:migrate RAILS_ENV=production"
-      run "cd #{release_path}; rake sitemap:refresh RAILS_ENV=production"
-      run "cd #{release_path}; crontab #{release_path}/config/crontab/#{rails_env}"
-      # run "cd #{release_path}; sudo chown hlx:www-data -R #{shared_path}/pids #{shared_path}/sphinx"
-      run "cd #{release_path}; rake ts:rebuild RAILS_ENV=production"
-    elsif ["production", "staging"].include?(application)
-      run "cd #{release_path}; /home/large_scale/.rvm/gems/ree-1.8.7-2011.03/bin/bundle install"
-      run "cd #{release_path}; /home/large_scale/.rvm/gems/ree-1.8.7-2011.03/bin/bundle exec rake db:migrate RAILS_ENV=production"
-      run "cd #{release_path}; /home/large_scale/.rvm/gems/ree-1.8.7-2011.03/bin/bundle exec rake db:seed RAILS_ENV=production"
-      # run "cd #{release_path}; ruby script/delayed_job reload RAILS_ENV=production"
-      run "cd #{release_path}; /home/large_scale/.rvm/gems/ree-1.8.7-2011.03/bin/bundle exec rake sitemap:refresh RAILS_ENV=production"
-      run "cd #{release_path}; cp #{shared_path}/sphinx/xdict #{release_path}/config/"
-      # run "cd #{release_path}; rake ts:rebuild RAILS_ENV=production"
-      run "cd #{release_path}; crontab #{release_path}/config/crontab/#{rails_env}"
-      # run "cd #{release_path}; ./script/delayed_job restart RAILS_ENV=production"
-    else
-      run "cd #{release_path}; bundle install"
-      run "cd #{release_path}; rake db:migrate RAILS_ENV=production"
-      # run "cd #{release_path}; ./script/delayed_job restart RAILS_ENV=production"
-    end
+    run "cd #{release_path}; bundle install"
+    run "cd #{release_path}; bundle exec rake sitemap:refresh RAILS_ENV=production"
+    # run "cd #{release_path}; bundle exec rake db:seed RAILS_ENV=production"
+    run "cd #{release_path}; crontab #{release_path}/config/crontab/#{rails_env}"
+    run "cd #{release_path}; ./script/delayed_job restart RAILS_ENV=production"
+    run "cd #{release_path}; sudo chown app:app -R #{shared_path}/pids #{shared_path}/sphinx"
+    run "cd #{release_path}; cp #{shared_path}/sphinx/xdict #{release_path}/config/"
+    run "cd #{release_path}; bundle exec rake ts:rebuild RAILS_ENV=production"
   end
 
   # unicorn scripts cribbed from https://github.com/daemon/capistrano-recipes/blob/master/lib/recipes/unicorn.rb
-  desc "Restart unicorn"
-  task :restart, :roles => :app do
-    run "kill -USR2 `cat #{deploy_to}/shared/pids/unicorn.pid`" do |ch, stream, out|
-      # is this block necessary?
-    end
-  end
-
-  task :stop, :roles => :app do
-    run "kill -QUIT `cat #{deploy_to}/shared/pids/unicorn.pid`" do |ch, stream, out|
-      # is this block necessary?
-    end
-  end
-
-  task :start, :roles => :app do
-    run "unicorn -E #{rails_env} -D -c #{current_path}/config/unicorn.rb" do |ch, stream, out|
-      # is this block necessary?
-    end
+  desc "Restart passenger"
+  task :start do ; end
+  task :stop do ; end
+  task :restart, :roles => :app, :except => { :no_release => true } do
+    run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
   end
 end
 
 before "deploy:symlink", "deploy:init_project"
+
 # Bluepill related tasks
 after "deploy:update", "bluepill:restart"
 namespace :bluepill do

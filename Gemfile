@@ -15,7 +15,7 @@ gem 'awesome_print', :require => "ap"
 gem 'paperclip'
 gem 'enumerate_it'
 gem 'state_machine'
-gem 'annotate-models'
+gem 'annotate'
 gem 'fastercsv'
 gem "chinese_permalink"
 gem 'ruby-graphviz', :require => 'graphviz'
