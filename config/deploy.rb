@@ -34,26 +34,35 @@ namespace :deploy do
     run "cd #{release_path}; ln -s #{shared_path}/ckeditor_assets #{release_path}/public"
 
     run "cd #{release_path}; bundle install"
-    # run "cd #{release_path}; bundle exec rake sitemap:refresh RAILS_ENV=production"
-    # run "cd #{release_path}; bundle exec rake db:seed RAILS_ENV=production"
+    run "cd #{release_path}; bundle exec rake sitemap:refresh RAILS_ENV=production"
     run "cd #{release_path}; crontab #{release_path}/config/crontab/#{rails_env}"
-    # run "cd #{release_path}; ./script/delayed_job restart RAILS_ENV=production"
-    # run "cd #{release_path}; sudo chown app:app -R #{shared_path}/pids #{shared_path}/sphinx"
-    # run "cd #{release_path}; cp #{shared_path}/sphinx/xdict #{release_path}/config/"
-    # run "cd #{release_path}; bundle exec rake ts:rebuild RAILS_ENV=production"
+    run "cd #{release_path}; ./script/delayed_job restart RAILS_ENV=production"
+    run "cd #{release_path}; sudo chown app:app -R #{shared_path}/pids #{shared_path}/sphinx"
+    run "cd #{release_path}; cp #{shared_path}/sphinx/xdict #{release_path}/config/"
+    run "cd #{release_path}; bundle exec rake ts:rebuild RAILS_ENV=production"
+  end
+
+  desc "Restarting mod_rails with restart.txt"
+  task :restart, :roles => :app, :except => { :no_release => true } do
+    run "touch #{current_path}/tmp/restart.txt"
+  end
+
+  [:start, :stop].each do |t|
+    desc "#{t} task is a no-op with mod_rails"
+    task t, :roles => :app do ; end
   end
 
   # unicorn scripts cribbed from https://github.com/daemon/capistrano-recipes/blob/master/lib/recipes/unicorn.rb
-  desc "Restart unicorn"
-  task :restart, :roles => :app do
-    run "kill -USR2 `cat #{shared_path}/pids/unicorn.pid`"
-  end
-  task :stop, :roles => :app do
-    run "kill -QUIT `cat #{shared_path}/pids/unicorn.pid`"
-  end
-  task :start, :roles => :app do
-    run "cd #{current_path} && bundle exec unicorn -E #{rails_env} -D -c #{current_path}/config/unicorn.rb"
-  end
+  # desc "Restart unicorn"
+  # task :restart, :roles => :app do
+  #   run "kill -USR2 `cat #{shared_path}/pids/unicorn.pid`"
+  # end
+  # task :stop, :roles => :app do
+  #   run "kill -QUIT `cat #{shared_path}/pids/unicorn.pid`"
+  # end
+  # task :start, :roles => :app do
+  #   run "cd #{current_path} && bundle exec unicorn -E #{rails_env} -D -c #{current_path}/config/unicorn.rb"
+  # end
 end
 
 before "deploy:symlink", "deploy:init_project"
@@ -65,17 +74,17 @@ before "deploy:symlink", "deploy:init_project"
 #   task :quit, :roles => [:app] do
 #     run "sudo bluepill quit"
 #   end
-# 
+#
 #   desc "Load bluepill configuration and start it"
 #   task :start, :roles => [:app] do
 #     run "sudo bluepill load #{release_path}/config/bluepill/#{application}.pill"
 #   end
-# 
+#
 #   task :restart, :roles => [:app] do
 #     # run "sudo bluepill quit"
 #     run "sudo bluepill load #{release_path}/config/bluepill/#{application}.pill"
 #   end
-# 
+#
 #   desc "Prints bluepills monitored processes statuses"
 #   task :status, :roles => [:app] do
 #     run "sudo bluepill #{application} status"
