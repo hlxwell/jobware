@@ -39,6 +39,7 @@ gem "rack-cache"
 gem "unicorn"
 gem "pry"
 gem "json"
+gem 'redis-store'
 
 # gem 'qor', :git => 'git@github.com:anatole/qor.git'
 # gem 'pacecar', :git => 'git://github.com/thoughtbot/pacecar.git', :branch => 'rails3'

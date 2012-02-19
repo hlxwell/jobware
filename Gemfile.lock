@@ -197,6 +197,9 @@ GEM
       thor (~> 0.14.4)
     raindrops (0.7.0)
     rake (0.9.2.2)
+    redis (2.2.2)
+    redis-store (1.0.0.1)
+      redis (~> 2.2.1)
     responders (0.6.2)
     riddle (1.5.1)
     ruby-graphviz (0.9.20)
@@ -259,6 +262,7 @@ DEPENDENCIES
   rack-test
   rails (= 3.0.4)
   rails3-generators
+  redis-store
   ruby-graphviz
   shoulda
   sitemap_generator
