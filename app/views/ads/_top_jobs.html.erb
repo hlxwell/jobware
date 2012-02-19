@@ -1,21 +1,21 @@
 <% jobs = Job.opened.with_theme(current_theme_site).order("views_count desc").limit(8) %>
 <div class="section network-section w318 left">
-	<div class="section-title">热门岗位</div>
-	<div class="section-content">
+  <div class="section-title">热门岗位</div>
+  <div class="section-content">
 
-	  <% show_no_record(jobs) do %>
-		<ul class="nice-list">
-		  <% jobs.each do |job| %>
-			<li>
-			  <span style="font-weight: bold" class="right text-right">
-			    <%= job.location %> <br/> 查看：<%= job.views_count_s %> 次
-			  </span>
-			  <h5><%= link_to job.name.truncate(20), job %></h5>
-			  <%= link_to job.company.name.truncate(28), job.company, :class => "quiet" %>
-			</li>
-		  <% end %>
-		</ul>
-		<% end %>
+    <% show_no_record(jobs) do %>
+    <ul class="nice-list">
+      <% jobs.each do |job| %>
+      <li>
+        <span style="font-weight: bold" class="right text-right">
+          <%= job.location %> <br/> 查看：<%= job.views_count_s %> 次
+        </span>
+        <h5><%= link_to job.name.truncate(20), job %></h5>
+        <%= link_to job.company.name.truncate(28), job.company, :class => "quiet" %>
+      </li>
+      <% end %>
+    </ul>
+    <% end %>
 
-	</div>
+  </div>
 </div>

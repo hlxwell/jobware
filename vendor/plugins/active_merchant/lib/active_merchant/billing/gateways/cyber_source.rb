@@ -160,7 +160,7 @@ module ActiveMerchant #:nodoc:
       def calculate_tax(creditcard, options)
         requires!(options,  :line_items)
         setup_address_hash(options)
-        commit(build_tax_calculation_request(creditcard, options), options)	  
+        commit(build_tax_calculation_request(creditcard, options), options)    
       end
       
       private                       
@@ -353,10 +353,10 @@ module ActiveMerchant #:nodoc:
       
       # Contact CyberSource, make the SOAP request, and parse the reply into a Response object
       def commit(request, options)
-	      response = parse(ssl_post(test? ? TEST_URL : LIVE_URL, build_request(request, options)))
+        response = parse(ssl_post(test? ? TEST_URL : LIVE_URL, build_request(request, options)))
         
-	      success = response[:decision] == "ACCEPT"
-	      message = @@response_codes[('r' + response[:reasonCode]).to_sym] rescue response[:message] 
+        success = response[:decision] == "ACCEPT"
+        message = @@response_codes[('r' + response[:reasonCode]).to_sym] rescue response[:message] 
         authorization = success ? [ options[:order_id], response[:requestID], response[:requestToken] ].compact.join(";") : nil
         
         Response.new(success, message, response, 

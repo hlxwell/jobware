@@ -11,30 +11,30 @@
 <% end %>
 
 <div id='urgent_jobs' class="section network-section" style="margin-bottom: 0px;">
-	<div class="section-title">
-	  <span class="left">紧急<%= current_theme_site %>招聘</span>
-	  <span id="pager" class="right"></span>
-	  <div class="clearer"></div>
-	</div>
+  <div class="section-title">
+    <span class="left">紧急<%= current_theme_site %>招聘</span>
+    <span id="pager" class="right"></span>
+    <div class="clearer"></div>
+  </div>
 
-	<div id="slider" class="section-content">
-  		<ul class="plain-list">
+  <div id="slider" class="section-content">
+      <ul class="plain-list">
         <!-- new li -->
-  		  <% show_no_record(@urgent_job_groups.flatten) do %>
+        <% show_no_record(@urgent_job_groups.flatten) do %>
           <% @urgent_job_groups.each_with_index do |group, index| %>
-  		  <li>
+        <li>
           <!-- job list -->
-  		    <% group.each do |ad|
-    		    break if ad.nil? %>
-    			  <div class='fix_height'>
-    			    <span style="float: left;"><%= link_to truncate(ad.name, :length => 14, :omission => ''), ad.url, :title => ad.desc %></span>
+          <% group.each do |ad|
+            break if ad.nil? %>
+            <div class='fix_height'>
+              <span style="float: left;"><%= link_to truncate(ad.name, :length => 14, :omission => ''), ad.url, :title => ad.desc %></span>
               <span style="font-weight: bold; float: right;"><%= ad.location %></span>
-    			  </div>
-    		  <% end %>
-  		  </li>
-  		  <% end %>
+            </div>
+          <% end %>
+        </li>
+        <% end %>
 
-  		</ul>
-		<% end %>
-	</div>
+      </ul>
+    <% end %>
+  </div>
 </div>

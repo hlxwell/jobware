@@ -1,19 +1,19 @@
 <% jobs = Job.opened.with_theme(current_theme_site).order("start_at desc").limit(8) %>
 <div class="section network-section w318 left" style="margin: 0 1em 0 1.1em">
-	<div class="section-title">最新岗位</div>
-	<div class="section-content">
-	  <% show_no_record(jobs) do %>
-		<ul class="nice-list">
-		  <% jobs.each do |job| %>
-			<li>
-			  <span style="font-weight: bold" class="right text-right">
-			    <%= job.location %> <br/> <%= job.start_at.to_s_short_date %>
-			  </span>
-			  <h5><%= link_to job.name.truncate(20), job %></h5>
-			  <%= link_to job.company.name.truncate(26), job.company, :class => "quiet" %>
-			</li>
-		  <% end %>
-		</ul>
-		<% end %>
-	</div>
+  <div class="section-title">最新岗位</div>
+  <div class="section-content">
+    <% show_no_record(jobs) do %>
+    <ul class="nice-list">
+      <% jobs.each do |job| %>
+      <li>
+        <span style="font-weight: bold" class="right text-right">
+          <%= job.location %> <br/> <%= job.start_at.to_s_short_date %>
+        </span>
+        <h5><%= link_to job.name.truncate(20), job %></h5>
+        <%= link_to job.company.name.truncate(26), job.company, :class => "quiet" %>
+      </li>
+      <% end %>
+    </ul>
+    <% end %>
+  </div>
 </div>

@@ -2,22 +2,22 @@
 
 <% show_no_record(@applications) do %>
   <table class="data-table">
-  	<tr>
-  	  <th>工作名</th>
-  		<th width="55">所在省市</th>
-  		<th width="65">所用求职信</th>
-  		<th width="130">应聘时间</th>
-  		<th width="55">公司反馈</th>
-  	</tr>
-  	<% @applications.each do |app| %>
-  	<% job = app.job %>
-  	<tr class="even" id="job_<%= job.id %>">
-  	  <td><%= link_to job.name, job_path(job) %></td>
-  		<td><%= job.location %></td>
-  		<td><%= app.cover_letter.try(:name) %></td>
-  		<td><%= app.created_at.to_s_datetime %></td>
-  		<td><%= raw app.state_humanize(:for => 'jobseeker') %></td>
-  	</tr>
+    <tr>
+      <th>工作名</th>
+      <th width="55">所在省市</th>
+      <th width="65">所用求职信</th>
+      <th width="130">应聘时间</th>
+      <th width="55">公司反馈</th>
+    </tr>
+    <% @applications.each do |app| %>
+    <% job = app.job %>
+    <tr class="even" id="job_<%= job.id %>">
+      <td><%= link_to job.name, job_path(job) %></td>
+      <td><%= job.location %></td>
+      <td><%= app.cover_letter.try(:name) %></td>
+      <td><%= app.created_at.to_s_datetime %></td>
+      <td><%= raw app.state_humanize(:for => 'jobseeker') %></td>
+    </tr>
     <% end %>
   </table>
 

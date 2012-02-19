@@ -10,88 +10,88 @@
 <div class="content-separator"></div>
 
 <div class="post">
-	<div class="post-title"><h3>基本信息</h3></div>
+  <div class="post-title"><h3>基本信息</h3></div>
 
-	<div class="post-body">
-		<table class="data-table">
-			<tr>
-				<th>公司地点</th>
-				<td><%= @company.location %></td>
-				<th>规模</th>
-				<td><%= @company.size_humanize %></td>
-				<th>性质</th>
-				<td><%= @company.company_type_humanize %></td>
-				<th>行业</th>
-				<td><%= @company.industry_humanize %></td>
-				<th>点击数</th>
-				<td><%= @company.views_count_s %></td>
-			</tr>
-		</table>
-	</div>
+  <div class="post-body">
+    <table class="data-table">
+      <tr>
+        <th>公司地点</th>
+        <td><%= @company.location %></td>
+        <th>规模</th>
+        <td><%= @company.size_humanize %></td>
+        <th>性质</th>
+        <td><%= @company.company_type_humanize %></td>
+        <th>行业</th>
+        <td><%= @company.industry_humanize %></td>
+        <th>点击数</th>
+        <td><%= @company.views_count_s %></td>
+      </tr>
+    </table>
+  </div>
 </div>
 
 <div class="content-separator"></div>
 
 <div class="post">
-	<div class="post-title"><h3>公司简介</h3></div>
-	<div class="post-body">
-	  <%= raw @company.desc %>
-	</div>
+  <div class="post-title"><h3>公司简介</h3></div>
+  <div class="post-body">
+    <%= raw @company.desc %>
+  </div>
 </div>
 
 <div class="content-separator"></div>
 <div class="post">
-	<div class="post-title"><h3>联系方式</h3></div>
-	<div class="post-body">
-		<table class="data-table">
-			<tr>
-				<th width="20%">网址</th>
-				<td width="80%"><%= @company.homepage %></td>
-			</tr>
-			<tr>
-				<th>公司地址</th>
-				<td><%= @company.address %></td>
-			</tr>
-			<tr>
-				<th>邮箱</th>
-				<td><%= @company.user.email %></td>
-			</tr>
-			<tr>
-				<th>联系人</th>
-				<td><%= @company.contact_name %></td>
-			</tr>
-			<tr>
-				<th>联系电话</th>
-				<td><%= @company.phone_number %></td>
-			</tr>
-			<tr>
-				<th>是否公开联系方式</th>
-				<td><b><%= @company.open_contact? ? "是" : "否" %></b></td>
-			</tr>
-		</table>
-	</div>
+  <div class="post-title"><h3>联系方式</h3></div>
+  <div class="post-body">
+    <table class="data-table">
+      <tr>
+        <th width="20%">网址</th>
+        <td width="80%"><%= @company.homepage %></td>
+      </tr>
+      <tr>
+        <th>公司地址</th>
+        <td><%= @company.address %></td>
+      </tr>
+      <tr>
+        <th>邮箱</th>
+        <td><%= @company.user.email %></td>
+      </tr>
+      <tr>
+        <th>联系人</th>
+        <td><%= @company.contact_name %></td>
+      </tr>
+      <tr>
+        <th>联系电话</th>
+        <td><%= @company.phone_number %></td>
+      </tr>
+      <tr>
+        <th>是否公开联系方式</th>
+        <td><b><%= @company.open_contact? ? "是" : "否" %></b></td>
+      </tr>
+    </table>
+  </div>
 </div>
 
 
 <% if @company.products.size > 0 %>
 <div class="content-separator"></div>
 <div class="post">
-	<div class="post-title"><h3>公司产品</h3></div>
-	<div class="post-body">
-	  <% show_no_record(@company.products) do %>
-		<table class="data-table top-vlign top-vlign-td">
-		  <% @company.products.each do |p| %>
-		  <tr>
-		    <th colspan="2"><%= p.name %></th>
-		  </tr>
-			<tr class="even">
-				<td width="30%"><%= image_tag p.file.url, :class => "bordered w200" %></td>
-				<td width="70%"><%= raw p.desc %></td>
-			</tr>
+  <div class="post-title"><h3>公司产品</h3></div>
+  <div class="post-body">
+    <% show_no_record(@company.products) do %>
+    <table class="data-table top-vlign top-vlign-td">
+      <% @company.products.each do |p| %>
+      <tr>
+        <th colspan="2"><%= p.name %></th>
+      </tr>
+      <tr class="even">
+        <td width="30%"><%= image_tag p.file.url, :class => "bordered w200" %></td>
+        <td width="70%"><%= raw p.desc %></td>
+      </tr>
       <% end %>
-		</table>
-		<% end %>
-	</div>
+    </table>
+    <% end %>
+  </div>
 </div>
 <% end %>
 
@@ -99,9 +99,9 @@
 <div class="content-separator"></div>
 <div class="post">
   <div class="post-title"><h3>公司展示</h3></div>
-	<div class="post-body">
+  <div class="post-body">
     <%= render :partial => 'companies/presentation', :collection => @company.presentations, :locals => {:image_size => :slideshow_small} %>
-	</div>
+  </div>
 </div>
 <% end %>
 

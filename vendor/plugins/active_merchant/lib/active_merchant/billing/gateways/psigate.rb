@@ -23,12 +23,12 @@
 #  response = @gateway.authorize(twenty, creditcard,
 #     :order_id =>  1234,
 #     :billing_address => {
-#  	    :address1 => '123 fairweather Lane',
-#  	    :address2 => 'Apt B',
-#  	    :city => 'New York',
-#  	    :state => 'NY',
-#  	    :country => 'U.S.A.',
-#  	    :zip => '10010'
+#        :address1 => '123 fairweather Lane',
+#        :address2 => 'Apt B',
+#        :city => 'New York',
+#        :state => 'NY',
+#        :country => 'U.S.A.',
+#        :zip => '10010'
 #    },
 #    :email => 'jack@yahoo.com'
 #  )
@@ -186,7 +186,7 @@ module ActiveMerchant #:nodoc:
           params[:Scountry]     = address[:country]  unless address[:country].blank?
           params[:Scompany]     = address[:company]  unless address[:company].blank?
         end
-       	 	
+            
         return params
       end
       

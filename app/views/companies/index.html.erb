@@ -1,16 +1,20 @@
+<% cache(company_index_cache_key, :expires_in => 1.hour) do %>
+
 <% title @title.blank? ? "所有公司" : @title %>
 
 <div class="main" id="main-two-columns-right-sidebar">
   <!-- ### left main side -->
-	<div class="left" id="main-left">
-	  <%= render "shared/company_tags" %>
+  <div class="left" id="main-left">
+    <%= render "shared/company_tags" %>
 
-	  <% show_no_record(@companies) do %>
-	    <%= render :partial => "company", :collection => @companies %>
+    <% show_no_record(@companies) do %>
+      <%= render :partial => "company", :collection => @companies %>
     <% end %>
-		<%= will_paginate @companies %>
-	</div>
+    <%= will_paginate @companies %>
+  </div>
 
   <!-- ### right side part -->
   <%= render "shared/ads/right_side_ads" %>
 </div>
+
+<% end %>

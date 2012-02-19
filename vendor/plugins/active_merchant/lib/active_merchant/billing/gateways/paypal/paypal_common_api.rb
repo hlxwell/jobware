@@ -298,11 +298,11 @@ module ActiveMerchant #:nodoc:
         response = parse(action, ssl_post(endpoint_url, build_request(request)))
        
         build_response(successful?(response), message_from(response), response,
-    	    :test => test?,
-    	    :authorization => authorization_from(response),
-    	    :fraud_review => fraud_review?(response),
-    	    :avs_result => { :code => response[:avs_code] },
-    	    :cvv_result => response[:cvv2_code]
+          :test => test?,
+          :authorization => authorization_from(response),
+          :fraud_review => fraud_review?(response),
+          :avs_result => { :code => response[:avs_code] },
+          :cvv_result => response[:cvv2_code]
         )
       end
       

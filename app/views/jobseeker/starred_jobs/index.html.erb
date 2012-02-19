@@ -2,22 +2,22 @@
 
 <% show_no_record(@starred_jobs) do %>
   <table class="data-table">
-  	<tr>
-  	  <th>工作名</th>
-  		<th>所在省市</th>
-  		<th>更新时间</th>
-  		<th width="100">操作</th>
-  	</tr>
-  	<% @starred_jobs.each do |starred_job| %>
-  	<%
-  	  job = starred_job.try(:job)
-  	  next if job.nil?
-  	%>
-  	<tr class="even" id="job_<%= job.id %>">
-  	  <td><%= link_to job.name, job_path(job) %></td>
-  		<td><%= job.location %></td>
-  		<td><%= job.updated_at.to_s_datetime %></td>
-  		<td>
+    <tr>
+      <th>工作名</th>
+      <th>所在省市</th>
+      <th>更新时间</th>
+      <th width="100">操作</th>
+    </tr>
+    <% @starred_jobs.each do |starred_job| %>
+    <%
+      job = starred_job.try(:job)
+      next if job.nil?
+    %>
+    <tr class="even" id="job_<%= job.id %>">
+      <td><%= link_to job.name, job_path(job) %></td>
+      <td><%= job.location %></td>
+      <td><%= job.updated_at.to_s_datetime %></td>
+      <td>
         <script>
           $(function(){
             $(".starred_job_<%= starred_job.id %>").stars({
@@ -30,17 +30,17 @@
         </script>
 
         <%= form_for starred_job, :url => star_job_path(job), :remote => true do |f| %>
-      	<div class="starred_job_<%= starred_job.id %>">
-      	  <%= f.radio_button :rating, "1", :title => "很差" %>
-      	  <%= f.radio_button :rating, "2", :title => "差" %>
-      	  <%= f.radio_button :rating, "3", :title => "一般" %>
-      	  <%= f.radio_button :rating, "4", :title => "不错" %>
-      	  <%= f.radio_button :rating, "5", :title => "很好" %>
-      	</div>
-      	<span style="margin-left: 5px; font-weight: bold;"></span>
-      	<% end %>
-  		</td>
-  	</tr>
+        <div class="starred_job_<%= starred_job.id %>">
+          <%= f.radio_button :rating, "1", :title => "很差" %>
+          <%= f.radio_button :rating, "2", :title => "差" %>
+          <%= f.radio_button :rating, "3", :title => "一般" %>
+          <%= f.radio_button :rating, "4", :title => "不错" %>
+          <%= f.radio_button :rating, "5", :title => "很好" %>
+        </div>
+        <span style="margin-left: 5px; font-weight: bold;"></span>
+        <% end %>
+      </td>
+    </tr>
     <% end %>
   </table>
 

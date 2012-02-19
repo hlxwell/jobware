@@ -36,9 +36,9 @@ module ActsAsViewsCount
         else
           self.class.update_all("views_count=#{self.views_count}", "id=#{self.id}")
         end
-  	    views_count = 0
-  	  end
-  	  Rails.cache.write("#{views_count_delay_cache_key}#{self.id}",views_count)
+        views_count = 0
+      end
+      Rails.cache.write("#{views_count_delay_cache_key}#{self.id}",views_count)
     end
 
     def views_count_s

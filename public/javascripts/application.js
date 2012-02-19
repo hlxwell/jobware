@@ -62,10 +62,10 @@ $(function(){
 
   $("#slider").easySlider({
     prevText:'前一页',
-		nextText:'后一页',
-		orientation:'vertical',
-		pager_put_at: '#pager',
-		speed: 200
+    nextText:'后一页',
+    orientation:'vertical',
+    pager_put_at: '#pager',
+    speed: 200
   });
 
   $(".optional_option_tag").click(function(){

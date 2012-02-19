@@ -41,7 +41,7 @@ $.fn.extend({
     return this.pushStack(scrollable);
   },
 
-	smoothScroll: function(options) {
+  smoothScroll: function(options) {
     var opts = $.extend({}, $.fn.smoothScroll.defaults, options);
     this.die('click.smoothscroll').live('click.smoothscroll', function(event) {
 

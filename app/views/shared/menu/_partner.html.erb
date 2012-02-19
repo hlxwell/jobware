@@ -1,36 +1,36 @@
 <div class="left sidebar" id="sidebar">
-	<div class="section">
-		<div class="section-title">
-			<div class="left">我的</div>
-			<div class="right"><img src="/images/icon-time.gif" width="14" height="14" alt="" /></div>
-			<div class="clearer">&nbsp;</div>
-		</div>
+  <div class="section">
+    <div class="section-title">
+      <div class="left">我的</div>
+      <div class="right"><img src="/images/icon-time.gif" width="14" height="14" alt="" /></div>
+      <div class="clearer">&nbsp;</div>
+    </div>
 
-		<div class="section-content">
-			<ul class="nice-list">
-			  <li>
-					<div class="left"><%= link_to "自定义招聘站", edit_partner_partner_site_style_path %></div>
-					<div class="right"><%= link_to "预览", root_url(:subdomain => current_user.partner.partner_site_style.subdomain), :target => :blank if current_user.partner.partner_site_style.try(:subdomain) %></div>
-					<div class="clearer">&nbsp;</div>
-				</li>
-				<li>
-					<div class="left"><%= link_to "获取招聘广告", partner_code_path %></div>
-					<div class="right"><%= link_to "文中", partner_code_path(:type => :inline) %> | <%= link_to "侧栏", partner_code_path(:type => :sidebar) %></div>
-					<div class="clearer">&nbsp;</div>
-				</li>
-				<li>
-					<div class="left"><%= link_to "收入情况", partner_transactions_path %></div>
-					<div class="right"><%#= link_to "取现", withdraw_partner_transactions_path %></div>
-					<div class="clearer">&nbsp;</div>
-				</li>
-				<li>
-					<div class="left"><%= link_to "修改信息", edit_partner_path %></div>
-					<div class="right"></div>
-					<div class="clearer">&nbsp;</div>
-				</li>
-			</ul>
-		</div>
-	</div>
+    <div class="section-content">
+      <ul class="nice-list">
+        <li>
+          <div class="left"><%= link_to "自定义招聘站", edit_partner_partner_site_style_path %></div>
+          <div class="right"><%= link_to "预览", root_url(:subdomain => current_user.partner.partner_site_style.subdomain), :target => :blank if current_user.partner.partner_site_style.try(:subdomain) %></div>
+          <div class="clearer">&nbsp;</div>
+        </li>
+        <li>
+          <div class="left"><%= link_to "获取招聘广告", partner_code_path %></div>
+          <div class="right"><%= link_to "文中", partner_code_path(:type => :inline) %> | <%= link_to "侧栏", partner_code_path(:type => :sidebar) %></div>
+          <div class="clearer">&nbsp;</div>
+        </li>
+        <li>
+          <div class="left"><%= link_to "收入情况", partner_transactions_path %></div>
+          <div class="right"><%#= link_to "取现", withdraw_partner_transactions_path %></div>
+          <div class="clearer">&nbsp;</div>
+        </li>
+        <li>
+          <div class="left"><%= link_to "修改信息", edit_partner_path %></div>
+          <div class="right"></div>
+          <div class="clearer">&nbsp;</div>
+        </li>
+      </ul>
+    </div>
+  </div>
 </div>
 
 <div class="clearer">&nbsp;</div>

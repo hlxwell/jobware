@@ -1,42 +1,42 @@
 <h3 class="right small_top_margin"><%= link_to "查看前台效果", @job %></h3>
 <%= page_name_html(@job.name, :with_title => true) %>
 <table class="data-table top-vlign">
-	<tr>
-	  <th width="60">所在地</th>
-		<td><%= @job.location %></td>
-	</tr>
-	<tr>
-	  <th>学历要求</th>
-		<td><%= @job.degree_requirement_humanize %></td>
-	</tr>
-	<tr>
-	  <th>工作年限</th>
-		<td><%= @job.working_year_requirement_humanize %></td>
-	</tr>
-	<tr>
-	  <th>岗位数</th>
-		<td><%= @job.vacancy %></td>
-	</tr>
-	<tr>
-	  <th>工作类型</th>
-		<td><%= @job.contract_type_humanize %></td>
-	</tr>
-	<tr>
-	  <th>类别</th>
-		<td><%= @job.category_humanize %></td>
-	</tr>
-	<tr>
-	  <th>薪资范围</th>
-		<td><%= @job.salary_range_humanize %></td>
-	</tr>
-	<tr>
-	  <th>工作内容</th>
-		<td><%= raw @job.content %></td>
-	</tr>
-	<tr>
-	  <th>岗位需求</th>
-		<td><%= raw @job.requirement %></td>
-	</tr>
+  <tr>
+    <th width="60">所在地</th>
+    <td><%= @job.location %></td>
+  </tr>
+  <tr>
+    <th>学历要求</th>
+    <td><%= @job.degree_requirement_humanize %></td>
+  </tr>
+  <tr>
+    <th>工作年限</th>
+    <td><%= @job.working_year_requirement_humanize %></td>
+  </tr>
+  <tr>
+    <th>岗位数</th>
+    <td><%= @job.vacancy %></td>
+  </tr>
+  <tr>
+    <th>工作类型</th>
+    <td><%= @job.contract_type_humanize %></td>
+  </tr>
+  <tr>
+    <th>类别</th>
+    <td><%= @job.category_humanize %></td>
+  </tr>
+  <tr>
+    <th>薪资范围</th>
+    <td><%= @job.salary_range_humanize %></td>
+  </tr>
+  <tr>
+    <th>工作内容</th>
+    <td><%= raw @job.content %></td>
+  </tr>
+  <tr>
+    <th>岗位需求</th>
+    <td><%= raw @job.requirement %></td>
+  </tr>
 
   <!--
   <tr>
@@ -45,51 +45,51 @@
   </tr>
   -->
 
-	<tr>
-	 <th>福利待遇</th>
-	 <td>
-	    <ul>
+  <tr>
+   <th>福利待遇</th>
+   <td>
+      <ul>
       <% @job.welfare_options.each do |welfare| %>
         <li><b><%= welfare.name %></b> <%= welfare.desc %></li>
-	    <% end %>
-	    </ul>
-	 </td>
-	</tr>
+      <% end %>
+      </ul>
+   </td>
+  </tr>
 
-	<tr>
-	 <th>公司希望得到回答的问题</th>
-	 <td>
-	   <ul>
+  <tr>
+   <th>公司希望得到回答的问题</th>
+   <td>
+     <ul>
       <% @job.question_options.each do |question| %>
         <li><b><%= question.name %></b> <%= question.desc %></li>
-	    <% end %>
-	    </ul>
-	 </td>
-	</tr>
+      <% end %>
+      </ul>
+   </td>
+  </tr>
 
   <tr>
     <th>其他描述</th>
     <td><%= raw @job.desc %></td>
   </tr>
 
-	<tr>
-	  <th>应聘方式</th>
-		<td><%= raw @job.apply_method %></td>
-	</tr>
-	<tr>
-	 <th>是否使用<br>应聘系统</th>
-	 <td><%= @job.only_use_custom_apply_method_to_s %></td>
-	</tr>
+  <tr>
+    <th>应聘方式</th>
+    <td><%= raw @job.apply_method %></td>
+  </tr>
+  <tr>
+   <th>是否使用<br>应聘系统</th>
+   <td><%= @job.only_use_custom_apply_method_to_s %></td>
+  </tr>
 
-	<tr>
-	 <th>是否高亮</th>
-	 <td><%= @job.highlighted? ? "是" : "否" %></td>
-	</tr>
+  <tr>
+   <th>是否高亮</th>
+   <td><%= @job.highlighted? ? "是" : "否" %></td>
+  </tr>
 
-	<tr>
-	 <th>是否置顶</th>
-	 <td><%= @job.keep_top? ? "是" : "否" %></td>
-	</tr>
+  <tr>
+   <th>是否置顶</th>
+   <td><%= @job.keep_top? ? "是" : "否" %></td>
+  </tr>
 </table>
 
 <br />

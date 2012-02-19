@@ -3,27 +3,27 @@
 <%= form_tag("/admin/jobs/update_themes") %>
 <input type='hidden' name="page" value="<%= params[:page]||1 %>" />
 <table class="data-table">
-	<tr>
-	  <th>工作名</th>
-		<th>所在省市</th>
-		<th>展示时间段</th>
-		<th>状态</th>
-		<th>所属主题</th>
-	</tr>
-	<% @jobs.each do |job| %>
-	<tr class="even">
-	  <td><%= link_to job.name, "/admin/jobs/edit/#{job.id}" %></td>
-		<td><%= job.location %></td>
-		<td><%= job.start_at.try(:to_s_short_date) %> - <%= job.end_at.try(:to_s_short_date) %></td>
-		<td style="color: <%= job.state_font_color %>"><%= job.state_s %></td>
-		<td>
-		  <%= hidden_field_tag "ids[]", job.id %>
+  <tr>
+    <th>工作名</th>
+    <th>所在省市</th>
+    <th>展示时间段</th>
+    <th>状态</th>
+    <th>所属主题</th>
+  </tr>
+  <% @jobs.each do |job| %>
+  <tr class="even">
+    <td><%= link_to job.name, "/admin/jobs/edit/#{job.id}" %></td>
+    <td><%= job.location %></td>
+    <td><%= job.start_at.try(:to_s_short_date) %> - <%= job.end_at.try(:to_s_short_date) %></td>
+    <td style="color: <%= job.state_font_color %>"><%= job.state_s %></td>
+    <td>
+      <%= hidden_field_tag "ids[]", job.id %>
 
-		  <% THEMES.keys.each do |theme| %>
-		    <%= check_box_tag "job_ids[#{job.id}][]", theme, job.themes.try(:split, ',').try(:include?, theme) %> <%= theme %>
-		  <% end %>
-		</td>
-	</tr>
+      <% THEMES.keys.each do |theme| %>
+        <%= check_box_tag "job_ids[#{job.id}][]", theme, job.themes.try(:split, ',').try(:include?, theme) %> <%= theme %>
+      <% end %>
+    </td>
+  </tr>
   <% end %>
   <tr><td colspan="5" align="right"><%= will_paginate @jobs %> <%= submit_tag "更新" %></td></tr>
 </table>

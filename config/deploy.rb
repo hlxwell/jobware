@@ -37,10 +37,10 @@ namespace :deploy do
     # run "cd #{release_path}; bundle exec rake sitemap:refresh RAILS_ENV=production"
     # run "cd #{release_path}; bundle exec rake db:seed RAILS_ENV=production"
     run "cd #{release_path}; crontab #{release_path}/config/crontab/#{rails_env}"
-    run "cd #{release_path}; ./script/delayed_job restart RAILS_ENV=production"
-    run "cd #{release_path}; sudo chown app:app -R #{shared_path}/pids #{shared_path}/sphinx"
-    run "cd #{release_path}; cp #{shared_path}/sphinx/xdict #{release_path}/config/"
-    run "cd #{release_path}; bundle exec rake ts:rebuild RAILS_ENV=production"
+    # run "cd #{release_path}; ./script/delayed_job restart RAILS_ENV=production"
+    # run "cd #{release_path}; sudo chown app:app -R #{shared_path}/pids #{shared_path}/sphinx"
+    # run "cd #{release_path}; cp #{shared_path}/sphinx/xdict #{release_path}/config/"
+    # run "cd #{release_path}; bundle exec rake ts:rebuild RAILS_ENV=production"
   end
 
   # unicorn scripts cribbed from https://github.com/daemon/capistrano-recipes/blob/master/lib/recipes/unicorn.rb

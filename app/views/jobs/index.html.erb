@@ -1,10 +1,12 @@
+<% cache(job_index_cache_key, :expires_in => 1.hour) do %>
+
 <div class="main" id="main-two-columns-right-sidebar">
 
   <!-- ### left main side -->
-	<div class="left" id="main-left">
-	  <%= render "shared/job_tags" if @keyword.blank? %>
+  <div class="left" id="main-left">
+    <%= render "shared/job_tags" if @keyword.blank? %>
 
-	  <% if @keyword %>
+    <% if @keyword %>
       <%= page_name_html("“#{@keyword}”搜索结果", :with_title => true) %>
     <% else %>
       <% title @title.blank? ? "所有工作" : @title %>
@@ -14,11 +16,13 @@
       <%= render :partial => "job", :collection => @jobs %>
     <% end %>
 
-		<%= will_paginate @jobs %>
-	</div>
+    <%= will_paginate @jobs %>
+  </div>
 
   <!-- ### right side part -->
-	<%= render "shared/ads/right_side_ads" %>
+  <%= render "shared/ads/right_side_ads" %>
 
-	<div class="clearer">&nbsp;</div>
+  <div class="clearer">&nbsp;</div>
 </div>
+
+<% end %>

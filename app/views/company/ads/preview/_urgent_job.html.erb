@@ -1,13 +1,13 @@
 <div class="section network-section" style="width:250px;">
-	<div class="section-title">紧急招聘</div>
-	<div class="section-content">
-		<ul class="nice-list">
-		  <% 5.times do %>
-			<li>
-			  <%= link_to ad.name, ad.url, :title => ad.desc %>
-			  <span style="font-weight: bold; float: right;"><%= ad.location %></span>
-			</li>
-		  <% end %>
-		</ul>
-	</div>
+  <div class="section-title">紧急招聘</div>
+  <div class="section-content">
+    <ul class="nice-list">
+      <% 5.times do %>
+      <li>
+        <%= link_to ad.name, ad.url, :title => ad.desc %>
+        <span style="font-weight: bold; float: right;"><%= ad.location %></span>
+      </li>
+      <% end %>
+    </ul>
+  </div>
 </div>

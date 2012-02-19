@@ -1,19 +1,19 @@
 <% companies = Company.opened.with_theme(current_theme_site).limit(12).all %>
 <div class="section network-section w318 right">
-	<div class="section-title">最新企业</div>
-	<div class="section-content">
-	  <% show_no_record(companies) do %>
-		<ul class="nice-list">
-		  <% companies.each do |company| %>
-			<li>
-			  <span style="font-weight: bold" class="right text-right">
-			    <%= company.location %>
-			  </span>
-			  <h5><%= link_to company.name.truncate(18), company %></h5>
-			  <div class="clearer">&nbsp;</div>
-			</li>
-		  <% end %>
-		</ul>
-		<% end %>
-	</div>
+  <div class="section-title">最新企业</div>
+  <div class="section-content">
+    <% show_no_record(companies) do %>
+    <ul class="nice-list">
+      <% companies.each do |company| %>
+      <li>
+        <span style="font-weight: bold" class="right text-right">
+          <%= company.location %>
+        </span>
+        <h5><%= link_to company.name.truncate(18), company %></h5>
+        <div class="clearer">&nbsp;</div>
+      </li>
+      <% end %>
+    </ul>
+    <% end %>
+  </div>
 </div>

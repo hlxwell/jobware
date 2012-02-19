@@ -1,22 +1,22 @@
 <% urgent_jobs = Ad.urgent_jobs.opened.with_theme(current_theme_site).limit(23) %>
 <div id='urgent_jobs' class="section network-section" style="margin-bottom: 0px;">
-	<div class="section-title">
-	  <span class="left">紧急<%= current_theme_site %>招聘</span>
-	  <div class="clearer"></div>
-	</div>
+  <div class="section-title">
+    <span class="left">紧急<%= current_theme_site %>招聘</span>
+    <div class="clearer"></div>
+  </div>
 
-	<div id="slider" class="section-content">
-	  <% show_no_record(urgent_jobs) do %>
-		<ul class="plain-list">
+  <div id="slider" class="section-content">
+    <% show_no_record(urgent_jobs) do %>
+    <ul class="plain-list">
       <% urgent_jobs.each do |ad| %>
-		  <li>
-			  <div class='fix_height'>
-			    <span style="float: left;"><%= link_to truncate(ad.name, :length => 17, :omission => ''), ad.url, :title => ad.desc %></span>
+      <li>
+        <div class='fix_height'>
+          <span style="float: left;"><%= link_to truncate(ad.name, :length => 17, :omission => ''), ad.url, :title => ad.desc %></span>
           <span style="font-weight: bold; float: right;"><%= ad.location %></span>
-			  </div>
-		  </li>
-		  <% end %>
-		</ul>
-	  <% end %>
-	</div>
+        </div>
+      </li>
+      <% end %>
+    </ul>
+    <% end %>
+  </div>
 </div>

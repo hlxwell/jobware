@@ -10,7 +10,7 @@ module ActiveMerchant #:nodoc:
           def message
             
           end
-	      end
+        end
       end
     end
   end

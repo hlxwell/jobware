@@ -1,19 +1,19 @@
 <div class="section network-section">
-	<div class="section-title">推荐<%= current_theme_site %>企业</div>
-	<div class="section-content">
-	  <% show_no_record(@right_featured_companies = Ad.featured_companies.with_theme(current_theme_site).opened.limit(15)) do %>
-		<ul class="ads-list">
-		  <% @right_featured_companies.each do |ad| %>
-		  <li class="with_tooltip bordered" title="<%= ad.name %>">
-		    <%= link_to image_tag(ad.image.url(:right_ad), :class => "center"), ad.url %>
-		    <div class="clearer">&nbsp;</div>
-		  </li>
+  <div class="section-title">推荐<%= current_theme_site %>企业</div>
+  <div class="section-content">
+    <% show_no_record(@right_featured_companies = Ad.featured_companies.with_theme(current_theme_site).opened.limit(15)) do %>
+    <ul class="ads-list">
+      <% @right_featured_companies.each do |ad| %>
+      <li class="with_tooltip bordered" title="<%= ad.name %>">
+        <%= link_to image_tag(ad.image.url(:right_ad), :class => "center"), ad.url %>
+        <div class="clearer">&nbsp;</div>
+      </li>
       <% end %>
-			<li>
-			  <a href="/companies" class="more right">更多公司 &#187;</a>
-			</li>
-		</ul>
-		<% end %>
-	</div>
+      <li>
+        <a href="/companies" class="more right">更多公司 &#187;</a>
+      </li>
+    </ul>
+    <% end %>
+  </div>
 </div>
 <div class="clearer">&nbsp;</div>

@@ -214,15 +214,15 @@ module ActiveMerchant #:nodoc:
       CREDIT_CARD_FIELDS =  [:authorization_number, :client_ip_address, :billing_address, :billing_city, :billing_state, :billing_postal_code, :billing_country, :billing_name, :card_verification_value, :expiration_month, :expiration_year, :reference_number, :transaction_amount, :account_number ]
 
       ACTIONS = {
-           :credit_card_authorize		=> CREDIT_CARD_FIELDS,
-           :credit_card_charge			=> CREDIT_CARD_FIELDS,
-           :credit_card_voice_authorize		=> CREDIT_CARD_FIELDS,
-           :credit_card_capture			=> CREDIT_CARD_FIELDS,
-           :credit_card_credit			=> CREDIT_CARD_FIELDS << :original_transaction_amount,
-           :credit_card_refund			=> [:reference_number, :transaction_amount, :original_transaction_amount, :original_transaction_ID, :client_ip_address],
-           :void_transaction			=> [:reference_number, :transaction_ID],
-           :credit_card_settle			=> [:reference_number, :transaction_amount, :original_transaction_amount, :original_transaction_ID, :client_ip_address],
-           :system_check			=> [:system_check],
+           :credit_card_authorize    => CREDIT_CARD_FIELDS,
+           :credit_card_charge      => CREDIT_CARD_FIELDS,
+           :credit_card_voice_authorize    => CREDIT_CARD_FIELDS,
+           :credit_card_capture      => CREDIT_CARD_FIELDS,
+           :credit_card_credit      => CREDIT_CARD_FIELDS << :original_transaction_amount,
+           :credit_card_refund      => [:reference_number, :transaction_amount, :original_transaction_amount, :original_transaction_ID, :client_ip_address],
+           :void_transaction      => [:reference_number, :transaction_ID],
+           :credit_card_settle      => [:reference_number, :transaction_amount, :original_transaction_amount, :original_transaction_ID, :client_ip_address],
+           :system_check      => [:system_check],
       }    
     end
   end

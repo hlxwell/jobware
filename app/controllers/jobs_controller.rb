@@ -3,7 +3,9 @@ class JobsController < ApplicationController
   before_filter :get_job_by_id, :only => [:show, :star]
 
   def index
-    @jobs = Job.opened.with_theme(current_theme_site).order("keep_top desc, start_at desc").paginate :all, :page => params[:page], :per_page => params[:limit]||15
+    unless fragment_exist?(job_index_cache_key)
+      @jobs = Job.opened.with_theme(current_theme_site).order("keep_top desc, start_at desc").paginate :all, :page => params[:page], :per_page => params[:limit]||15
+    end
 
     respond_to do |format|
       format.html
@@ -13,7 +15,9 @@ class JobsController < ApplicationController
   end
 
   def show
-    @starred_job = current_user.try(:jobseeker).present? ? current_user.jobseeker.starred_jobs.where(:job_id => params[:id]).first : nil
+    unless fragment_exist?(job_show_cache_key)
+      @starred_job = current_user.try(:jobseeker).present? ? current_user.jobseeker.starred_jobs.where(:job_id => params[:id]).first : nil
+    end
 
     respond_to do |format|
       format.html {render :layout => "company_home_page"}
@@ -34,29 +38,32 @@ class JobsController < ApplicationController
   end
 
   def filter
-    @location      = params[:location]
-    @tool          = params[:tool]
-    @category      = params[:category]
-    @industry      = params[:industry]
-    @salary_range  = params[:salary_range]
-    @dateline      = params[:dateline]
-    @contract_type = params[:contract_type]
+    unless fragment_exist?(job_filter_cache_key)
+      @location      = params[:location]
+      @tool          = params[:tool]
+      @category      = params[:category]
+      @industry      = params[:industry]
+      @salary_range  = params[:salary_range]
+      @dateline      = params[:dateline]
+      @contract_type = params[:contract_type]
 
-    @category_name = JobCategory.to_a.select{|i| i.last.to_s == @category}.flatten.first
-    @contract_type_name = ContractType.to_a.select{|i| i.last.to_s == @contract_type}.flatten.first
+      @category_name = JobCategory.to_a.select{|i| i.last.to_s == @category}.flatten.first
+      @contract_type_name = ContractType.to_a.select{|i| i.last.to_s == @contract_type}.flatten.first
 
-    @search_query  = Job.opened.with_theme(current_theme_site).joins(:company).desc
-    @search_query  = @search_query.where(["location_province=? or location_city=?", @location, @location]) unless @location.blank?
-    @search_query  = @search_query.where(["jobs.name LIKE ?", "%#{@tool}%"]) unless @tool.blank?
-    @search_query  = @search_query.where(["jobs.category=?", @category]) unless @category.blank?
-    @search_query  = @search_query.where(["companies.industry=?", @industry]) unless @industry.blank?
-    @search_query  = @search_query.where(["salary_range=?", @salary_range]) unless @salary_range.blank?
-    @search_query  = @search_query.where(["contract_type=?", @contract_type]) unless @contract_type.blank?
-    @search_query  = @search_query.where(["start_at between ? and ?", @dateline.to_i.days.ago, Time.now]) unless @dateline.blank?
+      @search_query  = Job.opened.with_theme(current_theme_site).joins(:company).desc
+      @search_query  = @search_query.where(["location_province=? or location_city=?", @location, @location]) unless @location.blank?
+      @search_query  = @search_query.where(["jobs.name LIKE ?", "%#{@tool}%"]) unless @tool.blank?
+      @search_query  = @search_query.where(["jobs.category=?", @category]) unless @category.blank?
+      @search_query  = @search_query.where(["companies.industry=?", @industry]) unless @industry.blank?
+      @search_query  = @search_query.where(["salary_range=?", @salary_range]) unless @salary_range.blank?
+      @search_query  = @search_query.where(["contract_type=?", @contract_type]) unless @contract_type.blank?
+      @search_query  = @search_query.where(["start_at between ? and ?", @dateline.to_i.days.ago, Time.now]) unless @dateline.blank?
 
-    @jobs = @search_query.paginate :all, :page => params[:page], :per_page => 15
+      @jobs = @search_query.paginate :all, :page => params[:page], :per_page => 15
 
-    @title = "#{@location} #{@contract_type_name} #{@tool} #{@category_name}"
+      @title = "#{@location} #{@contract_type_name} #{@tool} #{@category_name}"
+    end
+
     render :index
   end
 

@@ -112,19 +112,19 @@ class ModernPaymentsCimTest < Test::Unit::TestCase
     <<-XML
 <?xml version="1.0" encoding="utf-8"?>
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-	<soap:Body>
-		<AuthorizeCreditCardPaymentResponse xmlns="https://secure.modpay.com/netservices/test/">
-			<AuthorizeCreditCardPaymentResult>
-				<transId>999</transId>
-				<authCode/>
-				<avsCode/>
-				<transCode/>
-				<authString>RESPONSECODE=D,AUTHCODE=,DECLINEREASON.1.TAG=,DECLINEREASON.1.ERRORCLASS=card declined,DECLINEREASON.1.PARAM1=05:DECLINE,DECLINEREASON.1.PARAM2=The authorization is declined,DECLINEREASON.1.MESSAGE=Card was declined: The authorization is declined,AVSDATA</authString>
-				<messageText>RESPONSECODE=D,AUTHCODE=,DECLINEREASON.1.TAG=,DECLINEREASON.1.ERRORCLASS=card declined,DECLINEREASON.1.PARAM1=05:DECLINE,DECLINEREASON.1.PARAM2=The authorization is declined,DECLINEREASON.1.MESSAGE=Card was declined: The authorization is declined,AVSDATA</messageText>
-				<approved>false</approved>
-			</AuthorizeCreditCardPaymentResult>
-		</AuthorizeCreditCardPaymentResponse>
-	</soap:Body>
+  <soap:Body>
+    <AuthorizeCreditCardPaymentResponse xmlns="https://secure.modpay.com/netservices/test/">
+      <AuthorizeCreditCardPaymentResult>
+        <transId>999</transId>
+        <authCode/>
+        <avsCode/>
+        <transCode/>
+        <authString>RESPONSECODE=D,AUTHCODE=,DECLINEREASON.1.TAG=,DECLINEREASON.1.ERRORCLASS=card declined,DECLINEREASON.1.PARAM1=05:DECLINE,DECLINEREASON.1.PARAM2=The authorization is declined,DECLINEREASON.1.MESSAGE=Card was declined: The authorization is declined,AVSDATA</authString>
+        <messageText>RESPONSECODE=D,AUTHCODE=,DECLINEREASON.1.TAG=,DECLINEREASON.1.ERRORCLASS=card declined,DECLINEREASON.1.PARAM1=05:DECLINE,DECLINEREASON.1.PARAM2=The authorization is declined,DECLINEREASON.1.MESSAGE=Card was declined: The authorization is declined,AVSDATA</messageText>
+        <approved>false</approved>
+      </AuthorizeCreditCardPaymentResult>
+    </AuthorizeCreditCardPaymentResponse>
+  </soap:Body>
 </soap:Envelope>    
     XML
   end

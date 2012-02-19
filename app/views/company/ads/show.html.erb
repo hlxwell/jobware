@@ -2,43 +2,43 @@
 
 <table class="data-table top-vlign">
   <% if @ad.opened? and @ad.start_at and @ad.end_at %>
-	<tr>
-	  <th>展示时间</th>
-		<td><%= @ad.start_at.to_s_date %> - <%= @ad.end_at.to_s_date %></td>
-	</tr>
-	<% end %>
+  <tr>
+    <th>展示时间</th>
+    <td><%= @ad.start_at.to_s_date %> - <%= @ad.end_at.to_s_date %></td>
+  </tr>
+  <% end %>
 
   <% if @ad.image.size.present? %>
-	<tr>
-	  <th>广告图片</th>
-		<td><%= image_tag @ad.image.url %></td>
-	</tr>
-	<% end %>
+  <tr>
+    <th>广告图片</th>
+    <td><%= image_tag @ad.image.url %></td>
+  </tr>
+  <% end %>
 
-	<%
-	  {
-	    :display_type_humanize => "广告形式",
-	    :name => "广告标题",
-	    :location => "地区",
-	    :desc => "广告内容",
-	    :url => "广告链接"
-	  }.each do |k, v|
-	    next if @ad.send(k).blank?
-	%>
-    	<tr>
-    	  <th width="50px"><%= v %></th>
-    		<td><%= raw @ad.send(k) %></td>
-    	</tr>
-	<% end %>
+  <%
+    {
+      :display_type_humanize => "广告形式",
+      :name => "广告标题",
+      :location => "地区",
+      :desc => "广告内容",
+      :url => "广告链接"
+    }.each do |k, v|
+      next if @ad.send(k).blank?
+  %>
+      <tr>
+        <th width="50px"><%= v %></th>
+        <td><%= raw @ad.send(k) %></td>
+      </tr>
+  <% end %>
 
-	<tr>
-	  <th>展示周期</th>
-	  <td><%= @ad.period %></td>
-	</tr>
-	<tr>
-	  <th>状态</th>
-		<td><%= @ad.display_state %></td>
-	</tr>
+  <tr>
+    <th>展示周期</th>
+    <td><%= @ad.period %></td>
+  </tr>
+  <tr>
+    <th>状态</th>
+    <td><%= @ad.display_state %></td>
+  </tr>
 </table>
 
 <br />

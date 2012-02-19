@@ -3,34 +3,34 @@
 
 <% show_no_record(@jobs) do %>
   <table class="data-table">
-  	<tr>
-  	  <th>工作名</th>
-  		<th>所在省市</th>
-  		<th>简历</th>
-  		<th>点击</th>
-  		<th>展示时间段</th>
-  		<th>状态</th>
-  		<th>操作</th>
-  	</tr>
-  	<% @jobs.each do |job| %>
-  	<tr class="even">
-  	  <td><%= link_to job.name, company_job_path(job) %></td>
-  		<td><%= job.location %></td>
-  		<td><%= job.job_applications.count %></td>
-  		<td><%= job.views_count %></td>
-  		<td><%= job.start_at.try(:to_s_short_date) %> - <%= job.end_at.try(:to_s_short_date) %></td>
-  		<td style="color: <%= job.state_font_color %>"><%= job.state_s %></td>
-  		<td>
-  		  <%= link_to "修改并重审", edit_company_job_path(job) if job.rejected? %>
+    <tr>
+      <th>工作名</th>
+      <th>所在省市</th>
+      <th>简历</th>
+      <th>点击</th>
+      <th>展示时间段</th>
+      <th>状态</th>
+      <th>操作</th>
+    </tr>
+    <% @jobs.each do |job| %>
+    <tr class="even">
+      <td><%= link_to job.name, company_job_path(job) %></td>
+      <td><%= job.location %></td>
+      <td><%= job.job_applications.count %></td>
+      <td><%= job.views_count %></td>
+      <td><%= job.start_at.try(:to_s_short_date) %> - <%= job.end_at.try(:to_s_short_date) %></td>
+      <td style="color: <%= job.state_font_color %>"><%= job.state_s %></td>
+      <td>
+        <%= link_to "修改并重审", edit_company_job_path(job) if job.rejected? %>
         <!-- 过期后激活 -->
-  		  <%= link_to "激活", reactive_company_job_path(job), :confirm => job.active_confirm_words if !job.available? and job.start_at.present? and job.end_at.present? %>
+        <%= link_to "激活", reactive_company_job_path(job), :confirm => job.active_confirm_words if !job.available? and job.start_at.present? and job.end_at.present? %>
         <!-- 第一次激活 -->
         <%= link_to "激活", want_to_show_company_job_path(job), :confirm => job.active_confirm_words if job.unapproved? %>
-    	  <%= link_to "关闭", close_company_job_path(job), :confirm => "确定关闭工作？" if job.opened? and job.available? %>
-    	  <%= link_to "开放", open_company_job_path(job), :confirm => "确定开放工作？" if job.closed? and job.available? %>
-    	  <%= link_to "修改", edit_company_job_path(job) if !job.rejected? %>
-  		</td>
-  	</tr>
+        <%= link_to "关闭", close_company_job_path(job), :confirm => "确定关闭工作？" if job.opened? and job.available? %>
+        <%= link_to "开放", open_company_job_path(job), :confirm => "确定开放工作？" if job.closed? and job.available? %>
+        <%= link_to "修改", edit_company_job_path(job) if !job.rejected? %>
+      </td>
+    </tr>
     <% end %>
   </table>
   <%= will_paginate @jobs %>

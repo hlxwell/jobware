@@ -1,13 +1,13 @@
 <div class="main" id="main-three-columns-center">
-	<div class="left sidebar" id="sidebar-1">
-		<%= render "shared/ads/homepage_urgent_jobs" %>
-	</div>
+  <div class="left sidebar" id="sidebar-1">
+    <%= render "shared/ads/homepage_urgent_jobs" %>
+  </div>
 
-	<div class="left" id="main-center">
+  <div class="left" id="main-center">
     <%= render "slider_ads" %>
-	</div>
+  </div>
 
-	<div class="right sidebar" id="sidebar-1">
+  <div class="right sidebar" id="sidebar-1">
     <h4 class="black ss_sprite ss_building" style="padding-top: 0px">公司加入</h4>
     <div>
       <font size="2">结合全国各大小IT技术社区，让你的工作信息深入程序员内部，达到高效招聘。</font>
@@ -22,25 +22,29 @@
       <div class="clearer">&nbsp;</div>
       <div class="right small_top_margin"><%= button_to "立刻加入", new_with_choices_jobseeker_resume_path, :method => :get, :class => "button" %></div>
     </div>
-	</div>
+  </div>
   <div class="clearer">&nbsp;</div>
 </div>
 
 <%#= render "custom_ads" %>
 
-<div id="new_job_list">
-  <%= render "top_jobs" %>
-  <%= render "latest_jobs" %>
-  <%= render "latest_companies" %>
-	<div class="clearer">&nbsp;</div>
-</div>
+<% cache(:action => 'ads', :action => 'index', :expires_in => 1.hour) do %>
 
-<div id="top_job_list">
-  <%= render "famous_companies" %>
-  <div class="clearer">&nbsp;</div>
-</div>
+  <div id="new_job_list">
+    <%= render "top_jobs" %>
+    <%= render "latest_jobs" %>
+    <%= render "latest_companies" %>
+    <div class="clearer">&nbsp;</div>
+  </div>
 
-<% content_for :footer_ad_zone do %>
-  <%= render "shared/ads/bottom_ads" %>
-  <%#= render "shared/ads/featured_partners" %>
+  <div id="top_job_list">
+    <%= render "famous_companies" %>
+    <div class="clearer">&nbsp;</div>
+  </div>
+
+  <% content_for :footer_ad_zone do %>
+    <%= render "shared/ads/bottom_ads" %>
+    <%#= render "shared/ads/featured_partners" %>
+  <% end %>
+
 <% end %>

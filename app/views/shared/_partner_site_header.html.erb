@@ -1,14 +1,14 @@
 <div id="header">
-	<div class="clearer">&nbsp;</div>
+  <div class="clearer">&nbsp;</div>
 
   <div id="network" class="middle_bottom_margin middle_top_margin">
-  	<div class="center-wrapper middle_left_padding">
-  		<div class="left">
+    <div class="center-wrapper middle_left_padding">
+      <div class="left">
         <%= render "shared/login_status" %>
-  		</div>
+      </div>
 
-  		<div class="right middle_right_padding">
-  		  <% semantic_navigation "network-tabs", :html => {:class => "tabbed"} do |n| %>
+      <div class="right middle_right_padding">
+        <% semantic_navigation "network-tabs", :html => {:class => "tabbed"} do |n| %>
           <%= n.item '首页', :link => root_path, :highlights_on => frontend_paths %>
           <%= n.item '我是求职者', :link => jobseeker_dashboard_path, :highlights_on => jobseeker_section_paths if jobseeker_user? %>
           <%= n.item '我是公司', :link => company_dashboard_path, :highlights_on => company_section_paths if company_user? %>
@@ -17,16 +17,16 @@
 
         <link title="RSS 2.0" type="application/rss+xml" href="http://feed.itjob.fm" rel="alternate" />
         <a href="http://feed.itjob.fm" target="_blank"><img border="0" src="http://img.feedsky.com/images/icon_sub_c1s17_d.gif" alt="feedsky" vspace="2" style="margin-top: 0.4em; margin-left: 1em; margin-right: 0.5em" ></a>
-  		</div>
-  		<div class="clearer">&nbsp;</div>
-  	</div>
+      </div>
+      <div class="clearer">&nbsp;</div>
+    </div>
   </div>
 
   <!-- ### main nav -->
-	<div id="navigation">
-		<div id="main-nav">
-		  <% semantic_navigation :main, :html => {:class => "tabbed"} do |n| %>
-		    <%= n.item '招聘首页', :link => root_path %>
+  <div id="navigation">
+    <div id="main-nav">
+      <% semantic_navigation :main, :html => {:class => "tabbed"} do |n| %>
+        <%= n.item '招聘首页', :link => root_path %>
         <%= n.item '找工作', :link => jobs_path %>
         <%= n.item '找公司', :link => companies_path %>
         <%= n.item "发布工作", :link => new_company_path %>
@@ -38,8 +38,8 @@
           <%= f.text_field :keyword, :title => "请输入公司名，工作名，工作地点", :class => "text tipped", :id => "search_term" %>
         <% end %>
       </div>
-			<div class="clearer">&nbsp;</div>
-		</div>
-	</div>
+      <div class="clearer">&nbsp;</div>
+    </div>
+  </div>
 
 </div>

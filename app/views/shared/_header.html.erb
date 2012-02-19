@@ -1,18 +1,18 @@
 <div id="header">
   <!-- #### site logo and title -->
-	<div id="site-title" class="left">
-	  <%= link_to image_tag("/images/logo/it-job-logo.jpg", :alt => "专注于程序员招聘求职 - ITJob.fm"), "/", :class => "left" %>
-	  <%= show_theme_list %>
-	</div>
+  <div id="site-title" class="left">
+    <%= link_to image_tag("/images/logo/it-job-logo.jpg", :alt => "专注于程序员招聘求职 - ITJob.fm"), "/", :class => "left" %>
+    <%= show_theme_list %>
+  </div>
 
   <%= render "shared/search_box" %>
-	<div class="clearer">&nbsp;</div>
+  <div class="clearer">&nbsp;</div>
 
   <!-- ### main nav -->
-	<div id="navigation">
-		<div id="main-nav">
-		  <% semantic_navigation :main, :html => {:class => "tabbed"} do |n| %>
-		    <%= n.item '首页', :link => root_path %>
+  <div id="navigation">
+    <div id="main-nav">
+      <% semantic_navigation :main, :html => {:class => "tabbed"} do |n| %>
+        <%= n.item '首页', :link => root_path %>
         <%= n.item '找工作', :link => jobs_path, :highlights_on => [filter_jobs_path, search_jobs_path] %>
         <%= n.item '找公司', :link => companies_path %>
         <%= n.item "发布工作", :link => new_company_path %>
@@ -20,13 +20,13 @@
 
       <div class="right">
         <%#= auto_discovery_link_tag(:atom, "/jobs.atom") %>
-    	  <%#= link_to image_tag("/images/rss.png", :style => "margin-top: 1.3em"), "http://feed.feedsky.com/ITJobFM", :target => "_blank" %>
+        <%#= link_to image_tag("/images/rss.png", :style => "margin-top: 1.3em"), "http://feed.feedsky.com/ITJobFM", :target => "_blank" %>
 
         <link title="RSS 2.0" type="application/rss+xml" href="http://feed.itjob.fm" rel="alternate" />
         <a href="http://feed.itjob.fm" target="_blank"><img border="0" src="http://img.feedsky.com/images/icon_sub_c1s17_d.gif" alt="feedsky" vspace="2" style="margin-top: 0.2em;" ></a>
       </div>
-			<div class="clearer">&nbsp;</div>
-		</div>
-	</div>
+      <div class="clearer">&nbsp;</div>
+    </div>
+  </div>
 
 </div>

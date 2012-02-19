@@ -1,3 +1,5 @@
+<% cache(job_show_cache_key, :expires_in => 1.hour) do %>
+
 <% title @job.name %>
 
 <% content_for(:meta_info) do %>
@@ -17,22 +19,22 @@
 
       <%= form_for :starred_job, :url => star_job_path(@job), :remote => true do |f| %>
         <b>收藏等级:</b>
-      	<% if @starred_job %>
-      	  <small>我已收藏</small>
-    	  <% else %>
-      	  <small></small>
-      	<% end %>
+        <% if @starred_job %>
+          <small>我已收藏</small>
+        <% else %>
+          <small></small>
+        <% end %>
 
         <!-- <span id="stars-cap"></span> -->
-      	<div class="stars-wrapper">
-      	  <%= f.radio_button :rating, "1", :title => "还行" %>
-      	  <%= f.radio_button :rating, "2", :title => "不错" %>
-      	  <%= f.radio_button :rating, "3", :title => "很好" %>
-      	  <%= f.radio_button :rating, "4", :title => "非常好" %>
-      	  <%= f.radio_button :rating, "5", :title => "极好" %>
-      	</div>
-    	<% end %>
-  	</div>
+        <div class="stars-wrapper">
+          <%= f.radio_button :rating, "1", :title => "还行" %>
+          <%= f.radio_button :rating, "2", :title => "不错" %>
+          <%= f.radio_button :rating, "3", :title => "很好" %>
+          <%= f.radio_button :rating, "4", :title => "非常好" %>
+          <%= f.radio_button :rating, "5", :title => "极好" %>
+        </div>
+      <% end %>
+    </div>
 
 
     <h2><%= @job.name %></h2>
@@ -127,3 +129,5 @@
 <% end %>
 
 <%= render 'related_jobs', :related_jobs => @job.related_jobs %>
+
+<% end %>

@@ -1,19 +1,19 @@
 <%= page_name_html( @service.name, :with_title => true) %>
 
 <table class="data-table">
-	<tr>
-	  <th width="100">服务名称</th>
-		<th>描述</th>
-		<th width="30">周期</th>
-		<th width="30">数量</th>
-	</tr>
-	<% @service.service_item_amounts.each do |item_amount| %>
-	<tr class="even">
-	  <td><%= item_amount.service_item.name %></td>
-		<td><%= raw item_amount.service_item.desc %></td>
-		<td><%= item_amount.service_item.service_length %> 天</td>
-		<td><%= item_amount.amount %> 次</td>
-	</tr>
+  <tr>
+    <th width="100">服务名称</th>
+    <th>描述</th>
+    <th width="30">周期</th>
+    <th width="30">数量</th>
+  </tr>
+  <% @service.service_item_amounts.each do |item_amount| %>
+  <tr class="even">
+    <td><%= item_amount.service_item.name %></td>
+    <td><%= raw item_amount.service_item.desc %></td>
+    <td><%= item_amount.service_item.service_length %> 天</td>
+    <td><%= item_amount.amount %> 次</td>
+  </tr>
   <% end %>
 </table>
 

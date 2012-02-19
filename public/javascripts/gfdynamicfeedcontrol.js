@@ -38,10 +38,10 @@ function GFdynamicFeedControl(feedUrls, container, options) {
         o.url = feedUrls[i];
       } else if (typeof entry == 'object') {
         o = feedUrls[i];
-	if (o && o.title) {
-	  var s = o.title;
-	  o.title = s.replace(/</g,'&lt;').replace(/>/g, '&gt;');
-	}
+  if (o && o.title) {
+    var s = o.title;
+    o.title = s.replace(/</g,'&lt;').replace(/>/g, '&gt;');
+  }
       }
       this.feeds.push(o);
     }

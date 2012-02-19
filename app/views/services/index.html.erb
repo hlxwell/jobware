@@ -4,39 +4,39 @@
 
   <table class="data-table top-vlign-td">
     <tr class="gray">
-   	  <td colspan="3" class="largest white bold">单项服务</td>
-  	</tr>
-  	<% @single_services.each do |service| %>
-  	<tr>
-   	  <td colspan="3" class="large bold"><%= service.name %></td>
-  	</tr>
-  	<tr class="even">
-  		<td width="450"><%= raw service.desc %></td>
-  		<td><%= format_price service.price %></td>
-  		<td>
-  		  <%= link_to "查看详情", send("#{current_user_section}_service_path", service) %> -
-  		  <%= link_to "购买", send("buy_#{current_user_section}_service_path", service), :confirm => "确定购买？" %>
-  		</td>
-  	</tr>
+       <td colspan="3" class="largest white bold">单项服务</td>
+    </tr>
+    <% @single_services.each do |service| %>
+    <tr>
+       <td colspan="3" class="large bold"><%= service.name %></td>
+    </tr>
+    <tr class="even">
+      <td width="450"><%= raw service.desc %></td>
+      <td><%= format_price service.price %></td>
+      <td>
+        <%= link_to "查看详情", send("#{current_user_section}_service_path", service) %> -
+        <%= link_to "购买", send("buy_#{current_user_section}_service_path", service), :confirm => "确定购买？" %>
+      </td>
+    </tr>
     <% end %>
   </table>
 
   <table class="data-table top-vlign-td big_top_margin">
-  	<tr class="gray">
-   	  <td colspan="3" class="largest white bold">套餐服务</td>
-  	</tr>
-  	<% @set_services.each do |service| %>
-  	<tr>
-   	  <td colspan="3" class="large bold"><%= service.name %></td>
-  	</tr>
-  	<tr class="even">
-  		<td width="450"><%= raw service.desc %></td>
-  		<td><%= format_price service.price %></td>
-  		<td>
-  		  <%= link_to "查看详情", send("#{current_user_section}_service_path", service) %> -
-  		  <%= link_to "购买", send("buy_#{current_user_section}_service_path", service), :confirm => "确定购买？" %>
-  		</td>
-  	</tr>
+    <tr class="gray">
+       <td colspan="3" class="largest white bold">套餐服务</td>
+    </tr>
+    <% @set_services.each do |service| %>
+    <tr>
+       <td colspan="3" class="large bold"><%= service.name %></td>
+    </tr>
+    <tr class="even">
+      <td width="450"><%= raw service.desc %></td>
+      <td><%= format_price service.price %></td>
+      <td>
+        <%= link_to "查看详情", send("#{current_user_section}_service_path", service) %> -
+        <%= link_to "购买", send("buy_#{current_user_section}_service_path", service), :confirm => "确定购买？" %>
+      </td>
+    </tr>
     <% end %>
   </table>
 <% end %>

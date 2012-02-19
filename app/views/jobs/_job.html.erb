@@ -15,21 +15,21 @@
   </div>
   <% end %>
 
-	<!-- title and company -->
-	<div class="<%= wide ? "archive-post-title-wide" : "archive-post-title" %>">
-		<h3><%= link_to job.name, job %></h3>
-		<%= link_to job.company.try(:name), job.company %>
-		<div class="bold">薪资：<%= job.salary_range_humanize %></div>
-		<div class="small_top_margin"><%= show_tag_list job.tag_list, "/jobs/search" %></div>
-	</div>
+  <!-- title and company -->
+  <div class="<%= wide ? "archive-post-title-wide" : "archive-post-title" %>">
+    <h3><%= link_to job.name, job %></h3>
+    <%= link_to job.company.try(:name), job.company %>
+    <div class="bold">薪资：<%= job.salary_range_humanize %></div>
+    <div class="small_top_margin"><%= show_tag_list job.tag_list, "/jobs/search" %></div>
+  </div>
 
-	<!-- address and date -->
-	<div class="archive-post-address">
-		<h3><%= job.location %></h3>
-		<div class="post-date">发布于 <%= job.start_at.try(:to_s_short_date) %></div>
-		<div class="right bordered small_top_margin">还有<b><%= job.deadline %></b>天结束</div>
-	</div>
-	<div class="clearer">&nbsp;</div>
+  <!-- address and date -->
+  <div class="archive-post-address">
+    <h3><%= job.location %></h3>
+    <div class="post-date">发布于 <%= job.start_at.try(:to_s_short_date) %></div>
+    <div class="right bordered small_top_margin">还有<b><%= job.deadline %></b>天结束</div>
+  </div>
+  <div class="clearer">&nbsp;</div>
 </div>
 
 <div class="archive-separator"></div>

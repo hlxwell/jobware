@@ -275,30 +275,30 @@ class PayflowTest < Test::Unit::TestCase
     <<-XML
 <?xml version="1.0"?>
 <XMLPayResponse xmlns="http://www.verisign.com/XMLPay">
-	<ResponseData>
-		<Vendor>ActiveMerchant</Vendor>
-		<Partner>paypal</Partner>
-		<TransactionResults>
-			<TransactionResult Duplicate="true">
-				<Result>0</Result>
-				<ProcessorResult>
-					<AVSResult>A</AVSResult>
-					<CVResult>M</CVResult>
-					<HostCode>A</HostCode>
-				</ProcessorResult>
-				<IAVSResult>N</IAVSResult>
-				<AVSResult>
-					<StreetMatch>Match</StreetMatch>
-					<ZipMatch>No Match</ZipMatch>
-				</AVSResult>
-				<CVResult>Match</CVResult>
-				<Message>Approved</Message>
-				<PNRef>V18A0CBB04CF</PNRef>
-				<AuthCode>692PNI</AuthCode>
-				<ExtData Name="DATE_TO_SETTLE" Value="2007-11-28 10:53:50"/>
-			</TransactionResult>
-		</TransactionResults>
-	</ResponseData>
+  <ResponseData>
+    <Vendor>ActiveMerchant</Vendor>
+    <Partner>paypal</Partner>
+    <TransactionResults>
+      <TransactionResult Duplicate="true">
+        <Result>0</Result>
+        <ProcessorResult>
+          <AVSResult>A</AVSResult>
+          <CVResult>M</CVResult>
+          <HostCode>A</HostCode>
+        </ProcessorResult>
+        <IAVSResult>N</IAVSResult>
+        <AVSResult>
+          <StreetMatch>Match</StreetMatch>
+          <ZipMatch>No Match</ZipMatch>
+        </AVSResult>
+        <CVResult>Match</CVResult>
+        <Message>Approved</Message>
+        <PNRef>V18A0CBB04CF</PNRef>
+        <AuthCode>692PNI</AuthCode>
+        <ExtData Name="DATE_TO_SETTLE" Value="2007-11-28 10:53:50"/>
+      </TransactionResult>
+    </TransactionResults>
+  </ResponseData>
 </XMLPayResponse>
     XML
   end

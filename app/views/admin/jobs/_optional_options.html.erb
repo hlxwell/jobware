@@ -9,16 +9,16 @@
 
 <div class="post lite_background right w200 welfare_option_list">
   <div class="post-title"><h4>您可以从这里选择：</h4></div>
-	<div class="post-body">
-	  <% WELFARE_OPTIONS.each do |title, items| %>
+  <div class="post-body">
+    <% WELFARE_OPTIONS.each do |title, items| %>
       <h6 class="middle_top_margin middle_bottom_margin"><%= title %></h6>
-  	  <% items.each do |k, v| %>
-  	    <a href="javascript:void(0)" class="bordered optional_option_tag" desc="<%= v %>"><%= k %></a>
-  	  <% end %>
-  	  <div class="clearer"></div>
-	  <% end %>
-	</div>
-	<div class="clearer"></div>
+      <% items.each do |k, v| %>
+        <a href="javascript:void(0)" class="bordered optional_option_tag" desc="<%= v %>"><%= k %></a>
+      <% end %>
+      <div class="clearer"></div>
+    <% end %>
+  </div>
+  <div class="clearer"></div>
 </div>
 <% end %>
 
@@ -35,16 +35,16 @@
 
 <div class="post lite_background right w200 question_option_list">
   <div class="post-title"><h4>您可以从这里选择：</h4></div>
-	<div class="post-body">
-	  <% QUESTION_OPTIONS.each do |title, items| %>
-	    <h6 class="middle_top_margin middle_bottom_margin"><%= title %></h6>
-  	  <% items.each do |k, v| %>
-  	    <a href="javascript:void(0)" class="bordered optional_option_tag" desc="<%= v %>"><%= k %></a>
-  	  <% end %>
-  	  <div class="clearer"></div>
-	  <% end %>
-	</div>
-	<div class="clearer"></div>
-	<div class="quiet">基本信息会在简历里要求，所以不需要额外提问。</div>
+  <div class="post-body">
+    <% QUESTION_OPTIONS.each do |title, items| %>
+      <h6 class="middle_top_margin middle_bottom_margin"><%= title %></h6>
+      <% items.each do |k, v| %>
+        <a href="javascript:void(0)" class="bordered optional_option_tag" desc="<%= v %>"><%= k %></a>
+      <% end %>
+      <div class="clearer"></div>
+    <% end %>
+  </div>
+  <div class="clearer"></div>
+  <div class="quiet">基本信息会在简历里要求，所以不需要额外提问。</div>
 </div>
 <% end %>

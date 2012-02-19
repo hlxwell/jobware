@@ -1,24 +1,26 @@
+<% cache(company_show_cache_key, :expires_in => 1.hour) do %>
+
 <% title @company.name %>
 
 <div class="post">
-	<div class="post-title"><h3>基本信息</h3></div>
+  <div class="post-title"><h3>基本信息</h3></div>
 
-	<div class="company_info">
-		<table class="data-table" style="margin-top: 10px;">
-			<tr class="even">
-				<th>公司地点</th>
-				<td><%= @company.location %></td>
-				<th>规模</th>
-				<td><%= @company.size_humanize %></td>
-				<th>性质</th>
-				<td><%= @company.company_type_humanize %></td>
-				<th>行业</th>
-				<td><%= @company.industry_humanize %></td>
-				<th>点击数</th>
-				<td><%= @company.increased_views_count %></td>
-			</tr>
-		</table>
-	</div>
+  <div class="company_info">
+    <table class="data-table" style="margin-top: 10px;">
+      <tr class="even">
+        <th>公司地点</th>
+        <td><%= @company.location %></td>
+        <th>规模</th>
+        <td><%= @company.size_humanize %></td>
+        <th>性质</th>
+        <td><%= @company.company_type_humanize %></td>
+        <th>行业</th>
+        <td><%= @company.industry_humanize %></td>
+        <th>点击数</th>
+        <td><%= @company.increased_views_count %></td>
+      </tr>
+    </table>
+  </div>
 </div>
 
 <div class="clearer">&nbsp;</div>
@@ -26,10 +28,10 @@
 
 
 <div class="post">
-	<div class="post-title"><h3>公司简介</h3></div>
-	<div class="post-body">
-	  <%= raw @company.desc %>
-	</div>
+  <div class="post-title"><h3>公司简介</h3></div>
+  <div class="post-body">
+    <%= raw @company.desc %>
+  </div>
 </div>
 
 <div class="content-separator "></div>
@@ -37,7 +39,7 @@
 <% if @company.presentations.count > 0 %>
 <div class="post">
   <div class="post-title middle_bottom_margin"><h3>公司展示</h3></div>
-	<ul class="small_picture_list">
+  <ul class="small_picture_list">
     <% @company.presentations.each do |p| %>
     <li><div style="width: 100px; height: 100px; overflow: hidden"><%= link_to image_tag(p.file.url(:thumb)), presentations_company_path(@company) %></div></li>
     <% end %>
@@ -51,53 +53,55 @@
 
 <% if @company.products.count > 0 %>
 <div class="post">
-	<div class="post-title"><h3>公司产品</h3></div>
-	<div class="post-body">
-		<table class="data-table top-vlign top-vlign-td">
-		  <% @company.products.each do |p| %>
-			<tr class="even">
-		    <th colspan="2"><h5 class="bold"><%= p.name %></h5></th>
-		  </tr>
-			<tr class="even">
-				<td width="20%"><%= image_tag p.file.url, :class => "bordered w200" %></td>
-				<td width="80%"><%= raw p.desc %></td>
-			</tr>
+  <div class="post-title"><h3>公司产品</h3></div>
+  <div class="post-body">
+    <table class="data-table top-vlign top-vlign-td">
+      <% @company.products.each do |p| %>
+      <tr class="even">
+        <th colspan="2"><h5 class="bold"><%= p.name %></h5></th>
+      </tr>
+      <tr class="even">
+        <td width="20%"><%= image_tag p.file.url, :class => "bordered w200" %></td>
+        <td width="80%"><%= raw p.desc %></td>
+      </tr>
       <% end %>
-		</table>
-	</div>
+    </table>
+  </div>
 </div>
 <div class="content-separator "></div>
 <% end %>
 
 
 <div class="post">
-	<div class="post-title"><h3>联系方式</h3></div>
-	<div class="post-body ">
-		<table class="data-table">
-		  <% if @company.open_contact? %>
-  			<tr class="even">
-  				<th width="10%">网址</th>
-  				<td width="40%"><%= link_to @company.homepage, @company.homepage_url %></td>
-  				<th width="10%">邮箱</th>
-  				<td width="40%"><%= @company.user.email %></td>
-  			</tr>
-  			<tr class="even">
-  				<th>联系人</th>
-  				<td><%= @company.contact_name %></td>
-  				<th>联系电话</th>
-  				<td><%= @company.phone_number %></td>
-  			</tr>
-  		<% else %>
-  		  <tr class="even">
-  				<th width="15%">网址</th>
-  				<td><%= link_to @company.homepage, @company.homepage_url %></td>
-  			</tr>
+  <div class="post-title"><h3>联系方式</h3></div>
+  <div class="post-body ">
+    <table class="data-table">
+      <% if @company.open_contact? %>
+        <tr class="even">
+          <th width="10%">网址</th>
+          <td width="40%"><%= link_to @company.homepage, @company.homepage_url %></td>
+          <th width="10%">邮箱</th>
+          <td width="40%"><%= @company.user.email %></td>
+        </tr>
+        <tr class="even">
+          <th>联系人</th>
+          <td><%= @company.contact_name %></td>
+          <th>联系电话</th>
+          <td><%= @company.phone_number %></td>
+        </tr>
+      <% else %>
+        <tr class="even">
+          <th width="15%">网址</th>
+          <td><%= link_to @company.homepage, @company.homepage_url %></td>
+        </tr>
       <% end %>
 
-			<tr class="even">
-			  <th>公司地址</th>
-				<td colspan="3"><%= @company.address %></td>
-			</tr>
-		</table>
-	</div>
+      <tr class="even">
+        <th>公司地址</th>
+        <td colspan="3"><%= @company.address %></td>
+      </tr>
+    </table>
+  </div>
 </div>
+
+<% end %>

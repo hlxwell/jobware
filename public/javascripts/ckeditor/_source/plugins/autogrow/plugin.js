@@ -7,47 +7,47 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
  * @file AutoGrow plugin
  */
 (function(){
-	var resizeEditor = function( editor )
-	{
-		var doc = editor.document,
-			currentHeight = editor.window.getViewPaneSize().height,
-			newHeight;
+  var resizeEditor = function( editor )
+  {
+    var doc = editor.document,
+      currentHeight = editor.window.getViewPaneSize().height,
+      newHeight;
 
-		// We can not use documentElement to calculate the height for IE (#6061).
-		if ( CKEDITOR.env.ie )
-			newHeight = doc.getBody().$.scrollHeight + 24;
-		else
-			newHeight = doc.getDocumentElement().$.offsetHeight;
+    // We can not use documentElement to calculate the height for IE (#6061).
+    if ( CKEDITOR.env.ie )
+      newHeight = doc.getBody().$.scrollHeight + 24;
+    else
+      newHeight = doc.getDocumentElement().$.offsetHeight;
 
-		var min = editor.config.autoGrow_minHeight,
-			max = editor.config.autoGrow_maxHeight;
-		( min == undefined ) && ( editor.config.autoGrow_minHeight = min = 200 );
-		if ( min )
-			newHeight = Math.max( newHeight, min );
-		if ( max )
-			newHeight = Math.min( newHeight, max );
+    var min = editor.config.autoGrow_minHeight,
+      max = editor.config.autoGrow_maxHeight;
+    ( min == undefined ) && ( editor.config.autoGrow_minHeight = min = 200 );
+    if ( min )
+      newHeight = Math.max( newHeight, min );
+    if ( max )
+      newHeight = Math.min( newHeight, max );
 
-		if ( newHeight != currentHeight )
-		{
-			newHeight = editor.fire( 'autoGrow', { currentHeight : currentHeight, newHeight : newHeight } ).newHeight;
-			editor.resize( editor.container.getStyle( 'width' ), newHeight, true );
-		}
-	};
-	CKEDITOR.plugins.add( 'autogrow',
-	{
-		init : function( editor )
-		{
-			for ( var eventName in { contentDom:1, key:1, selectionChange:1, insertElement:1 } )
-			{
-				editor.on( eventName, function( evt )
-				{
-					// Some time is required for insertHtml, and it gives other events better performance as well.
-					if ( evt.editor.mode == 'wysiwyg' )
-						setTimeout( function(){ resizeEditor( evt.editor ); }, 100 );
-				});
-			}
-		}
-	});
+    if ( newHeight != currentHeight )
+    {
+      newHeight = editor.fire( 'autoGrow', { currentHeight : currentHeight, newHeight : newHeight } ).newHeight;
+      editor.resize( editor.container.getStyle( 'width' ), newHeight, true );
+    }
+  };
+  CKEDITOR.plugins.add( 'autogrow',
+  {
+    init : function( editor )
+    {
+      for ( var eventName in { contentDom:1, key:1, selectionChange:1, insertElement:1 } )
+      {
+        editor.on( eventName, function( evt )
+        {
+          // Some time is required for insertHtml, and it gives other events better performance as well.
+          if ( evt.editor.mode == 'wysiwyg' )
+            setTimeout( function(){ resizeEditor( evt.editor ); }, 100 );
+        });
+      }
+    }
+  });
 })();
 /**
  * The minimum height to which the editor can reach using AutoGrow.
@@ -75,5 +75,5 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
  * @event
  * @param {Number} data.currentHeight The current height of the editor (before the resizing).
  * @param {Number} data.newHeight The new height of the editor (after the resizing). It can be changed
- *				to determine another height to be used instead.
+ *        to determine another height to be used instead.
  */

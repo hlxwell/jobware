@@ -4,32 +4,32 @@
 <input type='hidden' name="page" value="<%= params[:page]||1 %>" />
 
 <table class="data-table">
-	<tr>
-	  <th>类型</th>
-	  <th>标题</th>
-		<th>展示时长</th>
-		<th>展示时间</th>
-		<th>状态</th>
-		<th>所属主题</th>
-	</tr>
+  <tr>
+    <th>类型</th>
+    <th>标题</th>
+    <th>展示时长</th>
+    <th>展示时间</th>
+    <th>状态</th>
+    <th>所属主题</th>
+  </tr>
 
-	<% @ads.each do |ad| %>
-	<tr class="even">
-	  <td><%= ad.display_type_humanize %></td>
-	  <td><%= link_to ad.ad_name, "/admin/ads/edit/#{ad.id}" %></td>
-		<td><%= ad.period %> 周</td>
-		<td><%= ad.start_at %> - <%= ad.end_at %></td>
-		<td style="color: <%= ad.display_state_font_color %>;"><%= ad.display_state %></td>
-		<td>
-		  <%= hidden_field_tag "ids[]", ad.id %>
-		  <% THEMES.keys.each do |theme| %>
-		    <%= check_box_tag "ad_ids[#{ad.id}][]", theme, ad.themes.try(:split, ',').try(:include?, theme) %> <%= theme %>
-		  <% end %>
-		</td>
-	</tr>
-	<% end %>
+  <% @ads.each do |ad| %>
+  <tr class="even">
+    <td><%= ad.display_type_humanize %></td>
+    <td><%= link_to ad.ad_name, "/admin/ads/edit/#{ad.id}" %></td>
+    <td><%= ad.period %> 周</td>
+    <td><%= ad.start_at %> - <%= ad.end_at %></td>
+    <td style="color: <%= ad.display_state_font_color %>;"><%= ad.display_state %></td>
+    <td>
+      <%= hidden_field_tag "ids[]", ad.id %>
+      <% THEMES.keys.each do |theme| %>
+        <%= check_box_tag "ad_ids[#{ad.id}][]", theme, ad.themes.try(:split, ',').try(:include?, theme) %> <%= theme %>
+      <% end %>
+    </td>
+  </tr>
+  <% end %>
 
-	<tr><td colspan="6" align="right"><%= will_paginate @ads %> <%= submit_tag "更新" %></td></tr>
+  <tr><td colspan="6" align="right"><%= will_paginate @ads %> <%= submit_tag "更新" %></td></tr>
 </table>
 
 </form>

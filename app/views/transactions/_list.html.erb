@@ -6,25 +6,25 @@
 <div>
   <% show_no_record(@transactions) do %>
   <table class="data-table small">
-  	<tr>
-  	  <th width="75">类型</th>
-  	  <th>来龙去脉</th>
-  	  <th>时间</th>
-  		<th width="80">数量</th>
+    <tr>
+      <th width="75">类型</th>
+      <th>来龙去脉</th>
+      <th>时间</th>
+      <th width="80">数量</th>
       <th width="80">剩余</th>
-  	</tr>
-  	<% @transactions.each do |tx| %>
-  	<% total_amount += tx.amount %>
-  	<tr class="even">
-  		<td><%= tx.service_item.name %></td>
-  		<td>
-  		  <b>来源：</b><%= tx.from %><br>
-  		  <b>去向：</b><%= tx.to %>
-  		</td>
-  		<td><%= tx.created_at.to_s_datetime %></td>
-  		<td class="large"><%= transaction_is_money ? format_price(tx.amount, :with_plus => true) : tx.amount_s %></td>
-  		<td class="large"><%= transaction_is_money ? format_price(total_amount) : total_amount %></td>
-  	</tr>
+    </tr>
+    <% @transactions.each do |tx| %>
+    <% total_amount += tx.amount %>
+    <tr class="even">
+      <td><%= tx.service_item.name %></td>
+      <td>
+        <b>来源：</b><%= tx.from %><br>
+        <b>去向：</b><%= tx.to %>
+      </td>
+      <td><%= tx.created_at.to_s_datetime %></td>
+      <td class="large"><%= transaction_is_money ? format_price(tx.amount, :with_plus => true) : tx.amount_s %></td>
+      <td class="large"><%= transaction_is_money ? format_price(total_amount) : total_amount %></td>
+    </tr>
     <% end %>
     
     <tr>

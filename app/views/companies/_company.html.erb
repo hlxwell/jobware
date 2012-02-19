@@ -11,24 +11,24 @@
     <%= link_to image_tag(company.logo.url, :class => "aligncenter"), company %>
   </div>
 
-	<!-- title and company -->
-	<div class="archive-post-title">
-		<h3><b><%= link_to company.name, company %></h3>
-		<div class="small_top_margin small_bottom_margin"><%= show_tag_list company.tag_list, "/jobs/search" %></div>
-		<ul>
-		  <% company.jobs.opened.limit(3).each do |job| %>
-		    <li><%= link_to job.name, job %></li>
-		  <% end %>
-		</ul>
-	</div>
+  <!-- title and company -->
+  <div class="archive-post-title">
+    <h3><b><%= link_to company.name, company %></h3>
+    <div class="small_top_margin small_bottom_margin"><%= show_tag_list company.tag_list, "/jobs/search" %></div>
+    <ul>
+      <% company.jobs.opened.limit(3).each do |job| %>
+        <li><%= link_to job.name, job %></li>
+      <% end %>
+    </ul>
+  </div>
 
-	<!-- address and date -->
-	<div class="archive-post-address">
-		<h3><%= company.province %> - <%= company.city %></h3>
-		<div class="post-date">发布于 <%= company.updated_at.to_s_short_date %></div>
-		<div class="right bordered small_top_margin">共有 <b><%= company.jobs.opened.count %></b> 个岗位</div>
-	</div>
-	<div class="clearer">&nbsp;</div>
+  <!-- address and date -->
+  <div class="archive-post-address">
+    <h3><%= company.province %> - <%= company.city %></h3>
+    <div class="post-date">发布于 <%= company.updated_at.to_s_short_date %></div>
+    <div class="right bordered small_top_margin">共有 <b><%= company.jobs.opened.count %></b> 个岗位</div>
+  </div>
+  <div class="clearer">&nbsp;</div>
 </div>
 
 <div class="archive-separator"></div>

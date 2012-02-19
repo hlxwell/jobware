@@ -1,7 +1,7 @@
 <div id="top_job_list">
   <div class="section network-section">
-  	<div class="section-title">知名企业招聘</div>
-  	<div class="section-content">
+    <div class="section-title">知名企业招聘</div>
+    <div class="section-content">
         <% ([ad.company]*2).each_with_index do |company, i| %>
         <div class="top-page-job <%= (i+1)%2 == 0 ? "right" : "left" %>">
           <div><%= link_to image_tag(company.logo.url(:fix_height)), company, :title => company.desc %></div>
@@ -10,14 +10,14 @@
               <% company.jobs.opened.limit(4).each do |job| %>
               <div>
                 <div class="left" style="margin: 0"><%= link_to job.name.truncate(26) , job, :title => job.desc, :class => "quiet" %></div>
-      			    <strong class="quiet right" style="margin: 0"><%= job.location %></strong>
-      			  </div>
-      			  <div class="clearer">&nbsp;</div>
-      			  <% end %>
+                <strong class="quiet right" style="margin: 0"><%= job.location %></strong>
+              </div>
+              <div class="clearer">&nbsp;</div>
+              <% end %>
           </div>
         </div>
         <% end %>
-  	</div>
+    </div>
   </div>
 
   <div class="clearer">&nbsp;</div>

@@ -5,11 +5,11 @@ module ActiveMerchant #:nodoc:
         class Helper < ActiveMerchant::Billing::Integrations::Helper
           include Common
           # Valid language codes
-          #   Italian		=> 1
-  				#	  English		=> 2
-  				#	  Spanish		=> 3
-  				#	  French    => 4
-  				#   Tedesco   => 5
+          #   Italian    => 1
+          #    English    => 2
+          #    Spanish    => 3
+          #    French    => 4
+          #   Tedesco   => 5
           def initialize(order, account, options = {})
             super
             add_field('PAY1_IDLANGUAGE', 2)
@@ -37,9 +37,9 @@ module ActiveMerchant #:nodoc:
           
           def currency=(currency_code)
             code = CURRENCY_MAPPING[currency_code]
-  					raise StandardError, "Invalid currency code #{currency_code} specified" if code.nil?
-  					
-  					add_field(mappings[:currency], code)
+            raise StandardError, "Invalid currency code #{currency_code} specified" if code.nil?
+            
+            add_field(mappings[:currency], code)
           end
           
           def form_fields
