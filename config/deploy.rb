@@ -34,7 +34,7 @@ namespace :deploy do
     run "cd #{release_path}; ln -s #{shared_path}/ckeditor_assets #{release_path}/public"
 
     run "cd #{release_path}; bundle install"
-    run "cd #{release_path}; bundle exec rake sitemap:refresh RAILS_ENV=production"
+    # run "cd #{release_path}; bundle exec rake sitemap:refresh RAILS_ENV=production"
     # run "cd #{release_path}; bundle exec rake db:seed RAILS_ENV=production"
     run "cd #{release_path}; crontab #{release_path}/config/crontab/#{rails_env}"
     run "cd #{release_path}; ./script/delayed_job restart RAILS_ENV=production"
@@ -44,11 +44,15 @@ namespace :deploy do
   end
 
   # unicorn scripts cribbed from https://github.com/daemon/capistrano-recipes/blob/master/lib/recipes/unicorn.rb
-  desc "Restart passenger"
-  task :start do ; end
-  task :stop do ; end
-  task :restart, :roles => :app, :except => { :no_release => true } do
-    run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
+  desc "Restart unicorn"
+  task :restart, :roles => :app do
+    run "kill -USR2 `cat #{shared_path}/pids/unicorn.pid`"
+  end
+  task :stop, :roles => :app do
+    run "kill -QUIT `cat #{shared_path}/pids/unicorn.pid`"
+  end
+  task :start, :roles => :app do
+    run "cd #{current_path} && bundle exec unicorn -E #{rails_env} -D -c #{current_path}/config/unicorn.rb"
   end
 end
 

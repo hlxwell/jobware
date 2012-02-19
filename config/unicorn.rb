@@ -1,5 +1,5 @@
-worker_processes 4
-app_dir = "/home/itjob.fm/app/current"
+worker_processes 8
+app_dir = "/home/app/app/current"
 working_directory app_dir
 
 # This loads the application in the master process before forking

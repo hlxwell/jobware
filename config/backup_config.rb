@@ -17,7 +17,7 @@ safe do
     options "-ceKq --single-transaction --create-options"
     user "root"
     password "whoafeedback"
-    socket "/var/run/mysqld/mysqld.sock"
+    socket "/tmp/mysql.sock"
     database :jobware_production
   end
 
