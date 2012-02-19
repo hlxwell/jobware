@@ -3,7 +3,7 @@ class JobsController < ApplicationController
   before_filter :get_job_by_id, :only => [:show, :star]
 
   def index
-    unless fragment_exist?(job_index_cache_key)
+    unless fragment_exist?(cache_key)
       @jobs = Job.opened.with_theme(current_theme_site).order("keep_top desc, start_at desc").paginate :all, :page => params[:page], :per_page => params[:limit]||15
     end
 
@@ -15,7 +15,7 @@ class JobsController < ApplicationController
   end
 
   def show
-    unless fragment_exist?(job_show_cache_key)
+    unless fragment_exist?(cache_key)
       @starred_job = current_user.try(:jobseeker).present? ? current_user.jobseeker.starred_jobs.where(:job_id => params[:id]).first : nil
     end
 
@@ -38,7 +38,7 @@ class JobsController < ApplicationController
   end
 
   def filter
-    unless fragment_exist?(job_filter_cache_key)
+    unless fragment_exist?(cache_key)
       @location      = params[:location]
       @tool          = params[:tool]
       @category      = params[:category]

@@ -1,4 +1,4 @@
-<% cache(company_index_cache_key, :expires_in => 1.hour) do %>
+<% cache(cache_key, :expires_in => 1.hour) do %>
 
 <% title @title.blank? ? "所有公司" : @title %>
 

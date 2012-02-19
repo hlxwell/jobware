@@ -5,13 +5,13 @@ class CompaniesController < ApplicationController
   before_filter :get_job_by_job_id, :only => [:show, :all_jobs, :presentations]
 
   def index
-    unless fragment_exist?(company_index_cache_key)
+    unless fragment_exist?(cache_key)
       @companies = Company.opened.with_theme(current_theme_site).paginate :all, :page => params[:page], :per_page => 15
     end
   end
 
   def filter
-    unless fragment_exist?(company_filter_cache_key)
+    unless fragment_exist?(cache_key)
       @location     = params[:location]
       @size         = params[:size]
       @company_type = params[:company_type]

@@ -96,31 +96,10 @@ class ApplicationController < ActionController::Base
     flash[:error] = "请根据错误提示填写正确内容。" if obj.errors.size > 0
   end
 
-  def job_index_cache_key
-    {:controller => 'jobs', :action => 'index', :params => params}
+  def cache_key
+    {:controller => controller_name, :action => action_name, :params => params}
   end
-
-  def company_index_cache_key
-    {:controller => 'companies', :action => 'index', :params => params}
-  end
-
-  def job_show_cache_key
-    {:controller => 'jobs', :action => 'show', :params => params}
-  end
-
-  def company_show_cache_key
-    {:controller => 'companies', :action => 'show', :params => params}
-  end
-
-  def company_filter_cache_key
-    {:controller => 'companies', :action => 'filter', :params => params}
-  end
-
-  def job_filter_cache_key
-    {:controller => 'jobs', :action => 'filter', :params => params}
-  end
-
-  helper_method :company_filter_cache_key, :job_filter_cache_key, :job_index_cache_key, :job_show_cache_key, :company_show_cache_key, :company_index_cache_key
+  helper_method :cache_key
 
 private
 
