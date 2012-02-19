@@ -96,11 +96,6 @@ class ApplicationController < ActionController::Base
     flash[:error] = "请根据错误提示填写正确内容。" if obj.errors.size > 0
   end
 
-  def cache_key
-    {:controller => controller_name, :action => action_name, :params => params}
-  end
-  helper_method :cache_key
-
 private
 
   def find_host

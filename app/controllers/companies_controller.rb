@@ -5,31 +5,27 @@ class CompaniesController < ApplicationController
   before_filter :get_job_by_job_id, :only => [:show, :all_jobs, :presentations]
 
   def index
-    unless fragment_exist?(cache_key)
-      @companies = Company.opened.with_theme(current_theme_site).paginate :all, :page => params[:page], :per_page => 15
-    end
+    @companies = Company.opened.with_theme(current_theme_site).paginate :all, :page => params[:page], :per_page => 15
   end
 
   def filter
-    unless fragment_exist?(cache_key)
-      @location     = params[:location]
-      @size         = params[:size]
-      @company_type = params[:company_type]
-      @industry     = params[:industry]
+    @location     = params[:location]
+    @size         = params[:size]
+    @company_type = params[:company_type]
+    @industry     = params[:industry]
 
-      @company_type_name = CompanyType.to_a.select{|i| i.last.to_s == @company_type}.flatten.first
-      @industry_name = CompanyIndustry.to_a.select{|i| i.last.to_s == @industry}.flatten.first
+    @company_type_name = CompanyType.to_a.select{|i| i.last.to_s == @company_type}.flatten.first
+    @industry_name = CompanyIndustry.to_a.select{|i| i.last.to_s == @industry}.flatten.first
 
-      @search_query = Company.opened.with_theme(current_theme_site)
-      @search_query = @search_query.where(["province=? or city=?", @location, @location]) unless @location.blank?
-      @search_query = @search_query.where(["size LIKE ?", "%#{@size}%"]) unless @size.blank?
-      @search_query = @search_query.where(["company_type=?", @company_type]) unless @company_type.blank?
-      @search_query = @search_query.where(["industry=?", @industry]) unless @industry.blank?
+    @search_query = Company.opened.with_theme(current_theme_site)
+    @search_query = @search_query.where(["province=? or city=?", @location, @location]) unless @location.blank?
+    @search_query = @search_query.where(["size LIKE ?", "%#{@size}%"]) unless @size.blank?
+    @search_query = @search_query.where(["company_type=?", @company_type]) unless @company_type.blank?
+    @search_query = @search_query.where(["industry=?", @industry]) unless @industry.blank?
 
-      @companies = @search_query.paginate :all, :page => params[:page], :per_page => 15
+    @companies = @search_query.paginate :all, :page => params[:page], :per_page => 15
 
-      @title = "#{@location}#{@industry_name}#{@company_type_name}企业"
-    end
+    @title = "#{@location}#{@industry_name}#{@company_type_name}企业"
     render :index
   end
 
