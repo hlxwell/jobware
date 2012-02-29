@@ -6,7 +6,7 @@ require "bundler/capistrano"
 $:.unshift(File.expand_path("./lib", ENV["rvm_path"]))
 require "rvm/capistrano"
 set :rvm_ruby_string, "ree"
-set :rvm_type, :system
+set :rvm_type, :user
 
 set :application, "ITJOB.FM"
 set :repository,  "git@github.com:anatole/jobware.git"
@@ -14,14 +14,14 @@ set :branch, ENV["BRANCH"] || "master"
 set :scm, "git"
 set :keep_releases, 5
 set :use_sudo, false
-set :user, "app"
-set :deploy_to, "/home/app/app"
+set :user, "itjob.fm"
+set :deploy_to, "/home/itjob.fm/app"
 set :branch, "master"
 set :rails_env, "production"
 
-role :web, "58.215.184.207"                          # Your HTTP server, Apache/etc
-role :app, "58.215.184.207"                          # This may be the same as your `Web` server
-role :db,  "58.215.184.207", :primary => true        # This is where Rails migrations will run
+role :web, "115.238.44.110"                          # Your HTTP server, Apache/etc
+role :app, "115.238.44.110"                          # This may be the same as your `Web` server
+role :db,  "115.238.44.110", :primary => true        # This is where Rails migrations will run
 
 # If you are using Passenger mod_rails uncomment this:
 # if you're still using the script/reapear helper you will need
@@ -29,7 +29,7 @@ role :db,  "58.215.184.207", :primary => true        # This is where Rails migra
 
 namespace :deploy do
   task :init_project do
-    run "cd #{release_path}; cp #{shared_path}/config/database.yml #{release_path}/config/database.yml"
+    run "cd #{release_path}; ln -s #{shared_path}/config/database.yml #{release_path}/config/database.yml"
     run "cd #{release_path}; ln -s #{shared_path}/sphinx #{release_path}/db/sphinx"
     run "cd #{release_path}; ln -s #{shared_path}/ckeditor_assets #{release_path}/public"
 
@@ -42,27 +42,27 @@ namespace :deploy do
     run "cd #{release_path}; bundle exec rake ts:rebuild RAILS_ENV=production"
   end
 
-  desc "Restarting mod_rails with restart.txt"
-  task :restart, :roles => :app, :except => { :no_release => true } do
-    run "touch #{current_path}/tmp/restart.txt"
-  end
-
-  [:start, :stop].each do |t|
-    desc "#{t} task is a no-op with mod_rails"
-    task t, :roles => :app do ; end
-  end
+  # desc "Restarting mod_rails with restart.txt"
+  # task :restart, :roles => :app, :except => { :no_release => true } do
+  #   run "touch #{current_path}/tmp/restart.txt"
+  # end
+  # 
+  # [:start, :stop].each do |t|
+  #   desc "#{t} task is a no-op with mod_rails"
+  #   task t, :roles => :app do ; end
+  # end
 
   # unicorn scripts cribbed from https://github.com/daemon/capistrano-recipes/blob/master/lib/recipes/unicorn.rb
-  # desc "Restart unicorn"
-  # task :restart, :roles => :app do
-  #   run "kill -USR2 `cat #{shared_path}/pids/unicorn.pid`"
-  # end
-  # task :stop, :roles => :app do
-  #   run "kill -QUIT `cat #{shared_path}/pids/unicorn.pid`"
-  # end
-  # task :start, :roles => :app do
-  #   run "cd #{current_path} && bundle exec unicorn -E #{rails_env} -D -c #{current_path}/config/unicorn.rb"
-  # end
+  desc "Restart unicorn"
+  task :restart, :roles => :app do
+    run "kill -USR2 `cat #{shared_path}/pids/unicorn.pid`"
+  end
+  task :stop, :roles => :app do
+    run "kill -QUIT `cat #{shared_path}/pids/unicorn.pid`"
+  end
+  task :start, :roles => :app do
+    run "cd #{current_path} && bundle exec unicorn -E #{rails_env} -D -c #{current_path}/config/unicorn.rb"
+  end
 end
 
 before "deploy:symlink", "deploy:init_project"
