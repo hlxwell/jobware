@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module Authlogic
   module Session
     # Authlogic looks like ActiveRecord, sounds like ActiveRecord, but its not ActiveRecord. That's the goal here.

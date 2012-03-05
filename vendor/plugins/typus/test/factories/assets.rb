@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 Factory.define :asset do |f|
   f.caption "Caption"
   f.resource_type Post

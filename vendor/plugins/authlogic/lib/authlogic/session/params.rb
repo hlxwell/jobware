@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module Authlogic
   module Session
     # This module is responsible for authenticating the user via params, which ultimately allows the user to log in using a URL like the following:

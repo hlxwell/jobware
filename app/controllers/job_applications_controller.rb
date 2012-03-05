@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class JobApplicationsController < ApplicationController
   before_filter :redirect_to_new_resume_page_if_not_jobseeker, :get_job_by_job_id
 

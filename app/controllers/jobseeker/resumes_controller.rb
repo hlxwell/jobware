@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Jobseeker::ResumesController < Jobseeker::BaseController
   before_filter :no_jobseeker_login_required, :only => [:new, :new_with_choices, :create]
   before_filter :jobseeker_login_required, :except => [:new,:new_with_choices, :create, :created]

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module Authlogic
   module ActsAsAuthentic
     # This is one of my favorite features that I think is pretty cool. It's things like this that make a library great

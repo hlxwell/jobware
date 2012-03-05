@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateCoverLetters < ActiveRecord::Migration
   def self.up
     create_table :cover_letters do |t|

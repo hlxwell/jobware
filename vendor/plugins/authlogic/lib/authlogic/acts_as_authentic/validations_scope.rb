@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module Authlogic
   module ActsAsAuthentic
     # Allows you to scope everything to specific fields.

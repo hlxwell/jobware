@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module Authlogic
   module ActsAsAuthentic
     # Provides the base functionality for acts_as_authentic

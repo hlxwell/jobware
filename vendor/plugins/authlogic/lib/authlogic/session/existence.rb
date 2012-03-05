@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module Authlogic
   module Session
     # Provides methods to create and destroy objects. Basically controls their "existence".

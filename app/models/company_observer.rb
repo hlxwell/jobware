@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CompanyObserver < ActiveRecord::Observer
 
   def before_save(company)

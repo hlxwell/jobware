@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module ServicesControllerBase
   def index
     @services = current_user_section != 'partner' ? Service.send("for_#{current_user_section}") : []

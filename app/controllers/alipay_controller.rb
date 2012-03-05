@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AlipayController < ApplicationController
   before_filter :login_required, :only => :pay
   skip_before_filter :verify_authenticity_token, :only => :notify

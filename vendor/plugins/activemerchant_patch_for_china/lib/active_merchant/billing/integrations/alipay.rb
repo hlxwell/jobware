@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require File.dirname(__FILE__) + '/alipay/helper.rb'
 require File.dirname(__FILE__) + '/alipay/notification.rb'
 require File.dirname(__FILE__) + '/alipay/return.rb'

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddSelfIntroToResumes < ActiveRecord::Migration
   def self.up
     add_column :resumes, :self_intro, :text

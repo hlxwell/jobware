@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module Authlogic
   module TestCase
     class MockCookieJar < Hash # :nodoc:

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module ViewsCountable
   def increased_views_count
     self.counters.create(:happened_at => Date.today) if self.counters.today.blank?

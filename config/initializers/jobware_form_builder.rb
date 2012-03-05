@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class JobwareFormBuilder < ActionView::Helpers::FormBuilder
   alias_method :origin_select, :select
 

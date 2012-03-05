@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module Authlogic
   module Session
     # Handles all authentication that deals with basic HTTP auth. Which is authentication built into the HTTP protocol:

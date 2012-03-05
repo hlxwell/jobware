@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module Authlogic
   module Session
     # Maintains the perishable token, which is helpful for confirming records or authorizing records to reset their password. All that this

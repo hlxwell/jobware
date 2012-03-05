@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class ChangeServiceItemsColumns < ActiveRecord::Migration
   def self.up
     rename_column :service_items, :type, :credit_type

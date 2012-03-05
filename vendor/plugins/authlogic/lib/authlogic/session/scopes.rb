@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module Authlogic
   module Session
     # Authentication can be scoped, and it's easy, you just need to define how you want to scope everything. This should help you:

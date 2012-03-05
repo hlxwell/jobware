@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddProvinceAndCityToAds < ActiveRecord::Migration
   def self.up
     add_column :ads, :province, :string

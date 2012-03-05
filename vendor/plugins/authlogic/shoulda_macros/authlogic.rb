@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 # Test::Unit
 # Place this file into your test/shoulda_macros directory
 #

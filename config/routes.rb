@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 Jobware::Application.routes.draw do
   get "alipay/pay"
   post "alipay/notify"

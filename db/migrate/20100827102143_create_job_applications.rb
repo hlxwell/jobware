@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateJobApplications < ActiveRecord::Migration
   def self.up
     create_table :job_applications do |t|

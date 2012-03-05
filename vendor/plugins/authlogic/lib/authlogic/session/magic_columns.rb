@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module Authlogic
   module Session
     # Just like ActiveRecord has "magic" columns, such as: created_at and updated_at. Authlogic has its own "magic" columns too:

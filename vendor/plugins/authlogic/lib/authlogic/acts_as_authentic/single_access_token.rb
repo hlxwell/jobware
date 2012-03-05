@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module Authlogic
   module ActsAsAuthentic
     # This module is responsible for maintaining the single_access token. For more information the single access token and how to use it,

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddIndicsForModels < ActiveRecord::Migration
   def self.up
 

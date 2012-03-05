@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class ChangeHappendAtToHappenedAtForCounters < ActiveRecord::Migration
   def self.up
     change_column_default :counters, :click, 0

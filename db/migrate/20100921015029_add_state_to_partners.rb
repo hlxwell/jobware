@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddStateToPartners < ActiveRecord::Migration
   def self.up
     add_column :partners, :state, :string

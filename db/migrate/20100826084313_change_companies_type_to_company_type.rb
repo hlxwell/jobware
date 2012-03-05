@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class ChangeCompaniesTypeToCompanyType < ActiveRecord::Migration
   def self.up
     change_column :companies, :type, :integer

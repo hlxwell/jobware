@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 THEMES = {
   "rails"    => ["Ruby/Rails", "ruby on rails"],
   "php"      => ["PHP", "php, lamp"],

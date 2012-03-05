@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddThemesToJobsAdsCompanies < ActiveRecord::Migration
   def self.up
     add_column :jobs, :themes, :string, :default => ""

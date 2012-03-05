@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 Factory.define :company do |a|
   a.user            { |user| user.association(:user) }
   a.name            "ThePlant"

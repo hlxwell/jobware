@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 # == Schema Information
 # Schema version: 20101014064036
 #
@@ -35,8 +36,8 @@ class User < ActiveRecord::Base
     scope :"#{key_name}_users", joins("LEFT OUTER JOIN #{key.pluralize} ON users.id = #{key.pluralize}.user_id").where("#{key.pluralize}.user_id IS NOT NULL")
   end
 
-  acts_as_mail_receiver :payload_columns => %w{email},
-                        :groups => %w{company_users jobseeker_users partner_users}
+  # acts_as_mail_receiver :payload_columns => %w{email},
+  #                       :groups => %w{company_users jobseeker_users partner_users}
 
   has_one :company
   has_one :partner

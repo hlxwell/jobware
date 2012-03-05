@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class <%= options[:user_class_name] %> < ActiveRecord::Base
 
   ROLE = Typus::Configuration.roles.keys.sort

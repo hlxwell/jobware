@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module Authlogic
   # Handles generating random strings. If SecureRandom is installed it will default to this and use it instead. SecureRandom comes with ActiveSupport.
   # So if you are using this in a rails app you should have this library.

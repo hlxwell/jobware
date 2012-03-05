@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module Authlogic
   module ActsAsAuthentic
     # Maintains the persistence token, the token responsible for persisting sessions. This token

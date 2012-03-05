@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 worker_processes 8
 app_dir = "/home/app/app/current"
 working_directory app_dir

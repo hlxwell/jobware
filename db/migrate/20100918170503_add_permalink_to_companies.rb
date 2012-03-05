@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddPermalinkToCompanies < ActiveRecord::Migration
   def self.up
     add_column :companies, :permalink, :string, :default => nil

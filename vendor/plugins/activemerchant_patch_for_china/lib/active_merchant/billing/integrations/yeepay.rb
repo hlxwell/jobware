@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require File.dirname(__FILE__) + '/yeepay/helper.rb'
 require File.dirname(__FILE__) + '/yeepay/notification.rb'
 require File.dirname(__FILE__) + '/yeepay/return.rb'

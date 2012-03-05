@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module Authlogic
   module Session
     # Activating Authlogic requires that you pass it an Authlogic::ControllerAdapters::AbstractAdapter object, or a class that extends it.

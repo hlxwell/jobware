@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 #!/usr/bin/env ruby
 $:.unshift File.expand_path('../../lib', __FILE__)
 

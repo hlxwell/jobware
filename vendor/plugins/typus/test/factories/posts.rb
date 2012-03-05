@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 Factory.define :post do |f|
   f.title "Post"
   f.body "Body"

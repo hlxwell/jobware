@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Partner::PartnerSiteStylesController < Partner::BaseController
   def show
     redirect_to edit_partner_partner_site_style_path

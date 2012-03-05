@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 Factory.define :resume, :class => Resume do |r|
   r.user           { |resume| resume.association(:user) }
   r.name              "王小白"

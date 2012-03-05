@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateServices < ActiveRecord::Migration
   def self.up
     create_table :services do |t|

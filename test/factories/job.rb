@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 Factory.define :job do |a|
   a.company           { |company| company.association(:company) }
   a.name              "advanced rails developer"

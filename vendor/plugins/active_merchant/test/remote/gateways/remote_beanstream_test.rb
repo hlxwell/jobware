@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require 'test_helper'
 
 # This test suite assumes that you have enabled username/password transaction validation in your Beanstream account.

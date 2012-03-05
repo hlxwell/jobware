@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module Authlogic
   module ActsAsAuthentic
     # This module is responsible for transitioning existing applications from the restful_authentication plugin.

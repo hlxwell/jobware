@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddIndustryToCompanyAndPlatformLanguageToJobs < ActiveRecord::Migration
   def self.up
     add_column :companies, :industry, :integer, :default => 99

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require File.dirname(__FILE__) + "/test_case/rails_request_adapter"
 require File.dirname(__FILE__) + "/test_case/mock_cookie_jar"
 require File.dirname(__FILE__) + "/test_case/mock_controller"

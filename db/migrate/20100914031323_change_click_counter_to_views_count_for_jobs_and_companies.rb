@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class ChangeClickCounterToViewsCountForJobsAndCompanies < ActiveRecord::Migration
   def self.up
     rename_column :companies, :click_counter, :views_count

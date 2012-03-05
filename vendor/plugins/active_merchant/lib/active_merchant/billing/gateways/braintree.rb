@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require File.dirname(__FILE__) + '/braintree/braintree_common'
 
 module ActiveMerchant #:nodoc:

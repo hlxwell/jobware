@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class PartnersController < ApplicationController
   layout "partner", :only => :edit
   layout "application", :except => :edit

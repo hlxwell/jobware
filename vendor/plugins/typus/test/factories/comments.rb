@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 Factory.define :comment do |f|
   f.name "John"
   f.email "john@example.com"

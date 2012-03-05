@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 # Set the host name for URL creation
 SitemapGenerator::Sitemap.default_host = "http://itjob.fm"
 SitemapGenerator::Sitemap.yahoo_app_id = "eDxJEwvV34GRHfVWnsaJPk08DfVCgDtZag.H9dsKTtXbj9eRoaNXEJYXzg.Jyw--"

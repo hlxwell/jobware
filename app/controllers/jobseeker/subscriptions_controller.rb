@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Jobseeker::SubscriptionsController < Jobseeker::BaseController
 
   def edit

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class JobsController < ApplicationController
   before_filter :jobseeker_login_required, :only => :star
   before_filter :get_job_by_id, :only => [:show, :star]

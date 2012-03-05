@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require 'test_helper'
 
 class RemoteBraintreeOrangeTest < Test::Unit::TestCase

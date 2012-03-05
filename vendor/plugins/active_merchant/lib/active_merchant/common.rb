@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module ActiveMerchant  
   autoload :Connection,                'active_merchant/common/connection'
   autoload :Country,                   'active_merchant/common/country'

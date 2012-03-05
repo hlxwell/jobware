@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module BankAccountMethods
   def self.included mod
     # mod.extend ClassMethods

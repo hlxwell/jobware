@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateStagingJobs < ActiveRecord::Migration
   def self.up
     create_table :staging_jobs do |t|

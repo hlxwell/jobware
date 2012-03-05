@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Partner::AdPositionsController < Partner::BaseController
   before_filter :get_ad_position_by_id, :only => [:show, :edit, :update, :destroy]
 

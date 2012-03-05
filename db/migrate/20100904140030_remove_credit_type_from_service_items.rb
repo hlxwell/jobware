@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class RemoveCreditTypeFromServiceItems < ActiveRecord::Migration
   def self.up
     remove_column :service_items, :credit_type

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class SessionGenerator < Rails::Generator::NamedBase
   def manifest
     record do |m|

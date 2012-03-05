@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Hash
   def each(&block)
     sorted_keys = keys.sort { |a, b| a.to_s <=> b.to_s }

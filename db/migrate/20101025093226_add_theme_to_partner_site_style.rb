@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddThemeToPartnerSiteStyle < ActiveRecord::Migration
   def self.up
     add_column :partner_site_styles, :theme, :string

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module Authlogic
   module Session
     # Sort of like an interface, it sets the foundation for the class, such as the required methods. This also allows

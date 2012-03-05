@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateTransactions < ActiveRecord::Migration
   def self.up
     create_table :transactions, :force => true do |t|

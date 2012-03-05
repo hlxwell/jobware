@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module Authlogic
   module Session # :nodoc:
     # This is the base class Authlogic, where all modules are included. For information on functiionality see the various

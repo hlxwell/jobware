@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateOptionalOptions < ActiveRecord::Migration
   def self.up
     create_table :optional_options do |t|

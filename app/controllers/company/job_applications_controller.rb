@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Company::JobApplicationsController < Company::BaseController
   before_filter :get_job_app_by_id, :only => [:accept, :reject, :show, :star]
 

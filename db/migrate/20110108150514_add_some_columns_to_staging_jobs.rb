@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddSomeColumnsToStagingJobs < ActiveRecord::Migration
   def self.up
     add_column :staging_jobs, :company_size, :string

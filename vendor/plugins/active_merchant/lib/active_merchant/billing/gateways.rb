@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module ActiveMerchant
   module Billing
     autoload :Gateway, 'active_merchant/billing/gateway'

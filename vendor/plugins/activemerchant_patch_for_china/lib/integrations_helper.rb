@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 ActiveMerchant::Billing::Integrations::Helper.class_eval do
   alias_method :origin_add_field, :add_field
 

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CompaniesController < ApplicationController
   respond_to :xml, :only => :presentations
   before_filter :redirect_to_new_job_if_login, :only => [:new, :create]

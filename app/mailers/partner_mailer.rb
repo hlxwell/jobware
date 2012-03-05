@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class PartnerMailer < MailerBase
   def approval(partner)
     @partner = partner

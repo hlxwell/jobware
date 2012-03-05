@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Admin::SessionController < AdminController
 
   skip_before_filter :reload_config_and_roles

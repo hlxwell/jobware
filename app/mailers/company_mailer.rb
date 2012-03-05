@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CompanyMailer < MailerBase
   def send_reset_account_password(company)
     @company_name = company.name

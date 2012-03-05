@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddClickCounterToJobsAndCompanies < ActiveRecord::Migration
   def self.up
     add_column :jobs, :click_counter, :integer, :default => 0

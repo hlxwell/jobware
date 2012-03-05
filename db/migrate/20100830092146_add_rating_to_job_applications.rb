@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddRatingToJobApplications < ActiveRecord::Migration
   def self.up
     add_column :job_applications, :rating, :integer

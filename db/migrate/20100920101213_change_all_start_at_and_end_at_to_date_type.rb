@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class ChangeAllStartAtAndEndAtToDateType < ActiveRecord::Migration
   def self.up
     change_column :jobs, :start_at, :date

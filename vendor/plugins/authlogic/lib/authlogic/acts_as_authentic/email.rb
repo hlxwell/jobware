@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module Authlogic
   module ActsAsAuthentic
     # Sometimes models won't have an explicit "login" or "username" field. Instead they want to use the email field.

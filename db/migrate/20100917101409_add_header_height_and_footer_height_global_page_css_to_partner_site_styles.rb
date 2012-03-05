@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddHeaderHeightAndFooterHeightGlobalPageCssToPartnerSiteStyles < ActiveRecord::Migration
   def self.up
     add_column :partner_site_styles, :header_height, :string

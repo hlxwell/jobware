@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateBankAccounts < ActiveRecord::Migration
   def self.up
     create_table :bank_accounts, :force => true do |t|

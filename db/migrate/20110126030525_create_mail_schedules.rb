@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateMailSchedules < ActiveRecord::Migration
   def self.up
     create_table :mail_schedules do |t|

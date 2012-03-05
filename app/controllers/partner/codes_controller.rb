@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Partner::CodesController < Partner::BaseController
   before_filter :find_host
 

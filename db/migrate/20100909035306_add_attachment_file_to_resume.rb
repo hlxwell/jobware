@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddAttachmentFileToResume < ActiveRecord::Migration
   def self.up
     add_column :resumes, :file_file_name, :string

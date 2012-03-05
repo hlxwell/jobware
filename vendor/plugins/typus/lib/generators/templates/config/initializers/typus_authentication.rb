@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 Typus.setup do |config|
 
   # Authentication: none, http_basic, session

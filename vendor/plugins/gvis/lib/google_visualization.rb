@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 # Provides calls for simplifying the loading and use of the Google Visualization API
 #
 # For use with rails, include this Module in ApplicationHelper

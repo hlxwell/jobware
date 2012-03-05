@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module ActiveMerchant #:nodoc:
   module Billing #:nodoc:
     # For more information on the Iridium Gateway please download the

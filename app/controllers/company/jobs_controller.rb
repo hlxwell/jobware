@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Company::JobsController < Company::BaseController
   before_filter :get_job_by_id, :only => [:show, :edit, :update, :destroy, :close, :open, :reactive, :get_options, :want_to_show]
   before_filter :check_job_credit, :only => [:reactive]

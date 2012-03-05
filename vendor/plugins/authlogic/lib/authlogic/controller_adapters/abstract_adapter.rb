@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module Authlogic
   module ControllerAdapters # :nodoc:
     # Allows you to use Authlogic in any framework you want, not just rails. See the RailsAdapter or MerbAdapter

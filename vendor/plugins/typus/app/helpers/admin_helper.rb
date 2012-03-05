@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module AdminHelper
 
   def typus_block(resource = @resource.to_resource, partial = params[:action])

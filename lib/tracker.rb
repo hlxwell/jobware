@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Tracker < ActionController::Metal
   # include ActionController::Rendering
   include ActionController::RequestForgeryProtection

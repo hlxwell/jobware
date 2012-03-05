@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require "authlogic/i18n/translator"
 
 module Authlogic

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module Authlogic
   module TestCase
     # Adapts authlogic to work with the @request object when testing. This way Authlogic can set cookies and what not before

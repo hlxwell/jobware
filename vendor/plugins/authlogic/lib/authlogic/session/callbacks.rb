@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module Authlogic
   module Session
     # Between these callsbacks and the configuration, this is the contract between me and you to safely

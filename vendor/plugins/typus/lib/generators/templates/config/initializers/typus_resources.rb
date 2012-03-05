@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 Typus::Resource.setup do |config|
 
   # Defines the default_action_on_item.

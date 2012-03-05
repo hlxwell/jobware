@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 # Converts Ruby data structures into javascript strings for constructing the data for Google Visualization API clients.
 #
 # This library can be used to create a google.visualization.DataTable usable by

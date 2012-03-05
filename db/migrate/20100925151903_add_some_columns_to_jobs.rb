@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddSomeColumnsToJobs < ActiveRecord::Migration
   def self.up
     add_column :jobs, :degree_requirement, :integer, :default => 0

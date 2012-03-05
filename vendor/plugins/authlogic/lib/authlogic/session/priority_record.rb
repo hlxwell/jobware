@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module Authlogic
   module Session
     # The point of this module is to avoid the StaleObjectError raised when lock_version is implemented in ActiveRecord.

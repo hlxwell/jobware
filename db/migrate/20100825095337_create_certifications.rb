@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateCertifications < ActiveRecord::Migration
   def self.up
     create_table :certifications do |t|

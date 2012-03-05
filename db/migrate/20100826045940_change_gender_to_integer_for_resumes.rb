@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class ChangeGenderToIntegerForResumes < ActiveRecord::Migration
   def self.up
     change_column :resumes, :gender, :integer

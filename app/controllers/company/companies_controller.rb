@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Company::CompaniesController < Company::BaseController
 
   def show

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Hash
 
   # Remove nil and empty keys.

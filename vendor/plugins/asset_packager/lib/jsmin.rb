@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 #!/usr/bin/ruby
 # jsmin.rb 2007-07-20
 # Author: Uladzislau Latynski

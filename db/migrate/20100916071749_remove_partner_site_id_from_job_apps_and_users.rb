@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class RemovePartnerSiteIdFromJobAppsAndUsers < ActiveRecord::Migration
   def self.up
     remove_column :users, :partner_site_id

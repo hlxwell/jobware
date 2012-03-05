@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require "typus/authentication"
 
 class AdminController < ActionController::Base

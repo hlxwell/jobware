@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddPartnerIdToTransactions < ActiveRecord::Migration
   def self.up
     add_column :transactions, :partner_id, :integer

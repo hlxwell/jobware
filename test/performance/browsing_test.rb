@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require "#{File.dirname(__FILE__)}/../test_helper"
 require 'rails/performance_test_help'
 

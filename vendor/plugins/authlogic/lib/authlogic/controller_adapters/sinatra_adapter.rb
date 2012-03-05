@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 # Authlogic bridge for Sinatra
 module Authlogic
   module ControllerAdapters

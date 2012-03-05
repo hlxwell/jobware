@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Hash
   # h = {:a => 1, :b => { :c => 2, :d => {:e => 'e'} }}
   # h.get(:b, :d, :e) => 'e'

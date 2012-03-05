@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 ActiveRecord::Migration.verbose = false
 
 ActiveRecord::Schema.define do

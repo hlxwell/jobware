@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class ChangeAmountTypeFromIntToFloat < ActiveRecord::Migration
   def self.up
     change_column :transactions, :amount, :float

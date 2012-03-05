@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Company::AdsController < Company::BaseController
   before_filter :get_ad_by_id, :only => [:show, :edit, :update, :destroy, :want_to_show]
 

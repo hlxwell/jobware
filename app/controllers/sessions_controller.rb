@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class SessionsController < ApplicationController
   before_filter :login_required, :only => :destroy
   # before_filter :no_login_required, :only => [:edit_password, :update_password]

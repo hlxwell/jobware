@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddAttachmentFileToTitledImage < ActiveRecord::Migration
   def self.up
     add_column :titled_images, :file_file_name, :string

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreatePartnerSiteStyles < ActiveRecord::Migration
   def self.up
     create_table :partner_site_styles do |t|

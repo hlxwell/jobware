@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class UserMailer < MailerBase
   def reset_password(user)
     @user_mail = user.email

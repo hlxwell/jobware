@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 # This file is run when the plugin is installed
 puts %Q(
 Gvis

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateTemplatePartials < ActiveRecord::Migration
   def self.up
     create_table :template_partials do |t|

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module Authlogic
   module AuthenticatesMany
     # An object of this class is used as a proxy for the authenticates_many relationship. It basically allows you to "save" scope details

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module Authlogic
   module TestCase
     # Simple class to replace real loggers, so that we can raise any errors being logged.

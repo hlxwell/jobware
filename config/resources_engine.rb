@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 set :admin_prefix       => 'ITJob.fm Admin',
     :admin_name         => '<img src="/common/images/header_for_admin.gif" style="margin-top:-35px;height:70px;"/>',
     :logout_path        => '/users/sign_out',

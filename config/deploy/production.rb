@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 set :application, "production"
 set :deploy_to, "/home/itjob.fm/app"
 set :user, "itjob.fm"

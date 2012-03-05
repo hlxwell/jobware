@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class ChangeVacancyStringForJobs < ActiveRecord::Migration
   def self.up
     change_column :jobs, :vacancy, :string

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 Factory.define :typus_user do |f|
   f.email "admin@example.com"
   f.role "admin"

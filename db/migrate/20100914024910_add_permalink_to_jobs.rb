@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddPermalinkToJobs < ActiveRecord::Migration
   def self.up
     add_column :jobs, :permalink, :string, :default => nil

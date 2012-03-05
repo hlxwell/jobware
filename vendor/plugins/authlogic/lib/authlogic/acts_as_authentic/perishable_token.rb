@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module Authlogic
   module ActsAsAuthentic
     # This provides a handy token that is "perishable". Meaning the token is only good for a certain amount of time. This is perfect for

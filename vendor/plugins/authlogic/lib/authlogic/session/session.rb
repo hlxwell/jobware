@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module Authlogic
   module Session
     # Handles all parts of authentication that deal with sessions. Such as persisting a session and saving / destroy a session.

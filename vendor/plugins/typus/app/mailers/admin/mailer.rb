@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Admin::Mailer < ActionMailer::Base
 
   default :from => Typus.mailer_sender

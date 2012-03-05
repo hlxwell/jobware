@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module Authlogic
   module ActsAsAuthentic
     # This module has a lot of neat functionality. It is responsible for encrypting your password, salting it, and verifying it.

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require File.dirname(__FILE__) + '/pay19/helper.rb'
 require File.dirname(__FILE__) + '/pay19/return.rb'
 require File.dirname(__FILE__) + '/pay19/notification.rb'

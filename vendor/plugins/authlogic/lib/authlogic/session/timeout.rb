@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module Authlogic
   module Session
     # Think about financial websites, if you are inactive for a certain period of time you will be asked to

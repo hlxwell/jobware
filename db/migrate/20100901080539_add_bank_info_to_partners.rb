@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddBankInfoToPartners < ActiveRecord::Migration
   def self.up
     add_column :partners, :bank_info, :text

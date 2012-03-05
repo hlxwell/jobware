@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module Authlogic
   module Session
     # A brute force attacks is executed by hammering a login with as many password combinations as possible, until one works. A brute force attacked is

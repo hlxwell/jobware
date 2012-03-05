@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateServiceItemAmounts < ActiveRecord::Migration
   def self.up
     create_table :service_item_amounts do |t|

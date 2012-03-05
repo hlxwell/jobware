@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class ChangeTypeToDisplayTypeForAds < ActiveRecord::Migration
   def self.up
     rename_column :ads, :type, :display_type

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class ChangeSalaryRangeTypeForJobs < ActiveRecord::Migration
   def self.up
     change_column :jobs, :salary_range, :integer

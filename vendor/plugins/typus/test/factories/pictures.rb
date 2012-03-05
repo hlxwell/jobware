@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 Factory.define :picture do |f|
   f.title "Some picture"
   f.picture_file_name "dog.jpg"

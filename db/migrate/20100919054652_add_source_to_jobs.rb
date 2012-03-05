@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddSourceToJobs < ActiveRecord::Migration
   def self.up
     add_column :jobs, :source, :string

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddPartnerIdToJobs < ActiveRecord::Migration
   def self.up
     add_column :jobs, :partner_id, :integer

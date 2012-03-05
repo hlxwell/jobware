@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Company < ActiveRecord::Base
   authenticates_many :employee_sessions
   authenticates_many :user_sessions

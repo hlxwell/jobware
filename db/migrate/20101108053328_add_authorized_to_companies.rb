@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddAuthorizedToCompanies < ActiveRecord::Migration
   def self.up
     add_column :companies, :authorized, :boolean, :default => true

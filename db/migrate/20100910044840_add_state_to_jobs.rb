@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddStateToJobs < ActiveRecord::Migration
   def self.up
     add_column :jobs, :state, :string

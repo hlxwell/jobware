@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module Authlogic
   module ControllerAdapters
     # Adapts authlogic to work with merb. The point is to close the gap between what authlogic expects and what the merb controller object

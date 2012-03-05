@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateMailLogs < ActiveRecord::Migration
   def self.up
     create_table :mail_logs do |t|

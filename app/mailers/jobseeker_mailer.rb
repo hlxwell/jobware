@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class JobseekerMailer < MailerBase
   def newsletter(jobseeker, jobs)
     @jobs = jobs

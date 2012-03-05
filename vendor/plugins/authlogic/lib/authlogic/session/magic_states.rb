@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module Authlogic
   module Session
     # Authlogic tries to check the state of the record before creating the session. If your record responds to the following methods and any of them return false, validation will fail:

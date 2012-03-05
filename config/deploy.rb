@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 # require 'capistrano/ext/multistage'
 # set :stages, %w(staging production cnc)
 # set :default_stage, 'staging'

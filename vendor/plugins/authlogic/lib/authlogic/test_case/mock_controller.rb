@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module Authlogic
   module TestCase
     # Basically acts like a controller but doesn't do anything. Authlogic can interact with this, do it's thing and then you

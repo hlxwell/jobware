@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module CnFormatter
   def to_s_short_date
     self.strftime("%m月%d日")

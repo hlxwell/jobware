@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 RailsApp::Application.routes.draw do |map|
 
   map.connect "admin/delayed/tasks/:action/:id(.:format)", :controller => "admin/delayed/tasks"

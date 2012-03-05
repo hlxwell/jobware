@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class DashboardController < ApplicationController
   before_filter :company_login_required, :only => :company
   before_filter :jobseeker_login_required, :only => :jobseeker

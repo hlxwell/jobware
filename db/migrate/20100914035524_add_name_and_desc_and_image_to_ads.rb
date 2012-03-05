@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddNameAndDescAndImageToAds < ActiveRecord::Migration
   def self.up
     add_column :ads, :name, :string

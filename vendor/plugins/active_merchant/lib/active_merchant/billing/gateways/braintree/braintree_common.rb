@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module BraintreeCommon
   def self.included(base)
     base.supported_countries = ['US']

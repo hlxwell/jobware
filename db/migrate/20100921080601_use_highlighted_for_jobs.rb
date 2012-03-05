@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class UseHighlightedForJobs < ActiveRecord::Migration
   def self.up
     add_column :jobs, :highlighted, :boolean, :default => false

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require 'test_helper'
 
 class BraintreeBlueTest < Test::Unit::TestCase

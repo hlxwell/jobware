@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 safe do
   local :path => "/home/itjob.fm/backup/:kind/:id"
 
