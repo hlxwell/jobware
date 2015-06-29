@@ -1,7 +1,4 @@
-#source "http://rubygems.org"
-#source 'http://gems.github.com'
-#source "http://gemcutter.org"
-source "http://ruby.taobao.org"
+source "http://rubygems.org"
 
 gem 'rails', '3.0.4'
 gem 'mysql'
@@ -29,12 +26,12 @@ gem 'bluepill'
 gem 'astrails-safe'
 gem 'new_data_notifier', :require => "new_data_notifier", :git => "git://github.com/hlxwell/new_data_notifier.git"
 gem 'nokogiri'
-gem 'newrelic_rpm' #, :git => "git://github.com/newrelic/rpm.git"
+gem 'newrelic_rpm'
+gem 'thinking-sphinx'
 gem 'ckeditor', :git => 'git://github.com/galetahub/rails-ckeditor.git', :branch => 'rails3'
 gem "exception_notification", :git => "git://github.com/rails/exception_notification.git", :branch => "master"
-gem 'thinking-sphinx', :git => 'git://github.com/freelancing-god/thinking-sphinx.git', :require => 'thinking_sphinx'
 gem 'delayed_job', :git => 'git://github.com/collectiveidea/delayed_job.git', :branch => 'master'
-gem "mail_engine", :git => "git://github.com/hlxwell/mail-engine.git" # path => "/Users/michael/projects/myProject/mail_engine"
+gem "mail_engine", :git => "git://github.com/hlxwell/mail-engine.git"
 gem "rack-cache"
 gem "unicorn"
 gem "pry"

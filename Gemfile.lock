@@ -1,27 +1,17 @@
 GIT
   remote: git://github.com/collectiveidea/delayed_job.git
-  revision: 4513aeea6f6a182a4bb2eff5dfd3f998a23da5ff
+  revision: ce88693429188a63793b16daaab67056a4e4e0bf
   branch: master
   specs:
-    delayed_job (2.1.4)
-      activesupport (~> 3.0)
-      daemons
-
-GIT
-  remote: git://github.com/freelancing-god/thinking-sphinx.git
-  revision: 4848c658bd17489aabef72ce17175871cfb2f9f1
-  specs:
-    thinking-sphinx (2.0.11)
-      activerecord (>= 3.0.3)
-      builder (>= 2.1.2)
-      riddle (>= 1.5.0)
+    delayed_job (4.0.6)
+      activesupport (>= 3.0, < 5.0)
 
 GIT
   remote: git://github.com/galetahub/rails-ckeditor.git
-  revision: 9cacf3f9f3f987d1dffbde89eeb03ab6fdc999c5
+  revision: 522049946f6bcd119f830de695bc9d9792641905
   branch: rails3
   specs:
-    ckeditor (3.5.0)
+    ckeditor (3.5.4)
       mime-types (>= 1.16)
 
 GIT
@@ -40,7 +30,7 @@ GIT
 
 GIT
   remote: git://github.com/hlxwell/new_data_notifier.git
-  revision: 58a5e367fec7fc586f4f9ad1c5a033f9db67b989
+  revision: 0aa0e8df592aecc905873e1cc37033db15257715
   specs:
     new_data_notifier (0.1.5)
       rails (>= 3.0.0)
@@ -53,7 +43,7 @@ GIT
     exception_notification (1.0.0)
 
 GEM
-  remote: http://ruby.taobao.org/
+  remote: http://rubygems.org/
   specs:
     abstract (1.0.0)
     actionmailer (3.0.4)
@@ -82,99 +72,108 @@ GEM
       activemodel (= 3.0.4)
       activesupport (= 3.0.4)
     activesupport (3.0.4)
-    acts-as-taggable-on (2.0.6)
-    annotate (2.4.0)
+    acts-as-taggable-on (3.3.0)
+      activerecord (>= 3, < 5)
+    annotate (2.6.7)
+      activerecord (>= 2.3.0)
+      rake (~> 10.4.2, >= 10.4.2)
     arel (2.0.10)
-    astrails-safe (0.2.7)
+    astrails-safe (0.3.1)
       aws-s3
       cloudfiles
       net-sftp
-    awesome_print (0.3.2)
-    aws-s3 (0.6.2)
+    awesome_print (1.6.1)
+    aws-s3 (0.6.3)
       builder
       mime-types
       xml-simple
-    blankslate (2.1.2.3)
-    bluepill (0.0.44)
-      activesupport (>= 2.3.4)
-      blankslate (>= 2.1.2.2)
-      daemons (>= 1.0.9)
-      state_machine (>= 0.8.0)
+    blue-daemons (1.1.11)
+    bluepill (0.0.69)
+      activesupport (>= 3, < 5)
+      blue-daemons (~> 1.1.11)
+      i18n (~> 0.5)
+      state_machine (~> 1.1)
     builder (2.1.2)
-    cancan (1.5.1)
-    capistrano (2.5.19)
-      highline
-      net-scp (>= 1.0.0)
-      net-sftp (>= 2.0.0)
-      net-ssh (>= 2.0.14)
-      net-ssh-gateway (>= 1.0.0)
+    cancan (1.6.10)
+    capistrano (3.4.0)
+      i18n
+      rake (>= 10.0.0)
+      sshkit (~> 1.3)
     capistrano-ext (1.2.1)
       capistrano (>= 1.0.0)
     carrierwave (0.5.8)
       activesupport (~> 3.0)
     chinese_permalink (1.3.1)
-    cloudfiles (1.4.14)
-      mime-types (>= 1.16)
-    coderay (0.9.8)
-    daemons (1.1.0)
-    deep_cloneable (1.3.0)
-    enumerate_it (0.7.3)
+    climate_control (0.0.3)
+      activesupport (>= 3.0)
+    cloudfiles (1.5.0.3)
+      json
+    cocaine (0.5.7)
+      climate_control (>= 0.0.3, < 1.0)
+    coderay (1.1.0)
+    colorize (0.7.7)
+    daemons (1.2.3)
+    deep_cloneable (1.4.1)
+      rails
+    enumerate_it (1.2.8)
+      activesupport (>= 3.0.0)
     erubis (2.6.6)
       abstract (>= 1.0.0)
-    factory_girl (1.3.3)
+    factory_girl (4.5.0)
+      activesupport (>= 3.0.0)
     fakeweb (1.3.0)
-    fastercsv (1.5.4)
-    has_scope (0.5.0)
-    highline (1.6.1)
-    httparty (0.8.1)
-      multi_json
-      multi_xml
-    i18n (0.6.0)
+    fastercsv (1.5.5)
+    has_scope (0.5.1)
+    httparty (0.13.5)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
+    i18n (0.7.0)
     inherited_resources (1.1.2)
       has_scope (~> 0.5.0)
       responders (~> 0.6.0)
-    json (1.6.5)
-    kaminari (0.13.0)
+    innertube (1.0.2)
+    json (1.8.3)
+    kaminari (0.16.3)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
-      railties (>= 3.0.0)
-    kgio (2.5.0)
-    liquid (2.3.0)
-    looksee (0.2.1)
-    mail (2.2.19)
+    kgio (2.9.3)
+    liquid (3.0.3)
+    looksee (3.1.0)
+    mail (2.2.20)
       activesupport (>= 2.3.6)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
-    method_source (0.6.7)
-      ruby_parser (>= 2.3.1)
-    mime-types (1.17.2)
-    mocha (0.9.12)
-    multi_json (1.0.4)
-    multi_xml (0.4.1)
-    mysql (2.8.1)
-    navigasmic (0.5.5)
-    net-scp (1.0.4)
-      net-ssh (>= 1.99.1)
-    net-sftp (2.0.5)
-      net-ssh (>= 2.0.9)
-    net-ssh (2.1.3)
-    net-ssh-gateway (1.0.1)
-      net-ssh (>= 1.99.1)
-    newrelic_rpm (2.13.4)
-    nifty-generators (0.4.5)
-    nokogiri (1.5.0)
-    paperclip (2.3.8)
-      activerecord
-      activesupport
-    polyglot (0.3.3)
-    pry (0.9.7.4)
-      coderay (~> 0.9.8)
-      method_source (~> 0.6.7)
-      ruby_parser (>= 2.3.1)
-      slop (~> 2.1.0)
-    rack (1.2.4)
-    rack-cache (1.0)
+    metaclass (0.0.4)
+    method_source (0.8.2)
+    mime-types (1.25.1)
+    mini_portile (0.6.2)
+    mocha (1.1.0)
+      metaclass (~> 0.0.1)
+    multi_xml (0.5.5)
+    mysql (2.9.1)
+    navigasmic (1.1.0)
+    net-scp (1.2.1)
+      net-ssh (>= 2.6.5)
+    net-sftp (2.1.2)
+      net-ssh (>= 2.6.5)
+    net-ssh (2.9.2)
+    newrelic_rpm (3.12.0.288)
+    nifty-generators (0.4.6)
+    nokogiri (1.6.6.2)
+      mini_portile (~> 0.6.0)
+    paperclip (4.2.2)
+      activemodel (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      cocaine (~> 0.5.3)
+      mime-types
+    polyglot (0.3.5)
+    pry (0.10.1)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
+    rack (1.2.8)
+    rack-cache (1.2)
       rack (>= 0.4)
     rack-mount (0.6.14)
       rack (>= 1.0.0)
@@ -188,41 +187,53 @@ GEM
       activesupport (= 3.0.4)
       bundler (~> 1.0)
       railties (= 3.0.4)
-    rails3-generators (0.17.4)
+    rails3-generators (1.0.0)
       railties (>= 3.0.0)
     railties (3.0.4)
       actionpack (= 3.0.4)
       activesupport (= 3.0.4)
       rake (>= 0.8.7)
       thor (~> 0.14.4)
-    raindrops (0.7.0)
-    rake (0.9.2.2)
-    redis (2.2.2)
-    redis-store (1.0.0.1)
-      redis (~> 2.2.1)
-    responders (0.6.2)
-    riddle (1.5.1)
-    ruby-graphviz (0.9.20)
-    ruby_parser (2.3.1)
-      sexp_processor (~> 3.0)
-    sexp_processor (3.0.7)
-    shoulda (2.11.3)
-    sitemap_generator (1.3.9)
-    slop (2.1.0)
-    state_machine (0.9.4)
+    raindrops (0.14.0)
+    rake (10.4.2)
+    redis (3.2.1)
+    redis-store (1.1.5)
+      redis (>= 2.2)
+    responders (0.6.5)
+    riddle (1.5.12)
+    ruby-graphviz (1.2.2)
+    shoulda (3.5.0)
+      shoulda-context (~> 1.0, >= 1.0.1)
+      shoulda-matchers (>= 1.4.1, < 3.0)
+    shoulda-context (1.2.1)
+    shoulda-matchers (2.8.0)
+      activesupport (>= 3.0.0)
+    sitemap_generator (5.0.5)
+      builder
+    slop (3.6.0)
+    sshkit (1.7.1)
+      colorize (>= 0.7.0)
+      net-scp (>= 1.1.2)
+      net-ssh (>= 2.8.0)
+    state_machine (1.2.0)
     test_benchmarker (1.2.1)
+    thinking-sphinx (2.1.0)
+      activerecord (>= 3.0.3)
+      builder (>= 2.1.2)
+      innertube (~> 1.0.2)
+      riddle (>= 1.5.6)
     thor (0.14.6)
-    timecop (0.3.5)
-    treetop (1.4.10)
+    timecop (0.7.4)
+    treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
-    tzinfo (0.3.31)
-    unicorn (4.0.1)
-      kgio (~> 2.4)
+    tzinfo (0.3.44)
+    unicorn (4.9.0)
+      kgio (~> 2.6)
       rack
-      raindrops (~> 0.6)
-    will_paginate (3.0.pre2)
-    xml-simple (1.0.14)
+      raindrops (~> 0.7)
+    will_paginate (3.0.7)
+    xml-simple (1.1.5)
 
 PLATFORMS
   ruby
@@ -268,7 +279,7 @@ DEPENDENCIES
   sitemap_generator
   state_machine
   test_benchmarker
-  thinking-sphinx!
+  thinking-sphinx
   timecop
   unicorn
   will_paginate (~> 3.0.pre2)
