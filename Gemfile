@@ -2,7 +2,7 @@ source "http://rubygems.org"
 
 gem 'rails', '3.0.4'
 gem 'mysql'
-gem "looksee"
+# gem "looksee"
 gem 'nifty-generators'
 gem 'navigasmic'
 gem 'capistrano'
