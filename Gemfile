@@ -1,6 +1,6 @@
 source "http://rubygems.org"
 
-gem 'rails', '3.2.15'
+gem 'rails', '3.2.22.2'
 gem 'mysql'
 # gem "looksee"
 gem 'nifty-generators'
